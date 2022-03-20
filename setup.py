@@ -5,7 +5,7 @@ with open("README.md", "r") as rm:
 
 setuptools.setup(
     name="pybmd",
-    version="2022.3",
+    version="2022.3.2",
     author="wheheo",
     author_email="wheheohu@outlook.com",
     description="python libery for Davinci Resolve(Repack)",
@@ -15,7 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3.6",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
         "Operating System :: MacOS :: MacOS X"
     ],
     install_requires=[

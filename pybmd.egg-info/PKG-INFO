@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pybmd
-Version: 2022.3
+Version: 2022.3.2
 Summary: python libery for Davinci Resolve(Repack)
 Home-page: https://github.com/WheheoHu/pybmd
 Author: wheheo
@@ -22,6 +22,6 @@ Description: # PyBMD
         
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3.6
-Classifier: License :: OSI Approved :: MIT License
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
 Classifier: Operating System :: MacOS :: MacOS X
 Description-Content-Type: text/markdown
