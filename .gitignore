@@ -1,2 +1,5 @@
 .venv
 .python-version
+build
+dist
+pybmd.egg-info
