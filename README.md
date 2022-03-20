@@ -4,7 +4,7 @@
 ![PyPI](https://img.shields.io/pypi/v/pybmd)
 
 
-python libery for Davinci Resolve(Repack)
+python library for Davinci Resolve(Repack)
 
 *⚠️Currently support MacOS Only⚠️*
 
