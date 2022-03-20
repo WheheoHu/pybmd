@@ -1,5 +1,6 @@
 from enum import Enum
 from os import path
+from textwrap import dedent
 from typing import List
 
 from pybmd.gallerystill import GalleryStill
@@ -37,6 +38,15 @@ class TrackTpye(Enum):
     SUBTITLE_TRACK = 'subtitle'
 
 
+def timeline_item_class_list_transfer(timeline_item_list: List[TimelineItem]) -> list:
+    timeline_item_trans_list = []
+
+    for timeline_item in timeline_item_list:
+        timeline_item_trans_list.append(timeline_item.timeline_item)
+
+    return timeline_item_trans_list
+
+
 class Timeline():
     """docstring for Timeline."""
 
@@ -49,13 +59,11 @@ class Timeline():
     def apply_grade_from_drx(self, path: path, grade_mode: int, timeline_items: List[TimelineItem]) -> bool:
         return self.timeline.ApplyGradeFromDRX(str(path), grade_mode, timeline_items)
 
-    #BUG timelineitems should be origin resolve timelineitem
     def create_compound_clip(self, timeline_items: List[TimelineItem], clipinfo: dict) -> TimelineItem:
-        return TimelineItem(timeline_item=self.timeline.CreateCompoundClip(timeline_items, clipinfo))
+        return TimelineItem(timeline_item=self.timeline.CreateCompoundClip(timeline_item_class_list_transfer(timeline_items), clipinfo))
 
-    #BUG timelineitems should be origin resolve timelineitem
     def create_fusion_clip(self, timeline_items: List[TimelineItem]) -> TimelineItem:
-        return TimelineItem(timeline_item=self.timeline.CreateFusionClip(timeline_items))
+        return TimelineItem(timeline_item=self.timeline.CreateFusionClip(timeline_item_class_list_transfer(timeline_items)))
 
     def delete_marker_at_frame(self, frame_num: int) -> bool:
         return self.timeline.DeleteMarkerAtFrame(frame_num)
@@ -69,8 +77,8 @@ class Timeline():
     def duplicate_timeline(self, timeline_name: str):
         return Timeline(timeline=self.timeline.DuplicateTimeline(timeline_name))
 
-    #TODO export_type in bmd.py
-    #TODO mail bmd about this function
+    # TODO export_type in bmd.py
+    # TODO mail bmd about this function
     def export(self, file_name: str, export_type, export_subtype=None) -> bool:
         return self.timeline.Export(file_name, export_type, export_subtype)
 
@@ -150,8 +158,8 @@ class Timeline():
 
     def set_name(self, timeline_name) -> bool:
         return self.timeline.SetName(timeline_name)
-    
-    #TODO setting_name to data class
+
+    # TODO setting_name to data class
     def set_setting(self, setting_name: str, setting_value: str) -> bool:
         return self.timeline.SetSetting(setting_name, setting_value)
 
@@ -160,4 +168,3 @@ class Timeline():
 
     def update_marker_custom_data(self, frame_id: int, custom_data: str) -> bool:
         return self.timeline.UpdateMarkerCustomData(frame_id, custom_data)
-    

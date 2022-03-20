@@ -17,6 +17,9 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
         "Operating System :: MacOS :: MacOS X"
-    ]
+    ],
+    install_requires=[
+        "dataclasses"
+        ],
 
 )

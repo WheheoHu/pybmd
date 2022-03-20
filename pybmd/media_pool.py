@@ -44,11 +44,10 @@ class MediaPool():
 
     def add_sub_folder(self, folder: Folder, name: str) -> Folder:
         return Folder(self.media_pool.AddSubFolder(folder, name))
-    
-    #BUG fix clips list input
+
     def append_to_timeline(self, clips: List[MediaPoolItem]) -> List[TimelineItem]:
         timeline_item_list = []
-        for timeline_item in self.media_pool.AppendToTimeline(clips):
+        for timeline_item in self.media_pool.AppendToTimeline([clip.media_pool_item for clip in clips]):
             timeline_item_list.append(TimelineItem(timeline_item))
         return timeline_item_list
 
@@ -61,9 +60,8 @@ class MediaPool():
     def create_empty_timeline(self, name) -> Timeline:
         return Timeline(self.media_pool.CreateEmptyTimeline(name))
 
-    #BUG fix clips list input   
     def create_timeline_from_clips(self, name: str, clips: List[MediaPoolItem]) -> Timeline:
-        return Timeline(self.media_pool.CreateTimelineFromClips(name, clips))
+        return Timeline(self.media_pool.CreateTimelineFromClips(name, [clip.media_pool_item for clip in clips]))
 
     def create_timeline_from_clips(self, name: str, clip_infos: List[ClipInfo]) -> Timeline:
         return self.media_pool.CreateTimelineFromClips(name, asdict_inside_list(clip_infos))
@@ -71,21 +69,17 @@ class MediaPool():
     def delete_clip_mattes(self, media_pool_item: MediaPoolItem, paths: List[str]) -> bool:
         return self.media_pool.DeleteClipMattes(media_pool_item, paths)
 
-    #BUG fix clips list input
     def delete_clips(self, clips: List[MediaPoolItem]) -> bool:
-        return self.media_pool.DeleteClips(clips)
+        return self.media_pool.DeleteClips([clip.media_pool_item for clip in clips])
 
-    #BUG fix folder list input
     def delete_folders(self, subfolders: List[Folder]) -> bool:
-        return self.media_pool.DeleteFolders(subfolders)
+        return self.media_pool.DeleteFolders([folder.folder for folder in subfolders])
 
-    #BUG fix timeline list input
     def delete_timelines(self, timelines: List[Timeline]) -> bool:
-        return self.media_pool.DeleteTimelines(timelines)
+        return self.media_pool.DeleteTimelines([timeline.timeline for timeline in timelines])
 
-    #BUG fix clips list input
     def export_metadata(self, file_name: str, clips: List[MediaPoolItem]) -> bool:
-        return self.media_pool.ExportMetadata(file_name, clips)
+        return self.media_pool.ExportMetadata(file_name, [clip.media_pool_item for clip in clips])
 
     def get_clip_matte_list(self, media_pool_item) -> List[Path]:
         path_list = []
@@ -120,21 +114,17 @@ class MediaPool():
     def import_timeline_from_file(self, file_path: path, import_option: TimelineImportOptions) -> Timeline:
         return Timeline(self.media_pool.ImportTimelineFromFile(str(file_path), asdict(import_option)))
 
-    #BUG fix clips list input
     def move_clips(self, clips: List[MediaPoolItem], target_folder: Folder) -> bool:
-        return self.media_pool.MoveClips(clips, target_folder)
+        return self.media_pool.MoveClips([clip.media_pool_item for clip in clips], target_folder)
 
-    #BUG fix folder list input
     def move_folders(self, folders: List[Folder], target_folder: Folder) -> bool:
-        return self.media_pool.MoveFolders(folders, target_folder)
+        return self.media_pool.MoveFolders([folder.folder for folder in folders], target_folder)
 
-    #BUG fix clips list input
     def relink_clips(self, media_pool_items: List[MediaPoolItem], folder_path: path) -> bool:
-        return self.media_pool.RelinkClips(media_pool_items, str(folder_path))
+        return self.media_pool.RelinkClips([clip.media_pool_item for clip in media_pool_items], str(folder_path))
 
     def set_current_folder(self, folder: Folder) -> bool:
         return self.media_pool.SetCurrentFolder(folder)
 
-    #BUG fix clips list input
     def unlink_clips(self, media_pool_items: List[MediaPoolItem]) -> bool:
-        return self.media_pool.UnlinkClips(media_pool_items)
+        return self.media_pool.UnlinkClips([clip.media_pool_item for clip in media_pool_items])

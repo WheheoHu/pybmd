@@ -9,7 +9,6 @@ from pybmd.media_pool_item import MediaPoolItem
 
 from enum import Enum
 
-
 class VersionType(Enum):
     """Docstring for VersionType."""
     LOCAL = 0
@@ -55,11 +54,11 @@ class TimelineItem():
 
     def clear_flags(self, color) -> bool:
         return self.timeline_item.ClearFlags(color)
-    #BUG fix timelineitem list input(to origin resolve timelineitem)
+
     def copy_grades(self, target_timeline_items: List['TimelineItem']) -> bool:
         timeline_item_list = []
         for timeline_item in target_timeline_items:
-            timeline_item_list.append(timeline_item)
+            timeline_item_list.append(timeline_item.timeline_item)
         return self.timeline_item.CopyGrades(timeline_item_list)
 
     def delete_fusion_comp_by_name(self, comp_name: str) -> bool:
