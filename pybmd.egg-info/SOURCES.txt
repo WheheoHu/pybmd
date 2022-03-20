@@ -18,4 +18,5 @@ pybmd/timeline_item.py
 pybmd.egg-info/PKG-INFO
 pybmd.egg-info/SOURCES.txt
 pybmd.egg-info/dependency_links.txt
+pybmd.egg-info/requires.txt
 pybmd.egg-info/top_level.txt
