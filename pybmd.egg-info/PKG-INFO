@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pybmd
-Version: 2022.1
+Version: 2022.3
 Summary: python libery for Davinci Resolve(Repack)
 Home-page: https://github.com/WheheoHu/pybmd
 Author: wheheo
@@ -12,7 +12,7 @@ Description: # PyBMD
         ![PyPI](https://img.shields.io/pypi/v/pybmd)
         
         
-        python libery for Davinci Resolve(Repack)
+        python library for Davinci Resolve(Repack)
         
         *⚠️Currently support MacOS Only⚠️*
         
