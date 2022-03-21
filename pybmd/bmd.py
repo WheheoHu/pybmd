@@ -22,7 +22,7 @@ class Bmd:
     local_davinci = None
 
     def __init__(self,resolve_ip=IP_ADDRESS):
-        self.local_davinci = self.init_davinci(resolve_ip=resolve_ip)
+        self.local_davinci = self.init_davinci(davinci_ip=resolve_ip)
         #TODO finish timeline export properties
         self.EXPORT_AAF = self.local_davinci.EXPORT_AAF
         self.EXPORT_AAF_NEW = self.local_davinci.EXPORT_AAF_NEW
@@ -85,13 +85,13 @@ class Bmd:
         """
         return MediaStorage(self.local_davinci)
 
-    def get_prodect_name(self) -> str:
+    def get_product_name(self) -> str:
         """Returns product name.
 
         Returns:
             str: product name
         """
-        return self.local_davinci.GetProdectName()
+        return self.local_davinci.GetProductName()
 
     def get_project_manager(self) -> ProjectManager:
         """Returns the ProjectManager object for currently open database.
