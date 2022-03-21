@@ -8,6 +8,27 @@ python library for Davinci Resolve(Repack)
 
 *⚠️Currently support MacOS Only⚠️*
 
-## How To Use
+## How To Install
 
-> pip install pybmd
+```
+pip install pybmd
+```
+
+## How To Use
+>**⚠️Run Davinci Resolve before you run script**
+
+1. Init Reolve object use Bmd module
+   ```python
+    from pybmd.bmd import Bmd
+
+    LOCAL_RESOLVE=Bmd.init_davinci()
+    ```
+    `init_davinci()` function has an option arg named `davinci_ip` ,default value is `127.0.0.1 `stands for local davinci,if want use remote davinci resolve object ,change arg to remote ip.
+
+2. You are free now ! 
+
+    Play with APIs !
+    
+    API documentation could be found at my notion:
+    [Davnci Resolve API in notion](https://wheheohu.notion.site/Davinci-Python-API-7c4f1038a36f44818b631ec7e4a537fa)
+
