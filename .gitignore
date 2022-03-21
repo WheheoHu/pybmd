@@ -4,3 +4,4 @@ build
 dist
 pybmd.egg-info
 test.py
+.VSCodeCounter
