@@ -19,7 +19,7 @@ pip install pybmd
 
 1. Init Reolve object use Bmd module
    ```python
-    from pybmd.bmd import Bmd
+    from pybmd import Bmd
 
     LOCAL_RESOLVE=Bmd.init_davinci()
     ```
