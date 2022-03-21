@@ -21,13 +21,13 @@ class Bmd:
 
     local_davinci = None
 
-    def __init__(self):
-        self.local_davinci = self.init_davinci()
+    def __init__(self,resolve_ip=IP_ADDRESS):
+        self.local_davinci = self.init_davinci(resolve_ip=resolve_ip)
         #TODO finish timeline export properties
         self.EXPORT_AAF = self.local_davinci.EXPORT_AAF
         self.EXPORT_AAF_NEW = self.local_davinci.EXPORT_AAF_NEW
         self.EXPORT_DRT=self.local_davinci.EXPORT_DRT
-    def init_davinci(self, davinci_ip=IP_ADDRESS):
+    def init_davinci(self, davinci_ip):
         """init and return Davinci Resolve object
 
         Args:

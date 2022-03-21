@@ -21,9 +21,9 @@ pip install pybmd
    ```python
     from pybmd import Bmd
 
-    LOCAL_RESOLVE=Bmd.init_davinci()
+    LOCAL_RESOLVE=Bmd()
     ```
-    `init_davinci()` function has an option arg named `davinci_ip` , default value is `127.0.0.1 `stands for local davinci, if you want to use remote davinci resolve object, change arg to remote ip.
+    `Bmd()`  has an option arg named `davinci_ip` , default value is `127.0.0.1 `stands for local davinci, if you want to use remote davinci resolve object, change arg to remote ip.
 
 2. You are free now ! 
 
