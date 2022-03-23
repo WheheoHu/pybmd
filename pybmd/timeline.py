@@ -77,9 +77,10 @@ class Timeline():
     def duplicate_timeline(self, timeline_name: str):
         return Timeline(timeline=self.timeline.DuplicateTimeline(timeline_name))
 
-    # TODO export_type in bmd.py
-    # TODO mail bmd about this function
-    def export(self, file_name: str, export_type, export_subtype=None) -> bool:
+    def export(self, file_name: path, export_type, export_subtype=None) -> bool:
+        #file_name should be a path, not a file name.  
+        # eg. file_path=os.path.join(os.path.expanduser("~"), "Desktop/Temp/sampleExp.drt")
+        #     timeline.export(file_path,LOCAL_RESOLVE.EXPORT_DRT)
         return self.timeline.Export(file_name, export_type, export_subtype)
 
     def get_current_clip_thumbnail_image(self) -> dict:
