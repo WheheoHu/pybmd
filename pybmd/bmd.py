@@ -23,10 +23,37 @@ class Bmd:
 
     def __init__(self,resolve_ip=IP_ADDRESS):
         self.local_davinci = self.init_davinci(davinci_ip=resolve_ip)
-        #TODO finish timeline export properties
+        
+        
+        #timeline exportType can be one of the following constants:
         self.EXPORT_AAF = self.local_davinci.EXPORT_AAF
-        self.EXPORT_AAF_NEW = self.local_davinci.EXPORT_AAF_NEW
         self.EXPORT_DRT=self.local_davinci.EXPORT_DRT
+        self.EXPORT_EDL = self.local_davinci.EXPORT_EDL
+        self.EXPORT_FCP_7_XML = self.local_davinci.EXPORT_FCP_7_XML
+        self.EXPORT_FCPXML_1_3 = self.local_davinci.EXPORT_FCPXML_1_3
+        self.EXPORT_FCPXML_1_4 = self.local_davinci.EXPORT_FCPXML_1_4
+        self.EXPORT_FCPXML_1_5 = self.local_davinci.EXPORT_FCPXML_1_5
+        self.EXPORT_FCPXML_1_6 = self.local_davinci.EXPORT_FCPXML_1_6
+        self.EXPORT_FCPXML_1_7 = self.local_davinci.EXPORT_FCPXML_1_7
+        self.EXPORT_FCPXML_1_8 = self.local_davinci.EXPORT_FCPXML_1_8
+        self.EXPORT_HDR_10_PROFILE_A = self.local_davinci.EXPORT_HDR_10_PROFILE_A
+        self.EXPORT_HDR_10_PROFILE_B = self.local_davinci.EXPORT_HDR_10_PROFILE_B
+        self.EXPORT_TEXT_CSV = self.local_davinci.EXPORT_TEXT_CSV
+        self.EXPORT_TEXT_TAB = self.local_davinci.EXPORT_TEXT_TAB
+        self.EXPORT_DOLBY_VISION_VER_2_9 = self.local_davinci.EXPORT_DOLBY_VISION_VER_2_9
+        self.EXPORT_DOLBY_VISION_VER_4_0 = self.local_davinci.EXPORT_DOLBY_VISION_VER_4_0
+        
+        
+        #timeline exportSubtype can be one of the following enums:
+        ##for exportType is EXPORT_AAF:
+        self.EXPORT_AAF_NEW = self.local_davinci.EXPORT_AAF_NEW
+        self.EXPORT_AAF_EXISTING = self.local_davinci.EXPORT_AAF_EXISTING
+        ##for exportType is EXPORT_EDL:
+        self.EXPORT_NONE = self.local_davinci.EXPORT_NONE
+        self.EXPORT_CDL = self.local_davinci.EXPORT_CDL
+        self.EXPORT_SDL = self.local_davinci.EXPORT_SDL
+        self.EXPORT_MISSING_CLIPS = self.local_davinci.EXPORT_MISSING_CLIPS
+        
     def init_davinci(self, davinci_ip):
         """init and return Davinci Resolve object
 
