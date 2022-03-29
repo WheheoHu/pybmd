@@ -1,5 +1,6 @@
 
 
+import string
 from dataclasses import dataclass
 from dataclasses import asdict
 from os import path
@@ -184,3 +185,14 @@ class TimelineItem():
 
     def set_lut(self, node_index: int, lutpath: path) -> bool:
         return self.timeline_item.SetLUT(node_index, str(lutpath))
+    
+    ####################################################################################################################
+    #add in davinci resolve 17.4.6
+    def get_num_node(self) -> int:
+        return self.timeline_item.GetNumNode()
+    
+    def get_lut(self,node_index) -> string:
+        return self.timeline_item.GetLUT(node_index)
+    
+    
+    ##########################################################################################################################

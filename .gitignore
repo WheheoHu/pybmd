@@ -6,3 +6,6 @@ pybmd.egg-info
 test.py
 .VSCodeCounter
 pybmd/__pycache__
+.DS_Store
+pybmd/.DS_Store
+pybmd/Davinci_README/.DS_Store
