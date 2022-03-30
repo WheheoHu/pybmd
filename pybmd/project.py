@@ -1,6 +1,8 @@
 
 
-from typing import List
+from dataclasses import asdict
+from dataclasses import dataclass
+from typing import Any, List
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
 
@@ -8,6 +10,44 @@ from pybmd.timeline import Timeline
 
 
 RenderResolution = List[dict]
+
+
+@dataclass
+class RenderSetting():
+    """Docstring for RenderSetting."""
+    SelectAllFrames: bool
+    MarkIn: int
+    MarkOut: int
+    TargetDir: str
+    CustomName: str
+    UniqueFilenameStyle: int  # 0 for prefix, 1 for suffix
+    ExportVideo: bool
+    ExportAudio: bool
+    FormatWidth: int
+    FormatHeight: int
+    FrameRate: float
+    # (for SD resolution: "16_9" or "4_3") (other resolutions: "square" or "cinemascope")
+    PixelAspectRatio: str
+    VideoQuality: Any
+    #  possible values for current codec (if applicable):
+
+    #  0(int) - will set quality to automatic
+
+    # [1 -> MAX] (int) - will set input bit rate
+
+    # ["Least", "Low", "Medium", "High", "Best"] (String) - will set input quality level
+    AudioCodec: str
+    AudioBitDepth: int
+    AudioSampleRate: int
+    ColorSpaceTag: str  # example: "Same as Project", "AstroDesign"
+    GammaTag: str  # example: "Same as Project", "ACEScct"
+    ExportAlpha: bool
+    # (example: "Main10"). Can only be set for H.264 and H.265.
+    EncodingProfile: str
+    MultiPassEncode: bool  # Can onlt be set for H.264.
+    AlphaMode: int
+    # 0 - Premultipled, 1 - Straight. Can only be set if "ExportAlpha" is true.
+    NetworkOptimization: bool  # Only supported by QuickTime and MP4 formats.
 
 
 class Project():
@@ -45,10 +85,10 @@ class Project():
 
     def get_current_timeline(self):
         return Timeline(timeline=self.project.GetCurrentTimeline())
-    
+
     def get_gallery(self,) -> Gallery:
         return Gallery(self.project.GetGallery())
-    
+
     def get_media_pool(self) -> MediaPool:
         return MediaPool(self.project.GetMediaPool())
 
@@ -105,7 +145,7 @@ class Project():
     def set_current_render_mode(self, render_mode: int) -> bool:
         return self.project.SetCurrentRenderMode(render_mode)
 
-    def set_current_timeline(self, timeline:Timeline) -> bool:
+    def set_current_timeline(self, timeline: Timeline) -> bool:
         return self.project.SetCurrentTimeline(timeline.timeline)
 
     def set_name(self, project_name) -> bool:
@@ -114,8 +154,8 @@ class Project():
     def set_preset(self, preset_name: str) -> bool:
         return self.project.SetPreset(preset_name)
 
-    def set_render_setting(self, render_setting: dict) -> bool:
-        return self.project.SetRenderSetting(render_setting)
+    def set_render_setting(self, render_setting: RenderSetting) -> bool:
+        return self.project.SetRenderSetting(asdict(render_setting))
 
     def set_setting(self, setting_name: str, setting_value: str):
         return self.project.SetSetting(setting_name, setting_value)

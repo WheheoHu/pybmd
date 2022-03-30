@@ -70,10 +70,11 @@ class MediaPoolItem():
     def set_clip_color(self, color_name: str) -> bool:
         return self.media_pool_item.SetClipColor(color_name)
 
-    # TODO metadata_type as data class
+    
     def set_clip_property(self, property_type: str, property_value: str) -> bool:
         return self.media_pool_item.SetClipProperty(property_type, property_value)
-
+    
+    # TODO metadata_type as data class
     def set_metadata(self, metadata_type: str, metadata_value: str) -> bool:
         return self.media_pool_item.SetMetadata(metadata_type, metadata_value)
 
