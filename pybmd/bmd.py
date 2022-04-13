@@ -7,9 +7,9 @@ from pybmd.media_storage import MediaStorage
 from pybmd.project_manager import ProjectManager
 
 
-def load_dynamic(module, module_path: path):
+def load_dynamic(module, module_path: str):
     loader = importlib.machinery.ExtensionFileLoader(module, module_path)
-    module = loader.load_module()
+    module = loader.load_module() # type: ignore
     return module
 
 
@@ -77,9 +77,9 @@ class Bmd:
         Returns:
             bool: result
         """
-        return self.local_davinci.DeleteLayoutPreset(preset_name)
+        return self.local_davinci.DeleteLayoutPreset(preset_name) #type: ignore
 
-    def export_layout_preset(self, preset_name: str, preset_file_path: path) -> bool:
+    def export_layout_preset(self, preset_name: str, preset_file_path: str) -> bool:
         """Exports preset named preset_name to path preset_file_path.
 
         Args:
@@ -89,12 +89,12 @@ class Bmd:
         Returns:
             bool: result
         """
-        return self.local_davinci.ExportLayoutPreset(preset_name, str(preset_file_path))
+        return self.local_davinci.ExportLayoutPreset(preset_name, str(preset_file_path))#type: ignore
 
     def fusion(self):
         """Returns the Fusion object. Starting point for Fusion scripts."""
         # if I find more info about fusion I will finish this function
-        return self.local_davinci.Fusion()
+        return self.local_davinci.Fusion()#type: ignore
 
     def get_current_page(self) -> str:
         """Returns the page currently displayed in the main window
@@ -102,7 +102,7 @@ class Bmd:
         Returns:
             str: Returned value can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver", None).
         """
-        return self.local_davinci.GetCurrentPage()
+        return self.local_davinci.GetCurrentPage()#type: ignore
 
     def get_media_stroage(self) -> MediaStorage:
         """Returns the MediaStorage  object to query and act on media locations.
@@ -118,7 +118,7 @@ class Bmd:
         Returns:
             str: product name
         """
-        return self.local_davinci.GetProductName()
+        return self.local_davinci.GetProductName()#type: ignore
 
     def get_project_manager(self) -> ProjectManager:
         """Returns the ProjectManager object for currently open database.
@@ -134,7 +134,7 @@ class Bmd:
         Returns:
             list: list of product version fields
         """
-        return self.local_davinci.GetVersion()
+        return self.local_davinci.GetVersion()#type: ignore
 
     def get_version_string(self) -> str:
         """Returns product version in "major.minor.patch[suffix].build" format.
@@ -142,14 +142,14 @@ class Bmd:
         Returns:
             str: product version string
         """
-        return self.local_davinci.GetVersionString()
+        return self.local_davinci.GetVersionString()#type: ignore
 
-    def import_layout_preset(self, preset_file_path: path, preset_name: str) -> bool:
+    def import_layout_preset(self, preset_file_path: str, preset_name: str) -> bool:
         """Imports preset from path 'preset_file_path'. 
             The optional argument 'preset_name' specifies how the preset shall be named.
             If not specified, the preset is named based on the filename.
         """
-        return self.local_davinci.ImportLayoutPreset(str(preset_file_path), preset_name)
+        return self.local_davinci.ImportLayoutPreset(str(preset_file_path), preset_name)#type: ignore
 
     def load_layout_preset(self, preset_name: str) -> bool:
         """Loads UI layout from saved preset named preset_name.
@@ -160,7 +160,7 @@ class Bmd:
         Returns:
             bool
         """
-        return self.local_davinci.LoadLayoutPreset(preset_name)
+        return self.local_davinci.LoadLayoutPreset(preset_name)#type: ignore
 
     def open_page(self, page_name: str) -> bool:
         """Switches to indicated page in DaVinci Resolve. 
@@ -171,11 +171,11 @@ class Bmd:
         Returns:
             bool
         """
-        return self.local_davinci.OpenPage(page_name)
+        return self.local_davinci.OpenPage(page_name)#type: ignore
 
     def quit(self):
         """Quits the Resolve App."""
-        self.local_davinci.Quit()
+        self.local_davinci.Quit()#type: ignore
 
     def save_layout_preset(self, preset_name: str) -> bool:
         """Saves current UI layout as a preset named preset_name.
@@ -186,7 +186,7 @@ class Bmd:
         Returns:
             bool
         """
-        return self.local_davinci.SaveLayoutPreset(preset_name)
+        return self.local_davinci.SaveLayoutPreset(preset_name)#type: ignore
 
     def update_layout_preset(self, preset_name: str) -> bool:
         """Overwrites preset named 'preset_name' with current UI layout.
@@ -197,4 +197,4 @@ class Bmd:
         Returns:
             bool
         """
-        return self.local_davinci.UpdateLayoutPreset(preset_name)
+        return self.local_davinci.UpdateLayoutPreset(preset_name)#type: ignore

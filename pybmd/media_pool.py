@@ -1,4 +1,3 @@
-from os import path
 from pathlib import Path
 from typing import Dict, List
 from pybmd.folder import Folder
@@ -8,6 +7,7 @@ from pybmd.timeline_item import TimelineItem
 
 from dataclasses import dataclass
 from dataclasses import asdict
+from multipledispatch import dispatch
 
 
 @dataclass
@@ -45,24 +45,28 @@ class MediaPool():
     def add_sub_folder(self, folder: Folder, name: str) -> Folder:
         return Folder(self.media_pool.AddSubFolder(folder, name))
 
-    def append_to_timeline(self, clips: List[MediaPoolItem]) -> List[TimelineItem]:
+    @dispatch(List[MediaPoolItem])
+    def append_to_timeline(self, clips: List[MediaPoolItem]) -> List[TimelineItem]: # type: ignore
         timeline_item_list = []
         for timeline_item in self.media_pool.AppendToTimeline([clip.media_pool_item for clip in clips]):
             timeline_item_list.append(TimelineItem(timeline_item))
         return timeline_item_list
 
-    def append_to_timeline(self, clip_infos: List[ClipInfo]) -> List[TimelineItem]:
+    @dispatch(List[ClipInfo])
+    def append_to_timeline(self, clips: List[ClipInfo]) -> List[TimelineItem]:
         timeline_item_list = []
-        for timeline_item in self.media_pool.AppendToTimeline(asdict_inside_list(clip_infos)):
+        for timeline_item in self.media_pool.AppendToTimeline([asdict(ClipInfo) for ClipInfo in clips]):
             timeline_item_list.append(TimelineItem(timeline_item))
         return timeline_item_list
 
     def create_empty_timeline(self, name) -> Timeline:
         return Timeline(self.media_pool.CreateEmptyTimeline(name))
 
-    def create_timeline_from_clips(self, name: str, clips: List[MediaPoolItem]) -> Timeline:
+    @dispatch(str, List[MediaPoolItem])
+    def create_timeline_from_clips(self, name: str, clips: List[MediaPoolItem]) -> Timeline:  # type: ignore
         return Timeline(self.media_pool.CreateTimelineFromClips(name, [clip.media_pool_item for clip in clips]))
 
+    @dispatch(str, List[ClipInfo])
     def create_timeline_from_clips(self, name: str, clip_infos: List[ClipInfo]) -> Timeline:
         return self.media_pool.CreateTimelineFromClips(name, asdict_inside_list(clip_infos))
 
@@ -99,19 +103,21 @@ class MediaPool():
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
-    def import_media(self, file_paths: List[str]) -> List[MediaPoolItem]:
+    @dispatch(List[str])
+    def import_media(self, file_paths: List[str]) -> List[MediaPoolItem]: # type: ignore
         media_pool_item_list = []
         for media_pool_item in self.media_pool.ImportMedia(file_paths):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
+    @dispatch(List[dict])
     def import_media(self, clip_info: List[dict]) -> List[MediaPoolItem]:
         media_pool_item_list = []
         for media_pool_item in self.media_pool.ImportMedia(clip_info):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
-    def import_timeline_from_file(self, file_path: path, import_option: TimelineImportOptions) -> Timeline:
+    def import_timeline_from_file(self, file_path: str, import_option: TimelineImportOptions) -> Timeline:
         return Timeline(self.media_pool.ImportTimelineFromFile(str(file_path), asdict(import_option)))
 
     def move_clips(self, clips: List[MediaPoolItem], target_folder: Folder) -> bool:
@@ -120,7 +126,7 @@ class MediaPool():
     def move_folders(self, folders: List[Folder], target_folder: Folder) -> bool:
         return self.media_pool.MoveFolders([folder.folder for folder in folders], target_folder)
 
-    def relink_clips(self, media_pool_items: List[MediaPoolItem], folder_path: path) -> bool:
+    def relink_clips(self, media_pool_items: List[MediaPoolItem], folder_path: str) -> bool:
         return self.media_pool.RelinkClips([clip.media_pool_item for clip in media_pool_items], str(folder_path))
 
     def set_current_folder(self, folder: Folder) -> bool:

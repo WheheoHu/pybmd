@@ -1,8 +1,5 @@
 
 
-from os import path
-from tkinter.tix import DirTree
-
 
 class MediaPoolItem():
     """docstring for MediaPoolItem."""
@@ -35,7 +32,7 @@ class MediaPoolItem():
         return self.media_pool_item.GetClipColor()
 
     # property_name as data class
-    def get_clip_property(self, property_name: str = None) -> str:
+    def get_clip_property(self, property_name: str = "") -> str:
         return self.media_pool_item.GetClipProperty(property_name)
 
     def get_flag_list(self) -> list:
@@ -54,17 +51,17 @@ class MediaPoolItem():
         return self.media_pool_item.GetMediaId()
 
     # TODO metadata_type as data class
-    def get_metadata(self, metadata_type: str = None) -> str:
+    def get_metadata(self, metadata_type: str = "") -> str:
         return self.media_pool_item.GetMetadata(metadata_type)
 
     def get_name(self) -> str:
         return self.media_pool_item.GetName()
 
-    def link_proxy_media(self, proxy_media_file_path: path) -> bool:
+    def link_proxy_media(self, proxy_media_file_path: str) -> bool:  
         # 'proxy_media_file_path' should be absolute clip path.
         return self.media_pool_item.LinkProxyMedia(str(proxy_media_file_path))
 
-    def replace_clip(self, file_path: path) -> bool:
+    def replace_clip(self, file_path: str) -> bool:
         return self.media_pool_item.ReplaceClip(str(file_path))
 
     def set_clip_color(self, color_name: str) -> bool:

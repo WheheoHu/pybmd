@@ -80,7 +80,7 @@ class TimelineItem():
     def delet_version_by_name(self, version_name: str, version_type: VersionType) -> bool:
         return self.timeline_item.DeletVersionByName(version_name, version_type.value)
 
-    def export_fusion_comp(self, path: path, comp_index: int) -> bool:
+    def export_fusion_comp(self, path: str, comp_index: int) -> bool:
         return self.timeline_item.ExportFusionComp(str(path), comp_index)
 
     def finalize_take(self) -> bool:
@@ -159,7 +159,7 @@ class TimelineItem():
     def get_version_name_list(self, version_type: VersionType) -> list:
         return self.timeline_item.GetVersionNameList(version_type.value)
 
-    def import_fusion_comp(self, path: path) -> FusionComp:
+    def import_fusion_comp(self, path: str) -> FusionComp:
         return FusionComp(self.timeline_item.ImportFusionComp(str(path)))
 
     def load_fusion_comp_by_name(self, comp_name: str) -> FusionComp:
@@ -183,7 +183,7 @@ class TimelineItem():
     def set_clip_color(self, color_name) -> bool:
         return self.timeline_item.SetClipColor(color_name)
 
-    def set_lut(self, node_index: int, lutpath: path) -> bool:
+    def set_lut(self, node_index: int, lutpath: str) -> bool:
         return self.timeline_item.SetLUT(node_index, str(lutpath))
     
     ####################################################################################################################
@@ -191,7 +191,7 @@ class TimelineItem():
     def get_num_node(self) -> int:
         return self.timeline_item.GetNumNode()
     
-    def get_lut(self,node_index) -> string:
+    def get_lut(self,node_index) -> str:
         return self.timeline_item.GetLUT(node_index)
     
     

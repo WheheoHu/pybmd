@@ -35,14 +35,14 @@ class MediaStorage:
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
-    def get_file_list(self, folder_list: path) -> List[str]:
+    def get_file_list(self, folder_list: str) -> List[str]:
         return self.media_storage.GetFileList(str(folder_list))
 
     def get_mounted_volume_list(self) -> List[str]:
         return self.media_storage.GetMountedVolumeList()
 
-    def get_sub_folder_list(self, folder_path: path) -> List[str]:
+    def get_sub_folder_list(self, folder_path: str) -> List[str]:
         return self.media_storage.GetSubFolderList(str(folder_path))
 
-    def reveal_in_storage(self, path: path) -> bool:
+    def reveal_in_storage(self, path: str) -> bool:
         return self.media_storage.RevealInStorage(str(path))

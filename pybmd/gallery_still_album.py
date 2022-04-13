@@ -36,7 +36,7 @@ class GalleryStillAlbum():
             gallery_stills)
         return self.gallery_still_album.DeleteStills(gallery_still_list)
 
-    def export_stills(self, gallery_stills: List[GalleryStill], folder_path: path, file_prefix: str, format: StillFormats) -> bool:
+    def export_stills(self, gallery_stills: List[GalleryStill], folder_path: str, file_prefix: str, format: StillFormats) -> bool:
         gallery_still_list = get_gallery_still_list_from_class_list(
             gallery_stills)
         return self.gallery_still_album.ExportStills(gallery_still_list, str(folder_path), file_prefix, format.value)
@@ -52,3 +52,4 @@ class GalleryStillAlbum():
 
     def set_label(self, gallery_still: GalleryStill, label: str) -> bool:
         return self.gallery_still_album.SetLabel(gallery_still, label)
+

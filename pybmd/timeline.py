@@ -17,10 +17,10 @@ class ImportOptions():
 
     # specifies a filesystem path to search for source clips if the media is inaccessible
     # in their original path and if "ignoreFileExtensionsWhenMatching" is True
-    sourceClipsPath: str = None
+    sourceClipsPath: str = ""
 
     # list of Media Pool folder objects to search for source clips if the media is not present in current folder
-    sourceClipsFolders: str = None
+    sourceClipsFolders: str = ""
 
     autoImportSourceClipsIntoMediaPool: bool = True
     ignoreFileExtensionsWhenMatching: bool = False
@@ -56,7 +56,7 @@ class Timeline():
     def add_marker(self, frame_id: str, color: str, name: str, note: str, duration: str, custom_data: str) -> bool:
         return self.timeline.AddMarker(frame_id, color, name, note, duration, custom_data)
 
-    def apply_grade_from_drx(self, path: path, grade_mode: int, timeline_items: List[TimelineItem]) -> bool:
+    def apply_grade_from_drx(self, path: str, grade_mode: int, timeline_items: List[TimelineItem]) -> bool:
         return self.timeline.ApplyGradeFromDRX(str(path), grade_mode, timeline_items)
 
     def create_compound_clip(self, timeline_items: List[TimelineItem], clipinfo: dict) -> TimelineItem:
@@ -77,7 +77,7 @@ class Timeline():
     def duplicate_timeline(self, timeline_name: str):
         return Timeline(timeline=self.timeline.DuplicateTimeline(timeline_name))
 
-    def export(self, file_name: path, export_type, export_subtype=None) -> bool:
+    def export(self, file_name: str, export_type, export_subtype=None) -> bool:
         #file_name should be a path, not a file name.  
         # eg. file_path=os.path.join(os.path.expanduser("~"), "Desktop/Temp/sampleExp.drt")
         #     timeline.export(file_path,LOCAL_RESOLVE.EXPORT_DRT)
@@ -136,7 +136,7 @@ class Timeline():
         return GalleryStill(self.timeline.GrabStill())
 
     # TODO test this
-    def import_into_timeline(self, file_path: path, import_options: ImportOptions) -> bool:
+    def import_into_timeline(self, file_path: str, import_options: ImportOptions) -> bool:
         return self.timeline.ImportIntoTimeline(file_path, asdict(import_options))
 
     def insert_fusion_generator_into_timeline(self, generator_name: str) -> TimelineItem:

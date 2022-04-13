@@ -167,5 +167,3 @@ class Project():
     def stop_rendering(self):
         return self.project.StopRendering()
 
-    def stop_rendering(self):
-        return self.project.StopRendering()
