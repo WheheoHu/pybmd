@@ -103,19 +103,19 @@ class MediaPool():
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
-    @dispatch(List[str])
+    #@dispatch(List[str])
     def import_media(self, file_paths: List[str]) -> List[MediaPoolItem]: # type: ignore
         media_pool_item_list = []
         for media_pool_item in self.media_pool.ImportMedia(file_paths):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
-    @dispatch(List[dict])
-    def import_media(self, clip_info: List[dict]) -> List[MediaPoolItem]:
-        media_pool_item_list = []
-        for media_pool_item in self.media_pool.ImportMedia(clip_info):
-            media_pool_item_list.append(MediaPoolItem(media_pool_item))
-        return media_pool_item_list
+    # @dispatch(List[dict])
+    # def import_media(self, clip_info: List[dict]) -> List[MediaPoolItem]:
+    #     media_pool_item_list = []
+    #     for media_pool_item in self.media_pool.ImportMedia(clip_info):
+    #         media_pool_item_list.append(MediaPoolItem(media_pool_item))
+    #     return media_pool_item_list
 
     def import_timeline_from_file(self, file_path: str, import_option: TimelineImportOptions) -> Timeline:
         return Timeline(self.media_pool.ImportTimelineFromFile(str(file_path), asdict(import_option)))
