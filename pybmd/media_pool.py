@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, Iterable, List
 from pybmd.folder import Folder
 from pybmd.media_pool_item import MediaPoolItem
 from pybmd.timeline import Timeline
@@ -62,13 +62,13 @@ class MediaPool():
     def create_empty_timeline(self, name) -> Timeline:
         return Timeline(self.media_pool.CreateEmptyTimeline(name))
 
-    @dispatch(str, List[MediaPoolItem])
+    @dispatch(str, Iterable)
     def create_timeline_from_clips(self, name: str, clips: List[MediaPoolItem]) -> Timeline:  # type: ignore
         return Timeline(self.media_pool.CreateTimelineFromClips(name, [clip.media_pool_item for clip in clips]))
 
     @dispatch(str, List[ClipInfo])
     def create_timeline_from_clips(self, name: str, clip_infos: List[ClipInfo]) -> Timeline:
-        return self.media_pool.CreateTimelineFromClips(name, asdict_inside_list(clip_infos))
+        return self.media_pool.CreateTimelineFromClips(name, [asdict(ClipInfo) for ClipInfo in clip_infos]) 
 
     def delete_clip_mattes(self, media_pool_item: MediaPoolItem, paths: List[str]) -> bool:
         return self.media_pool.DeleteClipMattes(media_pool_item, paths)
