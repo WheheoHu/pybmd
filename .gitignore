@@ -9,3 +9,4 @@ pybmd/__pycache__
 .DS_Store
 pybmd/.DS_Store
 pybmd/Davinci_README/.DS_Store
+build_upload.py
