@@ -10,6 +10,7 @@ from pybmd.media_pool_item import MediaPoolItem
 
 from enum import Enum
 
+
 class VersionType(Enum):
     """Docstring for VersionType."""
     LOCAL = 0
@@ -185,14 +186,23 @@ class TimelineItem():
 
     def set_lut(self, node_index: int, lutpath: str) -> bool:
         return self.timeline_item.SetLUT(node_index, str(lutpath))
-    
+
     ####################################################################################################################
-    #add in davinci resolve 17.4.6
+    # add in davinci resolve 17.4.6
+
     def get_num_node(self) -> int:
         return self.timeline_item.GetNumNode()
-    
-    def get_lut(self,node_index) -> str:
+
+    def get_lut(self, node_index) -> str:
         return self.timeline_item.GetLUT(node_index)
-    
-    
+
     ##########################################################################################################################
+    # Add at DR18.0.0
+
+    def update_sidecar(self) -> bool:
+        return self.timeline_item.UpdateSidecar()
+
+    def get_unique_id(self) -> str:
+        return self.timeline_item.GetUniqueId()
+    
+    ########################################################################################################################

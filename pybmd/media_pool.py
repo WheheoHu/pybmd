@@ -147,3 +147,13 @@ class MediaPool():
 
     def unlink_clips(self, media_pool_items: List[MediaPoolItem]) -> bool:
         return self.media_pool.UnlinkClips([clip.media_pool_item for clip in media_pool_items])
+    
+    ##########################################################################################################################
+    #Add at DR18.0.0
+    def refresh_folders(self) -> bool:
+        return self.media_pool.RefreshFolders()
+    
+    def get_unique_id(self) -> str:
+        return self.media_pool.GetUniqueId()
+    
+    #########################################################################################################################

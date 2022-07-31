@@ -36,6 +36,11 @@ class Bmd:
         self.EXPORT_FCPXML_1_6 = self.local_davinci.EXPORT_FCPXML_1_6
         self.EXPORT_FCPXML_1_7 = self.local_davinci.EXPORT_FCPXML_1_7
         self.EXPORT_FCPXML_1_8 = self.local_davinci.EXPORT_FCPXML_1_8
+        
+        #Add at DR18.0.0
+        self.EXPORT_FCPXML_1_9 = self.local_davinci.EXPORT_FCPXML_1_9
+        self.EXPORT_FCPXML_1_10 = self.local_davinci.EXPORT_FCPXML_1_10
+        
         self.EXPORT_HDR_10_PROFILE_A = self.local_davinci.EXPORT_HDR_10_PROFILE_A
         self.EXPORT_HDR_10_PROFILE_B = self.local_davinci.EXPORT_HDR_10_PROFILE_B
         self.EXPORT_TEXT_CSV = self.local_davinci.EXPORT_TEXT_CSV

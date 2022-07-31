@@ -78,7 +78,7 @@ class Timeline():
         return Timeline(timeline=self.timeline.DuplicateTimeline(timeline_name))
 
     def export(self, file_name: str, export_type, export_subtype=None) -> bool:
-        #file_name should be a path, not a file name.  
+        # file_name should be a path, not a file name.
         # eg. file_path=os.path.join(os.path.expanduser("~"), "Desktop/Temp/sampleExp.drt")
         #     timeline.export(file_path,LOCAL_RESOLVE.EXPORT_DRT)
         return self.timeline.Export(file_name, export_type, export_subtype)
@@ -169,3 +169,20 @@ class Timeline():
 
     def update_marker_custom_data(self, frame_id: int, custom_data: str) -> bool:
         return self.timeline.UpdateMarkerCustomData(frame_id, custom_data)
+
+    #######################################################################################################################
+    # Add at DR18.0.0
+    
+    def set_start_timecode(self, timecode: str) -> bool:
+        return self.timeline.SetStartTimecode(timecode)
+
+    def get_start_timecode(self) -> str:
+        return self.timeline.GetStartTimecode()
+    
+    def insert_fusion_composition_into_timeline(self) -> TimelineItem:
+        return TimelineItem(self.timeline.InsertFusionCompositionIntoTimeline())
+    
+    def get_unique_id(self) -> str:
+        return self.timeline.GetUniqueId()
+    
+    #######################################################################################################################

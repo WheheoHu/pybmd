@@ -80,3 +80,11 @@ class MediaPoolItem():
 
     def updata_marker_custom_data(self, frame_id:int, custom_data:str) -> bool:
         return self.media_pool_item.UpdataMarkerCustomData(frame_id, custom_data)
+    
+    ###############################################################################
+    #Add at DR18.0.0
+    
+    def get_unique_id(self) -> str:
+        return self.media_pool_item.GetUniqueId()
+    
+    ################################################################################

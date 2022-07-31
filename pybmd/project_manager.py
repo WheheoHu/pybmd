@@ -6,7 +6,9 @@ if TYPE_CHECKING:
 
 DatabaseList = List[Dict]
 
-#TODO add docstring to functions
+# TODO add docstring to functions
+
+
 class ProjectManager:
 
     project_manager = None
@@ -15,9 +17,8 @@ class ProjectManager:
     def __init__(self, _local_davinci: 'Bmd.local_davinci'):
         self.project_manager = _local_davinci.GetProjectManager()
         self._current_project = self.project_manager.GetCurrentProject()
-
-
-    def close_project(self, project: Project) -> bool:  
+   
+    def close_project(self, project: Project) -> bool:
         return self.project_manager.CloseProject(project.get_self_project())
 
     def create_folder(self, folder_name: str) -> bool:
@@ -56,8 +57,9 @@ class ProjectManager:
     def goto_root_folder(self) -> bool:
         return self.project_manager.GotoRootFolder()
 
-    def import_project(self, file_path: path) -> bool:
-        return self.project_manager.ImportPorject(str(file_path))
+    #Modified at DR18.0.0
+    def import_project(self, file_path: path, project_name: str = None) -> bool:
+        return self.project_manager.ImportPorject(str(file_path), project_name)
 
     def load_project(self, project_name) -> Project:
         return Project(_project=self.project_manager.LoadProject(project_name), _project_name=project_name)
@@ -65,8 +67,9 @@ class ProjectManager:
     def open_folder(self, folder_name: str) -> bool:
         return self.project_manager.OpenFolder(folder_name)
 
-    def restore_project(self, file_path: path) -> bool:
-        return self.project_manager.RestoreProject(str(file_path))
+    #Modified at DR18.0.0
+    def restore_project(self, file_path: path, project_name: str = None) -> bool:
+        return self.project_manager.RestoreProject(str(file_path), project_name)
 
     def save_project(self) -> bool:
         return self.project_manager.SaveProject()
@@ -74,11 +77,19 @@ class ProjectManager:
     def set_current_database(self, database_info: dict) -> bool:
         return self.project_manager.SetCurrentDatabase(database_info)
     
+    ##########################################################################################################################
+    #Add at DR18.0.0
+    
+    def archive_project(self, project_name, file_path, is_archive_src_media: bool = True, is_archive_render_cache: bool = True, is_archive_proxy_media: bool = False) -> bool:
+        return self.project_manager.ArchiveProject(project_name, file_path, is_archive_src_media, is_archive_render_cache, is_archive_proxy_media)
+
+    ##############################################################################################################################
+
 # More function BELOW!
 
-    def database_info(self, _DbType,_DbName,_IpAddress='127.0.0.1'):
-        return dict(DbType=_DbType,DbName=_DbName,IpAddress=_IpAddress)
-    
-    def save_and_close_current_project(self)->bool:
+    def database_info(self, _DbType, _DbName, _IpAddress='127.0.0.1') -> dict:
+        return dict(DbType=_DbType, DbName=_DbName, IpAddress=_IpAddress)
+
+    def save_and_close_current_project(self) -> bool:
         self.save_project()
         return self.close_project(self.get_current_project())

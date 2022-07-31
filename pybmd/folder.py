@@ -22,4 +22,14 @@ class Folder():
             folder_list.append(Folder(folder))
         return folder_list
     
+    ###########################################################################
+    #Add at DR18.0.0
+    def get_is_folder_stale(self) -> bool:
+        return self.folder.GetIsFolderStale()
+    
+    def get_unique_id(self) -> str:
+        return self.folder.GetUniqueId()
+    
+    ###########################################################################
+    
     
