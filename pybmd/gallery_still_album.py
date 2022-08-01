@@ -18,6 +18,9 @@ class StillFormats(Enum):
 
 
 def get_gallery_still_list_from_class_list(list: List[GalleryStill]):
+    """Returns a list of GalleryStill objects from a list of GalleryStill objects.
+    Only use in GalleryStillAlbum class.  
+    """
     return_list = []
     for ele in list:
         return_list.append(ele.gallery_still)
