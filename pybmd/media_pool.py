@@ -7,7 +7,6 @@ from pybmd.timeline_item import TimelineItem
 
 from dataclasses import dataclass
 from dataclasses import asdict
-from multipledispatch import dispatch
 
 
 @dataclass

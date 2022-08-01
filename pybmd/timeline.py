@@ -1,9 +1,8 @@
 from enum import Enum
 from os import path
-from textwrap import dedent
 from typing import List
 
-from pybmd.gallerystill import GalleryStill
+from pybmd.gallery_still import GalleryStill
 from pybmd.timeline_item import TimelineItem
 
 

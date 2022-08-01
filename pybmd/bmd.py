@@ -8,13 +8,14 @@ from pybmd.project_manager import ProjectManager
 
 
 def load_dynamic(module, module_path: str):
+    """Loads a module dynamically."""
     loader = importlib.machinery.ExtensionFileLoader(module, module_path)
     module = loader.load_module() # type: ignore
     return module
 
 
 class Bmd:
-
+    """Bmd class."""
     PYLIB = "/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so"
     APP_NAME = 'Resolve'
     IP_ADDRESS = '127.0.0.1'
@@ -22,6 +23,7 @@ class Bmd:
     local_davinci = None
 
     def __init__(self,resolve_ip=IP_ADDRESS):
+        """Initializes the BMD object."""
         self.local_davinci = self.init_davinci(davinci_ip=resolve_ip)
         
         
@@ -71,6 +73,7 @@ class Bmd:
         return bmd_module.scriptapp(self.APP_NAME, davinci_ip)
 
     def get_local_davinci(self):
+        """Returns the local Davinci Resolve object."""
         return self.local_davinci
 
     def delete_layout_preset(self, preset_name: str) -> bool:
