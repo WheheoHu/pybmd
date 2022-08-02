@@ -123,12 +123,33 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerAtFrame</span><span class="p">(</span><span class="n">frame_num</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MediaPoolItem.delete_marker_by_custom_data"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Delete first matching marker with specified customData.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            custom_data (str): custom data</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: true if success, false if fail</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MediaPoolItem.delete_marker_by_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_color">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_by_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;delete all markers with the given color.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            color (str): color of the marker to delete</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: true if success, false if fail</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerByColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MediaPoolItem.get_clip_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_clip_color">[docs]</a>    <span class="k">def</span> <span class="nf">get_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;get clip color.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: color name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetClipColor</span><span class="p">()</span></div>
 
     <span class="c1"># property_name as data class</span>
