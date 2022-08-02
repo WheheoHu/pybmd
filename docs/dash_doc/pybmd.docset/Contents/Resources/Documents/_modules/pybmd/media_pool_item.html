@@ -75,18 +75,51 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span> <span class="o">=</span> <span class="n">media_pool_item</span>
 
 <div class="viewcode-block" id="MediaPoolItem.add_flag"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.add_flag">[docs]</a>    <span class="k">def</span> <span class="nf">add_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Add a flag to the clip.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">AddFlag</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MediaPoolItem.add_marker"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.add_marker">[docs]</a>    <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;add a marker to the clip.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            frame_id (int): postion of the marker</span>
+<span class="sd">            color (str): color of the marker</span>
+<span class="sd">            name (str): name of the marker</span>
+<span class="sd">            note (str): maker note</span>
+<span class="sd">            duration (int): maker duration</span>
+<span class="sd">            custom_data (str): optional data help to attach to the marker</span>
+<span class="sd">            </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: true if success, false if fail</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MediaPoolItem.clear_clip_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.clear_clip_color">[docs]</a>    <span class="k">def</span> <span class="nf">clear_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;clear clip color.</span>
+
+<span class="sd">        :return: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ClearClipColor</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="MediaPoolItem.clear_flag_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.clear_flag_color">[docs]</a>    <span class="k">def</span> <span class="nf">clear_flag_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Clears the flag of the given color if one exists. An &quot;All&quot; argument is supported and clears all flags.</span>
+
+<span class="sd">        :param color: color of the flag to clear</span>
+<span class="sd">        :type color: str</span>
+<span class="sd">        :return: true if success, false if fail</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>       
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ClearFlagColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MediaPoolItem.delete_marker_at_frame"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_at_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Delete marker at frame number from the media pool item.</span>
+
+<span class="sd">        :param frame_num: frame number of the marker to delete</span>
+<span class="sd">        :type frame_num: int</span>
+<span class="sd">        :return: true if success, false if fail</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerAtFrame</span><span class="p">(</span><span class="n">frame_num</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MediaPoolItem.delete_marker_by_custom_data"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>

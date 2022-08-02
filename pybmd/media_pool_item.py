@@ -8,27 +8,81 @@ class MediaPoolItem():
         self.media_pool_item = media_pool_item
 
     def add_flag(self, color: str) -> bool:
+        """Add a flag to the clip."""
         return self.media_pool_item.AddFlag(color)
 
     def add_marker(self, frame_id: int, color: str, name: str, note: str, duration: int, custom_data: str) -> bool:
+        """add a marker to the clip.
+
+        Args:
+            frame_id (int): postion of the marker
+            color (str): color of the marker
+            name (str): name of the marker
+            note (str): maker note
+            duration (int): maker duration
+            custom_data (str): optional data help to attach to the marker
+            
+
+        Returns:
+            bool: true if success, false if fail
+        """
         return self.media_pool_item.AddMarker(frame_id, color, name, note, duration, custom_data)
 
     def clear_clip_color(self) -> bool:
+        """clear clip color.
+
+        :return: bool
+        """        
         return self.media_pool_item.ClearClipColor()
 
     def clear_flag_color(self, color: str) -> bool:
+        """Clears the flag of the given color if one exists. An "All" argument is supported and clears all flags.
+
+        :param color: color of the flag to clear
+        :type color: str
+        :return: true if success, false if fail
+        :rtype: bool
+        """       
         return self.media_pool_item.ClearFlagColor(color)
 
     def delete_marker_at_frame(self, frame_num: int) -> bool:
+        """Delete marker at frame number from the media pool item.
+
+        :param frame_num: frame number of the marker to delete
+        :type frame_num: int
+        :return: true if success, false if fail
+        :rtype: bool
+        """
         return self.media_pool_item.DeleteMarkerAtFrame(frame_num)
 
     def delete_marker_by_custom_data(self, custom_data: str) -> bool:
+        """Delete first matching marker with specified customData.
+
+        Args:
+            custom_data (str): custom data
+
+        Returns:
+            bool: true if success, false if fail
+        """
         return self.media_pool_item.DeleteMarkerByCustomData(custom_data)
 
     def delete_marker_by_color(self, color: str) -> bool:
+        """delete all markers with the given color.
+
+        Args:
+            color (str): color of the marker to delete
+
+        Returns:
+            bool: true if success, false if fail
+        """
         return self.media_pool_item.DeleteMarkerByColor(color)
 
     def get_clip_color(self) -> str:
+        """get clip color.
+
+        Returns:
+            str: color name
+        """
         return self.media_pool_item.GetClipColor()
 
     # property_name as data class
