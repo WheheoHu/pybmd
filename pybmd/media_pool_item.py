@@ -85,60 +85,150 @@ class MediaPoolItem():
         """
         return self.media_pool_item.GetClipColor()
 
-    # property_name as data class
+    # TODO property_name as data class
     def get_clip_property(self, property_name: str = "") -> str:
+        """return clip property based on the property name.
+
+        Args:
+            property_name (str, optional): clip property . Defaults to "".
+
+        Returns:
+            str: property value,if property is empty, return a dict of all clip properties.
+        """
         return self.media_pool_item.GetClipProperty(property_name)
 
     def get_flag_list(self) -> list:
+        """get flag list.
+
+        Returns:
+            list: flag colors assigned to the item.
+        """
         return self.media_pool_item.GetFlagList()
 
     def get_marker_by_custom_data(self, custom_data: str) -> dict:
+        """return maker infomation of fist marker matching the custom data.
+
+        Args:
+            custom_data (str): specific custom data
+
+        Returns:
+            dict: maker info
+        """
         return self.media_pool_item.GetMarkerByCustomData(custom_data)
 
     def get_marker_custom_data(self, freamid: int) -> str:
+        """return marker custom data.
+
+        Args:
+            freamid (int): frame id of the marker
+
+        Returns:
+            str: custom data of the marker
+        """
         return self.media_pool_item.GetMarkerCustomData(freamid)
 
     def get_markers(self) -> dict:
+        """return a dict of all markers and dict of marker info.
+
+        Returns:
+            dict: maker position and info
+        """
         return self.media_pool_item.GetMarkers()
 
     def get_media_id(self) -> str:
+        """return media id for the clip."""
         return self.media_pool_item.GetMediaId()
 
     # TODO metadata_type as data class
     def get_metadata(self, metadata_type: str = "") -> str:
+        """return metadata value of the key metadata_type.
+
+        Args:
+            metadata_type (str, optional): metadata type. Defaults to "".
+
+        Returns:
+            str: metadata value If no argument is specified, a dict of all set metadata properties is returned.
+        """
         return self.media_pool_item.GetMetadata(metadata_type)
 
     def get_name(self) -> str:
+        """return name of the clip."""
         return self.media_pool_item.GetName()
 
     def link_proxy_media(self, proxy_media_file_path: str) -> bool:  
-        # 'proxy_media_file_path' should be absolute clip path.
+        """Links proxy media located at path specified by arg 'proxyMediaFilePath' with the current clip. 
+
+        Args:
+            proxy_media_file_path (str): should be absolute clip path.
+
+        Returns:
+            bool: true if success, false if fail
+        """
         return self.media_pool_item.LinkProxyMedia(str(proxy_media_file_path))
 
     def replace_clip(self, file_path: str) -> bool:
+        """Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path."""
         return self.media_pool_item.ReplaceClip(str(file_path))
 
     def set_clip_color(self, color_name: str) -> bool:
+        """set clip color with the given color name.
+
+        Args:
+            color_name (str): color name
+
+        Returns:
+            bool: true if success, false if fail
+        """
         return self.media_pool_item.SetClipColor(color_name)
 
     
     def set_clip_property(self, property_type: str, property_value: str) -> bool:
+        """set clip property with the given property type and value.
+
+        Args:
+            property_type (str): property type
+            property_value (str): property value
+
+        Returns:
+            bool: true if success, false if fail
+        """
         return self.media_pool_item.SetClipProperty(property_type, property_value)
     
     # TODO metadata_type as data class
     def set_metadata(self, metadata_type: str, metadata_value: str) -> bool:
+        """set metadata with the given metadata type and value.
+
+        Args:
+            metadata_type (str): metadata type
+            metadata_value (str): metadata value
+
+        Returns:
+            bool: true if success, false if fail
+        """
         return self.media_pool_item.SetMetadata(metadata_type, metadata_value)
 
     def unlink_proxy_media(self) -> bool:
+        """Unlinks proxy media from the current clip."""
         return self.media_pool_item.UnlinkProxyMedia()
 
     def updata_marker_custom_data(self, frame_id:int, custom_data:str) -> bool:
+        """update marker custom data.
+
+        Args:
+            frame_id (int): maker frame id
+            custom_data (str): maker custom data
+
+        Returns:
+            bool: true if success, false if fail
+        """        
         return self.media_pool_item.UpdataMarkerCustomData(frame_id, custom_data)
     
     ###############################################################################
     #Add at DR18.0.0
     
+    #TODO Add version check
     def get_unique_id(self) -> str:
+        """return unique id of the clip."""
         return self.media_pool_item.GetUniqueId()
     
     ################################################################################

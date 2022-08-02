@@ -29,6 +29,8 @@ pip install pybmd
 
     Play with APIs !
     
-    API documentation could be found at my notion:
+    Original API documentation could be found at my notion:
     [Davnci Resolve API in notion](https://wheheohu.notion.site/Davinci-Python-API-7c4f1038a36f44818b631ec7e4a537fa)
+
+    Pybmd Library API documentation could be found at :[Pybmd API Documentation](https://wheheohu.github.io/pybmd/)
 

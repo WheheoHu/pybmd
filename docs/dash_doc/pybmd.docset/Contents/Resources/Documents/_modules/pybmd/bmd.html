@@ -68,7 +68,8 @@
 <span></span>
 <span class="kn">import</span> <span class="nn">importlib.machinery</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
-
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">dataclass_transform</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">pybmd.media_storage</span> <span class="kn">import</span> <span class="n">MediaStorage</span>
 <span class="kn">from</span> <span class="nn">pybmd.project_manager</span> <span class="kn">import</span> <span class="n">ProjectManager</span>
@@ -80,10 +81,19 @@
     <span class="n">module</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_module</span><span class="p">()</span> <span class="c1"># type: ignore</span>
     <span class="k">return</span> <span class="n">module</span></div>
 
+<div class="viewcode-block" id="Default_LIB_PATH"><a class="viewcode-back" href="../../pybmd.html#pybmd.bmd.Default_LIB_PATH">[docs]</a><span class="k">class</span> <span class="nc">Default_LIB_PATH</span><span class="p">:</span>
+    <span class="n">LIB_Windows</span> <span class="o">=</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Program Files</span><span class="se">\\</span><span class="s2">Blackmagic Design</span><span class="se">\\</span><span class="s2">DaVinci Resolve</span><span class="se">\\</span><span class="s2">fusionscript.dll&quot;</span>
+    <span class="n">LIB_MAC</span> <span class="o">=</span> <span class="s2">&quot;/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so&quot;</span></div>
+
 
 <div class="viewcode-block" id="Bmd"><a class="viewcode-back" href="../../pybmd.html#pybmd.bmd.Bmd">[docs]</a><span class="k">class</span> <span class="nc">Bmd</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Bmd class.&quot;&quot;&quot;</span>
     <span class="n">PYLIB</span> <span class="o">=</span> <span class="s2">&quot;/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so&quot;</span>
+   
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;darwin&quot;</span><span class="p">):</span>
+        <span class="n">PYLIB</span><span class="o">=</span><span class="n">Default_LIB_PATH</span><span class="o">.</span><span class="n">LIB_MAC</span>
+    <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;win&quot;</span><span class="p">):</span>
+        <span class="n">PYLIB</span><span class="o">=</span><span class="n">Default_LIB_PATH</span><span class="o">.</span><span class="n">LIB_Windows</span>
     <span class="n">APP_NAME</span> <span class="o">=</span> <span class="s1">&#39;Resolve&#39;</span>
     <span class="n">IP_ADDRESS</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>
 
