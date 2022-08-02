@@ -1,6 +1,6 @@
 .venv
 .python-version
-build
+/build
 dist
 pybmd.egg-info
 test.py
@@ -10,3 +10,4 @@ pybmd/__pycache__
 pybmd/.DS_Store
 pybmd/Davinci_README/.DS_Store
 build_upload.py
+project_builder.py
