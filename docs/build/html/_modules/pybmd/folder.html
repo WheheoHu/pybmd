@@ -1,70 +1,62 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pybmd.folder &mdash; pybmd 2022.5.1 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
-</head>
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> pybmd
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>pybmd.folder — pybmd 2022.5.1 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html"> pybmd
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../modules.html">pybmd</a></li>
 </ul>
-
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">pybmd</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>pybmd.folder</li>
-      <li class="wy-breadcrumbs-aside">
-      </li>
-  </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <h1>Source code for pybmd.folder</h1><div class="highlight"><pre>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">pybmd</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a class="icon icon-home" href="../../index.html"></a> »</li>
+<li><a href="../index.html">Module code</a> »</li>
+<li>pybmd.folder</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<h1>Source code for pybmd.folder</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="kn">from</span> <span class="nn">pybmd.media_pool_item</span> <span class="kn">import</span> <span class="n">MediaPoolItem</span>
 
@@ -75,18 +67,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
         
 <div class="viewcode-block" id="Folder.get_clip_list"><a class="viewcode-back" href="../../pybmd.html#pybmd.folder.Folder.get_clip_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_clip_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Returns list of MediaPoolItem objects for all clips in this folder.&quot;&quot;&quot;</span>
+        <span class="sd">"""Returns list of MediaPoolItem objects for all clips in this folder."""</span>
         <span class="n">media_pool_item_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">GetClipList</span><span class="p">():</span>
             <span class="n">media_pool_item_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">media_pool_item_list</span></div>
 
 <div class="viewcode-block" id="Folder.get_name"><a class="viewcode-back" href="../../pybmd.html#pybmd.folder.Folder.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns name of this folder.&quot;&quot;&quot;</span>
+        <span class="sd">"""Returns name of this folder."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
     
-<div class="viewcode-block" id="Folder.get_sub_folder_list"><a class="viewcode-back" href="../../pybmd.html#pybmd.folder.Folder.get_sub_folder_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_sub_folder_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;Folder&#39;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return a list of sub folders in this folder.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Folder.get_sub_folder_list"><a class="viewcode-back" href="../../pybmd.html#pybmd.folder.Folder.get_sub_folder_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_sub_folder_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s1">'Folder'</span><span class="p">]:</span>
+        <span class="sd">"""Return a list of sub folders in this folder."""</span>
         <span class="n">folder_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">GetSubFolderList</span><span class="p">():</span>
             <span class="n">folder_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Folder</span><span class="p">(</span><span class="n">folder</span><span class="p">))</span>
@@ -95,27 +87,24 @@
     <span class="c1">###########################################################################</span>
     <span class="c1">#Add at DR18.0.0</span>
 <div class="viewcode-block" id="Folder.get_is_folder_stale"><a class="viewcode-back" href="../../pybmd.html#pybmd.folder.Folder.get_is_folder_stale">[docs]</a>    <span class="k">def</span> <span class="nf">get_is_folder_stale</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns true if folder is stale in collaboration mode, false otherwise&quot;&quot;&quot;</span>
+        <span class="sd">"""Returns true if folder is stale in collaboration mode, false otherwise"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">GetIsFolderStale</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="Folder.get_unique_id"><a class="viewcode-back" href="../../pybmd.html#pybmd.folder.Folder.get_unique_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns a unique ID for the media pool folder&quot;&quot;&quot;</span>
+        <span class="sd">"""Returns a unique ID for the media pool folder"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div></div>
     
     <span class="c1">###########################################################################</span>
     
     
 </pre></div>
-
-           </div>
-          </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2022, Wheheo Hu.</p>
-  </div>
+</div>
+</div>
+<footer>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2022, Wheheo Hu.</p>
+</div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
@@ -123,15 +112,14 @@
    
 
 </footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
+</div>
+</div>
+</section>
+</div>
+<script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
+  </script>
 </body>
 </html>

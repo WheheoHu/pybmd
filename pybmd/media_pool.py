@@ -22,9 +22,9 @@ class ClipInfo():
 class TimelineImportOptions():
     """TimelineImportOptions dataclass"""
     timeline_name: str
-    import_source_clips: str
+    import_source_clips: bool
     source_clips_path: str
-    source_flips_folders: str
+    source_clips_folders: List[str]
     interlace_pricessing: bool
 
 
@@ -159,12 +159,30 @@ class MediaPool():
         return path_list
 
     def get_current_folder(self) -> Folder:
+        """get current folder
+
+        Returns:
+            Folder: current folder object
+        """
         return Folder(self.media_pool.GetCurrentFolder())
 
     def get_root_folder(self) -> Folder:
+        """return root folder object of media pool
+
+        Returns:    
+            Folder: root folder object
+        """        
         return Folder(self.media_pool.GetRootFolder())
 
     def get_timeline_matte_list(self, folder: Folder) -> List[MediaPoolItem]:
+        """Get mattes in specified Folder
+
+        Args:
+            folder (Folder): folder to get mattes for
+
+        Returns:
+            List[MediaPoolItem]: list of media pool items that are mattes
+        """          
         media_pool_item_list = []
         for media_pool_item in self.media_pool.GetTimelineMatteList(folder):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
@@ -173,6 +191,15 @@ class MediaPool():
     # @dispatch(List[str])
     # type: ignore
     def import_media(self, file_paths: List[str]) -> List[MediaPoolItem]:
+        """Imports specified file/folder paths into current Media Pool folder. 
+
+
+        Args:
+            file_paths (List[str]): Input is an array of file/folder paths. 
+
+        Returns:
+            List[MediaPoolItem]: Returns a list of the MediaPoolItem created.
+        """
         # media_pool_item_list = []
         # for media_pool_item in self.media_pool.ImportMedia(file_paths):
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
@@ -186,29 +213,70 @@ class MediaPool():
     #     return media_pool_item_list
 
     def import_timeline_from_file(self, file_path: str, import_option: TimelineImportOptions) -> Timeline:
+        """create new timeline from file and import options
+
+        Args:
+            file_path (str): timeline file path
+            import_option (TimelineImportOptions): timelineimportoptions object
+
+        Returns:
+            Timeline: timeline object
+        """        
         return Timeline(self.media_pool.ImportTimelineFromFile(str(file_path), asdict(import_option)))
 
     def move_clips(self, clips: List[MediaPoolItem], target_folder: Folder) -> bool:
+        """Moves specified clips to target Folder 
+
+        Args:
+            clips (List[MediaPoolItem]): list of clips to move  
+            target_folder (Folder): target folder to move clips to
+
+        Returns:
+            bool: true if successful, false if not
+        """        
         return self.media_pool.MoveClips([clip.media_pool_item for clip in clips], target_folder)
 
     def move_folders(self, folders: List[Folder], target_folder: Folder) -> bool:
+        """move folders to target folder
+        
+
+        Args:
+            folders (List[Folder]): folders to move
+            target_folder (Folder): target folder to move folders to
+
+        Returns:
+            bool: true if successful, false if not
+        """
         return self.media_pool.MoveFolders([folder.folder for folder in folders], target_folder)
 
     def relink_clips(self, media_pool_items: List[MediaPoolItem], folder_path: str) -> bool:
+        """Update the folder location of specified media pool clips with the specified folderpath
+
+        Args:
+            media_pool_items (List[MediaPoolItem]): clips to relink
+            folder_path (str): folder path to relink clips to
+
+        Returns:
+            bool: True if successful, False if not
+        """
         return self.media_pool.RelinkClips([clip.media_pool_item for clip in media_pool_items], str(folder_path))
 
     def set_current_folder(self, folder: Folder) -> bool:
+        """set current folder"""
         return self.media_pool.SetCurrentFolder(folder)
 
     def unlink_clips(self, media_pool_items: List[MediaPoolItem]) -> bool:
+        """Unlink specified media pool clips"""
         return self.media_pool.UnlinkClips([clip.media_pool_item for clip in media_pool_items])
     
     ##########################################################################################################################
     #Add at DR18.0.0
     def refresh_folders(self) -> bool:
+        """Updates the folders in collaboration mode"""
         return self.media_pool.RefreshFolders()
     
     def get_unique_id(self) -> str:
+        """get unique id of media pool object"""
         return self.media_pool.GetUniqueId()
     
     #########################################################################################################################

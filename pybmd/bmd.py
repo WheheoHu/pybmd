@@ -1,7 +1,7 @@
 
+from enum import Enum
 import importlib.machinery
 from os import path
-from typing_extensions import dataclass_transform
 import sys
 
 from pybmd.media_storage import MediaStorage
@@ -14,19 +14,19 @@ def load_dynamic(module, module_path: str):
     module = loader.load_module() # type: ignore
     return module
 
-class Default_LIB_PATH:
+class Default_LIB_PATH(Enum):
     LIB_Windows = "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\fusionscript.dll"
     LIB_MAC = "/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so"
 
 
 class Bmd:
     """Bmd class."""
-    PYLIB = "/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so"
+    #PYLIB = "/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so"
    
     if sys.platform.startswith("darwin"):
-        PYLIB=Default_LIB_PATH.LIB_MAC
+        PYLIB=Default_LIB_PATH.LIB_MAC.value
     elif sys.platform.startswith("win"):
-        PYLIB=Default_LIB_PATH.LIB_Windows
+        PYLIB=Default_LIB_PATH.LIB_Windows.value
     APP_NAME = 'Resolve'
     IP_ADDRESS = '127.0.0.1'
 

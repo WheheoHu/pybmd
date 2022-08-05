@@ -6,7 +6,7 @@
 
 python library for Davinci Resolve(Repack)
 
-*⚠️Currently support MacOS Only⚠️*
+*🔥  Pybmd Now Support Both Windows & macOS 🔥*
 
 ## How To Install
 
