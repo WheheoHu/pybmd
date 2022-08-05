@@ -1,5 +1,3 @@
-pybmd package
-=============
 
 pybmd.bmd 
 ----------------
