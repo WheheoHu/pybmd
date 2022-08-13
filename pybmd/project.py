@@ -254,3 +254,8 @@ class Project():
 
     ##############################################################################################################################
     
+    #TODO Add find_timeline_by_name method:
+        #get_timeline_by_name(self, name: str) -> Timeline:
+        #Returns Timeline with the given name (string).
+        #use get_timeline_by_index and get_timeline_count to get all timelines.
+    

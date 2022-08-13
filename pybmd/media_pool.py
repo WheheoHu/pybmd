@@ -280,3 +280,5 @@ class MediaPool():
         return self.media_pool.GetUniqueId()
     
     #########################################################################################################################
+    
+    #TODO Add create_empty_timeline_with_resolution
