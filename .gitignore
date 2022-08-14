@@ -11,3 +11,6 @@ pybmd/.DS_Store
 pybmd/Davinci_README/.DS_Store
 build_upload.py
 project_builder.py
+.vscode/configurationCache.log
+.vscode/dryrun.log
+.vscode/targets.log
