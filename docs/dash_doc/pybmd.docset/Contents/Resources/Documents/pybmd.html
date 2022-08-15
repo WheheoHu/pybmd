@@ -53,6 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-pybmd.project_manager">pybmd.project_manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-pybmd.timeline">pybmd.timeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-pybmd.timeline_item">pybmd.timeline_item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pybmd.toolkits">pybmd.toolkits</a></li>
 </ul>
 </li>
 </ul>
@@ -2735,6 +2736,53 @@ Value at particular offset includes the left, right, top and bottom floating win
 <dt class="sig sig-object py" id="pybmd.timeline_item.VersionType.REMOTE"><a name="//apple_ref/cpp/Attribute/pybmd.timeline_item.VersionType.REMOTE"></a>
 <span class="sig-name descname"><span class="pre">REMOTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pybmd.timeline_item.VersionType.REMOTE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+</dd></dl>
+</section>
+<section id="module-pybmd.toolkits">
+<span id="pybmd-toolkits"></span><h1><a name="//apple_ref/cpp/Module/pybmd.toolkits"></a>pybmd.toolkits<a class="headerlink" href="#module-pybmd.toolkits" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="pybmd.toolkits.change_timeline_resolution"><a name="//apple_ref/cpp/Function/pybmd.toolkits.change_timeline_resolution"></a>
+<span class="sig-prename descclassname"><span class="pre">pybmd.toolkits.</span></span><span class="sig-name descname"><span class="pre">change_timeline_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.Timeline" title="pybmd.timeline.Timeline"><span class="pre">Timeline</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/toolkits.html#change_timeline_resolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.toolkits.change_timeline_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>change timeline resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeline</strong> (<a class="reference internal" href="#pybmd.timeline.Timeline" title="pybmd.timeline.Timeline"><em>Timeline</em></a>) – timeline object to change resolution</p></li>
+<li><p><strong>width</strong> (<em>_type_</em>) – timeline width</p></li>
+<li><p><strong>height</strong> (<em>_type_</em>) – timeline height</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successful.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="pybmd.toolkits.get_all_timeline"><a name="//apple_ref/cpp/Function/pybmd.toolkits.get_all_timeline"></a>
+<span class="sig-prename descclassname"><span class="pre">pybmd.toolkits.</span></span><span class="sig-name descname"><span class="pre">get_all_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.timeline.Timeline" title="pybmd.timeline.Timeline"><span class="pre">Timeline</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pybmd/toolkits.html#get_all_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.toolkits.get_all_timeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all timeline in the project.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="pybmd.toolkits.get_timeline"><a name="//apple_ref/cpp/Function/pybmd.toolkits.get_timeline"></a>
+<span class="sig-prename descclassname"><span class="pre">pybmd.toolkits.</span></span><span class="sig-name descname"><span class="pre">get_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeline_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#pybmd.timeline.Timeline" title="pybmd.timeline.Timeline"><span class="pre">Timeline</span></a></span></span><a class="reference internal" href="_modules/pybmd/toolkits.html#get_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.toolkits.get_timeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>get timeline by name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project</strong> (<a class="reference internal" href="#pybmd.project.Project" title="pybmd.project.Project"><em>Project</em></a>) – project to get timeline</p></li>
+<li><p><strong>timeline_name</strong> (<em>str</em>) – timeline name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>timeline object matching the name, None if not found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybmd.timeline.Timeline" title="pybmd.timeline.Timeline">Timeline</a></p>
+</dd>
+</dl>
 </dd></dl>
 </section>
 </div>

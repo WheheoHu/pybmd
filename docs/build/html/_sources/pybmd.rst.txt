@@ -102,3 +102,11 @@ pybmd.timeline\_item
    :members:
    :undoc-members:
    :show-inheritance:
+
+pybmd.toolkits
+---------------------------
+
+.. automodule:: pybmd.toolkits
+   :members:
+   :undoc-members:
+   :show-inheritance:
