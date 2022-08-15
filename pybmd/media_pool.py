@@ -279,6 +279,3 @@ class MediaPool():
         """get unique id of media pool object"""
         return self.media_pool.GetUniqueId()
     
-    #########################################################################################################################
-    
-    #TODO Add create_empty_timeline_with_resolution

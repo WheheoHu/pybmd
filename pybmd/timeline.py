@@ -47,7 +47,7 @@ def timeline_item_class_list_transfer(timeline_item_list: List[TimelineItem]) ->
 
 
 class Timeline():
-    """docstring for Timeline."""
+    """Timeline Object"""
 
     def __init__(self, timeline):
         self.timeline = timeline

@@ -252,10 +252,5 @@ class Project():
         """Returns unique id of the project Object."""
         return self.project.GetUniqueId()
 
-    ##############################################################################################################################
-    
-    #TODO Add find_timeline_by_name method:
-        #get_timeline_by_name(self, name: str) -> Timeline:
-        #Returns Timeline with the given name (string).
-        #use get_timeline_by_index and get_timeline_count to get all timelines.
+
     
