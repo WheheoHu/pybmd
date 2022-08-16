@@ -41,7 +41,7 @@ class MediaStorage:
         # for media_pool_item in self.media_storage.AddItemListToMeidaPool(item_path_list):
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
         # return media_pool_item_list
-        return [MediaPoolItem(media_pool_item) for media_pool_item in self.media_storage.AddItemListToMeidaPool(item_path_list)]
+        return [MediaPoolItem(media_pool_item) for media_pool_item in self.media_storage.AddItemListToMediaPool(item_path_list)]
 
     def add_timeline_mattes_to_media_pool(self, paths) -> List[MediaPoolItem]:
         """Adds specified media files as timeline mattes in current media pool folder. 

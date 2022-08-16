@@ -14,7 +14,7 @@ def change_timeline_resolution(timeline:Timeline,width,height)->bool:
     Returns:
         bool: True if successful.
     """
-    timeline.set_setting('useCustomSettings','1')
+    timeline.set_setting('useCustomSettings','1') #Special thanks to @thomjiji for this setting!
     return timeline.set_setting('timelineResolutionWidth',str(width)) & timeline.set_setting('timelineResolutionHeight',str(height))
 
 def get_all_timeline(project:Project)->List[Timeline]:
