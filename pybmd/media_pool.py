@@ -263,7 +263,7 @@ class MediaPool():
 
     def set_current_folder(self, folder: Folder) -> bool:
         """set current folder"""
-        return self.media_pool.SetCurrentFolder(folder)
+        return self.media_pool.SetCurrentFolder(folder.folder)
 
     def unlink_clips(self, media_pool_items: List[MediaPoolItem]) -> bool:
         """Unlink specified media pool clips"""
