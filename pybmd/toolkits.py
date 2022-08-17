@@ -1,7 +1,8 @@
 from typing import List
+from .folder import Folder
 from pybmd.project import Project
 from pybmd.timeline import Timeline
-
+from pybmd.media_pool import MediaPool
 
 def change_timeline_resolution(timeline:Timeline,width,height)->bool:
     """change timeline resolution.
@@ -35,7 +36,22 @@ def get_timeline(project:Project,timeline_name:str)->Timeline:
     timeline_dict={timeline.get_name():timeline for timeline in all_timeline}
     return timeline_dict.get(timeline_name)
 
-#TODO add go_to_folder function
+def get_subfolder(folder: Folder,subfolder_name:str)->Folder:
+    """go to sub folder by name.
+
+    Args:
+        media_pool (MediaPool): media pool object 
+        folder_name (str): sub folder name
+
+    Returns:
+        bool: True if successful.
+    """
+    subfolder_list={folder.get_name():folder for folder in folder.get_sub_folder_list()}
+
+    return subfolder_list.get(subfolder_name)
+
+#TODO get_folder_by_path
+
 
 #TODO add render_timeline function
 

@@ -51,7 +51,7 @@ class MediaPool():
         Returns:
             Folder: folder object of new sub folder
         """        
-        return Folder(self.media_pool.AddSubFolder(folder, name))
+        return Folder(self.media_pool.AddSubFolder(folder.folder, name))
 
     # @dispatch(List[MediaPoolItem])
     # type: ignore
@@ -184,7 +184,7 @@ class MediaPool():
             List[MediaPoolItem]: list of media pool items that are mattes
         """          
         media_pool_item_list = []
-        for media_pool_item in self.media_pool.GetTimelineMatteList(folder):
+        for media_pool_item in self.media_pool.GetTimelineMatteList(folder.folder):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
@@ -234,7 +234,7 @@ class MediaPool():
         Returns:
             bool: true if successful, false if not
         """        
-        return self.media_pool.MoveClips([clip.media_pool_item for clip in clips], target_folder)
+        return self.media_pool.MoveClips([clip.media_pool_item for clip in clips], target_folder.folder)
 
     def move_folders(self, folders: List[Folder], target_folder: Folder) -> bool:
         """move folders to target folder
@@ -247,7 +247,7 @@ class MediaPool():
         Returns:
             bool: true if successful, false if not
         """
-        return self.media_pool.MoveFolders([folder.folder for folder in folders], target_folder)
+        return self.media_pool.MoveFolders([folder.folder for folder in folders], target_folder.folder)
 
     def relink_clips(self, media_pool_items: List[MediaPoolItem], folder_path: str) -> bool:
         """Update the folder location of specified media pool clips with the specified folderpath
