@@ -52,8 +52,9 @@ def get_subfolder(folder: Folder,subfolder_name:str)->Folder:
 
 #TODO get_folder_by_path
 
+#TODO add_subfolders (by path) MediaPool->add_subfolder
 
-#TODO add render_timeline function
+#TODO render_timeline 
 
 
 

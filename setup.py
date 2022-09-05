@@ -5,10 +5,10 @@ with open("README.md", "r") as rm:
 
 setuptools.setup(
     name="pybmd",
-    version="2022.6.4",
+    version="2022.6.5",
     author="wheheo",
     author_email="wheheohu@outlook.com",
-    description="python libery for Davinci Resolve(Repack)",
+    description="python library for Davinci Resolve(Repack)",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/WheheoHu/pybmd",
