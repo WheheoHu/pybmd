@@ -127,7 +127,7 @@
 
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 <span class="kn">from</span> <span class="nn">pybmd.gallery</span> <span class="kn">import</span> <span class="n">Gallery</span>
 <span class="kn">from</span> <span class="nn">pybmd.media_pool</span> <span class="kn">import</span> <span class="n">MediaPool</span>
 
@@ -345,8 +345,11 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful.</span>
-<span class="sd">        &quot;&quot;&quot;</span>       
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetRenderSetting</span><span class="p">(</span><span class="n">asdict</span><span class="p">(</span><span class="n">render_setting</span><span class="p">))</span></div>
+<span class="sd">        &quot;&quot;&quot;</span>     
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">render_setting</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetRenderSetting</span><span class="p">(</span><span class="n">render_setting</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetRenderSetting</span><span class="p">(</span><span class="n">asdict</span><span class="p">(</span><span class="n">render_setting</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Project.set_setting"><a class="viewcode-back" href="../../pybmd.html#pybmd.project.Project.set_setting">[docs]</a>    <span class="k">def</span> <span class="nf">set_setting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setting_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">setting_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets value of project setting (indicated by setting_name, string).</span>

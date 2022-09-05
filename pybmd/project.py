@@ -2,7 +2,7 @@
 
 from dataclasses import asdict
 from dataclasses import dataclass
-from typing import Any, List
+from typing import Any, Dict, List
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
 
@@ -220,8 +220,11 @@ class Project():
 
         Returns:
             bool: True if successful.
-        """       
-        return self.project.SetRenderSetting(asdict(render_setting))
+        """     
+        if type(render_setting) is dict:
+            return self.project.SetRenderSetting(render_setting)
+        else:
+            return self.project.SetRenderSetting(asdict(render_setting))
 
     def set_setting(self, setting_name: str, setting_value: str):
         """Sets value of project setting (indicated by setting_name, string).
