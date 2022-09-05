@@ -212,7 +212,7 @@ class Project():
         """Sets preset by given preset_name (string) into project."""
         return self.project.SetPreset(preset_name)
 
-    def set_render_setting(self, render_setting: RenderSetting) -> bool:
+    def set_render_settings(self, render_setting: RenderSetting) -> bool:
         """Sets given settings for rendering.
 
         Args:
@@ -222,9 +222,9 @@ class Project():
             bool: True if successful.
         """     
         if type(render_setting) is dict:
-            return self.project.SetRenderSetting(render_setting)
+            return self.project.SetRenderSettings(render_setting)
         else:
-            return self.project.SetRenderSetting(asdict(render_setting))
+            return self.project.SetRenderSettings(asdict(render_setting))
 
     def set_setting(self, setting_name: str, setting_value: str):
         """Sets value of project setting (indicated by setting_name, string).
