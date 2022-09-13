@@ -14,3 +14,4 @@ project_builder.py
 .vscode/configurationCache.log
 .vscode/dryrun.log
 .vscode/targets.log
+.idea/

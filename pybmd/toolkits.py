@@ -5,7 +5,7 @@ from pybmd.project import Project
 from pybmd.timeline import Timeline
 from pybmd.media_pool import MediaPool
 
-def change_timeline_resolution(timeline:Timeline,width,height)->bool:
+def change_timeline_resolution(timeline: Timeline, width, height) -> bool:
     """change timeline resolution.
 
     Args:
@@ -16,14 +16,14 @@ def change_timeline_resolution(timeline:Timeline,width,height)->bool:
     Returns:
         bool: True if successful.
     """
-    timeline.set_setting('useCustomSettings','1') #Special thanks to @thomjiji for this setting!
-    return timeline.set_setting('timelineResolutionWidth',str(width)) & timeline.set_setting('timelineResolutionHeight',str(height))
+    timeline.set_setting('useCustomSettings', '1')  # Special thanks to @thomjiji for this setting!
+    return timeline.set_setting('timelineResolutionWidth', str(width)) & timeline.set_setting('timelineResolutionHeight', str(height))
 
-def get_all_timeline(project:Project)->List[Timeline]:
+def get_all_timeline(project: Project) -> List[Timeline]:
     """Returns all timeline in the project."""
-    return[project.get_timeline_by_index(timeline_index) for timeline_index in range(1,project.get_timeline_count()+1,1)]
+    return [project.get_timeline_by_index(timeline_index) for timeline_index in range(1, project.get_timeline_count() + 1, 1)]
 
-def get_timeline(project:Project,timeline_name:str)->Timeline:
+def get_timeline(project: Project, timeline_name: str) -> Timeline:
     """get timeline by name.
 
     Args:
@@ -33,11 +33,11 @@ def get_timeline(project:Project,timeline_name:str)->Timeline:
     Returns:
         Timeline: timeline object matching the name, None if not found.
     """
-    all_timeline=get_all_timeline(project)
-    timeline_dict={timeline.get_name():timeline for timeline in all_timeline}
+    all_timeline = get_all_timeline(project)
+    timeline_dict = {timeline.get_name(): timeline for timeline in all_timeline}
     return timeline_dict.get(timeline_name)
 
-def get_subfolder(folder: Folder,subfolder_name:str)->Folder:
+def get_subfolder(folder: Folder, subfolder_name: str) -> Folder:
     """go to sub folder by name.
 
     Args:
@@ -47,44 +47,38 @@ def get_subfolder(folder: Folder,subfolder_name:str)->Folder:
     Returns:
         bool: True if successful.
     """
-    subfolder_list={folder.get_name():folder for folder in folder.get_sub_folder_list()}
+    subfolder_list = {folder.get_name(): folder for folder in folder.get_sub_folder_list()}
 
     return subfolder_list.get(subfolder_name)
 
-#TODO get_folder_by_path
+# TODO get_folder_by_path
 
-#TODO add_subfolders (by path) MediaPool->add_subfolder
-def add_subfolders(media_pool:MediaPool,folder:Folder,subfolder_path:str)-> bool:
+# TODO add_subfolders (by path) MediaPool->add_subfolder
+def add_subfolders(media_pool: MediaPool, folder: Folder, subfolder_path: str) -> bool:
     """add subfolder by given path string
 
     Args:
-        media_pool (MediaPool): meida pool object to operate
+        media_pool (MediaPool): media pool object to operate
         folder (Folder): folder to add subfolder
         subfolder_path (str): subfolder path
 
     Returns:
         bool: Return True if successful
     """
-        
-    #inner funtion for recursion
-    def _add_folder(_media_pool:MediaPool,_folder:Folder,_path_list:list):
-        if len(_path_list)== 0 :
+
+    # inner function for recursion
+    def _add_folder(_media_pool: MediaPool, _folder: Folder, _path_list: list):
+        if len(_path_list) == 0:
             return True
         else:
-            __folder=_media_pool.add_sub_folder(_folder,_path_list[0])
+            __folder = _media_pool.add_sub_folder(_folder, _path_list[0])
             _path_list.pop(0)
-            return _add_folder(_media_pool,__folder,_path_list)
-            
+            return _add_folder(_media_pool, __folder, _path_list)
+
     if folder is None:
-        folder=media_pool.get_current_folder()
-    path_spilt_list=re.findall(r"([^\/]+)\/",subfolder_path)
-    
-    return _add_folder(media_pool,folder,path_spilt_list)
+        folder = media_pool.get_current_folder()
+    path_spilt_list = re.findall(r"([^\/]+)\/", subfolder_path)
 
+    return _add_folder(media_pool, folder, path_spilt_list)
 
-
-#TODO render_timeline 
-
-
-
-
+# TODO render_timeline
