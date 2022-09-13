@@ -1,3 +1,4 @@
+import re
 from typing import List
 from .folder import Folder
 from pybmd.project import Project
@@ -53,6 +54,23 @@ def get_subfolder(folder: Folder,subfolder_name:str)->Folder:
 #TODO get_folder_by_path
 
 #TODO add_subfolders (by path) MediaPool->add_subfolder
+def add_subfolders(media_pool:MediaPool,folder:Folder,subfolder_path:str)-> bool:
+    #inner funtion for recursion
+    def _add_folder(_media_pool:MediaPool,_folder:Folder,_path_list:list):
+        if len(_path_list)== 0 :
+            return True
+        else:
+            __folder=_media_pool.add_sub_folder(_folder,_path_list[0])
+            _path_list.pop(0)
+            return _add_folder(_media_pool,__folder,_path_list)
+            
+    if folder is None:
+        folder=media_pool.get_current_folder()
+    path_spilt_list=re.findall(r"([^\/]+)\/",subfolder_path)
+    
+    return _add_folder(media_pool,folder,path_spilt_list)
+
+
 
 #TODO render_timeline 
 
