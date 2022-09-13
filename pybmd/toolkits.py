@@ -55,6 +55,17 @@ def get_subfolder(folder: Folder,subfolder_name:str)->Folder:
 
 #TODO add_subfolders (by path) MediaPool->add_subfolder
 def add_subfolders(media_pool:MediaPool,folder:Folder,subfolder_path:str)-> bool:
+    """add subfolder by given path string
+
+    Args:
+        media_pool (MediaPool): meida pool object to operate
+        folder (Folder): folder to add subfolder
+        subfolder_path (str): subfolder path
+
+    Returns:
+        bool: Return True if successful
+    """
+        
     #inner funtion for recursion
     def _add_folder(_media_pool:MediaPool,_folder:Folder,_path_list:list):
         if len(_path_list)== 0 :
