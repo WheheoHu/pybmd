@@ -52,7 +52,7 @@ class Timeline():
     def __init__(self, timeline):
         self.timeline = timeline
     def __repr__(self) -> str:
-        return f'timeline:f{self.get_name()}'
+        return f'Timeline:f{self.get_name()}'
 
     def add_marker(self, frame_id: str, color: str, name: str, note: str, duration: str, custom_data: str) -> bool:
         """Creates a new marker at given frameId position and with given marker information. 

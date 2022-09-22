@@ -69,7 +69,7 @@ class Project():
         self.project_name = _project_name
         self.project = _project
     def __repr__(self) -> str:
-        return f'project:{self.get_name()}'
+        return f'Project:{self.get_name()}'
 
     def get_self_project(self):
         return self.project
