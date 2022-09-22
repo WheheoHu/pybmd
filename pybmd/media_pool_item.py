@@ -6,6 +6,8 @@ class MediaPoolItem():
 
     def __init__(self, media_pool_item):
         self.media_pool_item = media_pool_item
+    def __repr__(self) -> str:
+        return f'media pool item:{self.get_name()}'
 
     def add_flag(self, color: str) -> bool:
         """Add a flag to the clip."""

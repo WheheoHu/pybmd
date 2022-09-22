@@ -29,6 +29,9 @@ class TimelineItem():
 
     def __init__(self, timeline_item):
         self.timeline_item = timeline_item
+        
+    def __repr__(self) -> str:
+        return f'timeline item:f{self.get_name()}'
 
     def get_markers(self) -> dict:
         """Returns a dict (frameId -> {information}) of all markers and dicts with their information.

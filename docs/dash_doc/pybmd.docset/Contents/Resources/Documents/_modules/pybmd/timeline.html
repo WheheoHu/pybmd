@@ -79,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../pybmd.html#module-pybmd.project_manager">pybmd.project_manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pybmd.html#module-pybmd.timeline">pybmd.timeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pybmd.html#module-pybmd.timeline_item">pybmd.timeline_item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pybmd.html#module-pybmd.toolkits">pybmd.toolkits</a></li>
 </ul>
 </li>
 </ul>
@@ -175,6 +176,8 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span> <span class="o">=</span> <span class="n">timeline</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;timeline:f</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
 
 <div class="viewcode-block" id="Timeline.add_marker"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.add_marker">[docs]</a>    <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Creates a new marker at given frameId position and with given marker information. </span>
