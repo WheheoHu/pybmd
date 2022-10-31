@@ -5,6 +5,7 @@ from pybmd.project import Project
 from pybmd.timeline import Timeline
 from pybmd.media_pool import MediaPool
 
+
 def change_timeline_resolution(timeline: Timeline, width, height) -> bool:
     """change timeline resolution.
 
@@ -16,12 +17,18 @@ def change_timeline_resolution(timeline: Timeline, width, height) -> bool:
     Returns:
         bool: True if successful.
     """
-    timeline.set_setting('useCustomSettings', '1')  # Special thanks to @thomjiji for this setting!
+    timeline.set_setting('useCustomSettings',
+                         '1')  # Special thanks to @thomjiji for this setting!
     return timeline.set_setting('timelineResolutionWidth', str(width)) & timeline.set_setting('timelineResolutionHeight', str(height))
+
 
 def get_all_timeline(project: Project) -> List[Timeline]:
     """Returns all timeline in the project."""
-    return [project.get_timeline_by_index(timeline_index) for timeline_index in range(1, project.get_timeline_count() + 1, 1)]
+    if project.get_timeline_count() == 0:
+        return None
+    else:
+        return [project.get_timeline_by_index(timeline_index) for timeline_index in range(1, project.get_timeline_count() + 1, 1)]
+
 
 def get_timeline(project: Project, timeline_name: str) -> Timeline:
     """get timeline by name.
@@ -34,8 +41,11 @@ def get_timeline(project: Project, timeline_name: str) -> Timeline:
         Timeline: timeline object matching the name, None if not found.
     """
     all_timeline = get_all_timeline(project)
-    timeline_dict = {timeline.get_name(): timeline for timeline in all_timeline}
-    return timeline_dict.get(timeline_name)
+    if bool(all_timeline):
+        timeline_dict = {timeline.get_name(): timeline for timeline in all_timeline}
+        return timeline_dict.get(timeline_name)
+    else:
+        return None
 
 def get_subfolder(folder: Folder, subfolder_name: str) -> Folder:
     """go to sub folder by name.
@@ -47,13 +57,16 @@ def get_subfolder(folder: Folder, subfolder_name: str) -> Folder:
     Returns:
         bool: True if successful.
     """
-    subfolder_list = {folder.get_name(): folder for folder in folder.get_sub_folder_list()}
+    subfolder_list = {
+        folder.get_name(): folder for folder in folder.get_sub_folder_list()}
 
     return subfolder_list.get(subfolder_name)
 
 # TODO get_folder_by_path(check path before get ,if folder not exist,create or raise error)
 
 # TODO add_subfolders (by path) MediaPool->add_subfolder
+
+
 def add_subfolders(media_pool: MediaPool, folder: Folder, subfolder_path: str) -> bool:
     """add subfolder by given path string
 
