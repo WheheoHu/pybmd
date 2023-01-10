@@ -2306,12 +2306,12 @@ while on Cut, Edit, Color, Fairlight and Deliver pages.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_item_list_in_track">
-<span class="sig-name descname"><span class="pre">get_item_list_in_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackTpye" title="pybmd.timeline.TrackTpye"><span class="pre">TrackTpye</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_item_list_in_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_item_list_in_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_item_list_in_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_item_list_in_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_item_list_in_track" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of timeline items on that track.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>track_type</strong> (<a class="reference internal" href="#pybmd.timeline.TrackTpye" title="pybmd.timeline.TrackTpye"><em>TrackTpye</em></a>) – track type.</p></li>
+<li><p><strong>track_type</strong> (<em>TrackTpye</em>) – track type.</p></li>
 <li><p><strong>index</strong> (<em>int</em>) – track index.</p></li>
 </ul>
 </dd>
@@ -2370,18 +2370,18 @@ indicates a single green marker at timeline offset 96</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_track_count">
-<span class="sig-name descname"><span class="pre">get_track_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackTpye" title="pybmd.timeline.TrackTpye"><span class="pre">TrackTpye</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_track_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_track_count" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_track_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_track_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_track_count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of tracks for the given trackType (“audio”, “video” or “subtitle”).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_track_name">
-<span class="sig-name descname"><span class="pre">get_track_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackTpye" title="pybmd.timeline.TrackTpye"><span class="pre">TrackTpye</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_track_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_track_name" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_track_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_track_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_track_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the track name for track indicated by trackType (“audio”, “video” or “subtitle”) and trackIndex.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>track_type</strong> (<a class="reference internal" href="#pybmd.timeline.TrackTpye" title="pybmd.timeline.TrackTpye"><em>TrackTpye</em></a>) – Track type.</p></li>
+<li><p><strong>track_type</strong> (<em>TrackTpye</em>) – Track type.</p></li>
 <li><p><strong>track_index</strong> (<em>int</em>) – 1 &lt;= trackIndex &lt;= GetTrackCount(trackType)</p></li>
 </ul>
 </dd>
@@ -2519,12 +2519,12 @@ indicates a single green marker at timeline offset 96</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_track_name">
-<span class="sig-name descname"><span class="pre">set_track_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackTpye" title="pybmd.timeline.TrackTpye"><span class="pre">TrackTpye</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.set_track_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_track_name" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_track_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.set_track_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_track_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the track name (string) for track indicated by trackType and trackIndex.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>track_type</strong> (<a class="reference internal" href="#pybmd.timeline.TrackTpye" title="pybmd.timeline.TrackTpye"><em>TrackTpye</em></a>) – TrackType object.</p></li>
+<li><p><strong>track_type</strong> (<em>TrackTpye</em>) – TrackType object.</p></li>
 <li><p><strong>track_index</strong> (<em>int</em>) – 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – track name.</p></li>
 </ul>
@@ -2548,23 +2548,23 @@ CustomData is not exposed via UI and is useful for scripting developer to attach
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pybmd.timeline.TrackTpye">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.timeline.</span></span><span class="sig-name descname"><span class="pre">TrackTpye</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/timeline.html#TrackTpye"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.TrackTpye" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.TrackType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.timeline.</span></span><span class="sig-name descname"><span class="pre">TrackType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/timeline.html#TrackType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.TrackType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>docstring for TrackTpye.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pybmd.timeline.TrackTpye.AUDIO_TRACK">
-<span class="sig-name descname"><span class="pre">AUDIO_TRACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'audio'</span></em><a class="headerlink" href="#pybmd.timeline.TrackTpye.AUDIO_TRACK" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.TrackType.AUDIO_TRACK">
+<span class="sig-name descname"><span class="pre">AUDIO_TRACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'audio'</span></em><a class="headerlink" href="#pybmd.timeline.TrackType.AUDIO_TRACK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pybmd.timeline.TrackTpye.SUBTITLE_TRACK">
-<span class="sig-name descname"><span class="pre">SUBTITLE_TRACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'subtitle'</span></em><a class="headerlink" href="#pybmd.timeline.TrackTpye.SUBTITLE_TRACK" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.TrackType.SUBTITLE_TRACK">
+<span class="sig-name descname"><span class="pre">SUBTITLE_TRACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'subtitle'</span></em><a class="headerlink" href="#pybmd.timeline.TrackType.SUBTITLE_TRACK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="pybmd.timeline.TrackTpye.VIDEO_TRACK">
-<span class="sig-name descname"><span class="pre">VIDEO_TRACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'video'</span></em><a class="headerlink" href="#pybmd.timeline.TrackTpye.VIDEO_TRACK" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.TrackType.VIDEO_TRACK">
+<span class="sig-name descname"><span class="pre">VIDEO_TRACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'video'</span></em><a class="headerlink" href="#pybmd.timeline.TrackType.VIDEO_TRACK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
