@@ -30,7 +30,7 @@ class ImportOptions():
     insertWithOffset: str = "00:00:00:00"
 
 
-class TrackTpye(Enum):
+class TrackType(Enum):
     """docstring for TrackTpye."""
     AUDIO_TRACK = 'audio'
     VIDEO_TRACK = 'video'
@@ -154,7 +154,7 @@ class Timeline():
         """Returns the frame number at the end of timeline."""
         return self.timeline.GetEndFrame()
 
-    def get_item_list_in_track(self, track_type: TrackTpye, index: int) -> List[TimelineItem]:
+    def get_item_list_in_track(self, track_type: TrackType, index: int) -> List[TimelineItem]:
         """Returns a list of timeline items on that track.
 
         Args:
@@ -197,11 +197,11 @@ class Timeline():
         """Returns the frame number at the start of timeline."""
         return self.timeline.GetStartFrame()
 
-    def get_track_count(self, track_type: TrackTpye) -> int:
+    def get_track_count(self, track_type: TrackType) -> int:
         """Returns the number of tracks for the given trackType ("audio", "video" or "subtitle")."""
         return self.timeline.GetTrackCount(track_type.value)
 
-    def get_track_name(self, track_type: TrackTpye, track_index: int) -> str:
+    def get_track_name(self, track_type: TrackType, track_index: int) -> str:
         """Returns the track name for track indicated by trackType ("audio", "video" or "subtitle") and trackIndex.
 
         Args:
@@ -286,7 +286,7 @@ class Timeline():
         """
         return self.timeline.SetSetting(setting_name, setting_value)
 
-    def set_track_name(self, track_type: TrackTpye, track_index: int, name: str) -> bool:
+    def set_track_name(self, track_type: TrackType, track_index: int, name: str) -> bool:
         """Sets the track name (string) for track indicated by trackType and trackIndex. 
 
         Args:
