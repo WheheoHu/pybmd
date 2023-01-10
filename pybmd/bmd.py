@@ -4,6 +4,7 @@ import importlib.machinery
 from os import path
 import sys
 
+from pybmd.error import *
 from pybmd.media_storage import MediaStorage
 from pybmd.project_manager import ProjectManager
 
@@ -35,7 +36,8 @@ class Bmd:
     def __init__(self,resolve_ip=IP_ADDRESS):
         """Initializes the BMD object."""
         self.local_davinci = self.init_davinci(davinci_ip=resolve_ip)
-        
+        if self.local_davinci is None:
+            raise ResolveInitError
         
         #timeline exportType can be one of the following constants:
         self.EXPORT_AAF = self.local_davinci.EXPORT_AAF
