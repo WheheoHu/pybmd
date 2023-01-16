@@ -124,7 +124,7 @@ class Bmd:
         """
         return self.local_davinci.GetCurrentPage()#type: ignore
 
-    def get_media_stroage(self) -> MediaStorage:
+    def get_media_storage(self) -> MediaStorage:
         """Returns the MediaStorage  object to query and act on media locations.
 
         Returns:
