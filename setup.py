@@ -5,7 +5,7 @@ with open("README.md", "r") as rm:
 
 setuptools.setup(
     name="pybmd",
-    version="2023.1.1",
+    version="2023.1.2",
     author="wheheo",
     author_email="wheheohu@outlook.com",
     description="python library for Davinci Resolve(Repack)",
@@ -14,12 +14,12 @@ setuptools.setup(
     url="https://github.com/WheheoHu/pybmd",
     packages=setuptools.find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.10",
         "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
-        "Operating System :: MacOS :: MacOS X"
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: Microsoft :: Windows"
     ],
     install_requires=[
-        "dataclasses",
         "multipledispatch"
         ],
 

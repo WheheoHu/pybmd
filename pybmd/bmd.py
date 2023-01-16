@@ -1,6 +1,7 @@
 
 from enum import Enum
 import importlib.machinery
+import importlib.util
 from os import path
 import sys
 
@@ -9,10 +10,14 @@ from pybmd.media_storage import MediaStorage
 from pybmd.project_manager import ProjectManager
 
 
-def load_dynamic(module, module_path: str):
+def load_dynamic(module_name, module_path: str):
     """Loads a module dynamically."""
-    loader = importlib.machinery.ExtensionFileLoader(module, module_path)
-    module = loader.load_module() # type: ignore
+    loader = importlib.machinery.ExtensionFileLoader(module_name, module_path)
+    spec=importlib.util.spec_from_loader(name=module_name,loader=loader)
+    module=importlib.util.module_from_spec(spec)
+    # sys.modules[module_name]=module
+    # spec.loader.exec_module(module)
+    
     return module
 
 class Default_LIB_PATH(Enum):
@@ -81,7 +86,7 @@ class Bmd:
 
         """
         bmd_module = load_dynamic(
-            module='fusionscript', module_path=self.PYLIB)
+            module_name='fusionscript', module_path=self.PYLIB)
         return bmd_module.scriptapp(self.APP_NAME, davinci_ip)
 
     def get_local_davinci(self):

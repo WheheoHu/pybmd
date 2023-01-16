@@ -16,3 +16,4 @@ project_builder.py
 .vscode/targets.log
 .idea/
 .venv310
+test
