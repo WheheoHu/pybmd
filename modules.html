@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="_static/css/pdj.css" type="text/css" />
 
   
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pdj.css" type="text/css" />
+  
 
   
 
@@ -60,7 +64,7 @@
 	
           
           
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">pybmd</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pybmd.html">pybmd.bmd</a></li>
@@ -119,27 +123,428 @@
           <div role="main" class="">
 
 	    <div id="content" class="hfeed entry-container hentry">
-  <div class="section" id="pybmd">
-<h1>pybmd<a class="headerlink" href="#pybmd" title="Permalink to this headline">¶</a></h1>
+  <section id="pybmd">
+<h1>pybmd<a class="headerlink" href="#pybmd" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html">pybmd.bmd</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.folder">pybmd.folder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.fusion_comp">pybmd.fusion_comp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.gallery">pybmd.gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.gallery_still">pybmd.gallery_still</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.gallery_still_album">pybmd.gallery_still_album</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.media_pool">pybmd.media_pool</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.media_pool_item">pybmd.media_pool_item</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.media_storage">pybmd.media_storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.project">pybmd.project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.project_manager">pybmd.project_manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.timeline">pybmd.timeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.timeline_item">pybmd.timeline_item</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.toolkits">pybmd.toolkits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html">pybmd.bmd</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd"><code class="docutils literal notranslate"><span class="pre">Bmd</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.APP_NAME"><code class="docutils literal notranslate"><span class="pre">Bmd.APP_NAME</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.IP_ADDRESS"><code class="docutils literal notranslate"><span class="pre">Bmd.IP_ADDRESS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.delete_layout_preset"><code class="docutils literal notranslate"><span class="pre">Bmd.delete_layout_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.export_layout_preset"><code class="docutils literal notranslate"><span class="pre">Bmd.export_layout_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.fusion"><code class="docutils literal notranslate"><span class="pre">Bmd.fusion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.get_current_page"><code class="docutils literal notranslate"><span class="pre">Bmd.get_current_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.get_local_davinci"><code class="docutils literal notranslate"><span class="pre">Bmd.get_local_davinci()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.get_media_storage"><code class="docutils literal notranslate"><span class="pre">Bmd.get_media_storage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.get_product_name"><code class="docutils literal notranslate"><span class="pre">Bmd.get_product_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.get_project_manager"><code class="docutils literal notranslate"><span class="pre">Bmd.get_project_manager()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.get_version"><code class="docutils literal notranslate"><span class="pre">Bmd.get_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.get_version_string"><code class="docutils literal notranslate"><span class="pre">Bmd.get_version_string()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.import_layout_preset"><code class="docutils literal notranslate"><span class="pre">Bmd.import_layout_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.init_davinci"><code class="docutils literal notranslate"><span class="pre">Bmd.init_davinci()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.load_layout_preset"><code class="docutils literal notranslate"><span class="pre">Bmd.load_layout_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.local_davinci"><code class="docutils literal notranslate"><span class="pre">Bmd.local_davinci</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.open_page"><code class="docutils literal notranslate"><span class="pre">Bmd.open_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.quit"><code class="docutils literal notranslate"><span class="pre">Bmd.quit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.save_layout_preset"><code class="docutils literal notranslate"><span class="pre">Bmd.save_layout_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Bmd.update_layout_preset"><code class="docutils literal notranslate"><span class="pre">Bmd.update_layout_preset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.bmd.Default_LIB_PATH"><code class="docutils literal notranslate"><span class="pre">Default_LIB_PATH</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Default_LIB_PATH.LIB_MAC"><code class="docutils literal notranslate"><span class="pre">Default_LIB_PATH.LIB_MAC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.bmd.Default_LIB_PATH.LIB_Windows"><code class="docutils literal notranslate"><span class="pre">Default_LIB_PATH.LIB_Windows</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.bmd.load_dynamic"><code class="docutils literal notranslate"><span class="pre">load_dynamic()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.folder">pybmd.folder</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.folder.Folder"><code class="docutils literal notranslate"><span class="pre">Folder</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.folder.Folder.get_clip_list"><code class="docutils literal notranslate"><span class="pre">Folder.get_clip_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.folder.Folder.get_is_folder_stale"><code class="docutils literal notranslate"><span class="pre">Folder.get_is_folder_stale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.folder.Folder.get_name"><code class="docutils literal notranslate"><span class="pre">Folder.get_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.folder.Folder.get_sub_folder_list"><code class="docutils literal notranslate"><span class="pre">Folder.get_sub_folder_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.folder.Folder.get_unique_id"><code class="docutils literal notranslate"><span class="pre">Folder.get_unique_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.fusion_comp">pybmd.fusion_comp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.fusion_comp.FusionComp"><code class="docutils literal notranslate"><span class="pre">FusionComp</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.gallery">pybmd.gallery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.gallery.Gallery"><code class="docutils literal notranslate"><span class="pre">Gallery</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery.Gallery.get_album_name"><code class="docutils literal notranslate"><span class="pre">Gallery.get_album_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery.Gallery.get_current_still_album"><code class="docutils literal notranslate"><span class="pre">Gallery.get_current_still_album()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery.Gallery.get_gallery_still_albums"><code class="docutils literal notranslate"><span class="pre">Gallery.get_gallery_still_albums()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery.Gallery.set_album_name"><code class="docutils literal notranslate"><span class="pre">Gallery.set_album_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery.Gallery.set_current_still_album"><code class="docutils literal notranslate"><span class="pre">Gallery.set_current_still_album()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.gallery_still">pybmd.gallery_still</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.gallery_still.GalleryStill"><code class="docutils literal notranslate"><span class="pre">GalleryStill</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.gallery_still_album">pybmd.gallery_still_album</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.GalleryStillAlbum"><code class="docutils literal notranslate"><span class="pre">GalleryStillAlbum</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.GalleryStillAlbum.delete_stills"><code class="docutils literal notranslate"><span class="pre">GalleryStillAlbum.delete_stills()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.GalleryStillAlbum.export_stills"><code class="docutils literal notranslate"><span class="pre">GalleryStillAlbum.export_stills()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.GalleryStillAlbum.get_label"><code class="docutils literal notranslate"><span class="pre">GalleryStillAlbum.get_label()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.GalleryStillAlbum.get_stills"><code class="docutils literal notranslate"><span class="pre">GalleryStillAlbum.get_stills()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.GalleryStillAlbum.set_label"><code class="docutils literal notranslate"><span class="pre">GalleryStillAlbum.set_label()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats"><code class="docutils literal notranslate"><span class="pre">StillFormats</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats.BMP"><code class="docutils literal notranslate"><span class="pre">StillFormats.BMP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats.CIN"><code class="docutils literal notranslate"><span class="pre">StillFormats.CIN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats.DPX"><code class="docutils literal notranslate"><span class="pre">StillFormats.DPX</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats.JPG"><code class="docutils literal notranslate"><span class="pre">StillFormats.JPG</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats.PNG"><code class="docutils literal notranslate"><span class="pre">StillFormats.PNG</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats.PPM"><code class="docutils literal notranslate"><span class="pre">StillFormats.PPM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats.TIF"><code class="docutils literal notranslate"><span class="pre">StillFormats.TIF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.StillFormats.XPM"><code class="docutils literal notranslate"><span class="pre">StillFormats.XPM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.gallery_still_album.get_gallery_still_list_from_class_list"><code class="docutils literal notranslate"><span class="pre">get_gallery_still_list_from_class_list()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.media_pool">pybmd.media_pool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.media_pool.ClipInfo"><code class="docutils literal notranslate"><span class="pre">ClipInfo</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.ClipInfo.end_frame"><code class="docutils literal notranslate"><span class="pre">ClipInfo.end_frame</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.ClipInfo.media_pool_item"><code class="docutils literal notranslate"><span class="pre">ClipInfo.media_pool_item</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.ClipInfo.media_type"><code class="docutils literal notranslate"><span class="pre">ClipInfo.media_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.ClipInfo.start_frame"><code class="docutils literal notranslate"><span class="pre">ClipInfo.start_frame</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool"><code class="docutils literal notranslate"><span class="pre">MediaPool</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.add_sub_folder"><code class="docutils literal notranslate"><span class="pre">MediaPool.add_sub_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.append_to_timeline"><code class="docutils literal notranslate"><span class="pre">MediaPool.append_to_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.create_empty_timeline"><code class="docutils literal notranslate"><span class="pre">MediaPool.create_empty_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.create_timeline_from_clips"><code class="docutils literal notranslate"><span class="pre">MediaPool.create_timeline_from_clips()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.delete_clip_mattes"><code class="docutils literal notranslate"><span class="pre">MediaPool.delete_clip_mattes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.delete_clips"><code class="docutils literal notranslate"><span class="pre">MediaPool.delete_clips()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.delete_folders"><code class="docutils literal notranslate"><span class="pre">MediaPool.delete_folders()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.delete_timelines"><code class="docutils literal notranslate"><span class="pre">MediaPool.delete_timelines()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.export_metadata"><code class="docutils literal notranslate"><span class="pre">MediaPool.export_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.get_clip_matte_list"><code class="docutils literal notranslate"><span class="pre">MediaPool.get_clip_matte_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.get_current_folder"><code class="docutils literal notranslate"><span class="pre">MediaPool.get_current_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.get_root_folder"><code class="docutils literal notranslate"><span class="pre">MediaPool.get_root_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.get_timeline_matte_list"><code class="docutils literal notranslate"><span class="pre">MediaPool.get_timeline_matte_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.get_unique_id"><code class="docutils literal notranslate"><span class="pre">MediaPool.get_unique_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.import_media"><code class="docutils literal notranslate"><span class="pre">MediaPool.import_media()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.import_timeline_from_file"><code class="docutils literal notranslate"><span class="pre">MediaPool.import_timeline_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.move_clips"><code class="docutils literal notranslate"><span class="pre">MediaPool.move_clips()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.move_folders"><code class="docutils literal notranslate"><span class="pre">MediaPool.move_folders()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.refresh_folders"><code class="docutils literal notranslate"><span class="pre">MediaPool.refresh_folders()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.relink_clips"><code class="docutils literal notranslate"><span class="pre">MediaPool.relink_clips()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.set_current_folder"><code class="docutils literal notranslate"><span class="pre">MediaPool.set_current_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.MediaPool.unlink_clips"><code class="docutils literal notranslate"><span class="pre">MediaPool.unlink_clips()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.media_pool.TimelineImportOptions"><code class="docutils literal notranslate"><span class="pre">TimelineImportOptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.TimelineImportOptions.import_source_clips"><code class="docutils literal notranslate"><span class="pre">TimelineImportOptions.import_source_clips</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.TimelineImportOptions.interlace_pricessing"><code class="docutils literal notranslate"><span class="pre">TimelineImportOptions.interlace_pricessing</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.TimelineImportOptions.source_clips_folders"><code class="docutils literal notranslate"><span class="pre">TimelineImportOptions.source_clips_folders</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.TimelineImportOptions.source_clips_path"><code class="docutils literal notranslate"><span class="pre">TimelineImportOptions.source_clips_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool.TimelineImportOptions.timeline_name"><code class="docutils literal notranslate"><span class="pre">TimelineImportOptions.timeline_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.media_pool_item">pybmd.media_pool_item</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.add_flag"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.add_flag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.add_marker"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.add_marker()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.clear_clip_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.clear_clip_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.clear_flag_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.clear_flag_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.delete_marker_at_frame()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.delete_marker_by_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.delete_marker_by_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_clip_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_clip_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_clip_property"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_clip_property()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_flag_list"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_flag_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_marker_by_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_marker_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_markers"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_markers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_media_id"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_media_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_metadata"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_name"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_unique_id"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_unique_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.link_proxy_media"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.link_proxy_media()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.replace_clip"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.replace_clip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.set_clip_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.set_clip_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.set_clip_property"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.set_clip_property()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.set_metadata"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.set_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.unlink_proxy_media()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.updata_marker_custom_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.media_storage">pybmd.media_storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage"><code class="docutils literal notranslate"><span class="pre">MediaStorage</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool"><code class="docutils literal notranslate"><span class="pre">MediaStorage.add_clip_mattes_to_media_pool()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool"><code class="docutils literal notranslate"><span class="pre">MediaStorage.add_item_list_to_meida_pool()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage.add_timeline_mattes_to_media_pool"><code class="docutils literal notranslate"><span class="pre">MediaStorage.add_timeline_mattes_to_media_pool()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage.get_file_list"><code class="docutils literal notranslate"><span class="pre">MediaStorage.get_file_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage.get_mounted_volume_list"><code class="docutils literal notranslate"><span class="pre">MediaStorage.get_mounted_volume_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage.get_sub_folder_list"><code class="docutils literal notranslate"><span class="pre">MediaStorage.get_sub_folder_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage.media_storage"><code class="docutils literal notranslate"><span class="pre">MediaStorage.media_storage</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.media_storage.MediaStorage.reveal_in_storage"><code class="docutils literal notranslate"><span class="pre">MediaStorage.reveal_in_storage()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.project">pybmd.project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.project.Project"><code class="docutils literal notranslate"><span class="pre">Project</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.add_render_job"><code class="docutils literal notranslate"><span class="pre">Project.add_render_job()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.delete_all_render_jobs"><code class="docutils literal notranslate"><span class="pre">Project.delete_all_render_jobs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.delete_render_job"><code class="docutils literal notranslate"><span class="pre">Project.delete_render_job()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_current_render_format_and_codec"><code class="docutils literal notranslate"><span class="pre">Project.get_current_render_format_and_codec()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_current_render_mode"><code class="docutils literal notranslate"><span class="pre">Project.get_current_render_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_current_timeline"><code class="docutils literal notranslate"><span class="pre">Project.get_current_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_gallery"><code class="docutils literal notranslate"><span class="pre">Project.get_gallery()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_media_pool"><code class="docutils literal notranslate"><span class="pre">Project.get_media_pool()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_name"><code class="docutils literal notranslate"><span class="pre">Project.get_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_preset_list"><code class="docutils literal notranslate"><span class="pre">Project.get_preset_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_render_codecs"><code class="docutils literal notranslate"><span class="pre">Project.get_render_codecs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_render_formats"><code class="docutils literal notranslate"><span class="pre">Project.get_render_formats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_render_job_list"><code class="docutils literal notranslate"><span class="pre">Project.get_render_job_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_render_job_status"><code class="docutils literal notranslate"><span class="pre">Project.get_render_job_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_render_preset_list"><code class="docutils literal notranslate"><span class="pre">Project.get_render_preset_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_render_resolutions"><code class="docutils literal notranslate"><span class="pre">Project.get_render_resolutions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_self_project"><code class="docutils literal notranslate"><span class="pre">Project.get_self_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_setting"><code class="docutils literal notranslate"><span class="pre">Project.get_setting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_timeline_by_index"><code class="docutils literal notranslate"><span class="pre">Project.get_timeline_by_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_timeline_count"><code class="docutils literal notranslate"><span class="pre">Project.get_timeline_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.get_unique_id"><code class="docutils literal notranslate"><span class="pre">Project.get_unique_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.insert_audio_to_current_track_at_playhead"><code class="docutils literal notranslate"><span class="pre">Project.insert_audio_to_current_track_at_playhead()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.is_rendering_in_progress"><code class="docutils literal notranslate"><span class="pre">Project.is_rendering_in_progress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.load_render_preset"><code class="docutils literal notranslate"><span class="pre">Project.load_render_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.project"><code class="docutils literal notranslate"><span class="pre">Project.project</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.project_name"><code class="docutils literal notranslate"><span class="pre">Project.project_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.refresh_lut_list"><code class="docutils literal notranslate"><span class="pre">Project.refresh_lut_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.save_as_new_render_preset"><code class="docutils literal notranslate"><span class="pre">Project.save_as_new_render_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.set_current_render_format_and_codec"><code class="docutils literal notranslate"><span class="pre">Project.set_current_render_format_and_codec()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.set_current_render_mode"><code class="docutils literal notranslate"><span class="pre">Project.set_current_render_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.set_current_timeline"><code class="docutils literal notranslate"><span class="pre">Project.set_current_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.set_name"><code class="docutils literal notranslate"><span class="pre">Project.set_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.set_preset"><code class="docutils literal notranslate"><span class="pre">Project.set_preset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.set_render_settings"><code class="docutils literal notranslate"><span class="pre">Project.set_render_settings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.set_setting"><code class="docutils literal notranslate"><span class="pre">Project.set_setting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.start_rendering"><code class="docutils literal notranslate"><span class="pre">Project.start_rendering()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.Project.stop_rendering"><code class="docutils literal notranslate"><span class="pre">Project.stop_rendering()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting"><code class="docutils literal notranslate"><span class="pre">RenderSetting</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.AlphaMode"><code class="docutils literal notranslate"><span class="pre">RenderSetting.AlphaMode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.AudioBitDepth"><code class="docutils literal notranslate"><span class="pre">RenderSetting.AudioBitDepth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.AudioCodec"><code class="docutils literal notranslate"><span class="pre">RenderSetting.AudioCodec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.AudioSampleRate"><code class="docutils literal notranslate"><span class="pre">RenderSetting.AudioSampleRate</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.ColorSpaceTag"><code class="docutils literal notranslate"><span class="pre">RenderSetting.ColorSpaceTag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.CustomName"><code class="docutils literal notranslate"><span class="pre">RenderSetting.CustomName</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.EncodingProfile"><code class="docutils literal notranslate"><span class="pre">RenderSetting.EncodingProfile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.ExportAlpha"><code class="docutils literal notranslate"><span class="pre">RenderSetting.ExportAlpha</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.ExportAudio"><code class="docutils literal notranslate"><span class="pre">RenderSetting.ExportAudio</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.ExportVideo"><code class="docutils literal notranslate"><span class="pre">RenderSetting.ExportVideo</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.FormatHeight"><code class="docutils literal notranslate"><span class="pre">RenderSetting.FormatHeight</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.FormatWidth"><code class="docutils literal notranslate"><span class="pre">RenderSetting.FormatWidth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.FrameRate"><code class="docutils literal notranslate"><span class="pre">RenderSetting.FrameRate</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.GammaTag"><code class="docutils literal notranslate"><span class="pre">RenderSetting.GammaTag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.MarkIn"><code class="docutils literal notranslate"><span class="pre">RenderSetting.MarkIn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.MarkOut"><code class="docutils literal notranslate"><span class="pre">RenderSetting.MarkOut</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.MultiPassEncode"><code class="docutils literal notranslate"><span class="pre">RenderSetting.MultiPassEncode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.NetworkOptimization"><code class="docutils literal notranslate"><span class="pre">RenderSetting.NetworkOptimization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.PixelAspectRatio"><code class="docutils literal notranslate"><span class="pre">RenderSetting.PixelAspectRatio</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.SelectAllFrames"><code class="docutils literal notranslate"><span class="pre">RenderSetting.SelectAllFrames</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.TargetDir"><code class="docutils literal notranslate"><span class="pre">RenderSetting.TargetDir</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.UniqueFilenameStyle"><code class="docutils literal notranslate"><span class="pre">RenderSetting.UniqueFilenameStyle</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project.RenderSetting.VideoQuality"><code class="docutils literal notranslate"><span class="pre">RenderSetting.VideoQuality</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.project_manager">pybmd.project_manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager"><code class="docutils literal notranslate"><span class="pre">ProjectManager</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.archive_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.archive_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.close_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.close_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.create_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.create_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.create_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.create_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.database_info"><code class="docutils literal notranslate"><span class="pre">ProjectManager.database_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.delete_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.delete_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.delete_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.delete_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.export_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.export_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.get_current_database"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_current_database()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.get_current_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_current_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.get_database_list"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_database_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_folder_list_in_current_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.get_project_list_in_current_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_project_list_in_current_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.goto_parent_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.goto_parent_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.goto_root_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.goto_root_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.import_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.import_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.load_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.load_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.open_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.open_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.project_manager"><code class="docutils literal notranslate"><span class="pre">ProjectManager.project_manager</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.restore_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.restore_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.save_and_close_current_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.save_and_close_current_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.save_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.save_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.project_manager.ProjectManager.set_current_database"><code class="docutils literal notranslate"><span class="pre">ProjectManager.set_current_database()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.timeline">pybmd.timeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions"><code class="docutils literal notranslate"><span class="pre">ImportOptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.autoImportSourceClipsIntoMediaPool"><code class="docutils literal notranslate"><span class="pre">ImportOptions.autoImportSourceClipsIntoMediaPool</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.ignoreFileExtensionsWhenMatching"><code class="docutils literal notranslate"><span class="pre">ImportOptions.ignoreFileExtensionsWhenMatching</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.importMultiChannelAudioTracksAsLinkedGroups"><code class="docutils literal notranslate"><span class="pre">ImportOptions.importMultiChannelAudioTracksAsLinkedGroups</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.insertAdditionalTracks"><code class="docutils literal notranslate"><span class="pre">ImportOptions.insertAdditionalTracks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.insertWithOffset"><code class="docutils literal notranslate"><span class="pre">ImportOptions.insertWithOffset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.linkToSourceCameraFiles"><code class="docutils literal notranslate"><span class="pre">ImportOptions.linkToSourceCameraFiles</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.sourceClipsFolders"><code class="docutils literal notranslate"><span class="pre">ImportOptions.sourceClipsFolders</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.sourceClipsPath"><code class="docutils literal notranslate"><span class="pre">ImportOptions.sourceClipsPath</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.ImportOptions.useSizingInfo"><code class="docutils literal notranslate"><span class="pre">ImportOptions.useSizingInfo</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline"><code class="docutils literal notranslate"><span class="pre">Timeline</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.add_marker"><code class="docutils literal notranslate"><span class="pre">Timeline.add_marker()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.apply_grade_from_drx"><code class="docutils literal notranslate"><span class="pre">Timeline.apply_grade_from_drx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.create_compound_clip"><code class="docutils literal notranslate"><span class="pre">Timeline.create_compound_clip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.create_fusion_clip"><code class="docutils literal notranslate"><span class="pre">Timeline.create_fusion_clip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.delete_marker_at_frame"><code class="docutils literal notranslate"><span class="pre">Timeline.delete_marker_at_frame()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.delete_marker_by_color"><code class="docutils literal notranslate"><span class="pre">Timeline.delete_marker_by_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.delete_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">Timeline.delete_marker_by_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.duplicate_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.duplicate_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.export"><code class="docutils literal notranslate"><span class="pre">Timeline.export()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_current_clip_thumbnail_image"><code class="docutils literal notranslate"><span class="pre">Timeline.get_current_clip_thumbnail_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_current_timecode"><code class="docutils literal notranslate"><span class="pre">Timeline.get_current_timecode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_current_video_item"><code class="docutils literal notranslate"><span class="pre">Timeline.get_current_video_item()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_end_frame"><code class="docutils literal notranslate"><span class="pre">Timeline.get_end_frame()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_item_list_in_track"><code class="docutils literal notranslate"><span class="pre">Timeline.get_item_list_in_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">Timeline.get_marker_by_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">Timeline.get_marker_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_markers"><code class="docutils literal notranslate"><span class="pre">Timeline.get_markers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_name"><code class="docutils literal notranslate"><span class="pre">Timeline.get_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_setting"><code class="docutils literal notranslate"><span class="pre">Timeline.get_setting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_start_frame"><code class="docutils literal notranslate"><span class="pre">Timeline.get_start_frame()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_start_timecode"><code class="docutils literal notranslate"><span class="pre">Timeline.get_start_timecode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_track_count"><code class="docutils literal notranslate"><span class="pre">Timeline.get_track_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_track_name"><code class="docutils literal notranslate"><span class="pre">Timeline.get_track_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.get_unique_id"><code class="docutils literal notranslate"><span class="pre">Timeline.get_unique_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.grab_all_stills"><code class="docutils literal notranslate"><span class="pre">Timeline.grab_all_stills()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.grab_still"><code class="docutils literal notranslate"><span class="pre">Timeline.grab_still()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.import_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.import_into_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_fusion_composition_into_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_fusion_generator_into_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.insert_fusion_title_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_fusion_title_into_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.insert_generator_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_generator_into_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.insert_oFX_generator_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_oFX_generator_into_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.insert_title_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_title_into_timeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.set_current_timecode"><code class="docutils literal notranslate"><span class="pre">Timeline.set_current_timecode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.set_name"><code class="docutils literal notranslate"><span class="pre">Timeline.set_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.set_setting"><code class="docutils literal notranslate"><span class="pre">Timeline.set_setting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.set_start_timecode"><code class="docutils literal notranslate"><span class="pre">Timeline.set_start_timecode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.set_track_name"><code class="docutils literal notranslate"><span class="pre">Timeline.set_track_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.Timeline.update_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">Timeline.update_marker_custom_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.timeline.TrackType"><code class="docutils literal notranslate"><span class="pre">TrackType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.TrackType.AUDIO_TRACK"><code class="docutils literal notranslate"><span class="pre">TrackType.AUDIO_TRACK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.TrackType.SUBTITLE_TRACK"><code class="docutils literal notranslate"><span class="pre">TrackType.SUBTITLE_TRACK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline.TrackType.VIDEO_TRACK"><code class="docutils literal notranslate"><span class="pre">TrackType.VIDEO_TRACK</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.timeline.timeline_item_class_list_transfer"><code class="docutils literal notranslate"><span class="pre">timeline_item_class_list_transfer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.timeline_item">pybmd.timeline_item</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.CDL_Map"><code class="docutils literal notranslate"><span class="pre">CDL_Map</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.CDL_Map.NodeIndex"><code class="docutils literal notranslate"><span class="pre">CDL_Map.NodeIndex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.CDL_Map.Offset"><code class="docutils literal notranslate"><span class="pre">CDL_Map.Offset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.CDL_Map.Power"><code class="docutils literal notranslate"><span class="pre">CDL_Map.Power</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.CDL_Map.Saturation"><code class="docutils literal notranslate"><span class="pre">CDL_Map.Saturation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.CDL_Map.Slope"><code class="docutils literal notranslate"><span class="pre">CDL_Map.Slope</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem"><code class="docutils literal notranslate"><span class="pre">TimelineItem</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.add_flag"><code class="docutils literal notranslate"><span class="pre">TimelineItem.add_flag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.add_fusion_comp"><code class="docutils literal notranslate"><span class="pre">TimelineItem.add_fusion_comp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.add_marker"><code class="docutils literal notranslate"><span class="pre">TimelineItem.add_marker()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.add_take"><code class="docutils literal notranslate"><span class="pre">TimelineItem.add_take()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.add_version"><code class="docutils literal notranslate"><span class="pre">TimelineItem.add_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.clear_clip_color"><code class="docutils literal notranslate"><span class="pre">TimelineItem.clear_clip_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.clear_flags"><code class="docutils literal notranslate"><span class="pre">TimelineItem.clear_flags()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.copy_grades"><code class="docutils literal notranslate"><span class="pre">TimelineItem.copy_grades()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.delet_marker_at_frame"><code class="docutils literal notranslate"><span class="pre">TimelineItem.delet_marker_at_frame()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name"><code class="docutils literal notranslate"><span class="pre">TimelineItem.delete_fusion_comp_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.delete_marker_by_color"><code class="docutils literal notranslate"><span class="pre">TimelineItem.delete_marker_by_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.delete_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">TimelineItem.delete_marker_by_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.delete_take_by_index"><code class="docutils literal notranslate"><span class="pre">TimelineItem.delete_take_by_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.delete_version_by_name"><code class="docutils literal notranslate"><span class="pre">TimelineItem.delete_version_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.export_fusion_comp"><code class="docutils literal notranslate"><span class="pre">TimelineItem.export_fusion_comp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.finalize_take"><code class="docutils literal notranslate"><span class="pre">TimelineItem.finalize_take()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_clip_color"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_clip_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_current_version"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_current_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_duration"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_end"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_end()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_flag_list"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_flag_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_by_index"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_fusion_comp_by_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_by_name"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_fusion_comp_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_count"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_fusion_comp_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_name_list"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_fusion_comp_name_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_left_offset"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_left_offset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_lut"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_lut()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_marker_by_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_marker_custom_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_markers"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_markers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_media_pool_item"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_media_pool_item()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_name"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_num_node"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_num_node()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_property"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_property()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_right_offset"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_right_offset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_selected_take_index"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_selected_take_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_start"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_stereo_convergence_values"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_stereo_convergence_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_stereo_left_floating_window_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_stereo_right_floating_window_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_take_by_index"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_take_by_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_takes_count"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_takes_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_unique_id"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_unique_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.get_version_name_list"><code class="docutils literal notranslate"><span class="pre">TimelineItem.get_version_name_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.import_fusion_comp"><code class="docutils literal notranslate"><span class="pre">TimelineItem.import_fusion_comp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name"><code class="docutils literal notranslate"><span class="pre">TimelineItem.load_fusion_comp_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.load_version_by_name"><code class="docutils literal notranslate"><span class="pre">TimelineItem.load_version_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name"><code class="docutils literal notranslate"><span class="pre">TimelineItem.rename_fusion_comp_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.rename_version_by_name"><code class="docutils literal notranslate"><span class="pre">TimelineItem.rename_version_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.select_take_by_index"><code class="docutils literal notranslate"><span class="pre">TimelineItem.select_take_by_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.set_cdl"><code class="docutils literal notranslate"><span class="pre">TimelineItem.set_cdl()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.set_clip_color"><code class="docutils literal notranslate"><span class="pre">TimelineItem.set_clip_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.set_lut"><code class="docutils literal notranslate"><span class="pre">TimelineItem.set_lut()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.TimelineItem.update_sidecar"><code class="docutils literal notranslate"><span class="pre">TimelineItem.update_sidecar()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.VersionType"><code class="docutils literal notranslate"><span class="pre">VersionType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.VersionType.LOCAL"><code class="docutils literal notranslate"><span class="pre">VersionType.LOCAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pybmd.html#pybmd.timeline_item.VersionType.REMOTE"><code class="docutils literal notranslate"><span class="pre">VersionType.REMOTE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.html#module-pybmd.toolkits">pybmd.toolkits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.toolkits.add_subfolders"><code class="docutils literal notranslate"><span class="pre">add_subfolders()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.toolkits.change_timeline_resolution"><code class="docutils literal notranslate"><span class="pre">change_timeline_resolution()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.toolkits.get_all_timeline"><code class="docutils literal notranslate"><span class="pre">get_all_timeline()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.toolkits.get_subfolder"><code class="docutils literal notranslate"><span class="pre">get_subfolder()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pybmd.html#pybmd.toolkits.get_timeline"><code class="docutils literal notranslate"><span class="pre">get_timeline()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</section>
 
 
 	    </div>
@@ -179,16 +584,22 @@
             HAS_SOURCE:  true
         };
     </script>
+    <script type="text/javascript" src="_static/documentation_options.js">
+
+    </script>
     <script type="text/javascript" src="_static/jquery.js">
 
     </script>
     <script type="text/javascript" src="_static/underscore.js">
 
     </script>
+    <script type="text/javascript" src="_static/_sphinx_javascript_frameworks_compat.js">
+
+    </script>
     <script type="text/javascript" src="_static/doctools.js">
 
     </script>
-    <script type="text/javascript" src="_static/language_data.js">
+    <script type="text/javascript" src="_static/sphinx_highlight.js">
 
     </script>
 

@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="../../_static/css/pdj.css" type="text/css" />
 
   
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/pdj.css" type="text/css" />
+  
 
   
 
@@ -59,7 +63,7 @@
 	
           
           
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../modules.html">pybmd</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pybmd.html">pybmd.bmd</a></li>
@@ -173,7 +177,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span> <span class="o">=</span> <span class="n">timeline</span>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Timeline:f{self.get_name()}&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Timeline:f</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
 
 <div class="viewcode-block" id="Timeline.add_marker"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.add_marker">[docs]</a>    <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Creates a new marker at given frameId position and with given marker information. </span>
@@ -475,16 +479,22 @@
             HAS_SOURCE:  true
         };
     </script>
+    <script type="text/javascript" src="../../_static/documentation_options.js">
+
+    </script>
     <script type="text/javascript" src="../../_static/jquery.js">
 
     </script>
     <script type="text/javascript" src="../../_static/underscore.js">
 
     </script>
+    <script type="text/javascript" src="../../_static/_sphinx_javascript_frameworks_compat.js">
+
+    </script>
     <script type="text/javascript" src="../../_static/doctools.js">
 
     </script>
-    <script type="text/javascript" src="../../_static/language_data.js">
+    <script type="text/javascript" src="../../_static/sphinx_highlight.js">
 
     </script>
 
