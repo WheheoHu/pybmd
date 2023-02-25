@@ -26,10 +26,10 @@ class RenderSetting():
     FormatWidth: int
     FormatHeight: int
     FrameRate: float
-    
+
     # (for SD resolution: "16_9" or "4_3") (other resolutions: "square" or "cinemascope")
     PixelAspectRatio: str
-    
+
     #  possible values for current codec (if applicable):
     #  0(int) - will set quality to automatic
     # [1 -> MAX] (int) - will set input bit rate
@@ -39,25 +39,26 @@ class RenderSetting():
     AudioCodec: str
     AudioBitDepth: int
     AudioSampleRate: int
-    
+
     # example: "Same as Project", "AstroDesign"
-    ColorSpaceTag: str  
-    
+    ColorSpaceTag: str
+
     # example: "Same as Project", "ACEScct"
-    GammaTag: str  
+    GammaTag: str
     ExportAlpha: bool
-    
+
     # (example: "Main10"). Can only be set for H.264 and H.265.
     EncodingProfile: str
-    
+
     # Can onlt be set for H.264.
-    MultiPassEncode: bool  
-    
+    MultiPassEncode: bool
+
     # 0 - Premultipled, 1 - Straight. Can only be set if "ExportAlpha" is true.
     AlphaMode: int
 
     # Only supported by QuickTime and MP4 formats.
-    NetworkOptimization: bool 
+    NetworkOptimization: bool
+
 
 class Project():
     """Project Object"""
@@ -68,6 +69,7 @@ class Project():
     def __init__(self, _project, _project_name: str):
         self.project_name = _project_name
         self.project = _project
+
     def __repr__(self) -> str:
         return f'Project:{self.get_name()}'
 
@@ -155,15 +157,15 @@ class Project():
         Returns:
             RenderResolution: Returns full list of resolutions if no argument is provided. Each element in the list is a dictionary with 2 keys "Width" and "Height".
         """
-        #Sample: current_project.get_render_resolutions(format='mp4',codec='h264')
+        # Sample: current_project.get_render_resolutions(format='mp4',codec='h264')
         return self.project.GetRenderResolutions(format, codec)
 
-    def get_setting(self, setting_name: str="") -> str:
+    def get_setting(self, setting_name: str = "") -> str:
         """Returns value of project setting (indicated by setting_name, string). """
         # call *without parameters/NoneType * to get a snapshot of all queryable properties
         return self.project.GetSetting(setting_name)
 
-    def get_timeline_by_index(self, idx) ->Timeline:
+    def get_timeline_by_index(self, idx) -> Timeline:
         """Returns Timeline at the given index, 1 <= idx <= project.get_timeline_count()"""
         return Timeline(timeline=self.project.GetTimelineByIndex(idx))
 
@@ -222,7 +224,7 @@ class Project():
 
         Returns:
             bool: True if successful.
-        """     
+        """
         if type(render_setting) is dict:
             return self.project.SetRenderSettings(render_setting)
         else:
@@ -237,7 +239,7 @@ class Project():
 
         Returns:
             _type_: True if successful.
-        """        
+        """
         return self.project.SetSetting(setting_name, setting_value)
 
     def start_rendering(self, job_ids: list, is_interactive_mode=False) -> bool:
@@ -249,13 +251,26 @@ class Project():
     def stop_rendering(self):
         """Stops rendering."""
         return self.project.StopRendering()
-    
+
     ##############################################################################################################################
-    #Add at DR18.0.0
+    # Add at DR18.0.0
 
     def get_unique_id(self) -> str:
         """Returns unique id of the project Object."""
         return self.project.GetUniqueId()
 
+    ##############################################################################################################################
+    # Add at DR18.1.3
 
-    
+    def insert_audio_to_current_track_at_playhead(self, media_path: str, start_offset_in_samples: int, duration_in_samples: int) -> bool:
+        """Inserts the media specified by mediaPath (string) with startOffsetInSamples (int) and durationInSamples (int) at the playhead on a selected track on the Fairlight page. 
+        
+        Args:
+            media_path (str)
+            start_offset_in_samples (int)
+            duration_in_samples (int)
+
+        Returns:
+            bool: Returns True if successful, otherwise False.
+        """        
+        return self.project.InsertAudioToCurrentTrackAtPlayhead(media_path, start_offset_in_samples, duration_in_samples)
