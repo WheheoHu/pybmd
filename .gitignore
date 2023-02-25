@@ -17,3 +17,5 @@ project_builder.py
 .idea/
 .venv310
 test
+.venv311
+.pytest_cache
