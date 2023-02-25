@@ -6,6 +6,8 @@
 	<string>pybmd</string>
 	<key>CFBundleName</key>
 	<string>pybmd</string>
+	<key>DashDocSetDeclaredInStyle</key>
+	<string>originalName</string>
 	<key>DashDocSetFamily</key>
 	<string>python</string>
 	<key>DocSetPlatformFamily</key>

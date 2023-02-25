@@ -223,10 +223,9 @@ class Timeline():
         Returns:
             List[GalleryStill]: List of GalleryStill objects containing grabbed stills.
         """
-        gallery_stills_list = []
-        for gallery_still in self.timeline.GrabAllStills(still_frame_source):
-            gallery_stills_list.append(gallery_still)
-        return gallery_stills_list
+
+        return [GalleryStill(gallery_still) for gallery_still in self.timeline.GrabAllStills(still_frame_source)]
+
 
     def grab_still(self) -> GalleryStill:
         """Grabs still from the current video clip. Returns a GalleryStill object."""

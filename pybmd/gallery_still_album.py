@@ -50,13 +50,12 @@ class GalleryStillAlbum():
         Returns:
             bool: function returns true if export was successful, false otherwise
         """
-        gallery_still_list = get_gallery_still_list_from_class_list(
-            gallery_stills)
+        gallery_still_list = [still.gallery_still for still in gallery_stills]
         return self.gallery_still_album.ExportStills(gallery_still_list, str(folder_path), file_prefix, format.value)
 
     def get_label(self, gallery_still: GalleryStill) -> str:
         """Returns label of given gallery still."""
-        return self.gallery_still_album.GetLabel(gallery_still)
+        return self.gallery_still_album.GetLabel(gallery_still.gallery_still)
 
     def get_stills(self) -> List[GalleryStill]:
         """Returns list of GalleryStill objects in this album."""
