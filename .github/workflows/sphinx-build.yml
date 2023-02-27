@@ -59,12 +59,13 @@ jobs:
       
       - name: doc2dash generate dash docset.
         run: |
-          doc2dash ./gh-pages -d ./gh-pages/dash_doc -n pybmd -i ./docs/dash_docset_icon/DR.png 
-          cd gh-pages
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "update dash docset" -a || true
+          tree .
+          # doc2dash ./gh-pages -d ./gh-pages/dash_doc -n pybmd -i ./docs/dash_docset_icon/DR.png 
+          # cd gh-pages
+          # git config --local user.email "action@github.com"
+          # git config --local user.name "GitHub Action"
+          # git add .
+          # git commit -m "update dash docset" -a || true
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
