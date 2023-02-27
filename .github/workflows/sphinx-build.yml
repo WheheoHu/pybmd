@@ -63,10 +63,9 @@ jobs:
           
           tree 
           mkdir ./gh-pages/dash_doc
-          doc2dash ./gh-pages 
+          doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/DR.png 
           # -d ./gh-pages/dash_doc
-          # -n pybmd -i ./docs/dash_docset_icon/DR.png 
-          tree 
+          cp pybmd.docset ./gh-pages/dash_doc/
           cd gh-pages
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
