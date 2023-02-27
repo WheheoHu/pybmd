@@ -65,7 +65,7 @@ jobs:
           mkdir ./gh-pages/dash_doc
           doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/DR.png 
           # -d ./gh-pages/dash_doc
-          cp pybmd.docset ./gh-pages/dash_doc/
+          cp -R pybmd.docset ./gh-pages/dash_doc/pybmd.docset
           cd gh-pages
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
