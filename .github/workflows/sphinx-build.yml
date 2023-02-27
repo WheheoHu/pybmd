@@ -45,9 +45,32 @@ jobs:
     # ===============================
 
   doc2dash:
+    needs: build_push
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - name: install doc2dash
         run: |
           brew install hynek/tap/doc2dash
+      
+      - name: clone gh-pages branch.
+        run: |
+          git clone https://github.com/WheheoHu/pybmd.git --branch gh-pages --single-branch gh-pages
+      
+      - name: doc2dash generate dash docset.
+        run: |
+          doc2dash -d gh-pages/dash_doc -i docs/dash_docset_icon/DR.png gh-pages
+          cd gh-pages
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "update dash docset" -a || true
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}    
+        
+
+
