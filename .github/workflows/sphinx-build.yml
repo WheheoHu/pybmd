@@ -59,7 +59,8 @@ jobs:
       
       - name: doc2dash generate dash docset.
         run: |
-          tree .
+          brew install tree
+          tree 
           # doc2dash ./gh-pages -d ./gh-pages/dash_doc -n pybmd -i ./docs/dash_docset_icon/DR.png 
           # cd gh-pages
           # git config --local user.email "action@github.com"
