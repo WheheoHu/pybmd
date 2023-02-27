@@ -78,5 +78,9 @@ jobs:
           directory: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}    
 
-
+      - name: upload dash doc as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dash_docset
+          path: ./gh-pages/dash_doc/pybmd.docset
 
