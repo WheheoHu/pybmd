@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  build_push:
 
     runs-on: ubuntu-latest
 
@@ -43,3 +43,11 @@ jobs:
         directory: gh-pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
     # ===============================
+
+  doc2dash:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install doc2dash
+        run: |
+          brew install hynek/tap/doc2dash
