@@ -39,7 +39,8 @@ jobs:
     
     - name: git subm
       run: |
-        git rm --cached dash_doc/pybmd.docset/Contents/Resources/Documents
+        git submodule update --init
+        # git rm --cached dash_doc/pybmd.docset/Contents/Resources/Documents
 
     - name: Push changes
       uses: ad-m/github-push-action@master
