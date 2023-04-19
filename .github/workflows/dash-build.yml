@@ -1,18 +1,57 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on: 
+  workflow_run:
+    workflows: ["CI build"]
+    types:
+      - completed
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+  doc2dash:
+    runs-on: macos-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - uses: actions/checkout@v3
+      - name: install doc2dash
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          brew install hynek/tap/doc2dash
+          brew install tree
+
+      - name: clone gh-pages branch.
+        run: |
+          git clone https://github.com/WheheoHu/pybmd.git --branch gh-pages --single-branch gh-pages
+
+      - name: Remove File
+        uses: JesseTG/rm@v1.0.0
+        with:
+          path: ./gh-pages/dash_doc/pybmd.docset
+        
+      - name: doc2dash generate dash docset.
+        run: |
+
+          #tree 
+          doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/icon@2x.png
+          # -d ./gh-pages/dash_doc
+          cp -R pybmd.docset ./gh-pages/dash_doc/pybmd.docset
+          cd gh-pages
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "update dash docset" -a || true
+
+         
+
+      - name: upload dash doc as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dash_docset
+          path: ./gh-pages/dash_doc/pybmd.docset
+          
+      - name: Remove File
+        uses: JesseTG/rm@v1.0.0
+        with:
+          path: ./gh-pages/dash_doc/pybmd.docset
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }} 
