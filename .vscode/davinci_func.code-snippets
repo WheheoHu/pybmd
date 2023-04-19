@@ -18,7 +18,7 @@
 	"Davinci python func":{
 		"scope": "python",
 		"prefix": "ded",
-		"body": ["def ${2:method_name}(self,$5${3:arg1}) -> ${4:ReturnType}:",
+		"body": ["def ${2:method_name}(self,$5${3:arg1}$6) -> ${4:ReturnType}:",
 				"    return self.$TM_FILENAME_BASE.${2/_([a-z])|^([a-z])/${1:/upcase}${2:/upcase}/gm}($3)"
 		],
 		"description": "davinci python func"

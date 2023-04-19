@@ -279,3 +279,18 @@ class MediaPool():
         """get unique id of media pool object"""
         return self.media_pool.GetUniqueId()
     
+    ##########################################################################################################################
+    #Add at DR18.5.0
+    
+    def import_folder_from_file(self,file_path:str,source_clips_path:str) -> bool:
+        """Returns true if import from given DRB filePath is successful, false otherwise
+
+        Args:
+            file_path (str): file path to DRB file
+            source_clips_path (str): sourceClipsPath is a string that specifies a filesystem path to search for source clips if the media is inaccessible in their original path, empty by default
+
+        Returns:
+            bool: Returns true if import from given DRB filePath is successful, false otherwise
+        """        
+        return self.media_pool.ImportFolderFromFile(file_path,source_clips_path)
+    

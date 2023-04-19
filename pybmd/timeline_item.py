@@ -360,4 +360,55 @@ class TimelineItem():
         """Returns a unique ID for the timeline item"""
         return self.timeline_item.GetUniqueId()
 
-    ########################################################################################################################
+    ##########################################################################################################################
+    # Add at DR18.5.0
+    
+    def apply_arri_cdl_lut(self) -> bool:
+        """Applies ARRI CDL and LUT.
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+        """        
+        return self.timeline_item.ApplyArriCdlLut()
+    
+    def set_clip_enabled(self,bool_value:bool) -> bool:
+        """Sets clip enabled based on argument.
+
+        Args:
+            bool_value (bool): Sets clip enabled based on argument.
+
+        Returns:
+            bool: True for clip is enabled
+        """        
+        return self.timeline_item.SetClipEnabled(bool_value)
+    
+    def get_clip_enabled(self) -> bool:
+        """Gets clip enabled status.
+
+        Returns:
+            bool: clip enabled status 
+        """        
+        return self.timeline_item.GetClipEnabled()
+    
+    def load_burn_in_preset(self,preset_name:str) -> bool:
+        """Loads user defined data burn in preset for clip when supplied presetName (string). Returns true if successful.
+
+        Args:
+            preset_name (str): burn-in preset name
+
+        Returns:
+            bool: Returns true if successful
+        """        
+        return self.timeline_item.LoadBurnInPreset(preset_name)
+    
+    def get_node_label(self,node_index:int) -> str:
+        """Returns the label of the node at nodeIndex.
+
+        Args:
+            node_index (int): node index
+
+        Returns:
+            str: node label
+        """        
+        return self.timeline_item.GetNodeLabel(node_index)
+    

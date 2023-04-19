@@ -274,3 +274,17 @@ class Project():
             bool: Returns True if successful, otherwise False.
         """        
         return self.project.InsertAudioToCurrentTrackAtPlayhead(media_path, start_offset_in_samples, duration_in_samples)
+
+    ##############################################################################################################################
+    # Add at DR18.5.0
+    
+    def load_burn_in_preset(self,preset_name:str) -> bool:
+        """Loads user defined data burn in preset for project when supplied presetName (string). 
+
+        Args:
+            preset_name (str): preset name
+
+        Returns:
+            bool: Returns true if successful.
+        """        
+        return self.project.LoadBurnInPreset(preset_name)

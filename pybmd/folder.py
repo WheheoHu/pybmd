@@ -39,5 +39,16 @@ class Folder():
         return self.folder.GetUniqueId()
     
     ###########################################################################
+    #Add at DR18.5.0
+    def export(self,file_path:str) -> bool:
+        """Returns true if export of DRB folder to filePath is successful, false otherwise
+
+        Args:
+            file_path (str): file path to export DRB file
+
+        Returns:
+            bool: Returns true if export of DRB folder to filePath is successful, false otherwise
+        """        
+        return self.folder.Export(file_path)   
     
     
