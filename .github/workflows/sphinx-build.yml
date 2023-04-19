@@ -57,10 +57,15 @@ jobs:
       - name: clone gh-pages branch.
         run: |
           git clone https://github.com/WheheoHu/pybmd.git --branch gh-pages --single-branch gh-pages
-      
+          
+      - name: Remove File
+        uses: JesseTG/rm@v1.0.0
+        with:
+          path: ./gh-pages/dash_doc/
+        
       - name: doc2dash generate dash docset.
         run: |
-          
+
           #tree 
           doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/icon@2x.png
           # -d ./gh-pages/dash_doc
