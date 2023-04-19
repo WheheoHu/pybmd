@@ -61,7 +61,7 @@ jobs:
       - name: Remove File
         uses: JesseTG/rm@v1.0.0
         with:
-          path: ./gh-pages/dash_doc/*
+          path: ./gh-pages/dash_doc/pybmd.docset
         
       - name: doc2dash generate dash docset.
         run: |
@@ -87,7 +87,7 @@ jobs:
       - name: Remove File
         uses: JesseTG/rm@v1.0.0
         with:
-          path: ./gh-pages/dash_doc/*
+          path: ./gh-pages/dash_doc/pybmd.docset
 
       - name: Push changes
         uses: ad-m/github-push-action@master
