@@ -83,11 +83,11 @@ jobs:
         with:
           name: dash_docset
           path: ./gh-pages/dash_doc/pybmd.docset
-        
-      - name: Checkout submodules
-        uses: srt32/git-actions@v0.0.3
+          
+      - name: Remove File
+        uses: JesseTG/rm@v1.0.0
         with:
-          args: git submodule update --init --recursive
+          path: ./gh-pages/dash_doc/*
 
       - name: Push changes
         uses: ad-m/github-push-action@master
