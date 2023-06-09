@@ -6,6 +6,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="">
+    <link rel="icon" type="image/x-icon" href="">
 
   
   <title>pybmd.media_storage &mdash; pybmd 2022.5.1 documentation</title>
@@ -16,8 +18,9 @@
   
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" href="../../_static/css/pdj.css" type="text/css" />
 
+
+  <link rel="stylesheet" href="../../_static/css/img.css" type="text/css"/>
   
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   
@@ -26,7 +29,7 @@
 
   
 
-  
+  <link rel="stylesheet" href="../../_static/css/darker.css" type="text/css" media="(prefers-color-scheme: dark)"/>
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
@@ -38,8 +41,9 @@
     <meta name="robots" content="follow, all" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Add jQuery library -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script type="module" src="https://googlechromelabs.github.io/dark-mode-toggle/src/dark-mode-toggle.mjs"></script>
 
   </head>
 
@@ -48,14 +52,19 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
+	
         <a href="../../index.html" class="fa fa-home"> pybmd </a>
+	
+	
         <div role="search">
+	  
 	  <form id ="rtd-search-form" class="wy-form"
 		action="../../search.html" method="get">
 	    <input type="text" name="q" placeholder="Search docs" />
 	    <input type="hidden" name="check_keywords" value="yes" />
 	    <input type="hidden" name="area" value="default" />
 	  </form>
+	  
 	</div>
       </div>
 
@@ -94,7 +103,7 @@
 
       <nav class="wy-nav-top" id="barra-mobile" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">Porão do Juca</a>
+        <a href="#">pybmd </a>
       </nav>
 
       <div class="wy-nav-content">
@@ -118,10 +127,13 @@
 	    <!-- </ul> -->
 	    <!-- <hr/> -->
 	  </div>
-
           <div role="main" class="">
 
 	    <div id="content" class="hfeed entry-container hentry">
+      	<div id="dark-mode-toggle-container">
+	  <dark-mode-toggle appearance="toggle" dark="switch to light mode" light="switch to dark mode">
+	  </dark-mode-toggle>
+	</div>
   <h1>Source code for pybmd.media_storage</h1><div class="highlight"><pre>
 <span></span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
@@ -220,7 +232,7 @@
     </p>
   </div>
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/jucacrispim/sphinx_pdj_theme">theme</a> provided by <a href="http://poraodojuca.net">Porão do Juca</a>.
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/jucacrispim/sphinx_pdj_theme">theme</a> provided by <a href="https://poraodojuca.dev">Porão do Juca</a>.
 
 </footer>
 	</div>

@@ -1,7 +1,12 @@
 @import url("theme.css");
 
+:root {
+    --dark-mode-toggle-icon-size: 1.5rem;
+}
+
 .wy-side-nav-search{
     background-color: #595C5E;
+    margin-bottom: 0;
 }
 
 .wy-side-nav-search input[type=text] {
@@ -16,11 +21,6 @@
     margin-left: 200px;
     background: #343131;
 }
-}
-@media screen and (max-width: 768px) {
-    .wy-nav-content{
-	background-color: #343131;
-    }
 }
 
 .wy-nav-top{
@@ -491,4 +491,19 @@ footer {
 .highlight-cfg .s {
     color: #57de4e;
     font-weight: normal;
+}
+
+#dark-mode-toggle-container {
+    float: right;
+}
+
+.wy-side-nav-search img {
+  display: block;
+  margin: auto auto 0.809em auto;
+  height: 100%;
+  width: 100%;
+  background-color: inherit;
+  padding: 5px;
+  border-radius: 0;
+  padding-right: 22px;
 }

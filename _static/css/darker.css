@@ -7,7 +7,7 @@ body, .entry-container,
 code, .rst-content tt,
 .wy-side-nav-search > a:hover, .wy-side-nav-search .wy-dropdown > a:hover,
 .wy-nav-content{
-    background-color: rgb(24, 26, 27) !important;
+    background-color: rgb(24, 26, 27);
 }
 
 h2 a, h2 a:visited, h2 a:hover {
@@ -55,14 +55,8 @@ codeblock, pre.literal-block, .rst-content .literal-block, .rst-content pre.lite
     width: 224px;
 }
 .wy-nav-content-wrap{
-    margin-left: 200px;
     background:rgb(24, 26, 27);
 }
-}
-
-.wy-nav-content-wrap{
-    margin-left: 200px;
-    background: #343131;
 }
 
 .hentry {
