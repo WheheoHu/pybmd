@@ -1,4 +1,4 @@
-Updated as of 26 May 2023
+Updated as of 22 Nov 2022
 ----------------------------
 In this package, you will find a brief introduction to the Scripting API for DaVinci Resolve Studio. Apart from this README.txt file, this package contains folders containing the basic import
 modules for scripting access (DaVinciResolve.py) and some representative examples.
@@ -174,7 +174,6 @@ Project
   InsertAudioToCurrentTrackAtPlayhead(mediaPath,  --> Bool               # Inserts the media specified by mediaPath (string) with startOffsetInSamples (int) and durationInSamples (int) at the playhead on a selected track on the Fairlight page. Returns True if successful, otherwise False.
           startOffsetInSamples, durationInSamples)
   LoadBurnInPreset(presetName)                    --> Bool               # Loads user defined data burn in preset for project when supplied presetName (string). Returns true if successful.
-  ExportCurrentFrameAsStill(filePath)             --> Bool               # Exports current frame as still to supplied filePath. filePath must end in valid export file format. Returns True if succssful, False otherwise.
 
 MediaStorage
   GetMountedVolumeList()                          --> [paths...]         # Returns list of folder paths corresponding to mounted volumes displayed in Resolve’s Media Storage.
@@ -183,7 +182,6 @@ MediaStorage
   RevealInStorage(path)                           --> Bool               # Expands and displays given file/folder path in Resolve’s Media Storage.
   AddItemListToMediaPool(item1, item2, ...)       --> [clips...]         # Adds specified file/folder paths from Media Storage into current Media Pool folder. Input is one or more file/folder paths. Returns a list of the MediaPoolItems created.
   AddItemListToMediaPool([items...])              --> [clips...]         # Adds specified file/folder paths from Media Storage into current Media Pool folder. Input is an array of file/folder paths. Returns a list of the MediaPoolItems created.
-  AddItemListToMediaPool([{itemInfo}, ...])       --> [clips...]         # Adds list of itemInfos specified as dict of "media", "startFrame" (int), "endFrame" (int) from Media Storage into current Media Pool folder. Returns a list of the MediaPoolItems created.
   AddClipMattesToMediaPool(MediaPoolItem, [paths], stereoEye) --> Bool   # Adds specified media files as mattes for the specified MediaPoolItem. StereoEye is an optional argument for specifying which eye to add the matte to for stereo clips ("left" or "right"). Returns True if successful.
   AddTimelineMattesToMediaPool([paths])           --> [MediaPoolItems]   # Adds specified media files as timeline mattes in current media pool folder. Returns a list of created MediaPoolItems.
 
@@ -194,10 +192,10 @@ MediaPool
   CreateEmptyTimeline(name)                       --> Timeline           # Adds new timeline with given name.
   AppendToTimeline(clip1, clip2, ...)             --> [TimelineItem]     # Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
   AppendToTimeline([clips])                       --> [TimelineItem]     # Appends specified MediaPoolItem objects in the current timeline. Returns the list of appended timelineItems.
-  AppendToTimeline([{clipInfo}, ...])             --> [TimelineItem]     # Appends list of clipInfos specified as dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int), (optional) "mediaType" (int; 1 - Video only, 2 - Audio only), "trackIndex" (int) and "recordFrame" (int). Returns the list of appended timelineItems.
+  AppendToTimeline([{clipInfo}, ...])             --> [TimelineItem]     # Appends list of clipInfos specified as dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int), (optional) "mediaType" (int; 1 - Video only, 2 - Audio only). Returns the list of appended timelineItems.
   CreateTimelineFromClips(name, clip1, clip2,...) --> Timeline           # Creates new timeline with specified name, and appends the specified MediaPoolItem objects.
   CreateTimelineFromClips(name, [clips])          --> Timeline           # Creates new timeline with specified name, and appends the specified MediaPoolItem objects.
-  CreateTimelineFromClips(name, [{clipInfo}])     --> Timeline           # Creates new timeline with specified name, appending the list of clipInfos specified as a dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int), "recordFrame" (int).
+  CreateTimelineFromClips(name, [{clipInfo}])     --> Timeline           # Creates new timeline with specified name, appending the list of clipInfos specified as a dict of "mediaPoolItem", "startFrame" (int), "endFrame" (int).
   ImportTimelineFromFile(filePath, {importOptions}) --> Timeline         # Creates timeline based on parameters within given file (AAF/EDL/XML/FCPXML/DRT/ADL) and optional importOptions dict, with support for the keys:
                                                                          # "timelineName": string, specifies the name of the timeline to be created. Not valid for DRT import
                                                                          # "importSourceClips": Bool, specifies whether source clips should be imported, True by default. Not valid for DRT import
@@ -265,8 +263,6 @@ MediaPoolItem
   UnlinkProxyMedia()                              --> Bool               # Unlinks any proxy media associated with clip.
   ReplaceClip(filePath)                           --> Bool               # Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path.
   GetUniqueId()                                   --> string             # Returns a unique ID for the media pool item
-  TranscribeAudio()                               --> Bool               # Transcribes audio of the MediaPoolItem. Returns True if successful; False otherwise
-  ClearTranscription()                            --> Bool               # Clears audio transcription of the MediaPoolItem. Returns True if successful; False otherwise.
 
 Timeline
   GetName()                                       --> string             # Returns the timeline name.
@@ -276,23 +272,6 @@ Timeline
   SetStartTimecode(timecode)                      --> Bool               # Set the start timecode of the timeline to the string 'timecode'. Returns true when the change is successful, false otherwise.
   GetStartTimecode()                              --> string             # Returns the start timecode for the timeline.
   GetTrackCount(trackType)                        --> int                # Returns the number of tracks for the given track type ("audio", "video" or "subtitle").
-  AddTrack(trackType, optionalSubTrackType)       --> Bool               # Adds track of trackType ("video", "subtitle", "audio"). Second argument optionalSubTrackType is required for "audio"
-                                                                         # optionalSubTrackType can be one of {"mono", "stereo", "5.1", "5.1film", "7.1", "7.1film", "adaptive1", ... , "adaptive24"}
-  DeleteTrack(trackType, trackIndex)              --> Bool               # Deletes track of trackType ("video", "subtitle", "audio") and given trackIndex. 1 <= trackIndex <= GetTrackCount(trackType).
-  SetTrackEnable(trackType, trackIndex, Bool)     --> Bool               # Enables/Disables track with given trackType and trackIndex
-                                                                         # trackType is one of {"audio", "video", "subtitle"}
-                                                                         # 1 <= trackIndex <= GetTrackCount(trackType).
-  GetIsTrackEnabled(trackType, trackIndex)        --> Bool               # Returns True if track with given trackType and trackIndex is enabled and False otherwise.
-                                                                         # trackType is one of {"audio", "video", "subtitle"}
-                                                                         # 1 <= trackIndex <= GetTrackCount(trackType).
-  SetTrackLock(trackType, trackIndex, Bool)       --> Bool               # Locks/Unlocks track with given trackType and trackIndex
-                                                                         # trackType is one of {"audio", "video", "subtitle"}
-                                                                         # 1 <= trackIndex <= GetTrackCount(trackType).
-  GetIsTrackLocked(trackType, trackIndex)         --> Bool               # Returns True if track with given trackType and trackIndex is locked and False otherwise.
-                                                                         # trackType is one of {"audio", "video", "subtitle"}
-                                                                         # 1 <= trackIndex <= GetTrackCount(trackType).
-  DeleteClips([timelineItems], Bool)              --> Bool               # Deletes specified TimelineItems from the timeline, performing ripple delete if the second argument is True. Second argument is optional (The default for this is False)
-  SetClipsLinked([timelineItems], Bool)           --> Bool               # Links or unlinks the specified TimelineItems depending on second argument.
   GetItemListInTrack(trackType, index)            --> [items...]         # Returns a list of timeline items on that track (based on trackType and index). 1 <= index <= GetTrackCount(trackType).
   AddMarker(frameId, color, name, note, duration, --> Bool               # Creates a new marker at given frameId position and with given marker information. 'customData' is optional and helps to attach user specific data to the marker.
             customData)
@@ -340,8 +319,6 @@ Timeline
   GrabStill()                                     --> galleryStill       # Grabs still from the current video clip. Returns a GalleryStill object.
   GrabAllStills(stillFrameSource)                 --> [galleryStill]     # Grabs stills from all the clips of the timeline at 'stillFrameSource' (1 - First frame, 2 - Middle frame). Returns the list of GalleryStill objects.
   GetUniqueId()                                   --> string             # Returns a unique ID for the timeline
-  CreateSubtitlesFromAudio()                      --> Bool               # Creates subtitles from audio for the timeline. Returns True on success, False otherwise.
-  DetectSceneCuts()                               --> Bool               # Detects and makes scene cuts along the timeline. Returns True if successful, False otherwise.
 
 TimelineItem
   GetName()                                       --> string             # Returns the item name.
@@ -412,10 +389,6 @@ TimelineItem
   GetUniqueId()                                   --> string             # Returns a unique ID for the timeline item
   LoadBurnInPreset(presetName)                    --> Bool               # Loads user defined data burn in preset for clip when supplied presetName (string). Returns true if successful.
   GetNodeLabel(nodeIndex)                         --> string             # Returns the label of the node at nodeIndex.
-  CreateMagicMask(mode)                           --> Bool               # Returns True if magic mask was created successfully, False otherwise. mode can "F" (forward), "B" (backward), or "BI" (bidirection)
-  RegenerateMagicMask()                           --> Bool               # Returns True if magic mask was regenerated successfully, False otherwise.
-  Stabilize()                                     --> Bool               # Returns True if stabilization was successful, False otherwise
-  SmartReframe()                                  --> Bool               # Performs Smart Reframe. Returns True if successful, False otherwise.
 
 Gallery
   GetAlbumName(galleryStillAlbum)                 --> string             # Returns the name of the GalleryStillAlbum object 'galleryStillAlbum'.
@@ -460,11 +433,9 @@ Invoke "Project:SetSetting", "Timeline:SetSetting" or "MediaPoolItem:SetClipProp
 ensure the success of the operation. You can troubleshoot the validity of keys and values by setting the desired result from the UI and checking property snapshots before and after the change.
 
 The following Project properties have specifically enumerated values:
-"superScale" - the property value is an enumerated integer between 0 and 4 with these meanings: 0=Auto, 1=no scaling, and 2, 3 and 4 represent the Super Scale multipliers 2x, 3x and 4x.
-               for super scale multiplier '2x Enhanced', exactly 4 arguments must be passed as outlined below. If less than 4 arguments are passed, it will default to 2x.
+"superScale" - the property value is an enumerated integer between 0 and 3 with these meanings: 0=Auto, 1=no scaling, and 2, 3 and 4 represent the Super Scale multipliers 2x, 3x and 4x.
 Affects:
 • x = Project:GetSetting('superScale') and Project:SetSetting('superScale', x)
-• for '2x Enhanced' --> Project:SetSetting('superScale', 2, sharpnessValue, noiseReductionValue), where sharpnessValue is a float in the range [0.0, 1.0] and noiseReductionValue is a float in the range [0.0, 1.0]
 
 "timelineFrameRate" - the property value is one of the frame rates available to the user in project settings under "Timeline frame rate" option. Drop Frame can be configured for supported frame rates 
                       by appending the frame rate with "DF", e.g. "29.97 DF" will enable drop frame and "29.97" will disable drop frame
@@ -472,11 +443,9 @@ Affects:
 • x = Project:GetSetting('timelineFrameRate') and Project:SetSetting('timelineFrameRate', x)
 
 The following Clip properties have specifically enumerated values:
-"Super Scale" - the property value is an enumerated integer between 1 and 4 with these meanings: 1=no scaling, and 2, 3 and 4 represent the Super Scale multipliers 2x, 3x and 4x.
-                for super scale multiplier '2x Enhanced', exactly 4 arguments must be passed as outlined below. If less than 4 arguments are passed, it will default to 2x.
+"superScale" - the property value is an enumerated integer between 1 and 3 with these meanings: 1=no scaling, and 2, 3 and 4 represent the Super Scale multipliers 2x, 3x and 4x.
 Affects:
 • x = MediaPoolItem:GetClipProperty('Super Scale') and MediaPoolItem:SetClipProperty('Super Scale', x)
-• for '2x Enhanced' --> MediaPoolItem:SetClipProperty('Super Scale', 2, sharpnessValue, noiseReductionValue), where sharpnessValue is a float in the range [0.0, 1.0] and noiseReductionValue is a float in the range [0.0, 1.0]
 
 
 Looking up Render Settings
@@ -530,7 +499,6 @@ exportType can be one of the following constants:
     - resolve.EXPORT_DOLBY_VISION_VER_2_9
     - resolve.EXPORT_DOLBY_VISION_VER_4_0
     - resolve.EXPORT_DOLBY_VISION_VER_5_1
-    - resolve.EXPORT_OTIO
 exportSubtype can be one of the following enums:
     - resolve.EXPORT_NONE
     - resolve.EXPORT_AAF_NEW
