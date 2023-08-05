@@ -174,6 +174,40 @@
     <span class="n">SUBTITLE_TRACK</span> <span class="o">=</span> <span class="s1">&#39;subtitle&#39;</span></div>
 
 
+<div class="viewcode-block" id="OptionalSubTrackType"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.OptionalSubTrackType">[docs]</a><span class="k">class</span> <span class="nc">OptionalSubTrackType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;OptionalSubTrackType is required for TrackType is AUDIO_TRACK&quot;&quot;&quot;</span>
+    <span class="n">MONO</span> <span class="o">=</span> <span class="s2">&quot;mono&quot;</span>
+    <span class="n">STEREO</span> <span class="o">=</span> <span class="s2">&quot;stereo&quot;</span>
+    <span class="n">FP1</span> <span class="o">=</span> <span class="s2">&quot;5.1&quot;</span>
+    <span class="n">FP1_FILM</span> <span class="o">=</span> <span class="s2">&quot;5.1film&quot;</span>
+    <span class="n">SP1</span> <span class="o">=</span> <span class="s2">&quot;7.1&quot;</span>
+    <span class="n">SP1_FILM</span> <span class="o">=</span> <span class="s2">&quot;7.1film&quot;</span>
+    <span class="n">ADAPTIVE_1</span> <span class="o">=</span> <span class="s2">&quot;adaptive1&quot;</span>
+    <span class="n">ADAPTIVE_2</span> <span class="o">=</span> <span class="s2">&quot;adaptive2&quot;</span>
+    <span class="n">ADAPTIVE_3</span> <span class="o">=</span> <span class="s2">&quot;adaptive3&quot;</span>
+    <span class="n">ADAPTIVE_4</span> <span class="o">=</span> <span class="s2">&quot;adaptive4&quot;</span>
+    <span class="n">ADAPTIVE_5</span> <span class="o">=</span> <span class="s2">&quot;adaptive5&quot;</span>
+    <span class="n">ADAPTIVE_6</span> <span class="o">=</span> <span class="s2">&quot;adaptive6&quot;</span>
+    <span class="n">ADAPTIVE_7</span> <span class="o">=</span> <span class="s2">&quot;adaptive7&quot;</span>
+    <span class="n">ADAPTIVE_8</span> <span class="o">=</span> <span class="s2">&quot;adaptive8&quot;</span>
+    <span class="n">ADAPTIVE_9</span> <span class="o">=</span> <span class="s2">&quot;adaptive9&quot;</span>
+    <span class="n">ADAPTIVE_10</span> <span class="o">=</span> <span class="s2">&quot;adaptive10&quot;</span>
+    <span class="n">ADAPTIVE_11</span> <span class="o">=</span> <span class="s2">&quot;adaptive11&quot;</span>
+    <span class="n">ADAPTIVE_12</span> <span class="o">=</span> <span class="s2">&quot;adaptive12&quot;</span>
+    <span class="n">ADAPTIVE_13</span> <span class="o">=</span> <span class="s2">&quot;adaptive13&quot;</span>
+    <span class="n">ADAPTIVE_14</span> <span class="o">=</span> <span class="s2">&quot;adaptive14&quot;</span>
+    <span class="n">ADAPTIVE_15</span> <span class="o">=</span> <span class="s2">&quot;adaptive15&quot;</span>
+    <span class="n">ADAPTIVE_16</span> <span class="o">=</span> <span class="s2">&quot;adaptive16&quot;</span>
+    <span class="n">ADAPTIVE_17</span> <span class="o">=</span> <span class="s2">&quot;adaptive17&quot;</span>
+    <span class="n">ADAPTIVE_18</span> <span class="o">=</span> <span class="s2">&quot;adaptive18&quot;</span>
+    <span class="n">ADAPTIVE_19</span> <span class="o">=</span> <span class="s2">&quot;adaptive19&quot;</span>
+    <span class="n">ADAPTIVE_20</span> <span class="o">=</span> <span class="s2">&quot;adaptive20&quot;</span>
+    <span class="n">ADAPTIVE_21</span> <span class="o">=</span> <span class="s2">&quot;adaptive21&quot;</span>
+    <span class="n">ADAPTIVE_22</span> <span class="o">=</span> <span class="s2">&quot;adaptive22&quot;</span>
+    <span class="n">ADAPTIVE_23</span> <span class="o">=</span> <span class="s2">&quot;adaptive23&quot;</span>
+    <span class="n">ADAPTIVE_24</span> <span class="o">=</span> <span class="s2">&quot;adaptive24&quot;</span></div>
+
+
 <div class="viewcode-block" id="timeline_item_class_list_transfer"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.timeline_item_class_list_transfer">[docs]</a><span class="k">def</span> <span class="nf">timeline_item_class_list_transfer</span><span class="p">(</span><span class="n">timeline_item_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">TimelineItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
     <span class="n">timeline_item_trans_list</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -188,6 +222,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span> <span class="o">=</span> <span class="n">timeline</span>
+
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Timeline:f</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
 
@@ -326,7 +361,7 @@
         <span class="sd">&quot;&quot;&quot;Returns the name of the timeline.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Timeline.get_setting"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.get_setting">[docs]</a>    <span class="k">def</span> <span class="nf">get_setting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setting_name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="Timeline.get_setting"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.get_setting">[docs]</a>    <span class="k">def</span> <span class="nf">get_setting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setting_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns value of timeline setting (indicated by settingName : string).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">)</span></div>
 
@@ -348,7 +383,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            str: track name.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetTrackName</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Timeline.grab_all_stills"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.grab_all_stills">[docs]</a>    <span class="k">def</span> <span class="nf">grab_all_stills</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">still_frame_source</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStill</span><span class="p">]:</span>
@@ -362,7 +397,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="p">[</span><span class="n">GalleryStill</span><span class="p">(</span><span class="n">gallery_still</span><span class="p">)</span> <span class="k">for</span> <span class="n">gallery_still</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GrabAllStills</span><span class="p">(</span><span class="n">still_frame_source</span><span class="p">)]</span></div>
-
 
 <div class="viewcode-block" id="Timeline.grab_still"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.grab_still">[docs]</a>    <span class="k">def</span> <span class="nf">grab_still</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GalleryStill</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Grabs still from the current video clip. Returns a GalleryStill object.&quot;&quot;&quot;</span>
@@ -378,7 +412,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false otherwise.</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">ImportIntoTimeline</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">asdict</span><span class="p">(</span><span class="n">import_options</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Timeline.insert_fusion_generator_into_timeline"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline">[docs]</a>    <span class="k">def</span> <span class="nf">insert_fusion_generator_into_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generator_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
@@ -443,7 +477,7 @@
 
     <span class="c1">#######################################################################################################################</span>
     <span class="c1"># Add at DR18.0.0</span>
-    
+
 <div class="viewcode-block" id="Timeline.set_start_timecode"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.set_start_timecode">[docs]</a>    <span class="k">def</span> <span class="nf">set_start_timecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timecode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Set the start timecode of the timeline to the string &#39;timecode&#39;. Returns true when the change is successful, false otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetStartTimecode</span><span class="p">(</span><span class="n">timecode</span><span class="p">)</span></div>
@@ -451,16 +485,135 @@
 <div class="viewcode-block" id="Timeline.get_start_timecode"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.get_start_timecode">[docs]</a>    <span class="k">def</span> <span class="nf">get_start_timecode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns the start timecode for the timeline.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetStartTimecode</span><span class="p">()</span></div>
-    
+
 <div class="viewcode-block" id="Timeline.insert_fusion_composition_into_timeline"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline">[docs]</a>    <span class="k">def</span> <span class="nf">insert_fusion_composition_into_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Inserts a Fusion composition into the timeline.Returns a TimelineItem object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">InsertFusionCompositionIntoTimeline</span><span class="p">())</span></div>
-    
+
 <div class="viewcode-block" id="Timeline.get_unique_id"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.get_unique_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns a unique ID for the timeline&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
+
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR18.5.0</span>
+<div class="viewcode-block" id="Timeline.add_track"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.add_track">[docs]</a>    <span class="k">def</span> <span class="nf">add_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">:</span> <span class="n">TrackType</span><span class="p">,</span> <span class="n">optional_sub_track_type</span><span class="p">:</span> <span class="n">OptionalSubTrackType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Adds track of trackType (&quot;video&quot;, &quot;subtitle&quot;, &quot;audio&quot;).</span>
+<span class="sd">        Second argument optionalSubTrackType is required for &quot;audio&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            track_type (TrackType): track type</span>
+<span class="sd">            optional_sub_track_type (OptionalSubTrackType): Second argument optionalSubTrackType is required for &quot;audio&quot;</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">AddTrack</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">optional_sub_track_type</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Timeline.delete_track"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.delete_track">[docs]</a>    <span class="k">def</span> <span class="nf">delete_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">:</span> <span class="n">TrackType</span><span class="p">,</span> <span class="n">track_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Deletes track of trackType (&quot;video&quot;, &quot;subtitle&quot;, &quot;audio&quot;) and given trackIndex. </span>
+
+
+<span class="sd">        Args:</span>
+<span class="sd">            track_type (TrackType): track type</span>
+<span class="sd">            track_index (int): track index.1 &lt;= track_index &lt;= get_track_count(track_type).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DeleteTrack</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Timeline.set_track_enable"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.set_track_enable">[docs]</a>    <span class="k">def</span> <span class="nf">set_track_enable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">:</span> <span class="n">TrackType</span><span class="p">,</span> <span class="n">track_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">is_enable</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Enables/Disables track with given trackType and trackIndex</span>
+
+
+
+<span class="sd">        Args:</span>
+<span class="sd">            track_type (TrackType): trackType is one of {&quot;audio&quot;, &quot;video&quot;, &quot;subtitle&quot;}</span>
+<span class="sd">            track_index (int): 1 &lt;= trackIndex &lt; GetTrackCount(trackType).</span>
+<span class="sd">            is_enable (bool): enable state</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetTrackEnable</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">,</span> <span class="n">is_enable</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Timeline.get_is_track_enabled"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.get_is_track_enabled">[docs]</a>    <span class="k">def</span> <span class="nf">get_is_track_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            track_type (_type_): trackType is one of {&quot;audio&quot;, &quot;video&quot;, &quot;subtitle&quot;}</span>
+<span class="sd">            track_index (_type_): 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if track with given trackType and trackIndex is enabled and False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetIsTrackEnabled</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Timeline.set_track_lock"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.set_track_lock">[docs]</a>    <span class="k">def</span> <span class="nf">set_track_lock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">:</span> <span class="n">TrackType</span><span class="p">,</span> <span class="n">track_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">is_locked</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Locks/Unlocks track with given trackType and trackIndex</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            track_type (TrackType): trackType is one of {&quot;audio&quot;, &quot;video&quot;, &quot;subtitle&quot;}</span>
+<span class="sd">            track_index (int): 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</span>
+<span class="sd">            is_locked (bool):  lock state</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetTrackLock</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">,</span> <span class="n">is_locked</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Timeline.get_is_track_locked"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.get_is_track_locked">[docs]</a>    <span class="k">def</span> <span class="nf">get_is_track_locked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">:</span> <span class="n">TrackType</span><span class="p">,</span> <span class="n">track_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if track with given trackType and trackIndex is locked and False otherwise.</span>
+
+
+<span class="sd">        Args:</span>
+<span class="sd">            track_type (TrackType): trackType is one of {&quot;audio&quot;, &quot;video&quot;, &quot;subtitle&quot;}</span>
+<span class="sd">            track_index (int): 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if track with given trackType and trackIndex is locked and False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetIsTrackLocked</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Timeline.delete_clips"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.delete_clips">[docs]</a>    <span class="k">def</span> <span class="nf">delete_clips</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">TimelineItem</span><span class="p">],</span> <span class="n">ripple_delete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Deletes specified TimelineItems from the timeline</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            timeline_items (List[TimelineItem]): specified TimelineItems</span>
+<span class="sd">            ripple_delete (bool): performing ripple delete if the second argument is True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DeleteClips</span><span class="p">([</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">timeline_item</span> <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">timeline_items</span><span class="p">],</span> <span class="n">ripple_delete</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Timeline.set_clips_linked"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.set_clips_linked">[docs]</a>    <span class="k">def</span> <span class="nf">set_clips_linked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">TimelineItem</span><span class="p">],</span> <span class="n">is_linked</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Links or unlinks the specified TimelineItems depending on second argument.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            timeline_items (List[TimelineItem]): specified TimelineItems</span>
+<span class="sd">            is_linked (bool): Links or unlinks the specified TimelineItems</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetClipsLinked</span><span class="p">([</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">timeline_item</span> <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">timeline_items</span><span class="p">],</span> <span class="n">is_linked</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Timeline.create_subtitle_from_audio"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.create_subtitle_from_audio">[docs]</a>    <span class="k">def</span> <span class="nf">create_subtitle_from_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Creates subtitles from audio for the timeline. </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True on success, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">CreateSubtitleFromAudio</span><span class="p">()</span></div>
     
-    <span class="c1">#######################################################################################################################</span>
+<div class="viewcode-block" id="Timeline.detect_scene_cuts"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline.Timeline.detect_scene_cuts">[docs]</a>    <span class="k">def</span> <span class="nf">detect_scene_cuts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Detects and makes scene cuts along the timeline. </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DetectSceneCuts</span><span class="p">()</span>  </div></div>
 </pre></div>
 
 	    </div>

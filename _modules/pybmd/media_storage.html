@@ -143,6 +143,17 @@
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pybmd.bmd</span> <span class="kn">import</span> <span class="n">Bmd</span>
 
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
+
+
+<div class="viewcode-block" id="Item_Info"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_storage.Item_Info">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Item_Info</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Item Info&quot;&quot;&quot;</span>
+    <span class="n">media</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">start_frame</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">end_frame</span><span class="p">:</span> <span class="nb">int</span></div>
+
 
 <div class="viewcode-block" id="MediaStorage"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_storage.MediaStorage">[docs]</a><span class="k">class</span> <span class="nc">MediaStorage</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;MediaStorage.&quot;&quot;&quot;</span>
@@ -165,12 +176,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_storage</span><span class="o">.</span><span class="n">AddClipMattesToMediaPool</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">,</span> <span class="n">paths</span><span class="p">,</span> <span class="n">stero_eye</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaStorage.add_item_list_to_meida_pool"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool">[docs]</a>    <span class="k">def</span> <span class="nf">add_item_list_to_meida_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_path_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
+<div class="viewcode-block" id="MediaStorage.add_item_list_to_meida_pool"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool">[docs]</a>    <span class="k">def</span> <span class="nf">add_item_list_to_meida_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="n">Item_Info</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Adds specified file/folder paths from Media Storage into current Media Pool folder. </span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            item_path_list (List[str]): an array of file/folder paths</span>
-
+<span class="sd">            items (List[str]): an array of file/folder paths</span>
+<span class="sd">            items (List[Item_Info]): an array of Item_info</span>
 <span class="sd">        Returns:</span>
 <span class="sd">            List[MediaPoolItem]: a list of MediaPoolItem objects created from the added items</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -178,7 +189,11 @@
         <span class="c1"># for media_pool_item in self.media_storage.AddItemListToMeidaPool(item_path_list):</span>
         <span class="c1">#     media_pool_item_list.append(MediaPoolItem(media_pool_item))</span>
         <span class="c1"># return media_pool_item_list</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">)</span> <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_storage</span><span class="o">.</span><span class="n">AddItemListToMediaPool</span><span class="p">(</span><span class="n">item_path_list</span><span class="p">)]</span></div>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">)</span> <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_storage</span><span class="o">.</span><span class="n">AddItemListToMediaPool</span><span class="p">(</span><span class="n">items</span><span class="p">)]</span>
+        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="n">Item_Info</span><span class="p">:</span>
+            <span class="n">temp_list</span><span class="o">=</span><span class="p">[</span><span class="n">asdict</span><span class="p">(</span><span class="n">item_info</span><span class="p">)</span> <span class="k">for</span> <span class="n">item_info</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">)</span> <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_storage</span><span class="o">.</span><span class="n">AddItemListToMediaPool</span><span class="p">(</span><span class="n">temp_list</span><span class="p">)]</span></div>
 
 <div class="viewcode-block" id="MediaStorage.add_timeline_mattes_to_media_pool"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_storage.MediaStorage.add_timeline_mattes_to_media_pool">[docs]</a>    <span class="k">def</span> <span class="nf">add_timeline_mattes_to_media_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Adds specified media files as timeline mattes in current media pool folder. </span>
@@ -189,7 +204,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            List[MediaPoolItem]:a list of created MediaPoolItem</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
+
         <span class="c1"># media_pool_item_list = []</span>
         <span class="c1"># for media_pool_item in self.media_storage.AddTimelineMattesToMediaPool(paths):</span>
         <span class="c1">#     media_pool_item_list.append(MediaPoolItem(media_pool_item))</span>

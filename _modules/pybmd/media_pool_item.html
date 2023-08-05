@@ -368,9 +368,28 @@
     <span class="c1">#TODO Add version check</span>
 <div class="viewcode-block" id="MediaPoolItem.get_unique_id"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_unique_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return unique id of the clip.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
     
-    <span class="c1">################################################################################</span>
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR18.5.0</span>
+
+<div class="viewcode-block" id="MediaPoolItem.transcribe_audio"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.transcribe_audio">[docs]</a>    <span class="k">def</span> <span class="nf">transcribe_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Transcribes audio of the MediaPoolItem. </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if successful; False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">TranscribeAudio</span><span class="p">()</span></div>
+    
+<div class="viewcode-block" id="MediaPoolItem.clear_transcription"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.clear_transcription">[docs]</a>    <span class="k">def</span> <span class="nf">clear_transcription</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Clears audio transcription of the MediaPoolItem. </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if successful; False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ClearTranscription</span><span class="p">()</span></div></div>
+    
+   
 </pre></div>
 
 	    </div>

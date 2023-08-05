@@ -660,7 +660,7 @@ Only use in GalleryStillAlbum class.</p>
 <span id="pybmd-media-pool"></span><h1>pybmd.media_pool<a class="headerlink" href="#module-pybmd.media_pool" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pybmd.media_pool.ClipInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.media_pool.</span></span><span class="sig-name descname"><span class="pre">ClipInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">media_pool_item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.media_pool_item.MediaPoolItem" title="pybmd.media_pool_item.MediaPoolItem"><span class="pre">MediaPoolItem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">media_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/media_pool.html#ClipInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool.ClipInfo" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.media_pool.</span></span><span class="sig-name descname"><span class="pre">ClipInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">media_pool_item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.media_pool_item.MediaPoolItem" title="pybmd.media_pool_item.MediaPoolItem"><span class="pre">MediaPoolItem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">media_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/media_pool.html#ClipInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool.ClipInfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>ClipInfo dataclass</p>
 <dl class="py attribute">
@@ -679,8 +679,18 @@ Only use in GalleryStillAlbum class.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.media_pool.ClipInfo.record_frame">
+<span class="sig-name descname"><span class="pre">record_frame</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pybmd.media_pool.ClipInfo.record_frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="pybmd.media_pool.ClipInfo.start_frame">
 <span class="sig-name descname"><span class="pre">start_frame</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pybmd.media_pool.ClipInfo.start_frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.media_pool.ClipInfo.track_index">
+<span class="sig-name descname"><span class="pre">track_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pybmd.media_pool.ClipInfo.track_index" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1115,6 +1125,20 @@ Only use in GalleryStillAlbum class.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.clear_transcription">
+<span class="sig-name descname"><span class="pre">clear_transcription</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.clear_transcription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.clear_transcription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears audio transcription of the MediaPoolItem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns True if successful; False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame">
 <span class="sig-name descname"><span class="pre">delete_marker_at_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.delete_marker_at_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete marker at frame number from the media pool item.</p>
@@ -1374,6 +1398,20 @@ Only use in GalleryStillAlbum class.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.transcribe_audio">
+<span class="sig-name descname"><span class="pre">transcribe_audio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.transcribe_audio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.transcribe_audio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transcribes audio of the MediaPoolItem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns True if successful; False otherwise</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media">
 <span class="sig-name descname"><span class="pre">unlink_proxy_media</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.unlink_proxy_media"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unlinks proxy media from the current clip.</p>
@@ -1405,6 +1443,28 @@ Only use in GalleryStillAlbum class.</p>
 <section id="module-pybmd.media_storage">
 <span id="pybmd-media-storage"></span><h1>pybmd.media_storage<a class="headerlink" href="#module-pybmd.media_storage" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
+<dt class="sig sig-object py" id="pybmd.media_storage.Item_Info">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.media_storage.</span></span><span class="sig-name descname"><span class="pre">Item_Info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">media</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/media_storage.html#Item_Info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_storage.Item_Info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Item Info</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.media_storage.Item_Info.end_frame">
+<span class="sig-name descname"><span class="pre">end_frame</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pybmd.media_storage.Item_Info.end_frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.media_storage.Item_Info.media">
+<span class="sig-name descname"><span class="pre">media</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pybmd.media_storage.Item_Info.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.media_storage.Item_Info.start_frame">
+<span class="sig-name descname"><span class="pre">start_frame</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pybmd.media_storage.Item_Info.start_frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="pybmd.media_storage.MediaStorage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.media_storage.</span></span><span class="sig-name descname"><span class="pre">MediaStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_local_davinci</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bmd.local_davinci</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/media_storage.html#MediaStorage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_storage.MediaStorage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -1432,11 +1492,14 @@ Only use in GalleryStillAlbum class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool">
-<span class="sig-name descname"><span class="pre">add_item_list_to_meida_pool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_path_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.media_pool_item.MediaPoolItem" title="pybmd.media_pool_item.MediaPoolItem"><span class="pre">MediaPoolItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pybmd/media_storage.html#MediaStorage.add_item_list_to_meida_pool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_item_list_to_meida_pool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.media_storage.Item_Info" title="pybmd.media_storage.Item_Info"><span class="pre">Item_Info</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.media_pool_item.MediaPoolItem" title="pybmd.media_pool_item.MediaPoolItem"><span class="pre">MediaPoolItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pybmd/media_storage.html#MediaStorage.add_item_list_to_meida_pool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds specified file/folder paths from Media Storage into current Media Pool folder.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>item_path_list</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – an array of file/folder paths</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>items</strong> (<em>List</em><em>[</em><a class="reference internal" href="#pybmd.media_storage.Item_Info" title="pybmd.media_storage.Item_Info"><em>Item_Info</em></a><em>]</em>) – an array of file/folder paths</p></li>
+<li><p><strong>items</strong> – an array of Item_info</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a list of MediaPoolItem objects created from the added items</p>
@@ -1538,6 +1601,23 @@ Only use in GalleryStillAlbum class.</p>
 <dt class="sig sig-object py" id="pybmd.project.Project.delete_render_job">
 <span class="sig-name descname"><span class="pre">delete_render_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/project.html#Project.delete_render_job"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project.Project.delete_render_job" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes render job for input job id (string).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.project.Project.export_current_frame_as_still">
+<span class="sig-name descname"><span class="pre">export_current_frame_as_still</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/project.html#Project.export_current_frame_as_still"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project.Project.export_current_frame_as_still" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports current frame as still to supplied filePath.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – exported still path.filePath must end in valid export file format.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns True if succssful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2239,6 +2319,163 @@ if job_ids==None render all queued render jobs.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.timeline.</span></span><span class="sig-name descname"><span class="pre">OptionalSubTrackType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/timeline.html#OptionalSubTrackType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>OptionalSubTrackType is required for TrackType is AUDIO_TRACK</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_1">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive1'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_10">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_10</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive10'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_10" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_11">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_11</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive11'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_11" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_12">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_12</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive12'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_12" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_13">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_13</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive13'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_13" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_14">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_14</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive14'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_14" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_15">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_15</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive15'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_15" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_16">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_16</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive16'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_16" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_17">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_17</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive17'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_17" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_18">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_18</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive18'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_18" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_19">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_19</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive19'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_19" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_2">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive2'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_20">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_20</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive20'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_20" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_21">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_21</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive21'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_21" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_22">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_22</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive22'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_22" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_23">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_23</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive23'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_23" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_24">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_24</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive24'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_24" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_3">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive3'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_4">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive4'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_5">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_5</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive5'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_6">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_6</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive6'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_6" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_7">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_7</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive7'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_7" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_8">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive8'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_8" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_9">
+<span class="sig-name descname"><span class="pre">ADAPTIVE_9</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adaptive9'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.ADAPTIVE_9" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.FP1">
+<span class="sig-name descname"><span class="pre">FP1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'5.1'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.FP1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.FP1_FILM">
+<span class="sig-name descname"><span class="pre">FP1_FILM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'5.1film'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.FP1_FILM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.MONO">
+<span class="sig-name descname"><span class="pre">MONO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mono'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.MONO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.SP1">
+<span class="sig-name descname"><span class="pre">SP1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'7.1'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.SP1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.SP1_FILM">
+<span class="sig-name descname"><span class="pre">SP1_FILM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'7.1film'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.SP1_FILM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline.OptionalSubTrackType.STEREO">
+<span class="sig-name descname"><span class="pre">STEREO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'stereo'</span></em><a class="headerlink" href="#pybmd.timeline.OptionalSubTrackType.STEREO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.timeline.</span></span><span class="sig-name descname"><span class="pre">Timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -2256,6 +2493,27 @@ if job_ids==None render all queued render jobs.</p>
 <li><p><strong>note</strong> (<em>str</em>) – note of the marker.</p></li>
 <li><p><strong>duration</strong> (<em>str</em>) – duration of the marker.</p></li>
 <li><p><strong>custom_data</strong> (<em>str</em>) – custom data of the marker.helps to attach user specific data to the marker.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.add_track">
+<span class="sig-name descname"><span class="pre">add_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional_sub_track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.OptionalSubTrackType" title="pybmd.timeline.OptionalSubTrackType"><span class="pre">OptionalSubTrackType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.add_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.add_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds track of trackType (“video”, “subtitle”, “audio”).
+Second argument optionalSubTrackType is required for “audio”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track_type</strong> (<a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – track type</p></li>
+<li><p><strong>optional_sub_track_type</strong> (<a class="reference internal" href="#pybmd.timeline.OptionalSubTrackType" title="pybmd.timeline.OptionalSubTrackType"><em>OptionalSubTrackType</em></a>) – Second argument optionalSubTrackType is required for “audio”</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2326,6 +2584,40 @@ if job_ids==None render all queued render jobs.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.create_subtitle_from_audio">
+<span class="sig-name descname"><span class="pre">create_subtitle_from_audio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.create_subtitle_from_audio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.create_subtitle_from_audio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates subtitles from audio for the timeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns True on success, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_clips">
+<span class="sig-name descname"><span class="pre">delete_clips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ripple_delete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.delete_clips"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_clips" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes specified TimelineItems from the timeline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><a class="reference internal" href="#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><em>TimelineItem</em></a><em>]</em>) – specified TimelineItems</p></li>
+<li><p><strong>ripple_delete</strong> (<em>bool</em>) – performing ripple delete if the second argument is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_marker_at_frame">
 <span class="sig-name descname"><span class="pre">delete_marker_at_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.delete_marker_at_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_marker_at_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes the timeline marker at the given frame number.</p>
@@ -2342,6 +2634,40 @@ An “All” argument is supported and deletes all timeline markers.</p>
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_marker_by_custom_data">
 <span class="sig-name descname"><span class="pre">delete_marker_by_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.delete_marker_by_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_marker_by_custom_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete first matching marker with specified custom_data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_track">
+<span class="sig-name descname"><span class="pre">delete_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.delete_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes track of trackType (“video”, “subtitle”, “audio”) and given trackIndex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track_type</strong> (<a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – track type</p></li>
+<li><p><strong>track_index</strong> (<em>int</em>) – track index.1 &lt;= track_index &lt;= get_track_count(track_type).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.detect_scene_cuts">
+<span class="sig-name descname"><span class="pre">detect_scene_cuts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.detect_scene_cuts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.detect_scene_cuts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detects and makes scene cuts along the timeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns True if successful, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2384,6 +2710,45 @@ while on Cut, Edit, Color, Fairlight and Deliver pages.</p>
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_end_frame">
 <span class="sig-name descname"><span class="pre">get_end_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_end_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_end_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the frame number at the end of timeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_is_track_enabled">
+<span class="sig-name descname"><span class="pre">get_is_track_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_is_track_enabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_is_track_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track_type</strong> (<em>_type_</em>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
+<li><p><strong>track_index</strong> (<em>_type_</em>) – 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns True if track with given trackType and trackIndex is enabled and False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_is_track_locked">
+<span class="sig-name descname"><span class="pre">get_is_track_locked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.get_is_track_locked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_is_track_locked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if track with given trackType and trackIndex is locked and False otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track_type</strong> (<a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
+<li><p><strong>track_index</strong> (<em>int</em>) – 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns True if track with given trackType and trackIndex is locked and False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2562,6 +2927,26 @@ indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_clips_linked">
+<span class="sig-name descname"><span class="pre">set_clips_linked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.set_clips_linked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_clips_linked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Links or unlinks the specified TimelineItems depending on second argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><a class="reference internal" href="#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><em>TimelineItem</em></a><em>]</em>) – specified TimelineItems</p></li>
+<li><p><strong>is_linked</strong> (<em>bool</em>) – Links or unlinks the specified TimelineItems</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_current_timecode">
 <span class="sig-name descname"><span class="pre">set_current_timecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tiemcode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.set_current_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_current_timecode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets current playhead position from input timecode for Cut, Edit, Color, Fairlight and Deliver pages.</p>
@@ -2597,6 +2982,48 @@ indicates a single green marker at timeline offset 96</p>
 <dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_start_timecode">
 <span class="sig-name descname"><span class="pre">set_start_timecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.set_start_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_start_timecode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the start timecode of the timeline to the string ‘timecode’. Returns true when the change is successful, false otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_track_enable">
+<span class="sig-name descname"><span class="pre">set_track_enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.set_track_enable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_track_enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables/Disables track with given trackType and trackIndex</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track_type</strong> (<a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
+<li><p><strong>track_index</strong> (<em>int</em>) – 1 &lt;= trackIndex &lt; GetTrackCount(trackType).</p></li>
+<li><p><strong>is_enable</strong> (<em>bool</em>) – enable state</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_track_lock">
+<span class="sig-name descname"><span class="pre">set_track_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_locked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline.html#Timeline.set_track_lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_track_lock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Locks/Unlocks track with given trackType and trackIndex</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track_type</strong> (<a class="reference internal" href="#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
+<li><p><strong>track_index</strong> (<em>int</em>) – 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</p></li>
+<li><p><strong>is_locked</strong> (<em>bool</em>) – lock state</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2686,6 +3113,28 @@ CustomData is not exposed via UI and is useful for scripting developer to attach
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pybmd.timeline_item.CDL_Map.Slope">
 <span class="sig-name descname"><span class="pre">Slope</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pybmd.timeline_item.CDL_Map.Slope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybmd.timeline_item.MagicMask_Mode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.timeline_item.</span></span><span class="sig-name descname"><span class="pre">MagicMask_Mode</span></span><a class="reference internal" href="_modules/pybmd/timeline_item.html#MagicMask_Mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline_item.MagicMask_Mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>MagicMask_Mode.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline_item.MagicMask_Mode.Backward">
+<span class="sig-name descname"><span class="pre">Backward</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'B'</span></em><a class="headerlink" href="#pybmd.timeline_item.MagicMask_Mode.Backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline_item.MagicMask_Mode.Bidirection">
+<span class="sig-name descname"><span class="pre">Bidirection</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'BI'</span></em><a class="headerlink" href="#pybmd.timeline_item.MagicMask_Mode.Bidirection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybmd.timeline_item.MagicMask_Mode.Forward">
+<span class="sig-name descname"><span class="pre">Forward</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'F'</span></em><a class="headerlink" href="#pybmd.timeline_item.MagicMask_Mode.Forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2803,6 +3252,23 @@ CustomData is not exposed via UI and is useful for scripting developer to attach
 <span class="sig-name descname"><span class="pre">copy_grades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline_item.html#TimelineItem.copy_grades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline_item.TimelineItem.copy_grades" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies the current grade to all the items in tgtTimelineItems list.
 Returns True on success and False if any error occurred.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline_item.TimelineItem.create_magic_mask">
+<span class="sig-name descname"><span class="pre">create_magic_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybmd.timeline_item.MagicMask_Mode" title="pybmd.timeline_item.MagicMask_Mode"><span class="pre">MagicMask_Mode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline_item.html#TimelineItem.create_magic_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline_item.TimelineItem.create_magic_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if magic mask was created successfully, False otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference internal" href="#pybmd.timeline_item.MagicMask_Mode" title="pybmd.timeline_item.MagicMask_Mode"><em>MagicMask_Mode</em></a>) – mode</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns True if magic mask was created successfully, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -3164,6 +3630,20 @@ Value at particular offset includes the left, right, top and bottom floating win
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline_item.TimelineItem.regenerate_magic_mask">
+<span class="sig-name descname"><span class="pre">regenerate_magic_mask</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline_item.html#TimelineItem.regenerate_magic_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline_item.TimelineItem.regenerate_magic_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if magic mask was regenerated successfully, False otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns True if magic mask was regenerated successfully, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name">
 <span class="sig-name descname"><span class="pre">rename_fusion_comp_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline_item.html#TimelineItem.rename_fusion_comp_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renames the Fusion composition identified by oldName.</p>
@@ -3237,6 +3717,34 @@ Value at particular offset includes the left, right, top and bottom floating win
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline_item.TimelineItem.smart_reframe">
+<span class="sig-name descname"><span class="pre">smart_reframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline_item.html#TimelineItem.smart_reframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline_item.TimelineItem.smart_reframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs Smart Reframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_descriReturns True if successful, False <a href="#id1"><span class="problematic" id="id2">otherwise.ption_</span></a></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.timeline_item.TimelineItem.stabilize">
+<span class="sig-name descname"><span class="pre">stabilize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/timeline_item.html#TimelineItem.stabilize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline_item.TimelineItem.stabilize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if stabilization was successful, False otherwise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns True if stabilization was successful, False otherwise</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>

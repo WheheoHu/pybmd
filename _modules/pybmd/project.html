@@ -413,7 +413,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">InsertAudioToCurrentTrackAtPlayhead</span><span class="p">(</span><span class="n">media_path</span><span class="p">,</span> <span class="n">start_offset_in_samples</span><span class="p">,</span> <span class="n">duration_in_samples</span><span class="p">)</span></div>
 
     <span class="c1">##############################################################################################################################</span>
-    <span class="c1"># Add at DR18.5.0</span>
+    <span class="c1"># Add at DR18.5.0 Beta</span>
     
 <div class="viewcode-block" id="Project.load_burn_in_preset"><a class="viewcode-back" href="../../pybmd.html#pybmd.project.Project.load_burn_in_preset">[docs]</a>    <span class="k">def</span> <span class="nf">load_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">preset_name</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Loads user defined data burn in preset for project when supplied presetName (string). </span>
@@ -424,7 +424,22 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns true if successful.</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">LoadBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">LoadBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR18.5.0 </span>
+    
+<div class="viewcode-block" id="Project.export_current_frame_as_still"><a class="viewcode-back" href="../../pybmd.html#pybmd.project.Project.export_current_frame_as_still">[docs]</a>    <span class="k">def</span> <span class="nf">export_current_frame_as_still</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Exports current frame as still to supplied filePath. </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_path (str): exported still path.filePath must end in valid export file format. </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">ExportCurrentFrameAsStill</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div></div>
+       
+    
 </pre></div>
 
 	    </div>

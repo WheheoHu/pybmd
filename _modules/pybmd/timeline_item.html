@@ -161,12 +161,20 @@
     <span class="n">Saturation</span><span class="p">:</span> <span class="nb">str</span></div>
 
 
+<div class="viewcode-block" id="MagicMask_Mode"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.MagicMask_Mode">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">MagicMask_Mode</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;MagicMask_Mode.&quot;&quot;&quot;</span>
+    <span class="n">Forward</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
+    <span class="n">Backward</span> <span class="o">=</span> <span class="s2">&quot;B&quot;</span>
+    <span class="n">Bidirection</span> <span class="o">=</span> <span class="s2">&quot;BI&quot;</span></div>
+
+
 <div class="viewcode-block" id="TimelineItem"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem">[docs]</a><span class="k">class</span> <span class="nc">TimelineItem</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;TimelineItem Object&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_item</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span> <span class="o">=</span> <span class="n">timeline_item</span>
-        
+
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Timeline Item:f</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
 
@@ -498,17 +506,17 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
 
     <span class="c1">##########################################################################################################################</span>
-    <span class="c1"># Add at DR18.5.0</span>
-    
+    <span class="c1"># Add at DR18.5.0 Beta</span>
+
 <div class="viewcode-block" id="TimelineItem.apply_arri_cdl_lut"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut">[docs]</a>    <span class="k">def</span> <span class="nf">apply_arri_cdl_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Applies ARRI CDL and LUT.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful, False otherwise.</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">ApplyArriCdlLut</span><span class="p">()</span></div>
-    
-<div class="viewcode-block" id="TimelineItem.set_clip_enabled"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.set_clip_enabled">[docs]</a>    <span class="k">def</span> <span class="nf">set_clip_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">bool_value</span><span class="p">:</span><span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+<div class="viewcode-block" id="TimelineItem.set_clip_enabled"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.set_clip_enabled">[docs]</a>    <span class="k">def</span> <span class="nf">set_clip_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bool_value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Sets clip enabled based on argument.</span>
 
 <span class="sd">        Args:</span>
@@ -516,18 +524,18 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True for clip is enabled</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">SetClipEnabled</span><span class="p">(</span><span class="n">bool_value</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="TimelineItem.get_clip_enabled"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.get_clip_enabled">[docs]</a>    <span class="k">def</span> <span class="nf">get_clip_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Gets clip enabled status.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: clip enabled status </span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetClipEnabled</span><span class="p">()</span></div>
-    
-<div class="viewcode-block" id="TimelineItem.load_burn_in_preset"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.load_burn_in_preset">[docs]</a>    <span class="k">def</span> <span class="nf">load_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">preset_name</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+
+<div class="viewcode-block" id="TimelineItem.load_burn_in_preset"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.load_burn_in_preset">[docs]</a>    <span class="k">def</span> <span class="nf">load_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Loads user defined data burn in preset for clip when supplied presetName (string). Returns true if successful.</span>
 
 <span class="sd">        Args:</span>
@@ -535,10 +543,10 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns true if successful</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">LoadBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
-    
-<div class="viewcode-block" id="TimelineItem.get_node_label"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.get_node_label">[docs]</a>    <span class="k">def</span> <span class="nf">get_node_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">node_index</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+<div class="viewcode-block" id="TimelineItem.get_node_label"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.get_node_label">[docs]</a>    <span class="k">def</span> <span class="nf">get_node_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns the label of the node at nodeIndex.</span>
 
 <span class="sd">        Args:</span>
@@ -546,9 +554,46 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: node label</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetNodeLabel</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></div></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetNodeLabel</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></div>
+
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR18.5.0</span>
     
+<div class="viewcode-block" id="TimelineItem.create_magic_mask"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.create_magic_mask">[docs]</a>    <span class="k">def</span> <span class="nf">create_magic_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">MagicMask_Mode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if magic mask was created successfully, False otherwise. </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            mode (MagicMask_Mode): mode </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if magic mask was created successfully, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">CreateMagicMask</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+    
+<div class="viewcode-block" id="TimelineItem.regenerate_magic_mask"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.regenerate_magic_mask">[docs]</a>    <span class="k">def</span> <span class="nf">regenerate_magic_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if magic mask was regenerated successfully, False otherwise.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if magic mask was regenerated successfully, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">RegenerateMagicMask</span><span class="p">()</span></div>
+    
+<div class="viewcode-block" id="TimelineItem.stabilize"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.stabilize">[docs]</a>    <span class="k">def</span> <span class="nf">stabilize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if stabilization was successful, False otherwise</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if stabilization was successful, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">Stabilize</span><span class="p">()</span></div>
+    
+<div class="viewcode-block" id="TimelineItem.smart_reframe"><a class="viewcode-back" href="../../pybmd.html#pybmd.timeline_item.TimelineItem.smart_reframe">[docs]</a>    <span class="k">def</span> <span class="nf">smart_reframe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Performs Smart Reframe. </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: _descriReturns True if successful, False otherwise.ption_</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">SmartReframe</span><span class="p">()</span></div></div>
 </pre></div>
 
 	    </div>
