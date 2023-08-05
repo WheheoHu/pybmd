@@ -8,6 +8,8 @@ from pybmd.timeline_item import TimelineItem
 from dataclasses import dataclass
 from dataclasses import asdict
 
+# TODO clip info for multi version compatible
+
 
 @dataclass
 class ClipInfo():
@@ -16,6 +18,8 @@ class ClipInfo():
     start_frame: int
     end_frame: int
     media_type: int
+    track_index: int
+    record_frame: int
 
 
 @dataclass
@@ -50,7 +54,7 @@ class MediaPool():
 
         Returns:
             Folder: folder object of new sub folder
-        """        
+        """
         return Folder(self.media_pool.AddSubFolder(folder.folder, name))
 
     # @dispatch(List[MediaPoolItem])
@@ -69,7 +73,7 @@ class MediaPool():
                 [clip.media_pool_item for clip in clips])
         elif type(clips[0]) is ClipInfo:
             temp_list = self.media_pool.AppendToTimeline(
-                [asdict(ClipInfo) for clip in clips])
+                [asdict(clip_info) for clip_info in clips])
 
         # timeline_item_list = []
         # for timeline_item in temp_list:
@@ -171,7 +175,7 @@ class MediaPool():
 
         Returns:    
             Folder: root folder object
-        """        
+        """
         return Folder(self.media_pool.GetRootFolder())
 
     def get_timeline_matte_list(self, folder: Folder) -> List[MediaPoolItem]:
@@ -182,7 +186,7 @@ class MediaPool():
 
         Returns:
             List[MediaPoolItem]: list of media pool items that are mattes
-        """          
+        """
         media_pool_item_list = []
         for media_pool_item in self.media_pool.GetTimelineMatteList(folder.folder):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
@@ -221,7 +225,7 @@ class MediaPool():
 
         Returns:
             Timeline: timeline object
-        """        
+        """
         return Timeline(self.media_pool.ImportTimelineFromFile(str(file_path), asdict(import_option)))
 
     def move_clips(self, clips: List[MediaPoolItem], target_folder: Folder) -> bool:
@@ -233,12 +237,12 @@ class MediaPool():
 
         Returns:
             bool: true if successful, false if not
-        """        
+        """
         return self.media_pool.MoveClips([clip.media_pool_item for clip in clips], target_folder.folder)
 
     def move_folders(self, folders: List[Folder], target_folder: Folder) -> bool:
         """move folders to target folder
-        
+
 
         Args:
             folders (List[Folder]): folders to move
@@ -268,21 +272,21 @@ class MediaPool():
     def unlink_clips(self, media_pool_items: List[MediaPoolItem]) -> bool:
         """Unlink specified media pool clips"""
         return self.media_pool.UnlinkClips([clip.media_pool_item for clip in media_pool_items])
-    
+
     ##########################################################################################################################
-    #Add at DR18.0.0
+    # Add at DR18.0.0
     def refresh_folders(self) -> bool:
         """Updates the folders in collaboration mode"""
         return self.media_pool.RefreshFolders()
-    
+
     def get_unique_id(self) -> str:
         """get unique id of media pool object"""
         return self.media_pool.GetUniqueId()
-    
+
     ##########################################################################################################################
-    #Add at DR18.5.0
-    
-    def import_folder_from_file(self,file_path:str,source_clips_path:str) -> bool:
+    # Add at DR18.5.0 Beta
+
+    def import_folder_from_file(self, file_path: str, source_clips_path: str) -> bool:
         """Returns true if import from given DRB filePath is successful, false otherwise
 
         Args:
@@ -291,6 +295,5 @@ class MediaPool():
 
         Returns:
             bool: Returns true if import from given DRB filePath is successful, false otherwise
-        """        
-        return self.media_pool.ImportFolderFromFile(file_path,source_clips_path)
-    
+        """
+        return self.media_pool.ImportFolderFromFile(file_path, source_clips_path)

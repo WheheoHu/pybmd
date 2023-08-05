@@ -233,4 +233,23 @@ class MediaPoolItem():
         """return unique id of the clip."""
         return self.media_pool_item.GetUniqueId()
     
-    ################################################################################
+    ##############################################################################################################################
+    # Add at DR18.5.0
+
+    def transcribe_audio(self) -> bool:
+        """Transcribes audio of the MediaPoolItem. 
+
+        Returns:
+            bool: Returns True if successful; False otherwise
+        """
+        return self.media_pool_item.TranscribeAudio()
+    
+    def clear_transcription(self) -> bool:
+        """Clears audio transcription of the MediaPoolItem. 
+
+        Returns:
+            bool: Returns True if successful; False otherwise.
+        """
+        return self.media_pool_item.ClearTranscription()
+    
+   

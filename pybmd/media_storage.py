@@ -6,6 +6,17 @@ from pybmd.media_pool_item import MediaPoolItem
 if TYPE_CHECKING:
     from pybmd.bmd import Bmd
 
+from dataclasses import dataclass
+from dataclasses import asdict
+
+
+@dataclass
+class Item_Info():
+    """Item Info"""
+    media: str
+    start_frame: int
+    end_frame: int
+
 
 class MediaStorage:
     """MediaStorage."""
@@ -28,12 +39,12 @@ class MediaStorage:
         """
         return self.media_storage.AddClipMattesToMediaPool(media_pool_item, paths, stero_eye)
 
-    def add_item_list_to_meida_pool(self, item_path_list: List[str]) -> List[MediaPoolItem]:
+    def add_item_list_to_meida_pool(self, items: List[str] | List[Item_Info]) -> List[MediaPoolItem]:
         """Adds specified file/folder paths from Media Storage into current Media Pool folder. 
 
         Args:
-            item_path_list (List[str]): an array of file/folder paths
-
+            items (List[str]): an array of file/folder paths
+            items (List[Item_Info]): an array of Item_info
         Returns:
             List[MediaPoolItem]: a list of MediaPoolItem objects created from the added items
         """
@@ -41,7 +52,11 @@ class MediaStorage:
         # for media_pool_item in self.media_storage.AddItemListToMeidaPool(item_path_list):
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
         # return media_pool_item_list
-        return [MediaPoolItem(media_pool_item) for media_pool_item in self.media_storage.AddItemListToMediaPool(item_path_list)]
+        if type(items[0]) is str:
+            return [MediaPoolItem(media_pool_item) for media_pool_item in self.media_storage.AddItemListToMediaPool(items)]
+        elif type(items[0]) is Item_Info:
+            temp_list=[asdict(item_info) for item_info in items]
+            return [MediaPoolItem(media_pool_item) for media_pool_item in self.media_storage.AddItemListToMediaPool(temp_list)]
 
     def add_timeline_mattes_to_media_pool(self, paths) -> List[MediaPoolItem]:
         """Adds specified media files as timeline mattes in current media pool folder. 
@@ -52,7 +67,7 @@ class MediaStorage:
         Returns:
             List[MediaPoolItem]:a list of created MediaPoolItem
         """
-        
+
         # media_pool_item_list = []
         # for media_pool_item in self.media_storage.AddTimelineMattesToMediaPool(paths):
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))

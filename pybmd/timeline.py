@@ -37,6 +37,40 @@ class TrackType(Enum):
     SUBTITLE_TRACK = 'subtitle'
 
 
+class OptionalSubTrackType(Enum):
+    """OptionalSubTrackType is required for TrackType is AUDIO_TRACK"""
+    MONO = "mono"
+    STEREO = "stereo"
+    FP1 = "5.1"
+    FP1_FILM = "5.1film"
+    SP1 = "7.1"
+    SP1_FILM = "7.1film"
+    ADAPTIVE_1 = "adaptive1"
+    ADAPTIVE_2 = "adaptive2"
+    ADAPTIVE_3 = "adaptive3"
+    ADAPTIVE_4 = "adaptive4"
+    ADAPTIVE_5 = "adaptive5"
+    ADAPTIVE_6 = "adaptive6"
+    ADAPTIVE_7 = "adaptive7"
+    ADAPTIVE_8 = "adaptive8"
+    ADAPTIVE_9 = "adaptive9"
+    ADAPTIVE_10 = "adaptive10"
+    ADAPTIVE_11 = "adaptive11"
+    ADAPTIVE_12 = "adaptive12"
+    ADAPTIVE_13 = "adaptive13"
+    ADAPTIVE_14 = "adaptive14"
+    ADAPTIVE_15 = "adaptive15"
+    ADAPTIVE_16 = "adaptive16"
+    ADAPTIVE_17 = "adaptive17"
+    ADAPTIVE_18 = "adaptive18"
+    ADAPTIVE_19 = "adaptive19"
+    ADAPTIVE_20 = "adaptive20"
+    ADAPTIVE_21 = "adaptive21"
+    ADAPTIVE_22 = "adaptive22"
+    ADAPTIVE_23 = "adaptive23"
+    ADAPTIVE_24 = "adaptive24"
+
+
 def timeline_item_class_list_transfer(timeline_item_list: List[TimelineItem]) -> list:
     timeline_item_trans_list = []
 
@@ -51,6 +85,7 @@ class Timeline():
 
     def __init__(self, timeline):
         self.timeline = timeline
+
     def __repr__(self) -> str:
         return f'Timeline:f{self.get_name()}'
 
@@ -189,7 +224,7 @@ class Timeline():
         """Returns the name of the timeline."""
         return self.timeline.GetName()
 
-    def get_setting(self, setting_name: str="") -> str:
+    def get_setting(self, setting_name: str = "") -> str:
         """Returns value of timeline setting (indicated by settingName : string)."""
         return self.timeline.GetSetting(setting_name)
 
@@ -211,7 +246,7 @@ class Timeline():
         Returns:
             str: track name.
         """
-        
+
         return self.timeline.GetTrackName(track_type.value, track_index)
 
     def grab_all_stills(self, still_frame_source: int) -> List[GalleryStill]:
@@ -225,7 +260,6 @@ class Timeline():
         """
 
         return [GalleryStill(gallery_still) for gallery_still in self.timeline.GrabAllStills(still_frame_source)]
-
 
     def grab_still(self) -> GalleryStill:
         """Grabs still from the current video clip. Returns a GalleryStill object."""
@@ -241,7 +275,7 @@ class Timeline():
 
         Returns:
             bool: true if successful, false otherwise.
-        """        
+        """
         return self.timeline.ImportIntoTimeline(file_path, asdict(import_options))
 
     def insert_fusion_generator_into_timeline(self, generator_name: str) -> TimelineItem:
@@ -306,7 +340,7 @@ class Timeline():
 
     #######################################################################################################################
     # Add at DR18.0.0
-    
+
     def set_start_timecode(self, timecode: str) -> bool:
         """Set the start timecode of the timeline to the string 'timecode'. Returns true when the change is successful, false otherwise."""
         return self.timeline.SetStartTimecode(timecode)
@@ -314,13 +348,132 @@ class Timeline():
     def get_start_timecode(self) -> str:
         """Returns the start timecode for the timeline."""
         return self.timeline.GetStartTimecode()
-    
+
     def insert_fusion_composition_into_timeline(self) -> TimelineItem:
         """Inserts a Fusion composition into the timeline.Returns a TimelineItem object."""
         return TimelineItem(self.timeline.InsertFusionCompositionIntoTimeline())
-    
+
     def get_unique_id(self) -> str:
         """Returns a unique ID for the timeline"""
         return self.timeline.GetUniqueId()
+
+    ##############################################################################################################################
+    # Add at DR18.5.0
+    def add_track(self, track_type: TrackType, optional_sub_track_type: OptionalSubTrackType) -> bool:
+        """Adds track of trackType ("video", "subtitle", "audio").
+        Second argument optionalSubTrackType is required for "audio"
+
+        Args:
+            track_type (TrackType): track type
+            optional_sub_track_type (OptionalSubTrackType): Second argument optionalSubTrackType is required for "audio"
+
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+        return self.timeline.AddTrack(track_type.value, optional_sub_track_type.value)
+
+    def delete_track(self, track_type: TrackType, track_index: int) -> bool:
+        """Deletes track of trackType ("video", "subtitle", "audio") and given trackIndex. 
+
+
+        Args:
+            track_type (TrackType): track type
+            track_index (int): track index.1 <= track_index <= get_track_count(track_type).
+
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+        return self.timeline.DeleteTrack(track_type.value, track_index)
+
+    def set_track_enable(self, track_type: TrackType, track_index: int, is_enable: bool) -> bool:
+        """Enables/Disables track with given trackType and trackIndex
+
+
+
+        Args:
+            track_type (TrackType): trackType is one of {"audio", "video", "subtitle"}
+            track_index (int): 1 <= trackIndex < GetTrackCount(trackType).
+            is_enable (bool): enable state
+
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+        return self.timeline.SetTrackEnable(track_type.value, track_index, is_enable)
+
+    def get_is_track_enabled(self, track_type, track_index) -> bool:
+        """
+
+        Args:
+            track_type (_type_): trackType is one of {"audio", "video", "subtitle"}
+            track_index (_type_): 1 <= trackIndex <= GetTrackCount(trackType).
+
+        Returns:
+            bool: Returns True if track with given trackType and trackIndex is enabled and False otherwise.
+        """
+        return self.timeline.GetIsTrackEnabled(track_type, track_index)
+
+    def set_track_lock(self, track_type: TrackType, track_index: int, is_locked: bool) -> bool:
+        """Locks/Unlocks track with given trackType and trackIndex
+
+        Args:
+            track_type (TrackType): trackType is one of {"audio", "video", "subtitle"}
+            track_index (int): 1 <= trackIndex <= GetTrackCount(trackType).
+            is_locked (bool):  lock state
+
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+        return self.timeline.SetTrackLock(track_type, track_index, is_locked)
+
+    def get_is_track_locked(self, track_type: TrackType, track_index: int) -> bool:
+        """Returns True if track with given trackType and trackIndex is locked and False otherwise.
+
+
+        Args:
+            track_type (TrackType): trackType is one of {"audio", "video", "subtitle"}
+            track_index (int): 1 <= trackIndex <= GetTrackCount(trackType).
+
+        Returns:
+            bool: Returns True if track with given trackType and trackIndex is locked and False otherwise.
+        """
+        return self.timeline.GetIsTrackLocked(track_type, track_index)
+
+    def delete_clips(self, timeline_items: List[TimelineItem], ripple_delete: bool = False) -> bool:
+        """Deletes specified TimelineItems from the timeline
+
+        Args:
+            timeline_items (List[TimelineItem]): specified TimelineItems
+            ripple_delete (bool): performing ripple delete if the second argument is True.
+
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+        return self.timeline.DeleteClips([timeline_item.timeline_item for timeline_item in timeline_items], ripple_delete)
+
+    def set_clips_linked(self, timeline_items: List[TimelineItem], is_linked: bool) -> bool:
+        """Links or unlinks the specified TimelineItems depending on second argument.
+
+        Args:
+            timeline_items (List[TimelineItem]): specified TimelineItems
+            is_linked (bool): Links or unlinks the specified TimelineItems
+
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+        return self.timeline.SetClipsLinked([timeline_item.timeline_item for timeline_item in timeline_items], is_linked)
+
+    def create_subtitle_from_audio(self) -> bool:
+        """Creates subtitles from audio for the timeline. 
+
+        Returns:
+            bool: Returns True on success, False otherwise.
+        """
+        return self.timeline.CreateSubtitleFromAudio()
     
-    #######################################################################################################################
+    def detect_scene_cuts(self) -> bool:
+        """Detects and makes scene cuts along the timeline. 
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+        """
+        return self.timeline.DetectSceneCuts()  

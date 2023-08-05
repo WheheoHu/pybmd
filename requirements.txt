@@ -9,7 +9,6 @@ certifi
 charset-normalizer
 click
 colorama
-dataclasses
 dftt-timecode
 doc2dash
 docutils

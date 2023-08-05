@@ -71,6 +71,9 @@ class Bmd:
         
         #Add at DR 18.1.3
         self.EXPORT_DOLBY_VISION_VER_5_1 = self.local_davinci.EXPORT_DOLBY_VISION_VER_5_1
+        
+        #Add at DR 18.5.0
+        self.EXPORT_OTIO=self.local_davinci.EXPORT_OTIO
 
         # timeline exportSubtype can be one of the following enums:
         # for exportType is EXPORT_AAF:

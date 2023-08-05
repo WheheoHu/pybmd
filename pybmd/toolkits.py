@@ -64,7 +64,6 @@ def get_subfolder(folder: Folder, subfolder_name: str) -> Folder:
 
 # TODO get_folder_by_path(check path before get ,if folder not exist,create or raise error)
 
-# TODO add_subfolders (by path) MediaPool->add_subfolder
 
 
 def add_subfolders(media_pool: MediaPool, folder: Folder, subfolder_path: str) -> bool:

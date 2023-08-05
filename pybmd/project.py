@@ -276,7 +276,7 @@ class Project():
         return self.project.InsertAudioToCurrentTrackAtPlayhead(media_path, start_offset_in_samples, duration_in_samples)
 
     ##############################################################################################################################
-    # Add at DR18.5.0
+    # Add at DR18.5.0 Beta
     
     def load_burn_in_preset(self,preset_name:str) -> bool:
         """Loads user defined data burn in preset for project when supplied presetName (string). 
@@ -288,3 +288,18 @@ class Project():
             bool: Returns true if successful.
         """        
         return self.project.LoadBurnInPreset(preset_name)
+    ##############################################################################################################################
+    # Add at DR18.5.0 
+    
+    def export_current_frame_as_still(self,file_path:str) -> bool:
+        """Exports current frame as still to supplied filePath. 
+
+        Args:
+            file_path (str): exported still path.filePath must end in valid export file format. 
+
+        Returns:
+            bool: Returns True if succssful, False otherwise.
+        """
+        return self.project.ExportCurrentFrameAsStill(file_path)
+       
+    

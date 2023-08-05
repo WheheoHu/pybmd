@@ -24,12 +24,20 @@ class CDL_Map():
     Saturation: str
 
 
+@dataclass
+class MagicMask_Mode():
+    """MagicMask_Mode."""
+    Forward = "F"
+    Backward = "B"
+    Bidirection = "BI"
+
+
 class TimelineItem():
     """TimelineItem Object"""
 
     def __init__(self, timeline_item):
         self.timeline_item = timeline_item
-        
+
     def __repr__(self) -> str:
         return f'Timeline Item:f{self.get_name()}'
 
@@ -361,17 +369,17 @@ class TimelineItem():
         return self.timeline_item.GetUniqueId()
 
     ##########################################################################################################################
-    # Add at DR18.5.0
-    
+    # Add at DR18.5.0 Beta
+
     def apply_arri_cdl_lut(self) -> bool:
         """Applies ARRI CDL and LUT.
 
         Returns:
             bool: Returns True if successful, False otherwise.
-        """        
+        """
         return self.timeline_item.ApplyArriCdlLut()
-    
-    def set_clip_enabled(self,bool_value:bool) -> bool:
+
+    def set_clip_enabled(self, bool_value: bool) -> bool:
         """Sets clip enabled based on argument.
 
         Args:
@@ -379,18 +387,18 @@ class TimelineItem():
 
         Returns:
             bool: True for clip is enabled
-        """        
+        """
         return self.timeline_item.SetClipEnabled(bool_value)
-    
+
     def get_clip_enabled(self) -> bool:
         """Gets clip enabled status.
 
         Returns:
             bool: clip enabled status 
-        """        
+        """
         return self.timeline_item.GetClipEnabled()
-    
-    def load_burn_in_preset(self,preset_name:str) -> bool:
+
+    def load_burn_in_preset(self, preset_name: str) -> bool:
         """Loads user defined data burn in preset for clip when supplied presetName (string). Returns true if successful.
 
         Args:
@@ -398,10 +406,10 @@ class TimelineItem():
 
         Returns:
             bool: Returns true if successful
-        """        
+        """
         return self.timeline_item.LoadBurnInPreset(preset_name)
-    
-    def get_node_label(self,node_index:int) -> str:
+
+    def get_node_label(self, node_index: int) -> str:
         """Returns the label of the node at nodeIndex.
 
         Args:
@@ -409,6 +417,43 @@ class TimelineItem():
 
         Returns:
             str: node label
-        """        
+        """
         return self.timeline_item.GetNodeLabel(node_index)
+
+    ##############################################################################################################################
+    # Add at DR18.5.0
     
+    def create_magic_mask(self, mode: MagicMask_Mode) -> bool:
+        """Returns True if magic mask was created successfully, False otherwise. 
+
+        Args:
+            mode (MagicMask_Mode): mode 
+
+        Returns:
+            bool: Returns True if magic mask was created successfully, False otherwise.
+        """
+        return self.timeline_item.CreateMagicMask(mode.value)
+    
+    def regenerate_magic_mask(self) -> bool:
+        """Returns True if magic mask was regenerated successfully, False otherwise.
+
+        Returns:
+            bool: Returns True if magic mask was regenerated successfully, False otherwise.
+        """
+        return self.timeline_item.RegenerateMagicMask()
+    
+    def stabilize(self) -> bool:
+        """Returns True if stabilization was successful, False otherwise
+
+        Returns:
+            bool: Returns True if stabilization was successful, False otherwise
+        """
+        return self.timeline_item.Stabilize()
+    
+    def smart_reframe(self) -> bool:
+        """Performs Smart Reframe. 
+
+        Returns:
+            bool: _descriReturns True if successful, False otherwise.ption_
+        """
+        return self.timeline_item.SmartReframe()
