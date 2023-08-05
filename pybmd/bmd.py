@@ -27,7 +27,8 @@ class Default_LIB_PATH(Enum):
 
 
 class Bmd:
-    """Bmd class. Init Davinci Resolve Object"""
+    """Bmd class. Init Davinci Resolve Object
+    """
 
     if sys.platform.startswith("darwin"):
         PYLIB = Default_LIB_PATH.LIB_MAC.value
@@ -89,7 +90,7 @@ class Bmd:
         """init and return Davinci Resolve object
 
         Args:
-            davinci_ip (str, optional): Defaults to LOCATION.
+            davinci_ip (str, optional): Default value is local (127.0.0.1).
 
         """
         bmd_module = load_dynamic(
