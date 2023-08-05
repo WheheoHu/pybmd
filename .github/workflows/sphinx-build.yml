@@ -30,6 +30,7 @@ jobs:
       run: |
         git clone https://github.com/WheheoHu/pybmd.git --branch gh-pages --single-branch gh-pages
         rm -r ./gh-pages/*
+        rm -r ./gh-pages/.*
 
     # - name: Remove File
     #   uses: JesseTG/rm@v1.0.0
