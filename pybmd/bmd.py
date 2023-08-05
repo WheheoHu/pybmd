@@ -28,6 +28,7 @@ class Default_LIB_PATH(Enum):
 
 class Bmd:
     """Bmd class. Init Davinci Resolve Object
+        Base for everything
     """
 
     if sys.platform.startswith("darwin"):
