@@ -1,7 +1,7 @@
 name: dash-build
 on: 
   workflow_run:
-    workflows: ["name: Deploy_Pages"]
+    workflows: ["pages-build-deployment"]
     types:
       - completed
   # push:
