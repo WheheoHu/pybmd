@@ -26,9 +26,17 @@ jobs:
         
     # Publish built docs to gh-pages branch.
     # ===============================
-    - name: Commit documentation changes
+    - name: Clone ph-pages branch
       run: |
         git clone https://github.com/WheheoHu/pybmd.git --branch gh-pages --single-branch gh-pages
+
+    - name: Remove File
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: gh-pages/
+
+    - name: Commit documentation changes
+      run: |
         cp -r docs/build/html/* gh-pages/
         cd gh-pages
         touch .nojekyll
