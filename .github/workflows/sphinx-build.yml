@@ -46,59 +46,59 @@ jobs:
         directory: gh-pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
     # ===============================
-  doc2dash:
-    needs: build_sphinx
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: install doc2dash
-        run: |
-          brew install hynek/tap/doc2dash
-          brew install tree
+  # doc2dash:
+  #   needs: build_sphinx
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: install doc2dash
+  #       run: |
+  #         brew install hynek/tap/doc2dash
+  #         brew install tree
 
-      - name: clone gh-pages branch.
-        run: |
-          git clone https://github.com/WheheoHu/pybmd.git --branch gh-pages --single-branch gh-pages
+  #     - name: clone gh-pages branch.
+  #       run: |
+  #         git clone https://github.com/WheheoHu/pybmd.git --branch gh-pages --single-branch gh-pages
 
-      - name: Remove File
-        uses: JesseTG/rm@v1.0.0
-        with:
-          path: ./gh-pages/dash_doc/pybmd.docset
+  #     - name: Remove File
+  #       uses: JesseTG/rm@v1.0.0
+  #       with:
+  #         path: ./gh-pages/dash_doc/pybmd.docset
         
-      - name: doc2dash generate dash docset.
-        run: |
+  #     - name: doc2dash generate dash docset.
+  #       run: |
 
-          #tree 
-          doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/icon@2x.png
-          # -d ./gh-pages/dash_doc
-          cp -R pybmd.docset ./gh-pages/dash_doc/pybmd.docset
-          cd gh-pages
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "update dash docset" -a || true
+  #         #tree 
+  #         doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/icon@2x.png
+  #         # -d ./gh-pages/dash_doc
+  #         cp -R pybmd.docset ./gh-pages/dash_doc/pybmd.docset
+  #         cd gh-pages
+  #         git config --local user.email "action@github.com"
+  #         git config --local user.name "GitHub Action"
+  #         git add .
+  #         git commit -m "update dash docset" -a || true
 
          
 
-      - name: upload dash doc as artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dash_docset
-          path: ./gh-pages/dash_doc/pybmd.docset
+  #     - name: upload dash doc as artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: dash_docset
+  #         path: ./gh-pages/dash_doc/pybmd.docset
           
-      - name: Remove File
-        uses: JesseTG/rm@v1.0.0
-        with:
-          path: ./gh-pages/dash_doc/pybmd.docset
+  #     - name: Remove File
+  #       uses: JesseTG/rm@v1.0.0
+  #       with:
+  #         path: ./gh-pages/dash_doc/pybmd.docset
 
-      - name: git subm
-        run: |
-          git submodule update --init
-          # git rm --cached dash_doc/pybmd.docset/Contents/Resources/Documents
+  #     - name: git subm
+  #       run: |
+  #         git submodule update --init
+  #         # git rm --cached dash_doc/pybmd.docset/Contents/Resources/Documents
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: gh-pages
-          directory: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }} 
+  #     - name: Push changes
+  #       uses: ad-m/github-push-action@master
+  #       with:
+  #         branch: gh-pages
+  #         directory: gh-pages
+  #         github_token: ${{ secrets.GITHUB_TOKEN }} 
