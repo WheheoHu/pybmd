@@ -30,7 +30,7 @@ jobs:
         run: |
 
           #tree 
-          mkdir ./gh-pages/dash_doc/pybmd.docset
+          mkdir -p ./gh-pages/dash_doc/pybmd.docset
           doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/icon@2x.png
           # -d ./gh-pages/dash_doc
           cp -R pybmd.docset ./gh-pages/dash_doc/pybmd.docset
