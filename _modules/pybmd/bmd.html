@@ -164,7 +164,8 @@
 
 
 <div class="viewcode-block" id="Bmd"><a class="viewcode-back" href="../../pybmd.html#pybmd.bmd.Bmd">[docs]</a><span class="k">class</span> <span class="nc">Bmd</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Bmd class. Init Davinci Resolve Object&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Bmd class. Init Davinci Resolve Object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;darwin&quot;</span><span class="p">):</span>
         <span class="n">PYLIB</span> <span class="o">=</span> <span class="n">Default_LIB_PATH</span><span class="o">.</span><span class="n">LIB_MAC</span><span class="o">.</span><span class="n">value</span>
@@ -226,7 +227,7 @@
         <span class="sd">&quot;&quot;&quot;init and return Davinci Resolve object</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            davinci_ip (str, optional): Defaults to LOCATION.</span>
+<span class="sd">            davinci_ip (str, optional): Default value is local (127.0.0.1).</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">bmd_module</span> <span class="o">=</span> <span class="n">load_dynamic</span><span class="p">(</span>
