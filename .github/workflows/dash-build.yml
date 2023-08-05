@@ -4,7 +4,7 @@ on:
     workflows: ["pages-build-deployment"]
     types:
       - completed
-      
+
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
       - name: install doc2dash
         run: |
           brew install hynek/tap/doc2dash
-          brew install tree
+          #brew install tree
 
       - name: clone gh-pages branch.
         run: |
@@ -30,6 +30,7 @@ jobs:
         run: |
 
           #tree 
+          mkdir ./gh-pages/dash_doc/pybmd.docset
           doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/icon@2x.png
           # -d ./gh-pages/dash_doc
           cp -R pybmd.docset ./gh-pages/dash_doc/pybmd.docset
