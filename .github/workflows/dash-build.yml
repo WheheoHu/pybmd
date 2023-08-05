@@ -1,9 +1,12 @@
 name: dash-build
 on: 
-  workflow_run:
-    workflows: ["pages-build-deployment"]
-    types:
-      - completed
+  # workflow_run:
+  #   workflows: ["pages-build-deployment"]
+  #   types:
+  #     - completed
+  push:
+    branches:    
+      - master
 jobs:
   doc2dash:
     runs-on: macos-latest
