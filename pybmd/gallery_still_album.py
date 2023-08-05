@@ -6,7 +6,7 @@ from enum import Enum
 
 
 class StillFormats(Enum):
-    """StillFormats."""
+    """StillFormats"""
     DPX = "dpx"
     CIN = "cin"
     TIF = "tif"
