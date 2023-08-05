@@ -4,9 +4,9 @@ on:
     workflows: ["pages-build-deployment"]
     types:
       - completed
-  # push:
-  #   branches:    
-  #     - master
+      
+  workflow_dispatch:
+
 jobs:
   doc2dash:
     runs-on: macos-latest
