@@ -15,7 +15,7 @@ How To Install
 
 How To Use
 -------------
-**⚠️Run Davinci Resolve before you run script**
+**Run Davinci Resolve before you run script**
 
 .. code-block:: python
 
@@ -31,5 +31,12 @@ API Reference
    :maxdepth: 2
 
    reference
+
+Samples
+-----------
+
+.. toctree:: 
+
+   samples
 
 
