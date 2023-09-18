@@ -20,7 +20,7 @@ sys.path.append(os.path.abspath(".."))
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
-              'sphinx_pdj_theme']
+              ]
 html_theme = "pydata_sphinx_theme"
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
