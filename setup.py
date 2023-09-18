@@ -1,11 +1,11 @@
 import setuptools
-
+import pybmd as package
 with open("README.md", "r") as rm:
     long_description = rm.read()
 
 setuptools.setup(
-    name="pybmd",
-    version="2023.4.0",
+    name=package.name,
+    version=package.__version__,
     author="wheheo",
     author_email="wheheohu@outlook.com",
     description="python library for Davinci Resolve(Repack)",

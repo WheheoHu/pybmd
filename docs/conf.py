@@ -5,15 +5,18 @@
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+import sys, os
+import pybmd as package
 
-project = 'pybmd'
-copyright = '2022, Wheheo Hu'
+
+project = package.name
+copyright = '2023, Wheheo Hu'
 author = 'Wheheo Hu'
-release = '2023.4.0'
+release = package.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-import sys, os
+
 
 sys.path.append(os.path.abspath(".."))
 
@@ -29,7 +32,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
+html_title = 'PyBMD Docs'
 html_theme = "pydata_sphinx_theme"
 html_theme_options={
     "icon_links":[
