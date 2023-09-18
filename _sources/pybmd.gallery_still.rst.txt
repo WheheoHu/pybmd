@@ -1,5 +1,5 @@
-Gallery Still
-=================
+GalleryStill
+==========================================
 
 .. automodule:: pybmd.gallery_still
    :members:

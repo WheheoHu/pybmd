@@ -1,4 +1,4 @@
-Fusion Comp
+FusionComp
 =================
 
 .. automodule:: pybmd.fusion_comp
