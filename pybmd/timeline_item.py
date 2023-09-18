@@ -454,6 +454,6 @@ class TimelineItem():
         """Performs Smart Reframe. 
 
         Returns:
-            bool: _descriReturns True if successful, False otherwise.ption_
+            bool: _descriReturns True if successful, False otherwise.
         """
         return self.timeline_item.SmartReframe()
