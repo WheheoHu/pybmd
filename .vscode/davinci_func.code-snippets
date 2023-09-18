@@ -53,6 +53,20 @@
 				"   :undoc-members:",
 				"   :show-inheritance:",
 		]
+	},
+	"Class RST":{
+		"prefix":"cr",
+		"body":[
+				"${TM_FILENAME_BASE/(.*\\.|_)([a-z])/${2:/upcase}/gm}",
+				"==========================================",
+				"",
+				".. currentmodule:: ${TM_FILENAME_BASE/(.*)\\..*/${1}/gm} ",
+				"",
+				".. autoclass:: ${TM_FILENAME_BASE/.*\\.(.*)/${1}/gm}",
+				"   :members:",
+				"   :special-members:",
+				"   :show-inheritance:",
+		]
 	}
 
 }
