@@ -1,0 +1,29 @@
+pybmd.media\_pool\_item
+=======================
+
+.. automodule:: pybmd.media_pool_item
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MediaPoolItem
+   
+   
+
+   
+   
+   
+
+
+

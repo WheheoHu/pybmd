@@ -1,0 +1,29 @@
+pybmd.error
+===========
+
+.. automodule:: pybmd.error
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ResolveInitError
+   
+   
+
+
+

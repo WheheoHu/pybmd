@@ -1,0 +1,36 @@
+pybmd.bmd
+=========
+
+.. automodule:: pybmd.bmd
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      load_dynamic
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Bmd
+      Default_LIB_PATH
+   
+   
+
+   
+   
+   
+
+
+

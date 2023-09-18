@@ -1,0 +1,31 @@
+pybmd.media\_pool
+=================
+
+.. automodule:: pybmd.media_pool
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ClipInfo
+      MediaPool
+      TimelineImportOptions
+   
+   
+
+   
+   
+   
+
+
+

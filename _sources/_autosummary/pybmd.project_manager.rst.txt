@@ -1,0 +1,29 @@
+pybmd.project\_manager
+======================
+
+.. automodule:: pybmd.project_manager
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ProjectManager
+   
+   
+
+   
+   
+   
+
+
+
