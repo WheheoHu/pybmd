@@ -24,8 +24,9 @@ release = package.__version__
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
+              'sphinx.ext.autosummary',
             ]
-
+autosummary_generate = True
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 

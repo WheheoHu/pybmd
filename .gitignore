@@ -20,3 +20,4 @@ test
 .venv311
 .pytest_cache
 test.ipynb
+docs/_autosummary

@@ -40,3 +40,10 @@ Samples
    samples
 
 
+.. autosummary::
+   :toctree: _autosummary
+   :recursive:
+
+   pybmd
+
+
