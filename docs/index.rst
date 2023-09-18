@@ -1,11 +1,31 @@
 .. pybmd documentation master file, created by
    sphinx-quickstart on Mon Aug  1 13:09:36 2022.
    You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+   contain the root ``toctree`` directive.
 
-Welcome to PyBMD's documentation!
+PyBMD
 =================================
-This is documentation of PyBMD
+Python library for DaVinci Resolve (Repack)
+
+How To Install
+--------------------
+.. code-block:: python
+
+   pip install pybmd
+
+How To Use
+-------------
+**⚠️Run Davinci Resolve before you run script**
+
+.. code-block:: python
+
+   from pybmd import Bmd
+   LOCAL_RESOLVE = Bmd()
+
+``Bmd()`` has an option arg named ``davinci_ip`` , default value is ``127.0.0.1`` stands for local davinci, if you want to use remote DaVinci Resolve object, change arg to remote ip.
+
+API Reference
+----------------
 
 .. toctree::
    :maxdepth: 2
