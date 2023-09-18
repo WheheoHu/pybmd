@@ -51,8 +51,8 @@ class Bmd:
         self.EXPORT_DRT = self.local_davinci.EXPORT_DRT
         self.EXPORT_EDL = self.local_davinci.EXPORT_EDL
         self.EXPORT_FCP_7_XML = self.local_davinci.EXPORT_FCP_7_XML
-        
-        #Remove at DR 18.1.3
+
+        # Remove at DR 18.1.3
         # self.EXPORT_FCPXML_1_3 = self.local_davinci.EXPORT_FCPXML_1_3
         # self.EXPORT_FCPXML_1_4 = self.local_davinci.EXPORT_FCPXML_1_4
         # self.EXPORT_FCPXML_1_5 = self.local_davinci.EXPORT_FCPXML_1_5
@@ -70,12 +70,12 @@ class Bmd:
         self.EXPORT_TEXT_TAB = self.local_davinci.EXPORT_TEXT_TAB
         self.EXPORT_DOLBY_VISION_VER_2_9 = self.local_davinci.EXPORT_DOLBY_VISION_VER_2_9
         self.EXPORT_DOLBY_VISION_VER_4_0 = self.local_davinci.EXPORT_DOLBY_VISION_VER_4_0
-        
-        #Add at DR 18.1.3
+
+        # Add at DR 18.1.3
         self.EXPORT_DOLBY_VISION_VER_5_1 = self.local_davinci.EXPORT_DOLBY_VISION_VER_5_1
-        
-        #Add at DR 18.5.0
-        self.EXPORT_OTIO=self.local_davinci.EXPORT_OTIO
+
+        # Add at DR 18.5.0
+        self.EXPORT_OTIO = self.local_davinci.EXPORT_OTIO
 
         # timeline exportSubtype can be one of the following enums:
         # for exportType is EXPORT_AAF:
@@ -232,3 +232,52 @@ class Bmd:
             bool
         """
         return self.local_davinci.UpdateLayoutPreset(preset_name)  # type: ignore
+
+    ##############################################################################################################################
+    # Add at DR18.6.0 
+    
+    def import_render_preset(self, preset_path: str) -> bool:
+        """Import a preset from presetPath (string) and set it as current preset for rendering.
+
+        Args:
+            preset_path (str): path of preset file
+
+        Returns:
+            bool: Returns True if succssful, False otherwise.
+        """
+        return self.bmd.ImportRenderPreset(preset_path)
+
+    def export_render_preset(self, preset_name: str, export_path: str) -> bool:
+        """Export a preset to a given path (string) if presetName(string) exists.
+
+        Args:
+            preset_name (str): export preset name   
+            export_path (str): export path
+
+        Returns:
+            bool: Returns True if succssful, False otherwise.
+        """
+        return self.bmd.ExportRenderPreset(preset_name, export_path)
+
+    def import_burn_in_preset(self, preset_path: str) -> bool:
+        """Import a data burn in preset from a given presetPath (string)
+
+        Args:
+            preset_path (str): path of preset
+
+        Returns:
+            bool: Returns True if succssful, False otherwise.
+        """
+        return self.bmd.ImportBurnInPreset(preset_path)
+
+    def export_burn_in_preset(self, preset_name: str, export_path: str) -> bool:
+        """Export a data burn in preset to a given path (string) if presetName (string) exists.
+
+        Args:   
+            preset_name (str): name of export preset
+            export_path (str): path to export
+
+        Returns:
+            bool: Returns True if succssful, False otherwise.
+        """
+        return self.bmd.ExportBurnInPreset(preset_name, export_path)
