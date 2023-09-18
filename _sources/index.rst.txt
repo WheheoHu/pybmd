@@ -13,9 +13,4 @@ This is documentation of PyBMD
 
    modules
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
