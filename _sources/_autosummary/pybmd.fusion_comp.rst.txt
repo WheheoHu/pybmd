@@ -16,6 +16,8 @@ pybmd.fusion\_comp
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       FusionComp
    

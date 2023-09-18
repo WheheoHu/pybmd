@@ -1,0 +1,772 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybmd.bmd &#8212; PyBMD Docs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+
+    <script src="../../_static/documentation_options.js?v=159e5128"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/bmd';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyBMD Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../samples.html">
+                        Samples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../_autosummary/pybmd.html">
+                        pybmd
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__kbd-shortcut">Search</span>
+    <span><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__kbd-shortcut">Search</span>
+    <span><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../samples.html">
+                        Samples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../_autosummary/pybmd.html">
+                        pybmd
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">pybmd.bmd</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for pybmd.bmd</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">import</span> <span class="nn">importlib.machinery</span>
+<span class="kn">import</span> <span class="nn">importlib.util</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">pybmd.error</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pybmd.media_storage</span> <span class="kn">import</span> <span class="n">MediaStorage</span>
+<span class="kn">from</span> <span class="nn">pybmd.project_manager</span> <span class="kn">import</span> <span class="n">ProjectManager</span>
+
+
+<div class="viewcode-block" id="load_dynamic">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.load_dynamic.html#pybmd.bmd.load_dynamic">[docs]</a>
+<span class="k">def</span> <span class="nf">load_dynamic</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">module_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads a module dynamically.&quot;&quot;&quot;</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">machinery</span><span class="o">.</span><span class="n">ExtensionFileLoader</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">module_path</span><span class="p">)</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">spec_from_loader</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">module_name</span><span class="p">,</span> <span class="n">loader</span><span class="o">=</span><span class="n">loader</span><span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+    <span class="c1"># sys.modules[module_name]=module</span>
+    <span class="c1"># spec.loader.exec_module(module)</span>
+
+    <span class="k">return</span> <span class="n">module</span></div>
+
+
+
+<div class="viewcode-block" id="Default_LIB_PATH">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Default_LIB_PATH.html#pybmd.bmd.Default_LIB_PATH">[docs]</a>
+<span class="k">class</span> <span class="nc">Default_LIB_PATH</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">LIB_Windows</span> <span class="o">=</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Program Files</span><span class="se">\\</span><span class="s2">Blackmagic Design</span><span class="se">\\</span><span class="s2">DaVinci Resolve</span><span class="se">\\</span><span class="s2">fusionscript.dll&quot;</span>
+    <span class="n">LIB_MAC</span> <span class="o">=</span> <span class="s2">&quot;/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="Bmd">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd">[docs]</a>
+<span class="k">class</span> <span class="nc">Bmd</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bmd class. Init Davinci Resolve Object</span>
+<span class="sd">        Base for everything</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;darwin&quot;</span><span class="p">):</span>
+        <span class="n">PYLIB</span> <span class="o">=</span> <span class="n">Default_LIB_PATH</span><span class="o">.</span><span class="n">LIB_MAC</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;win&quot;</span><span class="p">):</span>
+        <span class="n">PYLIB</span> <span class="o">=</span> <span class="n">Default_LIB_PATH</span><span class="o">.</span><span class="n">LIB_Windows</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">APP_NAME</span> <span class="o">=</span> <span class="s1">&#39;Resolve&#39;</span>
+    <span class="n">IP_ADDRESS</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>
+
+    <span class="n">local_davinci</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Bmd.__init__">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_ip</span><span class="o">=</span><span class="n">IP_ADDRESS</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the BMD object.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_davinci</span><span class="p">(</span><span class="n">davinci_ip</span><span class="o">=</span><span class="n">resolve_ip</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ResolveInitError</span>
+
+        <span class="c1"># timeline exportType can be one of the following constants:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DRT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_DRT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_EDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_EDL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCP_7_XML</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCP_7_XML</span>
+
+        <span class="c1"># Remove at DR 18.1.3</span>
+        <span class="c1"># self.EXPORT_FCPXML_1_3 = self.local_davinci.EXPORT_FCPXML_1_3</span>
+        <span class="c1"># self.EXPORT_FCPXML_1_4 = self.local_davinci.EXPORT_FCPXML_1_4</span>
+        <span class="c1"># self.EXPORT_FCPXML_1_5 = self.local_davinci.EXPORT_FCPXML_1_5</span>
+        <span class="c1"># self.EXPORT_FCPXML_1_6 = self.local_davinci.EXPORT_FCPXML_1_6</span>
+        <span class="c1"># self.EXPORT_FCPXML_1_7 = self.local_davinci.EXPORT_FCPXML_1_7</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_8</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_8</span>
+
+        <span class="c1"># Add at DR 18.0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_9</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_9</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_10</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_10</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_B</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_TEXT_CSV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_TEXT_CSV</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_TEXT_TAB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_TEXT_TAB</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_2_9</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_2_9</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_4_0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_4_0</span>
+
+        <span class="c1"># Add at DR 18.1.3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_5_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_5_1</span>
+
+        <span class="c1"># Add at DR 18.5.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_OTIO</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_OTIO</span>
+
+        <span class="c1"># timeline exportSubtype can be one of the following enums:</span>
+        <span class="c1"># for exportType is EXPORT_AAF:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF_NEW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF_NEW</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF_EXISTING</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF_EXISTING</span>
+        <span class="c1"># for exportType is EXPORT_EDL:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_NONE</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_NONE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_CDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_CDL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_SDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_SDL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_MISSING_CLIPS</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_MISSING_CLIPS</span></div>
+
+
+<div class="viewcode-block" id="Bmd.init_davinci">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.init_davinci">[docs]</a>
+    <span class="k">def</span> <span class="nf">init_davinci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">davinci_ip</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;init and return Davinci Resolve object</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            davinci_ip (str, optional): Default value is local (127.0.0.1).</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">bmd_module</span> <span class="o">=</span> <span class="n">load_dynamic</span><span class="p">(</span>
+            <span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;fusionscript&#39;</span><span class="p">,</span> <span class="n">module_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PYLIB</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bmd_module</span><span class="o">.</span><span class="n">scriptapp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APP_NAME</span><span class="p">,</span> <span class="n">davinci_ip</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Bmd.get_local_davinci">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.get_local_davinci">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_local_davinci</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the local Davinci Resolve object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span></div>
+
+
+<div class="viewcode-block" id="Bmd.delete_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.delete_layout_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes preset named preset_name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_name (string)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">DeleteLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.export_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.export_layout_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">export_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports preset named preset_name to path preset_file_path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_name (str): </span>
+<span class="sd">            preset_file_path (str): </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">ExportLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">))</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.fusion">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.fusion">[docs]</a>
+    <span class="k">def</span> <span class="nf">fusion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Fusion object. Starting point for Fusion scripts.&quot;&quot;&quot;</span>
+        <span class="c1"># if I find more info about fusion I will finish this function</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">Fusion</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.get_current_page">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.get_current_page">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_current_page</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the page currently displayed in the main window</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Returned value can be one of (&quot;media&quot;, &quot;cut&quot;, &quot;edit&quot;, &quot;fusion&quot;, &quot;color&quot;, &quot;fairlight&quot;, &quot;deliver&quot;, None).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetCurrentPage</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.get_media_storage">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.get_media_storage">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_media_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MediaStorage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the MediaStorage  object to query and act on media locations.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            MediaStorage: </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MediaStorage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Bmd.get_product_name">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.get_product_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_product_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns product name.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: product name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetProductName</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.get_project_manager">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.get_project_manager">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_project_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProjectManager</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ProjectManager object for currently open database.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ProjectManager: </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ProjectManager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Bmd.get_version">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.get_version">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of product version fields in [major, minor, patch, build, suffix] format.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: list of product version fields</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.get_version_string">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.get_version_string">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_version_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns product version in &quot;major.minor.patch[suffix].build&quot; format.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: product version string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetVersionString</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.import_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.import_layout_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">import_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Imports preset from path &#39;preset_file_path&#39;. </span>
+<span class="sd">            The optional argument &#39;preset_name&#39; specifies how the preset shall be named.</span>
+<span class="sd">            If not specified, the preset is named based on the filename.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">ImportLayoutPreset</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">),</span> <span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.load_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.load_layout_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">load_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads UI layout from saved preset named preset_name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_name (str): </span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">LoadLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.open_page">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.open_page">[docs]</a>
+    <span class="k">def</span> <span class="nf">open_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Switches to indicated page in DaVinci Resolve. </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page_name (str): Input can be one of (&quot;media&quot;, &quot;cut&quot;, &quot;edit&quot;, &quot;fusion&quot;, &quot;color&quot;, &quot;fairlight&quot;, &quot;deliver&quot;).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">OpenPage</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.quit">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.quit">[docs]</a>
+    <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Quits the Resolve App.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.save_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.save_layout_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">save_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves current UI layout as a preset named preset_name.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_name (str)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">SaveLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="Bmd.update_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.update_layout_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Overwrites preset named &#39;preset_name&#39; with current UI layout.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_name (str)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">UpdateLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR18.6.0 </span>
+    
+<div class="viewcode-block" id="Bmd.import_render_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.import_render_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">import_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a preset from presetPath (string) and set it as current preset for rendering.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_path (str): path of preset file</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmd</span><span class="o">.</span><span class="n">ImportRenderPreset</span><span class="p">(</span><span class="n">preset_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Bmd.export_render_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.export_render_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">export_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a preset to a given path (string) if presetName(string) exists.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_name (str): export preset name   </span>
+<span class="sd">            export_path (str): export path</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmd</span><span class="o">.</span><span class="n">ExportRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Bmd.import_burn_in_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.import_burn_in_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">import_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a data burn in preset from a given presetPath (string)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_path (str): path of preset</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmd</span><span class="o">.</span><span class="n">ImportBurnInPreset</span><span class="p">(</span><span class="n">preset_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Bmd.export_burn_in_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd.export_burn_in_preset">[docs]</a>
+    <span class="k">def</span> <span class="nf">export_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a data burn in preset to a given path (string) if presetName (string) exists.</span>
+
+<span class="sd">        Args:   </span>
+<span class="sd">            preset_name (str): name of export preset</span>
+<span class="sd">            export_path (str): path to export</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmd</span><span class="o">.</span><span class="n">ExportBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Wheheo Hu.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

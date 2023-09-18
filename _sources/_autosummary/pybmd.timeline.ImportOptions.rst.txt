@@ -1,0 +1,38 @@
+pybmd.timeline.ImportOptions
+============================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoclass:: ImportOptions
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ImportOptions.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ImportOptions.autoImportSourceClipsIntoMediaPool
+      ~ImportOptions.ignoreFileExtensionsWhenMatching
+      ~ImportOptions.importMultiChannelAudioTracksAsLinkedGroups
+      ~ImportOptions.insertAdditionalTracks
+      ~ImportOptions.insertWithOffset
+      ~ImportOptions.linkToSourceCameraFiles
+      ~ImportOptions.sourceClipsFolders
+      ~ImportOptions.sourceClipsPath
+      ~ImportOptions.useSizingInfo
+   
+   

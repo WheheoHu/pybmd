@@ -1,0 +1,53 @@
+pybmd.timeline.OptionalSubTrackType
+===================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoclass:: OptionalSubTrackType
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~OptionalSubTrackType.MONO
+      ~OptionalSubTrackType.STEREO
+      ~OptionalSubTrackType.FP1
+      ~OptionalSubTrackType.FP1_FILM
+      ~OptionalSubTrackType.SP1
+      ~OptionalSubTrackType.SP1_FILM
+      ~OptionalSubTrackType.ADAPTIVE_1
+      ~OptionalSubTrackType.ADAPTIVE_2
+      ~OptionalSubTrackType.ADAPTIVE_3
+      ~OptionalSubTrackType.ADAPTIVE_4
+      ~OptionalSubTrackType.ADAPTIVE_5
+      ~OptionalSubTrackType.ADAPTIVE_6
+      ~OptionalSubTrackType.ADAPTIVE_7
+      ~OptionalSubTrackType.ADAPTIVE_8
+      ~OptionalSubTrackType.ADAPTIVE_9
+      ~OptionalSubTrackType.ADAPTIVE_10
+      ~OptionalSubTrackType.ADAPTIVE_11
+      ~OptionalSubTrackType.ADAPTIVE_12
+      ~OptionalSubTrackType.ADAPTIVE_13
+      ~OptionalSubTrackType.ADAPTIVE_14
+      ~OptionalSubTrackType.ADAPTIVE_15
+      ~OptionalSubTrackType.ADAPTIVE_16
+      ~OptionalSubTrackType.ADAPTIVE_17
+      ~OptionalSubTrackType.ADAPTIVE_18
+      ~OptionalSubTrackType.ADAPTIVE_19
+      ~OptionalSubTrackType.ADAPTIVE_20
+      ~OptionalSubTrackType.ADAPTIVE_21
+      ~OptionalSubTrackType.ADAPTIVE_22
+      ~OptionalSubTrackType.ADAPTIVE_23
+      ~OptionalSubTrackType.ADAPTIVE_24
+   
+   

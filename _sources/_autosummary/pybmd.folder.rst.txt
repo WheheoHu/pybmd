@@ -16,6 +16,8 @@ pybmd.folder
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       Folder
    

@@ -20,6 +20,7 @@ pybmd.error
    .. rubric:: Exceptions
 
    .. autosummary::
+      :toctree: 
    
       ResolveInitError
    

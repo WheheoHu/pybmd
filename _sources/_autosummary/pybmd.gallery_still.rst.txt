@@ -16,6 +16,8 @@ pybmd.gallery\_still
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       GalleryStill
    

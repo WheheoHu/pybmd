@@ -1,0 +1,32 @@
+pybmd.timeline\_item.MagicMask\_Mode
+====================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. autoclass:: MagicMask_Mode
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MagicMask_Mode.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~MagicMask_Mode.Backward
+      ~MagicMask_Mode.Bidirection
+      ~MagicMask_Mode.Forward
+   
+   

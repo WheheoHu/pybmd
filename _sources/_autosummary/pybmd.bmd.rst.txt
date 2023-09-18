@@ -12,6 +12,7 @@ pybmd.bmd
    .. rubric:: Functions
 
    .. autosummary::
+      :toctree: 
    
       load_dynamic
    
@@ -22,6 +23,8 @@ pybmd.bmd
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       Bmd
       Default_LIB_PATH

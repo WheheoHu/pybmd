@@ -16,6 +16,8 @@ pybmd.media\_storage
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       Item_Info
       MediaStorage

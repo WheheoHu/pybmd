@@ -16,6 +16,8 @@ pybmd.project\_manager
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       ProjectManager
    

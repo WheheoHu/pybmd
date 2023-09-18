@@ -1,0 +1,31 @@
+pybmd.gallery\_still\_album.StillFormats
+========================================
+
+.. currentmodule:: pybmd.gallery_still_album
+
+.. autoclass:: StillFormats
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~StillFormats.DPX
+      ~StillFormats.CIN
+      ~StillFormats.TIF
+      ~StillFormats.JPG
+      ~StillFormats.PNG
+      ~StillFormats.PPM
+      ~StillFormats.BMP
+      ~StillFormats.XPM
+   
+   

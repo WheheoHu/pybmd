@@ -1,0 +1,25 @@
+pybmd.timeline\_item.VersionType
+================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. autoclass:: VersionType
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~VersionType.LOCAL
+      ~VersionType.REMOTE
+   
+   

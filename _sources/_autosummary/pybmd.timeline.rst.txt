@@ -12,6 +12,7 @@ pybmd.timeline
    .. rubric:: Functions
 
    .. autosummary::
+      :toctree: 
    
       timeline_item_class_list_transfer
    
@@ -22,6 +23,8 @@ pybmd.timeline
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       ImportOptions
       OptionalSubTrackType

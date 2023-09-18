@@ -16,6 +16,8 @@ pybmd.timeline\_item
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       CDL_Map
       MagicMask_Mode

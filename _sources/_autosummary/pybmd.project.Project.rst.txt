@@ -1,0 +1,68 @@
+pybmd.project.Project
+=====================
+
+.. currentmodule:: pybmd.project
+
+.. autoclass:: Project
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Project.__init__
+      ~Project.add_render_job
+      ~Project.delete_all_render_jobs
+      ~Project.delete_render_job
+      ~Project.export_current_frame_as_still
+      ~Project.get_current_render_format_and_codec
+      ~Project.get_current_render_mode
+      ~Project.get_current_timeline
+      ~Project.get_gallery
+      ~Project.get_media_pool
+      ~Project.get_name
+      ~Project.get_preset_list
+      ~Project.get_render_codecs
+      ~Project.get_render_formats
+      ~Project.get_render_job_list
+      ~Project.get_render_job_status
+      ~Project.get_render_preset_list
+      ~Project.get_render_resolutions
+      ~Project.get_self_project
+      ~Project.get_setting
+      ~Project.get_timeline_by_index
+      ~Project.get_timeline_count
+      ~Project.get_unique_id
+      ~Project.insert_audio_to_current_track_at_playhead
+      ~Project.is_rendering_in_progress
+      ~Project.load_burn_in_preset
+      ~Project.load_render_preset
+      ~Project.refresh_lut_list
+      ~Project.save_as_new_render_preset
+      ~Project.set_current_render_format_and_codec
+      ~Project.set_current_render_mode
+      ~Project.set_current_timeline
+      ~Project.set_name
+      ~Project.set_preset
+      ~Project.set_render_settings
+      ~Project.set_setting
+      ~Project.start_rendering
+      ~Project.stop_rendering
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Project.project
+      ~Project.project_name
+   
+   

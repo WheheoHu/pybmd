@@ -1,0 +1,29 @@
+pybmd.gallery\_still\_album.GalleryStillAlbum
+=============================================
+
+.. currentmodule:: pybmd.gallery_still_album
+
+.. autoclass:: GalleryStillAlbum
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~GalleryStillAlbum.__init__
+      ~GalleryStillAlbum.delete_stills
+      ~GalleryStillAlbum.export_stills
+      ~GalleryStillAlbum.get_label
+      ~GalleryStillAlbum.get_stills
+      ~GalleryStillAlbum.set_label
+   
+   
+
+   
+   
+   

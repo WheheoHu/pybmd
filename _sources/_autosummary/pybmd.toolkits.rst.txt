@@ -12,6 +12,7 @@ pybmd.toolkits
    .. rubric:: Functions
 
    .. autosummary::
+      :toctree: 
    
       add_subfolders
       change_timeline_resolution

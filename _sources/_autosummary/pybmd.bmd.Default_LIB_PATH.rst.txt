@@ -1,0 +1,25 @@
+pybmd.bmd.Default\_LIB\_PATH
+============================
+
+.. currentmodule:: pybmd.bmd
+
+.. autoclass:: Default_LIB_PATH
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Default_LIB_PATH.LIB_Windows
+      ~Default_LIB_PATH.LIB_MAC
+   
+   

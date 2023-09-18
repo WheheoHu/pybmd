@@ -16,6 +16,8 @@ pybmd.gallery
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       Gallery
    

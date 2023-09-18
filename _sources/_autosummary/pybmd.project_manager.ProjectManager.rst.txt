@@ -1,0 +1,52 @@
+pybmd.project\_manager.ProjectManager
+=====================================
+
+.. currentmodule:: pybmd.project_manager
+
+.. autoclass:: ProjectManager
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ProjectManager.__init__
+      ~ProjectManager.archive_project
+      ~ProjectManager.close_project
+      ~ProjectManager.create_folder
+      ~ProjectManager.create_project
+      ~ProjectManager.database_info
+      ~ProjectManager.delete_folder
+      ~ProjectManager.delete_project
+      ~ProjectManager.export_project
+      ~ProjectManager.get_current_database
+      ~ProjectManager.get_current_project
+      ~ProjectManager.get_database_list
+      ~ProjectManager.get_folder_list_in_current_folder
+      ~ProjectManager.get_project_list_in_current_folder
+      ~ProjectManager.goto_parent_folder
+      ~ProjectManager.goto_root_folder
+      ~ProjectManager.import_project
+      ~ProjectManager.load_project
+      ~ProjectManager.open_folder
+      ~ProjectManager.restore_project
+      ~ProjectManager.save_and_close_current_project
+      ~ProjectManager.save_project
+      ~ProjectManager.set_current_database
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ProjectManager.project_manager
+   
+   

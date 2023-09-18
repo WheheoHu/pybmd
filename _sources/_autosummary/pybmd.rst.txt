@@ -25,6 +25,7 @@
 
 .. autosummary::
    :toctree:
+   :template: module.rst
    :recursive:
 
    pybmd.bmd

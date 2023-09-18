@@ -1,0 +1,32 @@
+pybmd.media\_storage.Item\_Info
+===============================
+
+.. currentmodule:: pybmd.media_storage
+
+.. autoclass:: Item_Info
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Item_Info.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Item_Info.media
+      ~Item_Info.start_frame
+      ~Item_Info.end_frame
+   
+   

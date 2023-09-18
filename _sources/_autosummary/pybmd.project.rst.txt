@@ -16,6 +16,8 @@ pybmd.project
    .. rubric:: Classes
 
    .. autosummary::
+      :toctree:
+      :template: class.rst
    
       Project
       RenderSetting

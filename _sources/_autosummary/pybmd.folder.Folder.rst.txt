@@ -1,0 +1,30 @@
+pybmd.folder.Folder
+===================
+
+.. currentmodule:: pybmd.folder
+
+.. autoclass:: Folder
+   :members:            
+   :show-inheritance:   
+   :inherited-members:  
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Folder.__init__
+      ~Folder.export
+      ~Folder.get_clip_list
+      ~Folder.get_is_folder_stale
+      ~Folder.get_name
+      ~Folder.get_sub_folder_list
+      ~Folder.get_unique_id
+   
+   
+
+   
+   
+   
