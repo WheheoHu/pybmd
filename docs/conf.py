@@ -9,7 +9,7 @@
 project = 'pybmd'
 copyright = '2022, Wheheo Hu'
 author = 'Wheheo Hu'
-release = '2022.5.1'
+release = '2023.4.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

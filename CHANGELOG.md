@@ -58,3 +58,12 @@
 - Add `create_subtitle_from_audio`
 - Add `detect_scene_cuts`
 ----
+
+# 2023.4.0
+## Bmd
+- Add `ImportRenderPreset`
+- Add `ExportRenderPreset`
+- Add `ImportBurnInPreset`
+- Add `ExportBurnInPreset`
+
+----
