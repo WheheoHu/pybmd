@@ -19,9 +19,6 @@ jobs:
     # - uses: ammaraskar/sphinx-action@master
     #   with:
     #     docs-folder: "docs/"
-    - name: Install Package Dependencies
-      run: |
-        pip install pydata-sphinx-theme
 
     - uses: wheheohu/sphinx-action@master
       with:
