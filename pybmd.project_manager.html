@@ -396,11 +396,11 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.close_project">
-<span class="sig-name descname"><span class="pre">close_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.project.html#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/project_manager.html#ProjectManager.close_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.close_project" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Project</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/project_manager.html#ProjectManager.close_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.close_project" title="Permalink to this definition">#</a></dt>
 <dd><p>close project</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>project</strong> (<a class="reference internal" href="pybmd.project.html#pybmd.project.Project" title="pybmd.project.Project"><em>Project</em></a>) – project to close</p>
+<dd class="field-odd"><p><strong>project</strong> (<em>Project</em>) – project to close</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>true if project was closed, false otherwise</p>
@@ -430,7 +430,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.create_project">
-<span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.project.html#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></span><a class="reference internal" href="_modules/pybmd/project_manager.html#ProjectManager.create_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.create_project" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Project</span></span></span><a class="reference internal" href="_modules/pybmd/project_manager.html#ProjectManager.create_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.create_project" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates and returns a project if projectName(string) is unique, and None if it is not.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -440,7 +440,7 @@ document.write(`
 <dd class="field-even"><p>created project object</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="pybmd.project.html#pybmd.project.Project" title="pybmd.project.Project">Project</a></p>
+<dd class="field-odd"><p>Project</p>
 </dd>
 </dl>
 </dd></dl>
@@ -511,7 +511,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.get_current_project">
-<span class="sig-name descname"><span class="pre">get_current_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.project.html#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></span><a class="reference internal" href="_modules/pybmd/project_manager.html#ProjectManager.get_current_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.get_current_project" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_current_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Project</span></span></span><a class="reference internal" href="_modules/pybmd/project_manager.html#ProjectManager.get_current_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.get_current_project" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the current project</p>
 </dd></dl>
 
@@ -553,7 +553,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.load_project">
-<span class="sig-name descname"><span class="pre">load_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.project.html#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></span><a class="reference internal" href="_modules/pybmd/project_manager.html#ProjectManager.load_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.load_project" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Project</span></span></span><a class="reference internal" href="_modules/pybmd/project_manager.html#ProjectManager.load_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.load_project" title="Permalink to this definition">#</a></dt>
 <dd><p>Loads and returns <a class="reference external" href="mailto:the&#37;&#52;&#48;Project">the<span>&#64;</span>Project</a>  with name = project_name (string) if there is a match found, and None if there is no matching Project.</p>
 </dd></dl>
 
