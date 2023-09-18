@@ -41,6 +41,18 @@
 				"    return $6"
 			],	
 		"description": "davinci python func (return class)"
+	},
+	"Module RST":{
+		"prefix":"mr",
+		"body":[
+				"${TM_FILENAME_BASE/(.*\\.|_)([a-z])/${2:/upcase}/gm}",
+				"==========================================",
+				"",
+				".. automodule:: ${TM_FILENAME_BASE}",
+				"   :members:",
+				"   :undoc-members:",
+				"   :show-inheritance:",
+		]
 	}
 
 }
