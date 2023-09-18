@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to PyBMD’s documentation! &#8212; pybmd 2023.4.0 documentation</title>
+    <title>PyBMD &#8212; pybmd 2023.4.0 documentation</title>
   
   
   
@@ -308,9 +308,26 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="welcome-to-pybmd-s-documentation">
-<h1>Welcome to PyBMD’s documentation!<a class="headerlink" href="#welcome-to-pybmd-s-documentation" title="Permalink to this heading">#</a></h1>
-<p>This is documentation of PyBMD</p>
+  <section id="pybmd">
+<h1>PyBMD<a class="headerlink" href="#pybmd" title="Permalink to this heading">#</a></h1>
+<p>Python library for DaVinci Resolve (Repack)</p>
+<section id="how-to-install">
+<h2>How To Install<a class="headerlink" href="#how-to-install" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pybmd</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-use">
+<h2>How To Use<a class="headerlink" href="#how-to-use" title="Permalink to this heading">#</a></h2>
+<p><strong>⚠️Run Davinci Resolve before you run script</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pybmd</span> <span class="kn">import</span> <span class="n">Bmd</span>
+<span class="n">LOCAL_RESOLVE</span> <span class="o">=</span> <span class="n">Bmd</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Bmd()</span></code> has an option arg named <code class="docutils literal notranslate"><span class="pre">davinci_ip</span></code> , default value is <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> stands for local davinci, if you want to use remote DaVinci Resolve object, change arg to remote ip.</p>
+</section>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -333,6 +350,7 @@ document.write(`
 </li>
 </ul>
 </div>
+</section>
 </section>
 
 
@@ -362,6 +380,18 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install">How To Install</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">How To Use</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-reference">API Reference</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
