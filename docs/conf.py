@@ -36,6 +36,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_title = 'PyBMD Docs'
 html_theme = "pydata_sphinx_theme"
 html_theme_options={
+    "show_nav_level": 2,
     "icon_links":[
                 {
             "name": "GitHub",
