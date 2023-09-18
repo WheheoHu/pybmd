@@ -2,7 +2,7 @@
 =====
 
 .. automodule:: pybmd
-
+  
    
    
    
@@ -25,6 +25,7 @@
 
 .. autosummary::
    :toctree:
+   :template: custom-module-template.rst                 <-- add this line
    :recursive:
 
    pybmd.bmd

@@ -1,29 +1,6 @@
 pybmd.media\_pool\_item
 =======================
 
-.. automodule:: pybmd.media_pool_item
+.. currentmodule:: pybmd
 
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   .. rubric:: Classes
-
-   .. autosummary::
-   
-      MediaPoolItem
-   
-   
-
-   
-   
-   
-
-
-
+.. automodule:: media_pool_item

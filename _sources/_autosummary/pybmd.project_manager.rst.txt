@@ -1,29 +1,6 @@
 pybmd.project\_manager
 ======================
 
-.. automodule:: pybmd.project_manager
+.. currentmodule:: pybmd
 
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   .. rubric:: Classes
-
-   .. autosummary::
-   
-      ProjectManager
-   
-   
-
-   
-   
-   
-
-
-
+.. automodule:: project_manager

@@ -1,29 +1,6 @@
 pybmd.folder
 ============
 
-.. automodule:: pybmd.folder
+.. currentmodule:: pybmd
 
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   .. rubric:: Classes
-
-   .. autosummary::
-   
-      Folder
-   
-   
-
-   
-   
-   
-
-
-
+.. automodule:: folder

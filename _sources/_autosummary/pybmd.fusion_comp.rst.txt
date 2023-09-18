@@ -1,29 +1,6 @@
 pybmd.fusion\_comp
 ==================
 
-.. automodule:: pybmd.fusion_comp
+.. currentmodule:: pybmd
 
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   .. rubric:: Classes
-
-   .. autosummary::
-   
-      FusionComp
-   
-   
-
-   
-   
-   
-
-
-
+.. automodule:: fusion_comp
