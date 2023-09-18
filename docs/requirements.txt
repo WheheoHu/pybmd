@@ -1,7 +1,5 @@
 alabaster
 Sphinx
-sphinx-pdj-theme
-sphinx-rtd-theme
 sphinxcontrib-applehelp
 sphinxcontrib-devhelp
 sphinxcontrib-htmlhelp
