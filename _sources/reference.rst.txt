@@ -6,7 +6,7 @@ API Reference
 
    pybmd
 
-Indices and tables
+Indices and search
 ------------------
 
 * :ref:`genindex`
