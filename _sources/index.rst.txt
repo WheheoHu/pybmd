@@ -5,6 +5,7 @@
 
 Welcome to PyBMD's documentation!
 =================================
+This is documentation of PyBMD
 
 .. toctree::
    :maxdepth: 3
