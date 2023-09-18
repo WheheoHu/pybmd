@@ -1,5 +1,5 @@
-pybmd.media\_pool.MediaPool
-===========================
+MediaPool
+=========
 
 .. currentmodule:: pybmd.media_pool
 

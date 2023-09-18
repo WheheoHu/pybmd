@@ -1,5 +1,5 @@
-pybmd.gallery\_still\_album.StillFormats
-========================================
+StillFormats
+============
 
 .. currentmodule:: pybmd.gallery_still_album
 

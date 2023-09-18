@@ -1,5 +1,5 @@
-pybmd.timeline\_item.VersionType
-================================
+VersionType
+===========
 
 .. currentmodule:: pybmd.timeline_item
 

@@ -1,5 +1,5 @@
-pybmd.timeline\_item.MagicMask\_Mode
-====================================
+MagicMask\_Mode
+===============
 
 .. currentmodule:: pybmd.timeline_item
 

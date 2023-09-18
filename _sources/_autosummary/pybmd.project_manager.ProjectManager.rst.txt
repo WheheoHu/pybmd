@@ -1,5 +1,5 @@
-pybmd.project\_manager.ProjectManager
-=====================================
+ProjectManager
+==============
 
 .. currentmodule:: pybmd.project_manager
 

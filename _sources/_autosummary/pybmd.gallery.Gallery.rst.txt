@@ -1,5 +1,5 @@
-pybmd.gallery.Gallery
-=====================
+Gallery
+=======
 
 .. currentmodule:: pybmd.gallery
 

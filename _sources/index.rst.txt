@@ -27,10 +27,10 @@ How To Use
 API Reference
 ----------------
 
-.. .. toctree::
-..    :maxdepth: 2
+.. toctree::
+   :maxdepth: 2
 
-..    reference
+   reference
 
 Samples
 -----------
@@ -40,11 +40,5 @@ Samples
    samples
 
 
-.. autosummary::
-   :toctree: _autosummary
-   :template: module.rst
-   :recursive:
-
-   pybmd
 
 

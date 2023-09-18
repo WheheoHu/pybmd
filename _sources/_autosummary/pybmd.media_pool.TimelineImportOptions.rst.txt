@@ -1,5 +1,5 @@
-pybmd.media\_pool.TimelineImportOptions
-=======================================
+TimelineImportOptions
+=====================
 
 .. currentmodule:: pybmd.media_pool
 

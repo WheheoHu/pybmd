@@ -1,5 +1,5 @@
-pybmd.project.RenderSetting
-===========================
+RenderSetting
+=============
 
 .. currentmodule:: pybmd.project
 

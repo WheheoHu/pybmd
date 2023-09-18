@@ -1,5 +1,5 @@
-pybmd.media\_storage.MediaStorage
-=================================
+MediaStorage
+============
 
 .. currentmodule:: pybmd.media_storage
 

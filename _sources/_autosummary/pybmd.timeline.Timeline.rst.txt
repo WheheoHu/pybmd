@@ -1,5 +1,5 @@
-pybmd.timeline.Timeline
-=======================
+Timeline
+========
 
 .. currentmodule:: pybmd.timeline
 

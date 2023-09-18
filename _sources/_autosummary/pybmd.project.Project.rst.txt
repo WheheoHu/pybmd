@@ -1,5 +1,5 @@
-pybmd.project.Project
-=====================
+Project
+=======
 
 .. currentmodule:: pybmd.project
 

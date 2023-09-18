@@ -1,5 +1,5 @@
-pybmd.folder.Folder
-===================
+Folder
+======
 
 .. currentmodule:: pybmd.folder
 

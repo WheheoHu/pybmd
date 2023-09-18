@@ -1,5 +1,5 @@
-pybmd.media\_pool.ClipInfo
-==========================
+ClipInfo
+========
 
 .. currentmodule:: pybmd.media_pool
 

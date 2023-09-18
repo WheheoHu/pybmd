@@ -1,5 +1,5 @@
-pybmd.fusion\_comp.FusionComp
-=============================
+FusionComp
+==========
 
 .. currentmodule:: pybmd.fusion_comp
 

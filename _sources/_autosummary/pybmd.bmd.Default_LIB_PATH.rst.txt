@@ -1,5 +1,5 @@
-pybmd.bmd.Default\_LIB\_PATH
-============================
+Default\_LIB\_PATH
+==================
 
 .. currentmodule:: pybmd.bmd
 

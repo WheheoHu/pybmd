@@ -1,5 +1,5 @@
-pybmd.timeline\_item.CDL\_Map
-=============================
+CDL\_Map
+========
 
 .. currentmodule:: pybmd.timeline_item
 
