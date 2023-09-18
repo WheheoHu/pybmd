@@ -6,8 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import sys, os
-import pybmd as package
+sys.path.append(os.path.abspath(".."))
 
+import pybmd as package
 
 project = package.name
 copyright = '2023, Wheheo Hu'
@@ -18,7 +19,7 @@ release = package.__version__
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 
-sys.path.append(os.path.abspath(".."))
+
 
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
