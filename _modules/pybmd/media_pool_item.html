@@ -135,8 +135,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../modules.html">
-                        pybmd
+                      <a class="nav-link nav-internal" href="../../pybmd.html">
+                        PyBMD
                       </a>
                     </li>
                 
@@ -234,8 +234,8 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../../modules.html">
-                        pybmd
+                      <a class="nav-link nav-internal" href="../../pybmd.html">
+                        PyBMD
                       </a>
                     </li>
                 
@@ -335,7 +335,7 @@ document.write(`
 <span></span>
 
 
-<div class="viewcode-block" id="MediaPoolItem"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem">[docs]</a><span class="k">class</span> <span class="nc">MediaPoolItem</span><span class="p">():</span>
+<div class="viewcode-block" id="MediaPoolItem"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem">[docs]</a><span class="k">class</span> <span class="nc">MediaPoolItem</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;docstring for MediaPoolItem.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">):</span>
@@ -343,11 +343,11 @@ document.write(`
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Media Pool Item:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
 
-<div class="viewcode-block" id="MediaPoolItem.add_flag"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.add_flag">[docs]</a>    <span class="k">def</span> <span class="nf">add_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.add_flag"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.add_flag">[docs]</a>    <span class="k">def</span> <span class="nf">add_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Add a flag to the clip.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">AddFlag</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.add_marker"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.add_marker">[docs]</a>    <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.add_marker"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.add_marker">[docs]</a>    <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;add a marker to the clip.</span>
 
 <span class="sd">        Args:</span>
@@ -364,14 +364,14 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.clear_clip_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.clear_clip_color">[docs]</a>    <span class="k">def</span> <span class="nf">clear_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.clear_clip_color"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.clear_clip_color">[docs]</a>    <span class="k">def</span> <span class="nf">clear_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;clear clip color.</span>
 
 <span class="sd">        :return: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ClearClipColor</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.clear_flag_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.clear_flag_color">[docs]</a>    <span class="k">def</span> <span class="nf">clear_flag_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.clear_flag_color"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.clear_flag_color">[docs]</a>    <span class="k">def</span> <span class="nf">clear_flag_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Clears the flag of the given color if one exists. An &quot;All&quot; argument is supported and clears all flags.</span>
 
 <span class="sd">        :param color: color of the flag to clear</span>
@@ -381,7 +381,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>       
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ClearFlagColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.delete_marker_at_frame"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_at_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.delete_marker_at_frame"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_at_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Delete marker at frame number from the media pool item.</span>
 
 <span class="sd">        :param frame_num: frame number of the marker to delete</span>
@@ -391,7 +391,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerAtFrame</span><span class="p">(</span><span class="n">frame_num</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.delete_marker_by_custom_data"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.delete_marker_by_custom_data"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Delete first matching marker with specified customData.</span>
 
 <span class="sd">        Args:</span>
@@ -402,7 +402,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.delete_marker_by_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_color">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_by_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.delete_marker_by_color"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_color">[docs]</a>    <span class="k">def</span> <span class="nf">delete_marker_by_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;delete all markers with the given color.</span>
 
 <span class="sd">        Args:</span>
@@ -413,7 +413,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerByColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.get_clip_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_clip_color">[docs]</a>    <span class="k">def</span> <span class="nf">get_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_clip_color"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_clip_color">[docs]</a>    <span class="k">def</span> <span class="nf">get_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;get clip color.</span>
 
 <span class="sd">        Returns:</span>
@@ -422,7 +422,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetClipColor</span><span class="p">()</span></div>
 
     <span class="c1"># TODO property_name as data class</span>
-<div class="viewcode-block" id="MediaPoolItem.get_clip_property"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_clip_property">[docs]</a>    <span class="k">def</span> <span class="nf">get_clip_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_clip_property"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_clip_property">[docs]</a>    <span class="k">def</span> <span class="nf">get_clip_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return clip property based on the property name.</span>
 
 <span class="sd">        Args:</span>
@@ -433,7 +433,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetClipProperty</span><span class="p">(</span><span class="n">property_name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.get_flag_list"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_flag_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_flag_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_flag_list"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_flag_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_flag_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;get flag list.</span>
 
 <span class="sd">        Returns:</span>
@@ -441,7 +441,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetFlagList</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.get_marker_by_custom_data"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_marker_by_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_marker_by_custom_data"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_marker_by_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return maker infomation of fist marker matching the custom data.</span>
 
 <span class="sd">        Args:</span>
@@ -452,7 +452,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.get_marker_custom_data"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_marker_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_marker_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freamid</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_marker_custom_data"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_marker_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_marker_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freamid</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return marker custom data.</span>
 
 <span class="sd">        Args:</span>
@@ -463,7 +463,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMarkerCustomData</span><span class="p">(</span><span class="n">freamid</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.get_markers"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_markers">[docs]</a>    <span class="k">def</span> <span class="nf">get_markers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_markers"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_markers">[docs]</a>    <span class="k">def</span> <span class="nf">get_markers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return a dict of all markers and dict of marker info.</span>
 
 <span class="sd">        Returns:</span>
@@ -471,12 +471,12 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMarkers</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.get_media_id"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_media_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_media_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_media_id"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_media_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_media_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return media id for the clip.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMediaId</span><span class="p">()</span></div>
 
     <span class="c1"># TODO metadata_type as data class</span>
-<div class="viewcode-block" id="MediaPoolItem.get_metadata"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">get_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_metadata"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">get_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return metadata value of the key metadata_type.</span>
 
 <span class="sd">        Args:</span>
@@ -487,11 +487,11 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.get_name"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_name"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return name of the clip.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.link_proxy_media"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.link_proxy_media">[docs]</a>    <span class="k">def</span> <span class="nf">link_proxy_media</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy_media_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
+<div class="viewcode-block" id="MediaPoolItem.link_proxy_media"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.link_proxy_media">[docs]</a>    <span class="k">def</span> <span class="nf">link_proxy_media</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy_media_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
         <span class="sd">&quot;&quot;&quot;Links proxy media located at path specified by arg &#39;proxyMediaFilePath&#39; with the current clip. </span>
 
 <span class="sd">        Args:</span>
@@ -502,11 +502,11 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">LinkProxyMedia</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">proxy_media_file_path</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.replace_clip"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.replace_clip">[docs]</a>    <span class="k">def</span> <span class="nf">replace_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.replace_clip"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.replace_clip">[docs]</a>    <span class="k">def</span> <span class="nf">replace_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ReplaceClip</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.set_clip_color"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.set_clip_color">[docs]</a>    <span class="k">def</span> <span class="nf">set_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.set_clip_color"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.set_clip_color">[docs]</a>    <span class="k">def</span> <span class="nf">set_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;set clip color with the given color name.</span>
 
 <span class="sd">        Args:</span>
@@ -518,7 +518,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">SetClipColor</span><span class="p">(</span><span class="n">color_name</span><span class="p">)</span></div>
 
     
-<div class="viewcode-block" id="MediaPoolItem.set_clip_property"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.set_clip_property">[docs]</a>    <span class="k">def</span> <span class="nf">set_clip_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">property_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.set_clip_property"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.set_clip_property">[docs]</a>    <span class="k">def</span> <span class="nf">set_clip_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">property_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;set clip property with the given property type and value.</span>
 
 <span class="sd">        Args:</span>
@@ -531,7 +531,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">SetClipProperty</span><span class="p">(</span><span class="n">property_type</span><span class="p">,</span> <span class="n">property_value</span><span class="p">)</span></div>
     
     <span class="c1"># TODO metadata_type as data class</span>
-<div class="viewcode-block" id="MediaPoolItem.set_metadata"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.set_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">set_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.set_metadata"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.set_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">set_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;set metadata with the given metadata type and value.</span>
 
 <span class="sd">        Args:</span>
@@ -543,11 +543,11 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.unlink_proxy_media"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media">[docs]</a>    <span class="k">def</span> <span class="nf">unlink_proxy_media</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.unlink_proxy_media"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media">[docs]</a>    <span class="k">def</span> <span class="nf">unlink_proxy_media</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Unlinks proxy media from the current clip.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">UnlinkProxyMedia</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="MediaPoolItem.updata_marker_custom_data"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">updata_marker_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.updata_marker_custom_data"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data">[docs]</a>    <span class="k">def</span> <span class="nf">updata_marker_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;update marker custom data.</span>
 
 <span class="sd">        Args:</span>
@@ -563,14 +563,14 @@ document.write(`
     <span class="c1">#Add at DR18.0.0</span>
     
     <span class="c1">#TODO Add version check</span>
-<div class="viewcode-block" id="MediaPoolItem.get_unique_id"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.get_unique_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.get_unique_id"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.get_unique_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;return unique id of the clip.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
     
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.5.0</span>
 
-<div class="viewcode-block" id="MediaPoolItem.transcribe_audio"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.transcribe_audio">[docs]</a>    <span class="k">def</span> <span class="nf">transcribe_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.transcribe_audio"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.transcribe_audio">[docs]</a>    <span class="k">def</span> <span class="nf">transcribe_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Transcribes audio of the MediaPoolItem. </span>
 
 <span class="sd">        Returns:</span>
@@ -578,7 +578,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">TranscribeAudio</span><span class="p">()</span></div>
     
-<div class="viewcode-block" id="MediaPoolItem.clear_transcription"><a class="viewcode-back" href="../../pybmd.html#pybmd.media_pool_item.MediaPoolItem.clear_transcription">[docs]</a>    <span class="k">def</span> <span class="nf">clear_transcription</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="MediaPoolItem.clear_transcription"><a class="viewcode-back" href="../../pybmd.media_pool_item.html#pybmd.media_pool_item.MediaPoolItem.clear_transcription">[docs]</a>    <span class="k">def</span> <span class="nf">clear_transcription</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Clears audio transcription of the MediaPoolItem. </span>
 
 <span class="sd">        Returns:</span>

@@ -1,0 +1,883 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>MediaPoolItem &#8212; pybmd 2023.4.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pybmd.media_pool_item';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MediaStorage" href="pybmd.media_storage.html" />
+    <link rel="prev" title="MediaPool" href="pybmd.media_pool.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pybmd 2023.4.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="pybmd.html">
+                        PyBMD
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__kbd-shortcut">Search</span>
+    <span><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__kbd-shortcut">Search</span>
+    <span><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="pybmd.html">
+                        PyBMD
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pybmd.bmd.html">BMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.folder.html">folder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.fusion_comp.html">Fusion Comp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.gallery_still.html">Gallery Still</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.gallery_still_album.html">GalleryStillAlbum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.media_pool.html">MediaPool</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">MediaPoolItem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.media_storage.html">MediaStorage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.project.html">Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.project_manager.html">ProjectManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.timeline.html">Timeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.timeline_item.html">TimelineItem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybmd.toolkits.html">Toolkits</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="pybmd.html" class="nav-link">PyBMD</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">MediaPoolItem</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-pybmd.media_pool_item">
+<span id="mediapoolitem"></span><h1>MediaPoolItem<a class="headerlink" href="#module-pybmd.media_pool_item" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.media_pool_item.</span></span><span class="sig-name descname"><span class="pre">MediaPoolItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">media_pool_item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>docstring for MediaPoolItem.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.add_flag">
+<span class="sig-name descname"><span class="pre">add_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.add_flag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.add_flag" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a flag to the clip.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.add_marker">
+<span class="sig-name descname"><span class="pre">add_marker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.add_marker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.add_marker" title="Permalink to this definition">#</a></dt>
+<dd><p>add a marker to the clip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame_id</strong> (<em>int</em>) – postion of the marker</p></li>
+<li><p><strong>color</strong> (<em>str</em>) – color of the marker</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the marker</p></li>
+<li><p><strong>note</strong> (<em>str</em>) – maker note</p></li>
+<li><p><strong>duration</strong> (<em>int</em>) – maker duration</p></li>
+<li><p><strong>custom_data</strong> (<em>str</em>) – optional data help to attach to the marker</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.clear_clip_color">
+<span class="sig-name descname"><span class="pre">clear_clip_color</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.clear_clip_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.clear_clip_color" title="Permalink to this definition">#</a></dt>
+<dd><p>clear clip color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.clear_flag_color">
+<span class="sig-name descname"><span class="pre">clear_flag_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.clear_flag_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.clear_flag_color" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears the flag of the given color if one exists. An “All” argument is supported and clears all flags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>str</em>) – color of the flag to clear</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.clear_transcription">
+<span class="sig-name descname"><span class="pre">clear_transcription</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.clear_transcription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.clear_transcription" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears audio transcription of the MediaPoolItem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns True if successful; False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame">
+<span class="sig-name descname"><span class="pre">delete_marker_at_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.delete_marker_at_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete marker at frame number from the media pool item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame_num</strong> (<em>int</em>) – frame number of the marker to delete</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.delete_marker_by_color">
+<span class="sig-name descname"><span class="pre">delete_marker_by_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.delete_marker_by_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_color" title="Permalink to this definition">#</a></dt>
+<dd><p>delete all markers with the given color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>str</em>) – color of the marker to delete</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.delete_marker_by_custom_data">
+<span class="sig-name descname"><span class="pre">delete_marker_by_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.delete_marker_by_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_custom_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete first matching marker with specified customData.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>custom_data</strong> (<em>str</em>) – custom data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_clip_color">
+<span class="sig-name descname"><span class="pre">get_clip_color</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_clip_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_clip_color" title="Permalink to this definition">#</a></dt>
+<dd><p>get clip color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>color name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_clip_property">
+<span class="sig-name descname"><span class="pre">get_clip_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_clip_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_clip_property" title="Permalink to this definition">#</a></dt>
+<dd><p>return clip property based on the property name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>property_name</strong> (<em>str</em><em>, </em><em>optional</em>) – clip property . Defaults to “”.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>property value,if property is empty, return a dict of all clip properties.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_flag_list">
+<span class="sig-name descname"><span class="pre">get_flag_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_flag_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_flag_list" title="Permalink to this definition">#</a></dt>
+<dd><p>get flag list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>flag colors assigned to the item.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_marker_by_custom_data">
+<span class="sig-name descname"><span class="pre">get_marker_by_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_marker_by_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_marker_by_custom_data" title="Permalink to this definition">#</a></dt>
+<dd><p>return maker infomation of fist marker matching the custom data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>custom_data</strong> (<em>str</em>) – specific custom data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>maker info</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_marker_custom_data">
+<span class="sig-name descname"><span class="pre">get_marker_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freamid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_marker_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_marker_custom_data" title="Permalink to this definition">#</a></dt>
+<dd><p>return marker custom data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>freamid</strong> (<em>int</em>) – frame id of the marker</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>custom data of the marker</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_markers">
+<span class="sig-name descname"><span class="pre">get_markers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_markers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_markers" title="Permalink to this definition">#</a></dt>
+<dd><p>return a dict of all markers and dict of marker info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>maker position and info</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_media_id">
+<span class="sig-name descname"><span class="pre">get_media_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_media_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_media_id" title="Permalink to this definition">#</a></dt>
+<dd><p>return media id for the clip.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_metadata">
+<span class="sig-name descname"><span class="pre">get_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_metadata" title="Permalink to this definition">#</a></dt>
+<dd><p>return metadata value of the key metadata_type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>metadata_type</strong> (<em>str</em><em>, </em><em>optional</em>) – metadata type. Defaults to “”.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>metadata value If no argument is specified, a dict of all set metadata properties is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_name">
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_name" title="Permalink to this definition">#</a></dt>
+<dd><p>return name of the clip.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.get_unique_id">
+<span class="sig-name descname"><span class="pre">get_unique_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.get_unique_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.get_unique_id" title="Permalink to this definition">#</a></dt>
+<dd><p>return unique id of the clip.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.link_proxy_media">
+<span class="sig-name descname"><span class="pre">link_proxy_media</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proxy_media_file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.link_proxy_media"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.link_proxy_media" title="Permalink to this definition">#</a></dt>
+<dd><p>Links proxy media located at path specified by arg ‘proxyMediaFilePath’ with the current clip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proxy_media_file_path</strong> (<em>str</em>) – should be absolute clip path.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.replace_clip">
+<span class="sig-name descname"><span class="pre">replace_clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.replace_clip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.replace_clip" title="Permalink to this definition">#</a></dt>
+<dd><p>Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.set_clip_color">
+<span class="sig-name descname"><span class="pre">set_clip_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.set_clip_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.set_clip_color" title="Permalink to this definition">#</a></dt>
+<dd><p>set clip color with the given color name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color_name</strong> (<em>str</em>) – color name</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.set_clip_property">
+<span class="sig-name descname"><span class="pre">set_clip_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.set_clip_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.set_clip_property" title="Permalink to this definition">#</a></dt>
+<dd><p>set clip property with the given property type and value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>property_type</strong> (<em>str</em>) – property type</p></li>
+<li><p><strong>property_value</strong> (<em>str</em>) – property value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.set_metadata">
+<span class="sig-name descname"><span class="pre">set_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.set_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.set_metadata" title="Permalink to this definition">#</a></dt>
+<dd><p>set metadata with the given metadata type and value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata_type</strong> (<em>str</em>) – metadata type</p></li>
+<li><p><strong>metadata_value</strong> (<em>str</em>) – metadata value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.transcribe_audio">
+<span class="sig-name descname"><span class="pre">transcribe_audio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.transcribe_audio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.transcribe_audio" title="Permalink to this definition">#</a></dt>
+<dd><p>Transcribes audio of the MediaPoolItem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns True if successful; False otherwise</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media">
+<span class="sig-name descname"><span class="pre">unlink_proxy_media</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.unlink_proxy_media"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media" title="Permalink to this definition">#</a></dt>
+<dd><p>Unlinks proxy media from the current clip.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data">
+<span class="sig-name descname"><span class="pre">updata_marker_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pybmd/media_pool_item.html#MediaPoolItem.updata_marker_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data" title="Permalink to this definition">#</a></dt>
+<dd><p>update marker custom data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame_id</strong> (<em>int</em>) – maker frame id</p></li>
+<li><p><strong>custom_data</strong> (<em>str</em>) – maker custom data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if success, false if fail</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pybmd.media_pool.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MediaPool</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pybmd.media_storage.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MediaStorage</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.add_flag"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.add_flag()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.add_marker"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.add_marker()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.clear_clip_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.clear_clip_color()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.clear_flag_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.clear_flag_color()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.clear_transcription"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.clear_transcription()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.delete_marker_at_frame()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.delete_marker_by_color()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.delete_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.delete_marker_by_custom_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_clip_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_clip_color()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_clip_property"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_clip_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_flag_list"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_flag_list()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_marker_by_custom_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_marker_custom_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_markers"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_markers()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_media_id"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_media_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_metadata"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_metadata()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_name"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.get_unique_id"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.get_unique_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.link_proxy_media"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.link_proxy_media()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.replace_clip"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.replace_clip()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.set_clip_color"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.set_clip_color()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.set_clip_property"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.set_clip_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.set_metadata"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.set_metadata()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.transcribe_audio"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.transcribe_audio()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.unlink_proxy_media()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">MediaPoolItem.updata_marker_custom_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="_sources/pybmd.media_pool_item.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022, Wheheo Hu.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

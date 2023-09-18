@@ -11,6 +11,6 @@ This is documentation of PyBMD
    :maxdepth: 2
    :caption: Contents:
 
-   modules
+   pybmd
 
 
