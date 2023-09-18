@@ -5,3 +5,9 @@ API Reference
    :titlesonly:
 
    pybmd
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`search`
