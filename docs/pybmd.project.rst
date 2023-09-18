@@ -1,9 +1,7 @@
 Project
 ==========================================
 
-.. currentmodule:: pybmd 
-
-.. autoclass:: project
+.. automodule:: pybmd.project
    :members:
-   :special-members:
+   :undoc-members:
    :show-inheritance:
