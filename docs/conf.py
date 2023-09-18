@@ -20,7 +20,7 @@ sys.path.append(os.path.abspath(".."))
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
-              ]
+            ]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -31,4 +31,13 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "pydata_sphinx_theme"
+html_theme_options={
+    "icon_links":[
+                {
+            "name": "GitHub",
+            "url": "https://github.com/WheheoHu/pybmd",
+            "icon": "fab fa-github",
+        },
+    ]
+}
 html_static_path = ['_static']
