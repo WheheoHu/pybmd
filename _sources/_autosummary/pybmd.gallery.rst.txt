@@ -1,6 +1,29 @@
 pybmd.gallery
 =============
 
-.. currentmodule:: pybmd
+.. automodule:: pybmd.gallery
 
-.. automodule:: gallery
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Gallery
+   
+   
+
+   
+   
+   
+
+
+

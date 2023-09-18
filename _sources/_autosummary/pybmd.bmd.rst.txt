@@ -1,6 +1,36 @@
 pybmd.bmd
 =========
 
-.. currentmodule:: pybmd
+.. automodule:: pybmd.bmd
 
-.. automodule:: bmd
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      load_dynamic
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Bmd
+      Default_LIB_PATH
+   
+   
+
+   
+   
+   
+
+
+

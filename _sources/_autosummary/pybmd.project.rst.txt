@@ -1,6 +1,30 @@
 pybmd.project
 =============
 
-.. currentmodule:: pybmd
+.. automodule:: pybmd.project
 
-.. automodule:: project
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Project
+      RenderSetting
+   
+   
+
+   
+   
+   
+
+
+

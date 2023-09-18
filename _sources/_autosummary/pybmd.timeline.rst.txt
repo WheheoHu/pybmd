@@ -1,6 +1,38 @@
 pybmd.timeline
 ==============
 
-.. currentmodule:: pybmd
+.. automodule:: pybmd.timeline
 
-.. automodule:: timeline
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      timeline_item_class_list_transfer
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ImportOptions
+      OptionalSubTrackType
+      Timeline
+      TrackType
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,6 +1,29 @@
 pybmd.error
 ===========
 
-.. currentmodule:: pybmd
+.. automodule:: pybmd.error
 
-.. automodule:: error
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      ResolveInitError
+   
+   
+
+
+

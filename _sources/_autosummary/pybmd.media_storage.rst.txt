@@ -1,6 +1,30 @@
 pybmd.media\_storage
 ====================
 
-.. currentmodule:: pybmd
+.. automodule:: pybmd.media_storage
 
-.. automodule:: media_storage
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Item_Info
+      MediaStorage
+   
+   
+
+   
+   
+   
+
+
+

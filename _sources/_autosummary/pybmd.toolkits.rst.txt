@@ -1,6 +1,33 @@
 pybmd.toolkits
 ==============
 
-.. currentmodule:: pybmd
+.. automodule:: pybmd.toolkits
 
-.. automodule:: toolkits
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      add_subfolders
+      change_timeline_resolution
+      get_all_timeline
+      get_subfolder
+      get_timeline
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,6 +1,32 @@
 pybmd.timeline\_item
 ====================
 
-.. currentmodule:: pybmd
+.. automodule:: pybmd.timeline_item
 
-.. automodule:: timeline_item
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      CDL_Map
+      MagicMask_Mode
+      TimelineItem
+      VersionType
+   
+   
+
+   
+   
+   
+
+
+
