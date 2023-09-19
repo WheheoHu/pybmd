@@ -6,7 +6,7 @@
    :members:            
    :show-inheritance:   
    :inherited-members:  
-   :noindex:
+   
    
    {% block methods %}
 
@@ -17,6 +17,7 @@
    .. autosummary::
       :template: method.rst
       :toctree:
+      
    {% for item in methods %}
       ~{{ name }}.{{ item }}
    {%- endfor %}
