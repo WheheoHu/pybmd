@@ -1,8 +1,6 @@
-TimelineItem.get\_takes\_count
-==============================
+pybmd.timeline\_item.TimelineItem.get\_takes\_count
+===================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_takes_count
-
-    .. autosummary::

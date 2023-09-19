@@ -1,8 +1,6 @@
-TimelineItem.get\_version\_name\_list
-=====================================
+pybmd.timeline\_item.TimelineItem.get\_version\_name\_list
+==========================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_version_name_list
-
-    .. autosummary::

@@ -1,8 +1,6 @@
-Bmd.quit
-========
+pybmd.bmd.Bmd.quit
+==================
 
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.quit
-
-    .. autosummary::

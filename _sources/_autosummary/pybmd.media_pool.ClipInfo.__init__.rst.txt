@@ -1,8 +1,6 @@
-ClipInfo.\_\_init\_\_
-=====================
+pybmd.media\_pool.ClipInfo.\_\_init\_\_
+=======================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: ClipInfo.__init__
-
-    .. autosummary::

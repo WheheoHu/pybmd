@@ -1,8 +1,6 @@
-Folder.get\_name
-================
+pybmd.folder.Folder.get\_name
+=============================
 
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.get_name
-
-    .. autosummary::

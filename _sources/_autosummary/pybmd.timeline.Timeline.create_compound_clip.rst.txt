@@ -1,8 +1,6 @@
-Timeline.create\_compound\_clip
-===============================
+pybmd.timeline.Timeline.create\_compound\_clip
+==============================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.create_compound_clip
-
-    .. autosummary::

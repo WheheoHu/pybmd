@@ -1,8 +1,6 @@
-Project.load\_render\_preset
-============================
+pybmd.project.Project.load\_render\_preset
+==========================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.load_render_preset
-
-    .. autosummary::

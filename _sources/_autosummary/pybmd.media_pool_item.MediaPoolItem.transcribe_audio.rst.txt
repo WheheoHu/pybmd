@@ -1,8 +1,6 @@
-MediaPoolItem.transcribe\_audio
-===============================
+pybmd.media\_pool\_item.MediaPoolItem.transcribe\_audio
+=======================================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.transcribe_audio
-
-    .. autosummary::

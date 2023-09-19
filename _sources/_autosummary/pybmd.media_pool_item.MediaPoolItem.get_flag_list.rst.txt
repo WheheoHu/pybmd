@@ -1,8 +1,6 @@
-MediaPoolItem.get\_flag\_list
-=============================
+pybmd.media\_pool\_item.MediaPoolItem.get\_flag\_list
+=====================================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_flag_list
-
-    .. autosummary::

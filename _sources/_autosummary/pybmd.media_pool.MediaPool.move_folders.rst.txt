@@ -1,8 +1,6 @@
-MediaPool.move\_folders
-=======================
+pybmd.media\_pool.MediaPool.move\_folders
+=========================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.move_folders
-
-    .. autosummary::

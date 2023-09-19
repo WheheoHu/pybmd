@@ -1,8 +1,6 @@
-Project.get\_timeline\_by\_index
-================================
+pybmd.project.Project.get\_timeline\_by\_index
+==============================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_timeline_by_index
-
-    .. autosummary::

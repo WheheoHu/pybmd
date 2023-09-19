@@ -1,8 +1,6 @@
-Timeline.import\_into\_timeline
-===============================
+pybmd.timeline.Timeline.import\_into\_timeline
+==============================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.import_into_timeline
-
-    .. autosummary::

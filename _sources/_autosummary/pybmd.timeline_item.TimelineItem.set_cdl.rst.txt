@@ -1,8 +1,6 @@
-TimelineItem.set\_cdl
-=====================
+pybmd.timeline\_item.TimelineItem.set\_cdl
+==========================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.set_cdl
-
-    .. autosummary::

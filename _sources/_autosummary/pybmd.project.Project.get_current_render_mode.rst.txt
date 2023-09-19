@@ -1,8 +1,6 @@
-Project.get\_current\_render\_mode
-==================================
+pybmd.project.Project.get\_current\_render\_mode
+================================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_current_render_mode
-
-    .. autosummary::

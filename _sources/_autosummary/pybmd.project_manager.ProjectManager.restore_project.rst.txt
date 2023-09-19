@@ -1,8 +1,6 @@
-ProjectManager.restore\_project
-===============================
+pybmd.project\_manager.ProjectManager.restore\_project
+======================================================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.restore_project
-
-    .. autosummary::

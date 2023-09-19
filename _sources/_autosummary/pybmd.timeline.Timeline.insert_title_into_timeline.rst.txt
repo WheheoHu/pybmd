@@ -1,8 +1,6 @@
-Timeline.insert\_title\_into\_timeline
-======================================
+pybmd.timeline.Timeline.insert\_title\_into\_timeline
+=====================================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.insert_title_into_timeline
-
-    .. autosummary::

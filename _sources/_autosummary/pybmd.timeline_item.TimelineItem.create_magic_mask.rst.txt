@@ -1,8 +1,6 @@
-TimelineItem.create\_magic\_mask
-================================
+pybmd.timeline\_item.TimelineItem.create\_magic\_mask
+=====================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.create_magic_mask
-
-    .. autosummary::

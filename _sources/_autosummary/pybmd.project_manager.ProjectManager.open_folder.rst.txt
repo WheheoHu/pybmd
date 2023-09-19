@@ -1,8 +1,6 @@
-ProjectManager.open\_folder
-===========================
+pybmd.project\_manager.ProjectManager.open\_folder
+==================================================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.open_folder
-
-    .. autosummary::

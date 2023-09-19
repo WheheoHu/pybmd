@@ -1,8 +1,6 @@
-Timeline.get\_name
-==================
+pybmd.timeline.Timeline.get\_name
+=================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_name
-
-    .. autosummary::

@@ -1,8 +1,6 @@
-Bmd.import\_render\_preset
-==========================
+pybmd.bmd.Bmd.import\_render\_preset
+====================================
 
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.import_render_preset
-
-    .. autosummary::

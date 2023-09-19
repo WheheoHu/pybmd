@@ -1,8 +1,6 @@
-MediaPoolItem.get\_name
-=======================
+pybmd.media\_pool\_item.MediaPoolItem.get\_name
+===============================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_name
-
-    .. autosummary::

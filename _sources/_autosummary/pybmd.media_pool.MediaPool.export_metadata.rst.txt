@@ -1,8 +1,6 @@
-MediaPool.export\_metadata
-==========================
+pybmd.media\_pool.MediaPool.export\_metadata
+============================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.export_metadata
-
-    .. autosummary::

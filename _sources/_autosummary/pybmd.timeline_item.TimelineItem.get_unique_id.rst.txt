@@ -1,8 +1,6 @@
-TimelineItem.get\_unique\_id
-============================
+pybmd.timeline\_item.TimelineItem.get\_unique\_id
+=================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_unique_id
-
-    .. autosummary::

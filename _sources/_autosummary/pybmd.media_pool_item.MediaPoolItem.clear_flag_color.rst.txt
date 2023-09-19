@@ -1,8 +1,6 @@
-MediaPoolItem.clear\_flag\_color
-================================
+pybmd.media\_pool\_item.MediaPoolItem.clear\_flag\_color
+========================================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.clear_flag_color
-
-    .. autosummary::

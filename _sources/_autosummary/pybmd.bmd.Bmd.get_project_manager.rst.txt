@@ -1,8 +1,6 @@
-Bmd.get\_project\_manager
-=========================
+pybmd.bmd.Bmd.get\_project\_manager
+===================================
 
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.get_project_manager
-
-    .. autosummary::

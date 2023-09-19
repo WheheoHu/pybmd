@@ -1,8 +1,6 @@
-Project.\_\_init\_\_
-====================
+pybmd.project.Project.\_\_init\_\_
+==================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.__init__
-
-    .. autosummary::

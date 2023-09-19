@@ -1,8 +1,6 @@
-Project.get\_current\_render\_format\_and\_codec
-================================================
+pybmd.project.Project.get\_current\_render\_format\_and\_codec
+==============================================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_current_render_format_and_codec
-
-    .. autosummary::

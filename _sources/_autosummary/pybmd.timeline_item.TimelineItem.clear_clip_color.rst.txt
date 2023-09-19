@@ -1,8 +1,6 @@
-TimelineItem.clear\_clip\_color
-===============================
+pybmd.timeline\_item.TimelineItem.clear\_clip\_color
+====================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.clear_clip_color
-
-    .. autosummary::

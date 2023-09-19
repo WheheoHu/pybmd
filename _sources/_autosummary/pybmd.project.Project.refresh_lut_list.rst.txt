@@ -1,8 +1,6 @@
-Project.refresh\_lut\_list
-==========================
+pybmd.project.Project.refresh\_lut\_list
+========================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.refresh_lut_list
-
-    .. autosummary::

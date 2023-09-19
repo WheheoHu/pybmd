@@ -1,8 +1,6 @@
-MediaPool.delete\_clips
-=======================
+pybmd.media\_pool.MediaPool.delete\_clips
+=========================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.delete_clips
-
-    .. autosummary::

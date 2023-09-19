@@ -1,8 +1,6 @@
-Timeline.update\_marker\_custom\_data
-=====================================
+pybmd.timeline.Timeline.update\_marker\_custom\_data
+====================================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.update_marker_custom_data
-
-    .. autosummary::

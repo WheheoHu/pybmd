@@ -1,8 +1,6 @@
-Timeline.get\_current\_video\_item
-==================================
+pybmd.timeline.Timeline.get\_current\_video\_item
+=================================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_current_video_item
-
-    .. autosummary::

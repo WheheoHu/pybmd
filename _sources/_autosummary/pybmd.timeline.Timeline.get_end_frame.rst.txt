@@ -1,8 +1,6 @@
-Timeline.get\_end\_frame
-========================
+pybmd.timeline.Timeline.get\_end\_frame
+=======================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_end_frame
-
-    .. autosummary::

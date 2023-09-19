@@ -1,8 +1,6 @@
-MediaPool.refresh\_folders
-==========================
+pybmd.media\_pool.MediaPool.refresh\_folders
+============================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.refresh_folders
-
-    .. autosummary::

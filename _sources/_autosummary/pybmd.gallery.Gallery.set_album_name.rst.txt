@@ -1,8 +1,6 @@
-Gallery.set\_album\_name
-========================
+pybmd.gallery.Gallery.set\_album\_name
+======================================
 
 .. currentmodule:: pybmd.gallery
 
 .. automethod:: Gallery.set_album_name
-
-    .. autosummary::

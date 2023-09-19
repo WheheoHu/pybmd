@@ -1,8 +1,6 @@
-ProjectManager.get\_database\_list
-==================================
+pybmd.project\_manager.ProjectManager.get\_database\_list
+=========================================================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.get_database_list
-
-    .. autosummary::

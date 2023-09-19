@@ -1,8 +1,6 @@
-TimelineItem.delete\_marker\_by\_color
-======================================
+pybmd.timeline\_item.TimelineItem.delete\_marker\_by\_color
+===========================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.delete_marker_by_color
-
-    .. autosummary::

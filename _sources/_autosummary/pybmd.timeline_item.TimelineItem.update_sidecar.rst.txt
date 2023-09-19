@@ -1,8 +1,6 @@
-TimelineItem.update\_sidecar
-============================
+pybmd.timeline\_item.TimelineItem.update\_sidecar
+=================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.update_sidecar
-
-    .. autosummary::

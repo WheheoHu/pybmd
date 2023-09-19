@@ -1,8 +1,6 @@
-Bmd.fusion
-==========
+pybmd.bmd.Bmd.fusion
+====================
 
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.fusion
-
-    .. autosummary::

@@ -1,8 +1,6 @@
-TimelineItem.rename\_version\_by\_name
-======================================
+pybmd.timeline\_item.TimelineItem.rename\_version\_by\_name
+===========================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.rename_version_by_name
-
-    .. autosummary::

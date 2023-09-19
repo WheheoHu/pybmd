@@ -1,8 +1,6 @@
-MediaPoolItem.unlink\_proxy\_media
-==================================
+pybmd.media\_pool\_item.MediaPoolItem.unlink\_proxy\_media
+==========================================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.unlink_proxy_media
-
-    .. autosummary::

@@ -1,8 +1,6 @@
-TimelineItem.import\_fusion\_comp
-=================================
+pybmd.timeline\_item.TimelineItem.import\_fusion\_comp
+======================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.import_fusion_comp
-
-    .. autosummary::

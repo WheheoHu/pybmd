@@ -1,8 +1,6 @@
-Item\_Info.\_\_init\_\_
-=======================
+pybmd.media\_storage.Item\_Info.\_\_init\_\_
+============================================
 
 .. currentmodule:: pybmd.media_storage
 
 .. automethod:: Item_Info.__init__
-
-    .. autosummary::

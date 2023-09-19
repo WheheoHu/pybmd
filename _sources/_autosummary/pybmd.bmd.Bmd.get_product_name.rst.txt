@@ -1,8 +1,6 @@
-Bmd.get\_product\_name
-======================
+pybmd.bmd.Bmd.get\_product\_name
+================================
 
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.get_product_name
-
-    .. autosummary::

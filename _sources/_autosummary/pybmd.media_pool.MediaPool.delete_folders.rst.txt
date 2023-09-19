@@ -1,8 +1,6 @@
-MediaPool.delete\_folders
-=========================
+pybmd.media\_pool.MediaPool.delete\_folders
+===========================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.delete_folders
-
-    .. autosummary::

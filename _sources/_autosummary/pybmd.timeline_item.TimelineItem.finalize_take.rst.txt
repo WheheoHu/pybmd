@@ -1,8 +1,6 @@
-TimelineItem.finalize\_take
-===========================
+pybmd.timeline\_item.TimelineItem.finalize\_take
+================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.finalize_take
-
-    .. autosummary::

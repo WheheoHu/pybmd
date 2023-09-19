@@ -1,8 +1,6 @@
-TimelineItem.apply\_arri\_cdl\_lut
-==================================
+pybmd.timeline\_item.TimelineItem.apply\_arri\_cdl\_lut
+=======================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.apply_arri_cdl_lut
-
-    .. autosummary::

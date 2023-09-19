@@ -1,8 +1,6 @@
-TimelineItem.get\_right\_offset
-===============================
+pybmd.timeline\_item.TimelineItem.get\_right\_offset
+====================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_right_offset
-
-    .. autosummary::

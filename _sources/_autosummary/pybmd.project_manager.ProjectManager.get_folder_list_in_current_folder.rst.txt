@@ -1,8 +1,6 @@
-ProjectManager.get\_folder\_list\_in\_current\_folder
-=====================================================
+pybmd.project\_manager.ProjectManager.get\_folder\_list\_in\_current\_folder
+============================================================================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.get_folder_list_in_current_folder
-
-    .. autosummary::

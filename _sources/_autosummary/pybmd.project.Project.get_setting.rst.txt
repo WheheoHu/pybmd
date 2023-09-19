@@ -1,8 +1,6 @@
-Project.get\_setting
-====================
+pybmd.project.Project.get\_setting
+==================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_setting
-
-    .. autosummary::

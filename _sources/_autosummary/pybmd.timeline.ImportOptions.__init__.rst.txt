@@ -1,8 +1,6 @@
-ImportOptions.\_\_init\_\_
-==========================
+pybmd.timeline.ImportOptions.\_\_init\_\_
+=========================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: ImportOptions.__init__
-
-    .. autosummary::

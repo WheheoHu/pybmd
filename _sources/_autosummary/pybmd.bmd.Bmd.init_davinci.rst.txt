@@ -1,8 +1,6 @@
-Bmd.init\_davinci
-=================
+pybmd.bmd.Bmd.init\_davinci
+===========================
 
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.init_davinci
-
-    .. autosummary::

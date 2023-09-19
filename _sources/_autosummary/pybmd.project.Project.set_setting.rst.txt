@@ -1,8 +1,6 @@
-Project.set\_setting
-====================
+pybmd.project.Project.set\_setting
+==================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.set_setting
-
-    .. autosummary::

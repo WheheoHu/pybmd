@@ -1,8 +1,6 @@
-Project.get\_name
-=================
+pybmd.project.Project.get\_name
+===============================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_name
-
-    .. autosummary::

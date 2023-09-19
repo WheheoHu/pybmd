@@ -1,8 +1,6 @@
-GalleryStillAlbum.export\_stills
-================================
+pybmd.gallery\_still\_album.GalleryStillAlbum.export\_stills
+============================================================
 
 .. currentmodule:: pybmd.gallery_still_album
 
 .. automethod:: GalleryStillAlbum.export_stills
-
-    .. autosummary::
