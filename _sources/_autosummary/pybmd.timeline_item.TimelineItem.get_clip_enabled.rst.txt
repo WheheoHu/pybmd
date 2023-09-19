@@ -4,6 +4,5 @@ TimelineItem.get\_clip\_enabled
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_clip_enabled
-    :noindex:
-    
+
     .. autosummary::

@@ -6,7 +6,8 @@ CDL\_Map
 .. autoclass:: CDL_Map
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

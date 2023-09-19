@@ -4,6 +4,5 @@ Gallery.set\_album\_name
 .. currentmodule:: pybmd.gallery
 
 .. automethod:: Gallery.set_album_name
-    :noindex:
-    
+
     .. autosummary::

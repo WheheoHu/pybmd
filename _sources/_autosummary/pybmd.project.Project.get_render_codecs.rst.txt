@@ -4,6 +4,5 @@ Project.get\_render\_codecs
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_render_codecs
-    :noindex:
-    
+
     .. autosummary::

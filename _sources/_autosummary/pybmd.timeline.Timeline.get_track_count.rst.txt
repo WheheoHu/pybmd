@@ -4,6 +4,5 @@ Timeline.get\_track\_count
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_track_count
-    :noindex:
-    
+
     .. autosummary::

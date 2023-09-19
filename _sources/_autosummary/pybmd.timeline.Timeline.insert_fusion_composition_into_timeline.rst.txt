@@ -4,6 +4,5 @@ Timeline.insert\_fusion\_composition\_into\_timeline
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.insert_fusion_composition_into_timeline
-    :noindex:
-    
+
     .. autosummary::

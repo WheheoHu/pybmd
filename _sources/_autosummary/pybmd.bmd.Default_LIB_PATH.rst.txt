@@ -6,7 +6,8 @@ Default\_LIB\_PATH
 .. autoclass:: Default_LIB_PATH
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

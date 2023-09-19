@@ -4,6 +4,5 @@ Bmd.quit
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.quit
-    :noindex:
-    
+
     .. autosummary::

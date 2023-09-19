@@ -4,6 +4,5 @@ MediaPoolItem.get\_unique\_id
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_unique_id
-    :noindex:
-    
+
     .. autosummary::

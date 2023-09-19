@@ -4,6 +4,5 @@ MediaStorage.add\_timeline\_mattes\_to\_media\_pool
 .. currentmodule:: pybmd.media_storage
 
 .. automethod:: MediaStorage.add_timeline_mattes_to_media_pool
-    :noindex:
-    
+
     .. autosummary::

@@ -4,6 +4,5 @@ Timeline.get\_markers
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_markers
-    :noindex:
-    
+
     .. autosummary::

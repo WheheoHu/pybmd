@@ -4,6 +4,5 @@ ProjectManager.export\_project
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.export_project
-    :noindex:
-    
+
     .. autosummary::

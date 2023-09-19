@@ -4,6 +4,5 @@ Project.get\_name
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_name
-    :noindex:
-    
+
     .. autosummary::

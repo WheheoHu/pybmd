@@ -4,6 +4,5 @@ Project.get\_current\_timeline
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_current_timeline
-    :noindex:
-    
+
     .. autosummary::

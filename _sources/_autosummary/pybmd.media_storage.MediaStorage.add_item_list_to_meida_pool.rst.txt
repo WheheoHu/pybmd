@@ -4,6 +4,5 @@ MediaStorage.add\_item\_list\_to\_meida\_pool
 .. currentmodule:: pybmd.media_storage
 
 .. automethod:: MediaStorage.add_item_list_to_meida_pool
-    :noindex:
-    
+
     .. autosummary::

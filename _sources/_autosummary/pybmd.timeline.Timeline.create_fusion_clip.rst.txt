@@ -4,6 +4,5 @@ Timeline.create\_fusion\_clip
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.create_fusion_clip
-    :noindex:
-    
+
     .. autosummary::

@@ -4,6 +4,5 @@ Folder.export
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.export
-    :noindex:
-    
+
     .. autosummary::

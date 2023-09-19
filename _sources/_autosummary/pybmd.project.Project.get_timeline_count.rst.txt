@@ -4,6 +4,5 @@ Project.get\_timeline\_count
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_timeline_count
-    :noindex:
-    
+
     .. autosummary::

@@ -6,7 +6,8 @@ GalleryStillAlbum
 .. autoclass:: GalleryStillAlbum
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

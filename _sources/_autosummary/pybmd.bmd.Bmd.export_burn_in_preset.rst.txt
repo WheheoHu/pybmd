@@ -4,6 +4,5 @@ Bmd.export\_burn\_in\_preset
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.export_burn_in_preset
-    :noindex:
-    
+
     .. autosummary::

@@ -4,6 +4,5 @@ MediaPool.move\_folders
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.move_folders
-    :noindex:
-    
+
     .. autosummary::

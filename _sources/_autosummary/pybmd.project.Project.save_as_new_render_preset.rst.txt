@@ -4,6 +4,5 @@ Project.save\_as\_new\_render\_preset
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.save_as_new_render_preset
-    :noindex:
-    
+
     .. autosummary::

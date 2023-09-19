@@ -4,6 +4,5 @@ MediaStorage.get\_sub\_folder\_list
 .. currentmodule:: pybmd.media_storage
 
 .. automethod:: MediaStorage.get_sub_folder_list
-    :noindex:
-    
+
     .. autosummary::

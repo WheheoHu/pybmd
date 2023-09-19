@@ -4,6 +4,5 @@ Timeline.get\_end\_frame
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_end_frame
-    :noindex:
-    
+
     .. autosummary::

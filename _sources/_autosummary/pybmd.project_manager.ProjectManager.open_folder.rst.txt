@@ -4,6 +4,5 @@ ProjectManager.open\_folder
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.open_folder
-    :noindex:
-    
+
     .. autosummary::

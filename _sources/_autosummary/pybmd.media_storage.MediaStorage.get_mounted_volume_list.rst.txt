@@ -4,6 +4,5 @@ MediaStorage.get\_mounted\_volume\_list
 .. currentmodule:: pybmd.media_storage
 
 .. automethod:: MediaStorage.get_mounted_volume_list
-    :noindex:
-    
+
     .. autosummary::

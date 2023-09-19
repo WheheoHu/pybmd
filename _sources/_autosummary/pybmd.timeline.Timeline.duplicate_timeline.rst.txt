@@ -4,6 +4,5 @@ Timeline.duplicate\_timeline
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.duplicate_timeline
-    :noindex:
-    
+
     .. autosummary::

@@ -6,7 +6,8 @@ MagicMask\_Mode
 .. autoclass:: MagicMask_Mode
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

@@ -6,7 +6,8 @@ ImportOptions
 .. autoclass:: ImportOptions
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

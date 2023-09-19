@@ -4,6 +4,5 @@ MediaStorage.get\_file\_list
 .. currentmodule:: pybmd.media_storage
 
 .. automethod:: MediaStorage.get_file_list
-    :noindex:
-    
+
     .. autosummary::

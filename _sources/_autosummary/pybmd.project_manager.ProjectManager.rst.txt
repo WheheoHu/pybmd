@@ -6,7 +6,8 @@ ProjectManager
 .. autoclass:: ProjectManager
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

@@ -4,6 +4,5 @@ MediaPool.append\_to\_timeline
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.append_to_timeline
-    :noindex:
-    
+
     .. autosummary::

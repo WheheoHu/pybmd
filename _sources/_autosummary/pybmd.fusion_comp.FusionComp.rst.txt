@@ -6,7 +6,8 @@ FusionComp
 .. autoclass:: FusionComp
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

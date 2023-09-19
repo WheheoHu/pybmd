@@ -4,6 +4,5 @@ ProjectManager.create\_project
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.create_project
-    :noindex:
-    
+
     .. autosummary::

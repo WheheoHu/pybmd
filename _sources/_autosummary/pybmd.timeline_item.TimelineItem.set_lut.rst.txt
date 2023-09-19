@@ -4,6 +4,5 @@ TimelineItem.set\_lut
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.set_lut
-    :noindex:
-    
+
     .. autosummary::

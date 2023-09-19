@@ -4,6 +4,5 @@ Project.\_\_init\_\_
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.__init__
-    :noindex:
-    
+
     .. autosummary::

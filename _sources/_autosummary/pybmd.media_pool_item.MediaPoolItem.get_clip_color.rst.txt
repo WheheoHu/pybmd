@@ -4,6 +4,5 @@ MediaPoolItem.get\_clip\_color
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_clip_color
-    :noindex:
-    
+
     .. autosummary::

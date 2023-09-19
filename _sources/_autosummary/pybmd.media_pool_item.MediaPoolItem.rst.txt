@@ -6,7 +6,8 @@ MediaPoolItem
 .. autoclass:: MediaPoolItem
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

@@ -4,6 +4,5 @@ TimelineItem.\_\_init\_\_
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.__init__
-    :noindex:
-    
+
     .. autosummary::

@@ -4,6 +4,5 @@ Project.start\_rendering
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.start_rendering
-    :noindex:
-    
+
     .. autosummary::

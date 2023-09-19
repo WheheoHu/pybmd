@@ -4,6 +4,5 @@ MediaPool.delete\_clip\_mattes
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.delete_clip_mattes
-    :noindex:
-    
+
     .. autosummary::

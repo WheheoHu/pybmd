@@ -4,6 +4,5 @@ Project.set\_preset
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.set_preset
-    :noindex:
-    
+
     .. autosummary::

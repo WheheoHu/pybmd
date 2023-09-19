@@ -4,6 +4,5 @@ Project.get\_media\_pool
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_media_pool
-    :noindex:
-    
+
     .. autosummary::

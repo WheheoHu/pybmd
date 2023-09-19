@@ -4,6 +4,5 @@ MediaPool.delete\_folders
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.delete_folders
-    :noindex:
-    
+
     .. autosummary::

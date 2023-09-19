@@ -6,7 +6,8 @@ OptionalSubTrackType
 .. autoclass:: OptionalSubTrackType
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

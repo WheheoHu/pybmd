@@ -4,6 +4,5 @@ MediaPool.delete\_timelines
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.delete_timelines
-    :noindex:
-    
+
     .. autosummary::

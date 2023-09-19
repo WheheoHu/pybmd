@@ -4,6 +4,5 @@ Folder.get\_unique\_id
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.get_unique_id
-    :noindex:
-    
+
     .. autosummary::

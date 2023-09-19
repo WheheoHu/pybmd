@@ -4,6 +4,5 @@ ProjectManager.delete\_folder
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.delete_folder
-    :noindex:
-    
+
     .. autosummary::

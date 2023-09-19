@@ -4,6 +4,5 @@ Timeline.insert\_fusion\_generator\_into\_timeline
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.insert_fusion_generator_into_timeline
-    :noindex:
-    
+
     .. autosummary::

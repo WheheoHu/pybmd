@@ -6,7 +6,8 @@ Item\_Info
 .. autoclass:: Item_Info
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

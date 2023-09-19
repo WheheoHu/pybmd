@@ -4,6 +4,5 @@ Project.refresh\_lut\_list
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.refresh_lut_list
-    :noindex:
-    
+
     .. autosummary::

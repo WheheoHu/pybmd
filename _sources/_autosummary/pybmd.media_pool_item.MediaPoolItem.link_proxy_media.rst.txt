@@ -4,6 +4,5 @@ MediaPoolItem.link\_proxy\_media
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.link_proxy_media
-    :noindex:
-    
+
     .. autosummary::

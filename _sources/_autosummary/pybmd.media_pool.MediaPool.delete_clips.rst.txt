@@ -4,6 +4,5 @@ MediaPool.delete\_clips
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.delete_clips
-    :noindex:
-    
+
     .. autosummary::

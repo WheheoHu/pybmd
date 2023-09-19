@@ -6,7 +6,8 @@ TrackType
 .. autoclass:: TrackType
    :members:            
    :show-inheritance:   
-   :inherited-members:  
+   :inherited-members: 
+   :noindex: 
    
    
    

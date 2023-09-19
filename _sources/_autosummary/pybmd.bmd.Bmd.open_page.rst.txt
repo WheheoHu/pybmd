@@ -4,6 +4,5 @@ Bmd.open\_page
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.open_page
-    :noindex:
-    
+
     .. autosummary::

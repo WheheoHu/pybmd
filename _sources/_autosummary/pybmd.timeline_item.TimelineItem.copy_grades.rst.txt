@@ -4,6 +4,5 @@ TimelineItem.copy\_grades
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.copy_grades
-    :noindex:
-    
+
     .. autosummary::

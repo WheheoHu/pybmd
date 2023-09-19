@@ -4,6 +4,5 @@ Timeline.add\_marker
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.add_marker
-    :noindex:
-    
+
     .. autosummary::

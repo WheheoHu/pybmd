@@ -4,6 +4,5 @@ Bmd.load\_layout\_preset
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.load_layout_preset
-    :noindex:
-    
+
     .. autosummary::

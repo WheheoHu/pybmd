@@ -4,6 +4,5 @@ Timeline.get\_marker\_custom\_data
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_marker_custom_data
-    :noindex:
-    
+
     .. autosummary::

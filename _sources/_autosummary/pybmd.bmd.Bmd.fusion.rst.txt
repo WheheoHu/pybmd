@@ -4,6 +4,5 @@ Bmd.fusion
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.fusion
-    :noindex:
-    
+
     .. autosummary::

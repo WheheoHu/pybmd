@@ -4,6 +4,5 @@ CDL\_Map.\_\_init\_\_
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: CDL_Map.__init__
-    :noindex:
-    
+
     .. autosummary::
