@@ -7,3 +7,22 @@ GalleryStill
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~GalleryStill.__init__
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+Timeline.delete\_track
+======================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.delete_track

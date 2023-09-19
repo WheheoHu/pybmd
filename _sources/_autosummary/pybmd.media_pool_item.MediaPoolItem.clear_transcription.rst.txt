@@ -1,0 +1,6 @@
+MediaPoolItem.clear\_transcription
+==================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.clear_transcription

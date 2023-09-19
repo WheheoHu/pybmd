@@ -1,0 +1,6 @@
+pybmd.timeline.TrackType.VIDEO\_TRACK
+=====================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: TrackType.VIDEO_TRACK

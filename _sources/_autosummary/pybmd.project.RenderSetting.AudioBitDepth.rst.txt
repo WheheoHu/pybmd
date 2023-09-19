@@ -1,0 +1,6 @@
+pybmd.project.RenderSetting.AudioBitDepth
+=========================================
+
+.. currentmodule:: pybmd.project
+
+.. autoattribute:: RenderSetting.AudioBitDepth

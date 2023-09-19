@@ -1,0 +1,6 @@
+pybmd.project.RenderSetting.PixelAspectRatio
+============================================
+
+.. currentmodule:: pybmd.project
+
+.. autoattribute:: RenderSetting.PixelAspectRatio

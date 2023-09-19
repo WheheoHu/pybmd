@@ -1,0 +1,6 @@
+GalleryStillAlbum.get\_stills
+=============================
+
+.. currentmodule:: pybmd.gallery_still_album
+
+.. automethod:: GalleryStillAlbum.get_stills

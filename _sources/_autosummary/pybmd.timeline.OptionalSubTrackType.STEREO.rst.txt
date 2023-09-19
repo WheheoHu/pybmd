@@ -1,0 +1,6 @@
+pybmd.timeline.OptionalSubTrackType.STEREO
+==========================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: OptionalSubTrackType.STEREO

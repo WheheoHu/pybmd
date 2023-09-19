@@ -1,0 +1,6 @@
+pybmd.timeline.OptionalSubTrackType.ADAPTIVE\_4
+===============================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: OptionalSubTrackType.ADAPTIVE_4

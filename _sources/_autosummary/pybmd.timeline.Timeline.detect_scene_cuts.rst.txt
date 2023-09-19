@@ -1,0 +1,6 @@
+Timeline.detect\_scene\_cuts
+============================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.detect_scene_cuts

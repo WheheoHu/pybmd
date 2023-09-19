@@ -7,3 +7,33 @@ TimelineImportOptions
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~TimelineImportOptions.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~TimelineImportOptions.timeline_name
+      ~TimelineImportOptions.import_source_clips
+      ~TimelineImportOptions.source_clips_path
+      ~TimelineImportOptions.source_clips_folders
+      ~TimelineImportOptions.interlace_pricessing
+   
+   

@@ -7,3 +7,31 @@ Item\_Info
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~Item_Info.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~Item_Info.media
+      ~Item_Info.start_frame
+      ~Item_Info.end_frame
+   
+   

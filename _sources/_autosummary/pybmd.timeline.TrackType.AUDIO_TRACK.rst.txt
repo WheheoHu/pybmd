@@ -1,0 +1,6 @@
+pybmd.timeline.TrackType.AUDIO\_TRACK
+=====================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: TrackType.AUDIO_TRACK

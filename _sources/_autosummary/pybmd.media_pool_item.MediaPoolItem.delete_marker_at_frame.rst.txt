@@ -1,0 +1,6 @@
+MediaPoolItem.delete\_marker\_at\_frame
+=======================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.delete_marker_at_frame

@@ -1,0 +1,6 @@
+ProjectManager.save\_project
+============================
+
+.. currentmodule:: pybmd.project_manager
+
+.. automethod:: ProjectManager.save_project

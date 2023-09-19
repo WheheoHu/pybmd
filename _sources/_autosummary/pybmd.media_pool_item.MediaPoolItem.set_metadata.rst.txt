@@ -1,0 +1,6 @@
+MediaPoolItem.set\_metadata
+===========================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.set_metadata

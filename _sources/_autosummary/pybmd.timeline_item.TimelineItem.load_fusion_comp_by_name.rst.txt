@@ -1,0 +1,6 @@
+TimelineItem.load\_fusion\_comp\_by\_name
+=========================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.load_fusion_comp_by_name

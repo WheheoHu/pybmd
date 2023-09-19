@@ -1,0 +1,6 @@
+GalleryStillAlbum.\_\_init\_\_
+==============================
+
+.. currentmodule:: pybmd.gallery_still_album
+
+.. automethod:: GalleryStillAlbum.__init__

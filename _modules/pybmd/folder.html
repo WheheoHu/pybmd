@@ -350,14 +350,17 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.html#pybmd.folder.Folder">[docs]</a>
 <span class="k">class</span> <span class="nc">Folder</span><span class="p">():</span>
     
+<div class="viewcode-block" id="Folder.__init__">
+<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.__init__.html#pybmd.folder.Folder.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span></div>
+
     
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Folder:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
         
 <div class="viewcode-block" id="Folder.get_clip_list">
-<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.html#pybmd.folder.Folder.get_clip_list">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.get_clip_list.html#pybmd.folder.Folder.get_clip_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_clip_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of MediaPoolItem objects for all clips in this folder.&quot;&quot;&quot;</span>
         <span class="n">media_pool_item_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -367,14 +370,14 @@ document.write(`
 
 
 <div class="viewcode-block" id="Folder.get_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.html#pybmd.folder.Folder.get_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.get_name.html#pybmd.folder.Folder.get_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns name of this folder.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
 
     
 <div class="viewcode-block" id="Folder.get_sub_folder_list">
-<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.html#pybmd.folder.Folder.get_sub_folder_list">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.get_sub_folder_list.html#pybmd.folder.Folder.get_sub_folder_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_sub_folder_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;Folder&#39;</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of sub folders in this folder.&quot;&quot;&quot;</span>
         <span class="n">folder_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -386,14 +389,14 @@ document.write(`
     <span class="c1">###########################################################################</span>
     <span class="c1">#Add at DR18.0.0</span>
 <div class="viewcode-block" id="Folder.get_is_folder_stale">
-<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.html#pybmd.folder.Folder.get_is_folder_stale">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.get_is_folder_stale.html#pybmd.folder.Folder.get_is_folder_stale">[docs]</a>
     <span class="k">def</span> <span class="nf">get_is_folder_stale</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns true if folder is stale in collaboration mode, false otherwise&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">GetIsFolderStale</span><span class="p">()</span></div>
 
     
 <div class="viewcode-block" id="Folder.get_unique_id">
-<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.html#pybmd.folder.Folder.get_unique_id">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.get_unique_id.html#pybmd.folder.Folder.get_unique_id">[docs]</a>
     <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a unique ID for the media pool folder&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
@@ -402,7 +405,7 @@ document.write(`
     <span class="c1">###########################################################################</span>
     <span class="c1">#Add at DR18.5.0</span>
 <div class="viewcode-block" id="Folder.export">
-<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.html#pybmd.folder.Folder.export">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.folder.Folder.export.html#pybmd.folder.Folder.export">[docs]</a>
     <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns true if export of DRB folder to filePath is successful, false otherwise</span>
 

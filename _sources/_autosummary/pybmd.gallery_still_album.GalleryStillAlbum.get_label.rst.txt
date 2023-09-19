@@ -1,0 +1,6 @@
+GalleryStillAlbum.get\_label
+============================
+
+.. currentmodule:: pybmd.gallery_still_album
+
+.. automethod:: GalleryStillAlbum.get_label

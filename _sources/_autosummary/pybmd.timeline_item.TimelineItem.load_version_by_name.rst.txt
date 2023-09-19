@@ -1,0 +1,6 @@
+TimelineItem.load\_version\_by\_name
+====================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.load_version_by_name

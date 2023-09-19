@@ -1,0 +1,6 @@
+Project.get\_render\_resolutions
+================================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.get_render_resolutions

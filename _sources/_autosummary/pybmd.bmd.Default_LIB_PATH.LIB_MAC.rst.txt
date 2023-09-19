@@ -1,0 +1,6 @@
+pybmd.bmd.Default\_LIB\_PATH.LIB\_MAC
+=====================================
+
+.. currentmodule:: pybmd.bmd
+
+.. autoattribute:: Default_LIB_PATH.LIB_MAC

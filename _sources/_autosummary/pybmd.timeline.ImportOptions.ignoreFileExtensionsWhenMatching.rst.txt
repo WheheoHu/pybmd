@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.ignoreFileExtensionsWhenMatching
+=============================================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.ignoreFileExtensionsWhenMatching

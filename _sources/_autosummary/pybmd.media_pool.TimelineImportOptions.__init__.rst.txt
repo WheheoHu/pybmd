@@ -1,0 +1,6 @@
+TimelineImportOptions.\_\_init\_\_
+==================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. automethod:: TimelineImportOptions.__init__

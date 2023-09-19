@@ -1,0 +1,6 @@
+Project.get\_preset\_list
+=========================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.get_preset_list

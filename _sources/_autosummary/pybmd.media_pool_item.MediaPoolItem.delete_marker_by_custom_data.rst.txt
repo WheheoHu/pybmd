@@ -1,0 +1,6 @@
+MediaPoolItem.delete\_marker\_by\_custom\_data
+==============================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.delete_marker_by_custom_data

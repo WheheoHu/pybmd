@@ -1,0 +1,6 @@
+pybmd.project.Project.project\_name
+===================================
+
+.. currentmodule:: pybmd.project
+
+.. autoattribute:: Project.project_name

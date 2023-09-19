@@ -7,3 +7,36 @@ MediaStorage
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~MediaStorage.__init__
+      ~MediaStorage.add_clip_mattes_to_media_pool
+      ~MediaStorage.add_item_list_to_meida_pool
+      ~MediaStorage.add_timeline_mattes_to_media_pool
+      ~MediaStorage.get_file_list
+      ~MediaStorage.get_mounted_volume_list
+      ~MediaStorage.get_sub_folder_list
+      ~MediaStorage.reveal_in_storage
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~MediaStorage.media_storage
+   
+   

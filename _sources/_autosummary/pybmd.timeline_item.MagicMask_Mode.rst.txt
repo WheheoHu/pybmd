@@ -7,3 +7,31 @@ MagicMask\_Mode
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~MagicMask_Mode.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~MagicMask_Mode.Backward
+      ~MagicMask_Mode.Bidirection
+      ~MagicMask_Mode.Forward
+   
+   

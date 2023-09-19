@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.insertWithOffset
+=============================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.insertWithOffset

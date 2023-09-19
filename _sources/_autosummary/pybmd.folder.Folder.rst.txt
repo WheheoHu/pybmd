@@ -7,3 +7,28 @@ Folder
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~Folder.__init__
+      ~Folder.export
+      ~Folder.get_clip_list
+      ~Folder.get_is_folder_stale
+      ~Folder.get_name
+      ~Folder.get_sub_folder_list
+      ~Folder.get_unique_id
+   
+   
+
+   
+   
+   

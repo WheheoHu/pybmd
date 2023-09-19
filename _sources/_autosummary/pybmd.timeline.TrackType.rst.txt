@@ -7,3 +7,23 @@ TrackType
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~TrackType.AUDIO_TRACK
+      ~TrackType.VIDEO_TRACK
+      ~TrackType.SUBTITLE_TRACK
+   
+   

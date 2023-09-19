@@ -1,0 +1,6 @@
+ProjectManager.load\_project
+============================
+
+.. currentmodule:: pybmd.project_manager
+
+.. automethod:: ProjectManager.load_project

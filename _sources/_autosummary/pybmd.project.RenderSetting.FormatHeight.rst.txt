@@ -1,0 +1,6 @@
+pybmd.project.RenderSetting.FormatHeight
+========================================
+
+.. currentmodule:: pybmd.project
+
+.. autoattribute:: RenderSetting.FormatHeight

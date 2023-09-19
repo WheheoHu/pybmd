@@ -1,0 +1,6 @@
+pybmd.media\_pool.TimelineImportOptions.interlace\_pricessing
+=============================================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. autoattribute:: TimelineImportOptions.interlace_pricessing

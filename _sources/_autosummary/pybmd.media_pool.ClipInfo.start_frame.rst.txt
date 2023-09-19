@@ -1,0 +1,6 @@
+pybmd.media\_pool.ClipInfo.start\_frame
+=======================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. autoattribute:: ClipInfo.start_frame

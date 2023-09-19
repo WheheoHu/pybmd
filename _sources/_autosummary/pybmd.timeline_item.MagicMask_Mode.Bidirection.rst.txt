@@ -1,0 +1,6 @@
+pybmd.timeline\_item.MagicMask\_Mode.Bidirection
+================================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. autoattribute:: MagicMask_Mode.Bidirection

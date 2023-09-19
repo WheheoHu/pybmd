@@ -7,3 +7,52 @@ Bmd
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~Bmd.__init__
+      ~Bmd.delete_layout_preset
+      ~Bmd.export_burn_in_preset
+      ~Bmd.export_layout_preset
+      ~Bmd.export_render_preset
+      ~Bmd.fusion
+      ~Bmd.get_current_page
+      ~Bmd.get_local_davinci
+      ~Bmd.get_media_storage
+      ~Bmd.get_product_name
+      ~Bmd.get_project_manager
+      ~Bmd.get_version
+      ~Bmd.get_version_string
+      ~Bmd.import_burn_in_preset
+      ~Bmd.import_layout_preset
+      ~Bmd.import_render_preset
+      ~Bmd.init_davinci
+      ~Bmd.load_layout_preset
+      ~Bmd.open_page
+      ~Bmd.quit
+      ~Bmd.save_layout_preset
+      ~Bmd.update_layout_preset
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~Bmd.APP_NAME
+      ~Bmd.IP_ADDRESS
+      ~Bmd.local_davinci
+   
+   

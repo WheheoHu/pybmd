@@ -7,3 +7,37 @@ ImportOptions
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~ImportOptions.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~ImportOptions.autoImportSourceClipsIntoMediaPool
+      ~ImportOptions.ignoreFileExtensionsWhenMatching
+      ~ImportOptions.importMultiChannelAudioTracksAsLinkedGroups
+      ~ImportOptions.insertAdditionalTracks
+      ~ImportOptions.insertWithOffset
+      ~ImportOptions.linkToSourceCameraFiles
+      ~ImportOptions.sourceClipsFolders
+      ~ImportOptions.sourceClipsPath
+      ~ImportOptions.useSizingInfo
+   
+   

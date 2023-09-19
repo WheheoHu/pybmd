@@ -1,0 +1,6 @@
+pybmd.timeline.OptionalSubTrackType.FP1
+=======================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: OptionalSubTrackType.FP1

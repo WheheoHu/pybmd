@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.sourceClipsPath
+============================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.sourceClipsPath

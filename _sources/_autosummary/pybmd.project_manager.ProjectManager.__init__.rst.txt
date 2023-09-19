@@ -1,0 +1,6 @@
+ProjectManager.\_\_init\_\_
+===========================
+
+.. currentmodule:: pybmd.project_manager
+
+.. automethod:: ProjectManager.__init__

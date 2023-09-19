@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.autoImportSourceClipsIntoMediaPool
+===============================================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.autoImportSourceClipsIntoMediaPool

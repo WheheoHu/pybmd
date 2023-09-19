@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.importMultiChannelAudioTracksAsLinkedGroups
+========================================================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.importMultiChannelAudioTracksAsLinkedGroups

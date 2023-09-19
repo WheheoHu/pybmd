@@ -1,0 +1,6 @@
+pybmd.media\_pool.ClipInfo.track\_index
+=======================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. autoattribute:: ClipInfo.track_index

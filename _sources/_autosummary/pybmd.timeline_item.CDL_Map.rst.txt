@@ -7,3 +7,33 @@ CDL\_Map
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~CDL_Map.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~CDL_Map.NodeIndex
+      ~CDL_Map.Slope
+      ~CDL_Map.Offset
+      ~CDL_Map.Power
+      ~CDL_Map.Saturation
+   
+   

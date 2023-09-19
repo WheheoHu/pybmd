@@ -1,0 +1,6 @@
+pybmd.bmd.Bmd.APP\_NAME
+=======================
+
+.. currentmodule:: pybmd.bmd
+
+.. autoattribute:: Bmd.APP_NAME

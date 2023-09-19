@@ -1,0 +1,6 @@
+TimelineItem.get\_selected\_take\_index
+=======================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.get_selected_take_index

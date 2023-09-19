@@ -1,0 +1,6 @@
+Project.get\_render\_formats
+============================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.get_render_formats

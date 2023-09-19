@@ -1,0 +1,6 @@
+MediaPool.relink\_clips
+=======================
+
+.. currentmodule:: pybmd.media_pool
+
+.. automethod:: MediaPool.relink_clips

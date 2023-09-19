@@ -351,25 +351,28 @@ document.write(`
 <span class="k">class</span> <span class="nc">Gallery</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for Gallery.&quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="Gallery.__init__">
+<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.__init__.html#pybmd.gallery.Gallery.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gallery</span> <span class="o">=</span> <span class="n">gallery</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gallery</span> <span class="o">=</span> <span class="n">gallery</span></div>
+
 
 <div class="viewcode-block" id="Gallery.get_album_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.html#pybmd.gallery.Gallery.get_album_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.get_album_name.html#pybmd.gallery.Gallery.get_album_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_album_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallert_still_album</span><span class="p">:</span> <span class="n">GalleryStillAlbum</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return the album name of the GalleryStillAlbum object&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gallery</span><span class="o">.</span><span class="n">GetAlbumName</span><span class="p">(</span><span class="n">gallert_still_album</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Gallery.get_current_still_album">
-<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.html#pybmd.gallery.Gallery.get_current_still_album">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.get_current_still_album.html#pybmd.gallery.Gallery.get_current_still_album">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_still_album</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GalleryStillAlbum</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return the current GalleryStillAlbum object&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">GalleryStillAlbum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gallery</span><span class="o">.</span><span class="n">GetCurrentStillAlbum</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="Gallery.get_gallery_still_albums">
-<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.html#pybmd.gallery.Gallery.get_gallery_still_albums">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.get_gallery_still_albums.html#pybmd.gallery.Gallery.get_gallery_still_albums">[docs]</a>
     <span class="k">def</span> <span class="nf">get_gallery_still_albums</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStillAlbum</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return a list of GalleryStillAlbum objects&quot;&quot;&quot;</span>
         <span class="n">gallery_still_album_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -380,7 +383,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Gallery.set_album_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.html#pybmd.gallery.Gallery.set_album_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.set_album_name.html#pybmd.gallery.Gallery.set_album_name">[docs]</a>
     <span class="k">def</span> <span class="nf">set_album_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallert_still_album</span><span class="p">:</span> <span class="n">GalleryStillAlbum</span><span class="p">,</span> <span class="n">album_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;set the album name of the GalleryStillAlbum object</span>
 
@@ -395,7 +398,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="Gallery.set_current_still_album">
-<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.html#pybmd.gallery.Gallery.set_current_still_album">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.set_current_still_album.html#pybmd.gallery.Gallery.set_current_still_album">[docs]</a>
     <span class="k">def</span> <span class="nf">set_current_still_album</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still_album</span><span class="p">:</span> <span class="n">GalleryStillAlbum</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;set the current GalleryStillAlbum object</span>
 

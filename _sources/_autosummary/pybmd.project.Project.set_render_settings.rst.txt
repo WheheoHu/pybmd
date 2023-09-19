@@ -1,0 +1,6 @@
+Project.set\_render\_settings
+=============================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.set_render_settings

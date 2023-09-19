@@ -1,0 +1,6 @@
+MediaPoolItem.add\_marker
+=========================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.add_marker

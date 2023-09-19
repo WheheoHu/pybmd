@@ -7,3 +7,34 @@ ClipInfo
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~ClipInfo.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~ClipInfo.media_pool_item
+      ~ClipInfo.start_frame
+      ~ClipInfo.end_frame
+      ~ClipInfo.media_type
+      ~ClipInfo.track_index
+      ~ClipInfo.record_frame
+   
+   

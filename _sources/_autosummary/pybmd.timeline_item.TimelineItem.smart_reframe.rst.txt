@@ -1,0 +1,6 @@
+TimelineItem.smart\_reframe
+===========================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.smart_reframe

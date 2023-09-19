@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.insertAdditionalTracks
+===================================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.insertAdditionalTracks

@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.sourceClipsFolders
+===============================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.sourceClipsFolders

@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.linkToSourceCameraFiles
+====================================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.linkToSourceCameraFiles

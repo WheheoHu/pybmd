@@ -390,14 +390,17 @@ document.write(`
 <span class="k">class</span> <span class="nc">TimelineItem</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;TimelineItem Object&quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="TimelineItem.__init__">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.__init__.html#pybmd.timeline_item.TimelineItem.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_item</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span> <span class="o">=</span> <span class="n">timeline_item</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span> <span class="o">=</span> <span class="n">timeline_item</span></div>
+
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Timeline Item:f</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
 
 <div class="viewcode-block" id="TimelineItem.get_markers">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_markers">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_markers.html#pybmd.timeline_item.TimelineItem.get_markers">[docs]</a>
     <span class="k">def</span> <span class="nf">get_markers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dict (frameId -&gt; {information}) of all markers and dicts with their information.</span>
 <span class="sd">            Example: a value of {96.0: {&#39;color&#39;: &#39;Green&#39;, &#39;duration&#39;: 1.0, &#39;note&#39;: &#39;&#39;, &#39;name&#39;: &#39;Marker 1&#39;, &#39;customData&#39;: &#39;&#39;}, ...}</span>
@@ -407,21 +410,21 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.add_flag">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.add_flag">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_flag.html#pybmd.timeline_item.TimelineItem.add_flag">[docs]</a>
     <span class="k">def</span> <span class="nf">add_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a flag with given color (string).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">AddFlag</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.add_fusion_comp">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.add_fusion_comp">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_fusion_comp.html#pybmd.timeline_item.TimelineItem.add_fusion_comp">[docs]</a>
     <span class="k">def</span> <span class="nf">add_fusion_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FusionComp</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a new Fusion composition associated with the timeline item.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">FusionComp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">AddFusionComp</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.add_marker">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.add_marker">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_marker.html#pybmd.timeline_item.TimelineItem.add_marker">[docs]</a>
     <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new marker at given frameId position and with given marker information. </span>
 
@@ -440,7 +443,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.add_take">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.add_take">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_take.html#pybmd.timeline_item.TimelineItem.add_take">[docs]</a>
     <span class="k">def</span> <span class="nf">add_take</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">start_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added. </span>
 
@@ -456,7 +459,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.add_version">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.add_version">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_version.html#pybmd.timeline_item.TimelineItem.add_version">[docs]</a>
     <span class="k">def</span> <span class="nf">add_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a new color version for a video clip based on versionType</span>
 
@@ -471,21 +474,21 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.clear_clip_color">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.clear_clip_color">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.clear_clip_color.html#pybmd.timeline_item.TimelineItem.clear_clip_color">[docs]</a>
     <span class="k">def</span> <span class="nf">clear_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears the item color.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">ClearClipColor</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.clear_flags">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.clear_flags">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.clear_flags.html#pybmd.timeline_item.TimelineItem.clear_flags">[docs]</a>
     <span class="k">def</span> <span class="nf">clear_flags</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears all flags of a given color.if color is empty, all flags are cleared.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">ClearFlags</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.copy_grades">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.copy_grades">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.copy_grades.html#pybmd.timeline_item.TimelineItem.copy_grades">[docs]</a>
     <span class="k">def</span> <span class="nf">copy_grades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_timeline_items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;TimelineItem&#39;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Copies the current grade to all the items in tgtTimelineItems list. </span>
@@ -498,28 +501,28 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.delete_fusion_comp_by_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_fusion_comp_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comp_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes the named Fusion composition.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">DeleteFusionCompByName</span><span class="p">(</span><span class="n">comp_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.delet_marker_at_frame">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.delet_marker_at_frame">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delet_marker_at_frame.html#pybmd.timeline_item.TimelineItem.delet_marker_at_frame">[docs]</a>
     <span class="k">def</span> <span class="nf">delet_marker_at_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fram_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete marker at frameNum from the timeline item.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">DeletMarkerAtFrame</span><span class="p">(</span><span class="n">fram_num</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.delete_marker_by_custom_data">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.delete_marker_by_custom_data">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delete_marker_by_custom_data.html#pybmd.timeline_item.TimelineItem.delete_marker_by_custom_data">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete first matching marker with specified customData.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">DeleteMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.delete_marker_by_color">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.delete_marker_by_color">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delete_marker_by_color.html#pybmd.timeline_item.TimelineItem.delete_marker_by_color">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_marker_by_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete all markers of the specified color from the timeline item. </span>
@@ -529,14 +532,14 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.delete_take_by_index">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.delete_take_by_index">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delete_take_by_index.html#pybmd.timeline_item.TimelineItem.delete_take_by_index">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_take_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes a take by index, 1 &lt;= idx &lt;= number of takes.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">DeleteTakeByIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.delete_version_by_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.delete_version_by_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delete_version_by_name.html#pybmd.timeline_item.TimelineItem.delete_version_by_name">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_version_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes a color version by name and versionType </span>
 
@@ -551,56 +554,56 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.export_fusion_comp">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.export_fusion_comp">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.export_fusion_comp.html#pybmd.timeline_item.TimelineItem.export_fusion_comp">[docs]</a>
     <span class="k">def</span> <span class="nf">export_fusion_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">comp_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports the Fusion composition based on given compIndex to the path provided.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">ExportFusionComp</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">comp_index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.finalize_take">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.finalize_take">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.finalize_take.html#pybmd.timeline_item.TimelineItem.finalize_take">[docs]</a>
     <span class="k">def</span> <span class="nf">finalize_take</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Finalizes take selection.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">FinalizeTake</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_clip_color">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_clip_color">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_clip_color.html#pybmd.timeline_item.TimelineItem.get_clip_color">[docs]</a>
     <span class="k">def</span> <span class="nf">get_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the item color.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetClipColor</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_current_version">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_current_version">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_current_version.html#pybmd.timeline_item.TimelineItem.get_current_version">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;returns the current version of the timeline item&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetCurrentVersion</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_duration">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_duration">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_duration.html#pybmd.timeline_item.TimelineItem.get_duration">[docs]</a>
     <span class="k">def</span> <span class="nf">get_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the item duration.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetDuration</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_end">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_end">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_end.html#pybmd.timeline_item.TimelineItem.get_end">[docs]</a>
     <span class="k">def</span> <span class="nf">get_end</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the end frame position on the timeline.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetEnd</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_flag_list">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_flag_list">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_flag_list.html#pybmd.timeline_item.TimelineItem.get_flag_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_flag_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the end frame position on the timeline.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetFlagList</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_fusion_comp_by_index">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_by_index">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_fusion_comp_by_index.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_by_index">[docs]</a>
     <span class="k">def</span> <span class="nf">get_fusion_comp_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comp_index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FusionComp</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the Fusion composition object based on given compIndex. </span>
@@ -610,49 +613,49 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.get_fusion_comp_by_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_by_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_by_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_fusion_comp_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comp_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FusionComp</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Fusion composition object based on given comp_name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">FusionComp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetFusionCompByName</span><span class="p">(</span><span class="n">comp_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_fusion_comp_count">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_count">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_fusion_comp_count.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_count">[docs]</a>
     <span class="k">def</span> <span class="nf">get_fusion_comp_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns number of Fusion compositions associated with the timeline item.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetFusionCompCount</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_fusion_comp_name_list">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_name_list">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_fusion_comp_name_list.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_name_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_fusion_comp_name_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of Fusion composition names associated with the timeline item.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetFusionCompNameList</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_left_offset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_left_offset">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_left_offset.html#pybmd.timeline_item.TimelineItem.get_left_offset">[docs]</a>
     <span class="k">def</span> <span class="nf">get_left_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the maximum extension by frame for clip from left side.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetLeftOffset</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_marker_by_custom_data">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_marker_by_custom_data">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_marker_by_custom_data.html#pybmd.timeline_item.TimelineItem.get_marker_by_custom_data">[docs]</a>
     <span class="k">def</span> <span class="nf">get_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns marker {information} for the first matching marker with specified customData.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_marker_custom_data">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_marker_custom_data">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_marker_custom_data.html#pybmd.timeline_item.TimelineItem.get_marker_custom_data">[docs]</a>
     <span class="k">def</span> <span class="nf">get_marker_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns customData string for the marker at given frameId position.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetMarkerCustomData</span><span class="p">(</span><span class="n">frame_id</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_media_pool_item">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_media_pool_item">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_media_pool_item.html#pybmd.timeline_item.TimelineItem.get_media_pool_item">[docs]</a>
     <span class="k">def</span> <span class="nf">get_media_pool_item</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MediaPoolItem</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the media pool item corresponding to the timeline item if one exists.</span>
 
@@ -663,14 +666,14 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.get_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_name.html#pybmd.timeline_item.TimelineItem.get_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the item name.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_property">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_property">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_property.html#pybmd.timeline_item.TimelineItem.get_property">[docs]</a>
     <span class="k">def</span> <span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_key</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;returns the value of the specified key.</span>
 
@@ -680,35 +683,35 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.get_right_offset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_right_offset">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_right_offset.html#pybmd.timeline_item.TimelineItem.get_right_offset">[docs]</a>
     <span class="k">def</span> <span class="nf">get_right_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the maximum extension by frame for clip from right side.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetRightOffset</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_selected_take_index">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_selected_take_index">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_selected_take_index.html#pybmd.timeline_item.TimelineItem.get_selected_take_index">[docs]</a>
     <span class="k">def</span> <span class="nf">get_selected_take_index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the index of the currently selected take, or 0 if the clip is not a take selector.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetSelectedTakeIndex</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_start">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_start">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_start.html#pybmd.timeline_item.TimelineItem.get_start">[docs]</a>
     <span class="k">def</span> <span class="nf">get_start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the start frame position on the timeline.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetStart</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_stereo_convergence_values">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_stereo_convergence_values">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_stereo_convergence_values.html#pybmd.timeline_item.TimelineItem.get_stereo_convergence_values">[docs]</a>
     <span class="k">def</span> <span class="nf">get_stereo_convergence_values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dict (offset -&gt; value) of keyframe offsets and respective convergence values.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetStereoConvergenceValues</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_stereo_left_floating_window_params">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params.html#pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params">[docs]</a>
     <span class="k">def</span> <span class="nf">get_stereo_left_floating_window_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;For the LEFT eye -&gt; returns a dict (offset -&gt; dict) of keyframe offsets and respective floating window params. </span>
 <span class="sd">        Value at particular offset includes the left, right, top and bottom floating window values.&quot;&quot;&quot;</span>
@@ -716,7 +719,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.get_stereo_right_floating_window_params">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params.html#pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params">[docs]</a>
     <span class="k">def</span> <span class="nf">get_stereo_right_floating_window_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;For the RIGHT eye -&gt; returns a dict (offset -&gt; dict) of keyframe offsets and respective floating window params. </span>
 <span class="sd">        Value at particular offset includes the left, right, top and bottom floating window values.&quot;&quot;&quot;</span>
@@ -724,21 +727,21 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.get_take_by_index">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_take_by_index">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_take_by_index.html#pybmd.timeline_item.TimelineItem.get_take_by_index">[docs]</a>
     <span class="k">def</span> <span class="nf">get_take_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dict (keys &quot;startFrame&quot;, &quot;endFrame&quot; and &quot;mediaPoolItem&quot;) with take info for specified index.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetTakeByIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_takes_count">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_takes_count">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_takes_count.html#pybmd.timeline_item.TimelineItem.get_takes_count">[docs]</a>
     <span class="k">def</span> <span class="nf">get_takes_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of takes in take selector, or 0 if the clip is not a take selector.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetTakesCount</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_version_name_list">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_version_name_list">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_version_name_list.html#pybmd.timeline_item.TimelineItem.get_version_name_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_version_name_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of all color versions for the given versionType.</span>
 
@@ -752,7 +755,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.import_fusion_comp">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.import_fusion_comp">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.import_fusion_comp.html#pybmd.timeline_item.TimelineItem.import_fusion_comp">[docs]</a>
     <span class="k">def</span> <span class="nf">import_fusion_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FusionComp</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Imports a Fusion composition from given file path by creating and adding a new composition for the item.</span>
 
@@ -766,14 +769,14 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.load_fusion_comp_by_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name">[docs]</a>
     <span class="k">def</span> <span class="nf">load_fusion_comp_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comp_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FusionComp</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads the named Fusion composition as the active composition.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">FusionComp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">LoadFusionCompByName</span><span class="p">(</span><span class="n">comp_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.load_version_by_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.load_version_by_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.load_version_by_name.html#pybmd.timeline_item.TimelineItem.load_version_by_name">[docs]</a>
     <span class="k">def</span> <span class="nf">load_version_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads a named color version as the active version.</span>
 
@@ -788,28 +791,28 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.rename_fusion_comp_by_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name">[docs]</a>
     <span class="k">def</span> <span class="nf">rename_fusion_comp_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Renames the Fusion composition identified by oldName.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">RenameFusionCompByName</span><span class="p">(</span><span class="n">old_name</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.rename_version_by_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.rename_version_by_name">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.rename_version_by_name.html#pybmd.timeline_item.TimelineItem.rename_version_by_name">[docs]</a>
     <span class="k">def</span> <span class="nf">rename_version_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Renames the color version identified by oldName and versionType &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">RenameVersionByName</span><span class="p">(</span><span class="n">old_name</span><span class="p">,</span> <span class="n">new_name</span><span class="p">,</span> <span class="n">version_type</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.select_take_by_index">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.select_take_by_index">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.select_take_by_index.html#pybmd.timeline_item.TimelineItem.select_take_by_index">[docs]</a>
     <span class="k">def</span> <span class="nf">select_take_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Selects a take by index, 1 &lt;= idx &lt;= number of takes.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">SelectTakeByIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.set_cdl">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.set_cdl">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_cdl.html#pybmd.timeline_item.TimelineItem.set_cdl">[docs]</a>
     <span class="k">def</span> <span class="nf">set_cdl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cdl_map</span><span class="p">:</span> <span class="n">CDL_Map</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the color correction lookup (CDL) for the timeline item.</span>
 
@@ -823,14 +826,14 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.set_clip_color">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.set_clip_color">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_clip_color.html#pybmd.timeline_item.TimelineItem.set_clip_color">[docs]</a>
     <span class="k">def</span> <span class="nf">set_clip_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the item color based on the colorName (string).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">SetClipColor</span><span class="p">(</span><span class="n">color_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.set_lut">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.set_lut">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_lut.html#pybmd.timeline_item.TimelineItem.set_lut">[docs]</a>
     <span class="k">def</span> <span class="nf">set_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">lutpath</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets LUT on the node mapping the nodeIndex provided</span>
 
@@ -848,14 +851,14 @@ document.write(`
     <span class="c1"># add in davinci resolve 17.4.6</span>
 
 <div class="viewcode-block" id="TimelineItem.get_num_node">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_num_node">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_num_node.html#pybmd.timeline_item.TimelineItem.get_num_node">[docs]</a>
     <span class="k">def</span> <span class="nf">get_num_node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of nodes in the current graph for the timeline item&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetNumNode</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_lut">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_lut">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_lut.html#pybmd.timeline_item.TimelineItem.get_lut">[docs]</a>
     <span class="k">def</span> <span class="nf">get_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets relative LUT path based on the node index provided</span>
 
@@ -872,14 +875,14 @@ document.write(`
     <span class="c1"># Add at DR18.0.0</span>
 
 <div class="viewcode-block" id="TimelineItem.update_sidecar">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.update_sidecar">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.update_sidecar.html#pybmd.timeline_item.TimelineItem.update_sidecar">[docs]</a>
     <span class="k">def</span> <span class="nf">update_sidecar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates sidecar file for BRAW clips or RMD file for R3D clips.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">UpdateSidecar</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_unique_id">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_unique_id">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_unique_id.html#pybmd.timeline_item.TimelineItem.get_unique_id">[docs]</a>
     <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a unique ID for the timeline item&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
@@ -889,7 +892,7 @@ document.write(`
     <span class="c1"># Add at DR18.5.0 Beta</span>
 
 <div class="viewcode-block" id="TimelineItem.apply_arri_cdl_lut">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut.html#pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut">[docs]</a>
     <span class="k">def</span> <span class="nf">apply_arri_cdl_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies ARRI CDL and LUT.</span>
 
@@ -900,7 +903,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.set_clip_enabled">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.set_clip_enabled">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_clip_enabled.html#pybmd.timeline_item.TimelineItem.set_clip_enabled">[docs]</a>
     <span class="k">def</span> <span class="nf">set_clip_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bool_value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets clip enabled based on argument.</span>
 
@@ -914,7 +917,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.get_clip_enabled">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_clip_enabled">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_clip_enabled.html#pybmd.timeline_item.TimelineItem.get_clip_enabled">[docs]</a>
     <span class="k">def</span> <span class="nf">get_clip_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets clip enabled status.</span>
 
@@ -925,7 +928,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.load_burn_in_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.load_burn_in_preset">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.load_burn_in_preset.html#pybmd.timeline_item.TimelineItem.load_burn_in_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">load_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads user defined data burn in preset for clip when supplied presetName (string). Returns true if successful.</span>
 
@@ -939,7 +942,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="TimelineItem.get_node_label">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.get_node_label">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_node_label.html#pybmd.timeline_item.TimelineItem.get_node_label">[docs]</a>
     <span class="k">def</span> <span class="nf">get_node_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label of the node at nodeIndex.</span>
 
@@ -956,7 +959,7 @@ document.write(`
     <span class="c1"># Add at DR18.5.0</span>
     
 <div class="viewcode-block" id="TimelineItem.create_magic_mask">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.create_magic_mask">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.create_magic_mask.html#pybmd.timeline_item.TimelineItem.create_magic_mask">[docs]</a>
     <span class="k">def</span> <span class="nf">create_magic_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">MagicMask_Mode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if magic mask was created successfully, False otherwise. </span>
 
@@ -970,7 +973,7 @@ document.write(`
 
     
 <div class="viewcode-block" id="TimelineItem.regenerate_magic_mask">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.regenerate_magic_mask">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.regenerate_magic_mask.html#pybmd.timeline_item.TimelineItem.regenerate_magic_mask">[docs]</a>
     <span class="k">def</span> <span class="nf">regenerate_magic_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if magic mask was regenerated successfully, False otherwise.</span>
 
@@ -981,7 +984,7 @@ document.write(`
 
     
 <div class="viewcode-block" id="TimelineItem.stabilize">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.stabilize">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.stabilize.html#pybmd.timeline_item.TimelineItem.stabilize">[docs]</a>
     <span class="k">def</span> <span class="nf">stabilize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if stabilization was successful, False otherwise</span>
 
@@ -992,7 +995,7 @@ document.write(`
 
     
 <div class="viewcode-block" id="TimelineItem.smart_reframe">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem.smart_reframe">[docs]</a>
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.smart_reframe.html#pybmd.timeline_item.TimelineItem.smart_reframe">[docs]</a>
     <span class="k">def</span> <span class="nf">smart_reframe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Performs Smart Reframe. </span>
 

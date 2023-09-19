@@ -7,3 +7,85 @@ TimelineItem
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~TimelineItem.__init__
+      ~TimelineItem.add_flag
+      ~TimelineItem.add_fusion_comp
+      ~TimelineItem.add_marker
+      ~TimelineItem.add_take
+      ~TimelineItem.add_version
+      ~TimelineItem.apply_arri_cdl_lut
+      ~TimelineItem.clear_clip_color
+      ~TimelineItem.clear_flags
+      ~TimelineItem.copy_grades
+      ~TimelineItem.create_magic_mask
+      ~TimelineItem.delet_marker_at_frame
+      ~TimelineItem.delete_fusion_comp_by_name
+      ~TimelineItem.delete_marker_by_color
+      ~TimelineItem.delete_marker_by_custom_data
+      ~TimelineItem.delete_take_by_index
+      ~TimelineItem.delete_version_by_name
+      ~TimelineItem.export_fusion_comp
+      ~TimelineItem.finalize_take
+      ~TimelineItem.get_clip_color
+      ~TimelineItem.get_clip_enabled
+      ~TimelineItem.get_current_version
+      ~TimelineItem.get_duration
+      ~TimelineItem.get_end
+      ~TimelineItem.get_flag_list
+      ~TimelineItem.get_fusion_comp_by_index
+      ~TimelineItem.get_fusion_comp_by_name
+      ~TimelineItem.get_fusion_comp_count
+      ~TimelineItem.get_fusion_comp_name_list
+      ~TimelineItem.get_left_offset
+      ~TimelineItem.get_lut
+      ~TimelineItem.get_marker_by_custom_data
+      ~TimelineItem.get_marker_custom_data
+      ~TimelineItem.get_markers
+      ~TimelineItem.get_media_pool_item
+      ~TimelineItem.get_name
+      ~TimelineItem.get_node_label
+      ~TimelineItem.get_num_node
+      ~TimelineItem.get_property
+      ~TimelineItem.get_right_offset
+      ~TimelineItem.get_selected_take_index
+      ~TimelineItem.get_start
+      ~TimelineItem.get_stereo_convergence_values
+      ~TimelineItem.get_stereo_left_floating_window_params
+      ~TimelineItem.get_stereo_right_floating_window_params
+      ~TimelineItem.get_take_by_index
+      ~TimelineItem.get_takes_count
+      ~TimelineItem.get_unique_id
+      ~TimelineItem.get_version_name_list
+      ~TimelineItem.import_fusion_comp
+      ~TimelineItem.load_burn_in_preset
+      ~TimelineItem.load_fusion_comp_by_name
+      ~TimelineItem.load_version_by_name
+      ~TimelineItem.regenerate_magic_mask
+      ~TimelineItem.rename_fusion_comp_by_name
+      ~TimelineItem.rename_version_by_name
+      ~TimelineItem.select_take_by_index
+      ~TimelineItem.set_cdl
+      ~TimelineItem.set_clip_color
+      ~TimelineItem.set_clip_enabled
+      ~TimelineItem.set_lut
+      ~TimelineItem.smart_reframe
+      ~TimelineItem.stabilize
+      ~TimelineItem.update_sidecar
+   
+   
+
+   
+   
+   

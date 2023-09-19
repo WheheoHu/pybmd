@@ -1,0 +1,6 @@
+pybmd.media\_pool.ClipInfo.record\_frame
+========================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. autoattribute:: ClipInfo.record_frame

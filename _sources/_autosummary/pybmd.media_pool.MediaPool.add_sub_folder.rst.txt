@@ -1,0 +1,6 @@
+MediaPool.add\_sub\_folder
+==========================
+
+.. currentmodule:: pybmd.media_pool
+
+.. automethod:: MediaPool.add_sub_folder

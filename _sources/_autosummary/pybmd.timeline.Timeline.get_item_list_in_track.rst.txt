@@ -1,0 +1,6 @@
+Timeline.get\_item\_list\_in\_track
+===================================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.get_item_list_in_track

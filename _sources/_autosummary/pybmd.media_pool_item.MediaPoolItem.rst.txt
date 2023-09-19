@@ -7,3 +7,48 @@ MediaPoolItem
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~MediaPoolItem.__init__
+      ~MediaPoolItem.add_flag
+      ~MediaPoolItem.add_marker
+      ~MediaPoolItem.clear_clip_color
+      ~MediaPoolItem.clear_flag_color
+      ~MediaPoolItem.clear_transcription
+      ~MediaPoolItem.delete_marker_at_frame
+      ~MediaPoolItem.delete_marker_by_color
+      ~MediaPoolItem.delete_marker_by_custom_data
+      ~MediaPoolItem.get_clip_color
+      ~MediaPoolItem.get_clip_property
+      ~MediaPoolItem.get_flag_list
+      ~MediaPoolItem.get_marker_by_custom_data
+      ~MediaPoolItem.get_marker_custom_data
+      ~MediaPoolItem.get_markers
+      ~MediaPoolItem.get_media_id
+      ~MediaPoolItem.get_metadata
+      ~MediaPoolItem.get_name
+      ~MediaPoolItem.get_unique_id
+      ~MediaPoolItem.link_proxy_media
+      ~MediaPoolItem.replace_clip
+      ~MediaPoolItem.set_clip_color
+      ~MediaPoolItem.set_clip_property
+      ~MediaPoolItem.set_metadata
+      ~MediaPoolItem.transcribe_audio
+      ~MediaPoolItem.unlink_proxy_media
+      ~MediaPoolItem.updata_marker_custom_data
+   
+   
+
+   
+   
+   

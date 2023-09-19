@@ -1,0 +1,6 @@
+ProjectManager.set\_current\_database
+=====================================
+
+.. currentmodule:: pybmd.project_manager
+
+.. automethod:: ProjectManager.set_current_database

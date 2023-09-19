@@ -1,0 +1,6 @@
+Project.get\_self\_project
+==========================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.get_self_project

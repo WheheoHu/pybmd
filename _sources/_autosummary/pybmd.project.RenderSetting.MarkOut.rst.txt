@@ -1,0 +1,6 @@
+pybmd.project.RenderSetting.MarkOut
+===================================
+
+.. currentmodule:: pybmd.project
+
+.. autoattribute:: RenderSetting.MarkOut

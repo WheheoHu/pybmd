@@ -1,0 +1,6 @@
+MediaPoolItem.get\_markers
+==========================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.get_markers

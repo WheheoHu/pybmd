@@ -1,0 +1,6 @@
+pybmd.timeline.TrackType.SUBTITLE\_TRACK
+========================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: TrackType.SUBTITLE_TRACK

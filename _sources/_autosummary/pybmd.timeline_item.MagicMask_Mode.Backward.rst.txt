@@ -1,0 +1,6 @@
+pybmd.timeline\_item.MagicMask\_Mode.Backward
+=============================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. autoattribute:: MagicMask_Mode.Backward

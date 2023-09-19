@@ -1,0 +1,6 @@
+pybmd.timeline\_item.CDL\_Map.Saturation
+========================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. autoattribute:: CDL_Map.Saturation

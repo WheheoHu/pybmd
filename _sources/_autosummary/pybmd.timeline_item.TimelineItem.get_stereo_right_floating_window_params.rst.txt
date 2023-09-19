@@ -1,0 +1,6 @@
+TimelineItem.get\_stereo\_right\_floating\_window\_params
+=========================================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.get_stereo_right_floating_window_params

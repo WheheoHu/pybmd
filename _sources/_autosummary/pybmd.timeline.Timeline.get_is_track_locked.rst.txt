@@ -1,0 +1,6 @@
+Timeline.get\_is\_track\_locked
+===============================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.get_is_track_locked

@@ -1,0 +1,6 @@
+Timeline.get\_track\_name
+=========================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.get_track_name

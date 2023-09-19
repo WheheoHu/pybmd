@@ -1,0 +1,6 @@
+Gallery.\_\_init\_\_
+====================
+
+.. currentmodule:: pybmd.gallery
+
+.. automethod:: Gallery.__init__

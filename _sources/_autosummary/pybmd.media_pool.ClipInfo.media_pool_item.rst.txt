@@ -1,0 +1,6 @@
+pybmd.media\_pool.ClipInfo.media\_pool\_item
+============================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. autoattribute:: ClipInfo.media_pool_item

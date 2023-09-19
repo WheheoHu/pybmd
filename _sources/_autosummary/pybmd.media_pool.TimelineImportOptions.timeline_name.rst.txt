@@ -1,0 +1,6 @@
+pybmd.media\_pool.TimelineImportOptions.timeline\_name
+======================================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. autoattribute:: TimelineImportOptions.timeline_name

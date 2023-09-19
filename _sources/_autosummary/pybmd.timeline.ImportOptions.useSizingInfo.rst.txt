@@ -1,0 +1,6 @@
+pybmd.timeline.ImportOptions.useSizingInfo
+==========================================
+
+.. currentmodule:: pybmd.timeline
+
+.. autoattribute:: ImportOptions.useSizingInfo

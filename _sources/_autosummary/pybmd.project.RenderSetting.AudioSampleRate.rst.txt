@@ -1,0 +1,6 @@
+pybmd.project.RenderSetting.AudioSampleRate
+===========================================
+
+.. currentmodule:: pybmd.project
+
+.. autoattribute:: RenderSetting.AudioSampleRate

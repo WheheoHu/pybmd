@@ -1,0 +1,6 @@
+pybmd.media\_pool.ClipInfo.end\_frame
+=====================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. autoattribute:: ClipInfo.end_frame

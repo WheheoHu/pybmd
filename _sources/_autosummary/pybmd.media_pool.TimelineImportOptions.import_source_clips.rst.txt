@@ -1,0 +1,6 @@
+pybmd.media\_pool.TimelineImportOptions.import\_source\_clips
+=============================================================
+
+.. currentmodule:: pybmd.media_pool
+
+.. autoattribute:: TimelineImportOptions.import_source_clips

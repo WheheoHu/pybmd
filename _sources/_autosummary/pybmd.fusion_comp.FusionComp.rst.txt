@@ -7,3 +7,22 @@ FusionComp
    :members:            
    :show-inheritance:   
    :inherited-members:  
+   :noindex:
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+   
+      ~FusionComp.__init__
+   
+   
+
+   
+   
+   

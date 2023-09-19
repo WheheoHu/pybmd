@@ -1,0 +1,6 @@
+ProjectManager.goto\_parent\_folder
+===================================
+
+.. currentmodule:: pybmd.project_manager
+
+.. automethod:: ProjectManager.goto_parent_folder

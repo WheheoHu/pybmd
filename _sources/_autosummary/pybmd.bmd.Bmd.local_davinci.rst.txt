@@ -1,0 +1,6 @@
+pybmd.bmd.Bmd.local\_davinci
+============================
+
+.. currentmodule:: pybmd.bmd
+
+.. autoattribute:: Bmd.local_davinci

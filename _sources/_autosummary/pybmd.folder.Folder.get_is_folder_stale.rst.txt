@@ -1,0 +1,6 @@
+Folder.get\_is\_folder\_stale
+=============================
+
+.. currentmodule:: pybmd.folder
+
+.. automethod:: Folder.get_is_folder_stale
