@@ -1,5 +1,5 @@
-pybmd.error
-===========
+error
+=====
 
 .. automodule:: pybmd.error
 

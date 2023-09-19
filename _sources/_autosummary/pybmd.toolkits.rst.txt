@@ -1,5 +1,5 @@
-pybmd.toolkits
-==============
+toolkits
+========
 
 .. automodule:: pybmd.toolkits
 

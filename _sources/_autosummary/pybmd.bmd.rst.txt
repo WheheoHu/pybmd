@@ -1,5 +1,5 @@
-pybmd.bmd
-=========
+bmd
+===
 
 .. automodule:: pybmd.bmd
 

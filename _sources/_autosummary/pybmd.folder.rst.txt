@@ -1,5 +1,5 @@
-pybmd.folder
-============
+folder
+======
 
 .. automodule:: pybmd.folder
 

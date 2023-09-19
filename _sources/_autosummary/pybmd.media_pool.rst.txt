@@ -1,5 +1,5 @@
-pybmd.media\_pool
-=================
+media\_pool
+===========
 
 .. automodule:: pybmd.media_pool
 

@@ -7,29 +7,3 @@ ClipInfo
    :members:            
    :show-inheritance:   
    :inherited-members:  
-   
-   .. automethod:: __init__
-
-   
-   .. rubric:: Methods
-
-   .. autosummary::
-   
-      ~ClipInfo.__init__
-   
-   
-
-   
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~ClipInfo.media_pool_item
-      ~ClipInfo.start_frame
-      ~ClipInfo.end_frame
-      ~ClipInfo.media_type
-      ~ClipInfo.track_index
-      ~ClipInfo.record_frame
-   
-   

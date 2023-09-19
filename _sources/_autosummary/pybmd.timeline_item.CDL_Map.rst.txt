@@ -7,28 +7,3 @@ CDL\_Map
    :members:            
    :show-inheritance:   
    :inherited-members:  
-   
-   .. automethod:: __init__
-
-   
-   .. rubric:: Methods
-
-   .. autosummary::
-   
-      ~CDL_Map.__init__
-   
-   
-
-   
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~CDL_Map.NodeIndex
-      ~CDL_Map.Slope
-      ~CDL_Map.Offset
-      ~CDL_Map.Power
-      ~CDL_Map.Saturation
-   
-   

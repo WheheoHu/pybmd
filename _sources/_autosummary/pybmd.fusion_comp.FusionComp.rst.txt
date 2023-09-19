@@ -7,18 +7,3 @@ FusionComp
    :members:            
    :show-inheritance:   
    :inherited-members:  
-   
-   .. automethod:: __init__
-
-   
-   .. rubric:: Methods
-
-   .. autosummary::
-   
-      ~FusionComp.__init__
-   
-   
-
-   
-   
-   

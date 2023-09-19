@@ -1,5 +1,5 @@
-pybmd.timeline\_item
-====================
+timeline\_item
+==============
 
 .. automodule:: pybmd.timeline_item
 

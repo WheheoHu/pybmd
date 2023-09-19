@@ -7,28 +7,3 @@ TimelineImportOptions
    :members:            
    :show-inheritance:   
    :inherited-members:  
-   
-   .. automethod:: __init__
-
-   
-   .. rubric:: Methods
-
-   .. autosummary::
-   
-      ~TimelineImportOptions.__init__
-   
-   
-
-   
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~TimelineImportOptions.timeline_name
-      ~TimelineImportOptions.import_source_clips
-      ~TimelineImportOptions.source_clips_path
-      ~TimelineImportOptions.source_clips_folders
-      ~TimelineImportOptions.interlace_pricessing
-   
-   

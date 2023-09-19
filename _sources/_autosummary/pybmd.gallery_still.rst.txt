@@ -1,5 +1,5 @@
-pybmd.gallery\_still
-====================
+gallery\_still
+==============
 
 .. automodule:: pybmd.gallery_still
 

@@ -1,5 +1,5 @@
-pybmd.fusion\_comp
-==================
+fusion\_comp
+============
 
 .. automodule:: pybmd.fusion_comp
 

@@ -7,20 +7,3 @@ TrackType
    :members:            
    :show-inheritance:   
    :inherited-members:  
-   
-   .. automethod:: __init__
-
-   
-   
-
-   
-   
-   .. rubric:: Attributes
-
-   .. autosummary::
-   
-      ~TrackType.AUDIO_TRACK
-      ~TrackType.VIDEO_TRACK
-      ~TrackType.SUBTITLE_TRACK
-   
-   

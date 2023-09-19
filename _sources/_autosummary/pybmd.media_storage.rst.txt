@@ -1,5 +1,5 @@
-pybmd.media\_storage
-====================
+media\_storage
+==============
 
 .. automodule:: pybmd.media_storage
 
