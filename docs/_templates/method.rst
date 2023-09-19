@@ -3,6 +3,5 @@
 .. currentmodule:: {{ module }}
 
 .. automethod:: {{ objname }}
-    :noindex:
-    
+
     .. autosummary::
