@@ -4,7 +4,7 @@ with open("README.md", "r") as rm:
     long_description = rm.read()
 
 setuptools.setup(
-    name=package.name,
+    name=package.__name__,
     version=package.__version__,
     author="wheheo",
     author_email="wheheohu@outlook.com",
