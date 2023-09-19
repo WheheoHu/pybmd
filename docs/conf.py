@@ -10,7 +10,7 @@ sys.path.append(os.path.abspath(".."))
 
 import pybmd as package
 
-project = package.name
+project = package.__name__
 copyright = '2023, Wheheo Hu'
 author = 'Wheheo Hu'
 release = package.__version__
