@@ -27,6 +27,12 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.autosummary',
               'sphinx.ext.intersphinx',
             ]
+
+autodoc_type_aliases = {
+    "Project":"pybmd.project.Project",
+    "Timeline":"pybmd.timeline.Timeline",
+   
+}
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3.11", None),
 }
