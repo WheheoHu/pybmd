@@ -16,7 +16,6 @@
    .. rubric:: {{ _('Methods') }}
    
    .. autosummary::
-      :template: method.rst
       :toctree:
       
    {% for item in methods %}
