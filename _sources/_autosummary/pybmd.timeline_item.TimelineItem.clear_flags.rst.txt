@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.clear\_flags
-==============================================
+TimelineItem.clear\_flags
+=========================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.clear_flags
+
+    .. autosummary::

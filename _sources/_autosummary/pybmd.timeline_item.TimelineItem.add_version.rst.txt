@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.add\_version
-==============================================
+TimelineItem.add\_version
+=========================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.add_version
+
+    .. autosummary::

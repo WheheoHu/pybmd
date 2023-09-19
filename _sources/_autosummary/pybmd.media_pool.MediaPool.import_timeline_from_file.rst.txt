@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.import\_timeline\_from\_file
-========================================================
+MediaPool.import\_timeline\_from\_file
+======================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.import_timeline_from_file
+
+    .. autosummary::

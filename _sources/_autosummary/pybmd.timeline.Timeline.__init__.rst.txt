@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.\_\_init\_\_
-====================================
+Timeline.\_\_init\_\_
+=====================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.__init__
+
+    .. autosummary::

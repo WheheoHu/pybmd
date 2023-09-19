@@ -1,6 +1,8 @@
-pybmd.media\_pool\_item.MediaPoolItem.link\_proxy\_media
-========================================================
+MediaPoolItem.link\_proxy\_media
+================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.link_proxy_media
+
+    .. autosummary::

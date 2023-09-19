@@ -1,6 +1,8 @@
-pybmd.project.Project.stop\_rendering
-=====================================
+Project.stop\_rendering
+=======================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.stop_rendering
+
+    .. autosummary::

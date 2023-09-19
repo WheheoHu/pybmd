@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.set\_track\_lock
-========================================
+Timeline.set\_track\_lock
+=========================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.set_track_lock
+
+    .. autosummary::

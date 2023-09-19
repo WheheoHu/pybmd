@@ -17,6 +17,7 @@ ClipInfo
    .. rubric:: Methods
    
    .. autosummary::
+      :template: method.rst
       :toctree:
       
    

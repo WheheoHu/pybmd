@@ -1,6 +1,8 @@
-pybmd.gallery.Gallery.set\_current\_still\_album
-================================================
+Gallery.set\_current\_still\_album
+==================================
 
 .. currentmodule:: pybmd.gallery
 
 .. automethod:: Gallery.set_current_still_album
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.grab\_still
-===================================
+Timeline.grab\_still
+====================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.grab_still
+
+    .. autosummary::

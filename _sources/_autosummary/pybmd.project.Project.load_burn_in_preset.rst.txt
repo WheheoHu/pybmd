@@ -1,6 +1,8 @@
-pybmd.project.Project.load\_burn\_in\_preset
-============================================
+Project.load\_burn\_in\_preset
+==============================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.load_burn_in_preset
+
+    .. autosummary::

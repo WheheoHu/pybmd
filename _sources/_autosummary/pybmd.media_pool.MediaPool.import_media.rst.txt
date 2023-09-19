@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.import\_media
-=========================================
+MediaPool.import\_media
+=======================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.import_media
+
+    .. autosummary::

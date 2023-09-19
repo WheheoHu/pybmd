@@ -1,6 +1,8 @@
-pybmd.project.Project.set\_current\_timeline
-============================================
+Project.set\_current\_timeline
+==============================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.set_current_timeline
+
+    .. autosummary::

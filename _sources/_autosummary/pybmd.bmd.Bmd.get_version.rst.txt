@@ -1,6 +1,8 @@
-pybmd.bmd.Bmd.get\_version
-==========================
+Bmd.get\_version
+================
 
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.get_version
+
+    .. autosummary::

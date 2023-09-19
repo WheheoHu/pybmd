@@ -17,6 +17,7 @@ CDL\_Map
    .. rubric:: Methods
    
    .. autosummary::
+      :template: method.rst
       :toctree:
       
    

@@ -1,6 +1,8 @@
-pybmd.project.Project.set\_preset
-=================================
+Project.set\_preset
+===================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.set_preset
+
+    .. autosummary::

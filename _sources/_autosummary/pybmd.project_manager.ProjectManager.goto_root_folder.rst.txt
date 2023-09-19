@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.goto\_root\_folder
-========================================================
+ProjectManager.goto\_root\_folder
+=================================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.goto_root_folder
+
+    .. autosummary::

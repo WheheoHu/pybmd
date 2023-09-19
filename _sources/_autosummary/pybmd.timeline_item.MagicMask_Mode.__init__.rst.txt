@@ -1,6 +1,8 @@
-pybmd.timeline\_item.MagicMask\_Mode.\_\_init\_\_
-=================================================
+MagicMask\_Mode.\_\_init\_\_
+============================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: MagicMask_Mode.__init__
+
+    .. autosummary::

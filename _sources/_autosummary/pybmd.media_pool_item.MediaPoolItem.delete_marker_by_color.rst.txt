@@ -1,6 +1,8 @@
-pybmd.media\_pool\_item.MediaPoolItem.delete\_marker\_by\_color
-===============================================================
+MediaPoolItem.delete\_marker\_by\_color
+=======================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.delete_marker_by_color
+
+    .. autosummary::

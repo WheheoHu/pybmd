@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.delete\_clips
-=====================================
+Timeline.delete\_clips
+======================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.delete_clips
+
+    .. autosummary::

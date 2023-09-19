@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.set\_current\_timecode
-==============================================
+Timeline.set\_current\_timecode
+===============================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.set_current_timecode
+
+    .. autosummary::

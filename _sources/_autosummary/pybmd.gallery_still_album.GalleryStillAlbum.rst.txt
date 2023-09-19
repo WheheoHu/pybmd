@@ -17,6 +17,7 @@ GalleryStillAlbum
    .. rubric:: Methods
    
    .. autosummary::
+      :template: method.rst
       :toctree:
       
    

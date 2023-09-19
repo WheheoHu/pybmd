@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.rename\_fusion\_comp\_by\_name
-================================================================
+TimelineItem.rename\_fusion\_comp\_by\_name
+===========================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.rename_fusion_comp_by_name
+
+    .. autosummary::

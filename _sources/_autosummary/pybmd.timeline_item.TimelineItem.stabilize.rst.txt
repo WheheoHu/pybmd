@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.stabilize
-===========================================
+TimelineItem.stabilize
+======================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.stabilize
+
+    .. autosummary::

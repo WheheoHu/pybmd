@@ -1,6 +1,8 @@
-pybmd.folder.Folder.\_\_init\_\_
-================================
+Folder.\_\_init\_\_
+===================
 
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.__init__
+
+    .. autosummary::

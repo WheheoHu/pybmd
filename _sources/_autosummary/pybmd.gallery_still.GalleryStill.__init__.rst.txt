@@ -1,6 +1,8 @@
-pybmd.gallery\_still.GalleryStill.\_\_init\_\_
-==============================================
+GalleryStill.\_\_init\_\_
+=========================
 
 .. currentmodule:: pybmd.gallery_still
 
 .. automethod:: GalleryStill.__init__
+
+    .. autosummary::

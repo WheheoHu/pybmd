@@ -17,6 +17,7 @@ Item\_Info
    .. rubric:: Methods
    
    .. autosummary::
+      :template: method.rst
       :toctree:
       
    

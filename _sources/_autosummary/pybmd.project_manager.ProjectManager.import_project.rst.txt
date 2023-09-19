@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.import\_project
-=====================================================
+ProjectManager.import\_project
+==============================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.import_project
+
+    .. autosummary::

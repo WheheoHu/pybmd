@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.delete\_project
-=====================================================
+ProjectManager.delete\_project
+==============================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.delete_project
+
+    .. autosummary::

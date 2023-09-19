@@ -1,6 +1,8 @@
-pybmd.project.Project.insert\_audio\_to\_current\_track\_at\_playhead
-=====================================================================
+Project.insert\_audio\_to\_current\_track\_at\_playhead
+=======================================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.insert_audio_to_current_track_at_playhead
+
+    .. autosummary::

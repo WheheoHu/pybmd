@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.get\_is\_track\_enabled
-===============================================
+Timeline.get\_is\_track\_enabled
+================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_is_track_enabled
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.get\_clip\_matte\_list
-==================================================
+MediaPool.get\_clip\_matte\_list
+================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.get_clip_matte_list
+
+    .. autosummary::

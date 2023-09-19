@@ -17,6 +17,7 @@ MagicMask\_Mode
    .. rubric:: Methods
    
    .. autosummary::
+      :template: method.rst
       :toctree:
       
    

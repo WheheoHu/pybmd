@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.close\_project
-====================================================
+ProjectManager.close\_project
+=============================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.close_project
+
+    .. autosummary::

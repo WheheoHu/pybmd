@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.duplicate\_timeline
-===========================================
+Timeline.duplicate\_timeline
+============================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.duplicate_timeline
+
+    .. autosummary::

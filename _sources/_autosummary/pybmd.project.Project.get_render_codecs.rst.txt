@@ -1,6 +1,8 @@
-pybmd.project.Project.get\_render\_codecs
-=========================================
+Project.get\_render\_codecs
+===========================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_render_codecs
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.get\_stereo\_left\_floating\_window\_params
-=============================================================================
+TimelineItem.get\_stereo\_left\_floating\_window\_params
+========================================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_stereo_left_floating_window_params
+
+    .. autosummary::

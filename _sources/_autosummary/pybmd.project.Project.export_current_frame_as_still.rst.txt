@@ -1,6 +1,8 @@
-pybmd.project.Project.export\_current\_frame\_as\_still
-=======================================================
+Project.export\_current\_frame\_as\_still
+=========================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.export_current_frame_as_still
+
+    .. autosummary::

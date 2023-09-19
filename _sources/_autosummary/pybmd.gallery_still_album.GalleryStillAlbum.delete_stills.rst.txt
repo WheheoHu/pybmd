@@ -1,6 +1,8 @@
-pybmd.gallery\_still\_album.GalleryStillAlbum.delete\_stills
-============================================================
+GalleryStillAlbum.delete\_stills
+================================
 
 .. currentmodule:: pybmd.gallery_still_album
 
 .. automethod:: GalleryStillAlbum.delete_stills
+
+    .. autosummary::

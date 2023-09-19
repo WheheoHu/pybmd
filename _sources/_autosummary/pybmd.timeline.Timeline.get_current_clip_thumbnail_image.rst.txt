@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.get\_current\_clip\_thumbnail\_image
-============================================================
+Timeline.get\_current\_clip\_thumbnail\_image
+=============================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_current_clip_thumbnail_image
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.database\_info
-====================================================
+ProjectManager.database\_info
+=============================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.database_info
+
+    .. autosummary::

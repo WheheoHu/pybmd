@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.set\_current\_folder
-================================================
+MediaPool.set\_current\_folder
+==============================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.set_current_folder
+
+    .. autosummary::

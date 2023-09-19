@@ -1,6 +1,8 @@
-pybmd.bmd.Bmd.delete\_layout\_preset
-====================================
+Bmd.delete\_layout\_preset
+==========================
 
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.delete_layout_preset
+
+    .. autosummary::

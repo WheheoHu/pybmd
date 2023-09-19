@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.get\_flag\_list
-=================================================
+TimelineItem.get\_flag\_list
+============================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_flag_list
+
+    .. autosummary::

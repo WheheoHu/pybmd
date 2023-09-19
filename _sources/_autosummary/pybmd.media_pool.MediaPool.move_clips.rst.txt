@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.move\_clips
-=======================================
+MediaPool.move\_clips
+=====================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.move_clips
+
+    .. autosummary::

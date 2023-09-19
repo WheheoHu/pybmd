@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.select\_take\_by\_index
-=========================================================
+TimelineItem.select\_take\_by\_index
+====================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.select_take_by_index
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.create\_timeline\_from\_clips
-=========================================================
+MediaPool.create\_timeline\_from\_clips
+=======================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.create_timeline_from_clips
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.get\_current\_timecode
-==============================================
+Timeline.get\_current\_timecode
+===============================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_current_timecode
+
+    .. autosummary::

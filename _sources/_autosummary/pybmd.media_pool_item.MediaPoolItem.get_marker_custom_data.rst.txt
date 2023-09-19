@@ -1,6 +1,8 @@
-pybmd.media\_pool\_item.MediaPoolItem.get\_marker\_custom\_data
-===============================================================
+MediaPoolItem.get\_marker\_custom\_data
+=======================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_marker_custom_data
+
+    .. autosummary::

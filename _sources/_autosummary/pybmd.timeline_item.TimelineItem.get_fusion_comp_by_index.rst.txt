@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.get\_fusion\_comp\_by\_index
-==============================================================
+TimelineItem.get\_fusion\_comp\_by\_index
+=========================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_fusion_comp_by_index
+
+    .. autosummary::

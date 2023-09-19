@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.get\_start
-============================================
+TimelineItem.get\_start
+=======================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_start
+
+    .. autosummary::

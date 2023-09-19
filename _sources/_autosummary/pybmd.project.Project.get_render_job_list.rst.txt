@@ -1,6 +1,8 @@
-pybmd.project.Project.get\_render\_job\_list
-============================================
+Project.get\_render\_job\_list
+==============================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.get_render_job_list
+
+    .. autosummary::

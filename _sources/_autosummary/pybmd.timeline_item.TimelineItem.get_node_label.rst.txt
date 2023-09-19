@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.get\_node\_label
-==================================================
+TimelineItem.get\_node\_label
+=============================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_node_label
+
+    .. autosummary::

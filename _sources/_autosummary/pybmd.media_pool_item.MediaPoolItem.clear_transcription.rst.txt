@@ -1,6 +1,8 @@
-pybmd.media\_pool\_item.MediaPoolItem.clear\_transcription
-==========================================================
+MediaPoolItem.clear\_transcription
+==================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.clear_transcription
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.set\_lut
-==========================================
+TimelineItem.set\_lut
+=====================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.set_lut
+
+    .. autosummary::

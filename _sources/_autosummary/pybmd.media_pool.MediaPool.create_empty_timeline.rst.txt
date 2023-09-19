@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.create\_empty\_timeline
-===================================================
+MediaPool.create\_empty\_timeline
+=================================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.create_empty_timeline
+
+    .. autosummary::

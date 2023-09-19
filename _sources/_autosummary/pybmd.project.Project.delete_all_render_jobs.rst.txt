@@ -1,6 +1,8 @@
-pybmd.project.Project.delete\_all\_render\_jobs
-===============================================
+Project.delete\_all\_render\_jobs
+=================================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.delete_all_render_jobs
+
+    .. autosummary::

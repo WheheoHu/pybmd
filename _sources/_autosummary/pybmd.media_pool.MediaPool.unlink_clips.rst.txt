@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.unlink\_clips
-=========================================
+MediaPool.unlink\_clips
+=======================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.unlink_clips
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.get\_marker\_custom\_data
-=================================================
+Timeline.get\_marker\_custom\_data
+==================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_marker_custom_data
+
+    .. autosummary::

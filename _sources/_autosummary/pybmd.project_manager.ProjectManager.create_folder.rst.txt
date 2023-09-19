@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.create\_folder
-====================================================
+ProjectManager.create\_folder
+=============================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.create_folder
+
+    .. autosummary::

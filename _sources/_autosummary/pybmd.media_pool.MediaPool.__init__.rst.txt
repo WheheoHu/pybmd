@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.\_\_init\_\_
-========================================
+MediaPool.\_\_init\_\_
+======================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.__init__
+
+    .. autosummary::

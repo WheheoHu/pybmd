@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.create\_fusion\_clip
-============================================
+Timeline.create\_fusion\_clip
+=============================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.create_fusion_clip
+
+    .. autosummary::

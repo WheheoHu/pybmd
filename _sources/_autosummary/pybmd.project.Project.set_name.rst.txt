@@ -1,6 +1,8 @@
-pybmd.project.Project.set\_name
-===============================
+Project.set\_name
+=================
 
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.set_name
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.add\_marker
-=============================================
+TimelineItem.add\_marker
+========================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.add_marker
+
+    .. autosummary::

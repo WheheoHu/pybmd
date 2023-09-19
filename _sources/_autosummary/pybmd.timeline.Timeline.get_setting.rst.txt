@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.get\_setting
-====================================
+Timeline.get\_setting
+=====================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_setting
+
+    .. autosummary::

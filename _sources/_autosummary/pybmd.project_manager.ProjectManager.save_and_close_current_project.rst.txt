@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.save\_and\_close\_current\_project
-========================================================================
+ProjectManager.save\_and\_close\_current\_project
+=================================================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.save_and_close_current_project
+
+    .. autosummary::

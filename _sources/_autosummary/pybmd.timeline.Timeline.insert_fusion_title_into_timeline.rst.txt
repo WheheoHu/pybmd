@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.insert\_fusion\_title\_into\_timeline
-=============================================================
+Timeline.insert\_fusion\_title\_into\_timeline
+==============================================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.insert_fusion_title_into_timeline
+
+    .. autosummary::

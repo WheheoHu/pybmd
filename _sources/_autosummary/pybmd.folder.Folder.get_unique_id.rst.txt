@@ -1,6 +1,8 @@
-pybmd.folder.Folder.get\_unique\_id
-===================================
+Folder.get\_unique\_id
+======================
 
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.get_unique_id
+
+    .. autosummary::

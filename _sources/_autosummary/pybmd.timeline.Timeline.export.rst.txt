@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.export
-==============================
+Timeline.export
+===============
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.export
+
+    .. autosummary::

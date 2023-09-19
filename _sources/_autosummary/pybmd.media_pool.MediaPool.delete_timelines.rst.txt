@@ -1,6 +1,8 @@
-pybmd.media\_pool.MediaPool.delete\_timelines
-=============================================
+MediaPool.delete\_timelines
+===========================
 
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.delete_timelines
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.media\_pool\_item.MediaPoolItem.get\_clip\_property
-=========================================================
+MediaPoolItem.get\_clip\_property
+=================================
 
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_clip_property
+
+    .. autosummary::

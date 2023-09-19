@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.delete\_version\_by\_name
-===========================================================
+TimelineItem.delete\_version\_by\_name
+======================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.delete_version_by_name
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.add\_track
-==================================
+Timeline.add\_track
+===================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.add_track
+
+    .. autosummary::

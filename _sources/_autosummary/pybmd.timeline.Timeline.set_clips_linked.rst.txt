@@ -1,6 +1,8 @@
-pybmd.timeline.Timeline.set\_clips\_linked
-==========================================
+Timeline.set\_clips\_linked
+===========================
 
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.set_clips_linked
+
+    .. autosummary::

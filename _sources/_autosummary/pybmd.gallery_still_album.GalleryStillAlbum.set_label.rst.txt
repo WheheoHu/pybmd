@@ -1,6 +1,8 @@
-pybmd.gallery\_still\_album.GalleryStillAlbum.set\_label
-========================================================
+GalleryStillAlbum.set\_label
+============================
 
 .. currentmodule:: pybmd.gallery_still_album
 
 .. automethod:: GalleryStillAlbum.set_label
+
+    .. autosummary::

@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.export\_project
-=====================================================
+ProjectManager.export\_project
+==============================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.export_project
+
+    .. autosummary::

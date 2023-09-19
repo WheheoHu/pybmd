@@ -1,6 +1,8 @@
-pybmd.folder.Folder.export
-==========================
+Folder.export
+=============
 
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.export
+
+    .. autosummary::

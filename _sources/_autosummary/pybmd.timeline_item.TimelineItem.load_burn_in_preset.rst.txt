@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.load\_burn\_in\_preset
-========================================================
+TimelineItem.load\_burn\_in\_preset
+===================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.load_burn_in_preset
+
+    .. autosummary::

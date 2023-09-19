@@ -1,6 +1,8 @@
-pybmd.project\_manager.ProjectManager.delete\_folder
-====================================================
+ProjectManager.delete\_folder
+=============================
 
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.delete_folder
+
+    .. autosummary::

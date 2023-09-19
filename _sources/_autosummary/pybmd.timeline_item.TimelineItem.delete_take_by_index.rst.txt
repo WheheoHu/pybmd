@@ -1,6 +1,8 @@
-pybmd.timeline\_item.TimelineItem.delete\_take\_by\_index
-=========================================================
+TimelineItem.delete\_take\_by\_index
+====================================
 
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.delete_take_by_index
+
+    .. autosummary::
