@@ -4,3 +4,6 @@ Timeline.get\_start\_timecode
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_start_timecode
+    :noindex:
+    
+    .. autosummary::

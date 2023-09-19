@@ -4,3 +4,6 @@ MediaPoolItem.transcribe\_audio
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.transcribe_audio
+    :noindex:
+    
+    .. autosummary::

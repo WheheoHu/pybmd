@@ -4,3 +4,6 @@ Folder.get\_sub\_folder\_list
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.get_sub_folder_list
+    :noindex:
+    
+    .. autosummary::

@@ -4,3 +4,6 @@ Bmd.export\_render\_preset
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.export_render_preset
+    :noindex:
+    
+    .. autosummary::

@@ -4,3 +4,6 @@ MediaPool.import\_folder\_from\_file
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.import_folder_from_file
+    :noindex:
+    
+    .. autosummary::

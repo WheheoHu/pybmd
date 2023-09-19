@@ -4,3 +4,6 @@ Timeline.get\_current\_video\_item
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_current_video_item
+    :noindex:
+    
+    .. autosummary::

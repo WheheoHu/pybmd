@@ -4,3 +4,6 @@ MediaPool.export\_metadata
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.export_metadata
+    :noindex:
+    
+    .. autosummary::

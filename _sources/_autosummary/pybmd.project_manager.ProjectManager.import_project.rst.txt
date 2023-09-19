@@ -4,3 +4,6 @@ ProjectManager.import\_project
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.import_project
+    :noindex:
+    
+    .. autosummary::

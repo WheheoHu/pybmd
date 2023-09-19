@@ -4,3 +4,6 @@ MediaPoolItem.clear\_clip\_color
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.clear_clip_color
+    :noindex:
+    
+    .. autosummary::

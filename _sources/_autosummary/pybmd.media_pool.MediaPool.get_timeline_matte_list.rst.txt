@@ -4,3 +4,6 @@ MediaPool.get\_timeline\_matte\_list
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.get_timeline_matte_list
+    :noindex:
+    
+    .. autosummary::

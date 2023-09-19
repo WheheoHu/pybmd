@@ -4,3 +4,6 @@ Timeline.create\_compound\_clip
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.create_compound_clip
+    :noindex:
+    
+    .. autosummary::

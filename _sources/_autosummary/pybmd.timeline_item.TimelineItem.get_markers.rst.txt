@@ -4,3 +4,6 @@ TimelineItem.get\_markers
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_markers
+    :noindex:
+    
+    .. autosummary::

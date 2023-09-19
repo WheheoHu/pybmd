@@ -890,71 +890,71 @@ document.write(`
   <section id="timeline">
 <h1>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.timeline.</span></span><span class="sig-name descname"><span class="pre">Timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.timeline.</span></span><span class="sig-name descname"><span class="pre">Timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Timeline Object</p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.__init__.html#pybmd.timeline.Timeline.__init__" title="pybmd.timeline.Timeline.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(timeline)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(timeline)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.add_marker.html#pybmd.timeline.Timeline.add_marker" title="pybmd.timeline.Timeline.add_marker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_marker</span></code></a>(frame_id, color, name, note, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.add_marker" title="pybmd.timeline.Timeline.add_marker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_marker</span></code></a>(frame_id, color, name, note, ...)</p></td>
 <td><p>Creates a new marker at given frameId position and with given marker information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.add_track.html#pybmd.timeline.Timeline.add_track" title="pybmd.timeline.Timeline.add_track"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_track</span></code></a>(track_type, optional_sub_track_type)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.add_track" title="pybmd.timeline.Timeline.add_track"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_track</span></code></a>(track_type, optional_sub_track_type)</p></td>
 <td><p>Adds track of trackType (&quot;video&quot;, &quot;subtitle&quot;, &quot;audio&quot;).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.apply_grade_from_drx.html#pybmd.timeline.Timeline.apply_grade_from_drx" title="pybmd.timeline.Timeline.apply_grade_from_drx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_grade_from_drx</span></code></a>(path, grade_mode, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.apply_grade_from_drx" title="pybmd.timeline.Timeline.apply_grade_from_drx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_grade_from_drx</span></code></a>(path, grade_mode, ...)</p></td>
 <td><p>Loads a still from given file path (string) and applies grade to Timeline Items with gradeMode (int)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.create_compound_clip.html#pybmd.timeline.Timeline.create_compound_clip" title="pybmd.timeline.Timeline.create_compound_clip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_compound_clip</span></code></a>(timeline_items, clipinfo)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.create_compound_clip" title="pybmd.timeline.Timeline.create_compound_clip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_compound_clip</span></code></a>(timeline_items, clipinfo)</p></td>
 <td><p>Creates a compound clip of input TimelineItems with an optional clipInfo map</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.create_fusion_clip.html#pybmd.timeline.Timeline.create_fusion_clip" title="pybmd.timeline.Timeline.create_fusion_clip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_fusion_clip</span></code></a>(timeline_items)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.create_fusion_clip" title="pybmd.timeline.Timeline.create_fusion_clip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_fusion_clip</span></code></a>(timeline_items)</p></td>
 <td><p>Creates a Fusion clip of input timeline items.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.create_subtitle_from_audio.html#pybmd.timeline.Timeline.create_subtitle_from_audio" title="pybmd.timeline.Timeline.create_subtitle_from_audio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_subtitle_from_audio</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.create_subtitle_from_audio" title="pybmd.timeline.Timeline.create_subtitle_from_audio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_subtitle_from_audio</span></code></a>()</p></td>
 <td><p>Creates subtitles from audio for the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.delete_clips.html#pybmd.timeline.Timeline.delete_clips" title="pybmd.timeline.Timeline.delete_clips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_clips</span></code></a>(timeline_items[, ripple_delete])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.delete_clips" title="pybmd.timeline.Timeline.delete_clips"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_clips</span></code></a>(timeline_items[, ripple_delete])</p></td>
 <td><p>Deletes specified TimelineItems from the timeline</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.delete_marker_at_frame.html#pybmd.timeline.Timeline.delete_marker_at_frame" title="pybmd.timeline.Timeline.delete_marker_at_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_marker_at_frame</span></code></a>(frame_num)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.delete_marker_at_frame" title="pybmd.timeline.Timeline.delete_marker_at_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_marker_at_frame</span></code></a>(frame_num)</p></td>
 <td><p>Deletes the timeline marker at the given frame number.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.delete_marker_by_color.html#pybmd.timeline.Timeline.delete_marker_by_color" title="pybmd.timeline.Timeline.delete_marker_by_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_marker_by_color</span></code></a>(color)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.delete_marker_by_color" title="pybmd.timeline.Timeline.delete_marker_by_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_marker_by_color</span></code></a>(color)</p></td>
 <td><p>Deletes all timeline markers of the specified color.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.delete_marker_by_custom_data.html#pybmd.timeline.Timeline.delete_marker_by_custom_data" title="pybmd.timeline.Timeline.delete_marker_by_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_marker_by_custom_data</span></code></a>(custom_data)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.delete_marker_by_custom_data" title="pybmd.timeline.Timeline.delete_marker_by_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_marker_by_custom_data</span></code></a>(custom_data)</p></td>
 <td><p>Delete first matching marker with specified custom_data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.delete_track.html#pybmd.timeline.Timeline.delete_track" title="pybmd.timeline.Timeline.delete_track"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_track</span></code></a>(track_type, track_index)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.delete_track" title="pybmd.timeline.Timeline.delete_track"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_track</span></code></a>(track_type, track_index)</p></td>
 <td><p>Deletes track of trackType (&quot;video&quot;, &quot;subtitle&quot;, &quot;audio&quot;) and given trackIndex.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.detect_scene_cuts.html#pybmd.timeline.Timeline.detect_scene_cuts" title="pybmd.timeline.Timeline.detect_scene_cuts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detect_scene_cuts</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.detect_scene_cuts" title="pybmd.timeline.Timeline.detect_scene_cuts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detect_scene_cuts</span></code></a>()</p></td>
 <td><p>Detects and makes scene cuts along the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.duplicate_timeline.html#pybmd.timeline.Timeline.duplicate_timeline" title="pybmd.timeline.Timeline.duplicate_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">duplicate_timeline</span></code></a>(timeline_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.duplicate_timeline" title="pybmd.timeline.Timeline.duplicate_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">duplicate_timeline</span></code></a>(timeline_name)</p></td>
 <td><p>Duplicates the timeline and returns the created timeline, with the (optional) timelineName, on success.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.export.html#pybmd.timeline.Timeline.export" title="pybmd.timeline.Timeline.export"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export</span></code></a>(file_name, export_type[, export_subtype])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.export" title="pybmd.timeline.Timeline.export"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export</span></code></a>(file_name, export_type[, export_subtype])</p></td>
 <td><p>Exports timeline to 'fileName' as per input exportType &amp; exportSubtype format.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_current_clip_thumbnail_image.html#pybmd.timeline.Timeline.get_current_clip_thumbnail_image" title="pybmd.timeline.Timeline.get_current_clip_thumbnail_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_clip_thumbnail_image</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_current_clip_thumbnail_image" title="pybmd.timeline.Timeline.get_current_clip_thumbnail_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_clip_thumbnail_image</span></code></a>()</p></td>
 <td><p>Returns a dict (keys &quot;width&quot;, &quot;height&quot;, &quot;format&quot; and &quot;data&quot;) with data containing raw thumbnail image data (RGB 8-bit image data encoded in base64 format) for current media in the Color Page.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_current_timecode.html#pybmd.timeline.Timeline.get_current_timecode" title="pybmd.timeline.Timeline.get_current_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_timecode</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_current_timecode" title="pybmd.timeline.Timeline.get_current_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_timecode</span></code></a>()</p></td>
 <td><p>Returns a string timecode representation for the current playhead position, while on Cut, Edit, Color, Fairlight and Deliver pages.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_current_video_item.html#pybmd.timeline.Timeline.get_current_video_item" title="pybmd.timeline.Timeline.get_current_video_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_video_item</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_current_video_item" title="pybmd.timeline.Timeline.get_current_video_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_video_item</span></code></a>()</p></td>
 <td><p>Returns the current video timeline item.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_end_frame.html#pybmd.timeline.Timeline.get_end_frame" title="pybmd.timeline.Timeline.get_end_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_end_frame</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_end_frame" title="pybmd.timeline.Timeline.get_end_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_end_frame</span></code></a>()</p></td>
 <td><p>Returns the frame number at the end of timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_is_track_enabled.html#pybmd.timeline.Timeline.get_is_track_enabled" title="pybmd.timeline.Timeline.get_is_track_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_is_track_enabled</span></code></a>(track_type, track_index)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_is_track_enabled" title="pybmd.timeline.Timeline.get_is_track_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_is_track_enabled</span></code></a>(track_type, track_index)</p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">param track_type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>trackType is one of {&quot;audio&quot;, &quot;video&quot;, &quot;subtitle&quot;}</p>
@@ -962,101 +962,101 @@ document.write(`
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_is_track_locked.html#pybmd.timeline.Timeline.get_is_track_locked" title="pybmd.timeline.Timeline.get_is_track_locked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_is_track_locked</span></code></a>(track_type, track_index)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_is_track_locked" title="pybmd.timeline.Timeline.get_is_track_locked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_is_track_locked</span></code></a>(track_type, track_index)</p></td>
 <td><p>Returns True if track with given trackType and trackIndex is locked and False otherwise.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_item_list_in_track.html#pybmd.timeline.Timeline.get_item_list_in_track" title="pybmd.timeline.Timeline.get_item_list_in_track"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_item_list_in_track</span></code></a>(track_type, index)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_item_list_in_track" title="pybmd.timeline.Timeline.get_item_list_in_track"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_item_list_in_track</span></code></a>(track_type, index)</p></td>
 <td><p>Returns a list of timeline items on that track.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_marker_by_custom_data.html#pybmd.timeline.Timeline.get_marker_by_custom_data" title="pybmd.timeline.Timeline.get_marker_by_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_marker_by_custom_data</span></code></a>(custom_data)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_marker_by_custom_data" title="pybmd.timeline.Timeline.get_marker_by_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_marker_by_custom_data</span></code></a>(custom_data)</p></td>
 <td><p>Returns marker {information} for the first matching marker with specified customData.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_marker_custom_data.html#pybmd.timeline.Timeline.get_marker_custom_data" title="pybmd.timeline.Timeline.get_marker_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_marker_custom_data</span></code></a>(frame_id)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_marker_custom_data" title="pybmd.timeline.Timeline.get_marker_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_marker_custom_data</span></code></a>(frame_id)</p></td>
 <td><p>Returns customData string for the marker at given frameId position.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_markers.html#pybmd.timeline.Timeline.get_markers" title="pybmd.timeline.Timeline.get_markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_markers</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_markers" title="pybmd.timeline.Timeline.get_markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_markers</span></code></a>()</p></td>
 <td><p>Returns a dict (frameId -&gt; {information}) of all markers and dicts with their information.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_name.html#pybmd.timeline.Timeline.get_name" title="pybmd.timeline.Timeline.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_name" title="pybmd.timeline.Timeline.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>()</p></td>
 <td><p>Returns the name of the timeline.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_setting.html#pybmd.timeline.Timeline.get_setting" title="pybmd.timeline.Timeline.get_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code></a>([setting_name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_setting" title="pybmd.timeline.Timeline.get_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_setting</span></code></a>([setting_name])</p></td>
 <td><p>Returns value of timeline setting (indicated by settingName : string).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_start_frame.html#pybmd.timeline.Timeline.get_start_frame" title="pybmd.timeline.Timeline.get_start_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_start_frame</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_start_frame" title="pybmd.timeline.Timeline.get_start_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_start_frame</span></code></a>()</p></td>
 <td><p>Returns the frame number at the start of timeline.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_start_timecode.html#pybmd.timeline.Timeline.get_start_timecode" title="pybmd.timeline.Timeline.get_start_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_start_timecode</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_start_timecode" title="pybmd.timeline.Timeline.get_start_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_start_timecode</span></code></a>()</p></td>
 <td><p>Returns the start timecode for the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_track_count.html#pybmd.timeline.Timeline.get_track_count" title="pybmd.timeline.Timeline.get_track_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_track_count</span></code></a>(track_type)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_track_count" title="pybmd.timeline.Timeline.get_track_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_track_count</span></code></a>(track_type)</p></td>
 <td><p>Returns the number of tracks for the given trackType (&quot;audio&quot;, &quot;video&quot; or &quot;subtitle&quot;).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_track_name.html#pybmd.timeline.Timeline.get_track_name" title="pybmd.timeline.Timeline.get_track_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_track_name</span></code></a>(track_type, track_index)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_track_name" title="pybmd.timeline.Timeline.get_track_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_track_name</span></code></a>(track_type, track_index)</p></td>
 <td><p>Returns the track name for track indicated by trackType (&quot;audio&quot;, &quot;video&quot; or &quot;subtitle&quot;) and trackIndex.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_unique_id.html#pybmd.timeline.Timeline.get_unique_id" title="pybmd.timeline.Timeline.get_unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unique_id</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.get_unique_id" title="pybmd.timeline.Timeline.get_unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unique_id</span></code></a>()</p></td>
 <td><p>Returns a unique ID for the timeline</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.grab_all_stills.html#pybmd.timeline.Timeline.grab_all_stills" title="pybmd.timeline.Timeline.grab_all_stills"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_all_stills</span></code></a>(still_frame_source)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.grab_all_stills" title="pybmd.timeline.Timeline.grab_all_stills"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_all_stills</span></code></a>(still_frame_source)</p></td>
 <td><p>Grabs stills from all the clips of the timeline and returns a list of GalleryStill objects.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.grab_still.html#pybmd.timeline.Timeline.grab_still" title="pybmd.timeline.Timeline.grab_still"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_still</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.grab_still" title="pybmd.timeline.Timeline.grab_still"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_still</span></code></a>()</p></td>
 <td><p>Grabs still from the current video clip.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.import_into_timeline.html#pybmd.timeline.Timeline.import_into_timeline" title="pybmd.timeline.Timeline.import_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_into_timeline</span></code></a>(file_path, import_options)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.import_into_timeline" title="pybmd.timeline.Timeline.import_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_into_timeline</span></code></a>(file_path, import_options)</p></td>
 <td><p>Imports timeline items from an AAF file and optional importOptions dict into the timeline,</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_composition_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_composition_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_composition_into_timeline</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_composition_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_composition_into_timeline</span></code></a>()</p></td>
 <td><p>Inserts a Fusion composition into the timeline.Returns a TimelineItem object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_generator_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_generator_into_timeline</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_generator_into_timeline</span></code></a>(...)</p></td>
 <td><p>Inserts a Fusion generator (indicated by generatorName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_title_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_title_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_title_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_title_into_timeline</span></code></a>(title_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.insert_fusion_title_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_title_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_title_into_timeline</span></code></a>(title_name)</p></td>
 <td><p>Inserts a Fusion title (indicated by titleName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_generator_into_timeline.html#pybmd.timeline.Timeline.insert_generator_into_timeline" title="pybmd.timeline.Timeline.insert_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_generator_into_timeline</span></code></a>(generator_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.insert_generator_into_timeline" title="pybmd.timeline.Timeline.insert_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_generator_into_timeline</span></code></a>(generator_name)</p></td>
 <td><p>Inserts a generator (indicated by generatorName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_oFX_generator_into_timeline.html#pybmd.timeline.Timeline.insert_oFX_generator_into_timeline" title="pybmd.timeline.Timeline.insert_oFX_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_oFX_generator_into_timeline</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.insert_oFX_generator_into_timeline" title="pybmd.timeline.Timeline.insert_oFX_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_oFX_generator_into_timeline</span></code></a>(...)</p></td>
 <td><p>Inserts an OFX generator (indicated by generatorName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_title_into_timeline.html#pybmd.timeline.Timeline.insert_title_into_timeline" title="pybmd.timeline.Timeline.insert_title_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_title_into_timeline</span></code></a>(title_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.insert_title_into_timeline" title="pybmd.timeline.Timeline.insert_title_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_title_into_timeline</span></code></a>(title_name)</p></td>
 <td><p>Inserts a title (indicated by titleName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_clips_linked.html#pybmd.timeline.Timeline.set_clips_linked" title="pybmd.timeline.Timeline.set_clips_linked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clips_linked</span></code></a>(timeline_items, is_linked)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.set_clips_linked" title="pybmd.timeline.Timeline.set_clips_linked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clips_linked</span></code></a>(timeline_items, is_linked)</p></td>
 <td><p>Links or unlinks the specified TimelineItems depending on second argument.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_current_timecode.html#pybmd.timeline.Timeline.set_current_timecode" title="pybmd.timeline.Timeline.set_current_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_current_timecode</span></code></a>(tiemcode)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.set_current_timecode" title="pybmd.timeline.Timeline.set_current_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_current_timecode</span></code></a>(tiemcode)</p></td>
 <td><p>Sets current playhead position from input timecode for Cut, Edit, Color, Fairlight and Deliver pages.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_name.html#pybmd.timeline.Timeline.set_name" title="pybmd.timeline.Timeline.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(timeline_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.set_name" title="pybmd.timeline.Timeline.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(timeline_name)</p></td>
 <td><p>Sets the timeline name if timelineName (string) is unique.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_setting.html#pybmd.timeline.Timeline.set_setting" title="pybmd.timeline.Timeline.set_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_setting</span></code></a>(setting_name, setting_value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.set_setting" title="pybmd.timeline.Timeline.set_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_setting</span></code></a>(setting_name, setting_value)</p></td>
 <td><p>Sets timeline setting</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_start_timecode.html#pybmd.timeline.Timeline.set_start_timecode" title="pybmd.timeline.Timeline.set_start_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_start_timecode</span></code></a>(timecode)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.set_start_timecode" title="pybmd.timeline.Timeline.set_start_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_start_timecode</span></code></a>(timecode)</p></td>
 <td><p>Set the start timecode of the timeline to the string 'timecode'.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_enable.html#pybmd.timeline.Timeline.set_track_enable" title="pybmd.timeline.Timeline.set_track_enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_enable</span></code></a>(track_type, track_index, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.set_track_enable" title="pybmd.timeline.Timeline.set_track_enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_enable</span></code></a>(track_type, track_index, ...)</p></td>
 <td><p>Enables/Disables track with given trackType and trackIndex</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_lock.html#pybmd.timeline.Timeline.set_track_lock" title="pybmd.timeline.Timeline.set_track_lock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_lock</span></code></a>(track_type, track_index, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.set_track_lock" title="pybmd.timeline.Timeline.set_track_lock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_lock</span></code></a>(track_type, track_index, ...)</p></td>
 <td><p>Locks/Unlocks track with given trackType and trackIndex</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_name.html#pybmd.timeline.Timeline.set_track_name" title="pybmd.timeline.Timeline.set_track_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_name</span></code></a>(track_type, track_index, name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.set_track_name" title="pybmd.timeline.Timeline.set_track_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_name</span></code></a>(track_type, track_index, name)</p></td>
 <td><p>Sets the track name (string) for track indicated by trackType and trackIndex.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.update_marker_custom_data.html#pybmd.timeline.Timeline.update_marker_custom_data" title="pybmd.timeline.Timeline.update_marker_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_marker_custom_data</span></code></a>(frame_id, custom_data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.timeline.Timeline.update_marker_custom_data" title="pybmd.timeline.Timeline.update_marker_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_marker_custom_data</span></code></a>(frame_id, custom_data)</p></td>
 <td><p>Updates customData (string) for the marker at given frameId position.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">add_marker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.add_marker"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.add_marker">
+<span class="sig-name descname"><span class="pre">add_marker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.add_marker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.add_marker" title="Link to this definition">#</a></dt>
 <dd><p>Creates a new marker at given frameId position and with given marker information.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1079,15 +1079,15 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">add_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional_sub_track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">OptionalSubTrackType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.add_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.add_track">
+<span class="sig-name descname"><span class="pre">add_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional_sub_track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.html#pybmd.timeline.OptionalSubTrackType" title="pybmd.timeline.OptionalSubTrackType"><span class="pre">OptionalSubTrackType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.add_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.add_track" title="Link to this definition">#</a></dt>
 <dd><p>Adds track of trackType (“video”, “subtitle”, “audio”).
 Second argument optionalSubTrackType is required for “audio”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>track_type</strong> (<em>TrackType</em>) – track type</p></li>
-<li><p><strong>optional_sub_track_type</strong> (<em>OptionalSubTrackType</em>) – Second argument optionalSubTrackType is required for “audio”</p></li>
+<li><p><strong>track_type</strong> (<a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – track type</p></li>
+<li><p><strong>optional_sub_track_type</strong> (<a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.html#pybmd.timeline.OptionalSubTrackType" title="pybmd.timeline.OptionalSubTrackType"><em>OptionalSubTrackType</em></a>) – Second argument optionalSubTrackType is required for “audio”</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1100,15 +1100,15 @@ Second argument optionalSubTrackType is required for “audio”</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">apply_grade_from_drx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grade_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TimelineItem</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.apply_grade_from_drx"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.apply_grade_from_drx">
+<span class="sig-name descname"><span class="pre">apply_grade_from_drx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grade_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.apply_grade_from_drx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.apply_grade_from_drx" title="Link to this definition">#</a></dt>
 <dd><p>Loads a still from given file path (string) and applies grade to Timeline Items with gradeMode (int)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – still file path.</p></li>
 <li><p><strong>grade_mode</strong> (<em>int</em>) – 0 - “No keyframes”, 1 - “Source Timecode aligned”, 2 - “Start Frames aligned”.</p></li>
-<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><em>TimelineItem</em><em>]</em>) – timeline items to apply grade to.</p></li>
+<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><em>TimelineItem</em></a><em>]</em>) – timeline items to apply grade to.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1121,13 +1121,13 @@ Second argument optionalSubTrackType is required for “audio”</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">create_compound_clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TimelineItem</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipinfo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.create_compound_clip"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.create_compound_clip">
+<span class="sig-name descname"><span class="pre">create_compound_clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipinfo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.create_compound_clip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.create_compound_clip" title="Link to this definition">#</a></dt>
 <dd><p>Creates a compound clip of input TimelineItems with an optional clipInfo map</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><em>TimelineItem</em><em>]</em>) – TimelineItems to create compound clip from.</p></li>
+<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><em>TimelineItem</em></a><em>]</em>) – TimelineItems to create compound clip from.</p></li>
 <li><p><strong>clipinfo</strong> (<em>dict</em>) – {“startTimecode” : “00:00:00:00”, “name” : “Compound Clip 1”}.</p></li>
 </ul>
 </dd>
@@ -1135,31 +1135,31 @@ Second argument optionalSubTrackType is required for “audio”</p>
 <dd class="field-even"><p>created timeline item.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>TimelineItem</p>
+<dd class="field-odd"><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem">TimelineItem</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">create_fusion_clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TimelineItem</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.create_fusion_clip"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.create_fusion_clip">
+<span class="sig-name descname"><span class="pre">create_fusion_clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.create_fusion_clip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.create_fusion_clip" title="Link to this definition">#</a></dt>
 <dd><p>Creates a Fusion clip of input timeline items.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>timeline_items</strong> (<em>List</em><em>[</em><em>TimelineItem</em><em>]</em>) – timeline items to create fusion clip from.</p>
+<dd class="field-odd"><p><strong>timeline_items</strong> (<em>List</em><em>[</em><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><em>TimelineItem</em></a><em>]</em>) – timeline items to create fusion clip from.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>created timeline item.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>TimelineItem</p>
+<dd class="field-odd"><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem">TimelineItem</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">create_subtitle_from_audio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.create_subtitle_from_audio"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.create_subtitle_from_audio">
+<span class="sig-name descname"><span class="pre">create_subtitle_from_audio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.create_subtitle_from_audio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.create_subtitle_from_audio" title="Link to this definition">#</a></dt>
 <dd><p>Creates subtitles from audio for the timeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1172,13 +1172,13 @@ Second argument optionalSubTrackType is required for “audio”</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delete_clips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TimelineItem</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ripple_delete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_clips"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_clips">
+<span class="sig-name descname"><span class="pre">delete_clips</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ripple_delete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_clips"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_clips" title="Link to this definition">#</a></dt>
 <dd><p>Deletes specified TimelineItems from the timeline</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><em>TimelineItem</em><em>]</em>) – specified TimelineItems</p></li>
+<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><em>TimelineItem</em></a><em>]</em>) – specified TimelineItems</p></li>
 <li><p><strong>ripple_delete</strong> (<em>bool</em>) – performing ripple delete if the second argument is True.</p></li>
 </ul>
 </dd>
@@ -1192,32 +1192,32 @@ Second argument optionalSubTrackType is required for “audio”</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delete_marker_at_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_marker_at_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_marker_at_frame">
+<span class="sig-name descname"><span class="pre">delete_marker_at_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_marker_at_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_marker_at_frame" title="Link to this definition">#</a></dt>
 <dd><p>Deletes the timeline marker at the given frame number.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delete_marker_by_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_marker_by_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_marker_by_color">
+<span class="sig-name descname"><span class="pre">delete_marker_by_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_marker_by_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_marker_by_color" title="Link to this definition">#</a></dt>
 <dd><p>Deletes all timeline markers of the specified color.
 An “All” argument is supported and deletes all timeline markers.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delete_marker_by_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_marker_by_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_marker_by_custom_data">
+<span class="sig-name descname"><span class="pre">delete_marker_by_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_marker_by_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_marker_by_custom_data" title="Link to this definition">#</a></dt>
 <dd><p>Delete first matching marker with specified custom_data.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delete_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.delete_track">
+<span class="sig-name descname"><span class="pre">delete_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.delete_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.delete_track" title="Link to this definition">#</a></dt>
 <dd><p>Deletes track of trackType (“video”, “subtitle”, “audio”) and given trackIndex.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>track_type</strong> (<em>TrackType</em>) – track type</p></li>
+<li><p><strong>track_type</strong> (<a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – track type</p></li>
 <li><p><strong>track_index</strong> (<em>int</em>) – track index.1 &lt;= track_index &lt;= get_track_count(track_type).</p></li>
 </ul>
 </dd>
@@ -1231,8 +1231,8 @@ An “All” argument is supported and deletes all timeline markers.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">detect_scene_cuts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.detect_scene_cuts"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.detect_scene_cuts">
+<span class="sig-name descname"><span class="pre">detect_scene_cuts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.detect_scene_cuts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.detect_scene_cuts" title="Link to this definition">#</a></dt>
 <dd><p>Detects and makes scene cuts along the timeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1245,15 +1245,15 @@ An “All” argument is supported and deletes all timeline markers.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">duplicate_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.duplicate_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.duplicate_timeline">
+<span class="sig-name descname"><span class="pre">duplicate_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.duplicate_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.duplicate_timeline" title="Link to this definition">#</a></dt>
 <dd><p>Duplicates the timeline and returns the created timeline,
 with the (optional) timelineName, on success.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.export" title="Link to this definition">#</a></dt>
 <dd><p>Exports timeline to ‘fileName’ as per input exportType &amp; exportSubtype format.
 # file_name should be a path, not a file name.
 # eg. file_path=os.path.join(os.path.expanduser(“~”), “Desktop/Temp/sampleExp.drt”)
@@ -1261,34 +1261,34 @@ with the (optional) timelineName, on success.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_current_clip_thumbnail_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_current_clip_thumbnail_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_current_clip_thumbnail_image">
+<span class="sig-name descname"><span class="pre">get_current_clip_thumbnail_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_current_clip_thumbnail_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_current_clip_thumbnail_image" title="Link to this definition">#</a></dt>
 <dd><p>Returns a dict (keys “width”, “height”, “format” and “data”) with data containing raw thumbnail image data
 (RGB 8-bit image data encoded in base64 format) for current media in the Color Page.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_current_timecode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_current_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_current_timecode">
+<span class="sig-name descname"><span class="pre">get_current_timecode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_current_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_current_timecode" title="Link to this definition">#</a></dt>
 <dd><p>Returns a string timecode representation for the current playhead position,
 while on Cut, Edit, Color, Fairlight and Deliver pages.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_current_video_item</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_current_video_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_current_video_item">
+<span class="sig-name descname"><span class="pre">get_current_video_item</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_current_video_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_current_video_item" title="Link to this definition">#</a></dt>
 <dd><p>Returns the current video timeline item.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_end_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_end_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_end_frame">
+<span class="sig-name descname"><span class="pre">get_end_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_end_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_end_frame" title="Link to this definition">#</a></dt>
 <dd><p>Returns the frame number at the end of timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_is_track_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_is_track_enabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_is_track_enabled">
+<span class="sig-name descname"><span class="pre">get_is_track_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_is_track_enabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_is_track_enabled" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1306,13 +1306,13 @@ while on Cut, Edit, Color, Fairlight and Deliver pages.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_is_track_locked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_is_track_locked"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_is_track_locked">
+<span class="sig-name descname"><span class="pre">get_is_track_locked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_is_track_locked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_is_track_locked" title="Link to this definition">#</a></dt>
 <dd><p>Returns True if track with given trackType and trackIndex is locked and False otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>track_type</strong> (<em>TrackType</em>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
+<li><p><strong>track_type</strong> (<a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
 <li><p><strong>track_index</strong> (<em>int</em>) – 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</p></li>
 </ul>
 </dd>
@@ -1326,8 +1326,8 @@ while on Cut, Edit, Color, Fairlight and Deliver pages.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_item_list_in_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TimelineItem</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_item_list_in_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_item_list_in_track">
+<span class="sig-name descname"><span class="pre">get_item_list_in_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_item_list_in_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_item_list_in_track" title="Link to this definition">#</a></dt>
 <dd><p>Returns a list of timeline items on that track.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1340,64 +1340,64 @@ while on Cut, Edit, Color, Fairlight and Deliver pages.</p>
 <dd class="field-even"><p>timeline items on that track.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[TimelineItem]</p>
+<dd class="field-odd"><p>List[<a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem">TimelineItem</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_marker_by_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_marker_by_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_marker_by_custom_data">
+<span class="sig-name descname"><span class="pre">get_marker_by_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_marker_by_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_marker_by_custom_data" title="Link to this definition">#</a></dt>
 <dd><p>Returns marker {information} for the first matching marker with specified customData.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_marker_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_marker_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_marker_custom_data">
+<span class="sig-name descname"><span class="pre">get_marker_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_marker_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_marker_custom_data" title="Link to this definition">#</a></dt>
 <dd><p>Returns customData string for the marker at given frameId position.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_markers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_markers"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_markers">
+<span class="sig-name descname"><span class="pre">get_markers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_markers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_markers" title="Link to this definition">#</a></dt>
 <dd><p>Returns a dict (frameId -&gt; {information}) of all markers and dicts with their information.
 Example: a value of {96.0: {‘color’: ‘Green’, ‘duration’: 1.0, ‘note’: ‘’, ‘name’: ‘Marker 1’, ‘customData’: ‘’}, …}
 indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_name">
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_name" title="Link to this definition">#</a></dt>
 <dd><p>Returns the name of the timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setting_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_setting"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_setting">
+<span class="sig-name descname"><span class="pre">get_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setting_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_setting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_setting" title="Link to this definition">#</a></dt>
 <dd><p>Returns value of timeline setting (indicated by settingName : string).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_start_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_start_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_start_frame">
+<span class="sig-name descname"><span class="pre">get_start_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_start_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_start_frame" title="Link to this definition">#</a></dt>
 <dd><p>Returns the frame number at the start of timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_start_timecode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_start_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_start_timecode">
+<span class="sig-name descname"><span class="pre">get_start_timecode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_start_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_start_timecode" title="Link to this definition">#</a></dt>
 <dd><p>Returns the start timecode for the timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_track_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_track_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_track_count">
+<span class="sig-name descname"><span class="pre">get_track_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_track_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_track_count" title="Link to this definition">#</a></dt>
 <dd><p>Returns the number of tracks for the given trackType (“audio”, “video” or “subtitle”).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_track_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_track_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_track_name">
+<span class="sig-name descname"><span class="pre">get_track_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_track_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_track_name" title="Link to this definition">#</a></dt>
 <dd><p>Returns the track name for track indicated by trackType (“audio”, “video” or “subtitle”) and trackIndex.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1416,14 +1416,14 @@ indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_unique_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_unique_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.get_unique_id">
+<span class="sig-name descname"><span class="pre">get_unique_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_unique_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.get_unique_id" title="Link to this definition">#</a></dt>
 <dd><p>Returns a unique ID for the timeline</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">grab_all_stills</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">still_frame_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">GalleryStill</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.grab_all_stills"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.grab_all_stills">
+<span class="sig-name descname"><span class="pre">grab_all_stills</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">still_frame_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pybmd.gallery_still.GalleryStill.html#pybmd.gallery_still.GalleryStill" title="pybmd.gallery_still.GalleryStill"><span class="pre">GalleryStill</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.grab_all_stills"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.grab_all_stills" title="Link to this definition">#</a></dt>
 <dd><p>Grabs stills from all the clips of the timeline and returns a list of GalleryStill objects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1433,26 +1433,26 @@ indicates a single green marker at timeline offset 96</p>
 <dd class="field-even"><p>List of GalleryStill objects containing grabbed stills.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List[GalleryStill]</p>
+<dd class="field-odd"><p>List[<a class="reference internal" href="pybmd.gallery_still.GalleryStill.html#pybmd.gallery_still.GalleryStill" title="pybmd.gallery_still.GalleryStill">GalleryStill</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">grab_still</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GalleryStill</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.grab_still"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.grab_still">
+<span class="sig-name descname"><span class="pre">grab_still</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.gallery_still.GalleryStill.html#pybmd.gallery_still.GalleryStill" title="pybmd.gallery_still.GalleryStill"><span class="pre">GalleryStill</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.grab_still"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.grab_still" title="Link to this definition">#</a></dt>
 <dd><p>Grabs still from the current video clip. Returns a GalleryStill object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">import_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ImportOptions</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.import_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.import_into_timeline">
+<span class="sig-name descname"><span class="pre">import_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.ImportOptions.html#pybmd.timeline.ImportOptions" title="pybmd.timeline.ImportOptions"><span class="pre">ImportOptions</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.import_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.import_into_timeline" title="Link to this definition">#</a></dt>
 <dd><p>Imports timeline items from an AAF file and optional importOptions dict into the timeline,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>file_path</strong> (<em>str</em>) – file path.</p></li>
-<li><p><strong>import_options</strong> (<em>ImportOptions</em>) – ImportOptions object.</p></li>
+<li><p><strong>import_options</strong> (<a class="reference internal" href="pybmd.timeline.ImportOptions.html#pybmd.timeline.ImportOptions" title="pybmd.timeline.ImportOptions"><em>ImportOptions</em></a>) – ImportOptions object.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1465,49 +1465,49 @@ indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">insert_fusion_composition_into_timeline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_fusion_composition_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.insert_fusion_composition_into_timeline">
+<span class="sig-name descname"><span class="pre">insert_fusion_composition_into_timeline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_fusion_composition_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline" title="Link to this definition">#</a></dt>
 <dd><p>Inserts a Fusion composition into the timeline.Returns a TimelineItem object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">insert_fusion_generator_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_fusion_generator_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.insert_fusion_generator_into_timeline">
+<span class="sig-name descname"><span class="pre">insert_fusion_generator_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_fusion_generator_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline" title="Link to this definition">#</a></dt>
 <dd><p>Inserts a Fusion generator (indicated by generatorName : string) into the timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">insert_fusion_title_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_fusion_title_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.insert_fusion_title_into_timeline">
+<span class="sig-name descname"><span class="pre">insert_fusion_title_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_fusion_title_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.insert_fusion_title_into_timeline" title="Link to this definition">#</a></dt>
 <dd><p>Inserts a Fusion title (indicated by titleName : string) into the timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">insert_generator_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_generator_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.insert_generator_into_timeline">
+<span class="sig-name descname"><span class="pre">insert_generator_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_generator_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.insert_generator_into_timeline" title="Link to this definition">#</a></dt>
 <dd><p>Inserts a generator (indicated by generatorName : string) into the timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">insert_oFX_generator_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_oFX_generator_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.insert_oFX_generator_into_timeline">
+<span class="sig-name descname"><span class="pre">insert_oFX_generator_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generator_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_oFX_generator_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.insert_oFX_generator_into_timeline" title="Link to this definition">#</a></dt>
 <dd><p>Inserts an OFX generator (indicated by generatorName : string) into the timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">insert_title_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TimelineItem</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_title_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.insert_title_into_timeline">
+<span class="sig-name descname"><span class="pre">insert_title_into_timeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.insert_title_into_timeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.insert_title_into_timeline" title="Link to this definition">#</a></dt>
 <dd><p>Inserts a title (indicated by titleName : string) into the timeline.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_clips_linked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TimelineItem</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_clips_linked"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_clips_linked">
+<span class="sig-name descname"><span class="pre">set_clips_linked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><span class="pre">TimelineItem</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_linked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_clips_linked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_clips_linked" title="Link to this definition">#</a></dt>
 <dd><p>Links or unlinks the specified TimelineItems depending on second argument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><em>TimelineItem</em><em>]</em>) – specified TimelineItems</p></li>
+<li><p><strong>timeline_items</strong> (<em>List</em><em>[</em><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem" title="pybmd.timeline_item.TimelineItem"><em>TimelineItem</em></a><em>]</em>) – specified TimelineItems</p></li>
 <li><p><strong>is_linked</strong> (<em>bool</em>) – Links or unlinks the specified TimelineItems</p></li>
 </ul>
 </dd>
@@ -1521,20 +1521,20 @@ indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_current_timecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tiemcode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_current_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_current_timecode">
+<span class="sig-name descname"><span class="pre">set_current_timecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tiemcode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_current_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_current_timecode" title="Link to this definition">#</a></dt>
 <dd><p>Sets current playhead position from input timecode for Cut, Edit, Color, Fairlight and Deliver pages.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_name">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline_name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_name" title="Link to this definition">#</a></dt>
 <dd><p>Sets the timeline name if timelineName (string) is unique. Returns True if successful.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setting_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setting_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_setting"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_setting">
+<span class="sig-name descname"><span class="pre">set_setting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setting_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setting_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_setting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_setting" title="Link to this definition">#</a></dt>
 <dd><p>Sets timeline setting</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1553,19 +1553,19 @@ indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_start_timecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_start_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_start_timecode">
+<span class="sig-name descname"><span class="pre">set_start_timecode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timecode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_start_timecode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_start_timecode" title="Link to this definition">#</a></dt>
 <dd><p>Set the start timecode of the timeline to the string ‘timecode’. Returns true when the change is successful, false otherwise.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_track_enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_track_enable"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_track_enable">
+<span class="sig-name descname"><span class="pre">set_track_enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_track_enable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_track_enable" title="Link to this definition">#</a></dt>
 <dd><p>Enables/Disables track with given trackType and trackIndex</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>track_type</strong> (<em>TrackType</em>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
+<li><p><strong>track_type</strong> (<a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
 <li><p><strong>track_index</strong> (<em>int</em>) – 1 &lt;= trackIndex &lt; GetTrackCount(trackType).</p></li>
 <li><p><strong>is_enable</strong> (<em>bool</em>) – enable state</p></li>
 </ul>
@@ -1580,13 +1580,13 @@ indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_track_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_locked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_track_lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_track_lock">
+<span class="sig-name descname"><span class="pre">set_track_lock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_locked</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_track_lock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_track_lock" title="Link to this definition">#</a></dt>
 <dd><p>Locks/Unlocks track with given trackType and trackIndex</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>track_type</strong> (<em>TrackType</em>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
+<li><p><strong>track_type</strong> (<a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><em>TrackType</em></a>) – trackType is one of {“audio”, “video”, “subtitle”}</p></li>
 <li><p><strong>track_index</strong> (<em>int</em>) – 1 &lt;= trackIndex &lt;= GetTrackCount(trackType).</p></li>
 <li><p><strong>is_locked</strong> (<em>bool</em>) – lock state</p></li>
 </ul>
@@ -1601,8 +1601,8 @@ indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_track_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrackType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_track_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.set_track_name">
+<span class="sig-name descname"><span class="pre">set_track_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.timeline.TrackType.html#pybmd.timeline.TrackType" title="pybmd.timeline.TrackType"><span class="pre">TrackType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_track_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.set_track_name" title="Link to this definition">#</a></dt>
 <dd><p>Sets the track name (string) for track indicated by trackType and trackIndex.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1622,8 +1622,8 @@ indicates a single green marker at timeline offset 96</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">update_marker_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.update_marker_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.timeline.Timeline.update_marker_custom_data">
+<span class="sig-name descname"><span class="pre">update_marker_custom_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.update_marker_custom_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.timeline.Timeline.update_marker_custom_data" title="Link to this definition">#</a></dt>
 <dd><p>Updates customData (string) for the marker at given frameId position.
 CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.</p>
 </dd></dl>
@@ -1668,6 +1668,67 @@ CustomData is not exposed via UI and is useful for scripting developer to attach
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline"><code class="docutils literal notranslate"><span class="pre">Timeline</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.add_marker"><code class="docutils literal notranslate"><span class="pre">Timeline.add_marker()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.add_track"><code class="docutils literal notranslate"><span class="pre">Timeline.add_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.apply_grade_from_drx"><code class="docutils literal notranslate"><span class="pre">Timeline.apply_grade_from_drx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.create_compound_clip"><code class="docutils literal notranslate"><span class="pre">Timeline.create_compound_clip()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.create_fusion_clip"><code class="docutils literal notranslate"><span class="pre">Timeline.create_fusion_clip()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.create_subtitle_from_audio"><code class="docutils literal notranslate"><span class="pre">Timeline.create_subtitle_from_audio()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.delete_clips"><code class="docutils literal notranslate"><span class="pre">Timeline.delete_clips()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.delete_marker_at_frame"><code class="docutils literal notranslate"><span class="pre">Timeline.delete_marker_at_frame()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.delete_marker_by_color"><code class="docutils literal notranslate"><span class="pre">Timeline.delete_marker_by_color()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.delete_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">Timeline.delete_marker_by_custom_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.delete_track"><code class="docutils literal notranslate"><span class="pre">Timeline.delete_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.detect_scene_cuts"><code class="docutils literal notranslate"><span class="pre">Timeline.detect_scene_cuts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.duplicate_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.duplicate_timeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.export"><code class="docutils literal notranslate"><span class="pre">Timeline.export()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_current_clip_thumbnail_image"><code class="docutils literal notranslate"><span class="pre">Timeline.get_current_clip_thumbnail_image()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_current_timecode"><code class="docutils literal notranslate"><span class="pre">Timeline.get_current_timecode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_current_video_item"><code class="docutils literal notranslate"><span class="pre">Timeline.get_current_video_item()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_end_frame"><code class="docutils literal notranslate"><span class="pre">Timeline.get_end_frame()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_is_track_enabled"><code class="docutils literal notranslate"><span class="pre">Timeline.get_is_track_enabled()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_is_track_locked"><code class="docutils literal notranslate"><span class="pre">Timeline.get_is_track_locked()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_item_list_in_track"><code class="docutils literal notranslate"><span class="pre">Timeline.get_item_list_in_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_marker_by_custom_data"><code class="docutils literal notranslate"><span class="pre">Timeline.get_marker_by_custom_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">Timeline.get_marker_custom_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_markers"><code class="docutils literal notranslate"><span class="pre">Timeline.get_markers()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_name"><code class="docutils literal notranslate"><span class="pre">Timeline.get_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_setting"><code class="docutils literal notranslate"><span class="pre">Timeline.get_setting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_start_frame"><code class="docutils literal notranslate"><span class="pre">Timeline.get_start_frame()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_start_timecode"><code class="docutils literal notranslate"><span class="pre">Timeline.get_start_timecode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_track_count"><code class="docutils literal notranslate"><span class="pre">Timeline.get_track_count()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_track_name"><code class="docutils literal notranslate"><span class="pre">Timeline.get_track_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.get_unique_id"><code class="docutils literal notranslate"><span class="pre">Timeline.get_unique_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.grab_all_stills"><code class="docutils literal notranslate"><span class="pre">Timeline.grab_all_stills()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.grab_still"><code class="docutils literal notranslate"><span class="pre">Timeline.grab_still()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.import_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.import_into_timeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_fusion_composition_into_timeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_fusion_generator_into_timeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.insert_fusion_title_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_fusion_title_into_timeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.insert_generator_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_generator_into_timeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.insert_oFX_generator_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_oFX_generator_into_timeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.insert_title_into_timeline"><code class="docutils literal notranslate"><span class="pre">Timeline.insert_title_into_timeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.set_clips_linked"><code class="docutils literal notranslate"><span class="pre">Timeline.set_clips_linked()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.set_current_timecode"><code class="docutils literal notranslate"><span class="pre">Timeline.set_current_timecode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.set_name"><code class="docutils literal notranslate"><span class="pre">Timeline.set_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.set_setting"><code class="docutils literal notranslate"><span class="pre">Timeline.set_setting()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.set_start_timecode"><code class="docutils literal notranslate"><span class="pre">Timeline.set_start_timecode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.set_track_enable"><code class="docutils literal notranslate"><span class="pre">Timeline.set_track_enable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.set_track_lock"><code class="docutils literal notranslate"><span class="pre">Timeline.set_track_lock()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.set_track_name"><code class="docutils literal notranslate"><span class="pre">Timeline.set_track_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.timeline.Timeline.update_marker_custom_data"><code class="docutils literal notranslate"><span class="pre">Timeline.update_marker_custom_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">

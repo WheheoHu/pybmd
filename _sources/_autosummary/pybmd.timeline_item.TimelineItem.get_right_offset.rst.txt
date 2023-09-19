@@ -4,3 +4,6 @@ TimelineItem.get\_right\_offset
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_right_offset
+    :noindex:
+    
+    .. autosummary::

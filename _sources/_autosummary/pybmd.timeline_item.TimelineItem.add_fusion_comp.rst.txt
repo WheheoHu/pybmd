@@ -4,3 +4,6 @@ TimelineItem.add\_fusion\_comp
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.add_fusion_comp
+    :noindex:
+    
+    .. autosummary::

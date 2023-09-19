@@ -4,3 +4,6 @@ TimelineItem.stabilize
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.stabilize
+    :noindex:
+    
+    .. autosummary::

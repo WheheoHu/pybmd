@@ -4,3 +4,6 @@ Folder.get\_clip\_list
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.get_clip_list
+    :noindex:
+    
+    .. autosummary::

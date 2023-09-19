@@ -4,3 +4,6 @@ ProjectManager.get\_current\_database
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.get_current_database
+    :noindex:
+    
+    .. autosummary::

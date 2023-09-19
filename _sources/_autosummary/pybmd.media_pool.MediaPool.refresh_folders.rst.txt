@@ -4,3 +4,6 @@ MediaPool.refresh\_folders
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.refresh_folders
+    :noindex:
+    
+    .. autosummary::

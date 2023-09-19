@@ -4,3 +4,6 @@ FusionComp.\_\_init\_\_
 .. currentmodule:: pybmd.fusion_comp
 
 .. automethod:: FusionComp.__init__
+    :noindex:
+    
+    .. autosummary::

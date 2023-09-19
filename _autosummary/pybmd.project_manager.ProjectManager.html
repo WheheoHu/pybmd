@@ -890,79 +890,79 @@ document.write(`
   <section id="projectmanager">
 <h1>ProjectManager<a class="headerlink" href="#projectmanager" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.project_manager.</span></span><span class="sig-name descname"><span class="pre">ProjectManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_local_davinci</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bmd.local_davinci</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.project_manager.</span></span><span class="sig-name descname"><span class="pre">ProjectManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_local_davinci</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bmd.local_davinci</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.__init__.html#pybmd.project_manager.ProjectManager.__init__" title="pybmd.project_manager.ProjectManager.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(_local_davinci)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(_local_davinci)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.archive_project.html#pybmd.project_manager.ProjectManager.archive_project" title="pybmd.project_manager.ProjectManager.archive_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">archive_project</span></code></a>(project_name, file_path[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.archive_project" title="pybmd.project_manager.ProjectManager.archive_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">archive_project</span></code></a>(project_name, file_path[, ...])</p></td>
 <td><p>Archives project to provided filePath with the configuration as provided by the optional arguments</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.close_project.html#pybmd.project_manager.ProjectManager.close_project" title="pybmd.project_manager.ProjectManager.close_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close_project</span></code></a>(project)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.close_project" title="pybmd.project_manager.ProjectManager.close_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close_project</span></code></a>(project)</p></td>
 <td><p>close project</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.create_folder.html#pybmd.project_manager.ProjectManager.create_folder" title="pybmd.project_manager.ProjectManager.create_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_folder</span></code></a>(folder_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.create_folder" title="pybmd.project_manager.ProjectManager.create_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_folder</span></code></a>(folder_name)</p></td>
 <td><p>Creates a folder if folderName(string) is unique.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.create_project.html#pybmd.project_manager.ProjectManager.create_project" title="pybmd.project_manager.ProjectManager.create_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_project</span></code></a>(project_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.create_project" title="pybmd.project_manager.ProjectManager.create_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_project</span></code></a>(project_name)</p></td>
 <td><p>Creates and returns a project if projectName(string) is unique, and None if it is not.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.database_info.html#pybmd.project_manager.ProjectManager.database_info" title="pybmd.project_manager.ProjectManager.database_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">database_info</span></code></a>(_DbType, _DbName[, _IpAddress])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.database_info" title="pybmd.project_manager.ProjectManager.database_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">database_info</span></code></a>(_DbType, _DbName[, _IpAddress])</p></td>
 <td><p>database_info(DbType, DbName, IpAddress) generated for the database connection</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.delete_folder.html#pybmd.project_manager.ProjectManager.delete_folder" title="pybmd.project_manager.ProjectManager.delete_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_folder</span></code></a>(folder_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.delete_folder" title="pybmd.project_manager.ProjectManager.delete_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_folder</span></code></a>(folder_name)</p></td>
 <td><p>Deletes the specified folder if it exists</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.delete_project.html#pybmd.project_manager.ProjectManager.delete_project" title="pybmd.project_manager.ProjectManager.delete_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_project</span></code></a>(project_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.delete_project" title="pybmd.project_manager.ProjectManager.delete_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_project</span></code></a>(project_name)</p></td>
 <td><p>Delete project in the current folder if not currently loaded</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.export_project.html#pybmd.project_manager.ProjectManager.export_project" title="pybmd.project_manager.ProjectManager.export_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_project</span></code></a>(project_name, file_path[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.export_project" title="pybmd.project_manager.ProjectManager.export_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_project</span></code></a>(project_name, file_path[, ...])</p></td>
 <td><p>Exports project to provided file path</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.get_current_database.html#pybmd.project_manager.ProjectManager.get_current_database" title="pybmd.project_manager.ProjectManager.get_current_database"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_database</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.get_current_database" title="pybmd.project_manager.ProjectManager.get_current_database"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_database</span></code></a>()</p></td>
 <td><p>Returns a dictionary (with keys DbType, DbName and optional IpAddress) corresponding to the current database connection</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.get_current_project.html#pybmd.project_manager.ProjectManager.get_current_project" title="pybmd.project_manager.ProjectManager.get_current_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_project</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.get_current_project" title="pybmd.project_manager.ProjectManager.get_current_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_project</span></code></a>()</p></td>
 <td><p>Returns the current project</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.get_database_list.html#pybmd.project_manager.ProjectManager.get_database_list" title="pybmd.project_manager.ProjectManager.get_database_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_database_list</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.get_database_list" title="pybmd.project_manager.ProjectManager.get_database_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_database_list</span></code></a>()</p></td>
 <td><p>return database list</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder.html#pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder" title="pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_folder_list_in_current_folder</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder" title="pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_folder_list_in_current_folder</span></code></a>()</p></td>
 <td><p>Returns a list of folder names in current folder.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.get_project_list_in_current_folder.html#pybmd.project_manager.ProjectManager.get_project_list_in_current_folder" title="pybmd.project_manager.ProjectManager.get_project_list_in_current_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_project_list_in_current_folder</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.get_project_list_in_current_folder" title="pybmd.project_manager.ProjectManager.get_project_list_in_current_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_project_list_in_current_folder</span></code></a>()</p></td>
 <td><p>Returns a list of project names in current folder.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.goto_parent_folder.html#pybmd.project_manager.ProjectManager.goto_parent_folder" title="pybmd.project_manager.ProjectManager.goto_parent_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">goto_parent_folder</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.goto_parent_folder" title="pybmd.project_manager.ProjectManager.goto_parent_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">goto_parent_folder</span></code></a>()</p></td>
 <td><p>Opens parent folder of current folder in database if current folder has parent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.goto_root_folder.html#pybmd.project_manager.ProjectManager.goto_root_folder" title="pybmd.project_manager.ProjectManager.goto_root_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">goto_root_folder</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.goto_root_folder" title="pybmd.project_manager.ProjectManager.goto_root_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">goto_root_folder</span></code></a>()</p></td>
 <td><p>Opens root folder in database.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.import_project.html#pybmd.project_manager.ProjectManager.import_project" title="pybmd.project_manager.ProjectManager.import_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_project</span></code></a>(file_path[, project_name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.import_project" title="pybmd.project_manager.ProjectManager.import_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_project</span></code></a>(file_path[, project_name])</p></td>
 <td><p>Imports a project from the file path provided with given project name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.load_project.html#pybmd.project_manager.ProjectManager.load_project" title="pybmd.project_manager.ProjectManager.load_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_project</span></code></a>(project_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.load_project" title="pybmd.project_manager.ProjectManager.load_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_project</span></code></a>(project_name)</p></td>
 <td><p>Loads and returns <a class="reference external" href="mailto:the&#37;&#52;&#48;Project">the<span>&#64;</span>Project</a>  with name = project_name (string) if there is a match found, and None if there is no matching Project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.open_folder.html#pybmd.project_manager.ProjectManager.open_folder" title="pybmd.project_manager.ProjectManager.open_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_folder</span></code></a>(folder_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.open_folder" title="pybmd.project_manager.ProjectManager.open_folder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_folder</span></code></a>(folder_name)</p></td>
 <td><p>Opens folder under given name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.restore_project.html#pybmd.project_manager.ProjectManager.restore_project" title="pybmd.project_manager.ProjectManager.restore_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restore_project</span></code></a>(file_path[, project_name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.restore_project" title="pybmd.project_manager.ProjectManager.restore_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restore_project</span></code></a>(file_path[, project_name])</p></td>
 <td><p>Restores a project from the file path provided with given project name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.save_and_close_current_project.html#pybmd.project_manager.ProjectManager.save_and_close_current_project" title="pybmd.project_manager.ProjectManager.save_and_close_current_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_and_close_current_project</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.save_and_close_current_project" title="pybmd.project_manager.ProjectManager.save_and_close_current_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_and_close_current_project</span></code></a>()</p></td>
 <td><p>Saves the current project and closes it</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.save_project.html#pybmd.project_manager.ProjectManager.save_project" title="pybmd.project_manager.ProjectManager.save_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_project</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.save_project" title="pybmd.project_manager.ProjectManager.save_project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_project</span></code></a>()</p></td>
 <td><p>Saves the currently loaded project with its own name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.project_manager.ProjectManager.set_current_database.html#pybmd.project_manager.ProjectManager.set_current_database" title="pybmd.project_manager.ProjectManager.set_current_database"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_current_database</span></code></a>(database_info)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pybmd.project_manager.ProjectManager.set_current_database" title="pybmd.project_manager.ProjectManager.set_current_database"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_current_database</span></code></a>(database_info)</p></td>
 <td><p>Switches current database connection to the database specified by the keys below, and closes any open project.</p></td>
 </tr>
 </tbody>
@@ -976,18 +976,18 @@ document.write(`
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">archive_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_archive_src_media</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_archive_render_cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_archive_proxy_media</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.archive_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.archive_project">
+<span class="sig-name descname"><span class="pre">archive_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_archive_src_media</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_archive_render_cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_archive_proxy_media</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.archive_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.archive_project" title="Link to this definition">#</a></dt>
 <dd><p>Archives project to provided filePath with the configuration as provided by the optional arguments</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">close_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Project</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.close_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.close_project">
+<span class="sig-name descname"><span class="pre">close_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pybmd.project.Project.html#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.close_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.close_project" title="Link to this definition">#</a></dt>
 <dd><p>close project</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>project</strong> (<em>Project</em>) – project to close</p>
+<dd class="field-odd"><p><strong>project</strong> (<a class="reference internal" href="pybmd.project.Project.html#pybmd.project.Project" title="pybmd.project.Project"><em>Project</em></a>) – project to close</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>true if project was closed, false otherwise</p>
@@ -999,8 +999,8 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">create_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.create_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.create_folder">
+<span class="sig-name descname"><span class="pre">create_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.create_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.create_folder" title="Link to this definition">#</a></dt>
 <dd><p>Creates a folder if folderName(string) is unique.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1016,8 +1016,8 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Project</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.create_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.create_project">
+<span class="sig-name descname"><span class="pre">create_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.project.Project.html#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.create_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.create_project" title="Link to this definition">#</a></dt>
 <dd><p>Creates and returns a project if projectName(string) is unique, and None if it is not.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1027,20 +1027,20 @@ document.write(`
 <dd class="field-even"><p>created project object</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Project</p>
+<dd class="field-odd"><p><a class="reference internal" href="pybmd.project.Project.html#pybmd.project.Project" title="pybmd.project.Project">Project</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">database_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_DbType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_DbName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_IpAddress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.database_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.database_info">
+<span class="sig-name descname"><span class="pre">database_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_DbType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_DbName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_IpAddress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.database_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.database_info" title="Link to this definition">#</a></dt>
 <dd><p>database_info(DbType, DbName, IpAddress) generated for the database connection</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delete_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.delete_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.delete_folder">
+<span class="sig-name descname"><span class="pre">delete_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.delete_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.delete_folder" title="Link to this definition">#</a></dt>
 <dd><p>Deletes the specified folder if it exists</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1056,14 +1056,14 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delete_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.delete_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.delete_project">
+<span class="sig-name descname"><span class="pre">delete_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.delete_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.delete_project" title="Link to this definition">#</a></dt>
 <dd><p>Delete project in the current folder if not currently loaded</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">export_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path:</span> <span class="pre">&lt;module</span> <span class="pre">'posixpath'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.10/posixpath.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_stills_and_luts=True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.export_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.export_project">
+<span class="sig-name descname"><span class="pre">export_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path:</span> <span class="pre">&lt;module</span> <span class="pre">'posixpath'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.10/posixpath.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_stills_and_luts=True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.export_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.export_project" title="Link to this definition">#</a></dt>
 <dd><p>Exports project to provided file path</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1083,8 +1083,8 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_current_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_current_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.get_current_database">
+<span class="sig-name descname"><span class="pre">get_current_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_current_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.get_current_database" title="Link to this definition">#</a></dt>
 <dd><p>Returns a dictionary (with keys DbType, DbName and optional IpAddress) corresponding to the current database connection</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1097,80 +1097,80 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_current_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Project</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_current_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.get_current_project">
+<span class="sig-name descname"><span class="pre">get_current_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.project.Project.html#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_current_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.get_current_project" title="Link to this definition">#</a></dt>
 <dd><p>Returns the current project</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_database_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_database_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.get_database_list">
+<span class="sig-name descname"><span class="pre">get_database_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_database_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.get_database_list" title="Link to this definition">#</a></dt>
 <dd><p>return database list</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_folder_list_in_current_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_folder_list_in_current_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder">
+<span class="sig-name descname"><span class="pre">get_folder_list_in_current_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_folder_list_in_current_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder" title="Link to this definition">#</a></dt>
 <dd><p>Returns a list of folder names in current folder.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_project_list_in_current_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_project_list_in_current_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.get_project_list_in_current_folder">
+<span class="sig-name descname"><span class="pre">get_project_list_in_current_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.get_project_list_in_current_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.get_project_list_in_current_folder" title="Link to this definition">#</a></dt>
 <dd><p>Returns a list of project names in current folder.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">goto_parent_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.goto_parent_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.goto_parent_folder">
+<span class="sig-name descname"><span class="pre">goto_parent_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.goto_parent_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.goto_parent_folder" title="Link to this definition">#</a></dt>
 <dd><p>Opens parent folder of current folder in database if current folder has parent.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">goto_root_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.goto_root_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.goto_root_folder">
+<span class="sig-name descname"><span class="pre">goto_root_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.goto_root_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.goto_root_folder" title="Link to this definition">#</a></dt>
 <dd><p>Opens root folder in database.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">import_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path:</span> <span class="pre">&lt;module</span> <span class="pre">'posixpath'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.10/posixpath.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.import_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.import_project">
+<span class="sig-name descname"><span class="pre">import_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path:</span> <span class="pre">&lt;module</span> <span class="pre">'posixpath'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.10/posixpath.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.import_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.import_project" title="Link to this definition">#</a></dt>
 <dd><p>Imports a project from the file path provided with given project name. Returns True if successful.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">load_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Project</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.load_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.load_project">
+<span class="sig-name descname"><span class="pre">load_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pybmd.project.Project.html#pybmd.project.Project" title="pybmd.project.Project"><span class="pre">Project</span></a></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.load_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.load_project" title="Link to this definition">#</a></dt>
 <dd><p>Loads and returns <a class="reference external" href="mailto:the&#37;&#52;&#48;Project">the<span>&#64;</span>Project</a>  with name = project_name (string) if there is a match found, and None if there is no matching Project.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">open_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.open_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.open_folder">
+<span class="sig-name descname"><span class="pre">open_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.open_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.open_folder" title="Link to this definition">#</a></dt>
 <dd><p>Opens folder under given name.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">restore_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path:</span> <span class="pre">&lt;module</span> <span class="pre">'posixpath'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.10/posixpath.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.restore_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.restore_project">
+<span class="sig-name descname"><span class="pre">restore_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path:</span> <span class="pre">&lt;module</span> <span class="pre">'posixpath'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.10/posixpath.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.restore_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.restore_project" title="Link to this definition">#</a></dt>
 <dd><p>Restores a project from the file path provided with given project name. Returns True if successful.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">save_and_close_current_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.save_and_close_current_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.save_and_close_current_project">
+<span class="sig-name descname"><span class="pre">save_and_close_current_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.save_and_close_current_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.save_and_close_current_project" title="Link to this definition">#</a></dt>
 <dd><p>Saves the current project and closes it</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">save_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.save_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.save_project">
+<span class="sig-name descname"><span class="pre">save_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.save_project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.save_project" title="Link to this definition">#</a></dt>
 <dd><p>Saves the currently loaded project with its own name. Returns True if successful.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_current_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.set_current_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="pybmd.project_manager.ProjectManager.set_current_database">
+<span class="sig-name descname"><span class="pre">set_current_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/pybmd/project_manager.html#ProjectManager.set_current_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.project_manager.ProjectManager.set_current_database" title="Link to this definition">#</a></dt>
 <dd><p>Switches current database connection to the database specified by the keys below, and closes any open project.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1225,6 +1225,40 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager"><code class="docutils literal notranslate"><span class="pre">ProjectManager</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.archive_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.archive_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.close_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.close_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.create_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.create_folder()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.create_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.create_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.database_info"><code class="docutils literal notranslate"><span class="pre">ProjectManager.database_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.delete_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.delete_folder()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.delete_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.delete_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.export_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.export_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.get_current_database"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_current_database()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.get_current_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_current_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.get_database_list"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_database_list()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.get_folder_list_in_current_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_folder_list_in_current_folder()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.get_project_list_in_current_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_project_list_in_current_folder()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.goto_parent_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.goto_parent_folder()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.goto_root_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.goto_root_folder()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.import_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.import_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.load_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.load_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.open_folder"><code class="docutils literal notranslate"><span class="pre">ProjectManager.open_folder()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.restore_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.restore_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.save_and_close_current_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.save_and_close_current_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.save_project"><code class="docutils literal notranslate"><span class="pre">ProjectManager.save_project()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybmd.project_manager.ProjectManager.set_current_database"><code class="docutils literal notranslate"><span class="pre">ProjectManager.set_current_database()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">

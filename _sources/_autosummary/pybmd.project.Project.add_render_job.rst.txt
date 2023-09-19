@@ -4,3 +4,6 @@ Project.add\_render\_job
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.add_render_job
+    :noindex:
+    
+    .. autosummary::

@@ -4,3 +4,6 @@ GalleryStill.\_\_init\_\_
 .. currentmodule:: pybmd.gallery_still
 
 .. automethod:: GalleryStill.__init__
+    :noindex:
+    
+    .. autosummary::

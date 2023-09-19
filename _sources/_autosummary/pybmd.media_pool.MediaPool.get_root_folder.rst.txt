@@ -4,3 +4,6 @@ MediaPool.get\_root\_folder
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.get_root_folder
+    :noindex:
+    
+    .. autosummary::

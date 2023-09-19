@@ -4,3 +4,6 @@ MediaPoolItem.get\_clip\_property
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_clip_property
+    :noindex:
+    
+    .. autosummary::

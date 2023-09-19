@@ -4,3 +4,6 @@ TimelineItem.delete\_marker\_by\_custom\_data
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.delete_marker_by_custom_data
+    :noindex:
+    
+    .. autosummary::

@@ -4,3 +4,6 @@ ProjectManager.close\_project
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.close_project
+    :noindex:
+    
+    .. autosummary::

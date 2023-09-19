@@ -4,3 +4,6 @@ MediaStorage.reveal\_in\_storage
 .. currentmodule:: pybmd.media_storage
 
 .. automethod:: MediaStorage.reveal_in_storage
+    :noindex:
+    
+    .. autosummary::

@@ -4,3 +4,6 @@ MediaPoolItem.get\_metadata
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_metadata
+    :noindex:
+    
+    .. autosummary::

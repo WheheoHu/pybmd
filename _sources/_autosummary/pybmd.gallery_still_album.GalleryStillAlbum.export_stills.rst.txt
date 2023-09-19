@@ -4,3 +4,6 @@ GalleryStillAlbum.export\_stills
 .. currentmodule:: pybmd.gallery_still_album
 
 .. automethod:: GalleryStillAlbum.export_stills
+    :noindex:
+    
+    .. autosummary::

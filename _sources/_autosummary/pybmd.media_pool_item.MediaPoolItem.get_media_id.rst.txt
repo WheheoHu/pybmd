@@ -4,3 +4,6 @@ MediaPoolItem.get\_media\_id
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.get_media_id
+    :noindex:
+    
+    .. autosummary::

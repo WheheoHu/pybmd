@@ -4,3 +4,6 @@ MediaStorage.add\_clip\_mattes\_to\_media\_pool
 .. currentmodule:: pybmd.media_storage
 
 .. automethod:: MediaStorage.add_clip_mattes_to_media_pool
+    :noindex:
+    
+    .. autosummary::

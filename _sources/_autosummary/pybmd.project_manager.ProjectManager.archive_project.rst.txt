@@ -4,3 +4,6 @@ ProjectManager.archive\_project
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.archive_project
+    :noindex:
+    
+    .. autosummary::

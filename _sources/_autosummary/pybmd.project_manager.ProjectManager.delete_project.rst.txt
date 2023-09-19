@@ -4,3 +4,6 @@ ProjectManager.delete\_project
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.delete_project
+    :noindex:
+    
+    .. autosummary::

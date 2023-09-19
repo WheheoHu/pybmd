@@ -4,3 +4,6 @@ Folder.get\_name
 .. currentmodule:: pybmd.folder
 
 .. automethod:: Folder.get_name
+    :noindex:
+    
+    .. autosummary::

@@ -4,3 +4,6 @@ Timeline.get\_name
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_name
+    :noindex:
+    
+    .. autosummary::

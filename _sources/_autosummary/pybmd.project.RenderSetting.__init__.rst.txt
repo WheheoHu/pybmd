@@ -4,3 +4,6 @@ RenderSetting.\_\_init\_\_
 .. currentmodule:: pybmd.project
 
 .. automethod:: RenderSetting.__init__
+    :noindex:
+    
+    .. autosummary::

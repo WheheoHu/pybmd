@@ -4,3 +4,6 @@ TimelineItem.update\_sidecar
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.update_sidecar
+    :noindex:
+    
+    .. autosummary::

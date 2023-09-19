@@ -4,3 +4,6 @@ ProjectManager.create\_folder
 .. currentmodule:: pybmd.project_manager
 
 .. automethod:: ProjectManager.create_folder
+    :noindex:
+    
+    .. autosummary::

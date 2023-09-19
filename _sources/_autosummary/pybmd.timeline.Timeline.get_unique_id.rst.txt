@@ -4,3 +4,6 @@ Timeline.get\_unique\_id
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.get_unique_id
+    :noindex:
+    
+    .. autosummary::

@@ -4,3 +4,6 @@ Bmd.get\_media\_storage
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.get_media_storage
+    :noindex:
+    
+    .. autosummary::

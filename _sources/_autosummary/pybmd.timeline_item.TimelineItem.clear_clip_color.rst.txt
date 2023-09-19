@@ -4,3 +4,6 @@ TimelineItem.clear\_clip\_color
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.clear_clip_color
+    :noindex:
+    
+    .. autosummary::

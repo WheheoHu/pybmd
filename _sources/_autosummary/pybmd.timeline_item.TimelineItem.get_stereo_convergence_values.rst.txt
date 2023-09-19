@@ -4,3 +4,6 @@ TimelineItem.get\_stereo\_convergence\_values
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.get_stereo_convergence_values
+    :noindex:
+    
+    .. autosummary::

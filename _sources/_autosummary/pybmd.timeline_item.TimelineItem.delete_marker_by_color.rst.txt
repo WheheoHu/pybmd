@@ -4,3 +4,6 @@ TimelineItem.delete\_marker\_by\_color
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.delete_marker_by_color
+    :noindex:
+    
+    .. autosummary::

@@ -4,3 +4,6 @@ Project.is\_rendering\_in\_progress
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.is_rendering_in_progress
+    :noindex:
+    
+    .. autosummary::

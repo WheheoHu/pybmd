@@ -4,3 +4,6 @@ Timeline.grab\_all\_stills
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.grab_all_stills
+    :noindex:
+    
+    .. autosummary::

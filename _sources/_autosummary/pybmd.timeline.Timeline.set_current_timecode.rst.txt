@@ -4,3 +4,6 @@ Timeline.set\_current\_timecode
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: Timeline.set_current_timecode
+    :noindex:
+    
+    .. autosummary::

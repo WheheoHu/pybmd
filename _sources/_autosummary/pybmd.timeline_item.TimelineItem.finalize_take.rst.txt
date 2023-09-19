@@ -4,3 +4,6 @@ TimelineItem.finalize\_take
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.finalize_take
+    :noindex:
+    
+    .. autosummary::

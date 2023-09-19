@@ -4,3 +4,6 @@ Bmd.get\_current\_page
 .. currentmodule:: pybmd.bmd
 
 .. automethod:: Bmd.get_current_page
+    :noindex:
+    
+    .. autosummary::

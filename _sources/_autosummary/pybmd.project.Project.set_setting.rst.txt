@@ -4,3 +4,6 @@ Project.set\_setting
 .. currentmodule:: pybmd.project
 
 .. automethod:: Project.set_setting
+    :noindex:
+    
+    .. autosummary::

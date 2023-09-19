@@ -4,3 +4,6 @@ ImportOptions.\_\_init\_\_
 .. currentmodule:: pybmd.timeline
 
 .. automethod:: ImportOptions.__init__
+    :noindex:
+    
+    .. autosummary::

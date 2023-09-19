@@ -4,3 +4,6 @@ Gallery.get\_current\_still\_album
 .. currentmodule:: pybmd.gallery
 
 .. automethod:: Gallery.get_current_still_album
+    :noindex:
+    
+    .. autosummary::

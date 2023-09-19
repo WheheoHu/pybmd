@@ -7,7 +7,7 @@ CDL\_Map
    :members:            
    :show-inheritance:   
    :inherited-members:  
-   :noindex:
+   
    
    
 
@@ -18,6 +18,7 @@ CDL\_Map
    .. autosummary::
       :template: method.rst
       :toctree:
+      
    
       ~CDL_Map.__init__
    

@@ -4,3 +4,6 @@ TimelineItem.clear\_flags
 .. currentmodule:: pybmd.timeline_item
 
 .. automethod:: TimelineItem.clear_flags
+    :noindex:
+    
+    .. autosummary::

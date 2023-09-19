@@ -4,3 +4,6 @@ MediaPool.create\_timeline\_from\_clips
 .. currentmodule:: pybmd.media_pool
 
 .. automethod:: MediaPool.create_timeline_from_clips
+    :noindex:
+    
+    .. autosummary::

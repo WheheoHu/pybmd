@@ -4,3 +4,6 @@ MediaPoolItem.replace\_clip
 .. currentmodule:: pybmd.media_pool_item
 
 .. automethod:: MediaPoolItem.replace_clip
+    :noindex:
+    
+    .. autosummary::

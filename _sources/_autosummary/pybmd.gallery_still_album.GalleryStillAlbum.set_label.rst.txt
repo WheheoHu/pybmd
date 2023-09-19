@@ -4,3 +4,6 @@ GalleryStillAlbum.set\_label
 .. currentmodule:: pybmd.gallery_still_album
 
 .. automethod:: GalleryStillAlbum.set_label
+    :noindex:
+    
+    .. autosummary::
