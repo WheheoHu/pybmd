@@ -67,3 +67,8 @@
 - Add `ExportBurnInPreset`
 
 ----
+# 2023.4.1
+## GalleryStillAlbum
+- modify `delete_stills`
+
+---
