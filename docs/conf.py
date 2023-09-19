@@ -25,7 +25,14 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
               'sphinx.ext.autosummary',
+              'sphinx.ext.intersphinx',
             ]
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3.11", None),
+}
+
+autodoc_member_order = "bysource"
+autodoc_typehints = "both"
 autoclass_content = "both"
 autosummary_generate = True
 
