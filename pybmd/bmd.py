@@ -4,6 +4,9 @@ import importlib.machinery
 import importlib.util
 from os import path
 import sys
+import subprocess
+import platform
+import psutil 
 
 from pybmd.error import *
 from pybmd.media_storage import MediaStorage
@@ -19,7 +22,31 @@ def load_dynamic(module_name, module_path: str):
     # spec.loader.exec_module(module)
 
     return module
+def is_process_running(process_name):
+    for process in psutil.process_iter(['pid', 'name']):
+        if process.info['name'] == process_name:
+            return True
+    return False
 
+def open_local_resolve():
+    app_name_mac = "Resolve"
+    app_name_win = "Resolve.exe"
+    try:
+        if is_process_running(app_name_mac) or is_process_running(app_name_win):
+            print(f"Davinci Resolve is already running.")
+        else:
+            if platform.system() == 'Darwin':  # macOS
+                subprocess.run(['open', '-a', '/Applications/DaVinci Resolve/DaVinci Resolve.app'])
+                print("Opened DaVinci Resolve successfully on macOS!")
+            elif platform.system() == 'Windows':  # Windows
+                resolve_path = r"C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe"
+                subprocess.Popen(resolve_path)
+                print("Opened DaVinci Resolve successfully on Windows!")
+            else:
+                print("Unsupported operating system.")
+            
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 class Default_LIB_PATH(Enum):
     LIB_Windows = "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\fusionscript.dll"
@@ -94,6 +121,7 @@ class Bmd:
             davinci_ip (str, optional): Default value is local (127.0.0.1).
 
         """
+        open_local_resolve()
         bmd_module = load_dynamic(
             module_name='fusionscript', module_path=self.PYLIB)
         return bmd_module.scriptapp(self.APP_NAME, davinci_ip)
