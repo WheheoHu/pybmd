@@ -63,13 +63,21 @@ class Bmd:
     elif sys.platform.startswith("win"):
         PYLIB = Default_LIB_PATH.LIB_Windows.value
     APP_NAME = 'Resolve'
-    IP_ADDRESS = '127.0.0.1'
+
 
     local_davinci = None
 
-    def __init__(self, resolve_ip=IP_ADDRESS):
-        """Initializes the BMD object."""
-        self.local_davinci = self.init_davinci(davinci_ip=resolve_ip)
+    def __init__(self, resolve_ip:str='127.0.0.1',auto_start:bool=True):
+        """Init Davinci Resolve Object
+
+        Args:
+            resolve_ip (str, optional): davinci resolve ip. Defaults to 127.0.0.1.
+            auto_start (bool, optional): pen davinci automatically if it's not running, if you want to open davinci manually, change arg to false. Defaults to True.
+
+        Raises:
+            ResolveInitError: davinci resolve init failed.you need to check if davinci resolve is running.
+        """
+        self.local_davinci = self.init_davinci(davinci_ip=resolve_ip,auto_start=auto_start)
         if self.local_davinci is None:
             raise ResolveInitError
 
@@ -114,14 +122,16 @@ class Bmd:
         self.EXPORT_SDL = self.local_davinci.EXPORT_SDL
         self.EXPORT_MISSING_CLIPS = self.local_davinci.EXPORT_MISSING_CLIPS
 
-    def init_davinci(self, davinci_ip):
+    def init_davinci(self, davinci_ip,auto_start):
         """init and return Davinci Resolve object
 
         Args:
             davinci_ip (str, optional): Default value is local (127.0.0.1).
 
         """
-        open_local_resolve()
+        if(auto_start):
+            open_local_resolve()
+            
         bmd_module = load_dynamic(
             module_name='fusionscript', module_path=self.PYLIB)
         return bmd_module.scriptapp(self.APP_NAME, davinci_ip)
