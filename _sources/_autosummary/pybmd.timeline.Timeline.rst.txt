@@ -25,6 +25,7 @@ Timeline
       ~Timeline.add_marker
       ~Timeline.add_track
       ~Timeline.apply_grade_from_drx
+      ~Timeline.convert_timeline_to_stereo
       ~Timeline.create_compound_clip
       ~Timeline.create_fusion_clip
       ~Timeline.create_subtitles_from_audio

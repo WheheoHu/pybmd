@@ -25,6 +25,7 @@ MediaPool
       ~MediaPool.add_sub_folder
       ~MediaPool.append_to_timeline
       ~MediaPool.create_empty_timeline
+      ~MediaPool.create_stereo_clip
       ~MediaPool.create_timeline_from_clips
       ~MediaPool.delete_clip_mattes
       ~MediaPool.delete_clips

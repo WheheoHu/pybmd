@@ -1,0 +1,8 @@
+Folder.clear\_transcription
+===========================
+
+.. currentmodule:: pybmd.folder
+
+.. automethod:: Folder.clear_transcription
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+Timeline.convert\_timeline\_to\_stereo
+======================================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.convert_timeline_to_stereo
+
+    .. autosummary::

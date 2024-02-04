@@ -35,7 +35,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=9945ab52"></script>
+    <script src="../_static/documentation_options.js?v=3cff6c9b"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.settings.SettingParameter.__init__';</script>
@@ -347,12 +347,14 @@ document.write(`
 <li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.folder.html">folder</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.folder.Folder.html">Folder</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.__init__.html">Folder.__init__</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.clear_transcription.html">Folder.clear_transcription</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.export.html">Folder.export</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.get_clip_list.html">Folder.get_clip_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.get_is_folder_stale.html">Folder.get_is_folder_stale</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.get_name.html">Folder.get_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.get_sub_folder_list.html">Folder.get_sub_folder_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.get_unique_id.html">Folder.get_unique_id</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.transcribe_audio.html">Folder.transcribe_audio</a></li>
 </ul>
 </li>
 </ul>
@@ -422,6 +424,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.add_sub_folder.html">MediaPool.add_sub_folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.append_to_timeline.html">MediaPool.append_to_timeline</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.create_empty_timeline.html">MediaPool.create_empty_timeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.create_stereo_clip.html">MediaPool.create_stereo_clip</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.create_timeline_from_clips.html">MediaPool.create_timeline_from_clips</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.delete_clip_mattes.html">MediaPool.delete_clip_mattes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.delete_clips.html">MediaPool.delete_clips</a></li>
@@ -575,9 +578,11 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.get_project_list_in_current_folder.html">ProjectManager.get_project_list_in_current_folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.goto_parent_folder.html">ProjectManager.goto_parent_folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.goto_root_folder.html">ProjectManager.goto_root_folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.import_cloud_project.html">ProjectManager.import_cloud_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.import_project.html">ProjectManager.import_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.load_project.html">ProjectManager.load_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.open_folder.html">ProjectManager.open_folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.restore_cloud_project.html">ProjectManager.restore_cloud_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.restore_project.html">ProjectManager.restore_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.save_and_close_current_project.html">ProjectManager.save_and_close_current_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.save_project.html">ProjectManager.save_project</a></li>
@@ -732,6 +737,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.add_marker.html">Timeline.add_marker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.add_track.html">Timeline.add_track</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.apply_grade_from_drx.html">Timeline.apply_grade_from_drx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.convert_timeline_to_stereo.html">Timeline.convert_timeline_to_stereo</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.create_compound_clip.html">Timeline.create_compound_clip</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.create_fusion_clip.html">Timeline.create_fusion_clip</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.create_subtitles_from_audio.html">Timeline.create_subtitles_from_audio</a></li>

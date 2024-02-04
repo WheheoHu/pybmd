@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=9945ab52"></script>
+    <script src="../../_static/documentation_options.js?v=3cff6c9b"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/project_manager';</script>
@@ -345,6 +345,8 @@ document.write(`
 <span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span> <span class="nn">pybmd.project</span> <span class="kn">import</span> <span class="n">Project</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">CloudProjectsSetting</span>
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pybmd.bmd</span> <span class="kn">import</span> <span class="n">Bmd</span>
 
@@ -562,8 +564,46 @@ document.write(`
     <span class="c1">#Add at DR18.6.4</span>
 <div class="viewcode-block" id="ProjectManager.create_cloud_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.create_cloud_project.html#pybmd.project_manager.ProjectManager.create_cloud_project">[docs]</a>
-    <span class="k">def</span> <span class="nf">create_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span><span class="o">.</span><span class="n">CreateCloudProject</span><span class="p">(</span><span class="n">cloud_setting</span><span class="p">))</span></div>
+    <span class="k">def</span> <span class="nf">create_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="n">CloudProjectsSetting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates and returns a cloud project.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cloud_setting (CloudProjectsSetting):  settings for the cloud project</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Project: returns a cloud project</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span><span class="o">.</span><span class="n">CreateCloudProject</span><span class="p">(</span><span class="n">cloud_setting</span><span class="o">.</span><span class="n">asdict</span><span class="p">()))</span></div>
+
+    
+<div class="viewcode-block" id="ProjectManager.import_cloud_project">
+<a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.import_cloud_project.html#pybmd.project_manager.ProjectManager.import_cloud_project">[docs]</a>
+    <span class="k">def</span> <span class="nf">import_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="n">CloudProjectsSetting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_path (str): filePath of file to import</span>
+<span class="sd">            cloud_setting (CloudProjectsSetting): setting for the cloud project</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if import cloud project is successful; False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span><span class="o">.</span><span class="n">ImportCloudProject</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span><span class="n">cloud_setting</span><span class="o">.</span><span class="n">asdict</span><span class="p">())</span></div>
+
+    
+<div class="viewcode-block" id="ProjectManager.restore_cloud_project">
+<a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.restore_cloud_project.html#pybmd.project_manager.ProjectManager.restore_cloud_project">[docs]</a>
+    <span class="k">def</span> <span class="nf">restore_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">folder_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="n">CloudProjectsSetting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            folder_path (str): path of folder to restore</span>
+<span class="sd">            cloud_setting (CloudProjectsSetting): setting for the cloud project</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if restore cloud project is successful; False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span><span class="o">.</span><span class="n">RestoreCloudProject</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span><span class="n">cloud_setting</span><span class="o">.</span><span class="n">asdict</span><span class="p">())</span></div>
 
     
 <span class="c1"># More function BELOW!</span>

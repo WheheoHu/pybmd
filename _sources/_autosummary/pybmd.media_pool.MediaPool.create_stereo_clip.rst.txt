@@ -1,0 +1,8 @@
+MediaPool.create\_stereo\_clip
+==============================
+
+.. currentmodule:: pybmd.media_pool
+
+.. automethod:: MediaPool.create_stereo_clip
+
+    .. autosummary::

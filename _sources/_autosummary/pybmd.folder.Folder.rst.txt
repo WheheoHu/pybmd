@@ -22,12 +22,14 @@ Folder
       
    
       ~Folder.__init__
+      ~Folder.clear_transcription
       ~Folder.export
       ~Folder.get_clip_list
       ~Folder.get_is_folder_stale
       ~Folder.get_name
       ~Folder.get_sub_folder_list
       ~Folder.get_unique_id
+      ~Folder.transcribe_audio
    
    
 

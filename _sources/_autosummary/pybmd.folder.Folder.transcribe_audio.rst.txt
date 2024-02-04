@@ -1,0 +1,8 @@
+Folder.transcribe\_audio
+========================
+
+.. currentmodule:: pybmd.folder
+
+.. automethod:: Folder.transcribe_audio
+
+    .. autosummary::

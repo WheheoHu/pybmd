@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=9945ab52"></script>
+    <script src="../../_static/documentation_options.js?v=3cff6c9b"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_pool';</script>
@@ -714,12 +714,29 @@ document.write(`
 
 <span class="sd">        Args:</span>
 <span class="sd">            file_path (str): file path to DRB file</span>
-<span class="sd">            source_clips_path (str): sourceClipsPath is a string that specifies a filesystem path to search for source clips if the media is inaccessible in their original path, empty by default</span>
+<span class="sd">            source_clips_path (str): sourceClipsPath is a tring that specifies a filesystem path to search for source clips if the media is inaccessible in their original path, empty by default</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns true if import from given DRB filePath is successful, false otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">ImportFolderFromFile</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">source_clips_path</span><span class="p">)</span></div>
+
+
+    <span class="c1">##########################################################################################################################</span>
+    <span class="c1"># Add at DR18.6.4</span>
+<div class="viewcode-block" id="MediaPool.create_stereo_clip">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.create_stereo_clip.html#pybmd.media_pool.MediaPool.create_stereo_clip">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_stereo_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left_media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">right_media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MediaPoolItem</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Takes in two existing media pool items and creates a new 3D stereoscopic media pool entry replacing the input media in the media pool.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            left_media_pool_item (MediaPoolItem): left media pool item</span>
+<span class="sd">            right_media_pool_item (MediaPoolItem): right media pool item</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            MediaPoolItem: 3D stereoscopic media pool entry</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MediaPoolItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">CreateStereoClip</span><span class="p">(</span><span class="n">left_media_pool_item</span><span class="p">,</span> <span class="n">right_media_pool_item</span><span class="p">))</span></div>
 </div>
 
 </pre></div>
