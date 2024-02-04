@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.ColorSpaceTag
+==========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.ColorSpaceTag

@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.AudioCodec
+=======================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.AudioCodec

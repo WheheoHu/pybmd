@@ -23,6 +23,7 @@ error
       :toctree: 
    
       ResolveInitError
+      ValueMappingError
    
    
 

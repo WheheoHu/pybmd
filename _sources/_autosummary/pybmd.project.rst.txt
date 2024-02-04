@@ -20,7 +20,6 @@ project
       :template: class.rst
    
       Project
-      RenderSetting
    
    
 

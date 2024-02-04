@@ -1,6 +1,0 @@
-pybmd.project.RenderSetting.ExportVideo
-=======================================
-
-.. currentmodule:: pybmd.project
-
-.. autoattribute:: RenderSetting.ExportVideo

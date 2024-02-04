@@ -1,6 +1,0 @@
-pybmd.project.RenderSetting.CustomName
-======================================
-
-.. currentmodule:: pybmd.project
-
-.. autoattribute:: RenderSetting.CustomName

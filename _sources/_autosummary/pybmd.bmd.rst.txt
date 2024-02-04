@@ -14,7 +14,9 @@ bmd
    .. autosummary::
       :toctree: 
    
+      is_process_running
       load_dynamic
+      start_local_resolve
    
    
 

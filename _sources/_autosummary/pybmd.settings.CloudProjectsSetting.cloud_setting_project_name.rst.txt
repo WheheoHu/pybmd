@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectsSetting.cloud\_setting\_project\_name
+=================================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoproperty:: CloudProjectsSetting.cloud_setting_project_name

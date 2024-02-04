@@ -1,0 +1,6 @@
+pybmd.settings.LanguageID.SWEDISH
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: LanguageID.SWEDISH

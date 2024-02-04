@@ -24,6 +24,7 @@ ProjectManager
       ~ProjectManager.__init__
       ~ProjectManager.archive_project
       ~ProjectManager.close_project
+      ~ProjectManager.create_cloud_project
       ~ProjectManager.create_folder
       ~ProjectManager.create_project
       ~ProjectManager.database_info

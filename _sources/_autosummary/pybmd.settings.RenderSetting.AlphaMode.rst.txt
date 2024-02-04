@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.AlphaMode
+======================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.AlphaMode

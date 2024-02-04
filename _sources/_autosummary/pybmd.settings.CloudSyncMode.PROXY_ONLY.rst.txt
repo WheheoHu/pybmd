@@ -1,0 +1,6 @@
+pybmd.settings.CloudSyncMode.PROXY\_ONLY
+========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudSyncMode.PROXY_ONLY

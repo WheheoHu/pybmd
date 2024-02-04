@@ -1,6 +1,0 @@
-pybmd.project.RenderSetting.AlphaMode
-=====================================
-
-.. currentmodule:: pybmd.project
-
-.. autoattribute:: RenderSetting.AlphaMode

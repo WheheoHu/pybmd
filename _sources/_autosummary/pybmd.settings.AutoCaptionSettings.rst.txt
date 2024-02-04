@@ -1,0 +1,42 @@
+AutoCaptionSettings
+===================
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: AutoCaptionSettings
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~AutoCaptionSettings.__init__
+      ~AutoCaptionSettings.asdict
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~AutoCaptionSettings.subtitle_caption_preset
+      ~AutoCaptionSettings.subtitle_chars_per_line
+      ~AutoCaptionSettings.subtitle_gap
+      ~AutoCaptionSettings.subtitle_language
+      ~AutoCaptionSettings.subtitle_line_break
+   
+   

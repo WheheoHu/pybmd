@@ -1,6 +1,0 @@
-pybmd.project.RenderSetting.SelectAllFrames
-===========================================
-
-.. currentmodule:: pybmd.project
-
-.. autoattribute:: RenderSetting.SelectAllFrames

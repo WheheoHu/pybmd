@@ -1,0 +1,8 @@
+Timeline.create\_subtitles\_from\_audio
+=======================================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.create_subtitles_from_audio
+
+    .. autosummary::

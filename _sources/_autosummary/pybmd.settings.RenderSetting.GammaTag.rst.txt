@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.GammaTag
+=====================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.GammaTag

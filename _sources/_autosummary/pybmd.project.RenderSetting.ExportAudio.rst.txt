@@ -1,6 +1,0 @@
-pybmd.project.RenderSetting.ExportAudio
-=======================================
-
-.. currentmodule:: pybmd.project
-
-.. autoattribute:: RenderSetting.ExportAudio

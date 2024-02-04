@@ -1,6 +1,0 @@
-pybmd.bmd.Bmd.IP\_ADDRESS
-=========================
-
-.. currentmodule:: pybmd.bmd
-
-.. autoattribute:: Bmd.IP_ADDRESS

@@ -1,0 +1,8 @@
+ProjectManager.create\_cloud\_project
+=====================================
+
+.. currentmodule:: pybmd.project_manager
+
+.. automethod:: ProjectManager.create_cloud_project
+
+    .. autosummary::

@@ -40,6 +40,7 @@
    pybmd.media_storage
    pybmd.project
    pybmd.project_manager
+   pybmd.settings
    pybmd.timeline
    pybmd.timeline_item
    pybmd.toolkits

@@ -1,0 +1,6 @@
+pybmd.settings.LanguageID.ITALIAN
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: LanguageID.ITALIAN

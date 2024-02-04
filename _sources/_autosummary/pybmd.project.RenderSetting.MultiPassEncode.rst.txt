@@ -1,6 +1,0 @@
-pybmd.project.RenderSetting.MultiPassEncode
-===========================================
-
-.. currentmodule:: pybmd.project
-
-.. autoattribute:: RenderSetting.MultiPassEncode

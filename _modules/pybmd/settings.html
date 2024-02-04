@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybmd.settings &#8212; PyBMD Docs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9945ab52"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/settings';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyBMD Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../samples.html">
+                        Samples
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../samples.html">
+                        Samples
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">pybmd.settings</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pybmd.settings</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">EnumType</span><span class="p">,</span> <span class="n">auto</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TypedDict</span><span class="p">,</span> <span class="n">Unpack</span>
+
+<span class="kn">from</span> <span class="nn">pybmd.error</span> <span class="kn">import</span> <span class="n">ValueMappingError</span>
+
+
+<div class="viewcode-block" id="SettingParameter">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.SettingParameter.html#pybmd.settings.SettingParameter">[docs]</a>
+<span class="k">class</span> <span class="nc">SettingParameter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for SettingParamater.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SettingParameter.__init__">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.SettingParameter.__init__.html#pybmd.settings.SettingParameter.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_index</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">parameter_value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SettingParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__parameter_index</span> <span class="o">=</span> <span class="n">parameter_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__parameter_value</span> <span class="o">=</span> <span class="n">parameter_value</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parameter_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parameter_index</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parameter_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parameter_value</span></div>
+
+
+
+<div class="viewcode-block" id="RenderSetting">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.RenderSetting.html#pybmd.settings.RenderSetting">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">RenderSetting</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;RenderSetting Object to store render setting.&quot;&quot;&quot;</span>
+    <span class="n">SelectAllFrames</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">MarkIn</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">MarkOut</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">TargetDir</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">CustomName</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">UniqueFilenameStyle</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># 0 for prefix, 1 for suffix</span>
+    <span class="n">ExportVideo</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">ExportAudio</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">FormatWidth</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">FormatHeight</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">FrameRate</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="c1"># (for SD resolution: &quot;16_9&quot; or &quot;4_3&quot;) (other resolutions: &quot;square&quot; or &quot;cinemascope&quot;)</span>
+    <span class="n">PixelAspectRatio</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="c1">#  possible values for current codec (if applicable):</span>
+    <span class="c1">#  0(int) - will set quality to automatic</span>
+    <span class="c1"># [1 -&gt; MAX] (int) - will set input bit rate</span>
+    <span class="c1"># [&quot;Least&quot;, &quot;Low&quot;, &quot;Medium&quot;, &quot;High&quot;, &quot;Best&quot;] (String) - will set input quality level</span>
+    <span class="n">VideoQuality</span><span class="p">:</span> <span class="n">Any</span>
+
+    <span class="n">AudioCodec</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">AudioBitDepth</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">AudioSampleRate</span><span class="p">:</span> <span class="nb">int</span>
+
+    <span class="c1"># example: &quot;Same as Project&quot;, &quot;AstroDesign&quot;</span>
+    <span class="n">ColorSpaceTag</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="c1"># example: &quot;Same as Project&quot;, &quot;ACEScct&quot;</span>
+    <span class="n">GammaTag</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">ExportAlpha</span><span class="p">:</span> <span class="nb">bool</span>
+
+    <span class="c1"># (example: &quot;Main10&quot;). Can only be set for H.264 and H.265.</span>
+    <span class="n">EncodingProfile</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="c1"># Can onlt be set for H.264.</span>
+    <span class="n">MultiPassEncode</span><span class="p">:</span> <span class="nb">bool</span>
+
+    <span class="c1"># 0 - Premultipled, 1 - Straight. Can only be set if &quot;ExportAlpha&quot; is true.</span>
+    <span class="n">AlphaMode</span><span class="p">:</span> <span class="nb">int</span>
+
+    <span class="c1"># Only supported by QuickTime and MP4 formats.</span>
+    <span class="n">NetworkOptimization</span><span class="p">:</span> <span class="nb">bool</span></div>
+
+
+
+<div class="viewcode-block" id="CloudSyncMode">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.CloudSyncMode.html#pybmd.settings.CloudSyncMode">[docs]</a>
+<span class="k">class</span> <span class="nc">CloudSyncMode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Docstring for CloudSyncMode.&quot;&quot;&quot;</span>
+    <span class="n">NONE</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">PROXY_ONLY</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">PROXY_AND_ORIG</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span></div>
+
+
+
+<div class="viewcode-block" id="CloudProjectsSetting">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.CloudProjectsSetting.html#pybmd.settings.CloudProjectsSetting">[docs]</a>
+<span class="k">class</span> <span class="nc">CloudProjectsSetting</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Setting for CloudProject&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CloudProjectsSetting.__init__">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.CloudProjectsSetting.__init__.html#pybmd.settings.CloudProjectsSetting.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">cloud_setting_project_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                 <span class="n">cloud_setting_project_media_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                 <span class="n">cloud_setting_is_collab</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                 <span class="n">cloud_setting_sync_mode</span><span class="p">:</span> <span class="n">CloudSyncMode</span> <span class="o">=</span> <span class="n">CloudSyncMode</span><span class="o">.</span><span class="n">PROXY_ONLY</span><span class="p">,</span>
+                 <span class="n">cloud_setting_is_camera_access</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize CloudProjectsSetting.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cloud_setting_project_name (str, optional): project name for Cloud Project. Defaults to &quot;&quot;.</span>
+<span class="sd">            cloud_setting_project_media_path (str, optional): media path for Cloud Project. Defaults to &quot;&quot;.</span>
+<span class="sd">            cloud_setting_is_collab (bool, optional): collabration mode. Defaults to False.</span>
+<span class="sd">            cloud_setting_sync_mode (CloudSyncMode, optional): sync mode. Defaults to CloudSyncMode.PROXY_ONLY.</span>
+<span class="sd">            cloud_setting_is_camera_access (bool, optional): camera access mode. Defaults to False.</span>
+<span class="sd">            </span>
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt; from pybmd.settings import CloudProjectsSetting,CloudSyncMode</span>
+<span class="sd">            &gt;&gt; settings=CloudProjectsSetting()</span>
+<span class="sd">            &gt;&gt; print(settings.asdict())</span>
+<span class="sd">            {0.0: &#39;&#39;, 1.0: &#39;&#39;, 2.0: False, 3.0: 1.0, 4.0: False}</span>
+<span class="sd">            &gt;&gt; settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_ONLY</span>
+<span class="sd">            &gt;&gt; print(settings.asdict()) </span>
+<span class="sd">            {0.0: &#39;&#39;, 1.0: &#39;&#39;, 2.0: False, 3.0: 1.0, 4.0: False}</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_name</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">0.0</span><span class="p">,</span> <span class="n">cloud_setting_project_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_media_path</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">1.0</span><span class="p">,</span> <span class="n">cloud_setting_project_media_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_collab</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">2.0</span><span class="p">,</span> <span class="n">cloud_setting_is_collab</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_sync_mode</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">3.0</span><span class="p">,</span> <span class="n">cloud_setting_sync_mode</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_camera_access</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">4.0</span><span class="p">,</span> <span class="n">cloud_setting_is_camera_access</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_project_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SettingParameter</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_name</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@cloud_setting_project_name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_project_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_name</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">0.0</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_project_media_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SettingParameter</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_media_path</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@cloud_setting_project_media_path</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_project_media_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_media_path</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">1.0</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_is_collab</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SettingParameter</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_collab</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@cloud_setting_is_collab</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_is_collab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_collab</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">2.0</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_sync_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SettingParameter</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_sync_mode</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@cloud_setting_sync_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_sync_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">CloudSyncMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_sync_mode</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">3.0</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_is_camera_access</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SettingParameter</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_camera_access</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@cloud_setting_is_camera_access</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cloud_setting_is_camera_access</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_camera_access</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">4.0</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CloudProjectsSetting.asdict">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.CloudProjectsSetting.asdict.html#pybmd.settings.CloudProjectsSetting.asdict">[docs]</a>
+    <span class="k">def</span> <span class="nf">asdict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_name</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_name</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_media_path</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_media_path</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_collab</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_collab</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_sync_mode</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_sync_mode</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_camera_access</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_is_camera_access</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">}</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="LanguageID">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.LanguageID.html#pybmd.settings.LanguageID">[docs]</a>
+<span class="k">class</span> <span class="nc">LanguageID</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Docstring for LanguageID.&quot;&quot;&quot;</span>
+    <span class="n">AUTO</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">DANISH</span> <span class="o">=</span> <span class="mf">24.0</span>
+    <span class="n">DUTCH</span> <span class="o">=</span> <span class="mf">2.0</span>
+    <span class="n">ENGLISH</span> <span class="o">=</span> <span class="mf">3.0</span>
+    <span class="n">FRENCH</span> <span class="o">=</span> <span class="mf">5.0</span>
+    <span class="n">GERMAN</span> <span class="o">=</span> <span class="mf">6.0</span>
+    <span class="n">ITALIAN</span> <span class="o">=</span> <span class="mf">9.0</span>
+    <span class="n">JAPANESE</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="n">KOREAN</span> <span class="o">=</span> <span class="mf">11.0</span>
+    <span class="n">MANDARIN_SIMPLIFIED</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">MANDARIN_TRADITIONAL</span> <span class="o">=</span> <span class="mf">25.0</span>
+    <span class="n">NORWEGIAN</span> <span class="o">=</span> <span class="mf">13.0</span>
+    <span class="n">PORTUGUESE</span> <span class="o">=</span> <span class="mf">15.0</span>
+    <span class="n">RUSSIAN</span> <span class="o">=</span> <span class="mf">17.0</span>
+    <span class="n">SPANISH</span> <span class="o">=</span> <span class="mf">18.0</span>
+    <span class="n">SWEDISH</span> <span class="o">=</span> <span class="mf">19.0</span></div>
+
+
+
+<div class="viewcode-block" id="PresetType">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.PresetType.html#pybmd.settings.PresetType">[docs]</a>
+<span class="k">class</span> <span class="nc">PresetType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Docstring for PresetType.&quot;&quot;&quot;</span>
+    <span class="n">SUBTITLE_DEFAULT</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">TELETEXT</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">NETFLIX</span> <span class="o">=</span> <span class="mf">2.0</span></div>
+
+
+
+<div class="viewcode-block" id="LineBreakTypes">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.LineBreakTypes.html#pybmd.settings.LineBreakTypes">[docs]</a>
+<span class="k">class</span> <span class="nc">LineBreakTypes</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Docstring for LineBreakTypes.&quot;&quot;&quot;</span>
+    <span class="n">LINE_SINGLE</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">LINE_DOUBLE</span> <span class="o">=</span> <span class="mf">2.0</span></div>
+
+
+
+<div class="viewcode-block" id="AutoCaptionSettings">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.AutoCaptionSettings.html#pybmd.settings.AutoCaptionSettings">[docs]</a>
+<span class="k">class</span> <span class="nc">AutoCaptionSettings</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Setting object for AutoCaptionSettings</span>
+<span class="sd">    Args:</span>
+<span class="sd">        subtitle_language: LanguageID</span>
+<span class="sd">        subtitle_caption_preset: PresetType</span>
+<span class="sd">        subtitle_chars_per_line: int</span>
+<span class="sd">        subtitle_line_break: LineBreakTypes</span>
+<span class="sd">        subtitle_gap: int</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AutoCaptionSettings.__init__">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.AutoCaptionSettings.__init__.html#pybmd.settings.AutoCaptionSettings.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">subtitle_language</span><span class="p">:</span> <span class="n">LanguageID</span> <span class="o">=</span> <span class="n">LanguageID</span><span class="o">.</span><span class="n">AUTO</span><span class="p">,</span>
+                 <span class="n">subtitle_caption_preset</span><span class="p">:</span> <span class="n">PresetType</span> <span class="o">=</span> <span class="n">PresetType</span><span class="o">.</span><span class="n">SUBTITLE_DEFAULT</span><span class="p">,</span>
+                 <span class="n">subtitle_chars_per_line</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+                 <span class="n">subtitle_line_break</span><span class="p">:</span> <span class="n">LineBreakTypes</span> <span class="o">=</span> <span class="n">LineBreakTypes</span><span class="o">.</span><span class="n">LINE_SINGLE</span><span class="p">,</span>
+                 <span class="n">subtitle_gap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_language</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">0.0</span><span class="p">,</span> <span class="n">subtitle_language</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_caption_preset</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">1.0</span><span class="p">,</span> <span class="n">subtitle_caption_preset</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_chars_per_line</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">2.0</span><span class="p">,</span> <span class="n">subtitle_chars_per_line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_line_break</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">3.0</span><span class="p">,</span> <span class="n">subtitle_line_break</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_gap</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">subtitle_gap</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">subtitle_language</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_language</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@subtitle_language</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">subtitle_language</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="n">LanguageID</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_language</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">0.0</span><span class="p">,</span> <span class="n">language</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">subtitle_caption_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_caption_preset</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@subtitle_caption_preset</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">subtitle_caption_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset</span><span class="p">:</span> <span class="n">PresetType</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_caption_preset</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">1.0</span><span class="p">,</span> <span class="n">preset</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">subtitle_chars_per_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_chars_per_line</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@subtitle_chars_per_line</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">subtitle_chars_per_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_chars_per_line</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">2.0</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">subtitle_line_break</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_line_break</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@subtitle_line_break</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">subtitle_line_break</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_break_type</span><span class="p">:</span> <span class="n">LineBreakTypes</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_line_break</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
+            <span class="mf">3.0</span><span class="p">,</span> <span class="n">line_break_type</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">subtitle_gap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_gap</span><span class="o">.</span><span class="n">parameter_value</span>
+
+    <span class="nd">@subtitle_gap</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">subtitle_gap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_gap</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AutoCaptionSettings.asdict">
+<a class="viewcode-back" href="../../_autosummary/pybmd.settings.AutoCaptionSettings.asdict.html#pybmd.settings.AutoCaptionSettings.asdict">[docs]</a>
+    <span class="k">def</span> <span class="nf">asdict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return dict of setting parameters</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict[float, Any]: returned dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_language</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_language</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_caption_preset</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_caption_preset</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_chars_per_line</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_chars_per_line</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_line_break</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_line_break</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_gap</span><span class="o">.</span><span class="n">parameter_index</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtitle_gap</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">}</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, Wheheo Hu.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

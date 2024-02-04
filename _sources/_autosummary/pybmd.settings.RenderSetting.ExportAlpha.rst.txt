@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.ExportAlpha
+========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.ExportAlpha

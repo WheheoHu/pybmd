@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.EncodingProfile
+============================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.EncodingProfile

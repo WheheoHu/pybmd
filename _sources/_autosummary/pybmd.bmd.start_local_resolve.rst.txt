@@ -1,0 +1,6 @@
+pybmd.bmd.start\_local\_resolve
+===============================
+
+.. currentmodule:: pybmd.bmd
+
+.. autofunction:: start_local_resolve

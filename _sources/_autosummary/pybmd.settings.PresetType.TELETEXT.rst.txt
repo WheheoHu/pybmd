@@ -1,0 +1,6 @@
+pybmd.settings.PresetType.TELETEXT
+==================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: PresetType.TELETEXT

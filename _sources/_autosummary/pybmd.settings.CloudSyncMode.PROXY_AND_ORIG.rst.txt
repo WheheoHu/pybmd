@@ -1,0 +1,6 @@
+pybmd.settings.CloudSyncMode.PROXY\_AND\_ORIG
+=============================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudSyncMode.PROXY_AND_ORIG

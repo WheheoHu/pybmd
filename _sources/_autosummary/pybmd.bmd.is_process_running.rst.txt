@@ -1,0 +1,6 @@
+pybmd.bmd.is\_process\_running
+==============================
+
+.. currentmodule:: pybmd.bmd
+
+.. autofunction:: is_process_running

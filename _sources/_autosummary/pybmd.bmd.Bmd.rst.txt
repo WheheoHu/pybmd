@@ -54,7 +54,6 @@ Bmd
       :toctree:
    
       ~Bmd.APP_NAME
-      ~Bmd.IP_ADDRESS
       ~Bmd.local_davinci
    
    

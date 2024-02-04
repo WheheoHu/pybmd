@@ -27,7 +27,7 @@ Timeline
       ~Timeline.apply_grade_from_drx
       ~Timeline.create_compound_clip
       ~Timeline.create_fusion_clip
-      ~Timeline.create_subtitle_from_audio
+      ~Timeline.create_subtitles_from_audio
       ~Timeline.delete_clips
       ~Timeline.delete_marker_at_frame
       ~Timeline.delete_marker_by_color

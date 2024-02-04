@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.UniqueFilenameStyle
+================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.UniqueFilenameStyle
