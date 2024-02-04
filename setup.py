@@ -13,6 +13,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/WheheoHu/pybmd",
     packages=setuptools.find_packages(),
+    install_requires=[
+          'psutil',
+      ],
     classifiers=[
         "Programming Language :: Python :: 3.10",
         "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
