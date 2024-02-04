@@ -35,7 +35,9 @@ jobs:
         pip install -r requirements.txt
  
     - name: Build package
-      run: python -m build
+      run: |
+        pip install -r requirements.txt
+        python -m build
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
