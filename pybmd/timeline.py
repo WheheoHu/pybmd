@@ -482,4 +482,11 @@ class Timeline():
     
     ##############################################################################################################################
     # Add at DR18.6.4
+    def convert_timeline_to_stereo(self) -> bool:
+        """Converts timeline to stereo.
+
+        Returns:
+            bool: Returns True if successful; False otherwise.
+        """        
+        return self.timeline.ConvertTimelineToStereo()
     

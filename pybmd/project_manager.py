@@ -1,6 +1,8 @@
 from os import path
 from pybmd.project import Project
 from typing import TYPE_CHECKING, Dict, List
+
+from pybmd.settings import CloudProjectsSetting
 if TYPE_CHECKING:
     from pybmd.bmd import Bmd
 
@@ -151,8 +153,40 @@ class ProjectManager:
 
     ##############################################################################################################################
     #Add at DR18.6.4
-    def create_cloud_project(self,cloud_setting) -> Project:
-        return Project(self.project_manager.CreateCloudProject(cloud_setting))
+    def create_cloud_project(self,cloud_setting:CloudProjectsSetting) -> Project:
+        """Creates and returns a cloud project.
+
+        Args:
+            cloud_setting (CloudProjectsSetting):  settings for the cloud project
+
+        Returns:
+            Project: returns a cloud project
+        """        
+        return Project(self.project_manager.CreateCloudProject(cloud_setting.asdict()))
+    
+    def import_cloud_project(self,file_path:str,cloud_setting:CloudProjectsSetting) -> bool:
+        """
+
+        Args:
+            file_path (str): filePath of file to import
+            cloud_setting (CloudProjectsSetting): setting for the cloud project
+
+        Returns:
+            bool: Returns True if import cloud project is successful; False otherwise
+        """        
+        return self.project_manager.ImportCloudProject(file_path,cloud_setting.asdict())
+    
+    def restore_cloud_project(self,folder_path:str,cloud_setting:CloudProjectsSetting) -> bool:
+        """
+
+        Args:
+            folder_path (str): path of folder to restore
+            cloud_setting (CloudProjectsSetting): setting for the cloud project
+
+        Returns:
+            bool: Returns True if restore cloud project is successful; False otherwise
+        """        
+        return self.project_manager.RestoreCloudProject(folder_path,cloud_setting.asdict())
     
 # More function BELOW!
 

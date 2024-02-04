@@ -291,9 +291,23 @@ class MediaPool():
 
         Args:
             file_path (str): file path to DRB file
-            source_clips_path (str): sourceClipsPath is a string that specifies a filesystem path to search for source clips if the media is inaccessible in their original path, empty by default
+            source_clips_path (str): sourceClipsPath is a tring that specifies a filesystem path to search for source clips if the media is inaccessible in their original path, empty by default
 
         Returns:
             bool: Returns true if import from given DRB filePath is successful, false otherwise
         """
         return self.media_pool.ImportFolderFromFile(file_path, source_clips_path)
+
+    ##########################################################################################################################
+    # Add at DR18.6.4
+    def create_stereo_clip(self, left_media_pool_item: MediaPoolItem, right_media_pool_item: MediaPoolItem) -> MediaPoolItem:
+        """Takes in two existing media pool items and creates a new 3D stereoscopic media pool entry replacing the input media in the media pool.
+
+        Args:
+            left_media_pool_item (MediaPoolItem): left media pool item
+            right_media_pool_item (MediaPoolItem): right media pool item
+
+        Returns:
+            MediaPoolItem: 3D stereoscopic media pool entry
+        """
+        return MediaPoolItem(self.media_pool.CreateStereoClip(left_media_pool_item, right_media_pool_item))

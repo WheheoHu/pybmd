@@ -50,5 +50,22 @@ class Folder():
             bool: Returns true if export of DRB folder to filePath is successful, false otherwise
         """        
         return self.folder.Export(file_path)   
+    ###########################################################################
+    #Add at DR18.6.4
+    def transcribe_audio(self) -> bool:
+        """Transcribes audio of the MediaPoolItems within the folder and nested folders.
+
+        Returns:
+            bool: Returns True if successful; False otherwise
+        """        
+        return self.folder.TranscribeAudio()
+    
+    def clear_transcription(self) -> bool:
+        """Clears audio transcription of the MediaPoolItems within the folder and nested folders.
+
+        Returns:
+            bool: Returns True if successful; False otherwise.
+        """        
+        return self.folder.ClearTranscription()
     
     

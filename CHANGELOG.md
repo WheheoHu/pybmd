@@ -69,6 +69,27 @@
 ----
 # 2023.4.1
 ## GalleryStillAlbum
-- modify `delete_stills`
+- Modify `delete_stills`
 
 ---
+
+# 2024.1.1
+## ProjectManager
+- Add `create_cloud_project`
+- Add `import_cloud_project`
+- Add `restore_cloud_project`
+
+## MediaPool
+- Add `create_stereo_clip`
+
+## Folder
+- Add `transcribe_audio`
+- Add `clear_transcription`
+
+## Timeline
+- Modify `create_subtitle_from_audio`
+- Add `convert_timeline_to_stereo`
+
+## MISC
+- Add settings module
+- Auto start davinci resolve if not running (optional)
