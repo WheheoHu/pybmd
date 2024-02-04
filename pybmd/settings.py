@@ -96,12 +96,12 @@ class CloudProjectsSetting():
             cloud_setting_is_camera_access (bool, optional): camera access mode. Defaults to False.
             
         Examples:
-            >> from pybmd.settings import CloudProjectsSetting,CloudSyncMode
-            >> settings=CloudProjectsSetting()
-            >> print(settings.asdict())
+            >>> from pybmd.settings import CloudProjectsSetting,CloudSyncMode
+            >>> settings=CloudProjectsSetting()
+            >>> print(settings.asdict())
             {0.0: '', 1.0: '', 2.0: False, 3.0: 1.0, 4.0: False}
-            >> settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_ONLY
-            >> print(settings.asdict()) 
+            >>> settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_ONLY
+            >>> print(settings.asdict()) 
             {0.0: '', 1.0: '', 2.0: False, 3.0: 1.0, 4.0: False}
         """        
         self.__cloud_setting_project_name = SettingParameter(
