@@ -974,13 +974,15 @@ document.write(`
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>&gt;&gt; from pybmd.settings import CloudProjectsSetting,CloudSyncMode
-&gt;&gt; settings=CloudProjectsSetting()
-&gt;&gt; print(settings.asdict())
-{0.0: ‘’, 1.0: ‘’, 2.0: False, 3.0: 1.0, 4.0: False}
-&gt;&gt; settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_ONLY
-&gt;&gt; print(settings.asdict())
-{0.0: ‘’, 1.0: ‘’, 2.0: False, 3.0: 1.0, 4.0: False}</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">CloudProjectsSetting</span><span class="p">,</span><span class="n">CloudSyncMode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">=</span><span class="n">CloudProjectsSetting</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">asdict</span><span class="p">())</span>
+<span class="go">{0.0: &#39;&#39;, 1.0: &#39;&#39;, 2.0: False, 3.0: 1.0, 4.0: False}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">.</span><span class="n">cloud_setting_sync_mode</span><span class="o">=</span><span class="n">CloudSyncMode</span><span class="o">.</span><span class="n">PROXY_ONLY</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">asdict</span><span class="p">())</span>
+<span class="go">{0.0: &#39;&#39;, 1.0: &#39;&#39;, 2.0: False, 3.0: 1.0, 4.0: False}</span>
+</pre></div>
+</div>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>

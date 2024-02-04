@@ -456,12 +456,12 @@ document.write(`
 <span class="sd">            cloud_setting_is_camera_access (bool, optional): camera access mode. Defaults to False.</span>
 <span class="sd">            </span>
 <span class="sd">        Examples:</span>
-<span class="sd">            &gt;&gt; from pybmd.settings import CloudProjectsSetting,CloudSyncMode</span>
-<span class="sd">            &gt;&gt; settings=CloudProjectsSetting()</span>
-<span class="sd">            &gt;&gt; print(settings.asdict())</span>
+<span class="sd">            &gt;&gt;&gt; from pybmd.settings import CloudProjectsSetting,CloudSyncMode</span>
+<span class="sd">            &gt;&gt;&gt; settings=CloudProjectsSetting()</span>
+<span class="sd">            &gt;&gt;&gt; print(settings.asdict())</span>
 <span class="sd">            {0.0: &#39;&#39;, 1.0: &#39;&#39;, 2.0: False, 3.0: 1.0, 4.0: False}</span>
-<span class="sd">            &gt;&gt; settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_ONLY</span>
-<span class="sd">            &gt;&gt; print(settings.asdict()) </span>
+<span class="sd">            &gt;&gt;&gt; settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_ONLY</span>
+<span class="sd">            &gt;&gt;&gt; print(settings.asdict()) </span>
 <span class="sd">            {0.0: &#39;&#39;, 1.0: &#39;&#39;, 2.0: False, 3.0: 1.0, 4.0: False}</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
         <span class="bp">self</span><span class="o">.</span><span class="n">__cloud_setting_project_name</span> <span class="o">=</span> <span class="n">SettingParameter</span><span class="p">(</span>
