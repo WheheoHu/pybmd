@@ -150,7 +150,10 @@ class ProjectManager:
         return self.project_manager.ArchiveProject(project_name, file_path, is_archive_src_media, is_archive_render_cache, is_archive_proxy_media)
 
     ##############################################################################################################################
-
+    #Add at DR18.6.4
+    def create_cloud_project(self,cloud_setting) -> Project:
+        return Project(self.project_manager.CreateCloudProject(cloud_setting))
+    
 # More function BELOW!
 
     def database_info(self, _DbType, _DbName, _IpAddress='127.0.0.1') -> dict:

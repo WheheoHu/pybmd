@@ -4,6 +4,9 @@ import importlib.machinery
 import importlib.util
 from os import path
 import sys
+import subprocess
+import platform
+import psutil 
 
 from pybmd.error import *
 from pybmd.media_storage import MediaStorage
@@ -19,7 +22,31 @@ def load_dynamic(module_name, module_path: str):
     # spec.loader.exec_module(module)
 
     return module
+def is_process_running(process_name):
+    for process in psutil.process_iter(['pid', 'name']):
+        if process.info['name'] == process_name:
+            return True
+    return False
 
+def start_local_resolve():
+    app_name_mac = "Resolve"
+    app_name_win = "Resolve.exe"
+    try:
+        if is_process_running(app_name_mac) or is_process_running(app_name_win):
+            print(f"Davinci Resolve is already running.")
+        else:
+            if platform.system() == 'Darwin':  # macOS
+                subprocess.run(['open', '-a', '/Applications/DaVinci Resolve/DaVinci Resolve.app'])
+                print("Opened DaVinci Resolve successfully on macOS!")
+            elif platform.system() == 'Windows':  # Windows
+                resolve_path = r"C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe"
+                subprocess.Popen(resolve_path)
+                print("Opened DaVinci Resolve successfully on Windows!")
+            else:
+                print("Unsupported operating system.")
+            
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 class Default_LIB_PATH(Enum):
     LIB_Windows = "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\fusionscript.dll"
@@ -36,13 +63,21 @@ class Bmd:
     elif sys.platform.startswith("win"):
         PYLIB = Default_LIB_PATH.LIB_Windows.value
     APP_NAME = 'Resolve'
-    IP_ADDRESS = '127.0.0.1'
+
 
     local_davinci = None
 
-    def __init__(self, resolve_ip=IP_ADDRESS):
-        """Initializes the BMD object."""
-        self.local_davinci = self.init_davinci(davinci_ip=resolve_ip)
+    def __init__(self, resolve_ip:str='127.0.0.1',auto_start:bool=False):
+        """Init Davinci Resolve Object
+
+        Args:
+            resolve_ip (str, optional): davinci resolve ip. Defaults to 127.0.0.1.
+            auto_start (bool, optional): pen davinci automatically if it's not running, if you want to open davinci manually, change arg to false. Defaults to True.
+
+        Raises:
+            ResolveInitError: davinci resolve init failed.you need to check if davinci resolve is running.
+        """
+        self.local_davinci = self.init_davinci(davinci_ip=resolve_ip,auto_start=auto_start)
         if self.local_davinci is None:
             raise ResolveInitError
 
@@ -86,14 +121,66 @@ class Bmd:
         self.EXPORT_CDL = self.local_davinci.EXPORT_CDL
         self.EXPORT_SDL = self.local_davinci.EXPORT_SDL
         self.EXPORT_MISSING_CLIPS = self.local_davinci.EXPORT_MISSING_CLIPS
-
-    def init_davinci(self, davinci_ip):
+        
+        
+        self.CLOUD_SETTING_PROJECT_NAME=self.local_davinci.CLOUD_SETTING_PROJECT_NAME
+        self.CLOUD_SETTING_PROJECT_MEDIA_PATH=self.local_davinci.CLOUD_SETTING_PROJECT_MEDIA_PATH
+        self.CLOUD_SETTING_IS_COLLAB=self.local_davinci.CLOUD_SETTING_IS_COLLAB
+        self.CLOUD_SETTING_SYNC_MODE=self.local_davinci.CLOUD_SETTING_SYNC_MODE
+        self.CLOUD_SETTING_IS_CAMERA_ACCESS=self.local_davinci.CLOUD_SETTING_IS_CAMERA_ACCESS
+        
+        self.CLOUD_SYNC_NONE=self.local_davinci.CLOUD_SYNC_NONE
+        self.CLOUD_SYNC_PROXY_ONLY=self.local_davinci.CLOUD_SYNC_PROXY_ONLY
+        self.CLOUD_SYNC_PROXY_AND_ORIG=self.local_davinci.CLOUD_SYNC_PROXY_AND_ORIG
+        
+        
+        self.SUBTITLE_LANGUAGE=self.local_davinci.SUBTITLE_LANGUAGE
+        self.SUBTITLE_CAPTION_PRESET=self.local_davinci.SUBTITLE_CAPTION_PRESET
+        self.SUBTITLE_CHARS_PER_LINE=self.local_davinci.SUBTITLE_CHARS_PER_LINE
+        self.SUBTITLE_LINE_BREAK=self.local_davinci.SUBTITLE_LINE_BREAK
+        self.SUBTITLE_GAP=self.local_davinci.SUBTITLE_GAP
+        
+        
+        self.AUTO_CAPTION_AUTO=self.local_davinci.AUTO_CAPTION_AUTO
+        self.AUTO_CAPTION_DANISH=self.local_davinci.AUTO_CAPTION_DANISH
+        self.AUTO_CAPTION_DUTCH=self.local_davinci.AUTO_CAPTION_DUTCH
+        self.AUTO_CAPTION_ENGLISH=self.local_davinci.AUTO_CAPTION_ENGLISH
+        self.AUTO_CAPTION_FRENCH=self.local_davinci.AUTO_CAPTION_FRENCH
+        self.AUTO_CAPTION_GERMAN=self.local_davinci.AUTO_CAPTION_GERMAN
+        self.AUTO_CAPTION_ITALIAN=self.local_davinci.AUTO_CAPTION_ITALIAN
+        self.AUTO_CAPTION_JAPANESE=self.local_davinci.AUTO_CAPTION_JAPANESE
+        self.AUTO_CAPTION_KOREAN=self.local_davinci.AUTO_CAPTION_KOREAN
+        self.AUTO_CAPTION_MANDARIN_SIMPLIFIED=self.local_davinci.AUTO_CAPTION_MANDARIN_SIMPLIFIED
+        self.AUTO_CAPTION_MANDARIN_TRADITIONAL=self.local_davinci.AUTO_CAPTION_MANDARIN_TRADITIONAL
+        self.AUTO_CAPTION_NORWEGIAN=self.local_davinci.AUTO_CAPTION_NORWEGIAN
+        self.AUTO_CAPTION_PORTUGUESE=self.local_davinci.AUTO_CAPTION_PORTUGUESE
+        self.AUTO_CAPTION_RUSSIAN=self.local_davinci.AUTO_CAPTION_RUSSIAN
+        self.AUTO_CAPTION_SPANISH=self.local_davinci.AUTO_CAPTION_SPANISH
+        self.AUTO_CAPTION_SWEDISH=self.local_davinci.AUTO_CAPTION_SWEDISH
+        
+        
+        
+        self.AUTO_CAPTION_SUBTITLE_DEFAULT=self.local_davinci.AUTO_CAPTION_SUBTITLE_DEFAULT
+        self.AUTO_CAPTION_TELETEXT=self.local_davinci.AUTO_CAPTION_TELETEXT
+        self.AUTO_CAPTION_NETFLIX=self.local_davinci.AUTO_CAPTION_NETFLIX
+        
+       
+        self.AUTO_CAPTION_LINE_SINGLE=self.local_davinci.AUTO_CAPTION_LINE_SINGLE
+        self.AUTO_CAPTION_LINE_DOUBLE=self.local_davinci.AUTO_CAPTION_LINE_DOUBLE
+        
+        
+        
+        
+    def init_davinci(self, davinci_ip,auto_start):
         """init and return Davinci Resolve object
 
         Args:
             davinci_ip (str, optional): Default value is local (127.0.0.1).
 
         """
+        if(auto_start):
+            start_local_resolve()
+            
         bmd_module = load_dynamic(
             module_name='fusionscript', module_path=self.PYLIB)
         return bmd_module.scriptapp(self.APP_NAME, davinci_ip)

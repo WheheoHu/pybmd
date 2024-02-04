@@ -1,63 +1,16 @@
 
 
 from dataclasses import asdict
-from dataclasses import dataclass
 from typing import Any, Dict, List
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
 
 from pybmd.timeline import Timeline
-
+from pybmd.settings import RenderSetting
 
 RenderResolution = List[dict]
 
 
-@dataclass
-class RenderSetting():
-    """RenderSetting Object to store render setting."""
-    SelectAllFrames: bool
-    MarkIn: int
-    MarkOut: int
-    TargetDir: str
-    CustomName: str
-    UniqueFilenameStyle: int  # 0 for prefix, 1 for suffix
-    ExportVideo: bool
-    ExportAudio: bool
-    FormatWidth: int
-    FormatHeight: int
-    FrameRate: float
-
-    # (for SD resolution: "16_9" or "4_3") (other resolutions: "square" or "cinemascope")
-    PixelAspectRatio: str
-
-    #  possible values for current codec (if applicable):
-    #  0(int) - will set quality to automatic
-    # [1 -> MAX] (int) - will set input bit rate
-    # ["Least", "Low", "Medium", "High", "Best"] (String) - will set input quality level
-    VideoQuality: Any
-
-    AudioCodec: str
-    AudioBitDepth: int
-    AudioSampleRate: int
-
-    # example: "Same as Project", "AstroDesign"
-    ColorSpaceTag: str
-
-    # example: "Same as Project", "ACEScct"
-    GammaTag: str
-    ExportAlpha: bool
-
-    # (example: "Main10"). Can only be set for H.264 and H.265.
-    EncodingProfile: str
-
-    # Can onlt be set for H.264.
-    MultiPassEncode: bool
-
-    # 0 - Premultipled, 1 - Straight. Can only be set if "ExportAlpha" is true.
-    AlphaMode: int
-
-    # Only supported by QuickTime and MP4 formats.
-    NetworkOptimization: bool
 
 
 class Project():

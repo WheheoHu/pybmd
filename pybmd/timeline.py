@@ -3,6 +3,7 @@ from os import path
 from typing import List
 
 from pybmd.gallery_still import GalleryStill
+from pybmd.settings import AutoCaptionSettings
 from pybmd.timeline_item import TimelineItem
 
 
@@ -462,13 +463,14 @@ class Timeline():
         """
         return self.timeline.SetClipsLinked([timeline_item.timeline_item for timeline_item in timeline_items], is_linked)
 
-    def create_subtitle_from_audio(self) -> bool:
+    def create_subtitles_from_audio(self,auto_caption_settings:AutoCaptionSettings) -> bool:
+        #Modified at DR 18.6.4
         """Creates subtitles from audio for the timeline. 
 
         Returns:
             bool: Returns True on success, False otherwise.
         """
-        return self.timeline.CreateSubtitleFromAudio()
+        return self.timeline.CreateSubtitlesFromAudio(auto_caption_settings.asdict())
     
     def detect_scene_cuts(self) -> bool:
         """Detects and makes scene cuts along the timeline. 
@@ -477,3 +479,7 @@ class Timeline():
             bool: Returns True if successful, False otherwise.
         """
         return self.timeline.DetectSceneCuts()  
+    
+    ##############################################################################################################################
+    # Add at DR18.6.4
+    
