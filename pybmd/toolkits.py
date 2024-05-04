@@ -193,7 +193,7 @@ class StillManager(object):
         except Exception as e:
             logger.info(f"Folder {export_path} already exist")
         else:
-            logger.info(f"create folder : {export_path}")
+            logger.info(f"Create folder : {export_path}")
         wildcard_pattern=re.compile(r"\$(\w+)\$")
         wildcard_matchs=wildcard_pattern.findall(file_name_format)
         file_name_template=re.sub(wildcard_pattern, r'{\1}', file_name_format)
@@ -239,7 +239,7 @@ class StillManager(object):
                 continue
             
         if remove_count != 0:
-            logger.info(f'delete {remove_count} drx files')
+            logger.info(f'Delete {remove_count} drx files')
         
         
 
