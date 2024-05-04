@@ -187,7 +187,7 @@ class StillManager(object):
             self.marker_still_list.append(marker_still)
             time.sleep(grab_sleep_time)
 
-    def export_stills(self, export_path:str ,file_name_format:str="$file_name$",format:StillFormat=StillFormat.TIF,clean_dpx:bool=True):
+    def export_stills(self, export_path:str ,file_name_format:str="$file_name$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True):
         try:
             os.makedirs(export_path)
         except Exception as e:
@@ -212,9 +212,9 @@ class StillManager(object):
         stills=self._still_album.get_stills()
         self._still_album.delete_stills(stills)
         
-        self.rename_still(export_path)
+        self.rename_still(export_path,clean_drx)
     
-    def rename_still(self,still_file_path:str,clean_dpx:bool=True):
+    def rename_still(self,still_file_path:str,clean_drx:bool=True):
         remove_count=0
         for f in os.listdir(still_file_path):
             if f == '.DS_Store':
@@ -223,7 +223,7 @@ class StillManager(object):
             file_extention=os.path.splitext(f)[1]
 
             #remove drx file
-            if file_extention == '.drx' and clean_dpx:
+            if file_extention == '.drx' and clean_drx:
                 os.remove(os.path.join(still_file_path,f))
                 remove_count+=1
                 continue
