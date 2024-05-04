@@ -15,6 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
           'psutil',
+          'dftt-timecode'
       ],
     classifiers=[
         "Programming Language :: Python :: 3.10",
