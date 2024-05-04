@@ -1,6 +1,0 @@
-pybmd.toolkits.change\_timeline\_resolution
-===========================================
-
-.. currentmodule:: pybmd.toolkits
-
-.. autofunction:: change_timeline_resolution

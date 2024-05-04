@@ -35,6 +35,7 @@
    pybmd.gallery
    pybmd.gallery_still
    pybmd.gallery_still_album
+   pybmd.logging_config
    pybmd.media_pool
    pybmd.media_pool_item
    pybmd.media_storage

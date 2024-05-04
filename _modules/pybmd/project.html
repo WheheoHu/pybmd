@@ -342,9 +342,7 @@ document.write(`
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.project</h1><div class="highlight"><pre>
-<span></span>
-
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 <span class="kn">from</span> <span class="nn">pybmd.gallery</span> <span class="kn">import</span> <span class="n">Gallery</span>
 <span class="kn">from</span> <span class="nn">pybmd.media_pool</span> <span class="kn">import</span> <span class="n">MediaPool</span>
@@ -424,8 +422,13 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_current_timeline.html#pybmd.project.Project.get_current_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timeline</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the currently loaded Timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetCurrentTimeline</span><span class="p">())</span></div>
+        <span class="n">current_timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetCurrentTimeline</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">current_timeline</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetCurrentTimeline</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;No current timeline,Please open a timeline&quot;</span><span class="p">)</span></div>
 
+        
 
 <div class="viewcode-block" id="Project.get_gallery">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_gallery.html#pybmd.project.Project.get_gallery">[docs]</a>

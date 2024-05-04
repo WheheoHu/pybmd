@@ -1,0 +1,6 @@
+pybmd.gallery\_still\_album.StillFormat.TIF
+===========================================
+
+.. currentmodule:: pybmd.gallery_still_album
+
+.. autoattribute:: StillFormat.TIF

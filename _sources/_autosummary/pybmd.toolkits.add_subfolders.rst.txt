@@ -1,6 +1,0 @@
-pybmd.toolkits.add\_subfolders
-==============================
-
-.. currentmodule:: pybmd.toolkits
-
-.. autofunction:: add_subfolders

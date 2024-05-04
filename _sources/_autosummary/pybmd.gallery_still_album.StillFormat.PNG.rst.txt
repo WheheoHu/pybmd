@@ -1,0 +1,6 @@
+pybmd.gallery\_still\_album.StillFormat.PNG
+===========================================
+
+.. currentmodule:: pybmd.gallery_still_album
+
+.. autoattribute:: StillFormat.PNG

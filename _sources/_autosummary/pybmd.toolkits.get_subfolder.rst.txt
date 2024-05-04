@@ -1,6 +1,0 @@
-pybmd.toolkits.get\_subfolder
-=============================
-
-.. currentmodule:: pybmd.toolkits
-
-.. autofunction:: get_subfolder

@@ -20,7 +20,7 @@ gallery\_still\_album
       :template: class.rst
    
       GalleryStillAlbum
-      StillFormats
+      StillFormat
    
    
 

@@ -1,6 +1,0 @@
-pybmd.gallery\_still\_album.StillFormats.PPM
-============================================
-
-.. currentmodule:: pybmd.gallery_still_album
-
-.. autoattribute:: StillFormats.PPM
