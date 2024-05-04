@@ -110,7 +110,7 @@ def add_subfolders(media_pool: MediaPool, folder: Folder, subfolder_path: str) -
 
 @dataclass
 class MarkerStill(object):
-    """Docstring for MarkerStill."""
+    """MarkerStill object contains still and it's properties"""
     still_obj: GalleryStill
     reel_name: str
     reel_number: int
@@ -147,6 +147,15 @@ class StillManager(object):
         temp_list=[marker_still.get_property() for marker_still in self.marker_still_list]
         return str(temp_list)
     def grab_still_from_timeline_markers(self, timeline: Timeline =None, grab_sleep_time: float = 0.5) -> List[MarkerStill]:
+        """grab stills from timeline markers.
+
+        Args:
+            timeline (Timeline, optional): timeline to grab stills. Defaults to None.
+            grab_sleep_time (float, optional): time to sleep between grab. Defaults to 0.5.
+
+        Returns:
+            List[MarkerStill]: _description_
+        """        
         if isinstance(timeline,Timeline) is False :
             timeline=self._timeline
         marker_list = timeline.get_markers()
@@ -188,6 +197,14 @@ class StillManager(object):
             time.sleep(grab_sleep_time)
 
     def export_stills(self, export_path:str ,file_name_format:str="$file_name$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True):
+        """export stills to given path
+
+        Args:
+            export_path (str): stills export path
+            file_name_format (str, optional): file name format. accept $file_name$,$reel_name$,$reel_number$,$frames$,$clip_frame_count$ as wildcard. Defaults to "$file_name$".
+            format (StillFormat, optional): exported stills format. Defaults to StillFormat.TIF.
+            clean_drx (bool, optional): clean drx files after stills exported. Defaults to True.
+        """
         try:
             os.makedirs(export_path)
         except Exception as e:
