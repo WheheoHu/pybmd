@@ -5,7 +5,7 @@ from pybmd.gallery_still import GalleryStill
 from enum import Enum
 
 
-class StillFormats(Enum):
+class StillFormat(Enum):
     """StillFormats"""
     DPX = "dpx"
     CIN = "cin"
@@ -28,7 +28,7 @@ class GalleryStillAlbum():
         gallery_still_list = [still.gallery_still for still in gallery_stills]
         return self.gallery_still_album.DeleteStills(gallery_still_list)
 
-    def export_stills(self, gallery_stills: List[GalleryStill], folder_path: str, file_prefix: str, format: StillFormats) -> bool:
+    def export_stills(self, gallery_stills: List[GalleryStill], folder_path: str, file_prefix: str, format: StillFormat) -> bool:
         """Exports list of GalleryStill objects 'galleryStill' to directory 'folderPath', with filename prefix 'filePrefix', using file format 'format' 
 
         Args:

@@ -1,5 +1,3 @@
-
-
 from dataclasses import asdict
 from typing import Any, Dict, List
 from pybmd.gallery import Gallery
@@ -55,7 +53,12 @@ class Project():
 
     def get_current_timeline(self) -> Timeline:
         """Returns the currently loaded Timeline."""
-        return Timeline(timeline=self.project.GetCurrentTimeline())
+        current_timeline = self.project.GetCurrentTimeline()
+        if current_timeline is not None:
+            return Timeline(self.project.GetCurrentTimeline())
+        else:
+            raise TypeError("No current timeline,Please open a timeline")
+        
 
     def get_gallery(self) -> Gallery:
         """Returns the Gallery object."""

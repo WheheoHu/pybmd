@@ -168,8 +168,8 @@ class Bmd:
         self.AUTO_CAPTION_LINE_SINGLE=self.local_davinci.AUTO_CAPTION_LINE_SINGLE
         self.AUTO_CAPTION_LINE_DOUBLE=self.local_davinci.AUTO_CAPTION_LINE_DOUBLE
         
-        
-        
+        global RESOLVE_VERSION
+        RESOLVE_VERSION=self.local_davinci.GetVersion()
         
     def init_davinci(self, davinci_ip,auto_start):
         """init and return Davinci Resolve object
