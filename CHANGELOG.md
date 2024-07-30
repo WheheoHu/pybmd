@@ -101,3 +101,8 @@
 # 2024.2.2
 ## toolkits
 - Fix some bugs in `StillManager`
+
+--------
+# 2024.2.3
+## StillManager
+- Change default `file_name_format` to `"$file_name$_$clip_frame_count$"` in `export_still`

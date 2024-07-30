@@ -205,7 +205,7 @@ class StillManager(object):
             self.marker_still_list.append(marker_still)
             time.sleep(grab_sleep_time)
 
-    def export_stills(self, export_path:str ,file_name_format:str="$file_name$_$frames$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True):
+    def export_stills(self, export_path:str ,file_name_format:str="$file_name$_$clip_frame_count$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True):
         """export stills to given path
 
         Args:
