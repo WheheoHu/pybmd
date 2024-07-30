@@ -14,28 +14,28 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=ae80b270"></script>
+    <script src="../_static/documentation_options.js?v=9978381a"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.gallery.Gallery.__init__';</script>
@@ -52,27 +52,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -94,18 +90,25 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -126,22 +129,22 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        API Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    API Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../samples.html">
-                        Samples
-                      </a>
-                    </li>
-                
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../samples.html">
+    Samples
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -155,7 +158,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -169,15 +172,15 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -188,7 +191,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -202,7 +205,7 @@ document.write(`
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -213,9 +216,9 @@ document.write(`
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
@@ -236,25 +239,28 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="../reference.html">
-                        API Reference
-                      </a>
-                    </li>
-                
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../reference.html">
+    API Reference
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../samples.html">
-                        Samples
-                      </a>
-                    </li>
-                
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../samples.html">
+    Samples
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -266,15 +272,15 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -285,7 +291,7 @@ document.write(`
           
           
           
-          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/WheheoHu/pybmd" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
@@ -300,12 +306,12 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="pybmd.html">pybmd</a><input checked class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.bmd.html">bmd</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="pybmd.html">pybmd</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.bmd.html">bmd</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="pybmd.bmd.is_process_running.html">pybmd.bmd.is_process_running</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pybmd.bmd.load_dynamic.html">pybmd.bmd.load_dynamic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pybmd.bmd.start_local_resolve.html">pybmd.bmd.start_local_resolve</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.bmd.Bmd.html">Bmd</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.bmd.Bmd.html">Bmd</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.bmd.Bmd.__init__.html">Bmd.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.bmd.Bmd.delete_layout_preset.html">Bmd.delete_layout_preset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.bmd.Bmd.export_burn_in_preset.html">Bmd.export_burn_in_preset</a></li>
@@ -331,21 +337,21 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.bmd.Bmd.APP_NAME.html">pybmd.bmd.Bmd.APP_NAME</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.bmd.Bmd.local_davinci.html">pybmd.bmd.Bmd.local_davinci</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.bmd.Default_LIB_PATH.html">Default_LIB_PATH</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.bmd.Default_LIB_PATH.html">Default_LIB_PATH</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.bmd.Default_LIB_PATH.LIB_Windows.html">pybmd.bmd.Default_LIB_PATH.LIB_Windows</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.bmd.Default_LIB_PATH.LIB_MAC.html">pybmd.bmd.Default_LIB_PATH.LIB_MAC</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.error.html">error</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.error.html">error</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="pybmd.error.ResolveInitError.html">pybmd.error.ResolveInitError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pybmd.error.ValueMappingError.html">pybmd.error.ValueMappingError</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.folder.html">folder</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.folder.Folder.html">Folder</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.folder.html">folder</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.folder.Folder.html">Folder</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.__init__.html">Folder.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.clear_transcription.html">Folder.clear_transcription</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.export.html">Folder.export</a></li>
@@ -356,18 +362,18 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.get_unique_id.html">Folder.get_unique_id</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.folder.Folder.transcribe_audio.html">Folder.transcribe_audio</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.fusion_comp.html">fusion_comp</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.fusion_comp.FusionComp.html">FusionComp</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.fusion_comp.html">fusion_comp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.fusion_comp.FusionComp.html">FusionComp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.fusion_comp.FusionComp.__init__.html">FusionComp.__init__</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="pybmd.gallery.html">gallery</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="pybmd.gallery.Gallery.html">Gallery</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="pybmd.gallery.html">gallery</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="pybmd.gallery.Gallery.html">Gallery</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">Gallery.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.get_album_name.html">Gallery.get_album_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.get_current_still_album.html">Gallery.get_current_still_album</a></li>
@@ -375,18 +381,18 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.set_album_name.html">Gallery.set_album_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.set_current_still_album.html">Gallery.set_current_still_album</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.gallery_still.html">gallery_still</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.gallery_still.GalleryStill.html">GalleryStill</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.gallery_still.html">gallery_still</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.gallery_still.GalleryStill.html">GalleryStill</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still.GalleryStill.__init__.html">GalleryStill.__init__</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.gallery_still_album.html">gallery_still_album</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.gallery_still_album.GalleryStillAlbum.html">GalleryStillAlbum</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.gallery_still_album.html">gallery_still_album</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.gallery_still_album.GalleryStillAlbum.html">GalleryStillAlbum</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.GalleryStillAlbum.__init__.html">GalleryStillAlbum.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.GalleryStillAlbum.delete_stills.html">GalleryStillAlbum.delete_stills</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.GalleryStillAlbum.export_stills.html">GalleryStillAlbum.export_stills</a></li>
@@ -394,8 +400,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.GalleryStillAlbum.get_stills.html">GalleryStillAlbum.get_stills</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.GalleryStillAlbum.set_label.html">GalleryStillAlbum.set_label</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.gallery_still_album.StillFormat.html">StillFormat</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.gallery_still_album.StillFormat.html">StillFormat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.StillFormat.DPX.html">pybmd.gallery_still_album.StillFormat.DPX</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.StillFormat.CIN.html">pybmd.gallery_still_album.StillFormat.CIN</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.StillFormat.TIF.html">pybmd.gallery_still_album.StillFormat.TIF</a></li>
@@ -405,12 +411,12 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.StillFormat.BMP.html">pybmd.gallery_still_album.StillFormat.BMP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery_still_album.StillFormat.XPM.html">pybmd.gallery_still_album.StillFormat.XPM</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="pybmd.logging_config.html">logging_config</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.media_pool.html">media_pool</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_pool.ClipInfo.html">ClipInfo</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.media_pool.html">media_pool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_pool.ClipInfo.html">ClipInfo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.ClipInfo.__init__.html">ClipInfo.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.ClipInfo.media_pool_item.html">pybmd.media_pool.ClipInfo.media_pool_item</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.ClipInfo.start_frame.html">pybmd.media_pool.ClipInfo.start_frame</a></li>
@@ -419,8 +425,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.ClipInfo.track_index.html">pybmd.media_pool.ClipInfo.track_index</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.ClipInfo.record_frame.html">pybmd.media_pool.ClipInfo.record_frame</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_pool.MediaPool.html">MediaPool</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_pool.MediaPool.html">MediaPool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.__init__.html">MediaPool.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.add_sub_folder.html">MediaPool.add_sub_folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.append_to_timeline.html">MediaPool.append_to_timeline</a></li>
@@ -447,8 +453,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.set_current_folder.html">MediaPool.set_current_folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.unlink_clips.html">MediaPool.unlink_clips</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_pool.TimelineImportOptions.html">TimelineImportOptions</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_pool.TimelineImportOptions.html">TimelineImportOptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.TimelineImportOptions.__init__.html">TimelineImportOptions.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.TimelineImportOptions.timeline_name.html">pybmd.media_pool.TimelineImportOptions.timeline_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.TimelineImportOptions.import_source_clips.html">pybmd.media_pool.TimelineImportOptions.import_source_clips</a></li>
@@ -456,11 +462,11 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.TimelineImportOptions.source_clips_folders.html">pybmd.media_pool.TimelineImportOptions.source_clips_folders</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.TimelineImportOptions.interlace_pricessing.html">pybmd.media_pool.TimelineImportOptions.interlace_pricessing</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.media_pool_item.html">media_pool_item</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.html">MediaPoolItem</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.media_pool_item.html">media_pool_item</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.html">MediaPoolItem</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.__init__.html">MediaPoolItem.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.add_flag.html">MediaPoolItem.add_flag</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.add_marker.html">MediaPoolItem.add_marker</a></li>
@@ -489,18 +495,18 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media.html">MediaPoolItem.unlink_proxy_media</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data.html">MediaPoolItem.updata_marker_custom_data</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.media_storage.html">media_storage</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_storage.Item_Info.html">Item_Info</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.media_storage.html">media_storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_storage.Item_Info.html">Item_Info</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.Item_Info.__init__.html">Item_Info.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.Item_Info.media.html">pybmd.media_storage.Item_Info.media</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.Item_Info.start_frame.html">pybmd.media_storage.Item_Info.start_frame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.Item_Info.end_frame.html">pybmd.media_storage.Item_Info.end_frame</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_storage.MediaStorage.html">MediaStorage</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_storage.MediaStorage.html">MediaStorage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.__init__.html">MediaStorage.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool.html">MediaStorage.add_clip_mattes_to_media_pool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool.html">MediaStorage.add_item_list_to_meida_pool</a></li>
@@ -511,11 +517,11 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.reveal_in_storage.html">MediaStorage.reveal_in_storage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.media_storage.html">pybmd.media_storage.MediaStorage.media_storage</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.project.html">project</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.project.Project.html">Project</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.project.html">project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.project.Project.html">Project</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.__init__.html">Project.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.add_render_job.html">Project.add_render_job</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.delete_all_render_jobs.html">Project.delete_all_render_jobs</a></li>
@@ -557,11 +563,11 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.project.html">pybmd.project.Project.project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.project_name.html">pybmd.project.Project.project_name</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.project_manager.html">project_manager</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.project_manager.ProjectManager.html">ProjectManager</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.project_manager.html">project_manager</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.project_manager.ProjectManager.html">ProjectManager</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.__init__.html">ProjectManager.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.archive_project.html">ProjectManager.archive_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.close_project.html">ProjectManager.close_project</a></li>
@@ -590,11 +596,11 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.set_current_database.html">ProjectManager.set_current_database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.project_manager.html">pybmd.project_manager.ProjectManager.project_manager</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.settings.html">settings</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.AutoCaptionSettings.html">AutoCaptionSettings</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-31"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.settings.html">settings</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.AutoCaptionSettings.html">AutoCaptionSettings</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.AutoCaptionSettings.__init__.html">AutoCaptionSettings.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.AutoCaptionSettings.asdict.html">AutoCaptionSettings.asdict</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.AutoCaptionSettings.subtitle_caption_preset.html">pybmd.settings.AutoCaptionSettings.subtitle_caption_preset</a></li>
@@ -603,8 +609,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.AutoCaptionSettings.subtitle_language.html">pybmd.settings.AutoCaptionSettings.subtitle_language</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.AutoCaptionSettings.subtitle_line_break.html">pybmd.settings.AutoCaptionSettings.subtitle_line_break</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.CloudProjectsSetting.html">CloudProjectsSetting</a><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-32"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.CloudProjectsSetting.html">CloudProjectsSetting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.CloudProjectsSetting.__init__.html">CloudProjectsSetting.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.CloudProjectsSetting.asdict.html">CloudProjectsSetting.asdict</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.CloudProjectsSetting.cloud_setting_is_camera_access.html">pybmd.settings.CloudProjectsSetting.cloud_setting_is_camera_access</a></li>
@@ -613,14 +619,14 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.CloudProjectsSetting.cloud_setting_project_name.html">pybmd.settings.CloudProjectsSetting.cloud_setting_project_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.CloudProjectsSetting.cloud_setting_sync_mode.html">pybmd.settings.CloudProjectsSetting.cloud_setting_sync_mode</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.CloudSyncMode.html">CloudSyncMode</a><input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-33"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.CloudSyncMode.html">CloudSyncMode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.CloudSyncMode.NONE.html">pybmd.settings.CloudSyncMode.NONE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.CloudSyncMode.PROXY_ONLY.html">pybmd.settings.CloudSyncMode.PROXY_ONLY</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.CloudSyncMode.PROXY_AND_ORIG.html">pybmd.settings.CloudSyncMode.PROXY_AND_ORIG</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.LanguageID.html">LanguageID</a><input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-34"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.LanguageID.html">LanguageID</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.LanguageID.AUTO.html">pybmd.settings.LanguageID.AUTO</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.LanguageID.DANISH.html">pybmd.settings.LanguageID.DANISH</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.LanguageID.DUTCH.html">pybmd.settings.LanguageID.DUTCH</a></li>
@@ -638,19 +644,19 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.LanguageID.SPANISH.html">pybmd.settings.LanguageID.SPANISH</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.LanguageID.SWEDISH.html">pybmd.settings.LanguageID.SWEDISH</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.LineBreakTypes.html">LineBreakTypes</a><input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-35"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.LineBreakTypes.html">LineBreakTypes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.LineBreakTypes.LINE_SINGLE.html">pybmd.settings.LineBreakTypes.LINE_SINGLE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.LineBreakTypes.LINE_DOUBLE.html">pybmd.settings.LineBreakTypes.LINE_DOUBLE</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.PresetType.html">PresetType</a><input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-36"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.PresetType.html">PresetType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.PresetType.SUBTITLE_DEFAULT.html">pybmd.settings.PresetType.SUBTITLE_DEFAULT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.PresetType.TELETEXT.html">pybmd.settings.PresetType.TELETEXT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.PresetType.NETFLIX.html">pybmd.settings.PresetType.NETFLIX</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.RenderSetting.html">RenderSetting</a><input class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-37"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.RenderSetting.html">RenderSetting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.RenderSetting.__init__.html">RenderSetting.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.RenderSetting.SelectAllFrames.html">pybmd.settings.RenderSetting.SelectAllFrames</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.RenderSetting.MarkIn.html">pybmd.settings.RenderSetting.MarkIn</a></li>
@@ -676,18 +682,18 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.RenderSetting.AlphaMode.html">pybmd.settings.RenderSetting.AlphaMode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.RenderSetting.NetworkOptimization.html">pybmd.settings.RenderSetting.NetworkOptimization</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.SettingParameter.html">SettingParameter</a><input class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-38"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.settings.SettingParameter.html">SettingParameter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.SettingParameter.__init__.html">SettingParameter.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.SettingParameter.parameter_index.html">pybmd.settings.SettingParameter.parameter_index</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.settings.SettingParameter.parameter_value.html">pybmd.settings.SettingParameter.parameter_value</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.timeline.html">timeline</a><input class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-39"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.timeline.html">timeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="pybmd.timeline.timeline_item_class_list_transfer.html">pybmd.timeline.timeline_item_class_list_transfer</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline.ImportOptions.html">ImportOptions</a><input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-40"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline.ImportOptions.html">ImportOptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.ImportOptions.__init__.html">ImportOptions.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.ImportOptions.autoImportSourceClipsIntoMediaPool.html">pybmd.timeline.ImportOptions.autoImportSourceClipsIntoMediaPool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.ImportOptions.ignoreFileExtensionsWhenMatching.html">pybmd.timeline.ImportOptions.ignoreFileExtensionsWhenMatching</a></li>
@@ -699,8 +705,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.ImportOptions.sourceClipsPath.html">pybmd.timeline.ImportOptions.sourceClipsPath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.ImportOptions.useSizingInfo.html">pybmd.timeline.ImportOptions.useSizingInfo</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.html">OptionalSubTrackType</a><input class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-41"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.html">OptionalSubTrackType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.MONO.html">pybmd.timeline.OptionalSubTrackType.MONO</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.STEREO.html">pybmd.timeline.OptionalSubTrackType.STEREO</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.FP1.html">pybmd.timeline.OptionalSubTrackType.FP1</a></li>
@@ -732,8 +738,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_23.html">pybmd.timeline.OptionalSubTrackType.ADAPTIVE_23</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.OptionalSubTrackType.ADAPTIVE_24.html">pybmd.timeline.OptionalSubTrackType.ADAPTIVE_24</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline.Timeline.html">Timeline</a><input class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-42"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline.Timeline.html">Timeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.__init__.html">Timeline.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.add_marker.html">Timeline.add_marker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.add_track.html">Timeline.add_track</a></li>
@@ -786,17 +792,17 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_track_name.html">Timeline.set_track_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.update_marker_custom_data.html">Timeline.update_marker_custom_data</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline.TrackType.html">TrackType</a><input class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-43"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline.TrackType.html">TrackType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.TrackType.AUDIO_TRACK.html">pybmd.timeline.TrackType.AUDIO_TRACK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.TrackType.VIDEO_TRACK.html">pybmd.timeline.TrackType.VIDEO_TRACK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.TrackType.SUBTITLE_TRACK.html">pybmd.timeline.TrackType.SUBTITLE_TRACK</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.timeline_item.html">timeline_item</a><input class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-44"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline_item.CDL_Map.html">CDL_Map</a><input class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-45"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.timeline_item.html">timeline_item</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline_item.CDL_Map.html">CDL_Map</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.CDL_Map.__init__.html">CDL_Map.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.CDL_Map.NodeIndex.html">pybmd.timeline_item.CDL_Map.NodeIndex</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.CDL_Map.Slope.html">pybmd.timeline_item.CDL_Map.Slope</a></li>
@@ -804,15 +810,15 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.CDL_Map.Power.html">pybmd.timeline_item.CDL_Map.Power</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.CDL_Map.Saturation.html">pybmd.timeline_item.CDL_Map.Saturation</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline_item.MagicMask_Mode.html">MagicMask_Mode</a><input class="toctree-checkbox" id="toctree-checkbox-46" name="toctree-checkbox-46" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-46"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline_item.MagicMask_Mode.html">MagicMask_Mode</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.MagicMask_Mode.__init__.html">MagicMask_Mode.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.MagicMask_Mode.Backward.html">pybmd.timeline_item.MagicMask_Mode.Backward</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.MagicMask_Mode.Bidirection.html">pybmd.timeline_item.MagicMask_Mode.Bidirection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.MagicMask_Mode.Forward.html">pybmd.timeline_item.MagicMask_Mode.Forward</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html">TimelineItem</a><input class="toctree-checkbox" id="toctree-checkbox-47" name="toctree-checkbox-47" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-47"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.html">TimelineItem</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.__init__.html">TimelineItem.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.add_flag.html">TimelineItem.add_flag</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.add_fusion_comp.html">TimelineItem.add_fusion_comp</a></li>
@@ -878,16 +884,16 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html">TimelineItem.stabilize</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.update_sidecar.html">TimelineItem.update_sidecar</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline_item.VersionType.html">VersionType</a><input class="toctree-checkbox" id="toctree-checkbox-48" name="toctree-checkbox-48" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-48"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.timeline_item.VersionType.html">VersionType</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.VersionType.LOCAL.html">pybmd.timeline_item.VersionType.LOCAL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.VersionType.REMOTE.html">pybmd.timeline_item.VersionType.REMOTE</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
+</details></li>
 </ul>
-</li>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -902,13 +908,13 @@ document.write(`
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -919,7 +925,7 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -958,10 +964,11 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.gallery.Gallery.__init__">
 <span class="sig-prename descclassname"><span class="pre">Gallery.</span></span><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gallery</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/gallery.html#Gallery.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.gallery.Gallery.__init__" title="Link to this definition">#</a></dt>
-<dd><table class="autosummary longtable table autosummary">
+<dd><div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 </tbody>
 </table>
+</div>
 </dd></dl>
 
 </section>
@@ -973,7 +980,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1038,8 +1045,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1059,7 +1066,7 @@ document.write(`
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
     <br/>
   </p>
 </div>
@@ -1072,7 +1079,7 @@ document.write(`
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
 </p></div>
       
     </div>
