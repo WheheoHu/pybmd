@@ -93,7 +93,11 @@
 ## MISC
 - Add settings module
 - Auto start davinci resolve if not running (optional)
-
+----
 # 2024.2.1
 ## toolkits
 - Add `StillManager` for grab and export still from timeline markers
+------
+# 2024.2.2
+## toolkits
+- Fix some bugs in `StillManager`

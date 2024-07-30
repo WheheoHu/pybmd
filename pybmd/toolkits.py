@@ -8,7 +8,7 @@ from typing import Dict, List
 
 from pybmd.gallery_still import GalleryStill
 from pybmd.gallery_still_album import StillFormat
-from .folder import Folder
+from pybmd.folder import Folder
 from pybmd.project import Project
 from pybmd.timeline import Timeline
 from pybmd.media_pool import MediaPool
@@ -130,18 +130,21 @@ logger=logging.getLogger()
 logger.propagate = False
 
 class StillManager(object):
-    """Grab stills from timeline markers"""
+    """all about stills from timeline markers"""
     _timeline: Timeline = None
-    _stills: Dict = {}
+    _stills: Dict = dict()
 
-    def __init__(self, project: Project):
+    def __init__(self, project: Project,default_timeline_framerate=24):
+        
         super(StillManager, self).__init__()
         self._project = project
         self._timeline = self._project.get_current_timeline()
         self._gallery=self._project.get_gallery()
         self._still_album=self._gallery.get_current_still_album()
         
-        self.marker_still_list:List[MarkerStill] = []
+        self._default_timeline_framerate=default_timeline_framerate
+        
+        self.marker_still_list:List[MarkerStill] = list()
 
     def __repr__(self):
         temp_list=[marker_still.get_property() for marker_still in self.marker_still_list]
@@ -161,9 +164,15 @@ class StillManager(object):
         marker_list = timeline.get_markers()
         logger.info(f'Timeline Marker Count:{len(marker_list)}')
         
-        timeline_framerate = int(
-            timeline.get_setting('timelinePlaybackFrameRate'))
-        logger.info(f'Timeline Framerate:{timeline_framerate}')
+        if timeline.get_setting('timelinePlaybackFrameRate'):
+            timeline_framerate = int(timeline.get_setting('timelinePlaybackFrameRate'))
+            logger.info(f'Timeline Framerate:{timeline_framerate}')
+        else:
+            timeline_framerate = self._default_timeline_framerate
+            logger.info(f'CAN NOT get timeline framerate because this timeline use custom timeline settings, use default_timeline_framerate :{timeline_framerate} instead ')
+            
+
+
         timeline_start_timecode = DfttTimecode(
             timeline.get_start_timecode(), 'auto', timeline_framerate)
 
@@ -196,7 +205,7 @@ class StillManager(object):
             self.marker_still_list.append(marker_still)
             time.sleep(grab_sleep_time)
 
-    def export_stills(self, export_path:str ,file_name_format:str="$file_name$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True):
+    def export_stills(self, export_path:str ,file_name_format:str="$file_name$_$frames$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True):
         """export stills to given path
 
         Args:
