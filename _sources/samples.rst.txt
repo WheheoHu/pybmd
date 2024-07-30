@@ -1,9 +1,9 @@
 Samples
 =========
+
+How to get current timeline name
+------------
 .. code-block:: python
-    """
-    How to get current timeline name
-    """
     from pybmd import Bmd
     LOCAL_RESOLVE = Bmd()
     #get current timeline
@@ -14,10 +14,9 @@ Samples
     current_timeline.get_name()
 
 
+How to use StillManager to grab a still from timeline markers
+________________
 .. code-block:: python
-    """
-    How to use StillManager to grab a still from timeline markers
-    """
     import pybmd
 
     EXPORT_PATH = "./Stills"
