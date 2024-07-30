@@ -359,12 +359,34 @@ document.write(`
                   
   <section id="samples">
 <h1>Samples<a class="headerlink" href="#samples" title="Link to this heading">#</a></h1>
-<section id="how-to-get-current-timeline-name">
-<h2>How to get current timeline name<a class="headerlink" href="#how-to-get-current-timeline-name" title="Link to this heading">#</a></h2>
-<section id="how-to-use-stillmanager-to-grab-a-still-from-timeline-markers">
-<h3>How to use StillManager to grab a still from timeline markers<a class="headerlink" href="#how-to-use-stillmanager-to-grab-a-still-from-timeline-markers" title="Link to this heading">#</a></h3>
-</section>
-</section>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">How to get current timeline name</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">pybmd</span> <span class="kn">import</span> <span class="n">Bmd</span>
+<span class="n">LOCAL_RESOLVE</span> <span class="o">=</span> <span class="n">Bmd</span><span class="p">()</span>
+<span class="c1">#get current timeline</span>
+<span class="n">project_manager</span><span class="o">=</span><span class="n">LOCAL_RESOLVE</span><span class="o">.</span><span class="n">get_project_manager</span><span class="p">()</span>
+<span class="n">current_project</span><span class="o">=</span><span class="n">project_manager</span><span class="o">.</span><span class="n">get_current_project</span><span class="p">()</span>
+<span class="n">current_timeline</span><span class="o">=</span><span class="n">current_project</span><span class="o">.</span><span class="n">get_current_timeline</span><span class="p">()</span>
+<span class="c1">#get timeline name</span>
+<span class="n">current_timeline</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">How to use StillManager to grab a still from timeline markers</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pybmd</span>
+
+<span class="n">EXPORT_PATH</span> <span class="o">=</span> <span class="s2">&quot;./Stills&quot;</span>
+<span class="n">LOCAL_RESOLVE</span> <span class="o">=</span> <span class="n">pybmd</span><span class="o">.</span><span class="n">Bmd</span><span class="p">()</span>
+
+<span class="n">current_project</span><span class="o">=</span><span class="n">LOCAL_RESOLVE</span><span class="o">.</span><span class="n">project_manager</span><span class="p">()</span><span class="o">.</span><span class="n">get_current_project</span><span class="p">()</span>
+<span class="n">still_manager</span> <span class="o">=</span> <span class="n">pybmd</span><span class="o">.</span><span class="n">toolkits</span><span class="o">.</span><span class="n">StillManager</span><span class="p">(</span><span class="n">current_project</span><span class="p">)</span>
+
+<span class="n">still_manager</span><span class="o">.</span><span class="n">grab_still_from_timeline_markers</span><span class="p">()</span>
+<span class="n">still_manager</span><span class="o">.</span><span class="n">export_stills</span><span class="p">(</span><span class="n">EXPORT_PATH</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 
 
@@ -395,21 +417,6 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-get-current-timeline-name">How to get current timeline name</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-stillmanager-to-grab-a-still-from-timeline-markers">How to use StillManager to grab a still from timeline markers</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
 
   <div class="sidebar-secondary-item">
 
