@@ -205,7 +205,7 @@ class StillManager(object):
             self.marker_still_list.append(marker_still)
             time.sleep(grab_sleep_time)
 
-    def export_stills(self, export_path:str ,file_name_format:str="$file_name$_$clip_frame_count$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True):
+    def export_stills(self, export_base_path:str ,file_name_format:str="$file_name$_$clip_frame_count$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True,use_subfolder:bool=False,subfolder:str=""):
         """export stills to given path
 
         Args:
@@ -214,6 +214,18 @@ class StillManager(object):
             format (StillFormat, optional): exported stills format. Defaults to StillFormat.TIF.
             clean_drx (bool, optional): clean drx files after stills exported. Defaults to True.
         """
+        if subfolder != "":
+            use_subfolder=True
+            
+        if use_subfolder:
+            if subfolder == "":
+                subfolder=self._timeline.get_name()
+                logger.info(f" Input subfolder is empty, use timeline name : {subfolder} as subfolder name to export")
+            export_path=os.path.join(export_base_path,subfolder)
+        else:
+            export_path=export_base_path
+        
+        
         try:
             os.makedirs(export_path)
         except Exception as e:
