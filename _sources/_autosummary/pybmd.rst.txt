@@ -28,21 +28,21 @@
    :template: module.rst
    :recursive:
 
-   bmd
-   error
-   folder
-   fusion_comp
-   gallery
-   gallery_still
-   gallery_still_album
-   logging_config
-   media_pool
-   media_pool_item
-   media_storage
-   project
-   project_manager
-   settings
-   timeline
-   timeline_item
-   toolkits
+   pybmd.bmd
+   pybmd.error
+   pybmd.folder
+   pybmd.fusion_comp
+   pybmd.gallery
+   pybmd.gallery_still
+   pybmd.gallery_still_album
+   pybmd.logging_config
+   pybmd.media_pool
+   pybmd.media_pool_item
+   pybmd.media_storage
+   pybmd.project
+   pybmd.project_manager
+   pybmd.settings
+   pybmd.timeline
+   pybmd.timeline_item
+   pybmd.toolkits
 
