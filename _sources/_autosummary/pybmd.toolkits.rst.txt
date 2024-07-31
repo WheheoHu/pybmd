@@ -1,0 +1,43 @@
+toolkits
+========
+
+.. automodule:: pybmd.toolkits
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree: 
+   
+      add_subfolders
+      change_timeline_resolution
+      get_all_timeline
+      get_subfolder
+      get_timeline
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      MarkerStill
+      StillManager
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,0 +1,8 @@
+StillManager.\_\_init\_\_
+=========================
+
+.. currentmodule:: pybmd.toolkits
+
+.. automethod:: StillManager.__init__
+
+    .. autosummary::

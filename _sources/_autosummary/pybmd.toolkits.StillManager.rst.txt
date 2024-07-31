@@ -1,0 +1,33 @@
+StillManager
+============
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoclass:: StillManager
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~StillManager.__init__
+      ~StillManager.export_stills
+      ~StillManager.grab_still_from_timeline_markers
+      ~StillManager.rename_still
+   
+   
+
+   
+   
+   

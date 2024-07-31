@@ -1,0 +1,6 @@
+pybmd.toolkits.get\_timeline
+============================
+
+.. currentmodule:: pybmd.toolkits
+
+.. autofunction:: get_timeline

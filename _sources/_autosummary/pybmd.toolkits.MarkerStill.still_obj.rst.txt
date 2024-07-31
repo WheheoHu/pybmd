@@ -1,0 +1,6 @@
+pybmd.toolkits.MarkerStill.still\_obj
+=====================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoattribute:: MarkerStill.still_obj

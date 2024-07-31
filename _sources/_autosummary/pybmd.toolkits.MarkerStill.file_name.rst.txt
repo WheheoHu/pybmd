@@ -1,0 +1,6 @@
+pybmd.toolkits.MarkerStill.file\_name
+=====================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoattribute:: MarkerStill.file_name

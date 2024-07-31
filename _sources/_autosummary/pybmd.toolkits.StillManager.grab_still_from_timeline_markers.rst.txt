@@ -1,0 +1,8 @@
+StillManager.grab\_still\_from\_timeline\_markers
+=================================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. automethod:: StillManager.grab_still_from_timeline_markers
+
+    .. autosummary::

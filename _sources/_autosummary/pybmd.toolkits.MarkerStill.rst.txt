@@ -1,0 +1,43 @@
+MarkerStill
+===========
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoclass:: MarkerStill
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~MarkerStill.__init__
+      ~MarkerStill.get_property
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~MarkerStill.still_obj
+      ~MarkerStill.reel_name
+      ~MarkerStill.reel_number
+      ~MarkerStill.file_name
+      ~MarkerStill.frames
+      ~MarkerStill.clip_frame_count
+   
+   

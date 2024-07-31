@@ -1,0 +1,6 @@
+pybmd.toolkits.MarkerStill.clip\_frame\_count
+=============================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoattribute:: MarkerStill.clip_frame_count

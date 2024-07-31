@@ -1,0 +1,8 @@
+StillManager.export\_stills
+===========================
+
+.. currentmodule:: pybmd.toolkits
+
+.. automethod:: StillManager.export_stills
+
+    .. autosummary::
