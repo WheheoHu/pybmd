@@ -213,6 +213,8 @@ class StillManager(object):
             file_name_format (str, optional): file name format. accept $file_name$,$reel_name$,$reel_number$,$frames$,$clip_frame_count$ as wildcard. Defaults to "$file_name$".
             format (StillFormat, optional): exported stills format. Defaults to StillFormat.TIF.
             clean_drx (bool, optional): clean drx files after stills exported. Defaults to True.
+            use_subfolder (bool, optional): use subfolder to export stills. Defaults to False.
+            subfolder (str, optional): subfolder name to export stills. Defaults to "".
         """
         if subfolder != "":
             use_subfolder=True
