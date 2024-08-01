@@ -106,3 +106,9 @@
 # 2024.2.3
 ## StillManager
 - Change default `file_name_format` to `"$file_name$_$clip_frame_count$"` in `export_still`
+
+--------
+# 2024.2.4
+## StillManager
+- Add subfolder export option fpr `export_still`
+- Check if exporting to folder failed

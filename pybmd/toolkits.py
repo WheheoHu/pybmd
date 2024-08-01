@@ -247,12 +247,20 @@ class StillManager(object):
                 continue
             else:
                 self._still_album.export_stills(gallery_stills= [marker_still.still_obj],folder_path= export_path,file_prefix=_file_prefix,format=format)
-                
+        
+        #check export folder
+        exported_stills_count=len(os.listdir(export_path))
+        if exported_stills_count == 0  and len(self.marker_still_list) != 0:
+            logger.warning(f"No stills exported, folder {export_path} is empty. Please check if you open the gallay in color page or not")
+            return
+        
         #clear album
         stills=self._still_album.get_stills()
         self._still_album.delete_stills(stills)
         
         self.rename_still(export_path,clean_drx)
+        
+        
     
     def rename_still(self,still_file_path:str,clean_drx:bool=True):
         remove_count=0
