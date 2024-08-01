@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=3d00bc03"></script>
+    <script src="../../_static/documentation_options.js?v=f6892cce"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/toolkits';</script>
@@ -628,13 +628,21 @@ document.write(`
                 <span class="k">continue</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span><span class="o">.</span><span class="n">export_stills</span><span class="p">(</span><span class="n">gallery_stills</span><span class="o">=</span> <span class="p">[</span><span class="n">marker_still</span><span class="o">.</span><span class="n">still_obj</span><span class="p">],</span><span class="n">folder_path</span><span class="o">=</span> <span class="n">export_path</span><span class="p">,</span><span class="n">file_prefix</span><span class="o">=</span><span class="n">_file_prefix</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">)</span>
-                
+        
+        <span class="c1">#check export folder</span>
+        <span class="n">exported_stills_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">export_path</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">exported_stills_count</span> <span class="o">==</span> <span class="mi">0</span>  <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No stills exported, folder </span><span class="si">{</span><span class="n">export_path</span><span class="si">}</span><span class="s2"> is empty. Please check if you open the gallay in color page or not&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        
         <span class="c1">#clear album</span>
         <span class="n">stills</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span><span class="o">.</span><span class="n">get_stills</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span><span class="o">.</span><span class="n">delete_stills</span><span class="p">(</span><span class="n">stills</span><span class="p">)</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">rename_still</span><span class="p">(</span><span class="n">export_path</span><span class="p">,</span><span class="n">clean_drx</span><span class="p">)</span></div>
 
+        
+        
     
 <div class="viewcode-block" id="StillManager.rename_still">
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.rename_still.html#pybmd.toolkits.StillManager.rename_still">[docs]</a>
