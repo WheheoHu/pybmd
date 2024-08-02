@@ -112,3 +112,8 @@
 ## StillManager
 - Add subfolder export option fpr `export_still`
 - Check if exporting to folder failed
+
+--------
+# 2024.2.5
+## StillManager
+- Fix export path bug in `export_still` method when export_base_path is a relative path 

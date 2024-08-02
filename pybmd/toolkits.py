@@ -105,8 +105,6 @@ def add_subfolders(media_pool: MediaPool, folder: Folder, subfolder_path: str) -
 
 # TODO render_timeline
 
-# TODO Still Graber
-
 
 @dataclass
 class MarkerStill(object):
@@ -225,7 +223,10 @@ class StillManager(object):
                 logger.info(f" Input subfolder is empty, use timeline name : {subfolder} as subfolder name to export")
             export_path=os.path.join(export_base_path,subfolder)
         else:
-            export_path=export_base_path
+            if export_base_path.startswith('~'):
+                export_path=os.path.expanduser(export_base_path)
+            else:
+                export_path=os.path.abspath(export_base_path)
         
         
         try:
