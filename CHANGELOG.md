@@ -122,3 +122,8 @@
 # 2024.2.6
 ## StillManager
 - Fix bug in `2024.2.5` 
+
+--------
+# 2024.2.7
+## StillManager
+- Fix bug in `2024.2.6`

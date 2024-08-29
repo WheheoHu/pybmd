@@ -6,20 +6,20 @@ class Gallery():
     """docstring for Gallery."""
 
     def __init__(self, gallery):
-        self.gallery = gallery
+        self._gallery = gallery
 
     def get_album_name(self, gallert_still_album: GalleryStillAlbum) -> str:
         """return the album name of the GalleryStillAlbum object"""
-        return self.gallery.GetAlbumName(gallert_still_album)
+        return self._gallery.GetAlbumName(gallert_still_album)
 
     def get_current_still_album(self) -> GalleryStillAlbum:
         """return the current GalleryStillAlbum object"""
-        return GalleryStillAlbum(self.gallery.GetCurrentStillAlbum())
+        return GalleryStillAlbum(self._gallery.GetCurrentStillAlbum())
 
     def get_gallery_still_albums(self) -> List[GalleryStillAlbum]:
         """return a list of GalleryStillAlbum objects"""
         gallery_still_album_list = []
-        for gallery_still_album in self.gallery.GetGalleryStillAlbums():
+        for gallery_still_album in self._gallery.GetGalleryStillAlbums():
             gallery_still_album_list.append(
                 GalleryStillAlbum(gallery_still_album))
         return gallery_still_album_list
@@ -34,7 +34,7 @@ class Gallery():
         Returns:
             bool: ture if successful, false otherwise
         """
-        return self.gallery.SetAlbumName(gallert_still_album, album_name)
+        return self._gallery.SetAlbumName(gallert_still_album, album_name)
 
     def set_current_still_album(self, gallery_still_album: GalleryStillAlbum) -> bool:
         """set the current GalleryStillAlbum object
@@ -45,4 +45,4 @@ class Gallery():
         Returns:
             bool: true if successful, false otherwise
         """        
-        return self.gallery.SetCurrentStillAlbum(gallery_still_album)
+        return self._gallery.SetCurrentStillAlbum(gallery_still_album)

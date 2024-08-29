@@ -11,6 +11,7 @@ LOGGING_CONFIG_DICT = {
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
+            "stream": "ext://sys.stdout",
             "formatter": "basic",
   
         }

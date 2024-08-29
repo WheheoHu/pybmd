@@ -76,7 +76,7 @@ def timeline_item_class_list_transfer(timeline_item_list: List[TimelineItem]) ->
     timeline_item_trans_list = []
 
     for timeline_item in timeline_item_list:
-        timeline_item_trans_list.append(timeline_item.timeline_item)
+        timeline_item_trans_list.append(timeline_item._timeline_item)
 
     return timeline_item_trans_list
 
@@ -449,7 +449,7 @@ class Timeline():
         Returns:
             bool: True if successful, False otherwise.
         """
-        return self.timeline.DeleteClips([timeline_item.timeline_item for timeline_item in timeline_items], ripple_delete)
+        return self.timeline.DeleteClips([timeline_item._timeline_item for timeline_item in timeline_items], ripple_delete)
 
     def set_clips_linked(self, timeline_items: List[TimelineItem], is_linked: bool) -> bool:
         """Links or unlinks the specified TimelineItems depending on second argument.
@@ -461,7 +461,7 @@ class Timeline():
         Returns:
             bool: True if successful, False otherwise.
         """
-        return self.timeline.SetClipsLinked([timeline_item.timeline_item for timeline_item in timeline_items], is_linked)
+        return self.timeline.SetClipsLinked([timeline_item._timeline_item for timeline_item in timeline_items], is_linked)
 
     def create_subtitles_from_audio(self,auto_caption_settings:AutoCaptionSettings) -> bool:
         #Modified at DR 18.6.4

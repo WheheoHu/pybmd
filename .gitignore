@@ -21,3 +21,5 @@ test
 .pytest_cache
 test.ipynb
 docs/_autosummary
+.vscode/settings.json
+.vscode/launch.json

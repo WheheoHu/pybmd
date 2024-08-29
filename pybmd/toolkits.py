@@ -115,6 +115,7 @@ class MarkerStill(object):
     file_name: str
     frames: int
     clip_frame_count: int
+
     def get_property(self):
         return {
             'reel_name': self.reel_name,
@@ -124,30 +125,33 @@ class MarkerStill(object):
             'clip_frame_count': self.clip_frame_count
         }
 
-logger=logging.getLogger()
-logger.propagate = False
+
+logger = logging.getLogger(__name__)
+
 
 class StillManager(object):
     """all about stills from timeline markers"""
     _timeline: Timeline = None
     _stills: Dict = dict()
 
-    def __init__(self, project: Project,default_timeline_framerate=24):
-        
+    def __init__(self, project: Project, default_timeline_framerate=24):
+
         super(StillManager, self).__init__()
         self._project = project
         self._timeline = self._project.get_current_timeline()
-        self._gallery=self._project.get_gallery()
-        self._still_album=self._gallery.get_current_still_album()
-        
-        self._default_timeline_framerate=default_timeline_framerate
-        
-        self.marker_still_list:List[MarkerStill] = list()
+        self._gallery = self._project.get_gallery()
+        self._still_album = self._gallery.get_current_still_album()
+
+        self._default_timeline_framerate = default_timeline_framerate
+
+        self.marker_still_list: List[MarkerStill] = list()
 
     def __repr__(self):
-        temp_list=[marker_still.get_property() for marker_still in self.marker_still_list]
+        temp_list = [marker_still.get_property()
+                     for marker_still in self.marker_still_list]
         return str(temp_list)
-    def grab_still_from_timeline_markers(self, timeline: Timeline =None, grab_sleep_time: float = 0.5) -> List[MarkerStill]:
+
+    def grab_still_from_timeline_markers(self, timeline: Timeline = None, grab_sleep_time: float = 0.5) -> List[MarkerStill]:
         """grab stills from timeline markers.
 
         Args:
@@ -156,20 +160,20 @@ class StillManager(object):
 
         Returns:
             List[MarkerStill]: _description_
-        """        
-        if isinstance(timeline,Timeline) is False :
-            timeline=self._timeline
+        """
+        if isinstance(timeline, Timeline) is False:
+            timeline = self._timeline
         marker_list = timeline.get_markers()
         logger.info(f'Timeline Marker Count:{len(marker_list)}')
-        
+
         if timeline.get_setting('timelinePlaybackFrameRate'):
-            timeline_framerate = int(timeline.get_setting('timelinePlaybackFrameRate'))
+            timeline_framerate = int(
+                timeline.get_setting('timelinePlaybackFrameRate'))
             logger.info(f'Timeline Framerate:{timeline_framerate}')
         else:
             timeline_framerate = self._default_timeline_framerate
-            logger.info(f'CAN NOT get timeline framerate because this timeline use custom timeline settings, use default_timeline_framerate :{timeline_framerate} instead ')
-            
-
+            logger.info(
+                f'CAN NOT get timeline framerate because this timeline use custom timeline settings, use default_timeline_framerate :{timeline_framerate} instead ')
 
         timeline_start_timecode = DfttTimecode(
             timeline.get_start_timecode(), 'auto', timeline_framerate)
@@ -183,15 +187,22 @@ class StillManager(object):
             # pro=timeline_item.get_media_pool_item().get_clip_property()
 
             # get frame count for the marker
-            clip_start_timecode = DfttTimecode(timeline_item.get_media_pool_item().get_clip_property('Start TC'), 'auto', timeline_framerate)
-            clip_frame_count = marker_frameid-(timeline_item.get_start()-int(timeline_start_timecode.timecode_output('frame')))+int(clip_start_timecode.timecode_output('frame'))
+            clip_start_timecode = DfttTimecode(timeline_item.get_media_pool_item(
+            ).get_clip_property('Start TC'), 'auto', timeline_framerate)
+            clip_frame_count = marker_frameid-(timeline_item.get_start()-int(
+                timeline_start_timecode.timecode_output('frame')))+int(clip_start_timecode.timecode_output('frame'))
 
             reel_name = timeline_item.get_media_pool_item().get_clip_property('Reel Name')
-            try:
-                reel_number = re.findall(r'(^[a-z0-9A-Z_]{6})', reel_name)[0]
-            except Exception as e:
-                raise e.add_note(
-                    "Reel name is not valid,Can not get reel number")
+            if reel_name == '':
+                reel_number = ''
+                logger.warning(f'Can not get reel name from clip property')
+            else:
+                try:
+                    reel_number = re.findall(
+                        r'(^[a-z0-9A-Z_]{6})', reel_name)[0]
+                except Exception as e:
+                    raise e.add_note(
+                        "Reel name is not valid,Can not get reel number")
 
             file_name = timeline_item.get_media_pool_item().get_clip_property('File Name')
             frames = timeline_item.get_media_pool_item().get_clip_property('Frames')
@@ -203,7 +214,7 @@ class StillManager(object):
             self.marker_still_list.append(marker_still)
             time.sleep(grab_sleep_time)
 
-    def export_stills(self, export_base_path:str ,file_name_format:str="$file_name$_$clip_frame_count$",format:StillFormat=StillFormat.TIF,clean_drx:bool=True,use_subfolder:bool=False,subfolder:str=""):
+    def export_stills(self, export_base_path: str, file_name_format: str = "$file_name$_$clip_frame_count$", format: StillFormat = StillFormat.TIF, clean_drx: bool = True, use_subfolder: bool = False, subfolder: str = ""):
         """export stills to given path
 
         Args:
@@ -214,84 +225,97 @@ class StillManager(object):
             use_subfolder (bool, optional): use subfolder to export stills. Defaults to False.
             subfolder (str, optional): subfolder name to export stills. Defaults to "".
         """
-        
+
         if export_base_path.startswith('~'):
-            export_base_path=os.path.expanduser(export_base_path)
+            export_base_path = os.path.expanduser(export_base_path)
         else:
-            export_base_path=os.path.abspath(export_base_path)
-            
+            export_base_path = os.path.abspath(export_base_path)
+
         if subfolder != "":
-            use_subfolder=True
-            
+            use_subfolder = True
+
         if use_subfolder:
             if subfolder == "":
-                subfolder=self._timeline.get_name()
-                logger.info(f" Input subfolder is empty, use timeline name : {subfolder} as subfolder name to export")
-            export_path=os.path.join(export_base_path,subfolder)
+                subfolder = self._timeline.get_name()
+                logger.info(
+                    f" Input subfolder is empty, use timeline name : {subfolder} as subfolder name to export")
+            export_path = os.path.join(export_base_path, subfolder)
         else:
-            export_path=export_base_path
-        
-        
+            export_path = export_base_path
+
         try:
             os.makedirs(export_path)
         except Exception as e:
             logger.info(f"Folder {export_path} already exist")
         else:
             logger.info(f"Create folder : {export_path}")
-        wildcard_pattern=re.compile(r"\$(\w+)\$")
-        wildcard_matchs=wildcard_pattern.findall(file_name_format)
-        file_name_template=re.sub(wildcard_pattern, r'{\1}', file_name_format)
-        
-        existed_file_list = [os.path.splitext(f.name)[0] for f in os.scandir(export_path) if f.is_file()]
+        wildcard_pattern = re.compile(r"\$(\w+)\$")
+        wildcard_matchs = wildcard_pattern.findall(file_name_format)
+        file_name_template = re.sub(
+            wildcard_pattern, r'{\1}', file_name_format)
+
+        export_folder_contain_list = [os.listdir(export_path)]
+
+        existed_file_name_list = [os.path.splitext(
+            f.name) for f in os.scandir(export_path) if f.is_file()]
+
+        _skip_count = 0
         for marker_still in self.marker_still_list:
-            still_property=marker_still.get_property()
-            _file_prefix=file_name_template.format(**{var : still_property.get(var) for var in wildcard_matchs})
-            if _file_prefix in existed_file_list:
-                
+            still_property = marker_still.get_property()
+            _file_prefix = file_name_template.format(
+                **{var: still_property.get(var) for var in wildcard_matchs})
+            target_file_name_ext = (_file_prefix, '.'+format.value)
+            logger.debug(f"target file name:{target_file_name_ext}")
+            if any(exist_file == target_file_name_ext for exist_file in existed_file_name_list):
+                logger.info(
+                    f"File :{_file_prefix} Type: {format.value} exists! Skip export")
+                _skip_count += 1
                 continue
             else:
-                self._still_album.export_stills(gallery_stills= [marker_still.still_obj],folder_path= export_path,file_prefix=_file_prefix,format=format)
-        
-        #check export folder
-        exported_stills_count=len(os.listdir(export_path))
-        if exported_stills_count == 0  and len(self.marker_still_list) != 0:
-            logger.warning(f"No stills exported, folder {export_path} is empty. Please check if you open the gallay in color page or not")
-            return
-        
-        #clear album
-        stills=self._still_album.get_stills()
+                self._still_album.export_stills(gallery_stills=[
+                                                marker_still.still_obj], folder_path=export_path, file_prefix=_file_prefix, format=format)
+
+        # check export folder
+        exported_stills_count = len([os.path.splitext(f.name)[0] for f in os.scandir(
+            export_path) if f.is_file()])-len(existed_file_name_list)
+
+        # clear album
+        stills = self._still_album.get_stills()
         self._still_album.delete_stills(stills)
-        
-        self.rename_still(export_path,clean_drx)
-        
-        
-    
-    def rename_still(self,still_file_path:str,clean_drx:bool=True):
-        remove_count=0
+
+        if exported_stills_count == 0 and len(self.marker_still_list) != 0 and _skip_count < len(self.marker_still_list):
+            logger.warning(
+                f"No stills exported to folder {export_path}. Please check if you open the [gallery] in color page or not")
+            return
+        self.rename_still(export_path, clean_drx, export_folder_contain_list)
+
+    def rename_still(self, still_file_path: str, clean_drx: bool = True, export_folder_exist_file_list: List = list()):
+        remove_count = 0
+
         for f in os.listdir(still_file_path):
+
             if f == '.DS_Store':
                 continue
-            file_name=os.path.splitext(f)[0]
-            file_extention=os.path.splitext(f)[1]
+            if f in export_folder_exist_file_list:
+                continue
+            file_name = os.path.splitext(f)[0]
+            file_extention = os.path.splitext(f)[1]
 
-            #remove drx file
+            # remove drx file
             if file_extention == '.drx' and clean_drx:
-                os.remove(os.path.join(still_file_path,f))
-                remove_count+=1
+                os.remove(os.path.join(still_file_path, f))
+                remove_count += 1
                 continue
-            
 
-            _f=re.findall(r"(.*)_[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}",file_name)
+            _f = re.findall(r"(.*)_[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}", file_name)
             if bool(_f):
-                _file_name=_f[0]
-                os.rename(os.path.join(still_file_path,f),os.path.join(still_file_path,_file_name)+file_extention)
-                logger.info(f'{_file_name}{file_extention} export sucessfully!')
+                _file_name = _f[0]
+                os.rename(os.path.join(still_file_path, f), os.path.join(
+                    still_file_path, _file_name)+file_extention)
+                logger.info(
+                    f'{_file_name}{file_extention} export sucessfully!')
             else:
-                logger.info(f'{file_name}.tiff exist! skip export')
                 continue
-            
+
         if remove_count != 0:
             logger.info(f'Delete {remove_count} drx files')
-        
-        
-

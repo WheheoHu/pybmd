@@ -4,19 +4,19 @@ from typing import TYPE_CHECKING, Dict, List
 
 from pybmd.settings import CloudProjectsSetting
 if TYPE_CHECKING:
-    from pybmd.bmd import Bmd
+    from pybmd.bmd import BMD
 
 DatabaseList = List[Dict]
 
 
 class ProjectManager:
 
-    project_manager = None
+    _project_manager = None
     _current_project = None
 
-    def __init__(self, _local_davinci: 'Bmd.local_davinci'):
-        self.project_manager = _local_davinci.GetProjectManager()
-        self._current_project = self.project_manager.GetCurrentProject()
+    def __init__(self, _local_davinci: 'BMD._local_davinci'):
+        self._project_manager = _local_davinci.GetProjectManager()
+        self._current_project = self._project_manager.GetCurrentProject()
    
     def close_project(self, project: Project) -> bool:
         """close project
@@ -27,7 +27,7 @@ class ProjectManager:
         Returns:
             bool: true if project was closed, false otherwise
         """
-        return self.project_manager.CloseProject(project.get_self_project())
+        return self._project_manager.CloseProject(project.get_self_project())
 
     def create_folder(self, folder_name: str) -> bool:
         """Creates a folder if folderName(string) is unique.
@@ -38,7 +38,7 @@ class ProjectManager:
         Returns:
             bool: True if folder was created, False otherwise
         """
-        return self.project_manager.CreateFolder(folder_name)
+        return self._project_manager.CreateFolder(folder_name)
 
     def create_project(self, project_name: str) -> Project:
         """Creates and returns a project if projectName(string) is unique, and None if it is not.
@@ -49,7 +49,7 @@ class ProjectManager:
         Returns:
             Project: created project object
         """
-        return Project(_project=self.project_manager.CreateProject(project_name), _project_name=project_name)
+        return Project(project=self._project_manager.CreateProject(project_name), project_name=project_name)
 
     def delete_folder(self, folder_name: str) -> bool:
         """Deletes the specified folder if it exists
@@ -60,11 +60,11 @@ class ProjectManager:
         Returns:
             bool: True if folder was deleted, False otherwise
         """
-        return self.project_manager.DeleteFolder(folder_name)
+        return self._project_manager.DeleteFolder(folder_name)
 
     def delete_project(self, project_name: str) -> bool:
         """Delete project in the current folder if not currently loaded"""
-        return self.project_manager.DeleteProject(project_name)
+        return self._project_manager.DeleteProject(project_name)
 
     def export_project(self, project_name: str, file_path: path, with_stills_and_luts=True) -> bool:
         """Exports project to provided file path
@@ -77,7 +77,7 @@ class ProjectManager:
         Returns:
             bool: True if project was exported, False otherwise
         """
-        return self.project_manager.ExportProject(project_name, str(file_path), with_stills_and_luts)
+        return self._project_manager.ExportProject(project_name, str(file_path), with_stills_and_luts)
 
     def get_current_database(self) -> dict:
         """Returns a dictionary (with keys DbType, DbName and optional IpAddress) corresponding to the current database connection
@@ -85,53 +85,53 @@ class ProjectManager:
         Returns:
             dict: database infomation with keys DbType, DbName and optional IpAddress
         """
-        return self.project_manager.GetCurrentDatabase()
+        return self._project_manager.GetCurrentDatabase()
 
     def get_current_project(self) -> Project:
         """Returns the current project"""
-        return Project(_project=self._current_project, _project_name=self._current_project.GetName())
+        return Project(project=self._current_project, project_name=self._current_project.GetName())
 
     def get_database_list(self) -> DatabaseList:
         """return database list"""
-        return self.project_manager.GetDatabaseList()
+        return self._project_manager.GetDatabaseList()
 
     def get_folder_list_in_current_folder(self) -> List[str]:
         """Returns a list of folder names in current folder."""
-        return self.project_manager.GetFolderListInCurrentFolder()
+        return self._project_manager.GetFolderListInCurrentFolder()
 
     def get_project_list_in_current_folder(self) -> List[str]:
         """Returns a list of project names in current folder."""
-        return self.project_manager.GetProjectListInCurrentFolder()
+        return self._project_manager.GetProjectListInCurrentFolder()
 
     def goto_parent_folder(self) -> bool:
         """Opens parent folder of current folder in database if current folder has parent."""
-        return self.project_manager.GotoParentFolder()
+        return self._project_manager.GotoParentFolder()
 
     def goto_root_folder(self) -> bool:
         """Opens root folder in database."""
-        return self.project_manager.GotoRootFolder()
+        return self._project_manager.GotoRootFolder()
 
     #Modified at DR18.0.0
     def import_project(self, file_path: path, project_name: str = None) -> bool:
         """Imports a project from the file path provided with given project name. Returns True if successful."""
-        return self.project_manager.ImportPorject(str(file_path), project_name)
+        return self._project_manager.ImportPorject(str(file_path), project_name)
 
     def load_project(self, project_name) -> Project:
         """Loads and returns the@Project  with name = project_name (string) if there is a match found, and None if there is no matching Project."""
-        return Project(_project=self.project_manager.LoadProject(project_name), _project_name=project_name)
+        return Project(project=self._project_manager.LoadProject(project_name), project_name=project_name)
 
     def open_folder(self, folder_name: str) -> bool:
         """Opens folder under given name."""
-        return self.project_manager.OpenFolder(folder_name)
+        return self._project_manager.OpenFolder(folder_name)
 
     #Modified at DR18.0.0
     def restore_project(self, file_path: path, project_name: str = None) -> bool:
         """Restores a project from the file path provided with given project name. Returns True if successful."""
-        return self.project_manager.RestoreProject(str(file_path), project_name)
+        return self._project_manager.RestoreProject(str(file_path), project_name)
 
     def save_project(self) -> bool:
         """Saves the currently loaded project with its own name. Returns True if successful."""
-        return self.project_manager.SaveProject()
+        return self._project_manager.SaveProject()
 
     def set_current_database(self, database_info: dict) -> bool:
         """Switches current database connection to the database specified by the keys below, and closes any open project.
@@ -142,14 +142,14 @@ class ProjectManager:
         Returns:
             bool: True if database was set, False otherwise
         """
-        return self.project_manager.SetCurrentDatabase(database_info)
+        return self._project_manager.SetCurrentDatabase(database_info)
     
     ##########################################################################################################################
     #Add at DR18.0.0
     
     def archive_project(self, project_name, file_path, is_archive_src_media: bool = True, is_archive_render_cache: bool = True, is_archive_proxy_media: bool = False) -> bool:
         """Archives project to provided filePath with the configuration as provided by the optional arguments"""
-        return self.project_manager.ArchiveProject(project_name, file_path, is_archive_src_media, is_archive_render_cache, is_archive_proxy_media)
+        return self._project_manager.ArchiveProject(project_name, file_path, is_archive_src_media, is_archive_render_cache, is_archive_proxy_media)
 
     ##############################################################################################################################
     #Add at DR18.6.4
@@ -162,7 +162,7 @@ class ProjectManager:
         Returns:
             Project: returns a cloud project
         """        
-        return Project(self.project_manager.CreateCloudProject(cloud_setting.asdict()))
+        return Project(self._project_manager.CreateCloudProject(cloud_setting.asdict()))
     
     def import_cloud_project(self,file_path:str,cloud_setting:CloudProjectsSetting) -> bool:
         """
@@ -174,7 +174,7 @@ class ProjectManager:
         Returns:
             bool: Returns True if import cloud project is successful; False otherwise
         """        
-        return self.project_manager.ImportCloudProject(file_path,cloud_setting.asdict())
+        return self._project_manager.ImportCloudProject(file_path,cloud_setting.asdict())
     
     def restore_cloud_project(self,folder_path:str,cloud_setting:CloudProjectsSetting) -> bool:
         """
@@ -186,7 +186,7 @@ class ProjectManager:
         Returns:
             bool: Returns True if restore cloud project is successful; False otherwise
         """        
-        return self.project_manager.RestoreCloudProject(folder_path,cloud_setting.asdict())
+        return self._project_manager.RestoreCloudProject(folder_path,cloud_setting.asdict())
     
 # More function BELOW!
 

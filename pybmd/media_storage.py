@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, List
 
 from pybmd.media_pool_item import MediaPoolItem
 if TYPE_CHECKING:
-    from pybmd.bmd import Bmd
+    from pybmd.bmd import BMD
 
 from dataclasses import dataclass
 from dataclasses import asdict
@@ -23,7 +23,7 @@ class MediaStorage:
 
     media_storage = None
 
-    def __init__(self, _local_davinci: 'Bmd.local_davinci'):
+    def __init__(self, _local_davinci: 'BMD._local_davinci'):
         self.media_storage = _local_davinci.GetMediaStorage()
 
     def add_clip_mattes_to_media_pool(self, media_pool_item: MediaPoolItem, paths: List[str], stero_eye: str = None) -> bool:
