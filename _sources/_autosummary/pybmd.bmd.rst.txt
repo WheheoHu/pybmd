@@ -28,7 +28,7 @@ bmd
       :toctree:
       :template: class.rst
    
-      Bmd
+      BMD
       Default_LIB_PATH
    
    

@@ -31,6 +31,7 @@
    bmd
    error
    folder
+   fusion
    fusion_comp
    gallery
    gallery_still
@@ -45,4 +46,6 @@
    timeline
    timeline_item
    toolkits
+   ui_dispather
+   ui_manager
 

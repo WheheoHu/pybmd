@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=650922bd"></script>
+    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/project';</script>
@@ -366,14 +366,12 @@ document.write(`
 <span class="k">class</span> <span class="nc">Project</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Project Object&quot;&quot;&quot;</span>
 
-    <span class="n">project</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">project_name</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="Project.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.__init__.html#pybmd.project.Project.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_project</span><span class="p">,</span> <span class="n">_project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span> <span class="o">=</span> <span class="n">_project_name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">project</span> <span class="o">=</span> <span class="n">_project</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_project_name</span> <span class="o">=</span> <span class="n">project_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_project</span> <span class="o">=</span> <span class="n">project</span></div>
 
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -382,7 +380,7 @@ document.write(`
 <div class="viewcode-block" id="Project.get_self_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_self_project.html#pybmd.project.Project.get_self_project">[docs]</a>
     <span class="k">def</span> <span class="nf">get_self_project</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span></div>
 
 
 <div class="viewcode-block" id="Project.add_render_job">
@@ -393,44 +391,44 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            str: A unique job id (string) for the new render job.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">AddRenderJob</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">AddRenderJob</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.delete_all_render_jobs">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.delete_all_render_jobs.html#pybmd.project.Project.delete_all_render_jobs">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_all_render_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes all render jobs in the render queue.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">DeleteAllRenderJobs</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">DeleteAllRenderJobs</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.delete_render_job">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.delete_render_job.html#pybmd.project.Project.delete_render_job">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_render_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes render job for input job id (string).&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">DeleteRenderJob</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">DeleteRenderJob</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.get_current_render_format_and_codec">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_current_render_format_and_codec.html#pybmd.project.Project.get_current_render_format_and_codec">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_render_format_and_codec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dict with currently selected format &#39;format&#39; and render codec &#39;codec&#39;.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetCurrentRenderFormatAndCodec</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetCurrentRenderFormatAndCodec</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.get_current_render_mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_current_render_mode.html#pybmd.project.Project.get_current_render_mode">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_render_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the render mode: 0 - Individual clips, 1 - Single clip.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetCurrentRenderMode</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetCurrentRenderMode</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.get_current_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_current_timeline.html#pybmd.project.Project.get_current_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timeline</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the currently loaded Timeline.&quot;&quot;&quot;</span>
-        <span class="n">current_timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetCurrentTimeline</span><span class="p">()</span>
+        <span class="n">current_timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetCurrentTimeline</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">current_timeline</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetCurrentTimeline</span><span class="p">())</span>
+            <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetCurrentTimeline</span><span class="p">())</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;No current timeline,Please open a timeline&quot;</span><span class="p">)</span></div>
 
@@ -440,28 +438,28 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_gallery.html#pybmd.project.Project.get_gallery">[docs]</a>
     <span class="k">def</span> <span class="nf">get_gallery</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Gallery</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Gallery object.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Gallery</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetGallery</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">Gallery</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetGallery</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="Project.get_media_pool">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_media_pool.html#pybmd.project.Project.get_media_pool">[docs]</a>
     <span class="k">def</span> <span class="nf">get_media_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MediaPool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the MediaPool object.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">MediaPool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetMediaPool</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">MediaPool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetMediaPool</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="Project.get_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_name.html#pybmd.project.Project.get_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return project name&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.get_preset_list">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_preset_list.html#pybmd.project.Project.get_preset_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_preset_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of presets and their information.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetPresetList</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetPresetList</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.get_render_codecs">
@@ -475,35 +473,35 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: codec description -&gt; codec name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetRenderCodecs</span><span class="p">(</span><span class="n">render_format</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetRenderCodecs</span><span class="p">(</span><span class="n">render_format</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.get_render_formats">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_render_formats.html#pybmd.project.Project.get_render_formats">[docs]</a>
     <span class="k">def</span> <span class="nf">get_render_formats</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dict (format -&gt; file extension) of available render formats.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetRenderFormats</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetRenderFormats</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.get_render_job_list">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_render_job_list.html#pybmd.project.Project.get_render_job_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_render_job_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of render jobs and their information.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetRenderJobList</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetRenderJobList</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.get_render_job_status">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_render_job_status.html#pybmd.project.Project.get_render_job_status">[docs]</a>
     <span class="k">def</span> <span class="nf">get_render_job_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dict with job status and completion percentage of the job by given jobId (string).&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetRenderJobStatus</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetRenderJobStatus</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.get_render_preset_list">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_render_preset_list.html#pybmd.project.Project.get_render_preset_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_render_preset_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of render presets and their information.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetRenderPresetList</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetRenderPresetList</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.get_render_resolutions">
@@ -519,7 +517,7 @@ document.write(`
 <span class="sd">            RenderResolution: Returns full list of resolutions if no argument is provided. Each element in the list is a dictionary with 2 keys &quot;Width&quot; and &quot;Height&quot;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Sample: current_project.get_render_resolutions(format=&#39;mp4&#39;,codec=&#39;h264&#39;)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetRenderResolutions</span><span class="p">(</span><span class="nb">format</span><span class="p">,</span> <span class="n">codec</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetRenderResolutions</span><span class="p">(</span><span class="nb">format</span><span class="p">,</span> <span class="n">codec</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.get_setting">
@@ -527,56 +525,56 @@ document.write(`
     <span class="k">def</span> <span class="nf">get_setting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setting_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns value of project setting (indicated by setting_name, string). &quot;&quot;&quot;</span>
         <span class="c1"># call *without parameters/NoneType * to get a snapshot of all queryable properties</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.get_timeline_by_index">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_timeline_by_index.html#pybmd.project.Project.get_timeline_by_index">[docs]</a>
     <span class="k">def</span> <span class="nf">get_timeline_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timeline</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns Timeline at the given index, 1 &lt;= idx &lt;= project.get_timeline_count()&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetTimelineByIndex</span><span class="p">(</span><span class="n">idx</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetTimelineByIndex</span><span class="p">(</span><span class="n">idx</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Project.get_timeline_count">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_timeline_count.html#pybmd.project.Project.get_timeline_count">[docs]</a>
     <span class="k">def</span> <span class="nf">get_timeline_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of timelines currently present in the project.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetTimelineCount</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetTimelineCount</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.is_rendering_in_progress">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.is_rendering_in_progress.html#pybmd.project.Project.is_rendering_in_progress">[docs]</a>
     <span class="k">def</span> <span class="nf">is_rendering_in_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if rendering is in progress.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">IsRenderingInProgress</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">IsRenderingInProgress</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.load_render_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.load_render_preset.html#pybmd.project.Project.load_render_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">load_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets a preset as current preset for rendering if preset_name (string) exists.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">LoadRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">LoadRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.refresh_lut_list">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.refresh_lut_list.html#pybmd.project.Project.refresh_lut_list">[docs]</a>
     <span class="k">def</span> <span class="nf">refresh_lut_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Refreshes LUT List&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">RefreshLUTList</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">RefreshLUTList</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Project.save_as_new_render_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.save_as_new_render_preset.html#pybmd.project.Project.save_as_new_render_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">save_as_new_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates new render preset by given name if preset_name(string) is unique.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SaveAsNewRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SaveAsNewRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.set_current_render_format_and_codec">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.set_current_render_format_and_codec.html#pybmd.project.Project.set_current_render_format_and_codec">[docs]</a>
     <span class="k">def</span> <span class="nf">set_current_render_format_and_codec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">codec</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets given render format (string) and render codec (string) as options for rendering.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetCurrentRenderFormatAndCodec</span><span class="p">(</span><span class="nb">format</span><span class="p">,</span> <span class="n">codec</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetCurrentRenderFormatAndCodec</span><span class="p">(</span><span class="nb">format</span><span class="p">,</span> <span class="n">codec</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.set_current_render_mode">
@@ -590,28 +588,28 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetCurrentRenderMode</span><span class="p">(</span><span class="n">render_mode</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetCurrentRenderMode</span><span class="p">(</span><span class="n">render_mode</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.set_current_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.set_current_timeline.html#pybmd.project.Project.set_current_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">set_current_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets given Timeline as current timeline for the project. Returns True if successful.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetCurrentTimeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">.</span><span class="n">timeline</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetCurrentTimeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">.</span><span class="n">timeline</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.set_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.set_name.html#pybmd.project.Project.set_name">[docs]</a>
     <span class="k">def</span> <span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets project name if given project_name (string) is unique.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">project_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">project_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.set_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.set_preset.html#pybmd.project.Project.set_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">set_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets preset by given preset_name (string) into project.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.set_render_settings">
@@ -626,9 +624,9 @@ document.write(`
 <span class="sd">            bool: True if successful.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">render_setting</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetRenderSettings</span><span class="p">(</span><span class="n">render_setting</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetRenderSettings</span><span class="p">(</span><span class="n">render_setting</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetRenderSettings</span><span class="p">(</span><span class="n">asdict</span><span class="p">(</span><span class="n">render_setting</span><span class="p">))</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetRenderSettings</span><span class="p">(</span><span class="n">asdict</span><span class="p">(</span><span class="n">render_setting</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Project.set_setting">
@@ -643,7 +641,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            _type_: True if successful.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">SetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">,</span> <span class="n">setting_value</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">,</span> <span class="n">setting_value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.start_rendering">
@@ -652,14 +650,14 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Start rendering. Returns True if successful.</span>
 <span class="sd">        if job_ids==None render all queued render jobs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">StartRendering</span><span class="p">(</span><span class="n">job_ids</span><span class="p">,</span> <span class="n">is_interactive_mode</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">StartRendering</span><span class="p">(</span><span class="n">job_ids</span><span class="p">,</span> <span class="n">is_interactive_mode</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.stop_rendering">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.stop_rendering.html#pybmd.project.Project.stop_rendering">[docs]</a>
     <span class="k">def</span> <span class="nf">stop_rendering</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Stops rendering.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">StopRendering</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">StopRendering</span><span class="p">()</span></div>
 
 
     <span class="c1">##############################################################################################################################</span>
@@ -669,7 +667,7 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_unique_id.html#pybmd.project.Project.get_unique_id">[docs]</a>
     <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns unique id of the project Object.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
 
 
     <span class="c1">##############################################################################################################################</span>
@@ -688,7 +686,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful, otherwise False.</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">InsertAudioToCurrentTrackAtPlayhead</span><span class="p">(</span><span class="n">media_path</span><span class="p">,</span> <span class="n">start_offset_in_samples</span><span class="p">,</span> <span class="n">duration_in_samples</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">InsertAudioToCurrentTrackAtPlayhead</span><span class="p">(</span><span class="n">media_path</span><span class="p">,</span> <span class="n">start_offset_in_samples</span><span class="p">,</span> <span class="n">duration_in_samples</span><span class="p">)</span></div>
 
 
     <span class="c1">##############################################################################################################################</span>
@@ -705,7 +703,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns true if successful.</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">LoadBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">LoadBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.5.0 </span>
@@ -721,7 +719,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if succssful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">ExportCurrentFrameAsStill</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">ExportCurrentFrameAsStill</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
 </div>
 
        

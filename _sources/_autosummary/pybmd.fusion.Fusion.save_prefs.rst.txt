@@ -1,0 +1,8 @@
+Fusion.save\_prefs
+==================
+
+.. currentmodule:: pybmd.fusion
+
+.. automethod:: Fusion.save_prefs
+
+    .. autosummary::

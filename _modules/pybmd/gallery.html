@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=650922bd"></script>
+    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/gallery';</script>
@@ -360,21 +360,21 @@ document.write(`
 <div class="viewcode-block" id="Gallery.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.__init__.html#pybmd.gallery.Gallery.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gallery</span> <span class="o">=</span> <span class="n">gallery</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span> <span class="o">=</span> <span class="n">gallery</span></div>
 
 
 <div class="viewcode-block" id="Gallery.get_album_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.get_album_name.html#pybmd.gallery.Gallery.get_album_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_album_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallert_still_album</span><span class="p">:</span> <span class="n">GalleryStillAlbum</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return the album name of the GalleryStillAlbum object&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gallery</span><span class="o">.</span><span class="n">GetAlbumName</span><span class="p">(</span><span class="n">gallert_still_album</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">GetAlbumName</span><span class="p">(</span><span class="n">gallert_still_album</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Gallery.get_current_still_album">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.get_current_still_album.html#pybmd.gallery.Gallery.get_current_still_album">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_still_album</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GalleryStillAlbum</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return the current GalleryStillAlbum object&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">GalleryStillAlbum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gallery</span><span class="o">.</span><span class="n">GetCurrentStillAlbum</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">GalleryStillAlbum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">GetCurrentStillAlbum</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="Gallery.get_gallery_still_albums">
@@ -382,7 +382,7 @@ document.write(`
     <span class="k">def</span> <span class="nf">get_gallery_still_albums</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStillAlbum</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return a list of GalleryStillAlbum objects&quot;&quot;&quot;</span>
         <span class="n">gallery_still_album_list</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">gallery_still_album</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">gallery</span><span class="o">.</span><span class="n">GetGalleryStillAlbums</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">gallery_still_album</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">GetGalleryStillAlbums</span><span class="p">():</span>
             <span class="n">gallery_still_album_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="n">GalleryStillAlbum</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">gallery_still_album_list</span></div>
@@ -400,7 +400,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: ture if successful, false otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gallery</span><span class="o">.</span><span class="n">SetAlbumName</span><span class="p">(</span><span class="n">gallert_still_album</span><span class="p">,</span> <span class="n">album_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">SetAlbumName</span><span class="p">(</span><span class="n">gallert_still_album</span><span class="p">,</span> <span class="n">album_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Gallery.set_current_still_album">
@@ -414,7 +414,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gallery</span><span class="o">.</span><span class="n">SetCurrentStillAlbum</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">SetCurrentStillAlbum</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

@@ -1,0 +1,31 @@
+ui\_dispather
+=============
+
+.. automodule:: pybmd.ui_dispather
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      UI_Dispather
+   
+   
+
+   
+   
+   
+
+
+

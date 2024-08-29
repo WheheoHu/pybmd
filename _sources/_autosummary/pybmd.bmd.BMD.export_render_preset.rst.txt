@@ -1,0 +1,8 @@
+BMD.export\_render\_preset
+==========================
+
+.. currentmodule:: pybmd.bmd
+
+.. automethod:: BMD.export_render_preset
+
+    .. autosummary::

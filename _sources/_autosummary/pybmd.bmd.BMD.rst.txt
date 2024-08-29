@@ -1,0 +1,58 @@
+BMD
+===
+
+.. currentmodule:: pybmd.bmd
+
+.. autoclass:: BMD
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~BMD.__init__
+      ~BMD.delete_layout_preset
+      ~BMD.export_burn_in_preset
+      ~BMD.export_layout_preset
+      ~BMD.export_render_preset
+      ~BMD.get_current_page
+      ~BMD.get_local_davinci
+      ~BMD.get_media_storage
+      ~BMD.get_product_name
+      ~BMD.get_project_manager
+      ~BMD.get_ui_dispatcher
+      ~BMD.get_version
+      ~BMD.get_version_string
+      ~BMD.import_burn_in_preset
+      ~BMD.import_layout_preset
+      ~BMD.import_render_preset
+      ~BMD.load_layout_preset
+      ~BMD.open_page
+      ~BMD.quit
+      ~BMD.save_layout_preset
+      ~BMD.update_layout_preset
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~BMD.APP_NAME
+      ~BMD.fusion
+   
+   

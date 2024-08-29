@@ -1,0 +1,8 @@
+UI\_Dispather.add\_window
+=========================
+
+.. currentmodule:: pybmd.ui_dispather
+
+.. automethod:: UI_Dispather.add_window
+
+    .. autosummary::

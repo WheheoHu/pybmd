@@ -1,6 +1,0 @@
-pybmd.project\_manager.ProjectManager.project\_manager
-======================================================
-
-.. currentmodule:: pybmd.project_manager
-
-.. autoattribute:: ProjectManager.project_manager

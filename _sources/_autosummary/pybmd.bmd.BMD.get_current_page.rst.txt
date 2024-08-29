@@ -1,0 +1,8 @@
+BMD.get\_current\_page
+======================
+
+.. currentmodule:: pybmd.bmd
+
+.. automethod:: BMD.get_current_page
+
+    .. autosummary::

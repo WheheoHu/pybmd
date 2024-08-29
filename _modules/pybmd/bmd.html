@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=650922bd"></script>
+    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/bmd';</script>
@@ -361,7 +361,9 @@ document.write(`
 <span class="kn">from</span> <span class="nn">pybmd.error</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">pybmd.media_storage</span> <span class="kn">import</span> <span class="n">MediaStorage</span>
 <span class="kn">from</span> <span class="nn">pybmd.project_manager</span> <span class="kn">import</span> <span class="n">ProjectManager</span>
-
+<span class="kn">from</span> <span class="nn">pybmd.fusion</span> <span class="kn">import</span> <span class="n">Fusion</span>
+<span class="kn">from</span> <span class="nn">pybmd.ui_dispather</span> <span class="kn">import</span> <span class="n">UI_Dispather</span>
+<span class="kn">from</span> <span class="nn">pybmd.ui_manager</span> <span class="kn">import</span> <span class="n">UI_Manager</span>
 
 <div class="viewcode-block" id="load_dynamic">
 <a class="viewcode-back" href="../../_autosummary/pybmd.bmd.load_dynamic.html#pybmd.bmd.load_dynamic">[docs]</a>
@@ -372,7 +374,7 @@ document.write(`
     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
     <span class="c1"># sys.modules[module_name]=module</span>
     <span class="c1"># spec.loader.exec_module(module)</span>
-
+    <span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">module</span></div>
 
 <div class="viewcode-block" id="is_process_running">
@@ -415,9 +417,9 @@ document.write(`
 
 
 
-<div class="viewcode-block" id="Bmd">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.html#pybmd.bmd.Bmd">[docs]</a>
-<span class="k">class</span> <span class="nc">Bmd</span><span class="p">:</span>
+<div class="viewcode-block" id="BMD">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.html#pybmd.bmd.BMD">[docs]</a>
+<span class="k">class</span> <span class="nc">BMD</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Bmd class. Init Davinci Resolve Object</span>
 <span class="sd">        Base for everything</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -426,13 +428,10 @@ document.write(`
         <span class="n">PYLIB</span> <span class="o">=</span> <span class="n">Default_LIB_PATH</span><span class="o">.</span><span class="n">LIB_MAC</span><span class="o">.</span><span class="n">value</span>
     <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;win&quot;</span><span class="p">):</span>
         <span class="n">PYLIB</span> <span class="o">=</span> <span class="n">Default_LIB_PATH</span><span class="o">.</span><span class="n">LIB_Windows</span><span class="o">.</span><span class="n">value</span>
-    <span class="n">APP_NAME</span> <span class="o">=</span> <span class="s1">&#39;Resolve&#39;</span>
+    <span class="n">APP_NAME</span> <span class="o">=</span> <span class="s2">&quot;Resolve&quot;</span>
 
-
-    <span class="n">local_davinci</span> <span class="o">=</span> <span class="kc">None</span>
-
-<div class="viewcode-block" id="Bmd.__init__">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.__init__.html#pybmd.bmd.Bmd.__init__">[docs]</a>
+<div class="viewcode-block" id="BMD.__init__">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.__init__.html#pybmd.bmd.BMD.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_ip</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span><span class="n">auto_start</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Init Davinci Resolve Object</span>
 
@@ -443,15 +442,17 @@ document.write(`
 <span class="sd">        Raises:</span>
 <span class="sd">            ResolveInitError: davinci resolve init failed.you need to check if davinci resolve is running.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_davinci</span><span class="p">(</span><span class="n">davinci_ip</span><span class="o">=</span><span class="n">resolve_ip</span><span class="p">,</span><span class="n">auto_start</span><span class="o">=</span><span class="n">auto_start</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_davinci</span><span class="p">(</span><span class="n">davinci_ip</span><span class="o">=</span><span class="n">resolve_ip</span><span class="p">,</span><span class="n">auto_start</span><span class="o">=</span><span class="n">auto_start</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ResolveInitError</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span><span class="o">=</span><span class="n">Fusion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">Fusion</span><span class="p">())</span> 
+        
         <span class="c1"># timeline exportType can be one of the following constants:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DRT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_DRT</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_EDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_EDL</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCP_7_XML</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCP_7_XML</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DRT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_DRT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_EDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_EDL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCP_7_XML</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCP_7_XML</span>
 
         <span class="c1"># Remove at DR 18.1.3</span>
         <span class="c1"># self.EXPORT_FCPXML_1_3 = self.local_davinci.EXPORT_FCPXML_1_3</span>
@@ -459,88 +460,87 @@ document.write(`
         <span class="c1"># self.EXPORT_FCPXML_1_5 = self.local_davinci.EXPORT_FCPXML_1_5</span>
         <span class="c1"># self.EXPORT_FCPXML_1_6 = self.local_davinci.EXPORT_FCPXML_1_6</span>
         <span class="c1"># self.EXPORT_FCPXML_1_7 = self.local_davinci.EXPORT_FCPXML_1_7</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_8</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_8</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_8</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_8</span>
 
         <span class="c1"># Add at DR 18.0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_9</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_9</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_10</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_9</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_9</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_10</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_FCPXML_1_10</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_A</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_B</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_TEXT_CSV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_TEXT_CSV</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_TEXT_TAB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_TEXT_TAB</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_2_9</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_2_9</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_4_0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_4_0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_HDR_10_PROFILE_B</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_TEXT_CSV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_TEXT_CSV</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_TEXT_TAB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_TEXT_TAB</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_2_9</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_2_9</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_4_0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_4_0</span>
 
         <span class="c1"># Add at DR 18.1.3</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_5_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_5_1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_5_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_DOLBY_VISION_VER_5_1</span>
 
         <span class="c1"># Add at DR 18.5.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_OTIO</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_OTIO</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_OTIO</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_OTIO</span>
 
         <span class="c1"># timeline exportSubtype can be one of the following enums:</span>
         <span class="c1"># for exportType is EXPORT_AAF:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF_NEW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF_NEW</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF_EXISTING</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF_EXISTING</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF_NEW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF_NEW</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_AAF_EXISTING</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_AAF_EXISTING</span>
         <span class="c1"># for exportType is EXPORT_EDL:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_NONE</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_NONE</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_CDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_CDL</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_SDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_SDL</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_MISSING_CLIPS</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">EXPORT_MISSING_CLIPS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_NONE</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_NONE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_CDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_CDL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_SDL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_SDL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EXPORT_MISSING_CLIPS</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">EXPORT_MISSING_CLIPS</span>
         
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_PROJECT_NAME</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_PROJECT_NAME</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_PROJECT_MEDIA_PATH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_PROJECT_MEDIA_PATH</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_IS_COLLAB</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_IS_COLLAB</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_SYNC_MODE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_SYNC_MODE</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_IS_CAMERA_ACCESS</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_IS_CAMERA_ACCESS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_PROJECT_NAME</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_PROJECT_NAME</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_PROJECT_MEDIA_PATH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_PROJECT_MEDIA_PATH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_IS_COLLAB</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_IS_COLLAB</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_SYNC_MODE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_SYNC_MODE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SETTING_IS_CAMERA_ACCESS</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">CLOUD_SETTING_IS_CAMERA_ACCESS</span>
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SYNC_NONE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">CLOUD_SYNC_NONE</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SYNC_PROXY_ONLY</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">CLOUD_SYNC_PROXY_ONLY</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SYNC_PROXY_AND_ORIG</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">CLOUD_SYNC_PROXY_AND_ORIG</span>
-        
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_LANGUAGE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_LANGUAGE</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_CAPTION_PRESET</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_CAPTION_PRESET</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_CHARS_PER_LINE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_CHARS_PER_LINE</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_LINE_BREAK</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_LINE_BREAK</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_GAP</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_GAP</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SYNC_NONE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">CLOUD_SYNC_NONE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SYNC_PROXY_ONLY</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">CLOUD_SYNC_PROXY_ONLY</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CLOUD_SYNC_PROXY_AND_ORIG</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">CLOUD_SYNC_PROXY_AND_ORIG</span>
         
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_AUTO</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_AUTO</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_DANISH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_DANISH</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_DUTCH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_DUTCH</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_ENGLISH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_ENGLISH</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_FRENCH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_FRENCH</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_GERMAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_GERMAN</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_ITALIAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_ITALIAN</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_JAPANESE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_JAPANESE</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_KOREAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_KOREAN</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_MANDARIN_SIMPLIFIED</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_MANDARIN_SIMPLIFIED</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_MANDARIN_TRADITIONAL</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_MANDARIN_TRADITIONAL</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_NORWEGIAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_NORWEGIAN</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_PORTUGUESE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_PORTUGUESE</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_RUSSIAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_RUSSIAN</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_SPANISH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_SPANISH</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_SWEDISH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_SWEDISH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_LANGUAGE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_LANGUAGE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_CAPTION_PRESET</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_CAPTION_PRESET</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_CHARS_PER_LINE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_CHARS_PER_LINE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_LINE_BREAK</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_LINE_BREAK</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SUBTITLE_GAP</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">SUBTITLE_GAP</span>
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_AUTO</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_AUTO</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_DANISH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_DANISH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_DUTCH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_DUTCH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_ENGLISH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_ENGLISH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_FRENCH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_FRENCH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_GERMAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_GERMAN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_ITALIAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_ITALIAN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_JAPANESE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_JAPANESE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_KOREAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_KOREAN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_MANDARIN_SIMPLIFIED</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_MANDARIN_SIMPLIFIED</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_MANDARIN_TRADITIONAL</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_MANDARIN_TRADITIONAL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_NORWEGIAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_NORWEGIAN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_PORTUGUESE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_PORTUGUESE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_RUSSIAN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_RUSSIAN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_SPANISH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_SPANISH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_SWEDISH</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_SWEDISH</span>
         
         
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_SUBTITLE_DEFAULT</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_SUBTITLE_DEFAULT</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_TELETEXT</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_TELETEXT</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_NETFLIX</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_NETFLIX</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_SUBTITLE_DEFAULT</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_SUBTITLE_DEFAULT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_TELETEXT</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_TELETEXT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_NETFLIX</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_NETFLIX</span>
         
        
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_LINE_SINGLE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_LINE_SINGLE</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_LINE_DOUBLE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_LINE_DOUBLE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_LINE_SINGLE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_LINE_SINGLE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AUTO_CAPTION_LINE_DOUBLE</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">AUTO_CAPTION_LINE_DOUBLE</span>
         
         <span class="k">global</span> <span class="n">RESOLVE_VERSION</span>
-        <span class="n">RESOLVE_VERSION</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span></div>
+        <span class="n">RESOLVE_VERSION</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span></div>
 
-        
-<div class="viewcode-block" id="Bmd.init_davinci">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.init_davinci.html#pybmd.bmd.Bmd.init_davinci">[docs]</a>
-    <span class="k">def</span> <span class="nf">init_davinci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">davinci_ip</span><span class="p">,</span><span class="n">auto_start</span><span class="p">):</span>
+    
+
+    <span class="k">def</span> <span class="nf">_init_davinci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">davinci_ip</span><span class="p">,</span><span class="n">auto_start</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;init and return Davinci Resolve object</span>
 
 <span class="sd">        Args:</span>
@@ -552,18 +552,17 @@ document.write(`
             
         <span class="n">bmd_module</span> <span class="o">=</span> <span class="n">load_dynamic</span><span class="p">(</span>
             <span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;fusionscript&#39;</span><span class="p">,</span> <span class="n">module_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PYLIB</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">bmd_module</span><span class="o">.</span><span class="n">scriptapp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APP_NAME</span><span class="p">,</span> <span class="n">davinci_ip</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">bmd_module</span><span class="o">.</span><span class="n">scriptapp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APP_NAME</span><span class="p">,</span> <span class="n">davinci_ip</span><span class="p">)</span>
 
-
-<div class="viewcode-block" id="Bmd.get_local_davinci">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.get_local_davinci.html#pybmd.bmd.Bmd.get_local_davinci">[docs]</a>
+<div class="viewcode-block" id="BMD.get_local_davinci">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.get_local_davinci.html#pybmd.bmd.BMD.get_local_davinci">[docs]</a>
     <span class="k">def</span> <span class="nf">get_local_davinci</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the local Davinci Resolve object.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span></div>
 
 
-<div class="viewcode-block" id="Bmd.delete_layout_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.delete_layout_preset.html#pybmd.bmd.Bmd.delete_layout_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.delete_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.delete_layout_preset.html#pybmd.bmd.BMD.delete_layout_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes preset named preset_name.</span>
 
@@ -573,11 +572,11 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: result</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">DeleteLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">DeleteLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.export_layout_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.export_layout_preset.html#pybmd.bmd.Bmd.export_layout_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.export_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.export_layout_preset.html#pybmd.bmd.BMD.export_layout_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">export_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports preset named preset_name to path preset_file_path.</span>
 
@@ -588,95 +587,91 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: result</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">ExportLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">))</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">ExportLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">))</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.fusion">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.fusion.html#pybmd.bmd.Bmd.fusion">[docs]</a>
-    <span class="k">def</span> <span class="nf">fusion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Fusion object. Starting point for Fusion scripts.&quot;&quot;&quot;</span>
-        <span class="c1"># if I find more info about fusion I will finish this function</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">Fusion</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
-
-
-<div class="viewcode-block" id="Bmd.get_current_page">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.get_current_page.html#pybmd.bmd.Bmd.get_current_page">[docs]</a>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fusion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fusion</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Fusion object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span>
+<div class="viewcode-block" id="BMD.get_current_page">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.get_current_page.html#pybmd.bmd.BMD.get_current_page">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_page</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the page currently displayed in the main window</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: Returned value can be one of (&quot;media&quot;, &quot;cut&quot;, &quot;edit&quot;, &quot;fusion&quot;, &quot;color&quot;, &quot;fairlight&quot;, &quot;deliver&quot;, None).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetCurrentPage</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">GetCurrentPage</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.get_media_storage">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.get_media_storage.html#pybmd.bmd.Bmd.get_media_storage">[docs]</a>
+<div class="viewcode-block" id="BMD.get_media_storage">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.get_media_storage.html#pybmd.bmd.BMD.get_media_storage">[docs]</a>
     <span class="k">def</span> <span class="nf">get_media_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MediaStorage</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the MediaStorage  object to query and act on media locations.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            MediaStorage: </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">MediaStorage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">MediaStorage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Bmd.get_product_name">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.get_product_name.html#pybmd.bmd.Bmd.get_product_name">[docs]</a>
+<div class="viewcode-block" id="BMD.get_product_name">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.get_product_name.html#pybmd.bmd.BMD.get_product_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_product_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns product name.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: product name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetProductName</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">GetProductName</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.get_project_manager">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.get_project_manager.html#pybmd.bmd.Bmd.get_project_manager">[docs]</a>
+<div class="viewcode-block" id="BMD.get_project_manager">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.get_project_manager.html#pybmd.bmd.BMD.get_project_manager">[docs]</a>
     <span class="k">def</span> <span class="nf">get_project_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProjectManager</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ProjectManager object for currently open database.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            ProjectManager: </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">ProjectManager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">ProjectManager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Bmd.get_version">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.get_version.html#pybmd.bmd.Bmd.get_version">[docs]</a>
+<div class="viewcode-block" id="BMD.get_version">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.get_version.html#pybmd.bmd.BMD.get_version">[docs]</a>
     <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of product version fields in [major, minor, patch, build, suffix] format.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list: list of product version fields</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.get_version_string">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.get_version_string.html#pybmd.bmd.Bmd.get_version_string">[docs]</a>
+<div class="viewcode-block" id="BMD.get_version_string">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.get_version_string.html#pybmd.bmd.BMD.get_version_string">[docs]</a>
     <span class="k">def</span> <span class="nf">get_version_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns product version in &quot;major.minor.patch[suffix].build&quot; format.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: product version string</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">GetVersionString</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">GetVersionString</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.import_layout_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.import_layout_preset.html#pybmd.bmd.Bmd.import_layout_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.import_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.import_layout_preset.html#pybmd.bmd.BMD.import_layout_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">import_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Imports preset from path &#39;preset_file_path&#39;. </span>
 <span class="sd">            The optional argument &#39;preset_name&#39; specifies how the preset shall be named.</span>
 <span class="sd">            If not specified, the preset is named based on the filename.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">ImportLayoutPreset</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">),</span> <span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">ImportLayoutPreset</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">),</span> <span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.load_layout_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.load_layout_preset.html#pybmd.bmd.Bmd.load_layout_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.load_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.load_layout_preset.html#pybmd.bmd.BMD.load_layout_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">load_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads UI layout from saved preset named preset_name.</span>
 
@@ -686,11 +681,11 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">LoadLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">LoadLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.open_page">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.open_page.html#pybmd.bmd.Bmd.open_page">[docs]</a>
+<div class="viewcode-block" id="BMD.open_page">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.open_page.html#pybmd.bmd.BMD.open_page">[docs]</a>
     <span class="k">def</span> <span class="nf">open_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Switches to indicated page in DaVinci Resolve. </span>
 
@@ -700,18 +695,18 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">OpenPage</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">OpenPage</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.quit">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.quit.html#pybmd.bmd.Bmd.quit">[docs]</a>
+<div class="viewcode-block" id="BMD.quit">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.quit.html#pybmd.bmd.BMD.quit">[docs]</a>
     <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Quits the Resolve App.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.save_layout_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.save_layout_preset.html#pybmd.bmd.Bmd.save_layout_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.save_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.save_layout_preset.html#pybmd.bmd.BMD.save_layout_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">save_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves current UI layout as a preset named preset_name.</span>
 
@@ -721,11 +716,11 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">SaveLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">SaveLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Bmd.update_layout_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.update_layout_preset.html#pybmd.bmd.Bmd.update_layout_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.update_layout_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.update_layout_preset.html#pybmd.bmd.BMD.update_layout_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">update_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Overwrites preset named &#39;preset_name&#39; with current UI layout.</span>
 
@@ -735,14 +730,22 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_davinci</span><span class="o">.</span><span class="n">UpdateLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">UpdateLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
+<div class="viewcode-block" id="BMD.get_ui_dispatcher">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.get_ui_dispatcher.html#pybmd.bmd.BMD.get_ui_dispatcher">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_ui_dispatcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ui_manager</span><span class="p">:</span><span class="n">UI_Manager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UI_Dispather</span><span class="p">:</span>
+        <span class="n">bmd_module</span> <span class="o">=</span> <span class="n">load_dynamic</span><span class="p">(</span>
+            <span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;fusionscript&#39;</span><span class="p">,</span> <span class="n">module_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">PYLIB</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">UI_Dispather</span><span class="p">(</span><span class="n">bmd_module</span><span class="o">.</span><span class="n">UIDispatcher</span><span class="p">(</span><span class="n">ui_manager</span><span class="o">.</span><span class="n">_ui_manager</span><span class="p">))</span></div>
+
+    
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.6.0 </span>
     
-<div class="viewcode-block" id="Bmd.import_render_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.import_render_preset.html#pybmd.bmd.Bmd.import_render_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.import_render_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.import_render_preset.html#pybmd.bmd.BMD.import_render_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">import_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a preset from presetPath (string) and set it as current preset for rendering.</span>
 
@@ -752,11 +755,11 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if succssful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmd</span><span class="o">.</span><span class="n">ImportRenderPreset</span><span class="p">(</span><span class="n">preset_path</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">ImportRenderPreset</span><span class="p">(</span><span class="n">preset_path</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Bmd.export_render_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.export_render_preset.html#pybmd.bmd.Bmd.export_render_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.export_render_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.export_render_preset.html#pybmd.bmd.BMD.export_render_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">export_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a preset to a given path (string) if presetName(string) exists.</span>
 
@@ -767,11 +770,11 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if succssful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmd</span><span class="o">.</span><span class="n">ExportRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">ExportRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Bmd.import_burn_in_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.import_burn_in_preset.html#pybmd.bmd.Bmd.import_burn_in_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.import_burn_in_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.import_burn_in_preset.html#pybmd.bmd.BMD.import_burn_in_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">import_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a data burn in preset from a given presetPath (string)</span>
 
@@ -781,11 +784,11 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if succssful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmd</span><span class="o">.</span><span class="n">ImportBurnInPreset</span><span class="p">(</span><span class="n">preset_path</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">ImportBurnInPreset</span><span class="p">(</span><span class="n">preset_path</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Bmd.export_burn_in_preset">
-<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.Bmd.export_burn_in_preset.html#pybmd.bmd.Bmd.export_burn_in_preset">[docs]</a>
+<div class="viewcode-block" id="BMD.export_burn_in_preset">
+<a class="viewcode-back" href="../../_autosummary/pybmd.bmd.BMD.export_burn_in_preset.html#pybmd.bmd.BMD.export_burn_in_preset">[docs]</a>
     <span class="k">def</span> <span class="nf">export_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a data burn in preset to a given path (string) if presetName (string) exists.</span>
 
@@ -796,7 +799,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if succssful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmd</span><span class="o">.</span><span class="n">ExportBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_davinci</span><span class="o">.</span><span class="n">ExportBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

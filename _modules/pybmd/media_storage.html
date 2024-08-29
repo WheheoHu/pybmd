@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=650922bd"></script>
+    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_storage';</script>
@@ -354,7 +354,7 @@ document.write(`
 
 <span class="kn">from</span> <span class="nn">pybmd.media_pool_item</span> <span class="kn">import</span> <span class="n">MediaPoolItem</span>
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pybmd.bmd</span> <span class="kn">import</span> <span class="n">Bmd</span>
+    <span class="kn">from</span> <span class="nn">pybmd.bmd</span> <span class="kn">import</span> <span class="n">BMD</span>
 
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
@@ -380,7 +380,7 @@ document.write(`
 
 <div class="viewcode-block" id="MediaStorage.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.__init__.html#pybmd.media_storage.MediaStorage.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_local_davinci</span><span class="p">:</span> <span class="s1">&#39;Bmd.local_davinci&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_local_davinci</span><span class="p">:</span> <span class="s1">&#39;BMD._local_davinci&#39;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">media_storage</span> <span class="o">=</span> <span class="n">_local_davinci</span><span class="o">.</span><span class="n">GetMediaStorage</span><span class="p">()</span></div>
 
 

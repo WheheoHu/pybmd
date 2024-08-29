@@ -1,0 +1,8 @@
+BMD.\_\_init\_\_
+================
+
+.. currentmodule:: pybmd.bmd
+
+.. automethod:: BMD.__init__
+
+    .. autosummary::

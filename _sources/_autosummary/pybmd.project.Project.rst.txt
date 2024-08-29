@@ -64,12 +64,4 @@ Project
 
    
    
-   .. rubric:: Attributes
-
-   .. autosummary::
-      :toctree:
-   
-      ~Project.project
-      ~Project.project_name
-   
    

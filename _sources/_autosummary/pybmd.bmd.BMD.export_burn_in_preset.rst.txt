@@ -1,0 +1,8 @@
+BMD.export\_burn\_in\_preset
+============================
+
+.. currentmodule:: pybmd.bmd
+
+.. automethod:: BMD.export_burn_in_preset
+
+    .. autosummary::

@@ -1,0 +1,31 @@
+UI\_Dispather
+=============
+
+.. currentmodule:: pybmd.ui_dispather
+
+.. autoclass:: UI_Dispather
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~UI_Dispather.__init__
+      ~UI_Dispather.add_window
+   
+   
+
+   
+   
+   

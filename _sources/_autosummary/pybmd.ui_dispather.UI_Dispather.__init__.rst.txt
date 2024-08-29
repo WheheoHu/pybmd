@@ -1,0 +1,8 @@
+UI\_Dispather.\_\_init\_\_
+==========================
+
+.. currentmodule:: pybmd.ui_dispather
+
+.. automethod:: UI_Dispather.__init__
+
+    .. autosummary::

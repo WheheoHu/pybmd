@@ -52,11 +52,4 @@ ProjectManager
 
    
    
-   .. rubric:: Attributes
-
-   .. autosummary::
-      :toctree:
-   
-      ~ProjectManager.project_manager
-   
    

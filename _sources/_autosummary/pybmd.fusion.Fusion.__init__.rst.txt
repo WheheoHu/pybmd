@@ -1,0 +1,8 @@
+Fusion.\_\_init\_\_
+===================
+
+.. currentmodule:: pybmd.fusion
+
+.. automethod:: Fusion.__init__
+
+    .. autosummary::

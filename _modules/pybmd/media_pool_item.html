@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=650922bd"></script>
+    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_pool_item';</script>
@@ -359,7 +359,7 @@ document.write(`
 <div class="viewcode-block" id="MediaPoolItem.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.__init__.html#pybmd.media_pool_item.MediaPoolItem.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span> <span class="o">=</span> <span class="n">media_pool_item</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="o">=</span> <span class="n">media_pool_item</span></div>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Media Pool Item:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
@@ -368,7 +368,7 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.add_flag.html#pybmd.media_pool_item.MediaPoolItem.add_flag">[docs]</a>
     <span class="k">def</span> <span class="nf">add_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a flag to the clip.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">AddFlag</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">AddFlag</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.add_marker">
@@ -388,7 +388,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.clear_clip_color">
@@ -398,7 +398,7 @@ document.write(`
 
 <span class="sd">        :return: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ClearClipColor</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ClearClipColor</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.clear_flag_color">
@@ -411,7 +411,7 @@ document.write(`
 <span class="sd">        :return: true if success, false if fail</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>       
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ClearFlagColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ClearFlagColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.delete_marker_at_frame">
@@ -424,7 +424,7 @@ document.write(`
 <span class="sd">        :return: true if success, false if fail</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerAtFrame</span><span class="p">(</span><span class="n">frame_num</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerAtFrame</span><span class="p">(</span><span class="n">frame_num</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.delete_marker_by_custom_data">
@@ -438,7 +438,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.delete_marker_by_color">
@@ -452,7 +452,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerByColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">DeleteMarkerByColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.get_clip_color">
@@ -463,7 +463,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            str: color name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetClipColor</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetClipColor</span><span class="p">()</span></div>
 
 
     <span class="c1"># TODO property_name as data class</span>
@@ -478,7 +478,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            str: property value,if property is empty, return a dict of all clip properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetClipProperty</span><span class="p">(</span><span class="n">property_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetClipProperty</span><span class="p">(</span><span class="n">property_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.get_flag_list">
@@ -489,7 +489,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            list: flag colors assigned to the item.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetFlagList</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetFlagList</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.get_marker_by_custom_data">
@@ -503,7 +503,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: maker info</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.get_marker_custom_data">
@@ -517,7 +517,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            str: custom data of the marker</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMarkerCustomData</span><span class="p">(</span><span class="n">freamid</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetMarkerCustomData</span><span class="p">(</span><span class="n">freamid</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.get_markers">
@@ -528,14 +528,14 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: maker position and info</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMarkers</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetMarkers</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.get_media_id">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_media_id.html#pybmd.media_pool_item.MediaPoolItem.get_media_id">[docs]</a>
     <span class="k">def</span> <span class="nf">get_media_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return media id for the clip.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMediaId</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetMediaId</span><span class="p">()</span></div>
 
 
     <span class="c1"># TODO metadata_type as data class</span>
@@ -550,14 +550,14 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            str: metadata value If no argument is specified, a dict of all set metadata properties is returned.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.get_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_name.html#pybmd.media_pool_item.MediaPoolItem.get_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return name of the clip.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.link_proxy_media">
@@ -571,14 +571,14 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">LinkProxyMedia</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">proxy_media_file_path</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">LinkProxyMedia</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">proxy_media_file_path</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.replace_clip">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.replace_clip.html#pybmd.media_pool_item.MediaPoolItem.replace_clip">[docs]</a>
     <span class="k">def</span> <span class="nf">replace_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Replaces the underlying asset and metadata of MediaPoolItem with the specified absolute clip path.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ReplaceClip</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ReplaceClip</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.set_clip_color">
@@ -592,7 +592,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">SetClipColor</span><span class="p">(</span><span class="n">color_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetClipColor</span><span class="p">(</span><span class="n">color_name</span><span class="p">)</span></div>
 
 
     
@@ -608,7 +608,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">SetClipProperty</span><span class="p">(</span><span class="n">property_type</span><span class="p">,</span> <span class="n">property_value</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetClipProperty</span><span class="p">(</span><span class="n">property_type</span><span class="p">,</span> <span class="n">property_value</span><span class="p">)</span></div>
 
     
     <span class="c1"># TODO metadata_type as data class</span>
@@ -624,14 +624,14 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.unlink_proxy_media">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media.html#pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media">[docs]</a>
     <span class="k">def</span> <span class="nf">unlink_proxy_media</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Unlinks proxy media from the current clip.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">UnlinkProxyMedia</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">UnlinkProxyMedia</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.updata_marker_custom_data">
@@ -646,7 +646,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">UpdataMarkerCustomData</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">UpdataMarkerCustomData</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
 
     
     <span class="c1">###############################################################################</span>
@@ -657,7 +657,7 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_unique_id.html#pybmd.media_pool_item.MediaPoolItem.get_unique_id">[docs]</a>
     <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return unique id of the clip.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
 
     
     <span class="c1">##############################################################################################################################</span>
@@ -671,7 +671,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful; False otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">TranscribeAudio</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">TranscribeAudio</span><span class="p">()</span></div>
 
     
 <div class="viewcode-block" id="MediaPoolItem.clear_transcription">
@@ -682,7 +682,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful; False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">ClearTranscription</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ClearTranscription</span><span class="p">()</span></div>
 </div>
 
     

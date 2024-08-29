@@ -1,0 +1,6 @@
+pybmd.bmd.BMD.fusion
+====================
+
+.. currentmodule:: pybmd.bmd
+
+.. autoproperty:: BMD.fusion

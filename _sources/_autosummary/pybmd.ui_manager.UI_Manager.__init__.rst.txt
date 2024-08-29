@@ -1,0 +1,8 @@
+UI\_Manager.\_\_init\_\_
+========================
+
+.. currentmodule:: pybmd.ui_manager
+
+.. automethod:: UI_Manager.__init__
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+BMD.get\_ui\_dispatcher
+=======================
+
+.. currentmodule:: pybmd.bmd
+
+.. automethod:: BMD.get_ui_dispatcher
+
+    .. autosummary::

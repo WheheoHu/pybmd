@@ -1,0 +1,6 @@
+pybmd.fusion.Fusion.ui\_manager
+===============================
+
+.. currentmodule:: pybmd.fusion
+
+.. autoproperty:: Fusion.ui_manager

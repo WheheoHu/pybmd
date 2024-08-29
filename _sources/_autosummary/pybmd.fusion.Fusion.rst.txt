@@ -1,0 +1,42 @@
+Fusion
+======
+
+.. currentmodule:: pybmd.fusion
+
+.. autoclass:: Fusion
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~Fusion.__init__
+      ~Fusion.get_prefs
+      ~Fusion.load_prefs
+      ~Fusion.save_prefs
+      ~Fusion.set_pref
+      ~Fusion.set_prefs
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~Fusion.ui_manager
+   
+   
