@@ -4,9 +4,8 @@ class ResolveInitError(Exception):
     def __init__(self, msg="Init Resolve failed,please check if davinci resolve is running"):
         super().__init__(msg)
         
-        
-class ValueMappingError(Exception):
-    """Error for Value Mapping for EnumMapping class
+class UnsupportSystemError(Exception):
+    """Error for system not support
     """
-    def __init__(self, msg="Enum Value Mapping Error,please check number of values args is equal to number of enum value"):
+    def __init__(self, msg="Unsupport system!"):
         super().__init__(msg)

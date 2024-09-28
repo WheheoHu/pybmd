@@ -2,6 +2,8 @@ from enum import Enum
 import importlib
 import sys
 
+from pybmd.error import UnsupportSystemError
+
 
 
 
@@ -19,12 +21,17 @@ def _load_dynamic(module_name, module_path: str):
 class DEFAULT_LIB_PATH(Enum):
     LIB_Windows = "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\fusionscript.dll"
     LIB_MAC = "/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so"
+    LIB_LINUX = "/opt/resolve/Developer/Scripting/Modules/"
     
 def _init_bmd_module():
     if sys.platform.startswith("darwin"):
         PYLIB = DEFAULT_LIB_PATH.LIB_MAC.value
     elif sys.platform.startswith("win"):
         PYLIB = DEFAULT_LIB_PATH.LIB_Windows.value
+    elif sys.platform.startswith("linux"):
+        PYLIB = DEFAULT_LIB_PATH.LIB_LINUX.value
+    else:
+        raise UnsupportSystemError()
     bmd_module = _load_dynamic(
         module_name='fusionscript', module_path=PYLIB) 
     return bmd_module
