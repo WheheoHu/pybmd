@@ -141,7 +141,7 @@ class MediaPool():
         Returns:
             bool: true if successful, false if not
         """
-        return self.media_pool.DeleteTimelines([timeline.timeline for timeline in timelines])
+        return self.media_pool.DeleteTimelines([timeline._timeline for timeline in timelines])
 
     def export_metadata(self, file_name: str, clips: List[MediaPoolItem]) -> bool:
         """export metadata to csv file

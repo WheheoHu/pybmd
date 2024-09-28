@@ -1,8 +1,13 @@
 from dataclasses import dataclass
 from dataclasses import asdict
 from os import path
-from typing import List
+from typing import List, Tuple, Union
+
+from traitlets import Bool
+from pybmd.color_group import ColorGroup
+from pybmd.export_type import LUT_Export_Type
 from pybmd.fusion_comp import FusionComp
+from pybmd.graph import Graph
 from pybmd.media_pool_item import MediaPoolItem
 
 from enum import Enum
@@ -52,7 +57,7 @@ class TimelineItem():
         """Adds a flag with given color (string)."""
         return self._timeline_item.AddFlag(color)
 
-    def add_fusion_comp(self) -> FusionComp:
+    def add_fusion_comp(self) -> 'FusionComp':
         """Adds a new Fusion composition associated with the timeline item."""
         return FusionComp(self._timeline_item.AddFusionComp())
 
@@ -107,8 +112,8 @@ class TimelineItem():
 
     def copy_grades(self, target_timeline_items: List['TimelineItem']) -> bool:
         """
-        Copies the current grade to all the items in tgtTimelineItems list. 
-        Returns True on success and False if any error occurred.
+        Copies the current node stack layer grade to the same layer for each item in target_timeline_items. 
+        Returns True if successful.
         """
         timeline_item_list = []
         for timeline_item in target_timeline_items:
@@ -178,14 +183,14 @@ class TimelineItem():
         """Returns the end frame position on the timeline."""
         return self._timeline_item.GetFlagList()
 
-    def get_fusion_comp_by_index(self, comp_index) -> FusionComp:
+    def get_fusion_comp_by_index(self, comp_index) -> "FusionComp":
         """
         Returns the Fusion composition object based on given compIndex. 
         1 <= compIndex <= timelineItem.get_fusion_comp_count()
         """
         return FusionComp(self._timeline_item.GetFusionCompByIndex(comp_index))
 
-    def get_fusion_comp_by_name(self, comp_name) -> FusionComp:
+    def get_fusion_comp_by_name(self, comp_name) -> "FusionComp":
         """Returns the Fusion composition object based on given comp_name."""
         return FusionComp(self._timeline_item.GetFusionCompByName(comp_name))
 
@@ -209,7 +214,7 @@ class TimelineItem():
         """Returns customData string for the marker at given frameId position."""
         return self._timeline_item.GetMarkerCustomData(frame_id)
 
-    def get_media_pool_item(self) -> MediaPoolItem:
+    def get_media_pool_item(self) -> "MediaPoolItem":
         """Returns the media pool item corresponding to the timeline item if one exists.
 
         Returns:
@@ -273,7 +278,7 @@ class TimelineItem():
         """
         return self._timeline_item.GetVersionNameList(version_type.value)
 
-    def import_fusion_comp(self, path: str) -> FusionComp:
+    def import_fusion_comp(self, path: str) -> "FusionComp":
         """Imports a Fusion composition from given file path by creating and adding a new composition for the item.
 
         Args:
@@ -284,7 +289,7 @@ class TimelineItem():
         """
         return FusionComp(self._timeline_item.ImportFusionComp(str(path)))
 
-    def load_fusion_comp_by_name(self, comp_name: str) -> FusionComp:
+    def load_fusion_comp_by_name(self, comp_name: str) -> "FusionComp":
         """Loads the named Fusion composition as the active composition."""
         return FusionComp(self._timeline_item.LoadFusionCompByName(comp_name))
 
@@ -327,35 +332,38 @@ class TimelineItem():
         """Sets the item color based on the colorName (string)."""
         return self._timeline_item.SetClipColor(color_name)
 
-    def set_lut(self, node_index: int, lutpath: str) -> bool:
-        """Sets LUT on the node mapping the nodeIndex provided
+    # Remove at DR 19.0.0
+    # def set_lut(self, node_index: int, lutpath: str) -> bool:
+    #     """Sets LUT on the node mapping the nodeIndex provided
 
-        Args:
-            node_index (int): 1 <= nodeIndex <= total number of nodes.
-            lutpath (str): can be an absolute path, or a relative path (based off custom LUT paths or the master LUT path).
+    #     Args:
+    #         node_index (int): 1 <= nodeIndex <= total number of nodes.
+    #         lutpath (str): can be an absolute path, or a relative path (based off custom LUT paths or the master LUT path).
 
-        Returns:
-            bool: True if successful, False otherwise
-        """
-        return self._timeline_item.SetLUT(node_index, str(lutpath))
+    #     Returns:
+    #         bool: True if successful, False otherwise
+    #     """
+    #     return self._timeline_item.SetLUT(node_index, str(lutpath))
 
     ####################################################################################################################
     # add in davinci resolve 17.4.6
+    
+    # Remove at DR 19.0.0
+    # def get_num_node(self) -> int:
+    #     """Returns the number of nodes in the current graph for the timeline item"""
+    #     return self._timeline_item.GetNumNode()
+    
+    # Remove at DR 19.0.0
+    # def get_lut(self, node_index: int) -> str:
+    #     """Gets relative LUT path based on the node index provided
 
-    def get_num_node(self) -> int:
-        """Returns the number of nodes in the current graph for the timeline item"""
-        return self._timeline_item.GetNumNode()
+    #     Args:
+    #         node_index (int): 1 <= nodeIndex <= total number of nodes.
 
-    def get_lut(self, node_index: int) -> str:
-        """Gets relative LUT path based on the node index provided
-
-        Args:
-            node_index (int): 1 <= nodeIndex <= total number of nodes.
-
-        Returns:
-            str: lut path
-        """
-        return self._timeline_item.GetLUT(node_index)
+    #     Returns:
+    #         str: lut path
+    #     """
+    #     return self._timeline_item.GetLUT(node_index)
 
     ##########################################################################################################################
     # Add at DR18.0.0
@@ -408,17 +416,18 @@ class TimelineItem():
             bool: Returns true if successful
         """
         return self._timeline_item.LoadBurnInPreset(preset_name)
+    
+    # Remove at DR 19.0.0
+    # def get_node_label(self, node_index: int) -> str:
+    #     """Returns the label of the node at nodeIndex.
 
-    def get_node_label(self, node_index: int) -> str:
-        """Returns the label of the node at nodeIndex.
+    #     Args:
+    #         node_index (int): node index
 
-        Args:
-            node_index (int): node index
-
-        Returns:
-            str: node label
-        """
-        return self._timeline_item.GetNodeLabel(node_index)
+    #     Returns:
+    #         str: node label
+    #     """
+    #     return self._timeline_item.GetNodeLabel(node_index)
 
     ##############################################################################################################################
     # Add at DR18.5.0
@@ -457,3 +466,77 @@ class TimelineItem():
             bool: _descriReturns True if successful, False otherwise.
         """
         return self._timeline_item.SmartReframe()
+    
+    ##############################################################################################################################
+    # Add at DR 19.0.0
+    
+    def get_node_graph(self,layer_index:int) -> "Graph":
+        """Returns the clip's node graph object 
+
+        Args:
+            layer_index (int):  1 <= layer_index <= project.GetSetting("nodeStackLayers").
+
+        Returns:
+            Graph: The clip's node graph object at layer_index. Returns the first layer if layer_index is skipped.
+        """
+        return Graph(self._timeline_item.GetNodeGraph(layer_index)) 
+    
+    def get_color_group(self) -> "ColorGroup":
+        """Returns the clip's color group if one exists.
+
+        Returns:
+            ColorGroup: the clip's color group
+        """
+        return ColorGroup(self._timeline_item.GetColorGroup())
+    
+    def assign_to_color_group(self,color_group:ColorGroup) -> Bool:
+        """Returns True if TiItem to successfully assigned to given ColorGroup. 
+
+        Args:
+            color_group (ColorGroup): ColorGroup must be an existing group in the current project.
+
+        Returns:
+            Bool: Returns True if TiItem to successfully assigned to given ColorGroup. 
+        """
+        return self._timeline_item.AssignToColorGroup(color_group)
+    
+    def remove_from_color_group(self) -> Bool:
+        """Returns True if the TiItem is successfully removed from the ColorGroup it is in.
+
+        Returns:
+            Bool: Returns True if the TiItem is successfully removed from the ColorGroup it is in.
+        """
+        return self._timeline_item.RemoveFromColorGroup()
+    
+    def export_LUT(self,export_type:LUT_Export_Type,export_path:str) -> bool:
+        """ Exports LUTs from tiItem 
+                                                                
+        Args:
+            export_type (LUT_Export_Type): export lut type
+            export_path (str): Saves generated LUT in the provided 'path' (string). 'path' should include the intended file name.If an empty or incorrect extension is provided, the appropriate extension (.cube/.vlt) will be appended at the end of the path.
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+        """
+        
+        return self._timeline_item.ExportLUT(export_type.value,export_path)
+    
+    def get_linked_items(self) -> List["TimelineItem"]:
+        """ Returns a list of linked timeline items.
+
+        Returns:
+            List[TimelineItem]: a list of linked timeline items.
+        """
+        timeline_item_list = list()
+        for value in self._timeline_item.GetLinkedItems():
+            timeline_item_list.append(TimelineItem(value))
+        return timeline_item_list
+    
+    def get_track_type_and_index(self) -> Tuple[str,int]:
+        """Returns a list of two values that correspond to the TimelineItem's trackType (string) and trackIndex (int) respectively.
+                                                                           
+        Returns:
+            Tuple[str,int]: trackType is one of {"audio", "video", "subtitle"},1 <= trackIndex <= Timeline.GetTrackCount(trackType)
+
+        """
+        return tuple(self._timeline_item.GetTrackTypeAndIndex())

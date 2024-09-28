@@ -1,5 +1,4 @@
-import re
-from typing import Any, Dict, List
+from typing import Any, Dict
 from pybmd.ui_manager import UI_Manager
 
 

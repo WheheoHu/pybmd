@@ -252,4 +252,13 @@ class MediaPoolItem():
         """
         return self._media_pool_item.ClearTranscription()
     
-   
+    ##############################################################################################################################
+    # Add at DR 19.0.0 
+    
+    def get_audio_mapping(self) -> str:
+        """Returns a string with MediaPoolItem's audio mapping information. Check 'Audio Mapping' section for more information.
+
+        Returns:
+            str: json formatted string
+        """
+        return self._media_pool_item.GetAudioMapping()  

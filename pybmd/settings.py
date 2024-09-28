@@ -2,7 +2,13 @@ from enum import Enum, EnumType, auto
 from dataclasses import dataclass
 from typing import Any, TypedDict, Unpack
 
-from pybmd.error import ValueMappingError
+from pybmd.error import ResolveInitError
+
+from pybmd._init_bmd import _resolve_object as _resolve
+
+
+if _resolve is None:
+    raise ResolveInitError
 
 
 class SettingParameter(object):
@@ -72,20 +78,30 @@ class RenderSetting():
 
 class CloudSyncMode(Enum):
     """Docstring for CloudSyncMode."""
-    NONE: float = 0.0
-    PROXY_ONLY: float = 1.0
-    PROXY_AND_ORIG: float = 2.0
+    NONE: float = _resolve.CLOUD_SYNC_NONE
+    PROXY_ONLY: float = _resolve.CLOUD_SYNC_PROXY_ONLY
+    PROXY_AND_ORIG: float = _resolve.CLOUD_SYNC_PROXY_AND_ORIG
+
+
+class CloudProjectSettingEnum(Enum):
+    """Docstring for CloudProjectSettingEnum."""
+
+    PROJECT_NAME: str = _resolve.CLOUD_SETTING_PROJECT_NAME
+    PROJECT_MEDIA_PATH: str = _resolve.CLOUD_SETTING_PROJECT_MEDIA_PATH
+    IS_COLLAB: bool = _resolve.CLOUD_SETTING_IS_COLLAB
+    SYNC_MODE: float = _resolve.CLOUD_SETTING_SYNC_MODE
+    IS_CAMERA_ACCESS: bool = _resolve.CLOUD_SETTING_IS_CAMERA_ACCESS
 
 
 class CloudProjectsSetting():
     """Setting for CloudProject"""
 
     def __init__(self,
-                 cloud_setting_project_name: str = "",
-                 cloud_setting_project_media_path: str = "",
-                 cloud_setting_is_collab: bool = False,
-                 cloud_setting_sync_mode: CloudSyncMode = CloudSyncMode.PROXY_ONLY,
-                 cloud_setting_is_camera_access: bool = False):
+                 cloud_setting_project_name: str = _resolve.CLOUD_SETTING_PROJECT_NAME,
+                 cloud_setting_project_media_path: str = _resolve.CLOUD_SETTING_PROJECT_MEDIA_PATH,
+                 cloud_setting_is_collab: bool = _resolve.CLOUD_SETTING_IS_COLLAB,
+                 cloud_setting_sync_mode: CloudSyncMode = _resolve.CLOUD_SETTING_SYNC_MODE,
+                 cloud_setting_is_camera_access: bool = _resolve.CLOUD_SETTING_IS_CAMERA_ACCESS):
         """Initialize CloudProjectsSetting.
 
         Args:
@@ -94,16 +110,16 @@ class CloudProjectsSetting():
             cloud_setting_is_collab (bool, optional): collabration mode. Defaults to False.
             cloud_setting_sync_mode (CloudSyncMode, optional): sync mode. Defaults to CloudSyncMode.PROXY_ONLY.
             cloud_setting_is_camera_access (bool, optional): camera access mode. Defaults to False.
-            
+
         Examples:
             >>> from pybmd.settings import CloudProjectsSetting,CloudSyncMode
             >>> settings=CloudProjectsSetting()
             >>> print(settings.asdict())
             {0.0: '', 1.0: '', 2.0: False, 3.0: 1.0, 4.0: False}
-            >>> settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_ONLY
+            >>> settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_AND_ORIG
             >>> print(settings.asdict()) 
-            {0.0: '', 1.0: '', 2.0: False, 3.0: 1.0, 4.0: False}
-        """        
+            {0.0: '', 1.0: '', 2.0: False, 3.0: 2.0, 4.0: False}
+        """
         self.__cloud_setting_project_name = SettingParameter(
             0.0, cloud_setting_project_name)
         self.__cloud_setting_project_media_path = SettingParameter(
@@ -116,7 +132,7 @@ class CloudProjectsSetting():
             4.0, cloud_setting_is_camera_access)
 
     @property
-    def cloud_setting_project_name(self) -> SettingParameter:
+    def cloud_setting_project_name(self) -> str:
         return self.__cloud_setting_project_name.parameter_value
 
     @cloud_setting_project_name.setter
@@ -125,7 +141,7 @@ class CloudProjectsSetting():
             0.0, value)
 
     @property
-    def cloud_setting_project_media_path(self) -> SettingParameter:
+    def cloud_setting_project_media_path(self) -> str:
         return self.__cloud_setting_project_media_path.parameter_value
 
     @cloud_setting_project_media_path.setter
@@ -134,7 +150,7 @@ class CloudProjectsSetting():
             1.0, value)
 
     @property
-    def cloud_setting_is_collab(self) -> SettingParameter:
+    def cloud_setting_is_collab(self) -> bool:
         return self.__cloud_setting_is_collab.parameter_value
 
     @cloud_setting_is_collab.setter
@@ -143,7 +159,7 @@ class CloudProjectsSetting():
             2.0, value)
 
     @property
-    def cloud_setting_sync_mode(self) -> SettingParameter:
+    def cloud_setting_sync_mode(self) -> CloudSyncMode:
         return self.__cloud_setting_sync_mode.parameter_value
 
     @cloud_setting_sync_mode.setter
@@ -152,7 +168,7 @@ class CloudProjectsSetting():
             3.0, value.value)
 
     @property
-    def cloud_setting_is_camera_access(self) -> SettingParameter:
+    def cloud_setting_is_camera_access(self) -> bool:
         return self.__cloud_setting_is_camera_access.parameter_value
 
     @cloud_setting_is_camera_access.setter
@@ -170,35 +186,47 @@ class CloudProjectsSetting():
 
 class LanguageID(Enum):
     """Docstring for LanguageID."""
-    AUTO = 0.0
-    DANISH = 24.0
-    DUTCH = 2.0
-    ENGLISH = 3.0
-    FRENCH = 5.0
-    GERMAN = 6.0
-    ITALIAN = 9.0
-    JAPANESE = 10.0
-    KOREAN = 11.0
-    MANDARIN_SIMPLIFIED = 1.0
-    MANDARIN_TRADITIONAL = 25.0
-    NORWEGIAN = 13.0
-    PORTUGUESE = 15.0
-    RUSSIAN = 17.0
-    SPANISH = 18.0
-    SWEDISH = 19.0
+    AUTO = _resolve.AUTO_CAPTION_AUTO
+    DANISH = _resolve.AUTO_CAPTION_DANISH
+    DUTCH = _resolve.AUTO_CAPTION_DUTCH
+    ENGLISH = _resolve.AUTO_CAPTION_ENGLISH
+    FRENCH = _resolve.AUTO_CAPTION_FRENCH
+    GERMAN = _resolve.AUTO_CAPTION_GERMAN
+    ITALIAN = _resolve.AUTO_CAPTION_ITALIAN
+    JAPANESE = _resolve.AUTO_CAPTION_JAPANESE
+    KOREAN = _resolve.AUTO_CAPTION_KOREAN
+    MANDARIN_SIMPLIFIED = _resolve.AUTO_CAPTION_MANDARIN_SIMPLIFIED
+    MANDARIN_TRADITIONAL = _resolve.AUTO_CAPTION_MANDARIN_TRADITIONAL
+    NORWEGIAN = _resolve.AUTO_CAPTION_NORWEGIAN
+    PORTUGUESE = _resolve.AUTO_CAPTION_PORTUGUESE
+    RUSSIAN = _resolve.AUTO_CAPTION_RUSSIAN
+    SPANISH = _resolve.AUTO_CAPTION_SPANISH
+    SWEDISH = _resolve.AUTO_CAPTION_SWEDISH
 
+
+#######################################
+# AUTO CAPTION SETTINGS
 
 class PresetType(Enum):
     """Docstring for PresetType."""
-    SUBTITLE_DEFAULT = 0.0
-    TELETEXT = 1.0
-    NETFLIX = 2.0
+    SUBTITLE_DEFAULT = _resolve.AUTO_CAPTION_SUBTITLE_DEFAULT
+    TELETEXT = _resolve.AUTO_CAPTION_TELETEXT
+    NETFLIX = _resolve.AUTO_CAPTION_NETFLIX
 
 
 class LineBreakTypes(Enum):
     """Docstring for LineBreakTypes."""
-    LINE_SINGLE = 1.0
-    LINE_DOUBLE = 2.0
+    LINE_SINGLE = _resolve.AUTO_CAPTION_LINE_SINGLE
+    LINE_DOUBLE = _resolve.AUPTO_CAPTION_LINE_DOUBLE
+
+
+class AutoCaptionSettingsEnum(Enum):
+    """Docstring for MyEnum."""
+    LANGUAGE = _resolve.SUBTITLE_LANGUAGE
+    CAPTION_PRESET = _resolve.SUBTITLE_CAPTION_PRESET
+    CHARS_PER_LINE = _resolve.SUBTITLE_CHARS_PER_LINE
+    LINE_BREAK = _resolve.SUBTITLE_LINE_BREAK
+    GAP = _resolve.SUBTITLE_GAP
 
 
 class AutoCaptionSettings():
@@ -209,7 +237,13 @@ class AutoCaptionSettings():
         subtitle_chars_per_line: int
         subtitle_line_break: LineBreakTypes
         subtitle_gap: int
-    
+
+    Examples:
+    >>> from pybmd.settings import AutoCaptionSettings, LanguageID
+    >>> settings=AutoCaptionSettings()
+    >>> print(settings.asdict())
+    >>> settings.subtitle_language=LanguageID.ENGLISH
+    >>> print(settings.asdict())
     """
 
     def __init__(self,
@@ -277,9 +311,35 @@ class AutoCaptionSettings():
 
         Returns:
             dict[float, Any]: returned dict
-        """        
+        """
         return {self.__subtitle_language.parameter_index: self.__subtitle_language.parameter_value,
                 self.__subtitle_caption_preset.parameter_index: self.__subtitle_caption_preset.parameter_value,
                 self.__subtitle_chars_per_line.parameter_index: self.__subtitle_chars_per_line.parameter_value,
                 self.__subtitle_line_break.parameter_index: self.__subtitle_line_break.parameter_value,
                 self.__subtitle_gap.parameter_index: self.__subtitle_gap.parameter_value}
+
+
+class KeyframeMode(Enum):
+    """Docstring for KeyframeModeInformation."""
+    KEYFRAME_MODE_ALL = 0
+    KEYFRAME_MODE_COLOR = 1
+    KEYFRAME_MODE_SIZING = 2
+
+
+###################################
+# Project and Clip properties
+
+class CloudSyncState(Enum):
+    """Docstring for CloudSyncState."""
+    CLOUD_SYNC_DEFAULT = -1
+    CLOUD_SYNC_DOWNLOAD_IN_QUEUE = 0
+    CLOUD_SYNC_DOWNLOAD_IN_PROGRESS = 1
+    CLOUD_SYNC_DOWNLOAD_SUCCESS = 2
+    CLOUD_SYNC_DOWNLOAD_FAIL = 3
+    CLOUD_SYNC_DOWNLOAD_NOT_FOUND = 4
+
+    CLOUD_SYNC_UPLOAD_IN_QUEUE = 5
+    CLOUD_SYNC_UPLOAD_IN_PROGRESS = 6
+    CLOUD_SYNC_UPLOAD_SUCCESS = 7
+    CLOUD_SYNC_UPLOAD_FAIL = 8
+    CLOUD_SYNC_UPLOAD_NOT_FOUND = 9

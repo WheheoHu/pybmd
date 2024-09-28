@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Dict, List
 
 from pybmd.settings import CloudProjectsSetting
 if TYPE_CHECKING:
-    from pybmd.bmd import BMD
+    from pybmd.resolve import Resolve
 
 DatabaseList = List[Dict]
 
@@ -14,9 +14,8 @@ class ProjectManager:
     _project_manager = None
     _current_project = None
 
-    def __init__(self, _local_davinci: 'BMD._local_davinci'):
-        self._project_manager = _local_davinci.GetProjectManager()
-        self._current_project = self._project_manager.GetCurrentProject()
+    def __init__(self, project_manager):
+        self._project_manager = project_manager
    
     def close_project(self, project: Project) -> bool:
         """close project
@@ -49,7 +48,7 @@ class ProjectManager:
         Returns:
             Project: created project object
         """
-        return Project(project=self._project_manager.CreateProject(project_name), project_name=project_name)
+        return Project(project=self._project_manager.CreateProject(project_name))
 
     def delete_folder(self, folder_name: str) -> bool:
         """Deletes the specified folder if it exists
@@ -89,7 +88,7 @@ class ProjectManager:
 
     def get_current_project(self) -> Project:
         """Returns the current project"""
-        return Project(project=self._current_project, project_name=self._current_project.GetName())
+        return Project(project=self._project_manager.GetCurrentProject())
 
     def get_database_list(self) -> DatabaseList:
         """return database list"""
@@ -116,9 +115,9 @@ class ProjectManager:
         """Imports a project from the file path provided with given project name. Returns True if successful."""
         return self._project_manager.ImportPorject(str(file_path), project_name)
 
-    def load_project(self, project_name) -> Project:
+    def load_project(self, project_name) -> "Project":
         """Loads and returns the@Project  with name = project_name (string) if there is a match found, and None if there is no matching Project."""
-        return Project(project=self._project_manager.LoadProject(project_name), project_name=project_name)
+        return Project(project=self._project_manager.LoadProject(project_name))
 
     def open_folder(self, folder_name: str) -> bool:
         """Opens folder under given name."""

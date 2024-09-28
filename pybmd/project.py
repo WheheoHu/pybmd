@@ -1,5 +1,7 @@
 from dataclasses import asdict
 from typing import Any, Dict, List
+from pybmd import color_group
+from pybmd.color_group import ColorGroup
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
 
@@ -15,8 +17,7 @@ class Project():
     """Project Object"""
 
 
-    def __init__(self, project, project_name: str):
-        self._project_name = project_name
+    def __init__(self, project):
         self._project = project
 
     def __repr__(self) -> str:
@@ -160,7 +161,7 @@ class Project():
 
     def set_current_timeline(self, timeline: Timeline) -> bool:
         """Sets given Timeline as current timeline for the project. Returns True if successful."""
-        return self._project.SetCurrentTimeline(timeline.timeline)
+        return self._project.SetCurrentTimeline(timeline._timeline)
 
     def set_name(self, project_name) -> bool:
         """Sets project name if given project_name (string) is unique."""
@@ -256,4 +257,38 @@ class Project():
         """
         return self._project.ExportCurrentFrameAsStill(file_path)
        
+    ##############################################################################################################################
+    # Add at DR 19.0.0 
+    def get_color_groups_list(self) -> List[ColorGroup]:
+        """Returns a list of all group objects in the timeline.
+
+        Returns:
+            List[ColorGroup]: a list of all group objects
+        """
+        color_group_list = list()
+        for color_group in self._project.GetColorGroupsList():
+            color_group_list.append(ColorGroup(color_group))
+        return color_group_list
+    
+    def add_color_group(self,group_name:str) -> ColorGroup:
+        """Creates a new ColorGroup. 
+
+        Args:
+            group_name (str): groupName must be a unique string.
+
+        Returns:
+            ColorGroup: ColorGroup object if successful, otherwise None.
+        """
+        return ColorGroup(self._project.AddColorGroup(group_name)  )
+    
+    def delete_color_group(self,color_group:ColorGroup) -> bool:
+        """Deletes the given color group and sets clips to ungrouped.
+
+        Args:
+            color_group (ColorGroup): color group object to delete
+
+        Returns:
+            bool: Return True if successful, otherwise False.
+        """
+        return self._project.DeleteColorGroup(color_group) 
     

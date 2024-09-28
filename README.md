@@ -4,7 +4,7 @@
 ![PyPI](https://img.shields.io/pypi/v/pybmd)
 
 
-Python library for DaVinci Resolve (Repack)
+Python wrapper library for DaVinci Resolve (Repack)
 
 *🔥 Pybmd Now Support Both Windows & macOS 🔥*
 
@@ -19,19 +19,19 @@ pip install pybmd
 
 1. Init Resolve object use Bmd module
    ```python
-    from pybmd import Bmd
+    from pybmd import Resolve
 
-    LOCAL_RESOLVE = Bmd()
+    LOCAL_RESOLVE = Resolve()
     ```
-    `Bmd()` has an option arg named `davinci_ip` , default value is `127.0.0.1 `stands for local davinci, if you want to use remote DaVinci Resolve object, change arg to remote ip.
+    `Resolve()` has an option arg named `resolve_ip` , default value is `127.0.0.1 `stands for local davinci, if you want to use remote DaVinci Resolve object, change arg to remote ip.
     
-    `Bmd()` has an option arg named `auto_start` , default value is `true `stands for open davinci automatically if it's not running, if you want to open davinci manually, change arg to `false`.
+    `Resolve()` has an option arg named `auto_start` , default value is `true `stands for open davinci automatically if it's not running, if you want to open davinci manually, change arg to `false`.
 
 2. You are free now! 
 
     Play with APIs!
     
     Original API documentation could be found at my notion:
-    [Davnci Resolve API in notion](https://wheheohu.notion.site/Davinci-Python-API-7c4f1038a36f44818b631ec7e4a537fa)
+    [Davnci Resolve API in notion](https://wheheohu.github.io/bmd_doc/)
 
     Pybmd Library API documentation could be found at :[Pybmd API Documentation](https://wheheohu.github.io/pybmd/)

@@ -127,3 +127,48 @@
 # 2024.2.7
 ## StillManager
 - Fix bug in `2024.2.6`
+
+--------
+# 2024.3.0
+## Refactoring
+- Refactor `BMD()` to `Resolve()`
+- Move setting/export types const in `BMD()` class to `export_type` and `settings` module
+- Add `_init_bmd` module to init fusionscript module from library
+- Init `UI_Dispather` class directly from fusionscript module
+- change `MediaStorage` init args
+- change `ProjectManager` init args
+- change `Project` init args
+## Change in DR 19.0.0
+### [New] ColorGroup
+### [New] Graph
+### MediaPollItem
+- Add `get_audio_mapping`
+### Project
+- Add `get_color_groups_list`
+- Add `add_color_group`
+- Add `delete_color_group`
+### Resolve
+- Add `get_keyframe_mode`
+- Add `set_keyframe_mode`
+
+### settings module
+- Add `KeyframeMode` Enum
+- Add `CloudSyncState` Enum
+
+### TimelineItem
+- Remove `set_lut` to `Graph`
+- Remove `get_num_node` to `Graph`
+- Remove `get_lut` to `Graph`
+- Remove `get_node_label` to `Graph`
+- Add `get_node_graph`
+- Add `get_color_group`
+- Add `assign_to_color_group`
+- Add `remove_from_color_group`
+- Add `export_LUT`
+- Add `get_linked_items`
+- Add `get_track_type_and_index`
+
+### Timeline
+- Change `add_track`
+- Add `get_node_graph`
+- Add `analyze_dolby_vision`
