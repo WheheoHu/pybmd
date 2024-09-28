@@ -6,11 +6,12 @@ from .error import ResolveInitError
 from ._init_bmd import _resolve_object as _resolve
 
 
-if _resolve is None:
-    raise ResolveInitError
+
 
 
 class LUT_Export_Type(Enum):
+    if _resolve is None:
+        raise ResolveInitError
     CUBE_17PT=_resolve.EXPORT_LUT_17PTCUBE
     CUBE_33PT=_resolve.EXPORT_LUT_33PTCUBE
     CUBE_65PT=_resolve.EXPORT_LUT_65PTCUBE
@@ -18,6 +19,8 @@ class LUT_Export_Type(Enum):
     
 
 class Timeline_Export_Type(Enum):
+    if _resolve is None:
+        raise ResolveInitError
     EXPORT_AAF = _resolve.EXPORT_AAF
     EXPORT_DRT = _resolve.EXPORT_DRT
     EXPORT_EDL = _resolve.EXPORT_EDL
@@ -48,6 +51,8 @@ class Timeline_Export_Type(Enum):
     
     
 class Timeline_Export_Subtype(Enum):
+    if _resolve is None:
+        raise ResolveInitError
      # timeline exportSubtype can be one of the following enums:
     # for exportType is EXPORT_AAF:
     EXPORT_AAF_NEW = _resolve.EXPORT_AAF_NEW
