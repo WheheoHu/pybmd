@@ -4,7 +4,7 @@
 ![PyPI](https://img.shields.io/pypi/v/pybmd)
 
 
-Python wrapper library for DaVinci Resolve (Repack)
+Python wrapper library for DaVinci Resolve API
 
 *🔥 Pybmd Now Support Both Windows & macOS 🔥*
 

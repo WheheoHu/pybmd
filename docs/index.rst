@@ -5,7 +5,7 @@
 
 PyBMD
 =================================
-Python library for DaVinci Resolve (Repack)
+Python wrapper library for DaVinci Resolve API
 
 How To Install
 --------------------
