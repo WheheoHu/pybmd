@@ -55,6 +55,7 @@ Timeline
       ~Timeline.get_start_timecode
       ~Timeline.get_track_count
       ~Timeline.get_track_name
+      ~Timeline.get_track_sub_type
       ~Timeline.get_unique_id
       ~Timeline.grab_all_stills
       ~Timeline.grab_still

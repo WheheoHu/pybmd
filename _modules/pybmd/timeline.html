@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=7b2d7c30"></script>
+    <script src="../../_static/documentation_options.js?v=df55f829"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/timeline';</script>
@@ -1048,8 +1048,26 @@ document.write(`
 <span class="sd">            bool: Returns True if analysis start is successful; False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">AnalyzeDolbyVision</span><span class="p">(</span><span class="n">timeline_item_list</span><span class="p">,</span><span class="n">analysis_type</span><span class="p">)</span></div>
+
+    
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 19.0.1</span>
+<div class="viewcode-block" id="Timeline.get_track_sub_type">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_track_sub_type.html#pybmd.timeline.Timeline.get_track_sub_type">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_track_sub_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">track_index</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">track_type</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;audio&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            track_index (int): 1 &lt; = track_index &lt; = GetTrackCount(trackType)</span>
+<span class="sd">            track_type (str, optional): Defaults to &quot;audio&quot;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: audio track&#39;s format,value is one of {&quot;mono&quot;, &quot;stereo&quot;, &quot;5.1&quot;, &quot;5.1film&quot;, &quot;7.1&quot;, &quot;7.1film&quot;, &quot;adaptive1&quot;, ... , &quot;adaptive24&quot;} </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetTrackSubType</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span><span class="n">track_index</span><span class="p">)</span></div>
 </div>
 
+    
 </pre></div>
 
                 </article>

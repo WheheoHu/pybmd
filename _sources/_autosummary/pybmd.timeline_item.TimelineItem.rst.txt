@@ -64,6 +64,7 @@ TimelineItem
       ~TimelineItem.get_property
       ~TimelineItem.get_right_offset
       ~TimelineItem.get_selected_take_index
+      ~TimelineItem.get_source_audio_channel_mapping
       ~TimelineItem.get_start
       ~TimelineItem.get_stereo_convergence_values
       ~TimelineItem.get_stereo_left_floating_window_params

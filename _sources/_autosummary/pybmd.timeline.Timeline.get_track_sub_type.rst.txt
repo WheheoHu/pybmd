@@ -1,0 +1,8 @@
+Timeline.get\_track\_sub\_type
+==============================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.get_track_sub_type
+
+    .. autosummary::

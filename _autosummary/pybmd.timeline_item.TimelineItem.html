@@ -35,7 +35,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=7b2d7c30"></script>
+    <script src="../_static/documentation_options.js?v=df55f829"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.timeline_item.TimelineItem';</script>
@@ -710,6 +710,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_start_timecode.html">Timeline.get_start_timecode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_track_count.html">Timeline.get_track_count</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_track_name.html">Timeline.get_track_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_track_sub_type.html">Timeline.get_track_sub_type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_unique_id.html">Timeline.get_unique_id</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.grab_all_stills.html">Timeline.grab_all_stills</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.grab_still.html">Timeline.grab_still</a></li>
@@ -800,6 +801,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_property.html">TimelineItem.get_property</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_right_offset.html">TimelineItem.get_right_offset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_selected_take_index.html">TimelineItem.get_selected_take_index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_source_audio_channel_mapping.html">TimelineItem.get_source_audio_channel_mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_start.html">TimelineItem.get_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_stereo_convergence_values.html">TimelineItem.get_stereo_convergence_values</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params.html">TimelineItem.get_stereo_left_floating_window_params</a></li>
@@ -1080,76 +1082,79 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_selected_take_index.html#pybmd.timeline_item.TimelineItem.get_selected_take_index" title="pybmd.timeline_item.TimelineItem.get_selected_take_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_selected_take_index</span></code></a>()</p></td>
 <td><p>Returns the index of the currently selected take, or 0 if the clip is not a take selector.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_start.html#pybmd.timeline_item.TimelineItem.get_start" title="pybmd.timeline_item.TimelineItem.get_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_start</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_source_audio_channel_mapping.html#pybmd.timeline_item.TimelineItem.get_source_audio_channel_mapping" title="pybmd.timeline_item.TimelineItem.get_source_audio_channel_mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_source_audio_channel_mapping</span></code></a>()</p></td>
+<td><p>Returns a string with TimelineItem's audio mapping information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_start.html#pybmd.timeline_item.TimelineItem.get_start" title="pybmd.timeline_item.TimelineItem.get_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_start</span></code></a>()</p></td>
 <td><p>Returns the start frame position on the timeline.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_stereo_convergence_values.html#pybmd.timeline_item.TimelineItem.get_stereo_convergence_values" title="pybmd.timeline_item.TimelineItem.get_stereo_convergence_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stereo_convergence_values</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_stereo_convergence_values.html#pybmd.timeline_item.TimelineItem.get_stereo_convergence_values" title="pybmd.timeline_item.TimelineItem.get_stereo_convergence_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stereo_convergence_values</span></code></a>()</p></td>
 <td><p>Returns a dict (offset -&gt; value) of keyframe offsets and respective convergence values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params.html#pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params" title="pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stereo_left_floating_window_params</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params.html#pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params" title="pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stereo_left_floating_window_params</span></code></a>()</p></td>
 <td><p>For the LEFT eye -&gt; returns a dict (offset -&gt; dict) of keyframe offsets and respective floating window params.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params.html#pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params" title="pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stereo_right_floating_window_params</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params.html#pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params" title="pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stereo_right_floating_window_params</span></code></a>()</p></td>
 <td><p>For the RIGHT eye -&gt; returns a dict (offset -&gt; dict) of keyframe offsets and respective floating window params.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_take_by_index.html#pybmd.timeline_item.TimelineItem.get_take_by_index" title="pybmd.timeline_item.TimelineItem.get_take_by_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_take_by_index</span></code></a>(index)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_take_by_index.html#pybmd.timeline_item.TimelineItem.get_take_by_index" title="pybmd.timeline_item.TimelineItem.get_take_by_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_take_by_index</span></code></a>(index)</p></td>
 <td><p>Returns a dict (keys &quot;startFrame&quot;, &quot;endFrame&quot; and &quot;mediaPoolItem&quot;) with take info for specified index.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_takes_count.html#pybmd.timeline_item.TimelineItem.get_takes_count" title="pybmd.timeline_item.TimelineItem.get_takes_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_takes_count</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_takes_count.html#pybmd.timeline_item.TimelineItem.get_takes_count" title="pybmd.timeline_item.TimelineItem.get_takes_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_takes_count</span></code></a>()</p></td>
 <td><p>Returns the number of takes in take selector, or 0 if the clip is not a take selector.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_track_type_and_index.html#pybmd.timeline_item.TimelineItem.get_track_type_and_index" title="pybmd.timeline_item.TimelineItem.get_track_type_and_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_track_type_and_index</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_track_type_and_index.html#pybmd.timeline_item.TimelineItem.get_track_type_and_index" title="pybmd.timeline_item.TimelineItem.get_track_type_and_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_track_type_and_index</span></code></a>()</p></td>
 <td><p>Returns a list of two values that correspond to the TimelineItem's trackType (string) and trackIndex (int) respectively.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_unique_id.html#pybmd.timeline_item.TimelineItem.get_unique_id" title="pybmd.timeline_item.TimelineItem.get_unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unique_id</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_unique_id.html#pybmd.timeline_item.TimelineItem.get_unique_id" title="pybmd.timeline_item.TimelineItem.get_unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unique_id</span></code></a>()</p></td>
 <td><p>Returns a unique ID for the timeline item</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_version_name_list.html#pybmd.timeline_item.TimelineItem.get_version_name_list" title="pybmd.timeline_item.TimelineItem.get_version_name_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_version_name_list</span></code></a>(version_type)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_version_name_list.html#pybmd.timeline_item.TimelineItem.get_version_name_list" title="pybmd.timeline_item.TimelineItem.get_version_name_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_version_name_list</span></code></a>(version_type)</p></td>
 <td><p>Returns a list of all color versions for the given versionType.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.import_fusion_comp.html#pybmd.timeline_item.TimelineItem.import_fusion_comp" title="pybmd.timeline_item.TimelineItem.import_fusion_comp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_fusion_comp</span></code></a>(path)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.import_fusion_comp.html#pybmd.timeline_item.TimelineItem.import_fusion_comp" title="pybmd.timeline_item.TimelineItem.import_fusion_comp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_fusion_comp</span></code></a>(path)</p></td>
 <td><p>Imports a Fusion composition from given file path by creating and adding a new composition for the item.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.load_burn_in_preset.html#pybmd.timeline_item.TimelineItem.load_burn_in_preset" title="pybmd.timeline_item.TimelineItem.load_burn_in_preset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_burn_in_preset</span></code></a>(preset_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.load_burn_in_preset.html#pybmd.timeline_item.TimelineItem.load_burn_in_preset" title="pybmd.timeline_item.TimelineItem.load_burn_in_preset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_burn_in_preset</span></code></a>(preset_name)</p></td>
 <td><p>Loads user defined data burn in preset for clip when supplied presetName (string).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name" title="pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_fusion_comp_by_name</span></code></a>(comp_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name" title="pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_fusion_comp_by_name</span></code></a>(comp_name)</p></td>
 <td><p>Loads the named Fusion composition as the active composition.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.load_version_by_name.html#pybmd.timeline_item.TimelineItem.load_version_by_name" title="pybmd.timeline_item.TimelineItem.load_version_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_version_by_name</span></code></a>(version_name, version_type)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.load_version_by_name.html#pybmd.timeline_item.TimelineItem.load_version_by_name" title="pybmd.timeline_item.TimelineItem.load_version_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_version_by_name</span></code></a>(version_name, version_type)</p></td>
 <td><p>Loads a named color version as the active version.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.regenerate_magic_mask.html#pybmd.timeline_item.TimelineItem.regenerate_magic_mask" title="pybmd.timeline_item.TimelineItem.regenerate_magic_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regenerate_magic_mask</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.regenerate_magic_mask.html#pybmd.timeline_item.TimelineItem.regenerate_magic_mask" title="pybmd.timeline_item.TimelineItem.regenerate_magic_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regenerate_magic_mask</span></code></a>()</p></td>
 <td><p>Returns True if magic mask was regenerated successfully, False otherwise.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.remove_from_color_group.html#pybmd.timeline_item.TimelineItem.remove_from_color_group" title="pybmd.timeline_item.TimelineItem.remove_from_color_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_color_group</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.remove_from_color_group.html#pybmd.timeline_item.TimelineItem.remove_from_color_group" title="pybmd.timeline_item.TimelineItem.remove_from_color_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_from_color_group</span></code></a>()</p></td>
 <td><p>Returns True if the TiItem is successfully removed from the ColorGroup it is in.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name" title="pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_fusion_comp_by_name</span></code></a>(old_name, new_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name" title="pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_fusion_comp_by_name</span></code></a>(old_name, new_name)</p></td>
 <td><p>Renames the Fusion composition identified by oldName.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.rename_version_by_name.html#pybmd.timeline_item.TimelineItem.rename_version_by_name" title="pybmd.timeline_item.TimelineItem.rename_version_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_version_by_name</span></code></a>(old_name, new_name, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.rename_version_by_name.html#pybmd.timeline_item.TimelineItem.rename_version_by_name" title="pybmd.timeline_item.TimelineItem.rename_version_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_version_by_name</span></code></a>(old_name, new_name, ...)</p></td>
 <td><p>Renames the color version identified by oldName and versionType</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.select_take_by_index.html#pybmd.timeline_item.TimelineItem.select_take_by_index" title="pybmd.timeline_item.TimelineItem.select_take_by_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_take_by_index</span></code></a>(index)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.select_take_by_index.html#pybmd.timeline_item.TimelineItem.select_take_by_index" title="pybmd.timeline_item.TimelineItem.select_take_by_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_take_by_index</span></code></a>(index)</p></td>
 <td><p>Selects a take by index, 1 &lt;= idx &lt;= number of takes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_cdl.html#pybmd.timeline_item.TimelineItem.set_cdl" title="pybmd.timeline_item.TimelineItem.set_cdl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_cdl</span></code></a>(cdl_map)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_cdl.html#pybmd.timeline_item.TimelineItem.set_cdl" title="pybmd.timeline_item.TimelineItem.set_cdl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_cdl</span></code></a>(cdl_map)</p></td>
 <td><p>Sets the color correction lookup (CDL) for the timeline item.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_color.html#pybmd.timeline_item.TimelineItem.set_clip_color" title="pybmd.timeline_item.TimelineItem.set_clip_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clip_color</span></code></a>(color_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_color.html#pybmd.timeline_item.TimelineItem.set_clip_color" title="pybmd.timeline_item.TimelineItem.set_clip_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clip_color</span></code></a>(color_name)</p></td>
 <td><p>Sets the item color based on the colorName (string).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_enabled.html#pybmd.timeline_item.TimelineItem.set_clip_enabled" title="pybmd.timeline_item.TimelineItem.set_clip_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clip_enabled</span></code></a>(bool_value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_enabled.html#pybmd.timeline_item.TimelineItem.set_clip_enabled" title="pybmd.timeline_item.TimelineItem.set_clip_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clip_enabled</span></code></a>(bool_value)</p></td>
 <td><p>Sets clip enabled based on argument.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.smart_reframe.html#pybmd.timeline_item.TimelineItem.smart_reframe" title="pybmd.timeline_item.TimelineItem.smart_reframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smart_reframe</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.smart_reframe.html#pybmd.timeline_item.TimelineItem.smart_reframe" title="pybmd.timeline_item.TimelineItem.smart_reframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smart_reframe</span></code></a>()</p></td>
 <td><p>Performs Smart Reframe.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html#pybmd.timeline_item.TimelineItem.stabilize" title="pybmd.timeline_item.TimelineItem.stabilize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stabilize</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html#pybmd.timeline_item.TimelineItem.stabilize" title="pybmd.timeline_item.TimelineItem.stabilize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stabilize</span></code></a>()</p></td>
 <td><p>Returns True if stabilization was successful, False otherwise</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.update_sidecar.html#pybmd.timeline_item.TimelineItem.update_sidecar" title="pybmd.timeline_item.TimelineItem.update_sidecar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_sidecar</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.update_sidecar.html#pybmd.timeline_item.TimelineItem.update_sidecar" title="pybmd.timeline_item.TimelineItem.update_sidecar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_sidecar</span></code></a>()</p></td>
 <td><p>Updates sidecar file for BRAW clips or RMD file for R3D clips.</p></td>
 </tr>
 </tbody>
@@ -2069,6 +2074,20 @@ Value at particular offset includes the left, right, top and bottom floating win
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Tuple[<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)">str</a>,<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)">int</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_source_audio_channel_mapping</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline_item.html#TimelineItem.get_source_audio_channel_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns a string with TimelineItem’s audio mapping information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>json formatted string</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
