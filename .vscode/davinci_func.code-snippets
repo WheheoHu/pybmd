@@ -19,7 +19,7 @@
 		"scope": "python",
 		"prefix": "ded",
 		"body": ["def ${2:method_name}(self,$5${3:arg1}$6) -> ${4:ReturnType}:",
-				"    return self.$TM_FILENAME_BASE.${2/_([a-z])|^([a-z])/${1:/upcase}${2:/upcase}/gm}($3)"
+				"    return self._$TM_FILENAME_BASE.${2/_([a-z])|^([a-z])/${1:/upcase}${2:/upcase}/gm}($3)"
 		],
 		"description": "davinci python func"
 	},
@@ -27,7 +27,7 @@
 		"scope": "python",
 		"prefix": "dedc",
 		"body": ["def ${2:method_name}(self,$5${3:arg1}) -> ${4:ReturnType}:",
-				"    return $4(self.$TM_FILENAME_BASE.${2/_([a-z])|^([a-z])/${1:/upcase}${2:/upcase}/gm}($3))"
+				"    return $4(self._$TM_FILENAME_BASE.${2/_([a-z])|^([a-z])/${1:/upcase}${2:/upcase}/gm}($3))"
 		],
 		"description": "davinci python func (return class)"
 	},
@@ -35,8 +35,8 @@
 		"scope": "python",
 		"prefix": "dedcl",
 		"body": ["def ${2:method_name}(self,$5${3:arg1}) -> List[${4:ReturnType}]:",
-				"    ${6:return_list_name} = []",
-				"    for ${7:value} in self.$TM_FILENAME_BASE.${2/_([a-z])|^([a-z])/${1:/upcase}${2:/upcase}/gm}($3):",
+				"    ${6:return_list_name} = list()",
+				"    for ${7:value} in self._$TM_FILENAME_BASE.${2/_([a-z])|^([a-z])/${1:/upcase}${2:/upcase}/gm}($3):",
 				"        $6.append($4($7))",
 				"    return $6"
 			],	
