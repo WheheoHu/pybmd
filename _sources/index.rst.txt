@@ -19,10 +19,10 @@ How To Use
 
 .. code-block:: python
 
-   from pybmd import Bmd
-   LOCAL_RESOLVE = Bmd()
+   from pybmd import Resolve
+   LOCAL_RESOLVE = Resolve()
 
-``Bmd()`` has an option arg named ``davinci_ip`` , default value is ``127.0.0.1`` stands for local davinci, if you want to use remote DaVinci Resolve object, change arg to remote ip.
+``Resolve()`` has an option arg named ``resolve_ip`` , default value is ``127.0.0.1`` stands for local davinci, if you want to use remote DaVinci Resolve object, change arg to remote ip.
 
 API Reference
 ----------------
