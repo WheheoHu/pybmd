@@ -1,8 +1,0 @@
-AutoCaptionSettings.\_\_init\_\_
-================================
-
-.. currentmodule:: pybmd.settings
-
-.. automethod:: AutoCaptionSettings.__init__
-
-    .. autosummary::

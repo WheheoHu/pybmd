@@ -1,0 +1,8 @@
+Resolve.set\_keyframe\_mode
+===========================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.set_keyframe_mode
+
+    .. autosummary::

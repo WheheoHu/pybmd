@@ -22,10 +22,13 @@ Project
       
    
       ~Project.__init__
+      ~Project.add_color_group
       ~Project.add_render_job
       ~Project.delete_all_render_jobs
+      ~Project.delete_color_group
       ~Project.delete_render_job
       ~Project.export_current_frame_as_still
+      ~Project.get_color_groups_list
       ~Project.get_current_render_format_and_codec
       ~Project.get_current_render_mode
       ~Project.get_current_timeline

@@ -1,0 +1,8 @@
+Resolve.import\_render\_preset
+==============================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.import_render_preset
+
+    .. autosummary::

@@ -1,6 +1,0 @@
-pybmd.settings.LineBreakTypes.LINE\_SINGLE
-==========================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: LineBreakTypes.LINE_SINGLE

@@ -1,6 +1,0 @@
-pybmd.settings.SettingParameter.parameter\_index
-================================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoproperty:: SettingParameter.parameter_index

@@ -1,8 +1,0 @@
-BMD.quit
-========
-
-.. currentmodule:: pybmd.bmd
-
-.. automethod:: BMD.quit
-
-    .. autosummary::

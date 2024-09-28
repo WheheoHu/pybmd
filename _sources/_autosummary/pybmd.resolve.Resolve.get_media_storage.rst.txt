@@ -1,0 +1,8 @@
+Resolve.get\_media\_storage
+===========================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.get_media_storage
+
+    .. autosummary::

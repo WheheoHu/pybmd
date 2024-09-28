@@ -1,8 +1,0 @@
-BMD.get\_media\_storage
-=======================
-
-.. currentmodule:: pybmd.bmd
-
-.. automethod:: BMD.get_media_storage
-
-    .. autosummary::

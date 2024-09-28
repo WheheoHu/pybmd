@@ -1,0 +1,8 @@
+Resolve.delete\_layout\_preset
+==============================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.delete_layout_preset
+
+    .. autosummary::

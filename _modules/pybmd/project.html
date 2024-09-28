@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
+    <script src="../../_static/documentation_options.js?v=7b2d7c30"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/project';</script>
@@ -349,12 +349,16 @@ document.write(`
                   
   <h1>Source code for pybmd.project</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">pybmd</span> <span class="kn">import</span> <span class="n">color_group</span>
+<span class="kn">from</span> <span class="nn">pybmd.color_group</span> <span class="kn">import</span> <span class="n">ColorGroup</span>
 <span class="kn">from</span> <span class="nn">pybmd.gallery</span> <span class="kn">import</span> <span class="n">Gallery</span>
 <span class="kn">from</span> <span class="nn">pybmd.media_pool</span> <span class="kn">import</span> <span class="n">MediaPool</span>
 
 <span class="kn">from</span> <span class="nn">pybmd.timeline</span> <span class="kn">import</span> <span class="n">Timeline</span>
-<span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">RenderSetting</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">RenderSetting</span>
 
 <span class="n">RenderResolution</span> <span class="o">=</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>
 
@@ -369,8 +373,7 @@ document.write(`
 
 <div class="viewcode-block" id="Project.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.__init__.html#pybmd.project.Project.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_project_name</span> <span class="o">=</span> <span class="n">project_name</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_project</span> <span class="o">=</span> <span class="n">project</span></div>
 
 
@@ -595,7 +598,7 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.set_current_timeline.html#pybmd.project.Project.set_current_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">set_current_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets given Timeline as current timeline for the project. Returns True if successful.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetCurrentTimeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">.</span><span class="n">timeline</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetCurrentTimeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">.</span><span class="n">_timeline</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.set_name">
@@ -614,7 +617,7 @@ document.write(`
 
 <div class="viewcode-block" id="Project.set_render_settings">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.set_render_settings.html#pybmd.project.Project.set_render_settings">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_render_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">render_setting</span><span class="p">:</span> <span class="n">RenderSetting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">set_render_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">render_setting</span><span class="p">:</span> <span class="s2">&quot;RenderSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets given settings for rendering.</span>
 
 <span class="sd">        Args:</span>
@@ -720,9 +723,52 @@ document.write(`
 <span class="sd">            bool: Returns True if succssful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">ExportCurrentFrameAsStill</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
-</div>
 
        
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 19.0.0 </span>
+<div class="viewcode-block" id="Project.get_color_groups_list">
+<a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_color_groups_list.html#pybmd.project.Project.get_color_groups_list">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_color_groups_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ColorGroup</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of all group objects in the timeline.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[ColorGroup]: a list of all group objects</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">color_group_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">color_group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetColorGroupsList</span><span class="p">():</span>
+            <span class="n">color_group_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ColorGroup</span><span class="p">(</span><span class="n">color_group</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">color_group_list</span></div>
+
+    
+<div class="viewcode-block" id="Project.add_color_group">
+<a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.add_color_group.html#pybmd.project.Project.add_color_group">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_color_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">group_name</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ColorGroup</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new ColorGroup. </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            group_name (str): groupName must be a unique string.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ColorGroup: ColorGroup object if successful, otherwise None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ColorGroup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">AddColorGroup</span><span class="p">(</span><span class="n">group_name</span><span class="p">)</span>  <span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="Project.delete_color_group">
+<a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.delete_color_group.html#pybmd.project.Project.delete_color_group">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete_color_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">color_group</span><span class="p">:</span><span class="n">ColorGroup</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes the given color group and sets clips to ungrouped.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            color_group (ColorGroup): color group object to delete</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Return True if successful, otherwise False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">DeleteColorGroup</span><span class="p">(</span><span class="n">color_group</span><span class="p">)</span> </div>
+</div>
+
     
 </pre></div>
 

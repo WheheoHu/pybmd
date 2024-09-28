@@ -7,8 +7,8 @@ Samples
     """
     How to get current timeline name
     """
-    from pybmd import Bmd
-    LOCAL_RESOLVE = Bmd()
+    from pybmd import Resolve
+    LOCAL_RESOLVE = Resolve()
     #get current timeline
     project_manager=LOCAL_RESOLVE.get_project_manager()
     current_project=project_manager.get_current_project()
@@ -22,10 +22,10 @@ Samples
     """
     How to use StillManager to grab a still from timeline markers
     """
-    import pybmd
-
+    from pybmd import Resolve
+    LOCAL_RESOLVE = Resolve()
+    
     EXPORT_PATH = "./Stills"
-    LOCAL_RESOLVE = pybmd.Bmd()
 
     current_project=LOCAL_RESOLVE.project_manager().get_current_project()
     still_manager = pybmd.toolkits.StillManager(current_project)

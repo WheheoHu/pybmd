@@ -1,6 +1,0 @@
-pybmd.settings.LanguageID.NORWEGIAN
-===================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: LanguageID.NORWEGIAN

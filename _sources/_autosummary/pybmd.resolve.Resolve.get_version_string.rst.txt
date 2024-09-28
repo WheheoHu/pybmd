@@ -1,0 +1,8 @@
+Resolve.get\_version\_string
+============================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.get_version_string
+
+    .. autosummary::

@@ -1,8 +1,0 @@
-BMD.import\_layout\_preset
-==========================
-
-.. currentmodule:: pybmd.bmd
-
-.. automethod:: BMD.import_layout_preset
-
-    .. autosummary::

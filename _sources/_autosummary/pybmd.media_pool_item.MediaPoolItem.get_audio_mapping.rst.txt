@@ -1,0 +1,8 @@
+MediaPoolItem.get\_audio\_mapping
+=================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.get_audio_mapping
+
+    .. autosummary::

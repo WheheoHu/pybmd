@@ -1,0 +1,8 @@
+Graph.\_\_init\_\_
+==================
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.__init__
+
+    .. autosummary::

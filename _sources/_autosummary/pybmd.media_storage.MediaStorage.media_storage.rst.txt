@@ -1,6 +1,0 @@
-pybmd.media\_storage.MediaStorage.media\_storage
-================================================
-
-.. currentmodule:: pybmd.media_storage
-
-.. autoattribute:: MediaStorage.media_storage

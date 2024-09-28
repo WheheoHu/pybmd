@@ -1,6 +1,0 @@
-pybmd.settings.AutoCaptionSettings.subtitle\_line\_break
-========================================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoproperty:: AutoCaptionSettings.subtitle_line_break

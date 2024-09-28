@@ -1,0 +1,8 @@
+Graph.get\_num\_nodes
+=====================
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.get_num_nodes
+
+    .. autosummary::

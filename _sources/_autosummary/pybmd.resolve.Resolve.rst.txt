@@ -1,0 +1,57 @@
+Resolve
+=======
+
+.. currentmodule:: pybmd.resolve
+
+.. autoclass:: Resolve
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~Resolve.__init__
+      ~Resolve.delete_layout_preset
+      ~Resolve.export_burn_in_preset
+      ~Resolve.export_layout_preset
+      ~Resolve.export_render_preset
+      ~Resolve.get_current_page
+      ~Resolve.get_keyframe_mode
+      ~Resolve.get_media_storage
+      ~Resolve.get_product_name
+      ~Resolve.get_project_manager
+      ~Resolve.get_version
+      ~Resolve.get_version_string
+      ~Resolve.import_burn_in_preset
+      ~Resolve.import_layout_preset
+      ~Resolve.import_render_preset
+      ~Resolve.load_layout_preset
+      ~Resolve.open_page
+      ~Resolve.quit
+      ~Resolve.save_layout_preset
+      ~Resolve.set_keyframe_mode
+      ~Resolve.update_layout_preset
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~Resolve.fusion
+   
+   

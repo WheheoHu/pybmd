@@ -24,6 +24,7 @@ Timeline
       ~Timeline.__init__
       ~Timeline.add_marker
       ~Timeline.add_track
+      ~Timeline.analyze_dolby_vision
       ~Timeline.apply_grade_from_drx
       ~Timeline.convert_timeline_to_stereo
       ~Timeline.create_compound_clip
@@ -48,6 +49,7 @@ Timeline
       ~Timeline.get_marker_custom_data
       ~Timeline.get_markers
       ~Timeline.get_name
+      ~Timeline.get_node_graph
       ~Timeline.get_setting
       ~Timeline.get_start_frame
       ~Timeline.get_start_timecode

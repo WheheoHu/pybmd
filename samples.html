@@ -35,7 +35,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=c171a6a4"></script>
+    <script src="_static/documentation_options.js?v=7b2d7c30"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'samples';</script>
@@ -362,8 +362,8 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">How to get current timeline name</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">pybmd</span> <span class="kn">import</span> <span class="n">Bmd</span>
-<span class="n">LOCAL_RESOLVE</span> <span class="o">=</span> <span class="n">Bmd</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">pybmd</span> <span class="kn">import</span> <span class="n">Resolve</span>
+<span class="n">LOCAL_RESOLVE</span> <span class="o">=</span> <span class="n">Resolve</span><span class="p">()</span>
 <span class="c1">#get current timeline</span>
 <span class="n">project_manager</span><span class="o">=</span><span class="n">LOCAL_RESOLVE</span><span class="o">.</span><span class="n">get_project_manager</span><span class="p">()</span>
 <span class="n">current_project</span><span class="o">=</span><span class="n">project_manager</span><span class="o">.</span><span class="n">get_current_project</span><span class="p">()</span>
@@ -375,10 +375,10 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">How to use StillManager to grab a still from timeline markers</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">pybmd</span>
+<span class="kn">from</span> <span class="nn">pybmd</span> <span class="kn">import</span> <span class="n">Resolve</span>
+<span class="n">LOCAL_RESOLVE</span> <span class="o">=</span> <span class="n">Resolve</span><span class="p">()</span>
 
 <span class="n">EXPORT_PATH</span> <span class="o">=</span> <span class="s2">&quot;./Stills&quot;</span>
-<span class="n">LOCAL_RESOLVE</span> <span class="o">=</span> <span class="n">pybmd</span><span class="o">.</span><span class="n">Bmd</span><span class="p">()</span>
 
 <span class="n">current_project</span><span class="o">=</span><span class="n">LOCAL_RESOLVE</span><span class="o">.</span><span class="n">project_manager</span><span class="p">()</span><span class="o">.</span><span class="n">get_current_project</span><span class="p">()</span>
 <span class="n">still_manager</span> <span class="o">=</span> <span class="n">pybmd</span><span class="o">.</span><span class="n">toolkits</span><span class="o">.</span><span class="n">StillManager</span><span class="p">(</span><span class="n">current_project</span><span class="p">)</span>

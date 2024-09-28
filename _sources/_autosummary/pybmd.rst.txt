@@ -28,20 +28,23 @@
    :template: module.rst
    :recursive:
 
-   bmd
+   color_group
    error
+   export_type
    folder
    fusion
    fusion_comp
    gallery
    gallery_still
    gallery_still_album
+   graph
    logging_config
    media_pool
    media_pool_item
    media_storage
    project
    project_manager
+   resolve
    settings
    timeline
    timeline_item

@@ -1,6 +1,0 @@
-pybmd.settings.RenderSetting.NetworkOptimization
-================================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: RenderSetting.NetworkOptimization

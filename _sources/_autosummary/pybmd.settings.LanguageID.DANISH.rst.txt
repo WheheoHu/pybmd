@@ -1,6 +1,0 @@
-pybmd.settings.LanguageID.DANISH
-================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: LanguageID.DANISH

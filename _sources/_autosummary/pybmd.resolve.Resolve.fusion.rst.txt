@@ -1,0 +1,6 @@
+pybmd.resolve.Resolve.fusion
+============================
+
+.. currentmodule:: pybmd.resolve
+
+.. autoproperty:: Resolve.fusion

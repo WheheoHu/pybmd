@@ -1,6 +1,0 @@
-pybmd.settings.SettingParameter.parameter\_value
-================================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoproperty:: SettingParameter.parameter_value

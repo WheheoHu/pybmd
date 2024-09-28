@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
+    <script src="../../_static/documentation_options.js?v=7b2d7c30"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_pool_item';</script>
@@ -683,10 +683,22 @@ document.write(`
 <span class="sd">            bool: Returns True if successful; False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ClearTranscription</span><span class="p">()</span></div>
-</div>
 
     
-   
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 19.0.0 </span>
+    
+<div class="viewcode-block" id="MediaPoolItem.get_audio_mapping">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_audio_mapping.html#pybmd.media_pool_item.MediaPoolItem.get_audio_mapping">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_audio_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a string with MediaPoolItem&#39;s audio mapping information. Check &#39;Audio Mapping&#39; section for more information.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: json formatted string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetAudioMapping</span><span class="p">()</span>  </div>
+</div>
+
 </pre></div>
 
                 </article>

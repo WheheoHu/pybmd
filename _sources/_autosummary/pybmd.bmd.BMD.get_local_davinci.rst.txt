@@ -1,8 +1,0 @@
-BMD.get\_local\_davinci
-=======================
-
-.. currentmodule:: pybmd.bmd
-
-.. automethod:: BMD.get_local_davinci
-
-    .. autosummary::

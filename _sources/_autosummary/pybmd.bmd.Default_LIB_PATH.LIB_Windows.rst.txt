@@ -1,6 +1,0 @@
-pybmd.bmd.Default\_LIB\_PATH.LIB\_Windows
-=========================================
-
-.. currentmodule:: pybmd.bmd
-
-.. autoattribute:: Default_LIB_PATH.LIB_Windows

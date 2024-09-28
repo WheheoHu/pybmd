@@ -1,8 +1,0 @@
-CloudProjectsSetting.asdict
-===========================
-
-.. currentmodule:: pybmd.settings
-
-.. automethod:: CloudProjectsSetting.asdict
-
-    .. autosummary::

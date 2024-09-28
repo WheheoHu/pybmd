@@ -1,6 +1,0 @@
-pybmd.settings.LanguageID.JAPANESE
-==================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: LanguageID.JAPANESE

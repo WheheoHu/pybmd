@@ -1,0 +1,8 @@
+ColorGroup.get\_pre\_clip\_node\_graph
+======================================
+
+.. currentmodule:: pybmd.color_group
+
+.. automethod:: ColorGroup.get_pre_clip_node_graph
+
+    .. autosummary::

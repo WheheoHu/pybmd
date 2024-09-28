@@ -1,6 +1,0 @@
-pybmd.settings.LanguageID.KOREAN
-================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: LanguageID.KOREAN

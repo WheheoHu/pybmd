@@ -1,0 +1,8 @@
+TimelineItem.assign\_to\_color\_group
+=====================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.assign_to_color_group
+
+    .. autosummary::

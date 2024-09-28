@@ -1,0 +1,8 @@
+Resolve.get\_project\_manager
+=============================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.get_project_manager
+
+    .. autosummary::

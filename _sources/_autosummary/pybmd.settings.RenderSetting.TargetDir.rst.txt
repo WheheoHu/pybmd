@@ -1,6 +1,0 @@
-pybmd.settings.RenderSetting.TargetDir
-======================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: RenderSetting.TargetDir

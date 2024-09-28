@@ -1,0 +1,8 @@
+Resolve.\_\_init\_\_
+====================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.__init__
+
+    .. autosummary::

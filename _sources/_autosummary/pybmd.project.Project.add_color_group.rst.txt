@@ -1,0 +1,8 @@
+Project.add\_color\_group
+=========================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.add_color_group
+
+    .. autosummary::

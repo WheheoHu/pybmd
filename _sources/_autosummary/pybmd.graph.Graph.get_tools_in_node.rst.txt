@@ -1,0 +1,8 @@
+Graph.get\_tools\_in\_node
+==========================
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.get_tools_in_node
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+ColorGroup.\_\_init\_\_
+=======================
+
+.. currentmodule:: pybmd.color_group
+
+.. automethod:: ColorGroup.__init__
+
+    .. autosummary::

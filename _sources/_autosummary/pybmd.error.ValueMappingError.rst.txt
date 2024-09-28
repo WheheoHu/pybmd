@@ -1,6 +1,0 @@
-pybmd.error.ValueMappingError
-=============================
-
-.. currentmodule:: pybmd.error
-
-.. autoexception:: ValueMappingError

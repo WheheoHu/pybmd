@@ -1,0 +1,8 @@
+Resolve.export\_render\_preset
+==============================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.export_render_preset
+
+    .. autosummary::

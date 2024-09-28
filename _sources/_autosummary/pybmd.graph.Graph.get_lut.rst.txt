@@ -1,0 +1,8 @@
+Graph.get\_lut
+==============
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.get_lut
+
+    .. autosummary::

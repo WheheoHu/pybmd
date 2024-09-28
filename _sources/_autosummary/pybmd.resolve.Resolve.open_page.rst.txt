@@ -1,0 +1,8 @@
+Resolve.open\_page
+==================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.open_page
+
+    .. autosummary::

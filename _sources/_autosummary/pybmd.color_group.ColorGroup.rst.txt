@@ -1,0 +1,35 @@
+ColorGroup
+==========
+
+.. currentmodule:: pybmd.color_group
+
+.. autoclass:: ColorGroup
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~ColorGroup.__init__
+      ~ColorGroup.get_clips_in_timeline
+      ~ColorGroup.get_name
+      ~ColorGroup.get_post_clip_node_graph
+      ~ColorGroup.get_pre_clip_node_graph
+      ~ColorGroup.set_name
+   
+   
+
+   
+   
+   

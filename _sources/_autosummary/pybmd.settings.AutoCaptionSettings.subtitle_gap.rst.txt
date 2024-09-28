@@ -1,6 +1,0 @@
-pybmd.settings.AutoCaptionSettings.subtitle\_gap
-================================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoproperty:: AutoCaptionSettings.subtitle_gap

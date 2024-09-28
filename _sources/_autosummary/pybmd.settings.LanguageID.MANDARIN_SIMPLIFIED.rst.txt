@@ -1,6 +1,0 @@
-pybmd.settings.LanguageID.MANDARIN\_SIMPLIFIED
-==============================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: LanguageID.MANDARIN_SIMPLIFIED

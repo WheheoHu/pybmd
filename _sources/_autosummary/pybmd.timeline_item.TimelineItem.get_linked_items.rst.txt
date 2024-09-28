@@ -1,0 +1,8 @@
+TimelineItem.get\_linked\_items
+===============================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.get_linked_items
+
+    .. autosummary::

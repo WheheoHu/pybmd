@@ -1,0 +1,8 @@
+Timeline.get\_node\_graph
+=========================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.get_node_graph
+
+    .. autosummary::

@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
+    <script src="../../_static/documentation_options.js?v=7b2d7c30"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/project_manager';</script>
@@ -352,9 +352,9 @@ document.write(`
 <span class="kn">from</span> <span class="nn">pybmd.project</span> <span class="kn">import</span> <span class="n">Project</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 
-<span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">CloudProjectsSetting</span>
+
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pybmd.bmd</span> <span class="kn">import</span> <span class="n">BMD</span>
+    <span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">CloudProjectsSetting</span>
 
 <span class="n">DatabaseList</span> <span class="o">=</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span>
 
@@ -368,9 +368,8 @@ document.write(`
 
 <div class="viewcode-block" id="ProjectManager.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.__init__.html#pybmd.project_manager.ProjectManager.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_local_davinci</span><span class="p">:</span> <span class="s1">&#39;BMD._local_davinci&#39;</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span> <span class="o">=</span> <span class="n">_local_davinci</span><span class="o">.</span><span class="n">GetProjectManager</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_current_project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">GetCurrentProject</span><span class="p">()</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_manager</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span> <span class="o">=</span> <span class="n">project_manager</span></div>
 
    
 <div class="viewcode-block" id="ProjectManager.close_project">
@@ -412,7 +411,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            Project: created project object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">CreateProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">),</span> <span class="n">project_name</span><span class="o">=</span><span class="n">project_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">CreateProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="ProjectManager.delete_folder">
@@ -467,7 +466,7 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.get_current_project.html#pybmd.project_manager.ProjectManager.get_current_project">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_project</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the current project&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_project</span><span class="p">,</span> <span class="n">project_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_project</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">GetCurrentProject</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="ProjectManager.get_database_list">
@@ -515,9 +514,9 @@ document.write(`
 
 <div class="viewcode-block" id="ProjectManager.load_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.load_project.html#pybmd.project_manager.ProjectManager.load_project">[docs]</a>
-    <span class="k">def</span> <span class="nf">load_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">load_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Project&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads and returns the@Project  with name = project_name (string) if there is a match found, and None if there is no matching Project.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">LoadProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">),</span> <span class="n">project_name</span><span class="o">=</span><span class="n">project_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">LoadProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="ProjectManager.open_folder">
@@ -570,7 +569,7 @@ document.write(`
     <span class="c1">#Add at DR18.6.4</span>
 <div class="viewcode-block" id="ProjectManager.create_cloud_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.create_cloud_project.html#pybmd.project_manager.ProjectManager.create_cloud_project">[docs]</a>
-    <span class="k">def</span> <span class="nf">create_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="n">CloudProjectsSetting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">create_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates and returns a cloud project.</span>
 
 <span class="sd">        Args:</span>
@@ -584,7 +583,7 @@ document.write(`
     
 <div class="viewcode-block" id="ProjectManager.import_cloud_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.import_cloud_project.html#pybmd.project_manager.ProjectManager.import_cloud_project">[docs]</a>
-    <span class="k">def</span> <span class="nf">import_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="n">CloudProjectsSetting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">import_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Args:</span>
@@ -599,7 +598,7 @@ document.write(`
     
 <div class="viewcode-block" id="ProjectManager.restore_cloud_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.restore_cloud_project.html#pybmd.project_manager.ProjectManager.restore_cloud_project">[docs]</a>
-    <span class="k">def</span> <span class="nf">restore_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">folder_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="n">CloudProjectsSetting</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">restore_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">folder_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Args:</span>

@@ -1,8 +1,0 @@
-BMD.import\_burn\_in\_preset
-============================
-
-.. currentmodule:: pybmd.bmd
-
-.. automethod:: BMD.import_burn_in_preset
-
-    .. autosummary::

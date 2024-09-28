@@ -1,8 +1,0 @@
-BMD.open\_page
-==============
-
-.. currentmodule:: pybmd.bmd
-
-.. automethod:: BMD.open_page
-
-    .. autosummary::

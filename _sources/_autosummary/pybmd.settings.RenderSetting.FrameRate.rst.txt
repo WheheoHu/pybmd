@@ -1,6 +1,0 @@
-pybmd.settings.RenderSetting.FrameRate
-======================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: RenderSetting.FrameRate

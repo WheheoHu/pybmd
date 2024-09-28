@@ -1,0 +1,6 @@
+pybmd.error.UnsupportSystemError
+================================
+
+.. currentmodule:: pybmd.error
+
+.. autoexception:: UnsupportSystemError

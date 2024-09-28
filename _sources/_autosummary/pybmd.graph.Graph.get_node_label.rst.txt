@@ -1,0 +1,8 @@
+Graph.get\_node\_label
+======================
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.get_node_label
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+Graph.set\_lut
+==============
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.set_lut
+
+    .. autosummary::

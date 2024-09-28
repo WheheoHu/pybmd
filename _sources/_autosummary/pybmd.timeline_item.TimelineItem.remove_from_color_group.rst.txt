@@ -1,0 +1,8 @@
+TimelineItem.remove\_from\_color\_group
+=======================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.remove_from_color_group
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+Resolve.import\_layout\_preset
+==============================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.import_layout_preset
+
+    .. autosummary::

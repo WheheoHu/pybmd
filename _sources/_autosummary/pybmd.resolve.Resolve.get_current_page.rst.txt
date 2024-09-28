@@ -1,0 +1,8 @@
+Resolve.get\_current\_page
+==========================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.get_current_page
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+Project.delete\_color\_group
+============================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.delete_color_group
+
+    .. autosummary::

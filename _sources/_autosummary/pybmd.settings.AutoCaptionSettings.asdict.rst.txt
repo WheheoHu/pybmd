@@ -1,8 +1,0 @@
-AutoCaptionSettings.asdict
-==========================
-
-.. currentmodule:: pybmd.settings
-
-.. automethod:: AutoCaptionSettings.asdict
-
-    .. autosummary::

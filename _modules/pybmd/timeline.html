@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
+    <script src="../../_static/documentation_options.js?v=7b2d7c30"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/timeline';</script>
@@ -350,10 +350,16 @@ document.write(`
   <h1>Source code for pybmd.timeline</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pybmd.export_type</span> <span class="kn">import</span> <span class="n">Timeline_Export_Subtype</span><span class="p">,</span> <span class="n">Timeline_Export_Type</span>
+    <span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">AutoCaptionSettings</span>
+    
 
 <span class="kn">from</span> <span class="nn">pybmd.gallery_still</span> <span class="kn">import</span> <span class="n">GalleryStill</span>
-<span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">AutoCaptionSettings</span>
+<span class="kn">from</span> <span class="nn">pybmd.graph</span> <span class="kn">import</span> <span class="n">Graph</span>
+
 <span class="kn">from</span> <span class="nn">pybmd.timeline_item</span> <span class="kn">import</span> <span class="n">TimelineItem</span>
 
 
@@ -451,7 +457,7 @@ document.write(`
 <div class="viewcode-block" id="Timeline.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.__init__.html#pybmd.timeline.Timeline.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span> <span class="o">=</span> <span class="n">timeline</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span> <span class="o">=</span> <span class="n">timeline</span></div>
 
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -473,7 +479,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.apply_grade_from_drx">
@@ -489,7 +495,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">ApplyGradeFromDRX</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">grade_mode</span><span class="p">,</span> <span class="n">timeline_items</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">ApplyGradeFromDRX</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">grade_mode</span><span class="p">,</span> <span class="n">timeline_items</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.create_compound_clip">
@@ -504,7 +510,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            TimelineItem: created timeline item.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="n">timeline_item</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">CreateCompoundClip</span><span class="p">(</span><span class="n">timeline_item_class_list_transfer</span><span class="p">(</span><span class="n">timeline_items</span><span class="p">),</span> <span class="n">clipinfo</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="n">timeline_item</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">CreateCompoundClip</span><span class="p">(</span><span class="n">timeline_item_class_list_transfer</span><span class="p">(</span><span class="n">timeline_items</span><span class="p">),</span> <span class="n">clipinfo</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.create_fusion_clip">
@@ -518,21 +524,21 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            TimelineItem: created timeline item.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="n">timeline_item</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">CreateFusionClip</span><span class="p">(</span><span class="n">timeline_item_class_list_transfer</span><span class="p">(</span><span class="n">timeline_items</span><span class="p">)))</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="n">timeline_item</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">CreateFusionClip</span><span class="p">(</span><span class="n">timeline_item_class_list_transfer</span><span class="p">(</span><span class="n">timeline_items</span><span class="p">)))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.delete_marker_at_frame">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.delete_marker_at_frame.html#pybmd.timeline.Timeline.delete_marker_at_frame">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_marker_at_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes the timeline marker at the given frame number.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DeleteMarkerAtFrame</span><span class="p">(</span><span class="n">frame_num</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">DeleteMarkerAtFrame</span><span class="p">(</span><span class="n">frame_num</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.delete_marker_by_custom_data">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.delete_marker_by_custom_data.html#pybmd.timeline.Timeline.delete_marker_by_custom_data">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete first matching marker with specified custom_data.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DeleteMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">DeleteMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.delete_marker_by_color">
@@ -541,27 +547,30 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes all timeline markers of the specified color. </span>
 <span class="sd">        An &quot;All&quot; argument is supported and deletes all timeline markers.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DeleteMarkerByColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">DeleteMarkerByColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.duplicate_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.duplicate_timeline.html#pybmd.timeline.Timeline.duplicate_timeline">[docs]</a>
-    <span class="k">def</span> <span class="nf">duplicate_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">duplicate_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timeline&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicates the timeline and returns the created timeline, </span>
 <span class="sd">        with the (optional) timelineName, on success.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DuplicateTimeline</span><span class="p">(</span><span class="n">timeline_name</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">DuplicateTimeline</span><span class="p">(</span><span class="n">timeline_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.export">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.export.html#pybmd.timeline.Timeline.export">[docs]</a>
-    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_type</span><span class="p">,</span> <span class="n">export_subtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_type</span><span class="p">:</span><span class="s2">&quot;Timeline_Export_Type&quot;</span><span class="p">,</span> <span class="n">export_subtype</span><span class="p">:</span><span class="s2">&quot;Timeline_Export_Subtype&quot;</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports timeline to &#39;fileName&#39; as per input exportType &amp; exportSubtype format.</span>
+<span class="sd">        </span>
 <span class="sd">        # file_name should be a path, not a file name.</span>
+<span class="sd">        </span>
 <span class="sd">        # eg. file_path=os.path.join(os.path.expanduser(&quot;~&quot;), &quot;Desktop/Temp/sampleExp.drt&quot;)</span>
+<span class="sd">        </span>
 <span class="sd">        #     timeline.export(file_path,LOCAL_RESOLVE.EXPORT_DRT)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">export_type</span><span class="p">,</span> <span class="n">export_subtype</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">export_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">export_subtype</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_current_clip_thumbnail_image">
@@ -570,7 +579,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dict (keys &quot;width&quot;, &quot;height&quot;, &quot;format&quot; and &quot;data&quot;) with data containing raw thumbnail image data </span>
 <span class="sd">        (RGB 8-bit image data encoded in base64 format) for current media in the Color Page.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetCurrentClipThumbnailImage</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetCurrentClipThumbnailImage</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_current_timecode">
@@ -579,21 +588,21 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a string timecode representation for the current playhead position, </span>
 <span class="sd">        while on Cut, Edit, Color, Fairlight and Deliver pages.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetCurrentTimecode</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetCurrentTimecode</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_current_video_item">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_current_video_item.html#pybmd.timeline.Timeline.get_current_video_item">[docs]</a>
     <span class="k">def</span> <span class="nf">get_current_video_item</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the current video timeline item.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetCurrentVideoItem</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetCurrentVideoItem</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_end_frame">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_end_frame.html#pybmd.timeline.Timeline.get_end_frame">[docs]</a>
     <span class="k">def</span> <span class="nf">get_end_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the frame number at the end of timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetEndFrame</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetEndFrame</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_item_list_in_track">
@@ -609,7 +618,7 @@ document.write(`
 <span class="sd">            List[TimelineItem]: timeline items on that track.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">timeline_items_list</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetItemListInTrack</span><span class="p">(</span>
+        <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetItemListInTrack</span><span class="p">(</span>
                 <span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
             <span class="n">timeline_items_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TimelineItem</span><span class="p">(</span><span class="n">timeline_item</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">timeline_items_list</span></div>
@@ -619,14 +628,14 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_marker_by_custom_data.html#pybmd.timeline.Timeline.get_marker_by_custom_data">[docs]</a>
     <span class="k">def</span> <span class="nf">get_marker_by_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns marker {information} for the first matching marker with specified customData.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetMarkerByCustomData</span><span class="p">(</span><span class="n">custom_data</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_marker_custom_data">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_marker_custom_data.html#pybmd.timeline.Timeline.get_marker_custom_data">[docs]</a>
     <span class="k">def</span> <span class="nf">get_marker_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns customData string for the marker at given frameId position.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetMarkerCustomData</span><span class="p">(</span><span class="n">frame_id</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetMarkerCustomData</span><span class="p">(</span><span class="n">frame_id</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_markers">
@@ -636,35 +645,35 @@ document.write(`
 <span class="sd">        Example: a value of {96.0: {&#39;color&#39;: &#39;Green&#39;, &#39;duration&#39;: 1.0, &#39;note&#39;: &#39;&#39;, &#39;name&#39;: &#39;Marker 1&#39;, &#39;customData&#39;: &#39;&#39;}, ...} </span>
 <span class="sd">        indicates a single green marker at timeline offset 96</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetMarkers</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetMarkers</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_name.html#pybmd.timeline.Timeline.get_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the name of the timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_setting">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_setting.html#pybmd.timeline.Timeline.get_setting">[docs]</a>
     <span class="k">def</span> <span class="nf">get_setting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setting_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns value of timeline setting (indicated by settingName : string).&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_start_frame">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_start_frame.html#pybmd.timeline.Timeline.get_start_frame">[docs]</a>
     <span class="k">def</span> <span class="nf">get_start_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the frame number at the start of timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetStartFrame</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetStartFrame</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_track_count">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_track_count.html#pybmd.timeline.Timeline.get_track_count">[docs]</a>
     <span class="k">def</span> <span class="nf">get_track_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">:</span> <span class="n">TrackType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of tracks for the given trackType (&quot;audio&quot;, &quot;video&quot; or &quot;subtitle&quot;).&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetTrackCount</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetTrackCount</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_track_name">
@@ -680,7 +689,7 @@ document.write(`
 <span class="sd">            str: track name.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetTrackName</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetTrackName</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.grab_all_stills">
@@ -695,14 +704,14 @@ document.write(`
 <span class="sd">            List[GalleryStill]: List of GalleryStill objects containing grabbed stills.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">return</span> <span class="p">[</span><span class="n">GalleryStill</span><span class="p">(</span><span class="n">gallery_still</span><span class="p">)</span> <span class="k">for</span> <span class="n">gallery_still</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GrabAllStills</span><span class="p">(</span><span class="n">still_frame_source</span><span class="p">)]</span></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">GalleryStill</span><span class="p">(</span><span class="n">gallery_still</span><span class="p">)</span> <span class="k">for</span> <span class="n">gallery_still</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GrabAllStills</span><span class="p">(</span><span class="n">still_frame_source</span><span class="p">)]</span></div>
 
 
 <div class="viewcode-block" id="Timeline.grab_still">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.grab_still.html#pybmd.timeline.Timeline.grab_still">[docs]</a>
     <span class="k">def</span> <span class="nf">grab_still</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GalleryStill</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Grabs still from the current video clip. Returns a GalleryStill object.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">GalleryStill</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GrabStill</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">GalleryStill</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GrabStill</span><span class="p">())</span></div>
 
 
     <span class="c1"># TODO test this</span>
@@ -718,56 +727,56 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">ImportIntoTimeline</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">asdict</span><span class="p">(</span><span class="n">import_options</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">ImportIntoTimeline</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">asdict</span><span class="p">(</span><span class="n">import_options</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.insert_fusion_generator_into_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.insert_fusion_generator_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">insert_fusion_generator_into_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generator_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserts a Fusion generator (indicated by generatorName : string) into the timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">InsertFusionGeneratorIntoTimeline</span><span class="p">(</span><span class="n">generator_name</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">InsertFusionGeneratorIntoTimeline</span><span class="p">(</span><span class="n">generator_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.insert_fusion_title_into_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.insert_fusion_title_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_title_into_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">insert_fusion_title_into_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserts a Fusion title (indicated by titleName : string) into the timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">InsertFusionTitleIntoTimeline</span><span class="p">(</span><span class="n">title_name</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">InsertFusionTitleIntoTimeline</span><span class="p">(</span><span class="n">title_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.insert_generator_into_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.insert_generator_into_timeline.html#pybmd.timeline.Timeline.insert_generator_into_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">insert_generator_into_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generator_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserts a generator (indicated by generatorName : string) into the timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">InsertGeneratorIntoTimeline</span><span class="p">(</span><span class="n">generator_name</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">InsertGeneratorIntoTimeline</span><span class="p">(</span><span class="n">generator_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.insert_oFX_generator_into_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.insert_oFX_generator_into_timeline.html#pybmd.timeline.Timeline.insert_oFX_generator_into_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">insert_oFX_generator_into_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generator_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserts an OFX generator (indicated by generatorName : string) into the timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">InsertOFXGeneratorIntoTimeline</span><span class="p">(</span><span class="n">generator_name</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">InsertOFXGeneratorIntoTimeline</span><span class="p">(</span><span class="n">generator_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.insert_title_into_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.insert_title_into_timeline.html#pybmd.timeline.Timeline.insert_title_into_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">insert_title_into_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserts a title (indicated by titleName : string) into the timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">InsertTitleIntoTimeline</span><span class="p">(</span><span class="n">title_name</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">InsertTitleIntoTimeline</span><span class="p">(</span><span class="n">title_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Timeline.set_current_timecode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.set_current_timecode.html#pybmd.timeline.Timeline.set_current_timecode">[docs]</a>
     <span class="k">def</span> <span class="nf">set_current_timecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tiemcode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets current playhead position from input timecode for Cut, Edit, Color, Fairlight and Deliver pages.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetCurrentTimecode</span><span class="p">(</span><span class="n">tiemcode</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetCurrentTimecode</span><span class="p">(</span><span class="n">tiemcode</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.set_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.set_name.html#pybmd.timeline.Timeline.set_name">[docs]</a>
     <span class="k">def</span> <span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the timeline name if timelineName (string) is unique. Returns True if successful.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">timeline_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">timeline_name</span><span class="p">)</span></div>
 
 
     <span class="c1"># TODO setting_name to data class</span>
@@ -783,7 +792,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">,</span> <span class="n">setting_value</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetSetting</span><span class="p">(</span><span class="n">setting_name</span><span class="p">,</span> <span class="n">setting_value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.set_track_name">
@@ -799,7 +808,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetTrackName</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetTrackName</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.update_marker_custom_data">
@@ -808,7 +817,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates customData (string) for the marker at given frameId position. </span>
 <span class="sd">        CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">UpdateMarkerCustomData</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">UpdateMarkerCustomData</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
 
 
     <span class="c1">#######################################################################################################################</span>
@@ -818,47 +827,51 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.set_start_timecode.html#pybmd.timeline.Timeline.set_start_timecode">[docs]</a>
     <span class="k">def</span> <span class="nf">set_start_timecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timecode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the start timecode of the timeline to the string &#39;timecode&#39;. Returns true when the change is successful, false otherwise.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetStartTimecode</span><span class="p">(</span><span class="n">timecode</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetStartTimecode</span><span class="p">(</span><span class="n">timecode</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_start_timecode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_start_timecode.html#pybmd.timeline.Timeline.get_start_timecode">[docs]</a>
     <span class="k">def</span> <span class="nf">get_start_timecode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the start timecode for the timeline.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetStartTimecode</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetStartTimecode</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Timeline.insert_fusion_composition_into_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.insert_fusion_composition_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">insert_fusion_composition_into_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimelineItem</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inserts a Fusion composition into the timeline.Returns a TimelineItem object.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">InsertFusionCompositionIntoTimeline</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">TimelineItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">InsertFusionCompositionIntoTimeline</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_unique_id">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_unique_id.html#pybmd.timeline.Timeline.get_unique_id">[docs]</a>
     <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a unique ID for the timeline&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
 
 
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.5.0</span>
 <div class="viewcode-block" id="Timeline.add_track">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.add_track.html#pybmd.timeline.Timeline.add_track">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">:</span> <span class="n">TrackType</span><span class="p">,</span> <span class="n">optional_sub_track_type</span><span class="p">:</span> <span class="n">OptionalSubTrackType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">add_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_type</span><span class="p">:</span> <span class="n">TrackType</span><span class="p">,</span> <span class="n">track_options</span><span class="p">:</span> <span class="n">OptionalSubTrackType</span><span class="o">|</span><span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds track of trackType (&quot;video&quot;, &quot;subtitle&quot;, &quot;audio&quot;).</span>
 <span class="sd">        Second argument optionalSubTrackType is required for &quot;audio&quot;</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            track_type (TrackType): track type</span>
-<span class="sd">            optional_sub_track_type (OptionalSubTrackType): Second argument optionalSubTrackType is required for &quot;audio&quot;</span>
+<span class="sd">            track_options (OptionalSubTrackType|Dict): Second argument is required for &quot;audio&quot; ,it can be newTrackOptions dict or OptionalSubTrackType, newTrackOptions dict = {&#39;audioType&#39;: same as subTrackType above, &#39;index&#39;: 1 &lt;= index &lt;= GetTrackCount(trackType)}</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">AddTrack</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">optional_sub_track_type</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">track_options</span><span class="p">,</span><span class="n">OptionalSubTrackType</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">AddTrack</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_options</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">track_options</span><span class="p">,</span><span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">AddTrack</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_options</span><span class="p">)</span></div>
 
+        
 
 <div class="viewcode-block" id="Timeline.delete_track">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.delete_track.html#pybmd.timeline.Timeline.delete_track">[docs]</a>
@@ -873,7 +886,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DeleteTrack</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">DeleteTrack</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.set_track_enable">
@@ -891,7 +904,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetTrackEnable</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">,</span> <span class="n">is_enable</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetTrackEnable</span><span class="p">(</span><span class="n">track_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">track_index</span><span class="p">,</span> <span class="n">is_enable</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_is_track_enabled">
@@ -906,7 +919,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if track with given trackType and trackIndex is enabled and False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetIsTrackEnabled</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetIsTrackEnabled</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.set_track_lock">
@@ -922,7 +935,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetTrackLock</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">,</span> <span class="n">is_locked</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetTrackLock</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">,</span> <span class="n">is_locked</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.get_is_track_locked">
@@ -938,7 +951,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if track with given trackType and trackIndex is locked and False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">GetIsTrackLocked</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetIsTrackLocked</span><span class="p">(</span><span class="n">track_type</span><span class="p">,</span> <span class="n">track_index</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.delete_clips">
@@ -953,7 +966,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DeleteClips</span><span class="p">([</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">_timeline_item</span> <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">timeline_items</span><span class="p">],</span> <span class="n">ripple_delete</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">DeleteClips</span><span class="p">([</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">_timeline_item</span> <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">timeline_items</span><span class="p">],</span> <span class="n">ripple_delete</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.set_clips_linked">
@@ -968,19 +981,19 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">SetClipsLinked</span><span class="p">([</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">_timeline_item</span> <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">timeline_items</span><span class="p">],</span> <span class="n">is_linked</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetClipsLinked</span><span class="p">([</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">_timeline_item</span> <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">timeline_items</span><span class="p">],</span> <span class="n">is_linked</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeline.create_subtitles_from_audio">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.create_subtitles_from_audio.html#pybmd.timeline.Timeline.create_subtitles_from_audio">[docs]</a>
-    <span class="k">def</span> <span class="nf">create_subtitles_from_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">auto_caption_settings</span><span class="p">:</span><span class="n">AutoCaptionSettings</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">create_subtitles_from_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">auto_caption_settings</span><span class="p">:</span><span class="s2">&quot;AutoCaptionSettings&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="c1">#Modified at DR 18.6.4</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates subtitles from audio for the timeline. </span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True on success, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">CreateSubtitlesFromAudio</span><span class="p">(</span><span class="n">auto_caption_settings</span><span class="o">.</span><span class="n">asdict</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">CreateSubtitlesFromAudio</span><span class="p">(</span><span class="n">auto_caption_settings</span><span class="o">.</span><span class="n">asdict</span><span class="p">())</span></div>
 
     
 <div class="viewcode-block" id="Timeline.detect_scene_cuts">
@@ -991,11 +1004,12 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">DetectSceneCuts</span><span class="p">()</span>  </div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">DetectSceneCuts</span><span class="p">()</span>  </div>
 
     
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.6.4</span>
+    
 <div class="viewcode-block" id="Timeline.convert_timeline_to_stereo">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.convert_timeline_to_stereo.html#pybmd.timeline.Timeline.convert_timeline_to_stereo">[docs]</a>
     <span class="k">def</span> <span class="nf">convert_timeline_to_stereo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -1004,10 +1018,38 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful; False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">ConvertTimelineToStereo</span><span class="p">()</span></div>
-</div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">ConvertTimelineToStereo</span><span class="p">()</span></div>
 
     
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 19.0.0</span>
+    
+<div class="viewcode-block" id="Timeline.get_node_graph">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_node_graph.html#pybmd.timeline.Timeline.get_node_graph">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_node_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Graph</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the timeline&#39;s node graph object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Graph: timeline&#39;s node graph object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Graph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetNodeGraph</span><span class="p">())</span></div>
+
+    
+<div class="viewcode-block" id="Timeline.analyze_dolby_vision">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.analyze_dolby_vision.html#pybmd.timeline.Timeline.analyze_dolby_vision">[docs]</a>
+    <span class="k">def</span> <span class="nf">analyze_dolby_vision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">timeline_item_list</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">TimelineItem</span><span class="p">]</span><span class="o">=</span><span class="nb">list</span><span class="p">(),</span><span class="n">analysis_type</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analyzes Dolby Vision on clips present on the timeline. </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            timeline_item_list (List[TimelineItem]): if timeline_item_list is empty, analysis performed on all items. Else, analysis performed on timeline_item_list only.</span>
+<span class="sd">            analysis_type (): set analysisType to resolve.DLB_BLEND_SHOTS for blend setting</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if analysis start is successful; False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">AnalyzeDolbyVision</span><span class="p">(</span><span class="n">timeline_item_list</span><span class="p">,</span><span class="n">analysis_type</span><span class="p">)</span></div>
+</div>
+
 </pre></div>
 
                 </article>

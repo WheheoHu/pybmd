@@ -1,6 +1,0 @@
-pybmd.settings.AutoCaptionSettings.subtitle\_chars\_per\_line
-=============================================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoproperty:: AutoCaptionSettings.subtitle_chars_per_line

@@ -1,6 +1,0 @@
-pybmd.settings.CloudProjectsSetting.cloud\_setting\_project\_media\_path
-========================================================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoproperty:: CloudProjectsSetting.cloud_setting_project_media_path

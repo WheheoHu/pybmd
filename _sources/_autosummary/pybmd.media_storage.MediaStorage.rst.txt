@@ -34,11 +34,4 @@ MediaStorage
 
    
    
-   .. rubric:: Attributes
-
-   .. autosummary::
-      :toctree:
-   
-      ~MediaStorage.media_storage
-   
    

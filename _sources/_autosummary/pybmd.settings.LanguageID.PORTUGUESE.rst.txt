@@ -1,6 +1,0 @@
-pybmd.settings.LanguageID.PORTUGUESE
-====================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: LanguageID.PORTUGUESE

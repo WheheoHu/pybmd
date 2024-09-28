@@ -1,0 +1,8 @@
+Timeline.analyze\_dolby\_vision
+===============================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.analyze_dolby_vision
+
+    .. autosummary::

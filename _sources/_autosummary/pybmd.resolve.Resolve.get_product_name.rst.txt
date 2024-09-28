@@ -1,0 +1,8 @@
+Resolve.get\_product\_name
+==========================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.get_product_name
+
+    .. autosummary::

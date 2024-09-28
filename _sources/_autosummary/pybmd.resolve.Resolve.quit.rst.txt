@@ -1,0 +1,8 @@
+Resolve.quit
+============
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.quit
+
+    .. autosummary::

@@ -1,0 +1,31 @@
+color\_group
+============
+
+.. automodule:: pybmd.color_group
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      ColorGroup
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,6 +1,0 @@
-pybmd.bmd.load\_dynamic
-=======================
-
-.. currentmodule:: pybmd.bmd
-
-.. autofunction:: load_dynamic

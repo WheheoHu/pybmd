@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=c171a6a4"></script>
+    <script src="../../_static/documentation_options.js?v=7b2d7c30"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/ui_dispather';</script>
@@ -350,6 +350,9 @@ document.write(`
   <h1>Source code for pybmd.ui_dispather</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
+<span class="kn">from</span> <span class="nn">pybmd.ui_manager</span> <span class="kn">import</span> <span class="n">UI_Manager</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_init_bmd</span>
+
 
 <div class="viewcode-block" id="UI_Dispather">
 <a class="viewcode-back" href="../../_autosummary/pybmd.ui_dispather.UI_Dispather.html#pybmd.ui_dispather.UI_Dispather">[docs]</a>
@@ -357,8 +360,8 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for UI_Dispather.&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="UI_Dispather.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.ui_dispather.UI_Dispather.__init__.html#pybmd.ui_dispather.UI_Dispather.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ui_dispather</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ui_dispather</span> <span class="o">=</span> <span class="n">ui_dispather</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ui_manager</span><span class="p">:</span><span class="n">UI_Manager</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ui_dispather</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_bmd_module_object</span><span class="o">.</span><span class="n">UIDispatcher</span><span class="p">(</span><span class="n">ui_manager</span><span class="o">.</span><span class="n">_ui_manager</span><span class="p">)</span></div>
 
         
 <div class="viewcode-block" id="UI_Dispather.add_window">

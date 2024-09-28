@@ -1,0 +1,8 @@
+ColorGroup.get\_clips\_in\_timeline
+===================================
+
+.. currentmodule:: pybmd.color_group
+
+.. automethod:: ColorGroup.get_clips_in_timeline
+
+    .. autosummary::

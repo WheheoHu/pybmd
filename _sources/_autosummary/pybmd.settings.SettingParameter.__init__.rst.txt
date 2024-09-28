@@ -1,8 +1,0 @@
-SettingParameter.\_\_init\_\_
-=============================
-
-.. currentmodule:: pybmd.settings
-
-.. automethod:: SettingParameter.__init__
-
-    .. autosummary::

@@ -1,6 +1,0 @@
-pybmd.settings.RenderSetting.VideoQuality
-=========================================
-
-.. currentmodule:: pybmd.settings
-
-.. autoattribute:: RenderSetting.VideoQuality

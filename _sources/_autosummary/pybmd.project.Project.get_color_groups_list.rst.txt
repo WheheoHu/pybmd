@@ -1,0 +1,8 @@
+Project.get\_color\_groups\_list
+================================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.get_color_groups_list
+
+    .. autosummary::

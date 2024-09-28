@@ -1,0 +1,8 @@
+Resolve.export\_burn\_in\_preset
+================================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.export_burn_in_preset
+
+    .. autosummary::
