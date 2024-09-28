@@ -36,10 +36,10 @@ def _init_bmd_module():
         module_name='fusionscript', module_path=PYLIB) 
     return bmd_module
 
-_bmd_module_object=_init_bmd_module()
+_bmd_module_object = None
 
 
-def _init_resolve(davinci_ip:str):
+def _init_resolve(davinci_ip:str="127.0.0.1"):
     """init and return Davinci Resolve object
     Args:
         davinci_ip (str, optional): Default value is local (127.0.0.1).
@@ -50,5 +50,5 @@ def _init_resolve(davinci_ip:str):
 
 
 
-_resolve_object = _init_resolve("127.0.0.1")
+_resolve_object = None
 

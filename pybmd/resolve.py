@@ -1,13 +1,14 @@
 import subprocess
 import platform
+from typing import TYPE_CHECKING
 import psutil
 
 from pybmd.error import *
 from pybmd.media_storage import MediaStorage
 from pybmd.project_manager import ProjectManager
 from pybmd.fusion import Fusion
-from pybmd.settings import KeyframeMode
-
+if TYPE_CHECKING:
+    from pybmd.settings import KeyframeMode
 
 from . import _init_bmd
 
@@ -67,8 +68,8 @@ class Resolve:
         if (auto_start):
             _start_local_resolve()
         
-        if resolve_ip != '127.0.0.1':
-            _init_bmd._resolve_object =_init_bmd._init_davinci(
+        _init_bmd._bmd_module_object=_init_bmd._init_bmd_module()
+        _init_bmd._resolve_object =_init_bmd._init_resolve(
             davinci_ip=resolve_ip)
         
         self._resolve =_init_bmd._resolve_object
@@ -273,7 +274,7 @@ class Resolve:
         """
         return self._resolve.GetKeyframeMode()
 
-    def set_keyframe_mode(self, key_frame_mode: KeyframeMode) -> bool:
+    def set_keyframe_mode(self, key_frame_mode: "KeyframeMode") -> bool:
         """ Refer to section 'Keyframe Mode information' below for details.
 
         Args:

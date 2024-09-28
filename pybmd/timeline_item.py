@@ -1,11 +1,12 @@
 from dataclasses import dataclass
 from dataclasses import asdict
 from os import path
-from typing import List, Tuple, Union
-
+from typing import List, Tuple, Union,TYPE_CHECKING
+if TYPE_CHECKING:
+    from pybmd.export_type import LUT_Export_Type
 from traitlets import Bool
 from pybmd.color_group import ColorGroup
-from pybmd.export_type import LUT_Export_Type
+
 from pybmd.fusion_comp import FusionComp
 from pybmd.graph import Graph
 from pybmd.media_pool_item import MediaPoolItem
@@ -508,7 +509,7 @@ class TimelineItem():
         """
         return self._timeline_item.RemoveFromColorGroup()
     
-    def export_LUT(self,export_type:LUT_Export_Type,export_path:str) -> bool:
+    def export_LUT(self,export_type:"LUT_Export_Type",export_path:str) -> bool:
         """ Exports LUTs from tiItem 
                                                                 
         Args:

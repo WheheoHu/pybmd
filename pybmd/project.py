@@ -1,12 +1,14 @@
 from dataclasses import asdict
-from typing import Any, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List
 from pybmd import color_group
 from pybmd.color_group import ColorGroup
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
 
 from pybmd.timeline import Timeline
-from pybmd.settings import RenderSetting
+
+if TYPE_CHECKING:
+    from pybmd.settings import RenderSetting
 
 RenderResolution = List[dict]
 
@@ -171,7 +173,7 @@ class Project():
         """Sets preset by given preset_name (string) into project."""
         return self._project.SetPreset(preset_name)
 
-    def set_render_settings(self, render_setting: RenderSetting) -> bool:
+    def set_render_settings(self, render_setting: "RenderSetting") -> bool:
         """Sets given settings for rendering.
 
         Args:

@@ -2,9 +2,9 @@ from os import path
 from pybmd.project import Project
 from typing import TYPE_CHECKING, Dict, List
 
-from pybmd.settings import CloudProjectsSetting
+
 if TYPE_CHECKING:
-    from pybmd.resolve import Resolve
+    from pybmd.settings import CloudProjectsSetting
 
 DatabaseList = List[Dict]
 
@@ -152,7 +152,7 @@ class ProjectManager:
 
     ##############################################################################################################################
     #Add at DR18.6.4
-    def create_cloud_project(self,cloud_setting:CloudProjectsSetting) -> Project:
+    def create_cloud_project(self,cloud_setting:"CloudProjectsSetting") -> Project:
         """Creates and returns a cloud project.
 
         Args:
@@ -163,7 +163,7 @@ class ProjectManager:
         """        
         return Project(self._project_manager.CreateCloudProject(cloud_setting.asdict()))
     
-    def import_cloud_project(self,file_path:str,cloud_setting:CloudProjectsSetting) -> bool:
+    def import_cloud_project(self,file_path:str,cloud_setting:"CloudProjectsSetting") -> bool:
         """
 
         Args:
@@ -175,7 +175,7 @@ class ProjectManager:
         """        
         return self._project_manager.ImportCloudProject(file_path,cloud_setting.asdict())
     
-    def restore_cloud_project(self,folder_path:str,cloud_setting:CloudProjectsSetting) -> bool:
+    def restore_cloud_project(self,folder_path:str,cloud_setting:"CloudProjectsSetting") -> bool:
         """
 
         Args:

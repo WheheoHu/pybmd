@@ -1,11 +1,15 @@
 from enum import Enum
 from os import path
-from typing import Dict, List
+from typing import TYPE_CHECKING, Dict, List
 
-from pybmd.export_type import Timeline_Export_Subtype, Timeline_Export_Type
+if TYPE_CHECKING:
+    from pybmd.export_type import Timeline_Export_Subtype, Timeline_Export_Type
+    from pybmd.settings import AutoCaptionSettings
+    
+
 from pybmd.gallery_still import GalleryStill
 from pybmd.graph import Graph
-from pybmd.settings import AutoCaptionSettings
+
 from pybmd.timeline_item import TimelineItem
 
 
@@ -164,7 +168,7 @@ class Timeline():
         """
         return Timeline(timeline=self._timeline.DuplicateTimeline(timeline_name))
 
-    def export(self, file_name: str, export_type:Timeline_Export_Type, export_subtype:Timeline_Export_Subtype=None) -> bool:
+    def export(self, file_name: str, export_type:"Timeline_Export_Type", export_subtype:"Timeline_Export_Subtype"=None) -> bool:
         """Exports timeline to 'fileName' as per input exportType & exportSubtype format.
         
         # file_name should be a path, not a file name.
@@ -472,7 +476,7 @@ class Timeline():
         """
         return self._timeline.SetClipsLinked([timeline_item._timeline_item for timeline_item in timeline_items], is_linked)
 
-    def create_subtitles_from_audio(self,auto_caption_settings:AutoCaptionSettings) -> bool:
+    def create_subtitles_from_audio(self,auto_caption_settings:"AutoCaptionSettings") -> bool:
         #Modified at DR 18.6.4
         """Creates subtitles from audio for the timeline. 
 
