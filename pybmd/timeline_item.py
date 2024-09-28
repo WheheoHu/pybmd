@@ -4,7 +4,7 @@ from os import path
 from typing import List, Tuple, Union,TYPE_CHECKING
 if TYPE_CHECKING:
     from pybmd.export_type import LUT_Export_Type
-from traitlets import Bool
+
 from pybmd.color_group import ColorGroup
 
 from pybmd.fusion_comp import FusionComp
@@ -490,22 +490,22 @@ class TimelineItem():
         """
         return ColorGroup(self._timeline_item.GetColorGroup())
     
-    def assign_to_color_group(self,color_group:ColorGroup) -> Bool:
+    def assign_to_color_group(self,color_group:ColorGroup) -> bool:
         """Returns True if TiItem to successfully assigned to given ColorGroup. 
 
         Args:
             color_group (ColorGroup): ColorGroup must be an existing group in the current project.
 
         Returns:
-            Bool: Returns True if TiItem to successfully assigned to given ColorGroup. 
+            bool: Returns True if TiItem to successfully assigned to given ColorGroup. 
         """
         return self._timeline_item.AssignToColorGroup(color_group)
     
-    def remove_from_color_group(self) -> Bool:
+    def remove_from_color_group(self) -> bool:
         """Returns True if the TiItem is successfully removed from the ColorGroup it is in.
 
         Returns:
-            Bool: Returns True if the TiItem is successfully removed from the ColorGroup it is in.
+            bool: Returns True if the TiItem is successfully removed from the ColorGroup it is in.
         """
         return self._timeline_item.RemoveFromColorGroup()
     
