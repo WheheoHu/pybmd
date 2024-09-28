@@ -138,7 +138,7 @@
 - change `MediaStorage` init args
 - change `ProjectManager` init args
 - change `Project` init args
-## Change in DR 19.0.0
+## Changes in DR 19.0.0
 ### [New] ColorGroup
 ### [New] Graph
 ### MediaPollItem
@@ -172,3 +172,15 @@
 - Change `add_track`
 - Add `get_node_graph`
 - Add `analyze_dolby_vision`
+
+------
+# 2024.3.1
+## Changes in DR 19.0.1
+### settings module
+- `CloudSyncState` add `CLOUD_SYNC_SUCCESS`
+
+### TimelineItem 
+- Add `get_source_audio_channel_mapping`
+
+### Timeline
+- Add `get_track_sub_type`

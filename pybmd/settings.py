@@ -343,3 +343,6 @@ class CloudSyncState(Enum):
     CLOUD_SYNC_UPLOAD_SUCCESS = 7
     CLOUD_SYNC_UPLOAD_FAIL = 8
     CLOUD_SYNC_UPLOAD_NOT_FOUND = 9
+    
+    ## Add at DR 19.0.1
+    CLOUD_SYNC_SUCCESS = 10

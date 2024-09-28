@@ -526,3 +526,18 @@ class Timeline():
             bool: Returns True if analysis start is successful; False otherwise.
         """
         return self._timeline.AnalyzeDolbyVision(timeline_item_list,analysis_type)
+    
+    ##############################################################################################################################
+    # Add at DR 19.0.1
+    def get_track_sub_type(self,track_index:int,track_type:str="audio") -> str:
+        """_summary_
+
+        Args:
+            track_index (int): 1 < = track_index < = GetTrackCount(trackType)
+            track_type (str, optional): Defaults to "audio".
+
+        Returns:
+            str: audio track's format,value is one of {"mono", "stereo", "5.1", "5.1film", "7.1", "7.1film", "adaptive1", ... , "adaptive24"} 
+        """
+        return self._timeline.GetTrackSubType(track_type,track_index)
+    

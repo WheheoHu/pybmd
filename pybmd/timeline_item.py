@@ -541,3 +541,15 @@ class TimelineItem():
 
         """
         return tuple(self._timeline_item.GetTrackTypeAndIndex())
+    
+    
+    ##############################################################################################################################
+    # Add at DR 19.0.1
+    
+    def get_source_audio_channel_mapping(self) -> str:
+        """Returns a string with TimelineItem's audio mapping information.
+
+        Returns:
+            str: json formatted string
+        """
+        return self._timeline_item.GetSourceAudioChannelMapping()   
