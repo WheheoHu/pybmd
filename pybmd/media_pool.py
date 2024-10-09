@@ -1,5 +1,7 @@
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, override
+
+from multimethod import multimethod
 from pybmd.folder import Folder
 from pybmd.media_pool_item import MediaPoolItem
 from pybmd.timeline import Timeline
@@ -19,7 +21,18 @@ class ClipInfo():
     end_frame: int
     media_type: int
     track_index: int
-    record_frame: int
+    record_frame: int | float
+    
+    def to_dict(self):
+        return {
+            "mediaPoolItem": self.media_pool_item._media_pool_item,
+            "startFrame": self.start_frame,
+            "endFrame": self.end_frame,
+            "mediaType": self.media_type,
+            "trackIndex": self.track_index,
+            "recordFrame": self.record_frame
+        }
+
 
 
 @dataclass
@@ -43,7 +56,7 @@ class MediaPool():
     """ MediaPool Object """
 
     def __init__(self, media_pool):
-        self.media_pool = media_pool
+        self._media_pool = media_pool
 
     def add_sub_folder(self, folder: Folder, name: str) -> Folder:
         """add sub folder to folder
@@ -55,41 +68,33 @@ class MediaPool():
         Returns:
             Folder: folder object of new sub folder
         """
-        return Folder(self.media_pool.AddSubFolder(folder._folder, name))
+        return Folder(self._media_pool.AddSubFolder(folder._folder, name))
 
-    # @dispatch(List[MediaPoolItem])
-    # type: ignore
-    def append_to_timeline(self, clips: List[MediaPoolItem]) -> List[TimelineItem]:
+    @multimethod
+    def append_to_timeline(self, clips: List['MediaPoolItem']) -> List[TimelineItem]:
         """append clips to current timeline
 
         Args:
-            clips (List[MediaPoolItem]): clips to append to current timeline
+            clips (List[MediaPoolItem]|List[ClipInfo]): clips to append to current timeline
 
         Returns:
             List[TimelineItem]: timeline items of appended clips at timeline
         """
-        if type(clips[0]) is MediaPoolItem:
-            temp_list = self.media_pool.AppendToTimeline(
+
+        temp_list = self._media_pool.AppendToTimeline(
                 [clip._media_pool_item for clip in clips])
-        elif type(clips[0]) is ClipInfo:
-            temp_list = self.media_pool.AppendToTimeline(
-                [asdict(clip_info) for clip_info in clips])
-
-        # timeline_item_list = []
-        # for timeline_item in temp_list:
-        #     timeline_item_list.append(TimelineItem(timeline_item))
         return [TimelineItem(timeline_item) for timeline_item in temp_list]
-
-    # @dispatch(List[ClipInfo])
-    # def append_to_timeline(self, clips: List[ClipInfo]) -> List[TimelineItem]:
-    #     timeline_item_list = []
-    #     for timeline_item in self.media_pool.AppendToTimeline([asdict(ClipInfo) for ClipInfo in clips]):
-    #         timeline_item_list.append(TimelineItem(timeline_item))
-    #     return timeline_item_list
+    
+    @multimethod
+    def append_to_timeline(self, clip_info_list: List['ClipInfo']) -> List['TimelineItem']:
+        temp_list = self._media_pool.AppendToTimeline(
+                [clip_info.to_dict() for clip_info in clip_info_list])
+        return [TimelineItem(timeline_item) for timeline_item in temp_list]
+    
 
     def create_empty_timeline(self, name) -> Timeline:
         """create empty timeline"""
-        return Timeline(self.media_pool.CreateEmptyTimeline(name))
+        return Timeline(self._media_pool.CreateEmptyTimeline(name))
 
     # @dispatch(str, Iterable)
     # type: ignore
@@ -104,9 +109,9 @@ class MediaPool():
             Timeline: new timeline object
         """
         if type(clips[0]) is MediaPoolItem:
-            return Timeline(self.media_pool.CreateTimelineFromClips(name, [clip.media_pool_item for clip in clips]))
+            return Timeline(self._media_pool.CreateTimelineFromClips(name, [clip.media_pool_item for clip in clips]))
         elif type(clips[0]) is ClipInfo:
-            return Timeline(self.media_pool.CreateTimelineFromClips(name, [asdict(ClipInfo) for clip in clips]))
+            return Timeline(self._media_pool.CreateTimelineFromClips(name, [asdict(ClipInfo) for clip in clips]))
 
     # @dispatch(str, List[ClipInfo])
     # def create_timeline_from_clips(self, name: str, clip_infos: List[ClipInfo]) -> Timeline:
@@ -122,15 +127,15 @@ class MediaPool():
         Returns:
             bool: true if successful, false if not
         """
-        return self.media_pool.DeleteClipMattes(media_pool_item, paths)
+        return self._media_pool.DeleteClipMattes(media_pool_item, paths)
 
     def delete_clips(self, clips: List[MediaPoolItem]) -> bool:
         """Delete clips from media pool"""
-        return self.media_pool.DeleteClips([clip._media_pool_item for clip in clips])
+        return self._media_pool.DeleteClips([clip._media_pool_item for clip in clips])
 
     def delete_folders(self, subfolders: List[Folder]) -> bool:
         """delete folders from media pool"""
-        return self.media_pool.DeleteFolders([folder._folder for folder in subfolders])
+        return self._media_pool.DeleteFolders([folder._folder for folder in subfolders])
 
     def delete_timelines(self, timelines: List[Timeline]) -> bool:
         """delete timelines from media pool
@@ -141,7 +146,7 @@ class MediaPool():
         Returns:
             bool: true if successful, false if not
         """
-        return self.media_pool.DeleteTimelines([timeline._timeline for timeline in timelines])
+        return self._media_pool.DeleteTimelines([timeline._timeline for timeline in timelines])
 
     def export_metadata(self, file_name: str, clips: List[MediaPoolItem]) -> bool:
         """export metadata to csv file
@@ -153,12 +158,12 @@ class MediaPool():
         Returns:
             bool: True if successful, False if not
         """
-        return self.media_pool.ExportMetadata(file_name, [clip._media_pool_item for clip in clips])
+        return self._media_pool.ExportMetadata(file_name, [clip._media_pool_item for clip in clips])
 
     def get_clip_matte_list(self, media_pool_item) -> List[Path]:
         """get list of clip mattes for specified media pool item"""
         path_list = []
-        for str_path in self.media_pool.GetClipMatteList(media_pool_item):
+        for str_path in self._media_pool.GetClipMatteList(media_pool_item):
             path_list.append(Path(str_path))
         return path_list
 
@@ -168,7 +173,7 @@ class MediaPool():
         Returns:
             Folder: current folder object
         """
-        return Folder(self.media_pool.GetCurrentFolder())
+        return Folder(self._media_pool.GetCurrentFolder())
 
     def get_root_folder(self) -> Folder:
         """return root folder object of media pool
@@ -176,7 +181,7 @@ class MediaPool():
         Returns:    
             Folder: root folder object
         """
-        return Folder(self.media_pool.GetRootFolder())
+        return Folder(self._media_pool.GetRootFolder())
 
     def get_timeline_matte_list(self, folder: Folder) -> List[MediaPoolItem]:
         """Get mattes in specified Folder
@@ -188,7 +193,7 @@ class MediaPool():
             List[MediaPoolItem]: list of media pool items that are mattes
         """
         media_pool_item_list = []
-        for media_pool_item in self.media_pool.GetTimelineMatteList(folder._folder):
+        for media_pool_item in self._media_pool.GetTimelineMatteList(folder._folder):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
@@ -207,7 +212,7 @@ class MediaPool():
         # media_pool_item_list = []
         # for media_pool_item in self.media_pool.ImportMedia(file_paths):
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
-        return [MediaPoolItem(media_pool_item) for media_pool_item in self.media_pool.ImportMedia(file_paths)]
+        return [MediaPoolItem(media_pool_item) for media_pool_item in self._media_pool.ImportMedia(file_paths)]
 
     # @dispatch(List[dict])
     # def import_media(self, clip_info: List[dict]) -> List[MediaPoolItem]:
@@ -226,7 +231,7 @@ class MediaPool():
         Returns:
             Timeline: timeline object
         """
-        return Timeline(self.media_pool.ImportTimelineFromFile(str(file_path), asdict(import_option)))
+        return Timeline(self._media_pool.ImportTimelineFromFile(str(file_path), asdict(import_option)))
 
     def move_clips(self, clips: List[MediaPoolItem], target_folder: Folder) -> bool:
         """Moves specified clips to target Folder 
@@ -238,7 +243,7 @@ class MediaPool():
         Returns:
             bool: true if successful, false if not
         """
-        return self.media_pool.MoveClips([clip._media_pool_item for clip in clips], target_folder._folder)
+        return self._media_pool.MoveClips([clip._media_pool_item for clip in clips], target_folder._folder)
 
     def move_folders(self, folders: List[Folder], target_folder: Folder) -> bool:
         """move folders to target folder
@@ -251,7 +256,7 @@ class MediaPool():
         Returns:
             bool: true if successful, false if not
         """
-        return self.media_pool.MoveFolders([folder._folder for folder in folders], target_folder._folder)
+        return self._media_pool.MoveFolders([folder._folder for folder in folders], target_folder._folder)
 
     def relink_clips(self, media_pool_items: List[MediaPoolItem], folder_path: str) -> bool:
         """Update the folder location of specified media pool clips with the specified folderpath
@@ -263,25 +268,25 @@ class MediaPool():
         Returns:
             bool: True if successful, False if not
         """
-        return self.media_pool.RelinkClips([clip._media_pool_item for clip in media_pool_items], str(folder_path))
+        return self._media_pool.RelinkClips([clip._media_pool_item for clip in media_pool_items], str(folder_path))
 
     def set_current_folder(self, folder: Folder) -> bool:
         """set current folder"""
-        return self.media_pool.SetCurrentFolder(folder._folder)
+        return self._media_pool.SetCurrentFolder(folder._folder)
 
     def unlink_clips(self, media_pool_items: List[MediaPoolItem]) -> bool:
         """Unlink specified media pool clips"""
-        return self.media_pool.UnlinkClips([clip._media_pool_item for clip in media_pool_items])
+        return self._media_pool.UnlinkClips([clip._media_pool_item for clip in media_pool_items])
 
     ##########################################################################################################################
     # Add at DR18.0.0
     def refresh_folders(self) -> bool:
         """Updates the folders in collaboration mode"""
-        return self.media_pool.RefreshFolders()
+        return self._media_pool.RefreshFolders()
 
     def get_unique_id(self) -> str:
         """get unique id of media pool object"""
-        return self.media_pool.GetUniqueId()
+        return self._media_pool.GetUniqueId()
 
     ##########################################################################################################################
     # Add at DR18.5.0 Beta
@@ -296,7 +301,7 @@ class MediaPool():
         Returns:
             bool: Returns true if import from given DRB filePath is successful, false otherwise
         """
-        return self.media_pool.ImportFolderFromFile(file_path, source_clips_path)
+        return self._media_pool.ImportFolderFromFile(file_path, source_clips_path)
 
     ##########################################################################################################################
     # Add at DR18.6.4
@@ -310,4 +315,29 @@ class MediaPool():
         Returns:
             MediaPoolItem: 3D stereoscopic media pool entry
         """
-        return MediaPoolItem(self.media_pool.CreateStereoClip(left_media_pool_item, right_media_pool_item))
+        return MediaPoolItem(self._media_pool.CreateStereoClip(left_media_pool_item._media_pool_item, right_media_pool_item._media_pool_item))
+    
+    ##########################################################################################################################
+    # Add at DR19.0.2
+    def get_selected_clips(self) -> List[MediaPoolItem]:
+        """Returns the current selected MediaPoolItems
+
+        Returns:
+            List[MediaPoolItem]: current selected MediaPoolItems
+        """
+        media_pool_items = list()
+        for mp_item in self._media_pool.GetSelectedClips():
+            media_pool_items.append(MediaPoolItem(mp_item))
+        return media_pool_items
+    
+
+    def set_selected_clip(self,media_pool_item:MediaPoolItem) -> bool:
+        """Sets the selected MediaPoolItem to the given MediaPoolItem
+
+        Args:
+            media_pool_item (MediaPoolItem): selected MediaPoolItem
+
+        Returns:
+            bool: Returns true if successful, false if not
+        """
+        return self._media_pool.SetSelectedClip(media_pool_item._media_pool_item)

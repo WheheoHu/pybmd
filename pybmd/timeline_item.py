@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from dataclasses import asdict
 from os import path
-from typing import List, Tuple, Union,TYPE_CHECKING
+from typing import List, Tuple, Union, TYPE_CHECKING
 if TYPE_CHECKING:
     from pybmd.export_type import LUT_Export_Type
 
@@ -89,7 +89,7 @@ class TimelineItem():
         Returns:
             bool: True if successful, False otherwise.
         """
-        return self._timeline_item.AddTake(media_pool_item, start_frame, end_frame)
+        return self._timeline_item.AddTake(media_pool_item._media_pool_item, start_frame, end_frame)
 
     def add_version(self, version_name: str, version_type: VersionType) -> bool:
         """Adds a new color version for a video clip based on versionType
@@ -172,26 +172,28 @@ class TimelineItem():
         """returns the current version of the timeline item"""
         return self._timeline_item.GetCurrentVersion()
 
-    def get_duration(self) -> int:
+    def get_duration(self, subframe_precision: bool = False) -> int | float:
+        # Change at 19.0.2
         """Returns the item duration."""
-        return self._timeline_item.GetDuration()
+        return self._timeline_item.GetDuration(subframe_precision)
 
-    def get_end(self) -> int:
+    def get_end(self,subframe_precision: bool = False) -> int | float:
+        # Change at 19.0.2
         """Returns the end frame position on the timeline."""
-        return self._timeline_item.GetEnd()
+        return self._timeline_item.GetEnd(subframe_precision)
 
     def get_flag_list(self) -> list:
         """Returns the end frame position on the timeline."""
         return self._timeline_item.GetFlagList()
 
-    def get_fusion_comp_by_index(self, comp_index) -> "FusionComp":
+    def get_fusion_comp_by_index(self, comp_index: int) -> "FusionComp":
         """
         Returns the Fusion composition object based on given compIndex. 
         1 <= compIndex <= timelineItem.get_fusion_comp_count()
         """
         return FusionComp(self._timeline_item.GetFusionCompByIndex(comp_index))
 
-    def get_fusion_comp_by_name(self, comp_name) -> "FusionComp":
+    def get_fusion_comp_by_name(self, comp_name: str) -> "FusionComp":
         """Returns the Fusion composition object based on given comp_name."""
         return FusionComp(self._timeline_item.GetFusionCompByName(comp_name))
 
@@ -203,9 +205,10 @@ class TimelineItem():
         """Returns a list of Fusion composition names associated with the timeline item."""
         return self._timeline_item.GetFusionCompNameList()
 
-    def get_left_offset(self) -> int:
+    def get_left_offset(self,subframe_precision:bool=False) -> int | float:
+        ### Change at 19.0.2
         """Returns the maximum extension by frame for clip from left side."""
-        return self._timeline_item.GetLeftOffset()
+        return self._timeline_item.GetLeftOffset(subframe_precision)
 
     def get_marker_by_custom_data(self, custom_data: str) -> dict:
         """Returns marker {information} for the first matching marker with specified customData."""
@@ -234,17 +237,19 @@ class TimelineItem():
         """
         return self._timeline_item.GetProperty(property_key)
 
-    def get_right_offset(self) -> int:
+    def get_right_offset(self,subframe_precision:bool=False) -> int | float:
+        ### Change at 19.0.2
         """Returns the maximum extension by frame for clip from right side."""
-        return self._timeline_item.GetRightOffset()
+        return self._timeline_item.GetRightOffset(subframe_precision)
 
     def get_selected_take_index(self) -> int:
         """Returns the index of the currently selected take, or 0 if the clip is not a take selector."""
         return self._timeline_item.GetSelectedTakeIndex()
 
-    def get_start(self) -> int:
+    def get_start(self,subframe_precision:bool=False) -> int | float:
+        ### Change at 19.0.2
         """Returns the start frame position on the timeline."""
-        return self._timeline_item.GetStart()
+        return self._timeline_item.GetStart(subframe_precision)
 
     def get_stereo_convergence_values(self) -> dict:
         """Returns a dict (offset -> value) of keyframe offsets and respective convergence values."""
@@ -348,12 +353,12 @@ class TimelineItem():
 
     ####################################################################################################################
     # add in davinci resolve 17.4.6
-    
+
     # Remove at DR 19.0.0
     # def get_num_node(self) -> int:
     #     """Returns the number of nodes in the current graph for the timeline item"""
     #     return self._timeline_item.GetNumNode()
-    
+
     # Remove at DR 19.0.0
     # def get_lut(self, node_index: int) -> str:
     #     """Gets relative LUT path based on the node index provided
@@ -417,7 +422,7 @@ class TimelineItem():
             bool: Returns true if successful
         """
         return self._timeline_item.LoadBurnInPreset(preset_name)
-    
+
     # Remove at DR 19.0.0
     # def get_node_label(self, node_index: int) -> str:
     #     """Returns the label of the node at nodeIndex.
@@ -432,7 +437,7 @@ class TimelineItem():
 
     ##############################################################################################################################
     # Add at DR18.5.0
-    
+
     def create_magic_mask(self, mode: MagicMask_Mode) -> bool:
         """Returns True if magic mask was created successfully, False otherwise. 
 
@@ -443,7 +448,7 @@ class TimelineItem():
             bool: Returns True if magic mask was created successfully, False otherwise.
         """
         return self._timeline_item.CreateMagicMask(mode.value)
-    
+
     def regenerate_magic_mask(self) -> bool:
         """Returns True if magic mask was regenerated successfully, False otherwise.
 
@@ -451,7 +456,7 @@ class TimelineItem():
             bool: Returns True if magic mask was regenerated successfully, False otherwise.
         """
         return self._timeline_item.RegenerateMagicMask()
-    
+
     def stabilize(self) -> bool:
         """Returns True if stabilization was successful, False otherwise
 
@@ -459,7 +464,7 @@ class TimelineItem():
             bool: Returns True if stabilization was successful, False otherwise
         """
         return self._timeline_item.Stabilize()
-    
+
     def smart_reframe(self) -> bool:
         """Performs Smart Reframe. 
 
@@ -467,11 +472,11 @@ class TimelineItem():
             bool: _descriReturns True if successful, False otherwise.
         """
         return self._timeline_item.SmartReframe()
-    
+
     ##############################################################################################################################
     # Add at DR 19.0.0
-    
-    def get_node_graph(self,layer_index:int) -> "Graph":
+
+    def get_node_graph(self, layer_index: int) -> "Graph":
         """Returns the clip's node graph object 
 
         Args:
@@ -480,8 +485,8 @@ class TimelineItem():
         Returns:
             Graph: The clip's node graph object at layer_index. Returns the first layer if layer_index is skipped.
         """
-        return Graph(self._timeline_item.GetNodeGraph(layer_index)) 
-    
+        return Graph(self._timeline_item.GetNodeGraph(layer_index))
+
     def get_color_group(self) -> "ColorGroup":
         """Returns the clip's color group if one exists.
 
@@ -489,8 +494,8 @@ class TimelineItem():
             ColorGroup: the clip's color group
         """
         return ColorGroup(self._timeline_item.GetColorGroup())
-    
-    def assign_to_color_group(self,color_group:ColorGroup) -> bool:
+
+    def assign_to_color_group(self, color_group: ColorGroup) -> bool:
         """Returns True if TiItem to successfully assigned to given ColorGroup. 
 
         Args:
@@ -500,7 +505,7 @@ class TimelineItem():
             bool: Returns True if TiItem to successfully assigned to given ColorGroup. 
         """
         return self._timeline_item.AssignToColorGroup(color_group)
-    
+
     def remove_from_color_group(self) -> bool:
         """Returns True if the TiItem is successfully removed from the ColorGroup it is in.
 
@@ -508,10 +513,10 @@ class TimelineItem():
             bool: Returns True if the TiItem is successfully removed from the ColorGroup it is in.
         """
         return self._timeline_item.RemoveFromColorGroup()
-    
-    def export_LUT(self,export_type:"LUT_Export_Type",export_path:str) -> bool:
+
+    def export_LUT(self, export_type: "LUT_Export_Type", export_path: str) -> bool:
         """ Exports LUTs from tiItem 
-                                                                
+
         Args:
             export_type (LUT_Export_Type): export lut type
             export_path (str): Saves generated LUT in the provided 'path' (string). 'path' should include the intended file name.If an empty or incorrect extension is provided, the appropriate extension (.cube/.vlt) will be appended at the end of the path.
@@ -519,9 +524,9 @@ class TimelineItem():
         Returns:
             bool: Returns True if successful, False otherwise.
         """
-        
-        return self._timeline_item.ExportLUT(export_type.value,export_path)
-    
+
+        return self._timeline_item.ExportLUT(export_type.value, export_path)
+
     def get_linked_items(self) -> List["TimelineItem"]:
         """ Returns a list of linked timeline items.
 
@@ -532,24 +537,58 @@ class TimelineItem():
         for value in self._timeline_item.GetLinkedItems():
             timeline_item_list.append(TimelineItem(value))
         return timeline_item_list
-    
-    def get_track_type_and_index(self) -> Tuple[str,int]:
+
+    def get_track_type_and_index(self) -> Tuple[str, int]:
         """Returns a list of two values that correspond to the TimelineItem's trackType (string) and trackIndex (int) respectively.
-                                                                           
+
         Returns:
             Tuple[str,int]: trackType is one of {"audio", "video", "subtitle"},1 <= trackIndex <= Timeline.GetTrackCount(trackType)
 
         """
         return tuple(self._timeline_item.GetTrackTypeAndIndex())
-    
-    
+
     ##############################################################################################################################
     # Add at DR 19.0.1
-    
+
     def get_source_audio_channel_mapping(self) -> str:
         """Returns a string with TimelineItem's audio mapping information.
 
         Returns:
             str: json formatted string
         """
-        return self._timeline_item.GetSourceAudioChannelMapping()   
+        return self._timeline_item.GetSourceAudioChannelMapping()
+    
+    ##############################################################################################################################
+    # Add at DR 19.0.2
+    
+    def get_source_end_frame(self) -> int:
+        """Returns the end frame position of the media pool clip in the timeline clip.
+
+        Returns:
+            int: end frame position of the media pool clip
+        """
+        return self._timeline_item.GetSourceEndFrame()
+    
+    def get_source_end_time(self) -> float:
+        """Returns the end time position of the media pool clip in the timeline clip.
+
+        Returns:
+            float: end time position of the media pool clip
+        """
+        return self._timeline_item.GetSourceEndTime()
+    
+    def get_source_start_frame(self) -> int:
+        """Returns the start frame position of the media pool clip in the timeline clip.
+        
+        Returns:
+            int: start frame position of the media pool clip
+        """
+        return self._timeline_item.GetSourceStartFrame()
+    
+    def get_source_start_time(self) -> float:
+        """Returns the start time position of the media pool clip in the timeline clip.
+        
+        Returns:
+            float: start time position of the media pool clip
+        """
+        return self._timeline_item.GetSourceStartTime()

@@ -184,3 +184,33 @@
 
 ### Timeline
 - Add `get_track_sub_type`
+
+------
+# 2024.3.2
+## Library
+- Add dependency [`multimethod`](https://github.com/coady/multimethod) to overload method
+## Changes in DR 19.0.2
+### MediaPool
+-  `ClipInfo` Change `record_frame` type to `int/float`
+-  `ClipInfo` Add `to_dict` method
+- Add `get_selected_clips`
+- Add `set_selected_clip`
+- Typo fixed
+
+### MediaPoolItem
+- Add `get_third_party_metadata`
+- Add `set_third_party_metadata`(W/ Overloading method)
+
+### TimelineItem
+
+- `get_duration` add `subframe_precision` option
+- `get_end` add `subframe_precision` option
+- `get_left_offset` add `subframe_precision` option
+- `get_right_offset` add `subframe_precision` option
+- `get_start` add `subframe_precision` option
+- Add `get_source_end_frame`
+- Add `get_source_end_time`
+- Add `get_source_start_frame`
+- Add `get_source_start_time`
+- Fix Bug in `add_take`
+- Typo fixed

@@ -1,4 +1,4 @@
-
+from multimethod import multimethod
 
 
 class MediaPoolItem():
@@ -6,6 +6,7 @@ class MediaPoolItem():
 
     def __init__(self, media_pool_item):
         self._media_pool_item = media_pool_item
+
     def __repr__(self) -> str:
         return f'Media Pool Item:{self.get_name()}'
 
@@ -23,7 +24,7 @@ class MediaPoolItem():
             note (str): maker note
             duration (int): maker duration
             custom_data (str): optional data help to attach to the marker
-            
+
 
         Returns:
             bool: true if success, false if fail
@@ -34,7 +35,7 @@ class MediaPoolItem():
         """clear clip color.
 
         :return: bool
-        """        
+        """
         return self._media_pool_item.ClearClipColor()
 
     def clear_flag_color(self, color: str) -> bool:
@@ -44,7 +45,7 @@ class MediaPoolItem():
         :type color: str
         :return: true if success, false if fail
         :rtype: bool
-        """       
+        """
         return self._media_pool_item.ClearFlagColor(color)
 
     def delete_marker_at_frame(self, frame_num: int) -> bool:
@@ -157,7 +158,7 @@ class MediaPoolItem():
         """return name of the clip."""
         return self._media_pool_item.GetName()
 
-    def link_proxy_media(self, proxy_media_file_path: str) -> bool:  
+    def link_proxy_media(self, proxy_media_file_path: str) -> bool:
         """Links proxy media located at path specified by arg 'proxyMediaFilePath' with the current clip. 
 
         Args:
@@ -183,7 +184,6 @@ class MediaPoolItem():
         """
         return self._media_pool_item.SetClipColor(color_name)
 
-    
     def set_clip_property(self, property_type: str, property_value: str) -> bool:
         """set clip property with the given property type and value.
 
@@ -195,7 +195,7 @@ class MediaPoolItem():
             bool: true if success, false if fail
         """
         return self._media_pool_item.SetClipProperty(property_type, property_value)
-    
+
     # TODO metadata_type as data class
     def set_metadata(self, metadata_type: str, metadata_value: str) -> bool:
         """set metadata with the given metadata type and value.
@@ -213,7 +213,7 @@ class MediaPoolItem():
         """Unlinks proxy media from the current clip."""
         return self._media_pool_item.UnlinkProxyMedia()
 
-    def updata_marker_custom_data(self, frame_id:int, custom_data:str) -> bool:
+    def updata_marker_custom_data(self, frame_id: int, custom_data: str) -> bool:
         """update marker custom data.
 
         Args:
@@ -222,17 +222,17 @@ class MediaPoolItem():
 
         Returns:
             bool: true if success, false if fail
-        """        
+        """
         return self._media_pool_item.UpdataMarkerCustomData(frame_id, custom_data)
-    
+
     ###############################################################################
-    #Add at DR18.0.0
-    
-    #TODO Add version check
+    # Add at DR18.0.0
+
+    # TODO Add version check
     def get_unique_id(self) -> str:
         """return unique id of the clip."""
         return self._media_pool_item.GetUniqueId()
-    
+
     ##############################################################################################################################
     # Add at DR18.5.0
 
@@ -243,7 +243,7 @@ class MediaPoolItem():
             bool: Returns True if successful; False otherwise
         """
         return self._media_pool_item.TranscribeAudio()
-    
+
     def clear_transcription(self) -> bool:
         """Clears audio transcription of the MediaPoolItem. 
 
@@ -251,14 +251,55 @@ class MediaPoolItem():
             bool: Returns True if successful; False otherwise.
         """
         return self._media_pool_item.ClearTranscription()
-    
+
     ##############################################################################################################################
-    # Add at DR 19.0.0 
-    
+    # Add at DR 19.0.0
+
     def get_audio_mapping(self) -> str:
         """Returns a string with MediaPoolItem's audio mapping information. Check 'Audio Mapping' section for more information.
 
         Returns:
             str: json formatted string
         """
-        return self._media_pool_item.GetAudioMapping()  
+        return self._media_pool_item.GetAudioMapping()
+
+    ##############################################################################################################################
+    # Add at DR 19.0.2
+
+    def get_third_party_metadata(self, metadata_type: str = None) -> str | dict:
+        """Returns the third party metadata value for the key 'metadataType'.
+
+        Args:
+            metadata_type (str, optional): If no argument is specified, a dict of all set third parth metadata properties is returned. Defaults to None.
+
+        Returns:
+            str | dict: third party metadata value
+        """
+        return self._media_pool_item.GetThirdPartyMetadata(metadata_type)
+
+    @multimethod
+    def set_third_party_metadata(self, metadata_type: str, metadata_value: str) -> bool:
+        """Sets/Add the given third party metadata to metadata_value (string). 
+
+        Args:
+            metadata_type (str): metadata type
+            metadata_value (str): metadata value
+
+        Returns:
+            bool: Returns True if successful.
+        """
+        return self._media_pool_item.SetThirdPartyMetadata(metadata_type, metadata_value)
+    
+    @multimethod
+    def set_third_party_metadata(self, metadata_dict: dict) -> bool:
+        """Sets/Add the given third party metadata to metadata_value (string). 
+        
+        Args:
+            metadata_dict (dict): metadata dict 
+        
+        Returns:
+            bool: Returns True if successful.
+        """
+        return self._media_pool_item.SetThirdPartyMetadata(metadata_dict)
+    
+    
