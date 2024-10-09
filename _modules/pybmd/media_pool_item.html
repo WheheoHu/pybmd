@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=df55f829"></script>
+    <script src="../../_static/documentation_options.js?v=e8ad7243"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_pool_item';</script>
@@ -348,7 +348,7 @@ document.write(`
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.media_pool_item</h1><div class="highlight"><pre>
-<span></span>
+<span></span><span class="kn">from</span> <span class="nn">multimethod</span> <span class="kn">import</span> <span class="n">multimethod</span>
 
 
 <div class="viewcode-block" id="MediaPoolItem">
@@ -360,6 +360,7 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.__init__.html#pybmd.media_pool_item.MediaPoolItem.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="o">=</span> <span class="n">media_pool_item</span></div>
+
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Media Pool Item:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
@@ -383,7 +384,7 @@ document.write(`
 <span class="sd">            note (str): maker note</span>
 <span class="sd">            duration (int): maker duration</span>
 <span class="sd">            custom_data (str): optional data help to attach to the marker</span>
-<span class="sd">            </span>
+
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
@@ -397,7 +398,7 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;clear clip color.</span>
 
 <span class="sd">        :return: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ClearClipColor</span><span class="p">()</span></div>
 
 
@@ -410,7 +411,7 @@ document.write(`
 <span class="sd">        :type color: str</span>
 <span class="sd">        :return: true if success, false if fail</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>       
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ClearFlagColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
 
@@ -562,7 +563,7 @@ document.write(`
 
 <div class="viewcode-block" id="MediaPoolItem.link_proxy_media">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.link_proxy_media.html#pybmd.media_pool_item.MediaPoolItem.link_proxy_media">[docs]</a>
-    <span class="k">def</span> <span class="nf">link_proxy_media</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy_media_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
+    <span class="k">def</span> <span class="nf">link_proxy_media</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy_media_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Links proxy media located at path specified by arg &#39;proxyMediaFilePath&#39; with the current clip. </span>
 
 <span class="sd">        Args:</span>
@@ -595,7 +596,6 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetClipColor</span><span class="p">(</span><span class="n">color_name</span><span class="p">)</span></div>
 
 
-    
 <div class="viewcode-block" id="MediaPoolItem.set_clip_property">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.set_clip_property.html#pybmd.media_pool_item.MediaPoolItem.set_clip_property">[docs]</a>
     <span class="k">def</span> <span class="nf">set_clip_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">property_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -610,7 +610,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetClipProperty</span><span class="p">(</span><span class="n">property_type</span><span class="p">,</span> <span class="n">property_value</span><span class="p">)</span></div>
 
-    
+
     <span class="c1"># TODO metadata_type as data class</span>
 <div class="viewcode-block" id="MediaPoolItem.set_metadata">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.set_metadata.html#pybmd.media_pool_item.MediaPoolItem.set_metadata">[docs]</a>
@@ -636,7 +636,7 @@ document.write(`
 
 <div class="viewcode-block" id="MediaPoolItem.updata_marker_custom_data">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data.html#pybmd.media_pool_item.MediaPoolItem.updata_marker_custom_data">[docs]</a>
-    <span class="k">def</span> <span class="nf">updata_marker_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">updata_marker_custom_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;update marker custom data.</span>
 
 <span class="sd">        Args:</span>
@@ -645,21 +645,21 @@ document.write(`
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">UpdataMarkerCustomData</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
 
-    
+
     <span class="c1">###############################################################################</span>
-    <span class="c1">#Add at DR18.0.0</span>
-    
-    <span class="c1">#TODO Add version check</span>
+    <span class="c1"># Add at DR18.0.0</span>
+
+    <span class="c1"># TODO Add version check</span>
 <div class="viewcode-block" id="MediaPoolItem.get_unique_id">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_unique_id.html#pybmd.media_pool_item.MediaPoolItem.get_unique_id">[docs]</a>
     <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return unique id of the clip.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
 
-    
+
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.5.0</span>
 
@@ -673,7 +673,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">TranscribeAudio</span><span class="p">()</span></div>
 
-    
+
 <div class="viewcode-block" id="MediaPoolItem.clear_transcription">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.clear_transcription.html#pybmd.media_pool_item.MediaPoolItem.clear_transcription">[docs]</a>
     <span class="k">def</span> <span class="nf">clear_transcription</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -684,10 +684,10 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ClearTranscription</span><span class="p">()</span></div>
 
-    
+
     <span class="c1">##############################################################################################################################</span>
-    <span class="c1"># Add at DR 19.0.0 </span>
-    
+    <span class="c1"># Add at DR 19.0.0</span>
+
 <div class="viewcode-block" id="MediaPoolItem.get_audio_mapping">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_audio_mapping.html#pybmd.media_pool_item.MediaPoolItem.get_audio_mapping">[docs]</a>
     <span class="k">def</span> <span class="nf">get_audio_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -696,9 +696,56 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            str: json formatted string</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetAudioMapping</span><span class="p">()</span>  </div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetAudioMapping</span><span class="p">()</span></div>
+
+
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 19.0.2</span>
+
+<div class="viewcode-block" id="MediaPoolItem.get_third_party_metadata">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_third_party_metadata.html#pybmd.media_pool_item.MediaPoolItem.get_third_party_metadata">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the third party metadata value for the key &#39;metadataType&#39;.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metadata_type (str, optional): If no argument is specified, a dict of all set third parth metadata properties is returned. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str | dict: third party metadata value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetThirdPartyMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">)</span></div>
+
+
+    <span class="nd">@multimethod</span>
+    <span class="k">def</span> <span class="nf">set_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets/Add the given third party metadata to metadata_value (string). </span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metadata_type (str): metadata type</span>
+<span class="sd">            metadata_value (str): metadata value</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if successful.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetThirdPartyMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="MediaPoolItem.set_third_party_metadata">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.set_third_party_metadata.html#pybmd.media_pool_item.MediaPoolItem.set_third_party_metadata">[docs]</a>
+    <span class="nd">@multimethod</span>
+    <span class="k">def</span> <span class="nf">set_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets/Add the given third party metadata to metadata_value (string). </span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            metadata_dict (dict): metadata dict </span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if successful.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetThirdPartyMetadata</span><span class="p">(</span><span class="n">metadata_dict</span><span class="p">)</span></div>
 </div>
 
+    
+    
 </pre></div>
 
                 </article>

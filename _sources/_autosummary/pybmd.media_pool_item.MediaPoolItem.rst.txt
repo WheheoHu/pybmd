@@ -40,12 +40,14 @@ MediaPoolItem
       ~MediaPoolItem.get_media_id
       ~MediaPoolItem.get_metadata
       ~MediaPoolItem.get_name
+      ~MediaPoolItem.get_third_party_metadata
       ~MediaPoolItem.get_unique_id
       ~MediaPoolItem.link_proxy_media
       ~MediaPoolItem.replace_clip
       ~MediaPoolItem.set_clip_color
       ~MediaPoolItem.set_clip_property
       ~MediaPoolItem.set_metadata
+      ~MediaPoolItem.set_third_party_metadata
       ~MediaPoolItem.transcribe_audio
       ~MediaPoolItem.unlink_proxy_media
       ~MediaPoolItem.updata_marker_custom_data

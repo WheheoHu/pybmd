@@ -1,0 +1,8 @@
+MediaPool.get\_selected\_clips
+==============================
+
+.. currentmodule:: pybmd.media_pool
+
+.. automethod:: MediaPool.get_selected_clips
+
+    .. autosummary::

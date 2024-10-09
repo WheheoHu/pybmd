@@ -1,0 +1,8 @@
+ClipInfo.to\_dict
+=================
+
+.. currentmodule:: pybmd.media_pool
+
+.. automethod:: ClipInfo.to_dict
+
+    .. autosummary::

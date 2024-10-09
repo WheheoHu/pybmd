@@ -1,0 +1,8 @@
+MediaPoolItem.get\_third\_party\_metadata
+=========================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.get_third_party_metadata
+
+    .. autosummary::

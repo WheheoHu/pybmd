@@ -34,7 +34,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=df55f829"></script>
+    <script src="../../_static/documentation_options.js?v=e8ad7243"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_pool';</script>
@@ -349,7 +349,9 @@ document.write(`
                   
   <h1>Source code for pybmd.media_pool</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span>  <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">multimethod</span> <span class="kn">import</span> <span class="n">multimethod</span>
 <span class="kn">from</span> <span class="nn">pybmd.folder</span> <span class="kn">import</span> <span class="n">Folder</span>
 <span class="kn">from</span> <span class="nn">pybmd.media_pool_item</span> <span class="kn">import</span> <span class="n">MediaPoolItem</span>
 <span class="kn">from</span> <span class="nn">pybmd.timeline</span> <span class="kn">import</span> <span class="n">Timeline</span>
@@ -371,7 +373,21 @@ document.write(`
     <span class="n">end_frame</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">media_type</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">track_index</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">record_frame</span><span class="p">:</span> <span class="nb">int</span></div>
+    <span class="n">record_frame</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
+    
+<div class="viewcode-block" id="ClipInfo.to_dict">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.ClipInfo.to_dict.html#pybmd.media_pool.ClipInfo.to_dict">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;mediaPoolItem&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="p">,</span>
+            <span class="s2">&quot;startFrame&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_frame</span><span class="p">,</span>
+            <span class="s2">&quot;endFrame&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_frame</span><span class="p">,</span>
+            <span class="s2">&quot;mediaType&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_type</span><span class="p">,</span>
+            <span class="s2">&quot;trackIndex&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">track_index</span><span class="p">,</span>
+            <span class="s2">&quot;recordFrame&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">record_frame</span>
+        <span class="p">}</span></div>
+</div>
+
 
 
 
@@ -403,7 +419,7 @@ document.write(`
 <div class="viewcode-block" id="MediaPool.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.__init__.html#pybmd.media_pool.MediaPool.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span> <span class="o">=</span> <span class="n">media_pool</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span> <span class="o">=</span> <span class="n">media_pool</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.add_sub_folder">
@@ -418,47 +434,39 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            Folder: folder object of new sub folder</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">AddSubFolder</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">Folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">AddSubFolder</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span></div>
 
 
-    <span class="c1"># @dispatch(List[MediaPoolItem])</span>
-    <span class="c1"># type: ignore</span>
-<div class="viewcode-block" id="MediaPool.append_to_timeline">
-<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.append_to_timeline.html#pybmd.media_pool.MediaPool.append_to_timeline">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_to_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clips</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TimelineItem</span><span class="p">]:</span>
+    <span class="nd">@multimethod</span>
+    <span class="k">def</span> <span class="nf">append_to_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clips</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;MediaPoolItem&#39;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TimelineItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;append clips to current timeline</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            clips (List[MediaPoolItem]): clips to append to current timeline</span>
+<span class="sd">            clips (List[MediaPoolItem]|List[ClipInfo]): clips to append to current timeline</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List[TimelineItem]: timeline items of appended clips at timeline</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">clips</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="n">MediaPoolItem</span><span class="p">:</span>
-            <span class="n">temp_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">AppendToTimeline</span><span class="p">(</span>
-                <span class="p">[</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">clips</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="n">ClipInfo</span><span class="p">:</span>
-            <span class="n">temp_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">AppendToTimeline</span><span class="p">(</span>
-                <span class="p">[</span><span class="n">asdict</span><span class="p">(</span><span class="n">clip_info</span><span class="p">)</span> <span class="k">for</span> <span class="n">clip_info</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">])</span>
 
-        <span class="c1"># timeline_item_list = []</span>
-        <span class="c1"># for timeline_item in temp_list:</span>
-        <span class="c1">#     timeline_item_list.append(TimelineItem(timeline_item))</span>
+        <span class="n">temp_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">AppendToTimeline</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">TimelineItem</span><span class="p">(</span><span class="n">timeline_item</span><span class="p">)</span> <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">temp_list</span><span class="p">]</span>
+    
+<div class="viewcode-block" id="MediaPool.append_to_timeline">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.append_to_timeline.html#pybmd.media_pool.MediaPool.append_to_timeline">[docs]</a>
+    <span class="nd">@multimethod</span>
+    <span class="k">def</span> <span class="nf">append_to_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clip_info_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;ClipInfo&#39;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;TimelineItem&#39;</span><span class="p">]:</span>
+        <span class="n">temp_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">AppendToTimeline</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">clip_info</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">clip_info</span> <span class="ow">in</span> <span class="n">clip_info_list</span><span class="p">])</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">TimelineItem</span><span class="p">(</span><span class="n">timeline_item</span><span class="p">)</span> <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">temp_list</span><span class="p">]</span></div>
 
-
-    <span class="c1"># @dispatch(List[ClipInfo])</span>
-    <span class="c1"># def append_to_timeline(self, clips: List[ClipInfo]) -&gt; List[TimelineItem]:</span>
-    <span class="c1">#     timeline_item_list = []</span>
-    <span class="c1">#     for timeline_item in self.media_pool.AppendToTimeline([asdict(ClipInfo) for ClipInfo in clips]):</span>
-    <span class="c1">#         timeline_item_list.append(TimelineItem(timeline_item))</span>
-    <span class="c1">#     return timeline_item_list</span>
+    
 
 <div class="viewcode-block" id="MediaPool.create_empty_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.create_empty_timeline.html#pybmd.media_pool.MediaPool.create_empty_timeline">[docs]</a>
     <span class="k">def</span> <span class="nf">create_empty_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timeline</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;create empty timeline&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">CreateEmptyTimeline</span><span class="p">(</span><span class="n">name</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">CreateEmptyTimeline</span><span class="p">(</span><span class="n">name</span><span class="p">))</span></div>
 
 
     <span class="c1"># @dispatch(str, Iterable)</span>
@@ -476,9 +484,9 @@ document.write(`
 <span class="sd">            Timeline: new timeline object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">clips</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="n">MediaPoolItem</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">CreateTimelineFromClips</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">[</span><span class="n">clip</span><span class="o">.</span><span class="n">media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">]))</span>
+            <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">CreateTimelineFromClips</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">[</span><span class="n">clip</span><span class="o">.</span><span class="n">media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">]))</span>
         <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">clips</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="n">ClipInfo</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">CreateTimelineFromClips</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">[</span><span class="n">asdict</span><span class="p">(</span><span class="n">ClipInfo</span><span class="p">)</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">]))</span></div>
+            <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">CreateTimelineFromClips</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">[</span><span class="n">asdict</span><span class="p">(</span><span class="n">ClipInfo</span><span class="p">)</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">]))</span></div>
 
 
     <span class="c1"># @dispatch(str, List[ClipInfo])</span>
@@ -497,21 +505,21 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false if not</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">DeleteClipMattes</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">DeleteClipMattes</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.delete_clips">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.delete_clips.html#pybmd.media_pool.MediaPool.delete_clips">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_clips</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clips</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete clips from media pool&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">DeleteClips</span><span class="p">([</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">DeleteClips</span><span class="p">([</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.delete_folders">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.delete_folders.html#pybmd.media_pool.MediaPool.delete_folders">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_folders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subfolders</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Folder</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;delete folders from media pool&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">DeleteFolders</span><span class="p">([</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">subfolders</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">DeleteFolders</span><span class="p">([</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">subfolders</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.delete_timelines">
@@ -525,7 +533,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false if not</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">DeleteTimelines</span><span class="p">([</span><span class="n">timeline</span><span class="o">.</span><span class="n">_timeline</span> <span class="k">for</span> <span class="n">timeline</span> <span class="ow">in</span> <span class="n">timelines</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">DeleteTimelines</span><span class="p">([</span><span class="n">timeline</span><span class="o">.</span><span class="n">_timeline</span> <span class="k">for</span> <span class="n">timeline</span> <span class="ow">in</span> <span class="n">timelines</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.export_metadata">
@@ -540,7 +548,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False if not</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">ExportMetadata</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="p">[</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">ExportMetadata</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="p">[</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.get_clip_matte_list">
@@ -548,7 +556,7 @@ document.write(`
     <span class="k">def</span> <span class="nf">get_clip_matte_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;get list of clip mattes for specified media pool item&quot;&quot;&quot;</span>
         <span class="n">path_list</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">str_path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">GetClipMatteList</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">str_path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">GetClipMatteList</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">):</span>
             <span class="n">path_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">str_path</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">path_list</span></div>
 
@@ -561,7 +569,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            Folder: current folder object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">GetCurrentFolder</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">Folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">GetCurrentFolder</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.get_root_folder">
@@ -572,7 +580,7 @@ document.write(`
 <span class="sd">        Returns:    </span>
 <span class="sd">            Folder: root folder object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">GetRootFolder</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">Folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">GetRootFolder</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.get_timeline_matte_list">
@@ -587,7 +595,7 @@ document.write(`
 <span class="sd">            List[MediaPoolItem]: list of media pool items that are mattes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">media_pool_item_list</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">GetTimelineMatteList</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">GetTimelineMatteList</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">):</span>
             <span class="n">media_pool_item_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">media_pool_item_list</span></div>
 
@@ -609,7 +617,7 @@ document.write(`
         <span class="c1"># media_pool_item_list = []</span>
         <span class="c1"># for media_pool_item in self.media_pool.ImportMedia(file_paths):</span>
         <span class="c1">#     media_pool_item_list.append(MediaPoolItem(media_pool_item))</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">)</span> <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">ImportMedia</span><span class="p">(</span><span class="n">file_paths</span><span class="p">)]</span></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">)</span> <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">ImportMedia</span><span class="p">(</span><span class="n">file_paths</span><span class="p">)]</span></div>
 
 
     <span class="c1"># @dispatch(List[dict])</span>
@@ -631,7 +639,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            Timeline: timeline object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">ImportTimelineFromFile</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span> <span class="n">asdict</span><span class="p">(</span><span class="n">import_option</span><span class="p">)))</span></div>
+        <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">ImportTimelineFromFile</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span> <span class="n">asdict</span><span class="p">(</span><span class="n">import_option</span><span class="p">)))</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.move_clips">
@@ -646,7 +654,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false if not</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">MoveClips</span><span class="p">([</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">],</span> <span class="n">target_folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">MoveClips</span><span class="p">([</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">],</span> <span class="n">target_folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.move_folders">
@@ -662,7 +670,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false if not</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">MoveFolders</span><span class="p">([</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">],</span> <span class="n">target_folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">MoveFolders</span><span class="p">([</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">],</span> <span class="n">target_folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.relink_clips">
@@ -677,21 +685,21 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False if not</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">RelinkClips</span><span class="p">([</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">media_pool_items</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">folder_path</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">RelinkClips</span><span class="p">([</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">media_pool_items</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">folder_path</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.set_current_folder">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.set_current_folder.html#pybmd.media_pool.MediaPool.set_current_folder">[docs]</a>
     <span class="k">def</span> <span class="nf">set_current_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">:</span> <span class="n">Folder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;set current folder&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">SetCurrentFolder</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">SetCurrentFolder</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">_folder</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.unlink_clips">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.unlink_clips.html#pybmd.media_pool.MediaPool.unlink_clips">[docs]</a>
     <span class="k">def</span> <span class="nf">unlink_clips</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Unlink specified media pool clips&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">UnlinkClips</span><span class="p">([</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">media_pool_items</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">UnlinkClips</span><span class="p">([</span><span class="n">clip</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">media_pool_items</span><span class="p">])</span></div>
 
 
     <span class="c1">##########################################################################################################################</span>
@@ -700,14 +708,14 @@ document.write(`
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.refresh_folders.html#pybmd.media_pool.MediaPool.refresh_folders">[docs]</a>
     <span class="k">def</span> <span class="nf">refresh_folders</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the folders in collaboration mode&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">RefreshFolders</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">RefreshFolders</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.get_unique_id">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.get_unique_id.html#pybmd.media_pool.MediaPool.get_unique_id">[docs]</a>
     <span class="k">def</span> <span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;get unique id of media pool object&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
 
 
     <span class="c1">##########################################################################################################################</span>
@@ -725,7 +733,7 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns true if import from given DRB filePath is successful, false otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">ImportFolderFromFile</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">source_clips_path</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">ImportFolderFromFile</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">source_clips_path</span><span class="p">)</span></div>
 
 
     <span class="c1">##########################################################################################################################</span>
@@ -742,7 +750,38 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            MediaPoolItem: 3D stereoscopic media pool entry</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">MediaPoolItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">media_pool</span><span class="o">.</span><span class="n">CreateStereoClip</span><span class="p">(</span><span class="n">left_media_pool_item</span><span class="p">,</span> <span class="n">right_media_pool_item</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">MediaPoolItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">CreateStereoClip</span><span class="p">(</span><span class="n">left_media_pool_item</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="p">,</span> <span class="n">right_media_pool_item</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="p">))</span></div>
+
+    
+    <span class="c1">##########################################################################################################################</span>
+    <span class="c1"># Add at DR19.0.2</span>
+<div class="viewcode-block" id="MediaPool.get_selected_clips">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.get_selected_clips.html#pybmd.media_pool.MediaPool.get_selected_clips">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_selected_clips</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the current selected MediaPoolItems</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[MediaPoolItem]: current selected MediaPoolItems</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">media_pool_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">mp_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">GetSelectedClips</span><span class="p">():</span>
+            <span class="n">media_pool_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">mp_item</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">media_pool_items</span></div>
+
+    
+
+<div class="viewcode-block" id="MediaPool.set_selected_clip">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.set_selected_clip.html#pybmd.media_pool.MediaPool.set_selected_clip">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_selected_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">media_pool_item</span><span class="p">:</span><span class="n">MediaPoolItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the selected MediaPoolItem to the given MediaPoolItem</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            media_pool_item (MediaPoolItem): selected MediaPoolItem</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns true if successful, false if not</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">SetSelectedClip</span><span class="p">(</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

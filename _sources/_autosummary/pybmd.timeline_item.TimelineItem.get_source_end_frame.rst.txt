@@ -1,0 +1,8 @@
+TimelineItem.get\_source\_end\_frame
+====================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.get_source_end_frame
+
+    .. autosummary::

@@ -22,6 +22,7 @@ ClipInfo
       
    
       ~ClipInfo.__init__
+      ~ClipInfo.to_dict
    
    
 
