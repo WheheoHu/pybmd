@@ -214,3 +214,12 @@
 - Add `get_source_start_time`
 - Fix Bug in `add_take`
 - Typo fixed
+
+-------
+# 2024.3.3
+## Library
+- fix bug when load fusioscript library
+
+## API
+### settings module
+- `RenderSetting` has default value (Test feature)

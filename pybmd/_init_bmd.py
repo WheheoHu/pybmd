@@ -1,10 +1,11 @@
 from enum import Enum
-import importlib
+
+import importlib.util
+import importlib.machinery
+
 import sys
 
 from pybmd.error import UnsupportSystemError
-
-
 
 
 def _load_dynamic(module_name, module_path: str):
@@ -12,8 +13,7 @@ def _load_dynamic(module_name, module_path: str):
     loader = importlib.machinery.ExtensionFileLoader(module_name, module_path)
     spec = importlib.util.spec_from_loader(name=module_name, loader=loader)
     module = importlib.util.module_from_spec(spec)
-    # sys.modules[module_name]=module
-    # spec.loader.exec_module(module)
+
     loader.exec_module(module)
     return module
 

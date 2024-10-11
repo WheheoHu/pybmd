@@ -31,49 +31,52 @@ class SettingParameter(object):
 @dataclass
 class RenderSetting():
     """RenderSetting Object to store render setting."""
-    SelectAllFrames: bool
-    MarkIn: int
-    MarkOut: int
-    TargetDir: str
-    CustomName: str
-    UniqueFilenameStyle: int  # 0 for prefix, 1 for suffix
-    ExportVideo: bool
-    ExportAudio: bool
-    FormatWidth: int
-    FormatHeight: int
-    FrameRate: float
+    
+    TargetDir: str 
+    CustomName: str  
+    
+    SelectAllFrames: bool = True
+    MarkIn: int = 0
+    MarkOut: int = 0
+    
+    UniqueFilenameStyle: int  =0 # 0 for prefix, 1 for suffix
+    ExportVideo: bool = True
+    ExportAudio: bool = True
+    FormatWidth: int = 1920
+    FormatHeight: int = 1080
+    FrameRate: float = 29.97
 
     # (for SD resolution: "16_9" or "4_3") (other resolutions: "square" or "cinemascope")
-    PixelAspectRatio: str
+    PixelAspectRatio: str ="square"
 
     #  possible values for current codec (if applicable):
     #  0(int) - will set quality to automatic
     # [1 -> MAX] (int) - will set input bit rate
     # ["Least", "Low", "Medium", "High", "Best"] (String) - will set input quality level
-    VideoQuality: Any
+    VideoQuality: Any = 0
 
-    AudioCodec: str
-    AudioBitDepth: int
-    AudioSampleRate: int
+    AudioCodec: str = "aac"
+    AudioBitDepth: int = '24'
+    AudioSampleRate: int = 48000
 
     # example: "Same as Project", "AstroDesign"
-    ColorSpaceTag: str
+    ColorSpaceTag: str = "Same as Project"
 
     # example: "Same as Project", "ACEScct"
-    GammaTag: str
-    ExportAlpha: bool
+    GammaTag: str = "Same as Project"
+    ExportAlpha: bool = False
 
     # (example: "Main10"). Can only be set for H.264 and H.265.
-    EncodingProfile: str
+    EncodingProfile: str = "Main10"
 
     # Can onlt be set for H.264.
-    MultiPassEncode: bool
+    MultiPassEncode: bool = True
 
     # 0 - Premultipled, 1 - Straight. Can only be set if "ExportAlpha" is true.
-    AlphaMode: int
+    AlphaMode: int = 0
 
     # Only supported by QuickTime and MP4 formats.
-    NetworkOptimization: bool
+    NetworkOptimization: bool =True 
 
 
 class CloudSyncMode(Enum):
