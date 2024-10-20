@@ -218,8 +218,14 @@
 -------
 # 2024.3.3
 ## Library
-- fix bug when load fusioscript library
+- Fix bug when load fusioscript library
 
 ## API
 ### settings module
 - `RenderSetting` has default value (Test feature)
+
+-------
+# 2024.3.4
+## Library
+- Fix typo in `__repr__` format
+
