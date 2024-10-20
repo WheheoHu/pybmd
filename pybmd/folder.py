@@ -8,7 +8,7 @@ class Folder():
         self._folder = folder
     
     def __repr__(self) -> str:
-        return f'Folder:{self.get_name()}'
+        return f'Folder: {self.get_name()}'
         
     def get_clip_list(self) -> List[MediaPoolItem]:
         """Returns list of MediaPoolItem objects for all clips in this folder."""
