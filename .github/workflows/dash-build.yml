@@ -11,7 +11,7 @@ jobs:
   doc2dash:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: install doc2dash
         run: |
           brew install hynek/tap/doc2dash
@@ -43,7 +43,7 @@ jobs:
          
 
       - name: upload dash doc as artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dash_docset
           path: ./gh-pages/dash_doc/pybmd.docset
