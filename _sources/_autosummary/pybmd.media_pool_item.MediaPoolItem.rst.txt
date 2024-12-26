@@ -26,6 +26,7 @@ MediaPoolItem
       ~MediaPoolItem.add_marker
       ~MediaPoolItem.clear_clip_color
       ~MediaPoolItem.clear_flag_color
+      ~MediaPoolItem.clear_mark_in_out
       ~MediaPoolItem.clear_transcription
       ~MediaPoolItem.delete_marker_at_frame
       ~MediaPoolItem.delete_marker_by_color
@@ -34,6 +35,7 @@ MediaPoolItem
       ~MediaPoolItem.get_clip_color
       ~MediaPoolItem.get_clip_property
       ~MediaPoolItem.get_flag_list
+      ~MediaPoolItem.get_mark_in_out
       ~MediaPoolItem.get_marker_by_custom_data
       ~MediaPoolItem.get_marker_custom_data
       ~MediaPoolItem.get_markers
@@ -46,6 +48,7 @@ MediaPoolItem
       ~MediaPoolItem.replace_clip
       ~MediaPoolItem.set_clip_color
       ~MediaPoolItem.set_clip_property
+      ~MediaPoolItem.set_mark_in_out
       ~MediaPoolItem.set_metadata
       ~MediaPoolItem.set_third_party_metadata
       ~MediaPoolItem.transcribe_audio

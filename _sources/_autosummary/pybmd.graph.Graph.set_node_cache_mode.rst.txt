@@ -1,0 +1,8 @@
+Graph.set\_node\_cache\_mode
+============================
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.set_node_cache_mode
+
+    .. autosummary::

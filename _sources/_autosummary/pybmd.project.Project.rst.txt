@@ -27,6 +27,7 @@ Project
       ~Project.delete_all_render_jobs
       ~Project.delete_color_group
       ~Project.delete_render_job
+      ~Project.delete_render_preset
       ~Project.export_current_frame_as_still
       ~Project.get_color_groups_list
       ~Project.get_current_render_format_and_codec
@@ -36,6 +37,7 @@ Project
       ~Project.get_media_pool
       ~Project.get_name
       ~Project.get_preset_list
+      ~Project.get_quick_export_render_presets
       ~Project.get_render_codecs
       ~Project.get_render_formats
       ~Project.get_render_job_list
@@ -52,6 +54,7 @@ Project
       ~Project.load_burn_in_preset
       ~Project.load_render_preset
       ~Project.refresh_lut_list
+      ~Project.render_with_quick_export
       ~Project.save_as_new_render_preset
       ~Project.set_current_render_format_and_codec
       ~Project.set_current_render_mode

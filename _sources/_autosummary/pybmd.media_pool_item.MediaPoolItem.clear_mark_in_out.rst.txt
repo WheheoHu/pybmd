@@ -1,0 +1,8 @@
+MediaPoolItem.clear\_mark\_in\_out
+==================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.clear_mark_in_out
+
+    .. autosummary::

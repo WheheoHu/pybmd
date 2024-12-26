@@ -1,0 +1,8 @@
+Graph.apply\_grade\_from\_drx
+=============================
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.apply_grade_from_drx
+
+    .. autosummary::

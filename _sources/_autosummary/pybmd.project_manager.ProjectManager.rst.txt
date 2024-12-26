@@ -40,6 +40,7 @@ ProjectManager
       ~ProjectManager.goto_root_folder
       ~ProjectManager.import_cloud_project
       ~ProjectManager.import_project
+      ~ProjectManager.load_cloud_project
       ~ProjectManager.load_project
       ~ProjectManager.open_folder
       ~ProjectManager.restore_cloud_project

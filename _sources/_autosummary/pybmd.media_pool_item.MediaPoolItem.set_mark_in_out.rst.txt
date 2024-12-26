@@ -1,0 +1,8 @@
+MediaPoolItem.set\_mark\_in\_out
+================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.set_mark_in_out
+
+    .. autosummary::

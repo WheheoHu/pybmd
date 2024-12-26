@@ -1,0 +1,8 @@
+Gallery.get\_gallery\_power\_grade\_albums
+==========================================
+
+.. currentmodule:: pybmd.gallery
+
+.. automethod:: Gallery.get_gallery_power_grade_albums
+
+    .. autosummary::

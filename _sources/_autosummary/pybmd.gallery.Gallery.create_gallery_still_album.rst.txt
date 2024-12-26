@@ -1,0 +1,8 @@
+Gallery.create\_gallery\_still\_album
+=====================================
+
+.. currentmodule:: pybmd.gallery
+
+.. automethod:: Gallery.create_gallery_still_album
+
+    .. autosummary::

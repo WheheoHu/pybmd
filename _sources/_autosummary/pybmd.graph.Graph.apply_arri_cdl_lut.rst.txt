@@ -1,0 +1,8 @@
+Graph.apply\_arri\_cdl\_lut
+===========================
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.apply_arri_cdl_lut
+
+    .. autosummary::

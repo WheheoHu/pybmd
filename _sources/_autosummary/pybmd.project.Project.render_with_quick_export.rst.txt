@@ -1,0 +1,8 @@
+Project.render\_with\_quick\_export
+===================================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.render_with_quick_export
+
+    .. autosummary::

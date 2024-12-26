@@ -1,0 +1,8 @@
+TimelineItem.set\_fusion\_output\_cache
+=======================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.set_fusion_output_cache
+
+    .. autosummary::

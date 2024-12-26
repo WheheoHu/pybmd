@@ -15,8 +15,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -26,18 +26,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=875c6697"></script>
+    <script src="../../_static/documentation_options.js?v=f5768dfe"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_pool_item';</script>
@@ -274,9 +274,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -323,12 +328,13 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.media_pool_item</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">multimethod</span> <span class="kn">import</span> <span class="n">multimethod</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">multimethod</span> <span class="kn">import</span> <span class="n">multimethod</span>
 
 
 <div class="viewcode-block" id="MediaPoolItem">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.html#pybmd.media_pool_item.MediaPoolItem">[docs]</a>
-<span class="k">class</span> <span class="nc">MediaPoolItem</span><span class="p">():</span>
+<span class="k">class</span> <span class="nc">MediaPoolItem</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for MediaPoolItem.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MediaPoolItem.__init__">
@@ -338,7 +344,7 @@
 
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Media Pool Item: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Media Pool Item: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <div class="viewcode-block" id="MediaPoolItem.add_flag">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.add_flag.html#pybmd.media_pool_item.MediaPoolItem.add_flag">[docs]</a>
@@ -349,7 +355,15 @@
 
 <div class="viewcode-block" id="MediaPoolItem.add_marker">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.add_marker.html#pybmd.media_pool_item.MediaPoolItem.add_marker">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">frame_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">duration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;add a marker to the clip.</span>
 
 <span class="sd">        Args:</span>
@@ -364,7 +378,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if success, false if fail</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span>
+            <span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.clear_clip_color">
@@ -539,7 +555,7 @@
 <div class="viewcode-block" id="MediaPoolItem.link_proxy_media">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.link_proxy_media.html#pybmd.media_pool_item.MediaPoolItem.link_proxy_media">[docs]</a>
     <span class="k">def</span> <span class="nf">link_proxy_media</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proxy_media_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Links proxy media located at path specified by arg &#39;proxyMediaFilePath&#39; with the current clip. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Links proxy media located at path specified by arg &#39;proxyMediaFilePath&#39; with the current clip.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            proxy_media_file_path (str): should be absolute clip path.</span>
@@ -641,7 +657,7 @@
 <div class="viewcode-block" id="MediaPoolItem.transcribe_audio">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.transcribe_audio.html#pybmd.media_pool_item.MediaPoolItem.transcribe_audio">[docs]</a>
     <span class="k">def</span> <span class="nf">transcribe_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transcribes audio of the MediaPoolItem. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transcribes audio of the MediaPoolItem.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful; False otherwise</span>
@@ -652,7 +668,7 @@
 <div class="viewcode-block" id="MediaPoolItem.clear_transcription">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.clear_transcription.html#pybmd.media_pool_item.MediaPoolItem.clear_transcription">[docs]</a>
     <span class="k">def</span> <span class="nf">clear_transcription</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears audio transcription of the MediaPoolItem. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears audio transcription of the MediaPoolItem.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful; False otherwise.</span>
@@ -693,7 +709,7 @@
 
     <span class="nd">@multimethod</span>
     <span class="k">def</span> <span class="nf">set_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets/Add the given third party metadata to metadata_value (string). </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets/Add the given third party metadata to metadata_value (string).</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            metadata_type (str): metadata type</span>
@@ -702,25 +718,67 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetThirdPartyMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">)</span>
-    
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetThirdPartyMetadata</span><span class="p">(</span>
+            <span class="n">metadata_type</span><span class="p">,</span> <span class="n">metadata_value</span>
+        <span class="p">)</span>
+
 <div class="viewcode-block" id="MediaPoolItem.set_third_party_metadata">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.set_third_party_metadata.html#pybmd.media_pool_item.MediaPoolItem.set_third_party_metadata">[docs]</a>
     <span class="nd">@multimethod</span>
     <span class="k">def</span> <span class="nf">set_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets/Add the given third party metadata to metadata_value (string). </span>
-<span class="sd">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets/Add the given third party metadata to metadata_value (string).</span>
+
 <span class="sd">        Args:</span>
-<span class="sd">            metadata_dict (dict): metadata dict </span>
-<span class="sd">        </span>
+<span class="sd">            metadata_dict (dict): metadata dict</span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetThirdPartyMetadata</span><span class="p">(</span><span class="n">metadata_dict</span><span class="p">)</span></div>
-</div>
+
+
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 19.1.0</span>
+
+<div class="viewcode-block" id="MediaPoolItem.get_mark_in_out">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_mark_in_out.html#pybmd.media_pool_item.MediaPoolItem.get_mark_in_out">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_mark_in_out</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns dict of in/out marks set (keys omitted if not set), example: {&#39;video&#39;: {&#39;in&#39;: 0, &#39;out&#39;: 134}, &#39;audio&#39;: {&#39;in&#39;: 0, &#39;out&#39;: 134}}&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetMarkInOut</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="MediaPoolItem.set_mark_in_out">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.set_mark_in_out.html#pybmd.media_pool_item.MediaPoolItem.set_mark_in_out">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_mark_in_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mark_in</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mark_out</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mark in/out of type &quot;video&quot;, &quot;audio&quot; or &quot;all&quot; (default).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            mark_in (int): mark in</span>
+<span class="sd">            mark_out (int): mark out</span>
+<span class="sd">            type (str, optional): Defaults to &quot;all&quot;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if successful.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetMarkInOut</span><span class="p">(</span><span class="n">mark_in</span><span class="p">,</span> <span class="n">mark_out</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span></div>
 
     
-    
+<div class="viewcode-block" id="MediaPoolItem.clear_mark_in_out">
+<a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.clear_mark_in_out.html#pybmd.media_pool_item.MediaPoolItem.clear_mark_in_out">[docs]</a>
+    <span class="k">def</span> <span class="nf">clear_mark_in_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">type</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears mark in/out of type &quot;video&quot;, &quot;audio&quot; or &quot;all&quot; (default).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            type (str, optional): Defaults to &#39;all&#39;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if successful.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ClearMarkInOut</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span></div>
+</div>
+
 </pre></div>
 
                 </article>
@@ -750,8 +808,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -784,7 +842,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

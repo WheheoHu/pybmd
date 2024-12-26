@@ -24,6 +24,7 @@ MediaPool
       ~MediaPool.__init__
       ~MediaPool.add_sub_folder
       ~MediaPool.append_to_timeline
+      ~MediaPool.auto_sync_audio
       ~MediaPool.create_empty_timeline
       ~MediaPool.create_stereo_clip
       ~MediaPool.create_timeline_from_clips

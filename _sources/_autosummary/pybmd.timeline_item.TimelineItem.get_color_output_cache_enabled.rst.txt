@@ -1,0 +1,8 @@
+TimelineItem.get\_color\_output\_cache\_enabled
+===============================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.get_color_output_cache_enabled
+
+    .. autosummary::

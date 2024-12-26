@@ -22,8 +22,11 @@ Gallery
       
    
       ~Gallery.__init__
+      ~Gallery.create_gallery_power_grade_album
+      ~Gallery.create_gallery_still_album
       ~Gallery.get_album_name
       ~Gallery.get_current_still_album
+      ~Gallery.get_gallery_power_grade_albums
       ~Gallery.get_gallery_still_albums
       ~Gallery.set_album_name
       ~Gallery.set_current_still_album

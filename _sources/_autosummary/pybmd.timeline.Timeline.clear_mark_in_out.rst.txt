@@ -1,0 +1,8 @@
+Timeline.clear\_mark\_in\_out
+=============================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.clear_mark_in_out
+
+    .. autosummary::

@@ -15,8 +15,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -26,18 +26,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=875c6697"></script>
+    <script src="../../_static/documentation_options.js?v=f5768dfe"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/timeline_item';</script>
@@ -274,9 +274,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -877,16 +882,14 @@
     <span class="c1">##########################################################################################################################</span>
     <span class="c1"># Add at DR18.5.0 Beta</span>
 
-<div class="viewcode-block" id="TimelineItem.apply_arri_cdl_lut">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut.html#pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut">[docs]</a>
-    <span class="k">def</span> <span class="nf">apply_arri_cdl_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies ARRI CDL and LUT.</span>
+    <span class="c1"># Remove at DR 19.1.0</span>
+    <span class="c1"># def apply_arri_cdl_lut(self) -&gt; bool:</span>
+    <span class="c1">#     &quot;&quot;&quot;Applies ARRI CDL and LUT.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            bool: Returns True if successful, False otherwise.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">ApplyArriCdlLut</span><span class="p">()</span></div>
-
+    <span class="c1">#     Returns:</span>
+    <span class="c1">#         bool: Returns True if successful, False otherwise.</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     return self._timeline_item.ApplyArriCdlLut()</span>
 
 <div class="viewcode-block" id="TimelineItem.set_clip_enabled">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_clip_enabled.html#pybmd.timeline_item.TimelineItem.set_clip_enabled">[docs]</a>
@@ -1143,8 +1146,62 @@
 <span class="sd">            float: start time position of the media pool clip</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetSourceStartTime</span><span class="p">()</span></div>
+
+    
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 19.1.0</span>
+<div class="viewcode-block" id="TimelineItem.get_color_output_cache_enabled">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_color_output_cache_enabled.html#pybmd.timeline_item.TimelineItem.get_color_output_cache_enabled">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_color_output_cache_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if color output cache is enabled for this timeline item.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if color output cache is enabled, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetIsColorOutputCacheEnabled</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TimelineItem.get_fusion_output_cache_enabled">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_fusion_output_cache_enabled.html#pybmd.timeline_item.TimelineItem.get_fusion_output_cache_enabled">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_fusion_output_cache_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if fusion output cache is enabled for this timeline item.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if fusion output cache is enabled or auto, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetIsFusionOutputCacheEnabled</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TimelineItem.set_color_output_cache">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_color_output_cache.html#pybmd.timeline_item.TimelineItem.set_color_output_cache">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_color_output_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets color output caching state. Equivalent to clip context menu action &#39;Render Cache Color Output&#39;.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cache_enabled (str): Auto/ On/ Off</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">SetColorOutputCache</span><span class="p">(</span><span class="n">cache_value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TimelineItem.set_fusion_output_cache">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_fusion_output_cache.html#pybmd.timeline_item.TimelineItem.set_fusion_output_cache">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_fusion_output_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets fusion output caching state. Equivalent to clip context menu action &#39;Render Cache Fusion Output&#39;.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cache_enabled (str): Auto/ On/ Off</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">SetFusionOutputCache</span><span class="p">(</span><span class="n">cache_value</span><span class="p">)</span></div>
 </div>
 
+
+    
 </pre></div>
 
                 </article>
@@ -1174,8 +1231,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1208,7 +1265,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

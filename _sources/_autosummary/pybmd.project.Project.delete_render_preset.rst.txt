@@ -1,0 +1,8 @@
+Project.delete\_render\_preset
+==============================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.delete_render_preset
+
+    .. autosummary::

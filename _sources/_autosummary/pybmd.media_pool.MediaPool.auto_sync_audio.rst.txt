@@ -1,0 +1,8 @@
+MediaPool.auto\_sync\_audio
+===========================
+
+.. currentmodule:: pybmd.media_pool
+
+.. automethod:: MediaPool.auto_sync_audio
+
+    .. autosummary::

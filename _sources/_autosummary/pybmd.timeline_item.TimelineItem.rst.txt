@@ -27,7 +27,6 @@ TimelineItem
       ~TimelineItem.add_marker
       ~TimelineItem.add_take
       ~TimelineItem.add_version
-      ~TimelineItem.apply_arri_cdl_lut
       ~TimelineItem.assign_to_color_group
       ~TimelineItem.clear_clip_color
       ~TimelineItem.clear_flags
@@ -45,6 +44,7 @@ TimelineItem
       ~TimelineItem.get_clip_color
       ~TimelineItem.get_clip_enabled
       ~TimelineItem.get_color_group
+      ~TimelineItem.get_color_output_cache_enabled
       ~TimelineItem.get_current_version
       ~TimelineItem.get_duration
       ~TimelineItem.get_end
@@ -53,6 +53,7 @@ TimelineItem
       ~TimelineItem.get_fusion_comp_by_name
       ~TimelineItem.get_fusion_comp_count
       ~TimelineItem.get_fusion_comp_name_list
+      ~TimelineItem.get_fusion_output_cache_enabled
       ~TimelineItem.get_left_offset
       ~TimelineItem.get_linked_items
       ~TimelineItem.get_marker_by_custom_data
@@ -90,6 +91,8 @@ TimelineItem
       ~TimelineItem.set_cdl
       ~TimelineItem.set_clip_color
       ~TimelineItem.set_clip_enabled
+      ~TimelineItem.set_color_output_cache
+      ~TimelineItem.set_fusion_output_cache
       ~TimelineItem.smart_reframe
       ~TimelineItem.stabilize
       ~TimelineItem.update_sidecar

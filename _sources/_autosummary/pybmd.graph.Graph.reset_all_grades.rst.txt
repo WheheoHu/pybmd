@@ -1,0 +1,8 @@
+Graph.reset\_all\_grades
+========================
+
+.. currentmodule:: pybmd.graph
+
+.. automethod:: Graph.reset_all_grades
+
+    .. autosummary::

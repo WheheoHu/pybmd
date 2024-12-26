@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,18 +27,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=875c6697"></script>
+    <script src="../_static/documentation_options.js?v=f5768dfe"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.resolve.Resolve.import_render_preset';</script>
@@ -339,8 +339,11 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.gallery.html">gallery</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.gallery.Gallery.html">Gallery</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.__init__.html">Gallery.__init__</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.create_gallery_power_grade_album.html">Gallery.create_gallery_power_grade_album</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.create_gallery_still_album.html">Gallery.create_gallery_still_album</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.get_album_name.html">Gallery.get_album_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.get_current_still_album.html">Gallery.get_current_still_album</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.get_gallery_power_grade_albums.html">Gallery.get_gallery_power_grade_albums</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.get_gallery_still_albums.html">Gallery.get_gallery_still_albums</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.set_album_name.html">Gallery.set_album_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.gallery.Gallery.set_current_still_album.html">Gallery.set_current_still_album</a></li>
@@ -381,11 +384,16 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="pybmd.graph.html">graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.graph.Graph.html">Graph</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.__init__.html">Graph.__init__</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.apply_arri_cdl_lut.html">Graph.apply_arri_cdl_lut</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.apply_grade_from_drx.html">Graph.apply_grade_from_drx</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.get_lut.html">Graph.get_lut</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.get_node_cache_mode.html">Graph.get_node_cache_mode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.get_node_label.html">Graph.get_node_label</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.get_num_nodes.html">Graph.get_num_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.get_tools_in_node.html">Graph.get_tools_in_node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.reset_all_grades.html">Graph.reset_all_grades</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.set_lut.html">Graph.set_lut</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.set_node_cache_mode.html">Graph.set_node_cache_mode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.graph.Graph.set_node_enabled.html">Graph.set_node_enabled</a></li>
 </ul>
 </details></li>
@@ -408,6 +416,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.__init__.html">MediaPool.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.add_sub_folder.html">MediaPool.add_sub_folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.append_to_timeline.html">MediaPool.append_to_timeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.auto_sync_audio.html">MediaPool.auto_sync_audio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.create_empty_timeline.html">MediaPool.create_empty_timeline</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.create_stereo_clip.html">MediaPool.create_stereo_clip</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool.MediaPool.create_timeline_from_clips.html">MediaPool.create_timeline_from_clips</a></li>
@@ -452,6 +461,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.add_marker.html">MediaPoolItem.add_marker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.clear_clip_color.html">MediaPoolItem.clear_clip_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.clear_flag_color.html">MediaPoolItem.clear_flag_color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.clear_mark_in_out.html">MediaPoolItem.clear_mark_in_out</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.clear_transcription.html">MediaPoolItem.clear_transcription</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.delete_marker_at_frame.html">MediaPoolItem.delete_marker_at_frame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.delete_marker_by_color.html">MediaPoolItem.delete_marker_by_color</a></li>
@@ -460,6 +470,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.get_clip_color.html">MediaPoolItem.get_clip_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.get_clip_property.html">MediaPoolItem.get_clip_property</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.get_flag_list.html">MediaPoolItem.get_flag_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.get_mark_in_out.html">MediaPoolItem.get_mark_in_out</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.get_marker_by_custom_data.html">MediaPoolItem.get_marker_by_custom_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.get_marker_custom_data.html">MediaPoolItem.get_marker_custom_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.get_markers.html">MediaPoolItem.get_markers</a></li>
@@ -472,6 +483,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.replace_clip.html">MediaPoolItem.replace_clip</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_clip_color.html">MediaPoolItem.set_clip_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_clip_property.html">MediaPoolItem.set_clip_property</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_mark_in_out.html">MediaPoolItem.set_mark_in_out</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_metadata.html">MediaPoolItem.set_metadata</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_third_party_metadata.html">MediaPoolItem.set_third_party_metadata</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.transcribe_audio.html">MediaPoolItem.transcribe_audio</a></li>
@@ -510,6 +522,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.delete_all_render_jobs.html">Project.delete_all_render_jobs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.delete_color_group.html">Project.delete_color_group</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.delete_render_job.html">Project.delete_render_job</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.delete_render_preset.html">Project.delete_render_preset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.export_current_frame_as_still.html">Project.export_current_frame_as_still</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_color_groups_list.html">Project.get_color_groups_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_current_render_format_and_codec.html">Project.get_current_render_format_and_codec</a></li>
@@ -519,6 +532,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_media_pool.html">Project.get_media_pool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_name.html">Project.get_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_preset_list.html">Project.get_preset_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_quick_export_render_presets.html">Project.get_quick_export_render_presets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_render_codecs.html">Project.get_render_codecs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_render_formats.html">Project.get_render_formats</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.get_render_job_list.html">Project.get_render_job_list</a></li>
@@ -535,6 +549,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.load_burn_in_preset.html">Project.load_burn_in_preset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.load_render_preset.html">Project.load_render_preset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.refresh_lut_list.html">Project.refresh_lut_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.render_with_quick_export.html">Project.render_with_quick_export</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.save_as_new_render_preset.html">Project.save_as_new_render_preset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.set_current_render_format_and_codec.html">Project.set_current_render_format_and_codec</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project.Project.set_current_render_mode.html">Project.set_current_render_mode</a></li>
@@ -570,6 +585,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.goto_root_folder.html">ProjectManager.goto_root_folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.import_cloud_project.html">ProjectManager.import_cloud_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.import_project.html">ProjectManager.import_project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.load_cloud_project.html">ProjectManager.load_cloud_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.load_project.html">ProjectManager.load_project</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.open_folder.html">ProjectManager.open_folder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.project_manager.ProjectManager.restore_cloud_project.html">ProjectManager.restore_cloud_project</a></li>
@@ -662,7 +678,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.add_marker.html">Timeline.add_marker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.add_track.html">Timeline.add_track</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.analyze_dolby_vision.html">Timeline.analyze_dolby_vision</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.apply_grade_from_drx.html">Timeline.apply_grade_from_drx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.clear_mark_in_out.html">Timeline.clear_mark_in_out</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.convert_timeline_to_stereo.html">Timeline.convert_timeline_to_stereo</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.create_compound_clip.html">Timeline.create_compound_clip</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.create_fusion_clip.html">Timeline.create_fusion_clip</a></li>
@@ -682,9 +698,11 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_is_track_enabled.html">Timeline.get_is_track_enabled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_is_track_locked.html">Timeline.get_is_track_locked</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_item_list_in_track.html">Timeline.get_item_list_in_track</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_mark_in_out.html">Timeline.get_mark_in_out</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_marker_by_custom_data.html">Timeline.get_marker_by_custom_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_marker_custom_data.html">Timeline.get_marker_custom_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_markers.html">Timeline.get_markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_media_pool_item.html">Timeline.get_media_pool_item</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_name.html">Timeline.get_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_node_graph.html">Timeline.get_node_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_setting.html">Timeline.get_setting</a></li>
@@ -705,6 +723,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.insert_title_into_timeline.html">Timeline.insert_title_into_timeline</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_clips_linked.html">Timeline.set_clips_linked</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_current_timecode.html">Timeline.set_current_timecode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_mark_in_out.html">Timeline.set_mark_in_out</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_name.html">Timeline.set_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_setting.html">Timeline.set_setting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_start_timecode.html">Timeline.set_start_timecode</a></li>
@@ -746,7 +765,6 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.add_marker.html">TimelineItem.add_marker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.add_take.html">TimelineItem.add_take</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.add_version.html">TimelineItem.add_version</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut.html">TimelineItem.apply_arri_cdl_lut</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.assign_to_color_group.html">TimelineItem.assign_to_color_group</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.clear_clip_color.html">TimelineItem.clear_clip_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.clear_flags.html">TimelineItem.clear_flags</a></li>
@@ -764,6 +782,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_clip_color.html">TimelineItem.get_clip_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_clip_enabled.html">TimelineItem.get_clip_enabled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_color_group.html">TimelineItem.get_color_group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_color_output_cache_enabled.html">TimelineItem.get_color_output_cache_enabled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_current_version.html">TimelineItem.get_current_version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_duration.html">TimelineItem.get_duration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_end.html">TimelineItem.get_end</a></li>
@@ -772,6 +791,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_fusion_comp_by_name.html">TimelineItem.get_fusion_comp_by_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_fusion_comp_count.html">TimelineItem.get_fusion_comp_count</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_fusion_comp_name_list.html">TimelineItem.get_fusion_comp_name_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_fusion_output_cache_enabled.html">TimelineItem.get_fusion_output_cache_enabled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_left_offset.html">TimelineItem.get_left_offset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_linked_items.html">TimelineItem.get_linked_items</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_marker_by_custom_data.html">TimelineItem.get_marker_by_custom_data</a></li>
@@ -809,6 +829,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_cdl.html">TimelineItem.set_cdl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_color.html">TimelineItem.set_clip_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_enabled.html">TimelineItem.set_clip_enabled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_color_output_cache.html">TimelineItem.set_color_output_cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_fusion_output_cache.html">TimelineItem.set_fusion_output_cache</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.smart_reframe.html">TimelineItem.smart_reframe</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html">TimelineItem.stabilize</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.update_sidecar.html">TimelineItem.update_sidecar</a></li>
@@ -871,9 +893,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -1006,13 +1033,13 @@
   </nav></div>
 
   <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/_autosummary/pybmd.resolve.Resolve.import_render_preset.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/pybmd.resolve.Resolve.import_render_preset.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -1027,8 +1054,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1061,7 +1088,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

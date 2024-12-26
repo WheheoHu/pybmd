@@ -1,0 +1,8 @@
+Project.get\_quick\_export\_render\_presets
+===========================================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.get_quick_export_render_presets
+
+    .. autosummary::

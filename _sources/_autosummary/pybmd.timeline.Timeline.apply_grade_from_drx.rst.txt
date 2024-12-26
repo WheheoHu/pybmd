@@ -1,8 +1,0 @@
-Timeline.apply\_grade\_from\_drx
-================================
-
-.. currentmodule:: pybmd.timeline
-
-.. automethod:: Timeline.apply_grade_from_drx
-
-    .. autosummary::

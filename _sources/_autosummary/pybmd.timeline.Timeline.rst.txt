@@ -25,7 +25,7 @@ Timeline
       ~Timeline.add_marker
       ~Timeline.add_track
       ~Timeline.analyze_dolby_vision
-      ~Timeline.apply_grade_from_drx
+      ~Timeline.clear_mark_in_out
       ~Timeline.convert_timeline_to_stereo
       ~Timeline.create_compound_clip
       ~Timeline.create_fusion_clip
@@ -45,9 +45,11 @@ Timeline
       ~Timeline.get_is_track_enabled
       ~Timeline.get_is_track_locked
       ~Timeline.get_item_list_in_track
+      ~Timeline.get_mark_in_out
       ~Timeline.get_marker_by_custom_data
       ~Timeline.get_marker_custom_data
       ~Timeline.get_markers
+      ~Timeline.get_media_pool_item
       ~Timeline.get_name
       ~Timeline.get_node_graph
       ~Timeline.get_setting
@@ -68,6 +70,7 @@ Timeline
       ~Timeline.insert_title_into_timeline
       ~Timeline.set_clips_linked
       ~Timeline.set_current_timecode
+      ~Timeline.set_mark_in_out
       ~Timeline.set_name
       ~Timeline.set_setting
       ~Timeline.set_start_timecode

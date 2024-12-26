@@ -1,0 +1,8 @@
+Timeline.get\_media\_pool\_item
+===============================
+
+.. currentmodule:: pybmd.timeline
+
+.. automethod:: Timeline.get_media_pool_item
+
+    .. autosummary::

@@ -22,11 +22,16 @@ Graph
       
    
       ~Graph.__init__
+      ~Graph.apply_arri_cdl_lut
+      ~Graph.apply_grade_from_drx
       ~Graph.get_lut
+      ~Graph.get_node_cache_mode
       ~Graph.get_node_label
       ~Graph.get_num_nodes
       ~Graph.get_tools_in_node
+      ~Graph.reset_all_grades
       ~Graph.set_lut
+      ~Graph.set_node_cache_mode
       ~Graph.set_node_enabled
    
    
