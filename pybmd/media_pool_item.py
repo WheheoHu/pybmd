@@ -1,20 +1,29 @@
+from typing import Any, Dict, Union
 from multimethod import multimethod
 
 
-class MediaPoolItem():
+class MediaPoolItem:
     """docstring for MediaPoolItem."""
 
     def __init__(self, media_pool_item):
         self._media_pool_item = media_pool_item
 
     def __repr__(self) -> str:
-        return f'Media Pool Item: {self.get_name()}'
+        return f"Media Pool Item: {self.get_name()}"
 
     def add_flag(self, color: str) -> bool:
         """Add a flag to the clip."""
         return self._media_pool_item.AddFlag(color)
 
-    def add_marker(self, frame_id: int, color: str, name: str, note: str, duration: int, custom_data: str) -> bool:
+    def add_marker(
+        self,
+        frame_id: int,
+        color: str,
+        name: str,
+        note: str,
+        duration: int,
+        custom_data: str,
+    ) -> bool:
         """add a marker to the clip.
 
         Args:
@@ -29,7 +38,9 @@ class MediaPoolItem():
         Returns:
             bool: true if success, false if fail
         """
-        return self._media_pool_item.AddMarker(frame_id, color, name, note, duration, custom_data)
+        return self._media_pool_item.AddMarker(
+            frame_id, color, name, note, duration, custom_data
+        )
 
     def clear_clip_color(self) -> bool:
         """clear clip color.
@@ -159,7 +170,7 @@ class MediaPoolItem():
         return self._media_pool_item.GetName()
 
     def link_proxy_media(self, proxy_media_file_path: str) -> bool:
-        """Links proxy media located at path specified by arg 'proxyMediaFilePath' with the current clip. 
+        """Links proxy media located at path specified by arg 'proxyMediaFilePath' with the current clip.
 
         Args:
             proxy_media_file_path (str): should be absolute clip path.
@@ -237,7 +248,7 @@ class MediaPoolItem():
     # Add at DR18.5.0
 
     def transcribe_audio(self) -> bool:
-        """Transcribes audio of the MediaPoolItem. 
+        """Transcribes audio of the MediaPoolItem.
 
         Returns:
             bool: Returns True if successful; False otherwise
@@ -245,7 +256,7 @@ class MediaPoolItem():
         return self._media_pool_item.TranscribeAudio()
 
     def clear_transcription(self) -> bool:
-        """Clears audio transcription of the MediaPoolItem. 
+        """Clears audio transcription of the MediaPoolItem.
 
         Returns:
             bool: Returns True if successful; False otherwise.
@@ -279,7 +290,7 @@ class MediaPoolItem():
 
     @multimethod
     def set_third_party_metadata(self, metadata_type: str, metadata_value: str) -> bool:
-        """Sets/Add the given third party metadata to metadata_value (string). 
+        """Sets/Add the given third party metadata to metadata_value (string).
 
         Args:
             metadata_type (str): metadata type
@@ -288,18 +299,51 @@ class MediaPoolItem():
         Returns:
             bool: Returns True if successful.
         """
-        return self._media_pool_item.SetThirdPartyMetadata(metadata_type, metadata_value)
-    
+        return self._media_pool_item.SetThirdPartyMetadata(
+            metadata_type, metadata_value
+        )
+
     @multimethod
     def set_third_party_metadata(self, metadata_dict: dict) -> bool:
-        """Sets/Add the given third party metadata to metadata_value (string). 
-        
+        """Sets/Add the given third party metadata to metadata_value (string).
+
         Args:
-            metadata_dict (dict): metadata dict 
-        
+            metadata_dict (dict): metadata dict
+
         Returns:
             bool: Returns True if successful.
         """
         return self._media_pool_item.SetThirdPartyMetadata(metadata_dict)
+
+    ##############################################################################################################################
+    # Add at DR 19.1.0
+
+    def get_mark_in_out(
+        self,
+    ) -> Dict[str, Any]:
+        """Returns dict of in/out marks set (keys omitted if not set), example: {'video': {'in': 0, 'out': 134}, 'audio': {'in': 0, 'out': 134}}"""
+        return self._media_pool_item.GetMarkInOut()
+
+    def set_mark_in_out(self, mark_in: int, mark_out: int, type: str = "all") -> bool:
+        """Sets mark in/out of type "video", "audio" or "all" (default).
+
+        Args:
+            mark_in (int): mark in
+            mark_out (int): mark out
+            type (str, optional): Defaults to "all".
+
+        Returns:
+            bool: Returns True if successful.
+        """
+        return self._media_pool_item.SetMarkInOut(mark_in, mark_out, type)
     
-    
+    def clear_mark_in_out(self,type:str='all') -> bool:
+        """Clears mark in/out of type "video", "audio" or "all" (default).
+
+        Args:
+            type (str, optional): Defaults to 'all'.
+
+        Returns:
+            bool: Returns True if successful.
+        """
+        return self._media_pool_item.ClearMarkInOut(type)

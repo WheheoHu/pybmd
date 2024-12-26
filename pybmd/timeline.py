@@ -1,12 +1,13 @@
 from enum import Enum
-from os import path
 from typing import TYPE_CHECKING, Dict, List
+
 
 if TYPE_CHECKING:
     from pybmd.export_type import Timeline_Export_Subtype, Timeline_Export_Type
     from pybmd.settings import AutoCaptionSettings
-    
 
+
+from pybmd.media_pool_item import MediaPoolItem
 from pybmd.gallery_still import GalleryStill
 from pybmd.graph import Graph
 
@@ -18,7 +19,7 @@ from dataclasses import asdict
 
 
 @dataclass
-class ImportOptions():
+class ImportOptions:
     """Docstring for ImportOptions."""
 
     # specifies a filesystem path to search for source clips if the media is inaccessible
@@ -39,13 +40,15 @@ class ImportOptions():
 
 class TrackType(Enum):
     """docstring for TrackTpye."""
-    AUDIO_TRACK = 'audio'
-    VIDEO_TRACK = 'video'
-    SUBTITLE_TRACK = 'subtitle'
+
+    AUDIO_TRACK = "audio"
+    VIDEO_TRACK = "video"
+    SUBTITLE_TRACK = "subtitle"
 
 
 class OptionalSubTrackType(Enum):
     """OptionalSubTrackType is required for TrackType is AUDIO_TRACK"""
+
     MONO = "mono"
     STEREO = "stereo"
     FP1 = "5.1"
@@ -87,17 +90,25 @@ def timeline_item_class_list_transfer(timeline_item_list: List[TimelineItem]) ->
     return timeline_item_trans_list
 
 
-class Timeline():
+class Timeline:
     """Timeline Object"""
 
     def __init__(self, timeline):
         self._timeline = timeline
 
     def __repr__(self) -> str:
-        return f'Timeline: {self.get_name()}'
+        return f"Timeline: {self.get_name()}"
 
-    def add_marker(self, frame_id: str, color: str, name: str, note: str, duration: str, custom_data: str) -> bool:
-        """Creates a new marker at given frameId position and with given marker information. 
+    def add_marker(
+        self,
+        frame_id: str,
+        color: str,
+        name: str,
+        note: str,
+        duration: str,
+        custom_data: str,
+    ) -> bool:
+        """Creates a new marker at given frameId position and with given marker information.
 
         Args:
             frame_id (str): frame position of the marker.
@@ -110,32 +121,43 @@ class Timeline():
         Returns:
             bool: True if successful, False otherwise.
         """
-        return self._timeline.AddMarker(frame_id, color, name, note, duration, custom_data)
+        return self._timeline.AddMarker(
+            frame_id, color, name, note, duration, custom_data
+        )
 
-    def apply_grade_from_drx(self, path: str, grade_mode: int, timeline_items: List[TimelineItem]) -> bool:
-        """Loads a still from given file path (string) and applies grade to Timeline Items with gradeMode (int)
+    # REMOVE at DR19.1.0
+    # def apply_grade_from_drx(
+    #     self, path: str, grade_mode: int, timeline_items: List[TimelineItem]
+    # ) -> bool:
+    #     """Loads a still from given file path (string) and applies grade to Timeline Items with gradeMode (int)
 
-        Args:
-            path (str): still file path.
-            grade_mode (int): 0 - "No keyframes", 1 - "Source Timecode aligned", 2 - "Start Frames aligned".
-            timeline_items (List[TimelineItem]): timeline items to apply grade to.
+    #     Args:
+    #         path (str): still file path.
+    #         grade_mode (int): 0 - "No keyframes", 1 - "Source Timecode aligned", 2 - "Start Frames aligned".
+    #         timeline_items (List[TimelineItem]): timeline items to apply grade to.
 
-        Returns:
-            bool: True if successful, False otherwise.
-        """
-        return self._timeline.ApplyGradeFromDRX(str(path), grade_mode, timeline_items)
+    #     Returns:
+    #         bool: True if successful, False otherwise.
+    #     """
+    #     return self._timeline.ApplyGradeFromDRX(str(path), grade_mode, timeline_items)
 
-    def create_compound_clip(self, timeline_items: List[TimelineItem], clipinfo: dict) -> TimelineItem:
+    def create_compound_clip(
+        self, timeline_items: List[TimelineItem], clipinfo: dict
+    ) -> TimelineItem:
         """Creates a compound clip of input TimelineItems with an optional clipInfo map
 
         Args:
             timeline_items (List[TimelineItem]): TimelineItems to create compound clip from.
-            clipinfo (dict): {"startTimecode" : "00:00:00:00", "name" : "Compound Clip 1"}. 
+            clipinfo (dict): {"startTimecode" : "00:00:00:00", "name" : "Compound Clip 1"}.
 
         Returns:
             TimelineItem: created timeline item.
         """
-        return TimelineItem(timeline_item=self._timeline.CreateCompoundClip(timeline_item_class_list_transfer(timeline_items), clipinfo))
+        return TimelineItem(
+            timeline_item=self._timeline.CreateCompoundClip(
+                timeline_item_class_list_transfer(timeline_items), clipinfo
+            )
+        )
 
     def create_fusion_clip(self, timeline_items: List[TimelineItem]) -> TimelineItem:
         """Creates a Fusion clip of input timeline items.
@@ -146,7 +168,11 @@ class Timeline():
         Returns:
             TimelineItem: created timeline item.
         """
-        return TimelineItem(timeline_item=self._timeline.CreateFusionClip(timeline_item_class_list_transfer(timeline_items)))
+        return TimelineItem(
+            timeline_item=self._timeline.CreateFusionClip(
+                timeline_item_class_list_transfer(timeline_items)
+            )
+        )
 
     def delete_marker_at_frame(self, frame_num: int) -> bool:
         """Deletes the timeline marker at the given frame number."""
@@ -157,36 +183,41 @@ class Timeline():
         return self._timeline.DeleteMarkerByCustomData(custom_data)
 
     def delete_marker_by_color(self, color: str) -> bool:
-        """Deletes all timeline markers of the specified color. 
+        """Deletes all timeline markers of the specified color.
         An "All" argument is supported and deletes all timeline markers.
         """
         return self._timeline.DeleteMarkerByColor(color)
 
     def duplicate_timeline(self, timeline_name: str) -> "Timeline":
-        """Duplicates the timeline and returns the created timeline, 
+        """Duplicates the timeline and returns the created timeline,
         with the (optional) timelineName, on success.
         """
         return Timeline(timeline=self._timeline.DuplicateTimeline(timeline_name))
 
-    def export(self, file_name: str, export_type:"Timeline_Export_Type", export_subtype:"Timeline_Export_Subtype"=None) -> bool:
+    def export(
+        self,
+        file_name: str,
+        export_type: "Timeline_Export_Type",
+        export_subtype: "Timeline_Export_Subtype" = None,
+    ) -> bool:
         """Exports timeline to 'fileName' as per input exportType & exportSubtype format.
-        
+
         # file_name should be a path, not a file name.
-        
+
         # eg. file_path=os.path.join(os.path.expanduser("~"), "Desktop/Temp/sampleExp.drt")
-        
+
         #     timeline.export(file_path,LOCAL_RESOLVE.EXPORT_DRT)
         """
         return self._timeline.Export(file_name, export_type.value, export_subtype.value)
 
     def get_current_clip_thumbnail_image(self) -> dict:
-        """Returns a dict (keys "width", "height", "format" and "data") with data containing raw thumbnail image data 
+        """Returns a dict (keys "width", "height", "format" and "data") with data containing raw thumbnail image data
         (RGB 8-bit image data encoded in base64 format) for current media in the Color Page.
         """
         return self._timeline.GetCurrentClipThumbnailImage()
 
     def get_current_timecode(self) -> str:
-        """Returns a string timecode representation for the current playhead position, 
+        """Returns a string timecode representation for the current playhead position,
         while on Cut, Edit, Color, Fairlight and Deliver pages.
         """
         return self._timeline.GetCurrentTimecode()
@@ -199,7 +230,9 @@ class Timeline():
         """Returns the frame number at the end of timeline."""
         return self._timeline.GetEndFrame()
 
-    def get_item_list_in_track(self, track_type: TrackType, index: int) -> List[TimelineItem]:
+    def get_item_list_in_track(
+        self, track_type: TrackType, index: int
+    ) -> List[TimelineItem]:
         """Returns a list of timeline items on that track.
 
         Args:
@@ -210,8 +243,7 @@ class Timeline():
             List[TimelineItem]: timeline items on that track.
         """
         timeline_items_list = []
-        for timeline_item in self._timeline.GetItemListInTrack(
-                track_type.value, index):
+        for timeline_item in self._timeline.GetItemListInTrack(track_type.value, index):
             timeline_items_list.append(TimelineItem(timeline_item))
         return timeline_items_list
 
@@ -225,7 +257,7 @@ class Timeline():
 
     def get_markers(self) -> dict:
         """Returns a dict (frameId -> {information}) of all markers and dicts with their information.
-        Example: a value of {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...} 
+        Example: a value of {96.0: {'color': 'Green', 'duration': 1.0, 'note': '', 'name': 'Marker 1', 'customData': ''}, ...}
         indicates a single green marker at timeline offset 96
         """
         return self._timeline.GetMarkers()
@@ -269,14 +301,19 @@ class Timeline():
             List[GalleryStill]: List of GalleryStill objects containing grabbed stills.
         """
 
-        return [GalleryStill(gallery_still) for gallery_still in self._timeline.GrabAllStills(still_frame_source)]
+        return [
+            GalleryStill(gallery_still)
+            for gallery_still in self._timeline.GrabAllStills(still_frame_source)
+        ]
 
     def grab_still(self) -> GalleryStill:
         """Grabs still from the current video clip. Returns a GalleryStill object."""
         return GalleryStill(self._timeline.GrabStill())
 
     # TODO test this
-    def import_into_timeline(self, file_path: str, import_options: ImportOptions) -> bool:
+    def import_into_timeline(
+        self, file_path: str, import_options: ImportOptions
+    ) -> bool:
         """Imports timeline items from an AAF file and optional importOptions dict into the timeline,
 
         Args:
@@ -288,9 +325,13 @@ class Timeline():
         """
         return self._timeline.ImportIntoTimeline(file_path, asdict(import_options))
 
-    def insert_fusion_generator_into_timeline(self, generator_name: str) -> TimelineItem:
+    def insert_fusion_generator_into_timeline(
+        self, generator_name: str
+    ) -> TimelineItem:
         """Inserts a Fusion generator (indicated by generatorName : string) into the timeline."""
-        return TimelineItem(self._timeline.InsertFusionGeneratorIntoTimeline(generator_name))
+        return TimelineItem(
+            self._timeline.InsertFusionGeneratorIntoTimeline(generator_name)
+        )
 
     def insert_fusion_title_into_timeline(self, title_name: str) -> TimelineItem:
         """Inserts a Fusion title (indicated by titleName : string) into the timeline."""
@@ -302,7 +343,9 @@ class Timeline():
 
     def insert_oFX_generator_into_timeline(self, generator_name: str) -> TimelineItem:
         """Inserts an OFX generator (indicated by generatorName : string) into the timeline."""
-        return TimelineItem(self._timeline.InsertOFXGeneratorIntoTimeline(generator_name))
+        return TimelineItem(
+            self._timeline.InsertOFXGeneratorIntoTimeline(generator_name)
+        )
 
     def insert_title_into_timeline(self, title_name: str) -> TimelineItem:
         """Inserts a title (indicated by titleName : string) into the timeline."""
@@ -318,19 +361,21 @@ class Timeline():
 
     # TODO setting_name to data class
     def set_setting(self, setting_name: str, setting_value: str) -> bool:
-        """Sets timeline setting 
+        """Sets timeline setting
 
         Args:
-            setting_name (str): Setting name.   
-            setting_value (str): Setting value. 
+            setting_name (str): Setting name.
+            setting_value (str): Setting value.
 
         Returns:
             bool: True if successful, False otherwise.
         """
         return self._timeline.SetSetting(setting_name, setting_value)
 
-    def set_track_name(self, track_type: TrackType, track_index: int, name: str) -> bool:
-        """Sets the track name (string) for track indicated by trackType and trackIndex. 
+    def set_track_name(
+        self, track_type: TrackType, track_index: int, name: str
+    ) -> bool:
+        """Sets the track name (string) for track indicated by trackType and trackIndex.
 
         Args:
             track_type (TrackTpye):TrackType object.
@@ -343,7 +388,7 @@ class Timeline():
         return self._timeline.SetTrackName(track_type.value, track_index, name)
 
     def update_marker_custom_data(self, frame_id: int, custom_data: str) -> bool:
-        """Updates customData (string) for the marker at given frameId position. 
+        """Updates customData (string) for the marker at given frameId position.
         CustomData is not exposed via UI and is useful for scripting developer to attach any user specific data to markers.
         """
         return self._timeline.UpdateMarkerCustomData(frame_id, custom_data)
@@ -369,7 +414,9 @@ class Timeline():
 
     ##############################################################################################################################
     # Add at DR18.5.0
-    def add_track(self, track_type: TrackType, track_options: OptionalSubTrackType|Dict) -> bool:
+    def add_track(
+        self, track_type: TrackType, track_options: OptionalSubTrackType | Dict
+    ) -> bool:
         """Adds track of trackType ("video", "subtitle", "audio").
         Second argument optionalSubTrackType is required for "audio"
 
@@ -380,14 +427,13 @@ class Timeline():
         Returns:
             bool: True if successful, False otherwise.
         """
-        if isinstance(track_options,OptionalSubTrackType):
+        if isinstance(track_options, OptionalSubTrackType):
             return self._timeline.AddTrack(track_type.value, track_options.value)
-        elif isinstance(track_options,dict):
+        elif isinstance(track_options, dict):
             return self._timeline.AddTrack(track_type.value, track_options)
-        
 
     def delete_track(self, track_type: TrackType, track_index: int) -> bool:
-        """Deletes track of trackType ("video", "subtitle", "audio") and given trackIndex. 
+        """Deletes track of trackType ("video", "subtitle", "audio") and given trackIndex.
 
 
         Args:
@@ -399,7 +445,9 @@ class Timeline():
         """
         return self._timeline.DeleteTrack(track_type.value, track_index)
 
-    def set_track_enable(self, track_type: TrackType, track_index: int, is_enable: bool) -> bool:
+    def set_track_enable(
+        self, track_type: TrackType, track_index: int, is_enable: bool
+    ) -> bool:
         """Enables/Disables track with given trackType and trackIndex
 
 
@@ -426,7 +474,9 @@ class Timeline():
         """
         return self._timeline.GetIsTrackEnabled(track_type, track_index)
 
-    def set_track_lock(self, track_type: TrackType, track_index: int, is_locked: bool) -> bool:
+    def set_track_lock(
+        self, track_type: TrackType, track_index: int, is_locked: bool
+    ) -> bool:
         """Locks/Unlocks track with given trackType and trackIndex
 
         Args:
@@ -452,7 +502,9 @@ class Timeline():
         """
         return self._timeline.GetIsTrackLocked(track_type, track_index)
 
-    def delete_clips(self, timeline_items: List[TimelineItem], ripple_delete: bool = False) -> bool:
+    def delete_clips(
+        self, timeline_items: List[TimelineItem], ripple_delete: bool = False
+    ) -> bool:
         """Deletes specified TimelineItems from the timeline
 
         Args:
@@ -462,9 +514,14 @@ class Timeline():
         Returns:
             bool: True if successful, False otherwise.
         """
-        return self._timeline.DeleteClips([timeline_item._timeline_item for timeline_item in timeline_items], ripple_delete)
+        return self._timeline.DeleteClips(
+            [timeline_item._timeline_item for timeline_item in timeline_items],
+            ripple_delete,
+        )
 
-    def set_clips_linked(self, timeline_items: List[TimelineItem], is_linked: bool) -> bool:
+    def set_clips_linked(
+        self, timeline_items: List[TimelineItem], is_linked: bool
+    ) -> bool:
         """Links or unlinks the specified TimelineItems depending on second argument.
 
         Args:
@@ -474,39 +531,44 @@ class Timeline():
         Returns:
             bool: True if successful, False otherwise.
         """
-        return self._timeline.SetClipsLinked([timeline_item._timeline_item for timeline_item in timeline_items], is_linked)
+        return self._timeline.SetClipsLinked(
+            [timeline_item._timeline_item for timeline_item in timeline_items],
+            is_linked,
+        )
 
-    def create_subtitles_from_audio(self,auto_caption_settings:"AutoCaptionSettings") -> bool:
-        #Modified at DR 18.6.4
-        """Creates subtitles from audio for the timeline. 
+    def create_subtitles_from_audio(
+        self, auto_caption_settings: "AutoCaptionSettings"
+    ) -> bool:
+        # Modified at DR 18.6.4
+        """Creates subtitles from audio for the timeline.
 
         Returns:
             bool: Returns True on success, False otherwise.
         """
         return self._timeline.CreateSubtitlesFromAudio(auto_caption_settings.asdict())
-    
+
     def detect_scene_cuts(self) -> bool:
-        """Detects and makes scene cuts along the timeline. 
+        """Detects and makes scene cuts along the timeline.
 
         Returns:
             bool: Returns True if successful, False otherwise.
         """
-        return self._timeline.DetectSceneCuts()  
-    
+        return self._timeline.DetectSceneCuts()
+
     ##############################################################################################################################
     # Add at DR18.6.4
-    
+
     def convert_timeline_to_stereo(self) -> bool:
         """Converts timeline to stereo.
 
         Returns:
             bool: Returns True if successful; False otherwise.
-        """        
+        """
         return self._timeline.ConvertTimelineToStereo()
-    
+
     ##############################################################################################################################
     # Add at DR 19.0.0
-    
+
     def get_node_graph(self) -> Graph:
         """Returns the timeline's node graph object.
 
@@ -514,9 +576,11 @@ class Timeline():
             Graph: timeline's node graph object.
         """
         return Graph(self._timeline.GetNodeGraph())
-    
-    def analyze_dolby_vision(self,timeline_item_list:List[TimelineItem]=list(),analysis_type=None) -> bool:
-        """Analyzes Dolby Vision on clips present on the timeline. 
+
+    def analyze_dolby_vision(
+        self, timeline_item_list: List[TimelineItem] = list(), analysis_type=None
+    ) -> bool:
+        """Analyzes Dolby Vision on clips present on the timeline.
 
         Args:
             timeline_item_list (List[TimelineItem]): if timeline_item_list is empty, analysis performed on all items. Else, analysis performed on timeline_item_list only.
@@ -525,11 +589,11 @@ class Timeline():
         Returns:
             bool: Returns True if analysis start is successful; False otherwise.
         """
-        return self._timeline.AnalyzeDolbyVision(timeline_item_list,analysis_type)
-    
+        return self._timeline.AnalyzeDolbyVision(timeline_item_list, analysis_type)
+
     ##############################################################################################################################
     # Add at DR 19.0.1
-    def get_track_sub_type(self,track_index:int,track_type:str="audio") -> str:
+    def get_track_sub_type(self, track_index: int, track_type: str = "audio") -> str:
         """_summary_
 
         Args:
@@ -537,7 +601,52 @@ class Timeline():
             track_type (str, optional): Defaults to "audio".
 
         Returns:
-            str: audio track's format,value is one of {"mono", "stereo", "5.1", "5.1film", "7.1", "7.1film", "adaptive1", ... , "adaptive24"} 
+            str: audio track's format,value is one of {"mono", "stereo", "5.1", "5.1film", "7.1", "7.1film", "adaptive1", ... , "adaptive24"}
         """
-        return self._timeline.GetTrackSubType(track_type,track_index)
+        return self._timeline.GetTrackSubType(track_type, track_index)
+
+    ##############################################################################################################################
+    # Add at DR 19.1.0
+    def get_media_pool_item(self) -> "MediaPoolItem":
+        """
+        Returns:
+            MediaPoolItem: Returns the media pool item corresponding to the timeline
+        """
+        return self._timeline.GetMediaPoolItem()
+
+    def get_mark_in_out(self) -> dict:
+        """Gets the in/out marks set on the timeline.
+
+        Returns:
+            dict: Dictionary containing video/audio in/out marks. Example:
+                {
+                    'video': {'in': 0, 'out': 134},
+                    'audio': {'in': 0, 'out': 134}
+                }
+                Keys are omitted if marks are not set.
+        """
+        return self._timeline.GetMarkInOut()
     
+    def set_mark_in_out(self, mark_in: int, mark_out: int, mark_type: str = "all") -> bool:
+        """Sets mark in/out points on the timeline.
+
+        Args:
+            mark_in (int): Frame number for in point
+            mark_out (int): Frame number for out point  
+            mark_type (str, optional): Type of mark to set - "video", "audio" or "all". Defaults to "all".
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline.SetMarkInOut(mark_in, mark_out, mark_type)
+    
+    def clear_mark_in_out(self, mark_type: str = "all") -> bool:
+        """Clears mark in/out points from the timeline.
+
+        Args:
+            mark_type (str, optional): Type of marks to clear - "video", "audio" or "all". Defaults to "all".
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline.ClearMarkInOut(mark_type)

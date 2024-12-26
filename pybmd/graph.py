@@ -71,4 +71,63 @@ class Graph(object):
         """
         return self._graph.SetNodeEnabled(node_index,is_enable)
     
-    
+    ##############################################################################################################
+    # Add at DR 19.1.0
+    def set_node_cache_mode(self, node_index: int, cache_value: int) -> bool:
+        """Sets the cache mode type on the node.
+
+        Args:
+            node_index (int): 1 <= nodeIndex <= total number of nodes
+            cache_value (int): Cache mode value to set
+            cache_value is an enumerated integer with one of the following values:
+                - resolve.CACHE_AUTO_ENABLED  = -1
+                - resolve.CACHE_DISABLED      =  0
+                - resolve.CACHE_ENABLED       =  1
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._graph.SetNodeCacheMode(node_index, cache_value)
+
+    def get_node_cache_mode(self, node_index: int) -> int:
+        """Gets the cache mode type on the node.
+
+        Args:
+            node_index (int): 1 <= nodeIndex <= total number of nodes
+
+        Returns:
+            int: Cache mode value of the node.cache_value is an enumerated integer with one of the following values:
+                - resolve.CACHE_AUTO_ENABLED  = -1
+                - resolve.CACHE_DISABLED      =  0
+                - resolve.CACHE_ENABLED       =  1
+        """
+        return self._graph.GetNodeCacheMode(node_index)
+
+    def apply_grade_from_drx(self, path: str, grade_mode: int = 0) -> bool:
+        """Loads a still from given file path and applies grade to graph.
+
+        Args:
+            path (str): File path to the DRX file
+            grade_mode (int, optional): 0="No keyframes", 1="Source Timecode aligned", 
+                2="Start Frames aligned". Defaults to 0.
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._graph.ApplyGradeFromDRX(path, grade_mode)
+
+    def apply_arri_cdl_lut(self) -> bool:
+        """Applies ARRI CDL and LUT.
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._graph.ApplyArriCdlLut()
+
+    def reset_all_grades(self) -> bool:
+        """Resets all grades in the graph.
+
+        Returns:
+            bool: True if all grades were reset successfully, False otherwise
+        """
+        return self._graph.ResetAllGrades()

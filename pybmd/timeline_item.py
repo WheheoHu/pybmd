@@ -385,13 +385,14 @@ class TimelineItem():
     ##########################################################################################################################
     # Add at DR18.5.0 Beta
 
-    def apply_arri_cdl_lut(self) -> bool:
-        """Applies ARRI CDL and LUT.
+    # Remove at DR 19.1.0
+    # def apply_arri_cdl_lut(self) -> bool:
+    #     """Applies ARRI CDL and LUT.
 
-        Returns:
-            bool: Returns True if successful, False otherwise.
-        """
-        return self._timeline_item.ApplyArriCdlLut()
+    #     Returns:
+    #         bool: Returns True if successful, False otherwise.
+    #     """
+    #     return self._timeline_item.ApplyArriCdlLut()
 
     def set_clip_enabled(self, bool_value: bool) -> bool:
         """Sets clip enabled based on argument.
@@ -592,3 +593,45 @@ class TimelineItem():
             float: start time position of the media pool clip
         """
         return self._timeline_item.GetSourceStartTime()
+    
+    ##############################################################################################################################
+    # Add at DR 19.1.0
+    def get_color_output_cache_enabled(self) -> bool:
+        """Checks if color output cache is enabled for this timeline item.
+
+        Returns:
+            bool: True if color output cache is enabled, False otherwise
+        """
+        return self._timeline_item.GetIsColorOutputCacheEnabled()
+
+    def get_fusion_output_cache_enabled(self) -> bool:
+        """Checks if fusion output cache is enabled for this timeline item.
+
+        Returns:
+            bool: True if fusion output cache is enabled or auto, False otherwise
+        """
+        return self._timeline_item.GetIsFusionOutputCacheEnabled()
+
+    def set_color_output_cache(self, cache_value: str) -> bool:
+        """Sets color output caching state. Equivalent to clip context menu action 'Render Cache Color Output'.
+
+        Args:
+            cache_enabled (str): Auto/ On/ Off
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline_item.SetColorOutputCache(cache_value)
+
+    def set_fusion_output_cache(self, cache_value: str) -> bool:
+        """Sets fusion output caching state. Equivalent to clip context menu action 'Render Cache Fusion Output'.
+
+        Args:
+            cache_enabled (str): Auto/ On/ Off
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline_item.SetFusionOutputCache(cache_value)
+
+    

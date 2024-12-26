@@ -29,17 +29,17 @@ class SettingParameter(object):
 
 
 @dataclass
-class RenderSetting():
+class RenderSetting:
     """RenderSetting Object to store render setting."""
-    
-    TargetDir: str 
-    CustomName: str  
-    
+
+    TargetDir: str
+    CustomName: str
+
     SelectAllFrames: bool = True
     MarkIn: int = 0
     MarkOut: int = 0
-    
-    UniqueFilenameStyle: int  =0 # 0 for prefix, 1 for suffix
+
+    UniqueFilenameStyle: int = 0  # 0 for prefix, 1 for suffix
     ExportVideo: bool = True
     ExportAudio: bool = True
     FormatWidth: int = 1920
@@ -47,7 +47,7 @@ class RenderSetting():
     FrameRate: float = 29.97
 
     # (for SD resolution: "16_9" or "4_3") (other resolutions: "square" or "cinemascope")
-    PixelAspectRatio: str ="square"
+    PixelAspectRatio: str = "square"
 
     #  possible values for current codec (if applicable):
     #  0(int) - will set quality to automatic
@@ -56,7 +56,7 @@ class RenderSetting():
     VideoQuality: Any = 0
 
     AudioCodec: str = "aac"
-    AudioBitDepth: int = '24'
+    AudioBitDepth: int = "24"
     AudioSampleRate: int = 48000
 
     # example: "Same as Project", "AstroDesign"
@@ -76,11 +76,12 @@ class RenderSetting():
     AlphaMode: int = 0
 
     # Only supported by QuickTime and MP4 formats.
-    NetworkOptimization: bool =True 
+    NetworkOptimization: bool = True
 
 
 class CloudSyncMode(Enum):
     """Docstring for CloudSyncMode."""
+
     NONE: float = _resolve.CLOUD_SYNC_NONE
     PROXY_ONLY: float = _resolve.CLOUD_SYNC_PROXY_ONLY
     PROXY_AND_ORIG: float = _resolve.CLOUD_SYNC_PROXY_AND_ORIG
@@ -96,15 +97,17 @@ class CloudProjectSettingEnum(Enum):
     IS_CAMERA_ACCESS: bool = _resolve.CLOUD_SETTING_IS_CAMERA_ACCESS
 
 
-class CloudProjectsSetting():
+class CloudProjectsSetting:
     """Setting for CloudProject"""
 
-    def __init__(self,
-                 cloud_setting_project_name: str = _resolve.CLOUD_SETTING_PROJECT_NAME,
-                 cloud_setting_project_media_path: str = _resolve.CLOUD_SETTING_PROJECT_MEDIA_PATH,
-                 cloud_setting_is_collab: bool = _resolve.CLOUD_SETTING_IS_COLLAB,
-                 cloud_setting_sync_mode: CloudSyncMode = _resolve.CLOUD_SETTING_SYNC_MODE,
-                 cloud_setting_is_camera_access: bool = _resolve.CLOUD_SETTING_IS_CAMERA_ACCESS):
+    def __init__(
+        self,
+        cloud_setting_project_name: str = _resolve.CLOUD_SETTING_PROJECT_NAME,
+        cloud_setting_project_media_path: str = _resolve.CLOUD_SETTING_PROJECT_MEDIA_PATH,
+        cloud_setting_is_collab: bool = _resolve.CLOUD_SETTING_IS_COLLAB,
+        cloud_setting_sync_mode: CloudSyncMode = _resolve.CLOUD_SETTING_SYNC_MODE,
+        cloud_setting_is_camera_access: bool = _resolve.CLOUD_SETTING_IS_CAMERA_ACCESS,
+    ):
         """Initialize CloudProjectsSetting.
 
         Args:
@@ -120,19 +123,22 @@ class CloudProjectsSetting():
             >>> print(settings.asdict())
             {0.0: '', 1.0: '', 2.0: False, 3.0: 1.0, 4.0: False}
             >>> settings.cloud_setting_sync_mode=CloudSyncMode.PROXY_AND_ORIG
-            >>> print(settings.asdict()) 
+            >>> print(settings.asdict())
             {0.0: '', 1.0: '', 2.0: False, 3.0: 2.0, 4.0: False}
         """
         self.__cloud_setting_project_name = SettingParameter(
-            0.0, cloud_setting_project_name)
+            0.0, cloud_setting_project_name
+        )
         self.__cloud_setting_project_media_path = SettingParameter(
-            1.0, cloud_setting_project_media_path)
-        self.__cloud_setting_is_collab = SettingParameter(
-            2.0, cloud_setting_is_collab)
+            1.0, cloud_setting_project_media_path
+        )
+        self.__cloud_setting_is_collab = SettingParameter(2.0, cloud_setting_is_collab)
         self.__cloud_setting_sync_mode = SettingParameter(
-            3.0, cloud_setting_sync_mode.value)
+            3.0, cloud_setting_sync_mode.value
+        )
         self.__cloud_setting_is_camera_access = SettingParameter(
-            4.0, cloud_setting_is_camera_access)
+            4.0, cloud_setting_is_camera_access
+        )
 
     @property
     def cloud_setting_project_name(self) -> str:
@@ -140,8 +146,7 @@ class CloudProjectsSetting():
 
     @cloud_setting_project_name.setter
     def cloud_setting_project_name(self, value: str) -> None:
-        self.__cloud_setting_project_name = SettingParameter(
-            0.0, value)
+        self.__cloud_setting_project_name = SettingParameter(0.0, value)
 
     @property
     def cloud_setting_project_media_path(self) -> str:
@@ -149,8 +154,7 @@ class CloudProjectsSetting():
 
     @cloud_setting_project_media_path.setter
     def cloud_setting_project_media_path(self, value: str) -> None:
-        self.__cloud_setting_project_media_path = SettingParameter(
-            1.0, value)
+        self.__cloud_setting_project_media_path = SettingParameter(1.0, value)
 
     @property
     def cloud_setting_is_collab(self) -> bool:
@@ -158,8 +162,7 @@ class CloudProjectsSetting():
 
     @cloud_setting_is_collab.setter
     def cloud_setting_is_collab(self, value: bool) -> None:
-        self.__cloud_setting_is_collab = SettingParameter(
-            2.0, value)
+        self.__cloud_setting_is_collab = SettingParameter(2.0, value)
 
     @property
     def cloud_setting_sync_mode(self) -> CloudSyncMode:
@@ -167,8 +170,7 @@ class CloudProjectsSetting():
 
     @cloud_setting_sync_mode.setter
     def cloud_setting_sync_mode(self, value: CloudSyncMode) -> None:
-        self.__cloud_setting_sync_mode = SettingParameter(
-            3.0, value.value)
+        self.__cloud_setting_sync_mode = SettingParameter(3.0, value.value)
 
     @property
     def cloud_setting_is_camera_access(self) -> bool:
@@ -176,19 +178,21 @@ class CloudProjectsSetting():
 
     @cloud_setting_is_camera_access.setter
     def cloud_setting_is_camera_access(self, value: bool) -> None:
-        self.__cloud_setting_is_camera_access = SettingParameter(
-            4.0, value)
+        self.__cloud_setting_is_camera_access = SettingParameter(4.0, value)
 
     def asdict(self):
-        return {self.__cloud_setting_project_name.parameter_index: self.__cloud_setting_project_name.parameter_value,
-                self.__cloud_setting_project_media_path.parameter_index: self.__cloud_setting_project_media_path.parameter_value,
-                self.__cloud_setting_is_collab.parameter_index: self.__cloud_setting_is_collab.parameter_value,
-                self.__cloud_setting_sync_mode.parameter_index: self.__cloud_setting_sync_mode.parameter_value,
-                self.__cloud_setting_is_camera_access.parameter_index: self.__cloud_setting_is_camera_access.parameter_value}
+        return {
+            self.__cloud_setting_project_name.parameter_index: self.__cloud_setting_project_name.parameter_value,
+            self.__cloud_setting_project_media_path.parameter_index: self.__cloud_setting_project_media_path.parameter_value,
+            self.__cloud_setting_is_collab.parameter_index: self.__cloud_setting_is_collab.parameter_value,
+            self.__cloud_setting_sync_mode.parameter_index: self.__cloud_setting_sync_mode.parameter_value,
+            self.__cloud_setting_is_camera_access.parameter_index: self.__cloud_setting_is_camera_access.parameter_value,
+        }
 
 
 class LanguageID(Enum):
     """Docstring for LanguageID."""
+
     AUTO = _resolve.AUTO_CAPTION_AUTO
     DANISH = _resolve.AUTO_CAPTION_DANISH
     DUTCH = _resolve.AUTO_CAPTION_DUTCH
@@ -210,8 +214,10 @@ class LanguageID(Enum):
 #######################################
 # AUTO CAPTION SETTINGS
 
+
 class PresetType(Enum):
     """Docstring for PresetType."""
+
     SUBTITLE_DEFAULT = _resolve.AUTO_CAPTION_SUBTITLE_DEFAULT
     TELETEXT = _resolve.AUTO_CAPTION_TELETEXT
     NETFLIX = _resolve.AUTO_CAPTION_NETFLIX
@@ -219,12 +225,14 @@ class PresetType(Enum):
 
 class LineBreakTypes(Enum):
     """Docstring for LineBreakTypes."""
+
     LINE_SINGLE = _resolve.AUTO_CAPTION_LINE_SINGLE
     LINE_DOUBLE = _resolve.AUPTO_CAPTION_LINE_DOUBLE
 
 
 class AutoCaptionSettingsEnum(Enum):
     """Docstring for MyEnum."""
+
     LANGUAGE = _resolve.SUBTITLE_LANGUAGE
     CAPTION_PRESET = _resolve.SUBTITLE_CAPTION_PRESET
     CHARS_PER_LINE = _resolve.SUBTITLE_CHARS_PER_LINE
@@ -232,7 +240,7 @@ class AutoCaptionSettingsEnum(Enum):
     GAP = _resolve.SUBTITLE_GAP
 
 
-class AutoCaptionSettings():
+class AutoCaptionSettings:
     """Setting object for AutoCaptionSettings
     Args:
         subtitle_language: LanguageID
@@ -249,20 +257,20 @@ class AutoCaptionSettings():
     >>> print(settings.asdict())
     """
 
-    def __init__(self,
-                 subtitle_language: LanguageID = LanguageID.AUTO,
-                 subtitle_caption_preset: PresetType = PresetType.SUBTITLE_DEFAULT,
-                 subtitle_chars_per_line: int = 42,
-                 subtitle_line_break: LineBreakTypes = LineBreakTypes.LINE_SINGLE,
-                 subtitle_gap: int = 0):
-        self.__subtitle_language = SettingParameter(
-            0.0, subtitle_language.value)
+    def __init__(
+        self,
+        subtitle_language: LanguageID = LanguageID.AUTO,
+        subtitle_caption_preset: PresetType = PresetType.SUBTITLE_DEFAULT,
+        subtitle_chars_per_line: int = 42,
+        subtitle_line_break: LineBreakTypes = LineBreakTypes.LINE_SINGLE,
+        subtitle_gap: int = 0,
+    ):
+        self.__subtitle_language = SettingParameter(0.0, subtitle_language.value)
         self.__subtitle_caption_preset = SettingParameter(
-            1.0, subtitle_caption_preset.value)
-        self.__subtitle_chars_per_line = SettingParameter(
-            2.0, subtitle_chars_per_line)
-        self.__subtitle_line_break = SettingParameter(
-            3.0, subtitle_line_break.value)
+            1.0, subtitle_caption_preset.value
+        )
+        self.__subtitle_chars_per_line = SettingParameter(2.0, subtitle_chars_per_line)
+        self.__subtitle_line_break = SettingParameter(3.0, subtitle_line_break.value)
         self.__subtitle_gap = SettingParameter(4.0, subtitle_gap)
 
     @property
@@ -271,8 +279,7 @@ class AutoCaptionSettings():
 
     @subtitle_language.setter
     def subtitle_language(self, language: LanguageID):
-        self.__subtitle_language = SettingParameter(
-            0.0, language.value)
+        self.__subtitle_language = SettingParameter(0.0, language.value)
 
     @property
     def subtitle_caption_preset(self):
@@ -280,8 +287,7 @@ class AutoCaptionSettings():
 
     @subtitle_caption_preset.setter
     def subtitle_caption_preset(self, preset: PresetType):
-        self.__subtitle_caption_preset = SettingParameter(
-            1.0, preset.value)
+        self.__subtitle_caption_preset = SettingParameter(1.0, preset.value)
 
     @property
     def subtitle_chars_per_line(self):
@@ -289,8 +295,7 @@ class AutoCaptionSettings():
 
     @subtitle_chars_per_line.setter
     def subtitle_chars_per_line(self, value: int):
-        self.__subtitle_chars_per_line = SettingParameter(
-            2.0, value)
+        self.__subtitle_chars_per_line = SettingParameter(2.0, value)
 
     @property
     def subtitle_line_break(self):
@@ -298,8 +303,7 @@ class AutoCaptionSettings():
 
     @subtitle_line_break.setter
     def subtitle_line_break(self, line_break_type: LineBreakTypes):
-        self.__subtitle_line_break = SettingParameter(
-            3.0, line_break_type.value)
+        self.__subtitle_line_break = SettingParameter(3.0, line_break_type.value)
 
     @property
     def subtitle_gap(self):
@@ -315,15 +319,18 @@ class AutoCaptionSettings():
         Returns:
             dict[float, Any]: returned dict
         """
-        return {self.__subtitle_language.parameter_index: self.__subtitle_language.parameter_value,
-                self.__subtitle_caption_preset.parameter_index: self.__subtitle_caption_preset.parameter_value,
-                self.__subtitle_chars_per_line.parameter_index: self.__subtitle_chars_per_line.parameter_value,
-                self.__subtitle_line_break.parameter_index: self.__subtitle_line_break.parameter_value,
-                self.__subtitle_gap.parameter_index: self.__subtitle_gap.parameter_value}
+        return {
+            self.__subtitle_language.parameter_index: self.__subtitle_language.parameter_value,
+            self.__subtitle_caption_preset.parameter_index: self.__subtitle_caption_preset.parameter_value,
+            self.__subtitle_chars_per_line.parameter_index: self.__subtitle_chars_per_line.parameter_value,
+            self.__subtitle_line_break.parameter_index: self.__subtitle_line_break.parameter_value,
+            self.__subtitle_gap.parameter_index: self.__subtitle_gap.parameter_value,
+        }
 
 
 class KeyframeMode(Enum):
     """Docstring for KeyframeModeInformation."""
+
     KEYFRAME_MODE_ALL = 0
     KEYFRAME_MODE_COLOR = 1
     KEYFRAME_MODE_SIZING = 2
@@ -332,8 +339,10 @@ class KeyframeMode(Enum):
 ###################################
 # Project and Clip properties
 
+
 class CloudSyncState(Enum):
     """Docstring for CloudSyncState."""
+
     CLOUD_SYNC_DEFAULT = -1
     CLOUD_SYNC_DOWNLOAD_IN_QUEUE = 0
     CLOUD_SYNC_DOWNLOAD_IN_PROGRESS = 1
@@ -346,6 +355,76 @@ class CloudSyncState(Enum):
     CLOUD_SYNC_UPLOAD_SUCCESS = 7
     CLOUD_SYNC_UPLOAD_FAIL = 8
     CLOUD_SYNC_UPLOAD_NOT_FOUND = 9
-    
+
     ## Add at DR 19.0.1
     CLOUD_SYNC_SUCCESS = 10
+
+
+#################################
+# Audio Sync Settings
+
+
+class AudioSyncMode(Enum):
+    AUDIO_SYNC_WAVEFORM = _resolve.AUDIO_SYNC_WAVEFORM
+    AUDIO_SYNC_TIMECODE = _resolve.AUDIO_SYNC_TIMECODE
+
+
+class AudioSyncChannel(Enum):
+    AUDIO_SYNC_CHANNEL_AUTOMATIC = -1
+    AUDIO_SYNC_CHANNEL_MIX = -2
+
+
+class AudioSyncSettingIndex(Enum):
+    AUDIO_SYNC_MODE = _resolve.AUDIO_SYNC_MODE
+    AUDIO_SYNC_CHANNEL_NUMBER = _resolve.AUDIO_SYNC_CHANNEL_NUMBER
+    AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO = _resolve.AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO
+    AUDIO_SYNC_RETAIN_VIDEO_METADATA = _resolve.AUDIO_SYNC_RETAIN_VIDEO_METADATA
+
+
+@dataclass
+class AudioSyncSetting:
+
+    _audioSyncMode: AudioSyncMode = AudioSyncMode.AUDIO_SYNC_TIMECODE
+    _channelNumber: int = 1
+    _retainEmbeddedAudio: bool = False
+    _retainVideoMetadata: bool = False
+
+    @property
+    def audioSyncMode(self) -> AudioSyncMode:
+        return AudioSyncMode(self._audioSyncMode)
+
+    @audioSyncMode.setter
+    def audioSyncMode(self, value: AudioSyncMode) -> None:
+        self._audioSyncMode = value.value
+
+    @property
+    def channelNumber(self) -> int:
+        return self._channelNumber
+
+    @channelNumber.setter
+    def channelNumber(self, value: int) -> None:
+        self._channelNumber = value
+
+    @property
+    def retainEmbeddedAudio(self) -> bool:
+        return self._retainEmbeddedAudio
+
+    @retainEmbeddedAudio.setter
+    def retainEmbeddedAudio(self, value: bool) -> None:
+        self._retainEmbeddedAudio = value
+
+    @property
+    def retainVideoMetadata(self) -> bool:
+        return self._retainVideoMetadata
+
+    @retainVideoMetadata.setter
+    def retainVideoMetadata(self, value: bool) -> None:
+        self._retainVideoMetadata = value
+
+    def asdict(self) -> dict[float, Any]:
+        return {
+            AudioSyncSettingIndex.AUDIO_SYNC_MODE.value: self._audioSyncMode.value,
+            AudioSyncSettingIndex.AUDIO_SYNC_CHANNEL_NUMBER.value: self._channelNumber,
+            AudioSyncSettingIndex.AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO.value: self._retainEmbeddedAudio,
+            AudioSyncSettingIndex.AUDIO_SYNC_RETAIN_VIDEO_METADATA.value: self._retainVideoMetadata,
+        }
