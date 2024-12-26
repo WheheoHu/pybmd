@@ -229,3 +229,51 @@
 ## Library
 - Fix typo in `__repr__` format
 
+------
+# 2024.4.0
+## API
+### ProjectManager 
+- Added `load_cloud_project()`
+
+### Porject
+- Added `delete_render_preset` 
+- Added `get_quick_export_render_presets`
+- Added `render_with_quick_export`
+
+### MediaPool
+- Added `auto_sync_audio` (NOT WORKING)
+
+### MediaPoolItem
+- Added `get_mark_in_out`
+- Added `set_mark_in_out`
+- Added `clear_mark_in_out`
+
+
+### Timeline 
+- Added `get_mark_in_out()` to get timeline marks
+- Added `set_mark_in_out()` to set timeline marks
+- Added `clear_mark_in_out()` to clear timeline marks
+- Moved `apply_grade_from_drx()` to `Graph`
+
+### TimelineItem 
+- Added cache control methods:
+  - `get_color_output_cache_enabled()`
+  - `get_fusion_output_cache_enabled()`
+  - `set_color_output_cache()`
+  - `set_fusion_output_cache()`
+- Moved `apply_arri_cdl_lut()` to `Graph`
+
+### Gallery 
+- Added `get_gallery_power_grade_albums()` to get PowerGrade albums
+- Added `create_gallery_still_album()` to create new still album
+- Added `create_gallery_power_grade_album()` to create new PowerGrade album
+
+### Graph 
+- Added node cache control:
+  - `set_node_cache_mode()`
+  - `get_node_cache_mode()`
+- Added grade management:
+  - `apply_grade_from_drx()`
+  - `apply_arri_cdl_lut()`
+  - `reset_all_grades()`
+
