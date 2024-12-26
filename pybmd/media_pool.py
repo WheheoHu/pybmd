@@ -2,7 +2,6 @@ from pathlib import Path
 from typing import List
 
 from multimethod import multimethod
-from traitlets import Bool
 from pybmd.folder import Folder
 from pybmd.media_pool_item import MediaPoolItem
 from pybmd.settings import AudioSyncSetting
