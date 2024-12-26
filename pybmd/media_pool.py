@@ -1,16 +1,18 @@
 from pathlib import Path
-from typing import List
+from typing import TYPE_CHECKING, List
 
 from multimethod import multimethod
 from pybmd.folder import Folder
 from pybmd.media_pool_item import MediaPoolItem
-from pybmd.settings import AudioSyncSetting
+
 from pybmd.timeline import Timeline
 from pybmd.timeline_item import TimelineItem
 
 from dataclasses import dataclass
 from dataclasses import asdict
 
+if TYPE_CHECKING:
+    from pybmd.settings import AudioSyncSetting
 # TODO clip info for multi version compatible
 
 
