@@ -1,6 +1,5 @@
 from dataclasses import asdict
 from typing import TYPE_CHECKING, Any, Dict, List
-from pybmd import color_group
 from pybmd.color_group import ColorGroup
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
@@ -293,4 +292,38 @@ class Project():
             bool: Return True if successful, otherwise False.
         """
         return self._project.DeleteColorGroup(color_group) 
+    
+    ##############################################################################################################################
+    # Add at DR 19.1.0 
+    
+    def delete_render_preset(self,preset_name:str) -> bool:
+        """Delete render preset by provided name
+
+        Args:
+            preset_name (str): preset name
+
+        Returns:
+            bool: Returns True if successful, otherwise False.
+        """ 
+        return self._project.DeleteRenderPreset(preset_name)
+    
+    def get_quick_export_render_presets(self) -> List[str]:
+        """
+        Returns a list of names of all Quick Export render presets.
+        """
+        return self._project.GetQuickExportRenderPresets()
+    
+    def render_with_quick_export(self, preset_name: str, param_dict: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Starts a Quick Export render using the specified preset name and parameter dictionary.
+
+        Args:
+            preset_name (str): The name of the Quick Export render preset.
+            param_dict (Dict[str, Any]): Dictionary of render settings, supported keys include "TargetDir", "CustomName", "VideoQuality", and "EnableUpload".("EnableUpload" key enables direct upload for supported web presets.)
+
+        Returns:
+            Dict[str, Any]: A dictionary containing the job status and render time, or an error string if the render failed or was not attempted.
+        """
+        return self._project.RenderWithQuickExport(preset_name, param_dict)
+    
     

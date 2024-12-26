@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from pybmd.gallery_still_album import GalleryStillAlbum
 
 
@@ -46,3 +46,34 @@ class Gallery():
             bool: true if successful, false otherwise
         """        
         return self._gallery.SetCurrentStillAlbum(gallery_still_album)
+    ##############################################################################################################
+    # Add at DR 19.1.0
+    def get_gallery_power_grade_albums(self) -> List[GalleryStillAlbum]:
+        """Returns the gallery PowerGrade albums.
+
+        Returns:
+            List[GalleryStillAlbum]: List of gallery PowerGrade album objects
+        """
+        power_grade_albums = []
+        for album in self._gallery.GetGalleryPowerGradeAlbums():
+            power_grade_albums.append(GalleryStillAlbum(album))
+        return power_grade_albums
+
+    def create_gallery_still_album(self) -> Optional[GalleryStillAlbum]:
+        """Creates a new Still album.
+
+        Returns:
+            Optional[GalleryStillAlbum]: New gallery still album object if successful, None otherwise
+        """
+        album = self._gallery.CreateGalleryStillAlbum()
+        return GalleryStillAlbum(album) if album else None
+
+    def create_gallery_power_grade_album(self) -> Optional[GalleryStillAlbum]:
+        """Creates a new PowerGrade album.
+
+        Returns:
+            Optional[GalleryStillAlbum]: New gallery PowerGrade album object if successful, None otherwise
+        """
+        album = self._gallery.CreateGalleryPowerGradeAlbum()
+        return GalleryStillAlbum(album) if album else None
+

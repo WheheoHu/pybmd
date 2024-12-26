@@ -186,6 +186,19 @@ class ProjectManager:
             bool: Returns True if restore cloud project is successful; False otherwise
         """        
         return self._project_manager.RestoreCloudProject(folder_path,cloud_setting.asdict())
+
+##############################################################################################################################
+# #Add at DR19.1.0
+    def load_cloud_project(self,cloud_setting:"CloudProjectsSetting") -> Project:
+        """Loads and returns a cloud project with the following cloud settings if there is a match found, and None if there is no matching cloud project
+
+        Args:
+            cloud_setting (CloudProjectsSetting): cloud project settings
+
+        Returns:
+            Project: returns a cloud project
+        """
+        return Project(self._project_manager.LoadCloudProject(cloud_setting))
     
 # More function BELOW!
 
