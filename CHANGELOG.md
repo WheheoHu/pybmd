@@ -277,3 +277,7 @@
   - `apply_arri_cdl_lut()`
   - `reset_all_grades()`
 
+# 2024.4.1
+## API
+### StillManager
+- Fix bug in timeline framerate detection

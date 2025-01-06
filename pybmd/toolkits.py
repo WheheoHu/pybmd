@@ -167,7 +167,7 @@ class StillManager(object):
         logger.info(f'Timeline Marker Count:{len(marker_list)}')
 
         if timeline.get_setting('timelinePlaybackFrameRate'):
-            timeline_framerate = int(
+            timeline_framerate = float(
                 timeline.get_setting('timelinePlaybackFrameRate'))
             logger.info(f'Timeline Framerate:{timeline_framerate}')
         else:
