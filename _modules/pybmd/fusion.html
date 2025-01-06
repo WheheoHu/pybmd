@@ -29,7 +29,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=f5768dfe"></script>
+    <script src="../../_static/documentation_options.js?v=510e09e7"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/fusion';</script>
@@ -328,55 +328,55 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.fusion</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
-<span class="kn">from</span> <span class="nn">pybmd.ui_manager</span> <span class="kn">import</span> <span class="n">UI_Manager</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.ui_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">UI_Manager</span>
 
 
 <div class="viewcode-block" id="Fusion">
 <a class="viewcode-back" href="../../_autosummary/pybmd.fusion.Fusion.html#pybmd.fusion.Fusion">[docs]</a>
-<span class="k">class</span> <span class="nc">Fusion</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Fusion</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for Fusion.&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Fusion.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.fusion.Fusion.__init__.html#pybmd.fusion.Fusion.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fusion_obj</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fusion_obj</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span> <span class="o">=</span> <span class="n">fusion_obj</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ui_manager</span><span class="o">=</span><span class="n">UI_Manager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span><span class="o">.</span><span class="n">UIManager</span><span class="p">)</span> </div>
 
         
         
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ui_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UI_Manager</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ui_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UI_Manager</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ui_manager</span>
     
 
         
 <div class="viewcode-block" id="Fusion.set_pref">
 <a class="viewcode-back" href="../../_autosummary/pybmd.fusion.Fusion.set_pref.html#pybmd.fusion.Fusion.set_pref">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_pref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pref_name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">pref_value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_pref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pref_name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">pref_value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span><span class="o">.</span><span class="n">SetPrefs</span><span class="p">(</span><span class="n">pref_name</span><span class="p">,</span> <span class="n">pref_value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Fusion.set_prefs">
 <a class="viewcode-back" href="../../_autosummary/pybmd.fusion.Fusion.set_prefs.html#pybmd.fusion.Fusion.set_prefs">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_prefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefs_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span><span class="c1"># -&gt; Any:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_prefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefs_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span><span class="c1"># -&gt; Any:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span><span class="o">.</span><span class="n">SetPrefs</span><span class="p">(</span><span class="n">prefs_dict</span><span class="p">)</span></div>
 
     
 <div class="viewcode-block" id="Fusion.get_prefs">
 <a class="viewcode-back" href="../../_autosummary/pybmd.fusion.Fusion.get_prefs.html#pybmd.fusion.Fusion.get_prefs">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_prefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pref_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Dict</span><span class="o">|</span><span class="n">Any</span> <span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_prefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pref_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Dict</span><span class="o">|</span><span class="n">Any</span> <span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span><span class="o">.</span><span class="n">GetPrefs</span><span class="p">(</span><span class="n">pref_name</span><span class="p">)</span></div>
 
     
 <div class="viewcode-block" id="Fusion.load_prefs">
 <a class="viewcode-back" href="../../_autosummary/pybmd.fusion.Fusion.load_prefs.html#pybmd.fusion.Fusion.load_prefs">[docs]</a>
-    <span class="k">def</span> <span class="nf">load_prefs</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_prefs</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span><span class="o">.</span><span class="n">LoadPrefs</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span></div>
 
     
 <div class="viewcode-block" id="Fusion.save_prefs">
 <a class="viewcode-back" href="../../_autosummary/pybmd.fusion.Fusion.save_prefs.html#pybmd.fusion.Fusion.save_prefs">[docs]</a>
-    <span class="k">def</span> <span class="nf">save_prefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_prefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fusion</span><span class="o">.</span><span class="n">SavePrefs</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span></div>
 </div>
 

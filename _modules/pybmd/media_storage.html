@@ -29,7 +29,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=f5768dfe"></script>
+    <script src="../../_static/documentation_options.js?v=510e09e7"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_storage';</script>
@@ -329,21 +329,21 @@
                   
   <h1>Source code for pybmd.media_storage</h1><div class="highlight"><pre>
 <span></span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span>
 
-<span class="kn">from</span> <span class="nn">pybmd.media_pool_item</span> <span class="kn">import</span> <span class="n">MediaPoolItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_pool_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaPoolItem</span>
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pybmd.resolve</span> <span class="kn">import</span> <span class="n">Resolve</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.resolve</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resolve</span>
 
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">asdict</span>
 
 
 <div class="viewcode-block" id="Item_Info">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.Item_Info.html#pybmd.media_storage.Item_Info">[docs]</a>
 <span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">Item_Info</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Item_Info</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Item Info&quot;&quot;&quot;</span>
     <span class="n">media</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">start_frame</span><span class="p">:</span> <span class="nb">int</span>
@@ -353,18 +353,18 @@
 
 <div class="viewcode-block" id="MediaStorage">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.html#pybmd.media_storage.MediaStorage">[docs]</a>
-<span class="k">class</span> <span class="nc">MediaStorage</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MediaStorage</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;MediaStorage.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MediaStorage.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.__init__.html#pybmd.media_storage.MediaStorage.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_storage</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_storage</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_media_storage</span> <span class="o">=</span> <span class="n">media_storage</span></div>
 
 
 <div class="viewcode-block" id="MediaStorage.add_clip_mattes_to_media_pool">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool.html#pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_clip_mattes_to_media_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">stero_eye</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_clip_mattes_to_media_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">stero_eye</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds specified media files as mattes for the specified MediaPoolItem</span>
 
 <span class="sd">        Args:</span>
@@ -380,7 +380,7 @@
 
 <div class="viewcode-block" id="MediaStorage.add_item_list_to_meida_pool">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool.html#pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_item_list_to_meida_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="n">Item_Info</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_item_list_to_meida_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="n">Item_Info</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds specified file/folder paths from Media Storage into current Media Pool folder. </span>
 
 <span class="sd">        Args:</span>
@@ -402,7 +402,7 @@
 
 <div class="viewcode-block" id="MediaStorage.add_timeline_mattes_to_media_pool">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.add_timeline_mattes_to_media_pool.html#pybmd.media_storage.MediaStorage.add_timeline_mattes_to_media_pool">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_timeline_mattes_to_media_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_timeline_mattes_to_media_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds specified media files as timeline mattes in current media pool folder. </span>
 
 <span class="sd">        Args:</span>
@@ -421,7 +421,7 @@
 
 <div class="viewcode-block" id="MediaStorage.get_file_list">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.get_file_list.html#pybmd.media_storage.MediaStorage.get_file_list">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_file_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_file_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of media and file listings in the given absolute folder path. </span>
 
 <span class="sd">        Args:</span>
@@ -435,21 +435,21 @@
 
 <div class="viewcode-block" id="MediaStorage.get_mounted_volume_list">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.get_mounted_volume_list.html#pybmd.media_storage.MediaStorage.get_mounted_volume_list">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_mounted_volume_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_mounted_volume_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of folder paths corresponding to mounted volumes displayed in Resolve’s Media Storage.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_storage</span><span class="o">.</span><span class="n">GetMountedVolumeList</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="MediaStorage.get_sub_folder_list">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.get_sub_folder_list.html#pybmd.media_storage.MediaStorage.get_sub_folder_list">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_sub_folder_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_sub_folder_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of folder paths in the given absolute folder path.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_storage</span><span class="o">.</span><span class="n">GetSubFolderList</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">folder_path</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="MediaStorage.reveal_in_storage">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.reveal_in_storage.html#pybmd.media_storage.MediaStorage.reveal_in_storage">[docs]</a>
-    <span class="k">def</span> <span class="nf">reveal_in_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reveal_in_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Expands and displays given file/folder path in Resolve’s Media Storage.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_storage</span><span class="o">.</span><span class="n">RevealInStorage</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span></div>
 </div>

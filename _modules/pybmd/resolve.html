@@ -29,7 +29,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=f5768dfe"></script>
+    <script src="../../_static/documentation_options.js?v=510e09e7"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/resolve';</script>
@@ -328,28 +328,28 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.resolve</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="kn">import</span> <span class="nn">platform</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
-<span class="kn">import</span> <span class="nn">psutil</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psutil</span>
 
-<span class="kn">from</span> <span class="nn">pybmd.error</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pybmd.media_storage</span> <span class="kn">import</span> <span class="n">MediaStorage</span>
-<span class="kn">from</span> <span class="nn">pybmd.project_manager</span> <span class="kn">import</span> <span class="n">ProjectManager</span>
-<span class="kn">from</span> <span class="nn">pybmd.fusion</span> <span class="kn">import</span> <span class="n">Fusion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.error</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaStorage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.project_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProjectManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.fusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fusion</span>
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pybmd.settings</span> <span class="kn">import</span> <span class="n">KeyframeMode</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeyframeMode</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_init_bmd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_init_bmd</span>
 
-<span class="k">def</span> <span class="nf">_is_process_running</span><span class="p">(</span><span class="n">process_name</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_process_running</span><span class="p">(</span><span class="n">process_name</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">process_iter</span><span class="p">([</span><span class="s1">&#39;pid&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="n">process</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">process_name</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 
 
-<span class="k">def</span> <span class="nf">_start_local_resolve</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_start_local_resolve</span><span class="p">():</span>
     <span class="n">app_name_mac</span> <span class="o">=</span> <span class="s2">&quot;Resolve&quot;</span>
     <span class="n">app_name_win</span> <span class="o">=</span> <span class="s2">&quot;Resolve.exe&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -380,14 +380,14 @@
 
 <div class="viewcode-block" id="Resolve">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.html#pybmd.resolve.Resolve">[docs]</a>
-<span class="k">class</span> <span class="nc">Resolve</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Resolve</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Resolve class. Init Davinci Resolve Object</span>
 <span class="sd">        Base for everything</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Resolve.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.__init__.html#pybmd.resolve.Resolve.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">auto_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">auto_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Init Davinci Resolve Object</span>
 
 <span class="sd">        Args:</span>
@@ -420,7 +420,7 @@
 
 <div class="viewcode-block" id="Resolve.delete_layout_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.delete_layout_preset.html#pybmd.resolve.Resolve.delete_layout_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">delete_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes preset named preset_name.</span>
 
 <span class="sd">        Args:</span>
@@ -434,7 +434,7 @@
 
 <div class="viewcode-block" id="Resolve.export_layout_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.export_layout_preset.html#pybmd.resolve.Resolve.export_layout_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">export_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports preset named preset_name to path preset_file_path.</span>
 
 <span class="sd">        Args:</span>
@@ -448,13 +448,13 @@
 
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">fusion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fusion</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fusion</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fusion</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Fusion object.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Fusion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">Fusion</span><span class="p">())</span>
 
 <div class="viewcode-block" id="Resolve.get_current_page">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_current_page.html#pybmd.resolve.Resolve.get_current_page">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_current_page</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_current_page</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the page currently displayed in the main window</span>
 
 <span class="sd">        Returns:</span>
@@ -465,7 +465,7 @@
 
 <div class="viewcode-block" id="Resolve.get_media_storage">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_media_storage.html#pybmd.resolve.Resolve.get_media_storage">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_media_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MediaStorage</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_media_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MediaStorage</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the MediaStorage  object to query and act on media locations.</span>
 
 <span class="sd">        Returns:</span>
@@ -476,7 +476,7 @@
 
 <div class="viewcode-block" id="Resolve.get_product_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_product_name.html#pybmd.resolve.Resolve.get_product_name">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_product_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_product_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns product name.</span>
 
 <span class="sd">        Returns:</span>
@@ -487,7 +487,7 @@
 
 <div class="viewcode-block" id="Resolve.get_project_manager">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_project_manager.html#pybmd.resolve.Resolve.get_project_manager">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_project_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProjectManager</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_project_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProjectManager</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ProjectManager object for currently open database.</span>
 
 <span class="sd">        Returns:</span>
@@ -498,7 +498,7 @@
 
 <div class="viewcode-block" id="Resolve.get_version">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_version.html#pybmd.resolve.Resolve.get_version">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of product version fields in [major, minor, patch, build, suffix] format.</span>
 
 <span class="sd">        Returns:</span>
@@ -509,7 +509,7 @@
 
 <div class="viewcode-block" id="Resolve.get_version_string">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_version_string.html#pybmd.resolve.Resolve.get_version_string">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_version_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_version_string</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns product version in &quot;major.minor.patch[suffix].build&quot; format.</span>
 
 <span class="sd">        Returns:</span>
@@ -520,7 +520,7 @@
 
 <div class="viewcode-block" id="Resolve.import_layout_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.import_layout_preset.html#pybmd.resolve.Resolve.import_layout_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">import_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Imports preset from path &#39;preset_file_path&#39;. </span>
 <span class="sd">            The optional argument &#39;preset_name&#39; specifies how the preset shall be named.</span>
 <span class="sd">            If not specified, the preset is named based on the filename.</span>
@@ -530,7 +530,7 @@
 
 <div class="viewcode-block" id="Resolve.load_layout_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.load_layout_preset.html#pybmd.resolve.Resolve.load_layout_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">load_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads UI layout from saved preset named preset_name.</span>
 
 <span class="sd">        Args:</span>
@@ -544,7 +544,7 @@
 
 <div class="viewcode-block" id="Resolve.open_page">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.open_page.html#pybmd.resolve.Resolve.open_page">[docs]</a>
-    <span class="k">def</span> <span class="nf">open_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Switches to indicated page in DaVinci Resolve. </span>
 
 <span class="sd">        Args:</span>
@@ -558,14 +558,14 @@
 
 <div class="viewcode-block" id="Resolve.quit">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.quit.html#pybmd.resolve.Resolve.quit">[docs]</a>
-    <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Quits the Resolve App.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
 
 
 <div class="viewcode-block" id="Resolve.save_layout_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.save_layout_preset.html#pybmd.resolve.Resolve.save_layout_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">save_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves current UI layout as a preset named preset_name.</span>
 
 <span class="sd">        Args:</span>
@@ -579,7 +579,7 @@
 
 <div class="viewcode-block" id="Resolve.update_layout_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.update_layout_preset.html#pybmd.resolve.Resolve.update_layout_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">update_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Overwrites preset named &#39;preset_name&#39; with current UI layout.</span>
 
 <span class="sd">        Args:</span>
@@ -597,7 +597,7 @@
 
 <div class="viewcode-block" id="Resolve.import_render_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.import_render_preset.html#pybmd.resolve.Resolve.import_render_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">import_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a preset from presetPath (string) and set it as current preset for rendering.</span>
 
 <span class="sd">        Args:</span>
@@ -611,7 +611,7 @@
 
 <div class="viewcode-block" id="Resolve.export_render_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.export_render_preset.html#pybmd.resolve.Resolve.export_render_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">export_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a preset to a given path (string) if presetName(string) exists.</span>
 
 <span class="sd">        Args:</span>
@@ -626,7 +626,7 @@
 
 <div class="viewcode-block" id="Resolve.import_burn_in_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.import_burn_in_preset.html#pybmd.resolve.Resolve.import_burn_in_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">import_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a data burn in preset from a given presetPath (string)</span>
 
 <span class="sd">        Args:</span>
@@ -640,7 +640,7 @@
 
 <div class="viewcode-block" id="Resolve.export_burn_in_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.export_burn_in_preset.html#pybmd.resolve.Resolve.export_burn_in_preset">[docs]</a>
-    <span class="k">def</span> <span class="nf">export_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a data burn in preset to a given path (string) if presetName (string) exists.</span>
 
 <span class="sd">        Args:   </span>
@@ -657,7 +657,7 @@
     <span class="c1"># Add at DR 19.0.0</span>
 <div class="viewcode-block" id="Resolve.get_keyframe_mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_keyframe_mode.html#pybmd.resolve.Resolve.get_keyframe_mode">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_keyframe_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_keyframe_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Refer to section &#39;Keyframe Mode information&#39; for details.</span>
 
 <span class="sd">        Returns:</span>
@@ -668,7 +668,7 @@
 
 <div class="viewcode-block" id="Resolve.set_keyframe_mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.set_keyframe_mode.html#pybmd.resolve.Resolve.set_keyframe_mode">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_keyframe_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_frame_mode</span><span class="p">:</span> <span class="s2">&quot;KeyframeMode&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_keyframe_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_frame_mode</span><span class="p">:</span> <span class="s2">&quot;KeyframeMode&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Refer to section &#39;Keyframe Mode information&#39; below for details.</span>
 
 <span class="sd">        Args:</span>

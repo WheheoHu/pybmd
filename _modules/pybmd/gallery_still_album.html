@@ -29,7 +29,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=f5768dfe"></script>
+    <script src="../../_static/documentation_options.js?v=510e09e7"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/gallery_still_album';</script>
@@ -328,16 +328,16 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.gallery_still_album</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">pybmd.gallery_still</span> <span class="kn">import</span> <span class="n">GalleryStill</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery_still</span><span class="w"> </span><span class="kn">import</span> <span class="n">GalleryStill</span>
 
-<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
 
 
 <div class="viewcode-block" id="StillFormat">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.StillFormat.html#pybmd.gallery_still_album.StillFormat">[docs]</a>
-<span class="k">class</span> <span class="nc">StillFormat</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">StillFormat</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;StillFormats&quot;&quot;&quot;</span>
     <span class="n">DPX</span> <span class="o">=</span> <span class="s2">&quot;dpx&quot;</span>
     <span class="n">CIN</span> <span class="o">=</span> <span class="s2">&quot;cin&quot;</span>
@@ -352,18 +352,18 @@
 
 <div class="viewcode-block" id="GalleryStillAlbum">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.GalleryStillAlbum.html#pybmd.gallery_still_album.GalleryStillAlbum">[docs]</a>
-<span class="k">class</span> <span class="nc">GalleryStillAlbum</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GalleryStillAlbum</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for GalleryStillAlbum.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="GalleryStillAlbum.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.GalleryStillAlbum.__init__.html#pybmd.gallery_still_album.GalleryStillAlbum.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still_album</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still_album</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_gallery_still_album</span> <span class="o">=</span> <span class="n">gallery_still_album</span></div>
 
 
 <div class="viewcode-block" id="GalleryStillAlbum.delete_stills">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.GalleryStillAlbum.delete_stills.html#pybmd.gallery_still_album.GalleryStillAlbum.delete_stills">[docs]</a>
-    <span class="k">def</span> <span class="nf">delete_stills</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_stills</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStill</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete_stills</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_stills</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStill</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the given gallery stills from the album.&quot;&quot;&quot;</span>
         <span class="n">gallery_still_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">still</span><span class="o">.</span><span class="n">_gallery_still</span> <span class="k">for</span> <span class="n">still</span> <span class="ow">in</span> <span class="n">gallery_stills</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="o">.</span><span class="n">DeleteStills</span><span class="p">(</span><span class="n">gallery_still_list</span><span class="p">)</span></div>
@@ -371,7 +371,7 @@
 
 <div class="viewcode-block" id="GalleryStillAlbum.export_stills">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.GalleryStillAlbum.export_stills.html#pybmd.gallery_still_album.GalleryStillAlbum.export_stills">[docs]</a>
-    <span class="k">def</span> <span class="nf">export_stills</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_stills</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStill</span><span class="p">],</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="n">StillFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_stills</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_stills</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStill</span><span class="p">],</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="n">StillFormat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports list of GalleryStill objects &#39;galleryStill&#39; to directory &#39;folderPath&#39;, with filename prefix &#39;filePrefix&#39;, using file format &#39;format&#39; </span>
 
 <span class="sd">        Args:</span>
@@ -388,14 +388,14 @@
 
 <div class="viewcode-block" id="GalleryStillAlbum.get_label">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.GalleryStillAlbum.get_label.html#pybmd.gallery_still_album.GalleryStillAlbum.get_label">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still</span><span class="p">:</span> <span class="n">GalleryStill</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still</span><span class="p">:</span> <span class="n">GalleryStill</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns label of given gallery still.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="o">.</span><span class="n">GetLabel</span><span class="p">(</span><span class="n">gallery_still</span><span class="o">.</span><span class="n">_gallery_still</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="GalleryStillAlbum.get_stills">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.GalleryStillAlbum.get_stills.html#pybmd.gallery_still_album.GalleryStillAlbum.get_stills">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_stills</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStill</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_stills</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStill</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of GalleryStill objects in this album.&quot;&quot;&quot;</span>
         <span class="n">gallery_still_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">gallery_still</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="o">.</span><span class="n">GetStills</span><span class="p">():</span>
@@ -405,7 +405,7 @@
 
 <div class="viewcode-block" id="GalleryStillAlbum.set_label">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.GalleryStillAlbum.set_label.html#pybmd.gallery_still_album.GalleryStillAlbum.set_label">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still</span><span class="p">:</span> <span class="n">GalleryStill</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still</span><span class="p">:</span> <span class="n">GalleryStill</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;sets label of given gallery still.</span>
 
 <span class="sd">        Args:</span>
