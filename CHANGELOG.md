@@ -281,3 +281,8 @@
 ## API
 ### StillManager
 - Fix bug in timeline framerate detection
+
+# 2024.4.2
+## API
+### StillManager
+- Refactor StillManager to support all metadata from davinci resolve GUI
