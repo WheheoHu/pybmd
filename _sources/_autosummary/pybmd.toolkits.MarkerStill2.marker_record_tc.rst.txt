@@ -1,0 +1,6 @@
+pybmd.toolkits.MarkerStill2.marker\_record\_tc
+==============================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoattribute:: MarkerStill2.marker_record_tc

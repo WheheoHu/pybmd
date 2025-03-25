@@ -1,0 +1,6 @@
+pybmd.toolkits.MarkerStill2.clip\_obj
+=====================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoattribute:: MarkerStill2.clip_obj

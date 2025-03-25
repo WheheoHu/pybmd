@@ -1,0 +1,6 @@
+pybmd.toolkits.StillManager.STILL\_NAME\_WILDCARD\_MAPPING
+==========================================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoattribute:: StillManager.STILL_NAME_WILDCARD_MAPPING

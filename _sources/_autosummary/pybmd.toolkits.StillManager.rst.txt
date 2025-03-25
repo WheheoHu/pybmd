@@ -30,4 +30,11 @@ StillManager
 
    
    
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~StillManager.STILL_NAME_WILDCARD_MAPPING
+   
    
