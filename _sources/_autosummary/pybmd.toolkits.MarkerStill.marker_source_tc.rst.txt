@@ -1,0 +1,6 @@
+pybmd.toolkits.MarkerStill.marker\_source\_tc
+=============================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. autoattribute:: MarkerStill.marker_source_tc

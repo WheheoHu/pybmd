@@ -1,6 +1,0 @@
-pybmd.toolkits.MarkerStill.reel\_name
-=====================================
-
-.. currentmodule:: pybmd.toolkits
-
-.. autoattribute:: MarkerStill.reel_name

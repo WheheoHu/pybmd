@@ -1,8 +1,0 @@
-MarkerStill2.get\_property
-==========================
-
-.. currentmodule:: pybmd.toolkits
-
-.. automethod:: MarkerStill2.get_property
-
-    .. autosummary::

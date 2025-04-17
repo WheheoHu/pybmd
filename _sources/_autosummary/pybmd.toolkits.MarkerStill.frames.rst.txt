@@ -1,6 +1,0 @@
-pybmd.toolkits.MarkerStill.frames
-=================================
-
-.. currentmodule:: pybmd.toolkits
-
-.. autoattribute:: MarkerStill.frames

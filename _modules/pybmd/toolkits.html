@@ -328,7 +328,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.toolkits</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
@@ -343,7 +344,6 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.timeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timeline</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_pool</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaPool</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dftt_timecode</span><span class="w"> </span><span class="kn">import</span> <span class="n">DfttTimecode</span>
-
 
 
 <div class="viewcode-block" id="change_timeline_resolution">
@@ -459,50 +459,24 @@
 
 <span class="c1"># TODO render_timeline</span>
 
-
 <div class="viewcode-block" id="MarkerStill">
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.MarkerStill.html#pybmd.toolkits.MarkerStill">[docs]</a>
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">MarkerStill</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;MarkerStill object contains still and it&#39;s properties&quot;&quot;&quot;</span>
-
-    <span class="n">still_obj</span><span class="p">:</span> <span class="n">GalleryStill</span>
-    <span class="n">reel_name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">reel_number</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">frames</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">clip_frame_count</span><span class="p">:</span> <span class="nb">int</span>
-
-<div class="viewcode-block" id="MarkerStill.get_property">
-<a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.MarkerStill.get_property.html#pybmd.toolkits.MarkerStill.get_property">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;reel_name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">reel_name</span><span class="p">,</span>
-            <span class="s2">&quot;reel_number&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">reel_number</span><span class="p">,</span>
-            <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span>
-            <span class="s2">&quot;frames&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">,</span>
-            <span class="s2">&quot;clip_frame_count&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">clip_frame_count</span><span class="p">,</span>
-        <span class="p">}</span></div>
-</div>
-
-
-
-<div class="viewcode-block" id="MarkerStill2">
-<a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.MarkerStill2.html#pybmd.toolkits.MarkerStill2">[docs]</a>
-<span class="nd">@dataclass</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">MarkerStill2</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">still_obj</span><span class="p">:</span> <span class="n">GalleryStill</span>
     <span class="n">clip_obj</span><span class="p">:</span> <span class="n">MediaPoolItem</span>
     <span class="n">marker_record_tc</span><span class="p">:</span> <span class="n">DfttTimecode</span>
     <span class="n">marker_source_tc</span><span class="p">:</span> <span class="n">DfttTimecode</span>
+    <span class="n">marker_info</span><span class="p">:</span> <span class="n">Dict</span>
 
-<div class="viewcode-block" id="MarkerStill2.get_property">
-<a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.MarkerStill2.get_property.html#pybmd.toolkits.MarkerStill2.get_property">[docs]</a>
+<div class="viewcode-block" id="MarkerStill.get_property">
+<a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.MarkerStill.get_property.html#pybmd.toolkits.MarkerStill.get_property">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker_record_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(),</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker_source_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;smpte&quot;</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">marker_info</span><span class="p">,</span>
         <span class="p">]</span></div>
 </div>
 
@@ -543,7 +517,7 @@
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;CAN NOT get timeline framerate because this timeline use custom timeline settings, use timeline_framerate :</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span><span class="si">}</span><span class="s2"> instead &quot;</span>
             <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MarkerStill2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MarkerStill</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -556,7 +530,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.grab_still_from_timeline_markers.html#pybmd.toolkits.StillManager.grab_still_from_timeline_markers">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">grab_still_from_timeline_markers</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">grab_sleep_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MarkerStill2</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MarkerStill</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;grab stills from timeline markers.</span>
 
 <span class="sd">        Args:</span>
@@ -569,6 +543,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">Timeline</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span>
         <span class="n">marker_list</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">get_markers</span><span class="p">()</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeline Marke:</span><span class="si">{</span><span class="n">marker_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeline Marker Count:</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">marker_list</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">timeline_df_flag</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span>
             <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_setting</span><span class="p">(</span><span class="s2">&quot;timelineDropFrameTimecode&quot;</span><span class="p">))</span>
@@ -581,12 +556,11 @@
         <span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;timeline_start_timecode: </span><span class="si">{</span><span class="n">timeline_start_timecode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="c1"># grab stills for every marker</span>
-        <span class="k">for</span> <span class="n">marker_frameid</span> <span class="ow">in</span> <span class="n">marker_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">marker_frameid</span><span class="p">,</span> <span class="n">marker_info</span> <span class="ow">in</span> <span class="n">marker_list</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 
             <span class="n">marker_record_tc</span><span class="p">:</span> <span class="n">DfttTimecode</span> <span class="o">=</span> <span class="n">timeline_start_timecode</span> <span class="o">+</span> <span class="n">marker_frameid</span>
             <span class="n">timeline</span><span class="o">.</span><span class="n">set_current_timecode</span><span class="p">(</span><span class="n">marker_record_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">())</span>
             <span class="n">timeline_item</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">get_current_video_item</span><span class="p">()</span>
-            <span class="c1"># pro=timeline_item.get_media_pool_item().get_clip_property()</span>
 
             <span class="c1"># get source tc for the marker</span>
             <span class="n">clip_df_flag</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span>
@@ -600,11 +574,6 @@
                 <span class="n">clip_fps</span><span class="p">,</span>
                 <span class="n">drop_frame</span><span class="o">=</span><span class="n">clip_df_flag</span><span class="p">,</span>
             <span class="p">)</span>
-            <span class="c1"># clip_tc_frames = int(clip_start_timecode.timecode_output(&quot;frame&quot;)) + (</span>
-            <span class="c1">#     int(timeline_start_timecode.timecode_output(&quot;frame&quot;))</span>
-            <span class="c1">#     + marker_frameid</span>
-            <span class="c1">#     - timeline_item.get_start()</span>
-            <span class="c1"># )</span>
             <span class="n">clip_tc_frame_offset</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="nb">int</span><span class="p">(</span><span class="n">timeline_start_timecode</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;frame&quot;</span><span class="p">))</span>
                 <span class="o">+</span> <span class="n">marker_frameid</span>
@@ -615,18 +584,18 @@
 
             <span class="n">still</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">grab_still</span><span class="p">()</span>
 
-            <span class="n">marker_still</span> <span class="o">=</span> <span class="n">MarkerStill2</span><span class="p">(</span>
+            <span class="n">marker_still</span> <span class="o">=</span> <span class="n">MarkerStill</span><span class="p">(</span>
                 <span class="n">still</span><span class="p">,</span>
                 <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_media_pool_item</span><span class="p">(),</span>
                 <span class="n">marker_record_tc</span><span class="p">,</span>
                 <span class="n">marker_source_tc</span><span class="p">,</span>
+                <span class="n">marker_info</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marker_still</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">grab_sleep_time</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_get_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marker_still</span><span class="p">:</span> <span class="n">MarkerStill2</span><span class="p">,</span> <span class="n">wildcard</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="c1"># Get metadata</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marker_still</span><span class="p">:</span> <span class="n">MarkerStill</span><span class="p">,</span> <span class="n">wildcard</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">wildcard</span> <span class="o">==</span> <span class="s2">&quot;clip_frame_tc&quot;</span><span class="p">:</span>
             <span class="n">source_frame_tc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
                 <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_source_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;frame&quot;</span><span class="p">)</span>
@@ -642,6 +611,10 @@
                     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(^[a-z0-9A-Z_]</span><span class="si">{6}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">reel_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">add_note</span><span class="p">(</span><span class="s2">&quot;Reel name is not valid,Can not get reel number&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">wildcard</span> <span class="o">==</span> <span class="s2">&quot;marker_note&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;note&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">wildcard</span> <span class="o">==</span> <span class="s2">&quot;marker_name&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
         <span class="n">property_key</span> <span class="o">=</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">STILL_NAME_WILDCARD_MAPPING</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wildcard</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">STILL_NAME_WILDCARD_MAPPING</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wildcard</span><span class="p">)</span>
@@ -649,6 +622,8 @@
         <span class="p">)</span>
 
         <span class="n">result</span> <span class="o">=</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="n">property_key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">property_key</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
             <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
@@ -697,7 +672,7 @@
             <span class="n">export_path</span> <span class="o">=</span> <span class="n">export_base_path</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">makedir</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Folder </span><span class="si">{</span><span class="n">export_path</span><span class="si">}</span><span class="s2"> already exist,skip create&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>

@@ -34,10 +34,9 @@ MarkerStill
       :toctree:
    
       ~MarkerStill.still_obj
-      ~MarkerStill.reel_name
-      ~MarkerStill.reel_number
-      ~MarkerStill.file_name
-      ~MarkerStill.frames
-      ~MarkerStill.clip_frame_count
+      ~MarkerStill.clip_obj
+      ~MarkerStill.marker_record_tc
+      ~MarkerStill.marker_source_tc
+      ~MarkerStill.marker_info
    
    

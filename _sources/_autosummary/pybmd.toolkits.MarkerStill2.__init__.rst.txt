@@ -1,8 +1,0 @@
-MarkerStill2.\_\_init\_\_
-=========================
-
-.. currentmodule:: pybmd.toolkits
-
-.. automethod:: MarkerStill2.__init__
-
-    .. autosummary::

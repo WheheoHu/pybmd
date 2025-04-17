@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="StillManager.__init__" href="pybmd.toolkits.StillManager.__init__.html" />
-    <link rel="prev" title="pybmd.toolkits.MarkerStill2.marker_source_tc" href="pybmd.toolkits.MarkerStill2.marker_source_tc.html" />
+    <link rel="prev" title="pybmd.toolkits.MarkerStill.marker_info" href="pybmd.toolkits.MarkerStill.marker_info.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -853,20 +853,10 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.__init__.html">MarkerStill.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.get_property.html">MarkerStill.get_property</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.still_obj.html">pybmd.toolkits.MarkerStill.still_obj</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.reel_name.html">pybmd.toolkits.MarkerStill.reel_name</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.reel_number.html">pybmd.toolkits.MarkerStill.reel_number</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.file_name.html">pybmd.toolkits.MarkerStill.file_name</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.frames.html">pybmd.toolkits.MarkerStill.frames</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.clip_frame_count.html">pybmd.toolkits.MarkerStill.clip_frame_count</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.toolkits.MarkerStill2.html">MarkerStill2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill2.__init__.html">MarkerStill2.__init__</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill2.get_property.html">MarkerStill2.get_property</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill2.still_obj.html">pybmd.toolkits.MarkerStill2.still_obj</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill2.clip_obj.html">pybmd.toolkits.MarkerStill2.clip_obj</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill2.marker_record_tc.html">pybmd.toolkits.MarkerStill2.marker_record_tc</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill2.marker_source_tc.html">pybmd.toolkits.MarkerStill2.marker_source_tc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.clip_obj.html">pybmd.toolkits.MarkerStill.clip_obj</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.marker_record_tc.html">pybmd.toolkits.MarkerStill.marker_record_tc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.marker_source_tc.html">pybmd.toolkits.MarkerStill.marker_source_tc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.MarkerStill.marker_info.html">pybmd.toolkits.MarkerStill.marker_info</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">StillManager</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1003,7 +993,7 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">grab_still_from_timeline_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timeline</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grab_sleep_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">MarkerStill2</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/toolkits.html#StillManager.grab_still_from_timeline_markers"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-name descname"><span class="pre">grab_still_from_timeline_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timeline</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grab_sleep_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">MarkerStill</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/toolkits.html#StillManager.grab_still_from_timeline_markers"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>grab stills from timeline markers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1055,12 +1045,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="pybmd.toolkits.MarkerStill2.marker_source_tc.html"
+       href="pybmd.toolkits.MarkerStill.marker_info.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">pybmd.toolkits.MarkerStill2.marker_source_tc</p>
+        <p class="prev-next-title">pybmd.toolkits.MarkerStill.marker_info</p>
       </div>
     </a>
     <a class="right-next"

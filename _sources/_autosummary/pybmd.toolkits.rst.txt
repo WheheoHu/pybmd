@@ -31,7 +31,6 @@ toolkits
       :template: class.rst
    
       MarkerStill
-      MarkerStill2
       StillManager
    
    
