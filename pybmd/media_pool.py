@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 from typing import TYPE_CHECKING, List
 
 from multimethod import multimethod
@@ -167,7 +168,7 @@ class MediaPool:
             [timeline._timeline for timeline in timelines]
         )
 
-    def export_metadata(self, file_name: str, clips: List[MediaPoolItem]) -> bool:
+    def export_metadata(self, file_name: str, clips: List[MediaPoolItem]=None) -> bool:
         """export metadata to csv file
 
         Args:
@@ -177,6 +178,9 @@ class MediaPool:
         Returns:
             bool: True if successful, False if not
         """
+        if not clips:
+            return self._media_pool.ExportMetadata(file_name)
+        
         return self._media_pool.ExportMetadata(
             file_name, [clip._media_pool_item for clip in clips]
         )
