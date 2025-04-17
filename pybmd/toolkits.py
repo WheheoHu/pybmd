@@ -1,3 +1,4 @@
+from ast import Dict
 from dataclasses import dataclass
 import logging
 import os
@@ -13,7 +14,6 @@ from pybmd.project import Project
 from pybmd.timeline import Timeline
 from pybmd.media_pool import MediaPool
 from dftt_timecode import DfttTimecode
-
 
 
 def change_timeline_resolution(timeline: Timeline, width, height) -> bool:
@@ -114,40 +114,20 @@ def add_subfolders(media_pool: MediaPool, folder: Folder, subfolder_path: str) -
 
 # TODO render_timeline
 
-
 @dataclass
 class MarkerStill(object):
-    """MarkerStill object contains still and it's properties"""
-
-    still_obj: GalleryStill
-    reel_name: str
-    reel_number: int
-    file_name: str
-    frames: int
-    clip_frame_count: int
-
-    def get_property(self):
-        return {
-            "reel_name": self.reel_name,
-            "reel_number": self.reel_number,
-            "file_name": self.file_name,
-            "frames": self.frames,
-            "clip_frame_count": self.clip_frame_count,
-        }
-
-
-@dataclass
-class MarkerStill2(object):
     still_obj: GalleryStill
     clip_obj: MediaPoolItem
     marker_record_tc: DfttTimecode
     marker_source_tc: DfttTimecode
+    marker_info: Dict
 
     def get_property(self):
         return [
             self.clip_obj.get_name(),
             self.marker_record_tc.timecode_output(),
             self.marker_source_tc.timecode_output("smpte"),
+            self.marker_info,
         ]
 
 
@@ -182,7 +162,7 @@ class StillManager(object):
             logger.warning(
                 f"CAN NOT get timeline framerate because this timeline use custom timeline settings, use timeline_framerate :{self._timeline_framerate} instead "
             )
-        self.marker_still_list: List[MarkerStill2] = list()
+        self.marker_still_list: List[MarkerStill] = list()
 
     def __repr__(self):
         temp_list = [
@@ -192,7 +172,7 @@ class StillManager(object):
 
     def grab_still_from_timeline_markers(
         self, timeline: Timeline = None, grab_sleep_time: float = 0.5
-    ) -> List[MarkerStill2]:
+    ) -> List[MarkerStill]:
         """grab stills from timeline markers.
 
         Args:
@@ -205,6 +185,7 @@ class StillManager(object):
         if isinstance(timeline, Timeline) is False:
             timeline = self._timeline
         marker_list = timeline.get_markers()
+        logger.info(f"Timeline Marke:{marker_list}")
         logger.info(f"Timeline Marker Count:{len(marker_list)}")
         timeline_df_flag = bool(
             int(self._timeline.get_setting("timelineDropFrameTimecode"))
@@ -217,12 +198,11 @@ class StillManager(object):
         )
         logger.debug(f"timeline_start_timecode: {timeline_start_timecode}")
         # grab stills for every marker
-        for marker_frameid in marker_list:
+        for marker_frameid, marker_info in marker_list.items():
 
             marker_record_tc: DfttTimecode = timeline_start_timecode + marker_frameid
             timeline.set_current_timecode(marker_record_tc.timecode_output())
             timeline_item = timeline.get_current_video_item()
-            # pro=timeline_item.get_media_pool_item().get_clip_property()
 
             # get source tc for the marker
             clip_df_flag = bool(
@@ -236,11 +216,6 @@ class StillManager(object):
                 clip_fps,
                 drop_frame=clip_df_flag,
             )
-            # clip_tc_frames = int(clip_start_timecode.timecode_output("frame")) + (
-            #     int(timeline_start_timecode.timecode_output("frame"))
-            #     + marker_frameid
-            #     - timeline_item.get_start()
-            # )
             clip_tc_frame_offset = (
                 int(timeline_start_timecode.timecode_output("frame"))
                 + marker_frameid
@@ -251,17 +226,17 @@ class StillManager(object):
 
             still = timeline.grab_still()
 
-            marker_still = MarkerStill2(
+            marker_still = MarkerStill(
                 still,
                 timeline_item.get_media_pool_item(),
                 marker_record_tc,
                 marker_source_tc,
+                marker_info,
             )
             self.marker_still_list.append(marker_still)
             time.sleep(grab_sleep_time)
 
-    def _get_metadata(self, marker_still: MarkerStill2, wildcard: str) -> str:
-        # Get metadata
+    def _get_metadata(self, marker_still: MarkerStill, wildcard: str) -> str:
         if wildcard == "clip_frame_tc":
             source_frame_tc = int(
                 marker_still.marker_source_tc.timecode_output("frame")
@@ -277,6 +252,10 @@ class StillManager(object):
                     return re.findall(r"(^[a-z0-9A-Z_]{6})", reel_name)[0]
                 except Exception as e:
                     raise e.add_note("Reel name is not valid,Can not get reel number")
+        if wildcard == "marker_note":
+            return marker_still.marker_info.get("note")
+        if wildcard == "marker_name":
+            return marker_still.marker_info.get("name")
         property_key = (
             self.STILL_NAME_WILDCARD_MAPPING.get(wildcard)
             if self.STILL_NAME_WILDCARD_MAPPING.get(wildcard)
@@ -284,6 +263,8 @@ class StillManager(object):
         )
 
         result = marker_still.clip_obj.get_clip_property(property_key)
+        if not result:
+            result = marker_still.clip_obj.get_metadata(property_key)
         if isinstance(result, dict):
             result = ""
             logger.warning(
@@ -330,7 +311,7 @@ class StillManager(object):
             export_path = export_base_path
 
         try:
-            os.makedir(export_path)
+            os.makedirs(export_path)
         except Exception as e:
             logger.info(f"Folder {export_path} already exist,skip create")
         else:
