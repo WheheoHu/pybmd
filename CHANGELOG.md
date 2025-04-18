@@ -286,3 +286,10 @@
 ## API
 ### StillManager
 - Refactor StillManager to support all metadata from davinci resolve GUI
+
+# 2025.1.1
+## API
+### StillManager
+- Still manager support maker info as wildcard in file name format(`marker_note` and `marker_name`)
+### MediaPool
+- Fix bug for `export_metadata` method when clip is none
