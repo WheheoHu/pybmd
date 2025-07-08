@@ -1,0 +1,8 @@
+MediaPoolItem.monitor\_growing\_file
+====================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.monitor_growing_file
+
+    .. autosummary::

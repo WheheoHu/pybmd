@@ -1,0 +1,8 @@
+MediaPoolItem.replace\_clip\_preserve\_sub\_clip
+================================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.replace_clip_preserve_sub_clip
+
+    .. autosummary::

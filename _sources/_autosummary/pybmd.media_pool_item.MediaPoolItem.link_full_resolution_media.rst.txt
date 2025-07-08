@@ -1,0 +1,8 @@
+MediaPoolItem.link\_full\_resolution\_media
+===========================================
+
+.. currentmodule:: pybmd.media_pool_item
+
+.. automethod:: MediaPoolItem.link_full_resolution_media
+
+    .. autosummary::

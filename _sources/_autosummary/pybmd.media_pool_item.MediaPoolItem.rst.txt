@@ -44,8 +44,11 @@ MediaPoolItem
       ~MediaPoolItem.get_name
       ~MediaPoolItem.get_third_party_metadata
       ~MediaPoolItem.get_unique_id
+      ~MediaPoolItem.link_full_resolution_media
       ~MediaPoolItem.link_proxy_media
+      ~MediaPoolItem.monitor_growing_file
       ~MediaPoolItem.replace_clip
+      ~MediaPoolItem.replace_clip_preserve_sub_clip
       ~MediaPoolItem.set_clip_color
       ~MediaPoolItem.set_clip_property
       ~MediaPoolItem.set_mark_in_out
