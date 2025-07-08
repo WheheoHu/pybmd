@@ -1,5 +1,3 @@
-
-from os import path
 from typing import TYPE_CHECKING, List
 
 from pybmd.media_pool_item import MediaPoolItem

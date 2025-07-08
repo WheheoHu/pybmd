@@ -1,5 +1,4 @@
 from pathlib import Path
-import re
 from typing import TYPE_CHECKING, List
 
 from multimethod import multimethod

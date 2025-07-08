@@ -1,6 +1,15 @@
 # Change Log for PyBMD
 ----
-# 2023.2.0
+# 2025.2.0
+## API
+### MediaPoolItem
+- Add `link_full_resolution_media()` - Links proxy media to full resolution media files (DR 20.0.0)
+- Add `replace_clip_preserve_sub_clip()` - Replaces clip while preserving original sub clip extents (DR 20.0.0)
+- Add `monitor_growing_file()` - Monitor a file as it keeps growing (DR 20.0.0)
+
+
+----
+# 2025.1.1
 ## Project
 - Add `LoadBurnInPreset`
 

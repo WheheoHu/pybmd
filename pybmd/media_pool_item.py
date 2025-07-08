@@ -1,4 +1,4 @@
-from typing import Any, Dict, Union
+from typing import Any, Dict
 from multimethod import multimethod
 
 
@@ -347,3 +347,36 @@ class MediaPoolItem:
             bool: Returns True if successful.
         """
         return self._media_pool_item.ClearMarkInOut(type)
+
+    ##############################################################################################################################
+    # Add at DR 20.0.0
+
+    def link_full_resolution_media(self, full_res_media_path: str) -> bool:
+        """Links proxy media to full resolution media files specified via its path.
+
+        Args:
+            full_res_media_path (str): path to full resolution media file
+
+        Returns:
+            bool: Returns True if successful.
+        """
+        return self._media_pool_item.LinkFullResolutionMedia(full_res_media_path)
+
+    def replace_clip_preserve_sub_clip(self, file_path: str) -> bool:
+        """Replaces the underlying asset and metadata of a video or audio clip with the specified absolute clip path, preserving original sub clip extents.
+
+        Args:
+            file_path (str): absolute path to replacement clip
+
+        Returns:
+            bool: Returns True if successful.
+        """
+        return self._media_pool_item.ReplaceClipPreserveSubClip(file_path)
+
+    def monitor_growing_file(self) -> bool:
+        """Monitor a file as long as it keeps growing (stops if the file does not grow for some time).
+
+        Returns:
+            bool: Returns True if successful.
+        """
+        return self._media_pool_item.MonitorGrowingFile()
