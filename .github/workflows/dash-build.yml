@@ -16,8 +16,8 @@ jobs:
         uses: astral-sh/setup-uv@v4
         with:
           version: "latest"
-      - name: Set up Python
-        run: uv python install
+      # - name: Set up Python
+      #   run: uv python install
       - name: install doc2dash
         run: |
           brew install hynek/tap/doc2dash
