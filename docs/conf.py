@@ -5,15 +5,21 @@
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
-import sys, os
+import sys
+import os
+import tomllib
 sys.path.append(os.path.abspath(".."))
 
 import pybmd as package
 
+# Read version from pyproject.toml
+with open(os.path.join(os.path.dirname(__file__), "..", "pyproject.toml"), "rb") as f:
+    pyproject_data = tomllib.load(f)
+
 project = package.__name__
 copyright = '2023, Wheheo Hu'
 author = 'Wheheo Hu'
-release = package.__version__
+release = pyproject_data["project"]["version"]
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
