@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pybmd"
+version = "2025.2.0"
+description = "python library for Davinci Resolve(Repack)"
+readme = "README.md"
+license = {text = "LGPL-3.0-or-later"}
+authors = [
+    {name = "wheheo", email = "wheheohu@outlook.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "psutil",
+    "dftt-timecode==0.0.14",
+    "multimethod",
+]
+
+[project.urls]
+Homepage = "https://github.com/WheheoHu/pybmd"
+Repository = "https://github.com/WheheoHu/pybmd"
+
+[project.optional-dependencies]
+docs = [
+    "sphinx",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2", 
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-qthelp==1.0.3",
+    "sphinxcontrib-serializinghtml==1.1.10",
+    "pydata-sphinx-theme",
+    "alabaster",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pybmd"]

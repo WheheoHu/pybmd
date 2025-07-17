@@ -9,3 +9,4 @@ __change_version__ = "0"
 __version__ = ".".join(
     (__major_version__, __minor_version__, __change_version__)
 )
+# __version__="2025.2.0"
