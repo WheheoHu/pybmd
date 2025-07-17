@@ -612,7 +612,7 @@ class Timeline:
         Returns:
             MediaPoolItem: Returns the media pool item corresponding to the timeline
         """
-        return self._timeline.GetMediaPoolItem()
+        return MediaPoolItem(self._timeline.GetMediaPoolItem())
 
     def get_mark_in_out(self) -> dict:
         """Gets the in/out marks set on the timeline.
