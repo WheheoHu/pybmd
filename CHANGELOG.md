@@ -1,5 +1,15 @@
 # Change Log for PyBMD
 ----
+# 2025.2.1
+## Documentation
+- Fix Sphinx documentation build by properly reading version from pyproject.toml
+## Dev
+- Convert project manager to uv
+## API
+### Timeline 
+- Fix bug for `Timeline.get_media_pool_item()`
+
+----
 # 2025.2.0
 ## API
 ### MediaPoolItem
