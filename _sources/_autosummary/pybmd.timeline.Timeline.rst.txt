@@ -59,6 +59,7 @@ Timeline
       ~Timeline.get_track_name
       ~Timeline.get_track_sub_type
       ~Timeline.get_unique_id
+      ~Timeline.get_voice_isolation_state
       ~Timeline.grab_all_stills
       ~Timeline.grab_still
       ~Timeline.import_into_timeline
@@ -77,6 +78,7 @@ Timeline
       ~Timeline.set_track_enable
       ~Timeline.set_track_lock
       ~Timeline.set_track_name
+      ~Timeline.set_voice_isolation_state
       ~Timeline.update_marker_custom_data
    
    

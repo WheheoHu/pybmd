@@ -1,0 +1,8 @@
+TimelineItem.get\_voice\_isolation\_state
+=========================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.get_voice_isolation_state
+
+    .. autosummary::

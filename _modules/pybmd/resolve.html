@@ -333,18 +333,20 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">psutil</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.error</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.error</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResolveInitError</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaStorage</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.project_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProjectManager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.fusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fusion</span>
+
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeyframeMode</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_init_bmd</span>
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">_is_process_running</span><span class="p">(</span><span class="n">process_name</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">process_iter</span><span class="p">([</span><span class="s1">&#39;pid&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]):</span>
-        <span class="k">if</span> <span class="n">process</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">process_name</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">process_iter</span><span class="p">([</span><span class="s2">&quot;pid&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">process</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">process_name</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 
@@ -354,14 +356,17 @@
     <span class="n">app_name_win</span> <span class="o">=</span> <span class="s2">&quot;Resolve.exe&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">_is_process_running</span><span class="p">(</span><span class="n">app_name_mac</span><span class="p">)</span> <span class="ow">or</span> <span class="n">_is_process_running</span><span class="p">(</span><span class="n">app_name_win</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Davinci Resolve is already running.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Davinci Resolve is already running.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Darwin&#39;</span><span class="p">:</span>  <span class="c1"># macOS</span>
+            <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span>  <span class="c1"># macOS</span>
                 <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-                    <span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;/Applications/DaVinci Resolve/DaVinci Resolve.app&#39;</span><span class="p">])</span>
+                    <span class="p">[</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;-a&quot;</span><span class="p">,</span> <span class="s2">&quot;/Applications/DaVinci Resolve/DaVinci Resolve.app&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opened DaVinci Resolve successfully on macOS!&quot;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Windows&#39;</span><span class="p">:</span>  <span class="c1"># Windows</span>
-                <span class="n">resolve_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe&quot;</span>
+            <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>  <span class="c1"># Windows</span>
+                <span class="n">resolve_path</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">r</span><span class="s2">&quot;C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe&quot;</span>
+                <span class="p">)</span>
                 <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">resolve_path</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opened DaVinci Resolve successfully on Windows!&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -369,25 +374,21 @@
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            
-
 
 
 <span class="n">RESOLVE_VERSION</span> <span class="o">=</span> <span class="kc">None</span>
-
-
 
 
 <div class="viewcode-block" id="Resolve">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.html#pybmd.resolve.Resolve">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Resolve</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Resolve class. Init Davinci Resolve Object</span>
-<span class="sd">        Base for everything</span>
+<span class="sd">    Base for everything</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Resolve.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.__init__.html#pybmd.resolve.Resolve.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">auto_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">auto_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Init Davinci Resolve Object</span>
 
 <span class="sd">        Args:</span>
@@ -397,25 +398,20 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            ResolveInitError: davinci resolve init failed.you need to check if davinci resolve is running.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">auto_start</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">auto_start</span><span class="p">:</span>
             <span class="n">_start_local_resolve</span><span class="p">()</span>
-        
-        <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_bmd_module_object</span><span class="o">=</span><span class="n">_init_bmd</span><span class="o">.</span><span class="n">_init_bmd_module</span><span class="p">()</span>
-        <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_resolve_object</span> <span class="o">=</span><span class="n">_init_bmd</span><span class="o">.</span><span class="n">_init_resolve</span><span class="p">(</span>
-            <span class="n">davinci_ip</span><span class="o">=</span><span class="n">resolve_ip</span><span class="p">)</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span> <span class="o">=</span><span class="n">_init_bmd</span><span class="o">.</span><span class="n">_resolve_object</span>
-        
+
+        <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_bmd_module_object</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_init_bmd_module</span><span class="p">()</span>
+        <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_resolve_object</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_init_resolve</span><span class="p">(</span><span class="n">davinci_ip</span><span class="o">=</span><span class="n">resolve_ip</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_resolve_object</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ResolveInitError</span>
 
         <span class="k">global</span> <span class="n">RESOLVE_VERSION</span>
         <span class="n">RESOLVE_VERSION</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span></div>
-
-
-
 
 
 <div class="viewcode-block" id="Resolve.delete_layout_preset">
@@ -438,8 +434,8 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports preset named preset_name to path preset_file_path.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            preset_name (str): </span>
-<span class="sd">            preset_file_path (str): </span>
+<span class="sd">            preset_name (str):</span>
+<span class="sd">            preset_file_path (str):</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: result</span>
@@ -469,7 +465,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the MediaStorage  object to query and act on media locations.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            MediaStorage: </span>
+<span class="sd">            MediaStorage:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">MediaStorage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetMediaStorage</span><span class="p">())</span></div>
 
@@ -491,7 +487,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ProjectManager object for currently open database.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            ProjectManager: </span>
+<span class="sd">            ProjectManager:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ProjectManager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetProjectManager</span><span class="p">())</span></div>
 
@@ -521,9 +517,9 @@
 <div class="viewcode-block" id="Resolve.import_layout_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.import_layout_preset.html#pybmd.resolve.Resolve.import_layout_preset">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">import_layout_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Imports preset from path &#39;preset_file_path&#39;. </span>
-<span class="sd">            The optional argument &#39;preset_name&#39; specifies how the preset shall be named.</span>
-<span class="sd">            If not specified, the preset is named based on the filename.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Imports preset from path &#39;preset_file_path&#39;.</span>
+<span class="sd">        The optional argument &#39;preset_name&#39; specifies how the preset shall be named.</span>
+<span class="sd">        If not specified, the preset is named based on the filename.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ImportLayoutPreset</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">),</span> <span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
@@ -534,7 +530,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads UI layout from saved preset named preset_name.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            preset_name (str): </span>
+<span class="sd">            preset_name (str):</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
@@ -545,7 +541,7 @@
 <div class="viewcode-block" id="Resolve.open_page">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.open_page.html#pybmd.resolve.Resolve.open_page">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">open_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Switches to indicated page in DaVinci Resolve. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Switches to indicated page in DaVinci Resolve.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            page_name (str): Input can be one of (&quot;media&quot;, &quot;cut&quot;, &quot;edit&quot;, &quot;fusion&quot;, &quot;color&quot;, &quot;fairlight&quot;, &quot;deliver&quot;).</span>
@@ -591,7 +587,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">UpdateLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
-
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.6.0</span>
 
@@ -615,7 +610,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a preset to a given path (string) if presetName(string) exists.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            preset_name (str): export preset name   </span>
+<span class="sd">            preset_name (str): export preset name</span>
 <span class="sd">            export_path (str): export path</span>
 
 <span class="sd">        Returns:</span>
@@ -643,7 +638,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">export_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a data burn in preset to a given path (string) if presetName (string) exists.</span>
 
-<span class="sd">        Args:   </span>
+<span class="sd">        Args:</span>
 <span class="sd">            preset_name (str): name of export preset</span>
 <span class="sd">            export_path (str): path to export</span>
 
@@ -669,7 +664,7 @@
 <div class="viewcode-block" id="Resolve.set_keyframe_mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.set_keyframe_mode.html#pybmd.resolve.Resolve.set_keyframe_mode">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_keyframe_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_frame_mode</span><span class="p">:</span> <span class="s2">&quot;KeyframeMode&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Refer to section &#39;Keyframe Mode information&#39; below for details.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Refer to section &#39;Keyframe Mode information&#39; below for details.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            key_frame_mode (KeyframeModeInformation): key frame mode</span>

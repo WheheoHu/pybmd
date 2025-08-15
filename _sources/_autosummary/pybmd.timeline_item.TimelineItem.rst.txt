@@ -79,6 +79,7 @@ TimelineItem
       ~TimelineItem.get_track_type_and_index
       ~TimelineItem.get_unique_id
       ~TimelineItem.get_version_name_list
+      ~TimelineItem.get_voice_isolation_state
       ~TimelineItem.import_fusion_comp
       ~TimelineItem.load_burn_in_preset
       ~TimelineItem.load_fusion_comp_by_name
@@ -93,6 +94,7 @@ TimelineItem
       ~TimelineItem.set_clip_enabled
       ~TimelineItem.set_color_output_cache
       ~TimelineItem.set_fusion_output_cache
+      ~TimelineItem.set_voice_isolation_state
       ~TimelineItem.smart_reframe
       ~TimelineItem.stabilize
       ~TimelineItem.update_sidecar

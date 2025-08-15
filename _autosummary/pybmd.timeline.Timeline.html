@@ -715,6 +715,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_track_name.html">Timeline.get_track_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_track_sub_type.html">Timeline.get_track_sub_type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_unique_id.html">Timeline.get_unique_id</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.get_voice_isolation_state.html">Timeline.get_voice_isolation_state</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.grab_all_stills.html">Timeline.grab_all_stills</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.grab_still.html">Timeline.grab_still</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.import_into_timeline.html">Timeline.import_into_timeline</a></li>
@@ -733,6 +734,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_track_enable.html">Timeline.set_track_enable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_track_lock.html">Timeline.set_track_lock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_track_name.html">Timeline.set_track_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.set_voice_isolation_state.html">Timeline.set_voice_isolation_state</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline.Timeline.update_marker_custom_data.html">Timeline.update_marker_custom_data</a></li>
 </ul>
 </details></li>
@@ -820,6 +822,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_track_type_and_index.html">TimelineItem.get_track_type_and_index</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_unique_id.html">TimelineItem.get_unique_id</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_version_name_list.html">TimelineItem.get_version_name_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_voice_isolation_state.html">TimelineItem.get_voice_isolation_state</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.import_fusion_comp.html">TimelineItem.import_fusion_comp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.load_burn_in_preset.html">TimelineItem.load_burn_in_preset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.load_fusion_comp_by_name.html">TimelineItem.load_fusion_comp_by_name</a></li>
@@ -834,6 +837,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_enabled.html">TimelineItem.set_clip_enabled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_color_output_cache.html">TimelineItem.set_color_output_cache</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_fusion_output_cache.html">TimelineItem.set_fusion_output_cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_voice_isolation_state.html">TimelineItem.set_voice_isolation_state</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.smart_reframe.html">TimelineItem.smart_reframe</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html">TimelineItem.stabilize</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.update_sidecar.html">TimelineItem.update_sidecar</a></li>
@@ -1079,59 +1083,65 @@
 <tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_unique_id.html#pybmd.timeline.Timeline.get_unique_id" title="pybmd.timeline.Timeline.get_unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_unique_id</span></code></a>()</p></td>
 <td><p>Returns a unique ID for the timeline</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.grab_all_stills.html#pybmd.timeline.Timeline.grab_all_stills" title="pybmd.timeline.Timeline.grab_all_stills"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_all_stills</span></code></a>(still_frame_source)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.get_voice_isolation_state.html#pybmd.timeline.Timeline.get_voice_isolation_state" title="pybmd.timeline.Timeline.get_voice_isolation_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_voice_isolation_state</span></code></a>(track_index)</p></td>
+<td><p>Returns the Voice Isolation State for the given audio track.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.grab_all_stills.html#pybmd.timeline.Timeline.grab_all_stills" title="pybmd.timeline.Timeline.grab_all_stills"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_all_stills</span></code></a>(still_frame_source)</p></td>
 <td><p>Grabs stills from all the clips of the timeline and returns a list of GalleryStill objects.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.grab_still.html#pybmd.timeline.Timeline.grab_still" title="pybmd.timeline.Timeline.grab_still"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_still</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.grab_still.html#pybmd.timeline.Timeline.grab_still" title="pybmd.timeline.Timeline.grab_still"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_still</span></code></a>()</p></td>
 <td><p>Grabs still from the current video clip.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.import_into_timeline.html#pybmd.timeline.Timeline.import_into_timeline" title="pybmd.timeline.Timeline.import_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_into_timeline</span></code></a>(file_path, import_options)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.import_into_timeline.html#pybmd.timeline.Timeline.import_into_timeline" title="pybmd.timeline.Timeline.import_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_into_timeline</span></code></a>(file_path, import_options)</p></td>
 <td><p>Imports timeline items from an AAF file and optional importOptions dict into the timeline,</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_composition_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_composition_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_composition_into_timeline</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_composition_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_composition_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_composition_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_composition_into_timeline</span></code></a>()</p></td>
 <td><p>Inserts a Fusion composition into the timeline.Returns a TimelineItem object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_generator_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_generator_into_timeline</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_generator_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_generator_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_generator_into_timeline</span></code></a>(...)</p></td>
 <td><p>Inserts a Fusion generator (indicated by generatorName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_title_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_title_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_title_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_title_into_timeline</span></code></a>(title_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_fusion_title_into_timeline.html#pybmd.timeline.Timeline.insert_fusion_title_into_timeline" title="pybmd.timeline.Timeline.insert_fusion_title_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_fusion_title_into_timeline</span></code></a>(title_name)</p></td>
 <td><p>Inserts a Fusion title (indicated by titleName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_generator_into_timeline.html#pybmd.timeline.Timeline.insert_generator_into_timeline" title="pybmd.timeline.Timeline.insert_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_generator_into_timeline</span></code></a>(generator_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_generator_into_timeline.html#pybmd.timeline.Timeline.insert_generator_into_timeline" title="pybmd.timeline.Timeline.insert_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_generator_into_timeline</span></code></a>(generator_name)</p></td>
 <td><p>Inserts a generator (indicated by generatorName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_oFX_generator_into_timeline.html#pybmd.timeline.Timeline.insert_oFX_generator_into_timeline" title="pybmd.timeline.Timeline.insert_oFX_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_oFX_generator_into_timeline</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_oFX_generator_into_timeline.html#pybmd.timeline.Timeline.insert_oFX_generator_into_timeline" title="pybmd.timeline.Timeline.insert_oFX_generator_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_oFX_generator_into_timeline</span></code></a>(...)</p></td>
 <td><p>Inserts an OFX generator (indicated by generatorName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_title_into_timeline.html#pybmd.timeline.Timeline.insert_title_into_timeline" title="pybmd.timeline.Timeline.insert_title_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_title_into_timeline</span></code></a>(title_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.insert_title_into_timeline.html#pybmd.timeline.Timeline.insert_title_into_timeline" title="pybmd.timeline.Timeline.insert_title_into_timeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert_title_into_timeline</span></code></a>(title_name)</p></td>
 <td><p>Inserts a title (indicated by titleName : string) into the timeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_clips_linked.html#pybmd.timeline.Timeline.set_clips_linked" title="pybmd.timeline.Timeline.set_clips_linked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clips_linked</span></code></a>(timeline_items, is_linked)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_clips_linked.html#pybmd.timeline.Timeline.set_clips_linked" title="pybmd.timeline.Timeline.set_clips_linked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clips_linked</span></code></a>(timeline_items, is_linked)</p></td>
 <td><p>Links or unlinks the specified TimelineItems depending on second argument.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_current_timecode.html#pybmd.timeline.Timeline.set_current_timecode" title="pybmd.timeline.Timeline.set_current_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_current_timecode</span></code></a>(tiemcode)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_current_timecode.html#pybmd.timeline.Timeline.set_current_timecode" title="pybmd.timeline.Timeline.set_current_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_current_timecode</span></code></a>(tiemcode)</p></td>
 <td><p>Sets current playhead position from input timecode for Cut, Edit, Color, Fairlight and Deliver pages.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_mark_in_out.html#pybmd.timeline.Timeline.set_mark_in_out" title="pybmd.timeline.Timeline.set_mark_in_out"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mark_in_out</span></code></a>(mark_in, mark_out[, mark_type])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_mark_in_out.html#pybmd.timeline.Timeline.set_mark_in_out" title="pybmd.timeline.Timeline.set_mark_in_out"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_mark_in_out</span></code></a>(mark_in, mark_out[, mark_type])</p></td>
 <td><p>Sets mark in/out points on the timeline.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_name.html#pybmd.timeline.Timeline.set_name" title="pybmd.timeline.Timeline.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(timeline_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_name.html#pybmd.timeline.Timeline.set_name" title="pybmd.timeline.Timeline.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(timeline_name)</p></td>
 <td><p>Sets the timeline name if timelineName (string) is unique.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_setting.html#pybmd.timeline.Timeline.set_setting" title="pybmd.timeline.Timeline.set_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_setting</span></code></a>(setting_name, setting_value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_setting.html#pybmd.timeline.Timeline.set_setting" title="pybmd.timeline.Timeline.set_setting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_setting</span></code></a>(setting_name, setting_value)</p></td>
 <td><p>Sets timeline setting</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_start_timecode.html#pybmd.timeline.Timeline.set_start_timecode" title="pybmd.timeline.Timeline.set_start_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_start_timecode</span></code></a>(timecode)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_start_timecode.html#pybmd.timeline.Timeline.set_start_timecode" title="pybmd.timeline.Timeline.set_start_timecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_start_timecode</span></code></a>(timecode)</p></td>
 <td><p>Set the start timecode of the timeline to the string 'timecode'.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_enable.html#pybmd.timeline.Timeline.set_track_enable" title="pybmd.timeline.Timeline.set_track_enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_enable</span></code></a>(track_type, track_index, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_enable.html#pybmd.timeline.Timeline.set_track_enable" title="pybmd.timeline.Timeline.set_track_enable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_enable</span></code></a>(track_type, track_index, ...)</p></td>
 <td><p>Enables/Disables track with given trackType and trackIndex</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_lock.html#pybmd.timeline.Timeline.set_track_lock" title="pybmd.timeline.Timeline.set_track_lock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_lock</span></code></a>(track_type, track_index, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_lock.html#pybmd.timeline.Timeline.set_track_lock" title="pybmd.timeline.Timeline.set_track_lock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_lock</span></code></a>(track_type, track_index, ...)</p></td>
 <td><p>Locks/Unlocks track with given trackType and trackIndex</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_name.html#pybmd.timeline.Timeline.set_track_name" title="pybmd.timeline.Timeline.set_track_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_name</span></code></a>(track_type, track_index, name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_track_name.html#pybmd.timeline.Timeline.set_track_name" title="pybmd.timeline.Timeline.set_track_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_track_name</span></code></a>(track_type, track_index, name)</p></td>
 <td><p>Sets the track name (string) for track indicated by trackType and trackIndex.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.set_voice_isolation_state.html#pybmd.timeline.Timeline.set_voice_isolation_state" title="pybmd.timeline.Timeline.set_voice_isolation_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_voice_isolation_state</span></code></a>(track_index, ...)</p></td>
+<td><p>Sets Voice Isolation state of audio track with given track index.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline.Timeline.update_marker_custom_data.html#pybmd.timeline.Timeline.update_marker_custom_data" title="pybmd.timeline.Timeline.update_marker_custom_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_marker_custom_data</span></code></a>(frame_id, custom_data)</p></td>
 <td><p>Updates customData (string) for the marker at given frameId position.</p></td>
@@ -2031,6 +2041,48 @@ Keys are omitted if marks are not set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mark_type</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – Type of marks to clear - “video”, “audio” or “all”. Defaults to “all”.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_voice_isolation_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.get_voice_isolation_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Returns the Voice Isolation State for the given audio track.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>track_index</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Track index. 1 &lt;= track_index &lt;= GetTrackCount(“audio”)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Dictionary with keys {‘isEnabled’: bool, ‘amount’: int}.</dt><dd><p>amount is in range of [0, 100]</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_voice_isolation_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">voice_isolation_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline.html#Timeline.set_voice_isolation_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sets Voice Isolation state of audio track with given track index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track_index</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Track index. 1 &lt;= track_index &lt;= GetTrackCount(“audio”)</p></li>
+<li><p><strong>voice_isolation_state</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – Dictionary with keys {‘isEnabled’: bool, ‘amount’: int}.
+amount must be in range of [0, 100]</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if successful, False otherwise</p>
