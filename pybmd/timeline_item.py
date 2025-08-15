@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from dataclasses import asdict
-from os import path
-from typing import List, Tuple, Union, TYPE_CHECKING
+from typing import List, Tuple, TYPE_CHECKING
 if TYPE_CHECKING:
     from pybmd.export_type import LUT_Export_Type
 
