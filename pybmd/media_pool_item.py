@@ -304,7 +304,7 @@ class MediaPoolItem:
         )
 
     @multimethod
-    def set_third_party_metadata(self, metadata_dict: dict) -> bool:
+    def set_third_party_metadata(self, metadata_dict: dict) -> bool:  # noqa: F811
         """Sets/Add the given third party metadata to metadata_value (string).
 
         Args:

@@ -1,5 +1,16 @@
 # Change Log for PyBMD
 ----
+# 2025.2.2
+## API
+### Timeline
+- Add `get_voice_isolation_state()` - Returns Voice Isolation State for audio track (DR 20.1.0)
+- Add `set_voice_isolation_state()` - Sets Voice Isolation state for audio track (DR 20.1.0)
+
+### TimelineItem
+- Add `get_voice_isolation_state()` - Returns Voice Isolation State for timeline item (DR 20.1.0)
+- Add `set_voice_isolation_state()` - Sets Voice Isolation state for timeline item (DR 20.1.0)
+
+----
 # 2025.2.1
 ## Documentation
 - Fix Sphinx documentation build by properly reading version from pyproject.toml

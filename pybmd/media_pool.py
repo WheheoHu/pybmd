@@ -91,7 +91,7 @@ class MediaPool:
         return [TimelineItem(timeline_item) for timeline_item in temp_list]
 
     @multimethod
-    def append_to_timeline(
+    def append_to_timeline(  # noqa: F811
         self, clip_info_list: List["ClipInfo"]
     ) -> List["TimelineItem"]:
         temp_list = self._media_pool.AppendToTimeline(

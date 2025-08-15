@@ -1,8 +1,6 @@
-from typing import TYPE_CHECKING, List
+from typing import List
 
 from pybmd.media_pool_item import MediaPoolItem
-if TYPE_CHECKING:
-    from pybmd.resolve import Resolve
 
 from dataclasses import dataclass
 from dataclasses import asdict
