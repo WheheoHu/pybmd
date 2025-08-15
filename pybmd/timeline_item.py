@@ -634,4 +634,28 @@ class TimelineItem():
         """
         return self._timeline_item.SetFusionOutputCache(cache_value)
 
+    ##############################################################################################################################
+    # Add at DR 20.1.0
+    
+    def get_voice_isolation_state(self) -> dict:
+        """Returns the Voice Isolation State of the timeline item.
+
+        Returns:
+            dict: Dictionary with keys {'isEnabled': bool, 'amount': int}. 
+                  amount is in range of [0, 100]
+        """
+        return self._timeline_item.GetVoiceIsolationState()
+    
+    def set_voice_isolation_state(self, voice_isolation_state: dict) -> bool:
+        """Sets Voice Isolation state of the timeline item.
+
+        Args:
+            voice_isolation_state (dict): Dictionary with keys {'isEnabled': bool, 'amount': int}.
+                                         amount must be in range of [0, 100]
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline_item.SetVoiceIsolationState(voice_isolation_state)
+
     

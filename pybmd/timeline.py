@@ -650,3 +650,31 @@ class Timeline:
             bool: True if successful, False otherwise
         """
         return self._timeline.ClearMarkInOut(mark_type)
+    
+    ##############################################################################################################################
+    # Add at DR 20.1.0
+    
+    def get_voice_isolation_state(self, track_index: int) -> dict:
+        """Returns the Voice Isolation State for the given audio track.
+
+        Args:
+            track_index (int): Track index. 1 <= track_index <= GetTrackCount("audio")
+
+        Returns:
+            dict: Dictionary with keys {'isEnabled': bool, 'amount': int}. 
+                  amount is in range of [0, 100]
+        """
+        return self._timeline.GetVoiceIsolationState(track_index)
+    
+    def set_voice_isolation_state(self, track_index: int, voice_isolation_state: dict) -> bool:
+        """Sets Voice Isolation state of audio track with given track index.
+
+        Args:
+            track_index (int): Track index. 1 <= track_index <= GetTrackCount("audio")
+            voice_isolation_state (dict): Dictionary with keys {'isEnabled': bool, 'amount': int}.
+                                         amount must be in range of [0, 100]
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline.SetVoiceIsolationState(track_index, voice_isolation_state)
