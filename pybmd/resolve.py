@@ -3,18 +3,20 @@ import platform
 from typing import TYPE_CHECKING
 import psutil
 
-from pybmd.error import *
+from pybmd.error import ResolveInitError
 from pybmd.media_storage import MediaStorage
 from pybmd.project_manager import ProjectManager
 from pybmd.fusion import Fusion
+
 if TYPE_CHECKING:
     from pybmd.settings import KeyframeMode
 
 from . import _init_bmd
 
+
 def _is_process_running(process_name):
-    for process in psutil.process_iter(['pid', 'name']):
-        if process.info['name'] == process_name:
+    for process in psutil.process_iter(["pid", "name"]):
+        if process.info["name"] == process_name:
             return True
     return False
 
@@ -24,14 +26,17 @@ def _start_local_resolve():
     app_name_win = "Resolve.exe"
     try:
         if _is_process_running(app_name_mac) or _is_process_running(app_name_win):
-            print(f"Davinci Resolve is already running.")
+            print("Davinci Resolve is already running.")
         else:
-            if platform.system() == 'Darwin':  # macOS
+            if platform.system() == "Darwin":  # macOS
                 subprocess.run(
-                    ['open', '-a', '/Applications/DaVinci Resolve/DaVinci Resolve.app'])
+                    ["open", "-a", "/Applications/DaVinci Resolve/DaVinci Resolve.app"]
+                )
                 print("Opened DaVinci Resolve successfully on macOS!")
-            elif platform.system() == 'Windows':  # Windows
-                resolve_path = r"C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe"
+            elif platform.system() == "Windows":  # Windows
+                resolve_path = (
+                    r"C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe"
+                )
                 subprocess.Popen(resolve_path)
                 print("Opened DaVinci Resolve successfully on Windows!")
             else:
@@ -39,21 +44,17 @@ def _start_local_resolve():
 
     except Exception as e:
         print(f"An error occurred: {e}")
-            
-
 
 
 RESOLVE_VERSION = None
 
 
-
-
 class Resolve:
     """Resolve class. Init Davinci Resolve Object
-        Base for everything
+    Base for everything
     """
 
-    def __init__(self, resolve_ip: str = '127.0.0.1', auto_start: bool = False):
+    def __init__(self, resolve_ip: str = "127.0.0.1", auto_start: bool = False):
         """Init Davinci Resolve Object
 
         Args:
@@ -63,25 +64,20 @@ class Resolve:
         Raises:
             ResolveInitError: davinci resolve init failed.you need to check if davinci resolve is running.
         """
-        
 
-        if (auto_start):
+        if auto_start:
             _start_local_resolve()
-        
-        _init_bmd._bmd_module_object=_init_bmd._init_bmd_module()
-        _init_bmd._resolve_object =_init_bmd._init_resolve(
-            davinci_ip=resolve_ip)
-        
-        self._resolve =_init_bmd._resolve_object
-        
+
+        _init_bmd._bmd_module_object = _init_bmd._init_bmd_module()
+        _init_bmd._resolve_object = _init_bmd._init_resolve(davinci_ip=resolve_ip)
+
+        self._resolve = _init_bmd._resolve_object
+
         if self._resolve is None:
             raise ResolveInitError
 
         global RESOLVE_VERSION
         RESOLVE_VERSION = self._resolve.GetVersion()
-
-
-
 
     def delete_layout_preset(self, preset_name: str) -> bool:
         """Deletes preset named preset_name.
@@ -98,8 +94,8 @@ class Resolve:
         """Exports preset named preset_name to path preset_file_path.
 
         Args:
-            preset_name (str): 
-            preset_file_path (str): 
+            preset_name (str):
+            preset_file_path (str):
 
         Returns:
             bool: result
@@ -123,7 +119,7 @@ class Resolve:
         """Returns the MediaStorage  object to query and act on media locations.
 
         Returns:
-            MediaStorage: 
+            MediaStorage:
         """
         return MediaStorage(self._resolve.GetMediaStorage())
 
@@ -139,7 +135,7 @@ class Resolve:
         """Returns the ProjectManager object for currently open database.
 
         Returns:
-            ProjectManager: 
+            ProjectManager:
         """
         return ProjectManager(self._resolve.GetProjectManager())
 
@@ -160,9 +156,9 @@ class Resolve:
         return self._resolve.GetVersionString()  # type: ignore
 
     def import_layout_preset(self, preset_file_path: str, preset_name: str) -> bool:
-        """Imports preset from path 'preset_file_path'. 
-            The optional argument 'preset_name' specifies how the preset shall be named.
-            If not specified, the preset is named based on the filename.
+        """Imports preset from path 'preset_file_path'.
+        The optional argument 'preset_name' specifies how the preset shall be named.
+        If not specified, the preset is named based on the filename.
         """
         return self._resolve.ImportLayoutPreset(str(preset_file_path), preset_name)  # type: ignore
 
@@ -170,7 +166,7 @@ class Resolve:
         """Loads UI layout from saved preset named preset_name.
 
         Args:
-            preset_name (str): 
+            preset_name (str):
 
         Returns:
             bool
@@ -178,7 +174,7 @@ class Resolve:
         return self._resolve.LoadLayoutPreset(preset_name)  # type: ignore
 
     def open_page(self, page_name: str) -> bool:
-        """Switches to indicated page in DaVinci Resolve. 
+        """Switches to indicated page in DaVinci Resolve.
 
         Args:
             page_name (str): Input can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver").
@@ -214,7 +210,6 @@ class Resolve:
         """
         return self._resolve.UpdateLayoutPreset(preset_name)  # type: ignore
 
-
     ##############################################################################################################################
     # Add at DR18.6.0
 
@@ -233,7 +228,7 @@ class Resolve:
         """Export a preset to a given path (string) if presetName(string) exists.
 
         Args:
-            preset_name (str): export preset name   
+            preset_name (str): export preset name
             export_path (str): export path
 
         Returns:
@@ -255,7 +250,7 @@ class Resolve:
     def export_burn_in_preset(self, preset_name: str, export_path: str) -> bool:
         """Export a data burn in preset to a given path (string) if presetName (string) exists.
 
-        Args:   
+        Args:
             preset_name (str): name of export preset
             export_path (str): path to export
 
@@ -275,7 +270,7 @@ class Resolve:
         return self._resolve.GetKeyframeMode()
 
     def set_keyframe_mode(self, key_frame_mode: "KeyframeMode") -> bool:
-        """ Refer to section 'Keyframe Mode information' below for details.
+        """Refer to section 'Keyframe Mode information' below for details.
 
         Args:
             key_frame_mode (KeyframeModeInformation): key frame mode

@@ -24,7 +24,7 @@ class Gallery():
                 GalleryStillAlbum(gallery_still_album))
         return gallery_still_album_list
 
-    def set_album_name(self, gallert_still_album: GalleryStillAlbum, album_name: str) -> bool:
+    def set_album_name(self, gallery_still_album: GalleryStillAlbum, album_name: str) -> bool:
         """set the album name of the GalleryStillAlbum object
 
         Args:
@@ -34,7 +34,7 @@ class Gallery():
         Returns:
             bool: ture if successful, false otherwise
         """
-        return self._gallery.SetAlbumName(gallert_still_album, album_name)
+        return self._gallery.SetAlbumName(gallery_still_album._gallery_still_album, album_name)
 
     def set_current_still_album(self, gallery_still_album: GalleryStillAlbum) -> bool:
         """set the current GalleryStillAlbum object
