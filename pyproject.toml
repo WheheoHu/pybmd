@@ -44,3 +44,8 @@ docs = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["pybmd"]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
+]
