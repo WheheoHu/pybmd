@@ -229,6 +229,17 @@ class TimelineItem():
         """Returns the item name."""
         return self._timeline_item.GetName()
 
+    def set_name(self, name: str) -> bool:
+        """Sets the clip's name to the specified string.
+
+        Args:
+            name (str): The new name for the timeline item
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline_item.SetName(name)
+
     def get_property(self, property_key):
         """returns the value of the specified key.
 
@@ -657,4 +668,11 @@ class TimelineItem():
         """
         return self._timeline_item.SetVoiceIsolationState(voice_isolation_state)
 
-    
+    def reset_all_node_colors(self) -> bool:
+        """Reset node color for all nodes in the active version of the clip.
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline_item.ResetAllNodeColors()
+

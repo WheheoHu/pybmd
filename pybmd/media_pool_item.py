@@ -169,6 +169,17 @@ class MediaPoolItem:
         """return name of the clip."""
         return self._media_pool_item.GetName()
 
+    def set_name(self, name: str) -> bool:
+        """Sets the clip's name to the specified string.
+
+        Args:
+            name (str): The new name for the clip
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._media_pool_item.SetName(name)
+
     def link_proxy_media(self, proxy_media_file_path: str) -> bool:
         """Links proxy media located at path specified by arg 'proxyMediaFilePath' with the current clip.
 

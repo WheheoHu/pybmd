@@ -78,6 +78,12 @@ class RenderSetting:
     # Only supported by QuickTime and MP4 formats.
     NetworkOptimization: bool = True
 
+    # Subtitle export settings (added in DaVinci Resolve 20.2.0)
+    ExportSubtitle: bool = False
+
+    # Subtitle format options: "BurnIn", "EmbeddedCaptions", "SeparateFile"
+    SubtitleFormat: str = "BurnIn"
+
 
 class CloudSyncMode(Enum):
     """Docstring for CloudSyncMode."""
