@@ -53,6 +53,7 @@ MediaPoolItem
       ~MediaPoolItem.set_clip_property
       ~MediaPoolItem.set_mark_in_out
       ~MediaPoolItem.set_metadata
+      ~MediaPoolItem.set_name
       ~MediaPoolItem.set_third_party_metadata
       ~MediaPoolItem.transcribe_audio
       ~MediaPoolItem.unlink_proxy_media

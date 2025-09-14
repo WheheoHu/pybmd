@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6408075c"></script>
+    <script src="../_static/documentation_options.js?v=c0708345"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.timeline_item.TimelineItem';</script>
@@ -488,6 +488,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_clip_property.html">MediaPoolItem.set_clip_property</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_mark_in_out.html">MediaPoolItem.set_mark_in_out</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_metadata.html">MediaPoolItem.set_metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_name.html">MediaPoolItem.set_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.set_third_party_metadata.html">MediaPoolItem.set_third_party_metadata</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.transcribe_audio.html">MediaPoolItem.transcribe_audio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_pool_item.MediaPoolItem.unlink_proxy_media.html">MediaPoolItem.unlink_proxy_media</a></li>
@@ -831,12 +832,14 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.remove_from_color_group.html">TimelineItem.remove_from_color_group</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.rename_fusion_comp_by_name.html">TimelineItem.rename_fusion_comp_by_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.rename_version_by_name.html">TimelineItem.rename_version_by_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.reset_all_node_colors.html">TimelineItem.reset_all_node_colors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.select_take_by_index.html">TimelineItem.select_take_by_index</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_cdl.html">TimelineItem.set_cdl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_color.html">TimelineItem.set_clip_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_enabled.html">TimelineItem.set_clip_enabled</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_color_output_cache.html">TimelineItem.set_color_output_cache</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_fusion_output_cache.html">TimelineItem.set_fusion_output_cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_name.html">TimelineItem.set_name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_voice_isolation_state.html">TimelineItem.set_voice_isolation_state</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.smart_reframe.html">TimelineItem.smart_reframe</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html">TimelineItem.stabilize</a></li>
@@ -1170,23 +1173,29 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.rename_version_by_name.html#pybmd.timeline_item.TimelineItem.rename_version_by_name" title="pybmd.timeline_item.TimelineItem.rename_version_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_version_by_name</span></code></a>(old_name, new_name, ...)</p></td>
 <td><p>Renames the color version identified by oldName and versionType</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.select_take_by_index.html#pybmd.timeline_item.TimelineItem.select_take_by_index" title="pybmd.timeline_item.TimelineItem.select_take_by_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_take_by_index</span></code></a>(index)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.reset_all_node_colors.html#pybmd.timeline_item.TimelineItem.reset_all_node_colors" title="pybmd.timeline_item.TimelineItem.reset_all_node_colors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_all_node_colors</span></code></a>()</p></td>
+<td><p>!!!! NOT WORKING API !!!!Reset node color for all nodes in the active version of the clip.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.select_take_by_index.html#pybmd.timeline_item.TimelineItem.select_take_by_index" title="pybmd.timeline_item.TimelineItem.select_take_by_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_take_by_index</span></code></a>(index)</p></td>
 <td><p>Selects a take by index, 1 &lt;= idx &lt;= number of takes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_cdl.html#pybmd.timeline_item.TimelineItem.set_cdl" title="pybmd.timeline_item.TimelineItem.set_cdl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_cdl</span></code></a>(cdl_map)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_cdl.html#pybmd.timeline_item.TimelineItem.set_cdl" title="pybmd.timeline_item.TimelineItem.set_cdl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_cdl</span></code></a>(cdl_map)</p></td>
 <td><p>Sets the color correction lookup (CDL) for the timeline item.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_color.html#pybmd.timeline_item.TimelineItem.set_clip_color" title="pybmd.timeline_item.TimelineItem.set_clip_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clip_color</span></code></a>(color_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_color.html#pybmd.timeline_item.TimelineItem.set_clip_color" title="pybmd.timeline_item.TimelineItem.set_clip_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clip_color</span></code></a>(color_name)</p></td>
 <td><p>Sets the item color based on the colorName (string).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_enabled.html#pybmd.timeline_item.TimelineItem.set_clip_enabled" title="pybmd.timeline_item.TimelineItem.set_clip_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clip_enabled</span></code></a>(bool_value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_clip_enabled.html#pybmd.timeline_item.TimelineItem.set_clip_enabled" title="pybmd.timeline_item.TimelineItem.set_clip_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_clip_enabled</span></code></a>(bool_value)</p></td>
 <td><p>Sets clip enabled based on argument.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_color_output_cache.html#pybmd.timeline_item.TimelineItem.set_color_output_cache" title="pybmd.timeline_item.TimelineItem.set_color_output_cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color_output_cache</span></code></a>(cache_value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_color_output_cache.html#pybmd.timeline_item.TimelineItem.set_color_output_cache" title="pybmd.timeline_item.TimelineItem.set_color_output_cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_color_output_cache</span></code></a>(cache_value)</p></td>
 <td><p>Sets color output caching state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_fusion_output_cache.html#pybmd.timeline_item.TimelineItem.set_fusion_output_cache" title="pybmd.timeline_item.TimelineItem.set_fusion_output_cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fusion_output_cache</span></code></a>(cache_value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_fusion_output_cache.html#pybmd.timeline_item.TimelineItem.set_fusion_output_cache" title="pybmd.timeline_item.TimelineItem.set_fusion_output_cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fusion_output_cache</span></code></a>(cache_value)</p></td>
 <td><p>Sets fusion output caching state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_name.html#pybmd.timeline_item.TimelineItem.set_name" title="pybmd.timeline_item.TimelineItem.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(name)</p></td>
+<td><p>Sets the clip's name to the specified string.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_voice_isolation_state.html#pybmd.timeline_item.TimelineItem.set_voice_isolation_state" title="pybmd.timeline_item.TimelineItem.set_voice_isolation_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_voice_isolation_state</span></code></a>(voice_isolation_state)</p></td>
 <td><p>Sets Voice Isolation state of the timeline item.</p></td>
@@ -1634,6 +1643,23 @@ Returns True if successful.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline_item.html#TimelineItem.set_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sets the clip’s name to the specified string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The new name for the timeline item</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2298,6 +2324,20 @@ amount must be in range of [0, 100]</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset_all_node_colors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline_item.html#TimelineItem.reset_all_node_colors"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>!!!! NOT WORKING API !!!!Reset node color for all nodes in the active version of the clip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if successful, False otherwise</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
 </dd></dl>

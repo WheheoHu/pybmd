@@ -1,0 +1,8 @@
+TimelineItem.set\_name
+======================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.set_name
+
+    .. autosummary::

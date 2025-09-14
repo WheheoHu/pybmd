@@ -88,12 +88,14 @@ TimelineItem
       ~TimelineItem.remove_from_color_group
       ~TimelineItem.rename_fusion_comp_by_name
       ~TimelineItem.rename_version_by_name
+      ~TimelineItem.reset_all_node_colors
       ~TimelineItem.select_take_by_index
       ~TimelineItem.set_cdl
       ~TimelineItem.set_clip_color
       ~TimelineItem.set_clip_enabled
       ~TimelineItem.set_color_output_cache
       ~TimelineItem.set_fusion_output_cache
+      ~TimelineItem.set_name
       ~TimelineItem.set_voice_isolation_state
       ~TimelineItem.smart_reframe
       ~TimelineItem.stabilize

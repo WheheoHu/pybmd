@@ -1,0 +1,8 @@
+TimelineItem.reset\_all\_node\_colors
+=====================================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.reset_all_node_colors
+
+    .. autosummary::
