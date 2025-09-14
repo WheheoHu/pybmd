@@ -669,7 +669,8 @@ class TimelineItem():
         return self._timeline_item.SetVoiceIsolationState(voice_isolation_state)
 
     def reset_all_node_colors(self) -> bool:
-        """Reset node color for all nodes in the active version of the clip.
+        """!!!! NOT WORKING API !!!!Reset node color for all nodes in the active version of the clip.
+            
 
         Returns:
             bool: True if successful, False otherwise
