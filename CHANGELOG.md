@@ -1,5 +1,19 @@
 # Change Log for PyBMD
 ----
+# 2025.2.3
+## API
+### MediaPoolItem
+- Add `set_name()` - Sets the clip's name to the specified string (DR 20.2.0)
+
+### TimelineItem
+- Add `set_name()` - Sets the timeline item's name to the specified string (DR 20.2.0)
+- Add `reset_all_node_colors()` - Reset node color for all nodes in the active version (DR 20.2.0) [Note: Currently non-functional due to API issues]
+
+### RenderSettings
+- Add `ExportSubtitle` - Enable/disable subtitle export (DR 20.2.0)
+- Add `SubtitleFormat` - Set subtitle format: "BurnIn", "EmbeddedCaptions", or "SeparateFile" (DR 20.2.0)
+
+----
 # 2025.2.2
 ## API
 ### Timeline
