@@ -1,5 +1,10 @@
 # Change Log for PyBMD
 ----
+# 2025.2.4
+## API
+### Project
+- Fix bug in `delete_color_group` method
+----
 # 2025.2.3
 ## API
 ### MediaPoolItem
