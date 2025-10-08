@@ -291,7 +291,7 @@ class Project():
         Returns:
             bool: Return True if successful, otherwise False.
         """
-        return self._project.DeleteColorGroup(color_group) 
+        return self._project.DeleteColorGroup(color_group._color_group) 
     
     ##############################################################################################################################
     # Add at DR 19.1.0 
