@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="StillManager.rename_still" href="pybmd.toolkits.StillManager.rename_still.html" />
-    <link rel="prev" title="StillManager.export_stills" href="pybmd.toolkits.StillManager.export_stills.html" />
+    <link rel="prev" title="StillManager.grab_all_still" href="pybmd.toolkits.StillManager.grab_all_still.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -872,6 +872,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="pybmd.toolkits.StillManager.html">StillManager</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.__init__.html">StillManager.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.export_stills.html">StillManager.export_stills</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.grab_all_still.html">StillManager.grab_all_still</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">StillManager.grab_still_from_timeline_markers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.rename_still.html">StillManager.rename_still</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.STILL_NAME_WILDCARD_MAPPING.html">pybmd.toolkits.StillManager.STILL_NAME_WILDCARD_MAPPING</a></li>
@@ -970,16 +971,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.toolkits.StillManager.grab_still_from_timeline_markers">
 <span class="sig-prename descclassname"><span class="pre">StillManager.</span></span><span class="sig-name descname"><span class="pre">grab_still_from_timeline_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timeline</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grab_sleep_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">MarkerStill</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/toolkits.html#StillManager.grab_still_from_timeline_markers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.toolkits.StillManager.grab_still_from_timeline_markers" title="Link to this definition">#</a></dt>
-<dd><p>grab stills from timeline markers.</p>
+<dd><p>Grab stills at each marker location on the requested timeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>timeline</strong> (<em>Timeline</em><em>, </em><em>optional</em>) – timeline to grab stills. Defaults to None.</p></li>
-<li><p><strong>grab_sleep_time</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – time to sleep between grab. Defaults to 0.5.</p></li>
+<li><p><strong>timeline</strong> (<em>Timeline</em><em>, </em><em>optional</em>) – Timeline to evaluate. Defaults to the manager timeline.</p></li>
+<li><p><strong>grab_sleep_time</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – Seconds to sleep between grabs, allowing Resolve to update the gallery.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>_description_</p>
+<dd class="field-even"><p>Still metadata accumulated so far.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[MarkerStill]</p>
@@ -1005,12 +1006,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="pybmd.toolkits.StillManager.export_stills.html"
+       href="pybmd.toolkits.StillManager.grab_all_still.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">StillManager.export_stills</p>
+        <p class="prev-next-title">StillManager.grab_all_still</p>
       </div>
     </a>
     <a class="right-next"

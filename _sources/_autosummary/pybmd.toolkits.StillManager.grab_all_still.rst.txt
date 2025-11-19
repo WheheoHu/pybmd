@@ -1,0 +1,8 @@
+StillManager.grab\_all\_still
+=============================
+
+.. currentmodule:: pybmd.toolkits
+
+.. automethod:: StillManager.grab_all_still
+
+    .. autosummary::

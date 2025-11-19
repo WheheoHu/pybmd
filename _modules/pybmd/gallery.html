@@ -394,7 +394,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">SetCurrentStillAlbum</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">gallery_still_album</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">SetCurrentStillAlbum</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="p">)</span></div>
 
     <span class="c1">##############################################################################################################</span>
     <span class="c1"># Add at DR 19.1.0</span>
@@ -435,7 +437,6 @@
         <span class="n">album</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">CreateGalleryPowerGradeAlbum</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">GalleryStillAlbum</span><span class="p">(</span><span class="n">album</span><span class="p">)</span> <span class="k">if</span> <span class="n">album</span> <span class="k">else</span> <span class="kc">None</span></div>
 </div>
-
 
 </pre></div>
 

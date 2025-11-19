@@ -872,6 +872,7 @@
 <li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">StillManager</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.__init__.html">StillManager.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.export_stills.html">StillManager.export_stills</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.grab_all_still.html">StillManager.grab_all_still</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.grab_still_from_timeline_markers.html">StillManager.grab_still_from_timeline_markers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.rename_still.html">StillManager.rename_still</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.toolkits.StillManager.STILL_NAME_WILDCARD_MAPPING.html">pybmd.toolkits.StillManager.STILL_NAME_WILDCARD_MAPPING</a></li>
@@ -968,7 +969,7 @@
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pybmd.toolkits.</span></span><span class="sig-name descname"><span class="pre">StillManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Project</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeline_framerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/toolkits.html#StillManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.11/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>all about stills from timeline markers</p>
+<p>all about stills from timeline</p>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
@@ -978,11 +979,14 @@
 <tr class="row-even"><td><p><a class="reference internal" href="pybmd.toolkits.StillManager.export_stills.html#pybmd.toolkits.StillManager.export_stills" title="pybmd.toolkits.StillManager.export_stills"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_stills</span></code></a>(export_base_path[, ...])</p></td>
 <td><p>export stills to given path</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.toolkits.StillManager.grab_still_from_timeline_markers.html#pybmd.toolkits.StillManager.grab_still_from_timeline_markers" title="pybmd.toolkits.StillManager.grab_still_from_timeline_markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_still_from_timeline_markers</span></code></a>([timeline, ...])</p></td>
-<td><p>grab stills from timeline markers.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.toolkits.StillManager.grab_all_still.html#pybmd.toolkits.StillManager.grab_all_still" title="pybmd.toolkits.StillManager.grab_all_still"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_all_still</span></code></a>([timeline, grab_sleep_time, ...])</p></td>
+<td><p>Grab a still for each clip in the first video track and store metadata.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.toolkits.StillManager.rename_still.html#pybmd.toolkits.StillManager.rename_still" title="pybmd.toolkits.StillManager.rename_still"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_still</span></code></a>(still_file_path[, clean_drx, ...])</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.toolkits.StillManager.grab_still_from_timeline_markers.html#pybmd.toolkits.StillManager.grab_still_from_timeline_markers" title="pybmd.toolkits.StillManager.grab_still_from_timeline_markers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grab_still_from_timeline_markers</span></code></a>([timeline, ...])</p></td>
+<td><p>Grab stills at each marker location on the requested timeline.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.toolkits.StillManager.rename_still.html#pybmd.toolkits.StillManager.rename_still" title="pybmd.toolkits.StillManager.rename_still"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_still</span></code></a>(still_file_path[, clean_drx, ...])</p></td>
+<td><p>Normalize exported still names and optionally clean up DRX files.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1004,16 +1008,37 @@
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">grab_still_from_timeline_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timeline</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grab_sleep_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">MarkerStill</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pybmd/toolkits.html#StillManager.grab_still_from_timeline_markers"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>grab stills from timeline markers.</p>
+<dd><p>Grab stills at each marker location on the requested timeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>timeline</strong> (<em>Timeline</em><em>, </em><em>optional</em>) – timeline to grab stills. Defaults to None.</p></li>
-<li><p><strong>grab_sleep_time</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – time to sleep between grab. Defaults to 0.5.</p></li>
+<li><p><strong>timeline</strong> (<em>Timeline</em><em>, </em><em>optional</em>) – Timeline to evaluate. Defaults to the manager timeline.</p></li>
+<li><p><strong>grab_sleep_time</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – Seconds to sleep between grabs, allowing Resolve to update the gallery.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>_description_</p>
+<dd class="field-even"><p>Still metadata accumulated so far.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[MarkerStill]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">grab_all_still</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timeline</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grab_sleep_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">still_position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/toolkits.html#StillManager.grab_all_still"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Grab a still for each clip in the first video track and store metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeline</strong> (<em>Timeline</em><em>, </em><em>optional</em>) – Timeline to scan; defaults to the manager’s current timeline.</p></li>
+<li><p><strong>grab_sleep_time</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – Delay inserted after each grab so Resolve can finish writing the still.</p></li>
+<li><p><strong>still_position</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><em>optional</em>) – Normalized position within each clip (0=start, 1=end); values outside the range are clamped.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Still metadata accumulated so far.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[MarkerStill]</p>
@@ -1035,6 +1060,21 @@
 <li><p><strong>use_subfolder</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) – use subfolder to export stills. Defaults to False.</p></li>
 <li><p><strong>subfolder</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – subfolder name to export stills. Defaults to “”.</p></li>
 <li><p><strong>export_base_path</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rename_still</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">still_file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean_drx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_folder_exist_file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/typing.html#typing.Iterable" title="(in Python v3.11)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3.11/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/toolkits.html#StillManager.rename_still"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Normalize exported still names and optionally clean up DRX files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>still_file_path</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>)</p></li>
+<li><p><strong>clean_drx</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>)</p></li>
+<li><p><strong>export_folder_exist_file_list</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/typing.html#typing.Iterable" title="(in Python v3.11)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 </ul>
 </dd>
 </dl>

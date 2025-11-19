@@ -23,6 +23,7 @@ StillManager
    
       ~StillManager.__init__
       ~StillManager.export_stills
+      ~StillManager.grab_all_still
       ~StillManager.grab_still_from_timeline_markers
       ~StillManager.rename_still
    

@@ -328,20 +328,19 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.toolkits</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery_still</span><span class="w"> </span><span class="kn">import</span> <span class="n">GalleryStill</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery_still_album</span><span class="w"> </span><span class="kn">import</span> <span class="n">StillFormat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery_still_album</span><span class="w"> </span><span class="kn">import</span> <span class="n">GalleryStillAlbum</span><span class="p">,</span> <span class="n">StillFormat</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.folder</span><span class="w"> </span><span class="kn">import</span> <span class="n">Folder</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_pool_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaPoolItem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.project</span><span class="w"> </span><span class="kn">import</span> <span class="n">Project</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.timeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.timeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timeline</span><span class="p">,</span> <span class="n">TrackType</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_pool</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaPool</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dftt_timecode</span><span class="w"> </span><span class="kn">import</span> <span class="n">DfttTimecode</span>
 
@@ -459,6 +458,7 @@
 
 <span class="c1"># TODO render_timeline</span>
 
+
 <div class="viewcode-block" id="MarkerStill">
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.MarkerStill.html#pybmd.toolkits.MarkerStill">[docs]</a>
 <span class="nd">@dataclass</span>
@@ -489,7 +489,7 @@
 <div class="viewcode-block" id="StillManager">
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.html#pybmd.toolkits.StillManager">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">StillManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;all about stills from timeline markers&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;all about stills from timeline&quot;&quot;&quot;</span>
 
     <span class="n">STILL_NAME_WILDCARD_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="s2">&quot;File Name&quot;</span><span class="p">,</span>
@@ -500,24 +500,34 @@
 <div class="viewcode-block" id="StillManager.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.__init__.html#pybmd.toolkits.StillManager.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="n">Project</span><span class="p">,</span> <span class="n">timeline_framerate</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
-
         <span class="nb">super</span><span class="p">(</span><span class="n">StillManager</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_project</span> <span class="o">=</span> <span class="n">project</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">get_current_timeline</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">get_gallery</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">get_current_still_album</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="p">:</span> <span class="n">Project</span> <span class="o">=</span> <span class="n">project</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="p">:</span> <span class="n">Timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">get_current_timeline</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Project does not have an active timeline selected.&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_setting</span><span class="p">(</span><span class="s2">&quot;timelinePlaybackFrameRate&quot;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_setting</span><span class="p">(</span><span class="s2">&quot;timelinePlaybackFrameRate&quot;</span><span class="p">)</span>
-            <span class="p">)</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeline Framerate:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">get_gallery</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Project does not have an available gallery.&quot;</span><span class="p">)</span>
+
+        <span class="n">timeline_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;Timeline&quot;</span>
+        <span class="n">album_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;StillManager_</span><span class="si">{</span><span class="n">timeline_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_still_album</span><span class="p">(</span><span class="n">album_label</span><span class="p">)</span>
+
+        <span class="n">timeline_fps_setting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_setting</span><span class="p">(</span><span class="s2">&quot;timelineFrameRate&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">timeline_fps_setting</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">timeline_fps_setting</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Timeline Framerate:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span> <span class="o">=</span> <span class="n">timeline_framerate</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">timeline_framerate</span><span class="p">)</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;CAN NOT get timeline framerate because this timeline use custom timeline settings, use timeline_framerate :</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span><span class="si">}</span><span class="s2"> instead &quot;</span>
+                <span class="s2">&quot;Unable to read timelineFrameRate; falling back to </span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span><span class="p">,</span>
             <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MarkerStill</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span></div>
+
+        <span class="n">drop_frame_setting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_setting</span><span class="p">(</span><span class="s2">&quot;timelineDropFrameTimecode&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_df_flag</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">drop_frame_setting</span><span class="p">))</span> <span class="k">if</span> <span class="n">drop_frame_setting</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MarkerStill</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -526,50 +536,151 @@
         <span class="p">]</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">temp_list</span><span class="p">)</span>
 
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_clamp</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">minimum</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">maximum</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">minimum</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">maximum</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Timeline</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Timeline</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">Timeline</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">timeline</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;StillManager does not have a timeline to operate on.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_coerce_bool</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">default</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">default</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_coerce_float</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">default</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">default</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">default</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_safe_clip_property</span><span class="p">(</span>
+        <span class="n">clip</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">property_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">clip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="n">property_key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">default</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_still_album</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">album_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GalleryStillAlbum</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create (if supported) or reuse a still album for this manager.&quot;&quot;&quot;</span>
+        <span class="n">create_album</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="p">,</span> <span class="s2">&quot;create_gallery_still_album&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">create_album</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">new_album</span> <span class="o">=</span> <span class="n">create_album</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s2">&quot;create_gallery_still_album not available; using existing still album.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to create still album: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">new_album</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">set_album_name</span><span class="p">(</span><span class="n">new_album</span><span class="p">,</span> <span class="n">album_name</span><span class="p">):</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                            <span class="s2">&quot;Unable to set still album name to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">album_name</span>
+                        <span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_current_still_album</span><span class="p">(</span><span class="n">new_album</span><span class="p">):</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                            <span class="s2">&quot;Unable to select newly created still album </span><span class="si">%s</span><span class="s2"> as current.&quot;</span><span class="p">,</span>
+                            <span class="n">album_name</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Using dedicated still album </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">album_name</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">new_album</span>
+        <span class="n">fallback_album</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">get_current_still_album</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">fallback_album</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Project gallery does not have an active still album.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fallback_album</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_current_still_album</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">album</span><span class="p">:</span> <span class="n">GalleryStillAlbum</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">set_current_still_album</span><span class="p">(</span><span class="n">album</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Gallery object does not support selecting still albums.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
 <div class="viewcode-block" id="StillManager.grab_still_from_timeline_markers">
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.grab_still_from_timeline_markers.html#pybmd.toolkits.StillManager.grab_still_from_timeline_markers">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">grab_still_from_timeline_markers</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">grab_sleep_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MarkerStill</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;grab stills from timeline markers.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Grab stills at each marker location on the requested timeline.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            timeline (Timeline, optional): timeline to grab stills. Defaults to None.</span>
-<span class="sd">            grab_sleep_time (float, optional): time to sleep between grab. Defaults to 0.5.</span>
+<span class="sd">            timeline (Timeline, optional): Timeline to evaluate. Defaults to the manager timeline.</span>
+<span class="sd">            grab_sleep_time (float, optional): Seconds to sleep between grabs, allowing Resolve to update the gallery.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            List[MarkerStill]: _description_</span>
+<span class="sd">            List[MarkerStill]: Still metadata accumulated so far.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">Timeline</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span>
-        <span class="n">marker_list</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">get_markers</span><span class="p">()</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeline Marke:</span><span class="si">{</span><span class="n">marker_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeline Marker Count:</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">marker_list</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">timeline_df_flag</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span>
-            <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_setting</span><span class="p">(</span><span class="s2">&quot;timelineDropFrameTimecode&quot;</span><span class="p">))</span>
-        <span class="p">)</span>
+        <span class="n">timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_timeline</span><span class="p">(</span><span class="n">timeline</span><span class="p">)</span>
+        <span class="n">marker_list</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">get_markers</span><span class="p">()</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Timeline Marker Count:</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">marker_list</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">marker_list</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span>
+
         <span class="n">timeline_start_timecode</span> <span class="o">=</span> <span class="n">DfttTimecode</span><span class="p">(</span>
             <span class="n">timeline</span><span class="o">.</span><span class="n">get_start_timecode</span><span class="p">(),</span>
             <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span><span class="p">,</span>
-            <span class="n">drop_frame</span><span class="o">=</span><span class="n">timeline_df_flag</span><span class="p">,</span>
+            <span class="n">drop_frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_df_flag</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;timeline_start_timecode: </span><span class="si">{</span><span class="n">timeline_start_timecode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="c1"># grab stills for every marker</span>
-        <span class="k">for</span> <span class="n">marker_frameid</span><span class="p">,</span> <span class="n">marker_info</span> <span class="ow">in</span> <span class="n">marker_list</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;timeline_start_timecode: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">timeline_start_timecode</span><span class="p">)</span>
 
+        <span class="n">sleep_interval</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">grab_sleep_time</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">marker_frameid</span><span class="p">,</span> <span class="n">marker_info</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">marker_list</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
             <span class="n">marker_record_tc</span><span class="p">:</span> <span class="n">DfttTimecode</span> <span class="o">=</span> <span class="n">timeline_start_timecode</span> <span class="o">+</span> <span class="n">marker_frameid</span>
             <span class="n">timeline</span><span class="o">.</span><span class="n">set_current_timecode</span><span class="p">(</span><span class="n">marker_record_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">())</span>
             <span class="n">timeline_item</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">get_current_video_item</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">timeline_item</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;No timeline item available at marker frame </span><span class="si">%s</span><span class="s2">. Skipping.&quot;</span><span class="p">,</span> <span class="n">marker_frameid</span>
+                <span class="p">)</span>
+                <span class="k">continue</span>
 
             <span class="c1"># get source tc for the marker</span>
-            <span class="n">clip_df_flag</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span>
-                <span class="nb">int</span><span class="p">(</span><span class="n">timeline_item</span><span class="o">.</span><span class="n">get_media_pool_item</span><span class="p">()</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;Drop frame&quot;</span><span class="p">))</span>
+            <span class="n">clip</span> <span class="o">=</span> <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_media_pool_item</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">clip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;Timeline item at frame </span><span class="si">%s</span><span class="s2"> has no media pool item. Skipping.&quot;</span><span class="p">,</span>
+                    <span class="n">marker_frameid</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">clip_df_flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce_bool</span><span class="p">(</span><span class="n">clip</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;Drop frame&quot;</span><span class="p">))</span>
+            <span class="n">clip_fps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce_float</span><span class="p">(</span>
+                <span class="n">clip</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;FPS&quot;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span>
             <span class="p">)</span>
-            <span class="n">clip_fps</span> <span class="o">=</span> <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_media_pool_item</span><span class="p">()</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;FPS&quot;</span><span class="p">)</span>
+
+            <span class="n">clip_start_tc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_clip_property</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="s2">&quot;Start TC&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">clip_start_tc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;Clip </span><span class="si">%s</span><span class="s2"> has no Start TC metadata; skipping marker </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span>
+                    <span class="n">clip</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
+                    <span class="n">marker_frameid</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">continue</span>
 
             <span class="n">clip_start_timecode</span> <span class="o">=</span> <span class="n">DfttTimecode</span><span class="p">(</span>
-                <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_media_pool_item</span><span class="p">()</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;Start TC&quot;</span><span class="p">),</span>
+                <span class="n">clip_start_tc</span><span class="p">,</span>
                 <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
                 <span class="n">clip_fps</span><span class="p">,</span>
                 <span class="n">drop_frame</span><span class="o">=</span><span class="n">clip_df_flag</span><span class="p">,</span>
@@ -583,53 +694,169 @@
             <span class="n">marker_source_tc</span> <span class="o">=</span> <span class="n">clip_start_timecode</span> <span class="o">+</span> <span class="n">clip_tc_frame_offset</span>
 
             <span class="n">still</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">grab_still</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">still</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;Failed to grab still for clip </span><span class="si">%s</span><span class="s2"> at marker </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span>
+                    <span class="n">clip</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
+                    <span class="n">marker_frameid</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">continue</span>
 
             <span class="n">marker_still</span> <span class="o">=</span> <span class="n">MarkerStill</span><span class="p">(</span>
                 <span class="n">still</span><span class="p">,</span>
-                <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_media_pool_item</span><span class="p">(),</span>
+                <span class="n">clip</span><span class="p">,</span>
                 <span class="n">marker_record_tc</span><span class="p">,</span>
                 <span class="n">marker_source_tc</span><span class="p">,</span>
                 <span class="n">marker_info</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marker_still</span><span class="p">)</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">grab_sleep_time</span><span class="p">)</span></div>
+            <span class="k">if</span> <span class="n">sleep_interval</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep_interval</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span></div>
+
+
+<div class="viewcode-block" id="StillManager.grab_all_still">
+<a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.grab_all_still.html#pybmd.toolkits.StillManager.grab_all_still">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">grab_all_still</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">grab_sleep_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">still_position</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Grab a still for each clip in the first video track and store metadata.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            timeline (Timeline, optional): Timeline to scan; defaults to the manager&#39;s current timeline.</span>
+<span class="sd">            grab_sleep_time (float, optional): Delay inserted after each grab so Resolve can finish writing the still.</span>
+<span class="sd">            still_position (float, optional): Normalized position within each clip (0=start, 1=end); values outside the range are clamped.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[MarkerStill]: Still metadata accumulated so far.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">clamped_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clamp</span><span class="p">(</span><span class="n">still_position</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">clamped_position</span> <span class="o">!=</span> <span class="n">still_position</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;still_position </span><span class="si">%.3f</span><span class="s2"> is out of range [0,1]; clamping to </span><span class="si">%.3f</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">still_position</span><span class="p">,</span>
+                <span class="n">clamped_position</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">still_position</span> <span class="o">=</span> <span class="n">clamped_position</span>
+
+        <span class="n">timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_timeline</span><span class="p">(</span><span class="n">timeline</span><span class="p">)</span>
+
+        <span class="n">timelineitem_list</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">get_item_list_in_track</span><span class="p">(</span><span class="n">TrackType</span><span class="o">.</span><span class="n">VIDEO_TRACK</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">timelineitem_list</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No clips found on VIDEO_TRACK 1; nothing to grab.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span>
+
+        <span class="n">timeline_start_timecode</span> <span class="o">=</span> <span class="n">DfttTimecode</span><span class="p">(</span>
+            <span class="n">timeline</span><span class="o">.</span><span class="n">get_start_timecode</span><span class="p">(),</span>
+            <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span><span class="p">,</span>
+            <span class="n">drop_frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_df_flag</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">sleep_interval</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">grab_sleep_time</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">timeline_item</span> <span class="ow">in</span> <span class="n">timelineitem_list</span><span class="p">:</span>
+            <span class="n">clip</span> <span class="o">=</span> <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_media_pool_item</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">clip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Timeline item has no media pool clip; skipping.&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">timelineitem_start_timecode</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">timeline_start_timecode</span> <span class="o">+</span> <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_start</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="n">still_position_frame_offset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+                <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_duration</span><span class="p">()</span> <span class="o">*</span> <span class="n">still_position</span>
+            <span class="p">)</span>
+
+            <span class="n">timelineitem_still_timecode</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">timelineitem_start_timecode</span> <span class="o">+</span> <span class="n">still_position_frame_offset</span>
+            <span class="p">)</span>
+            <span class="n">timeline</span><span class="o">.</span><span class="n">set_current_timecode</span><span class="p">(</span>
+                <span class="n">timelineitem_still_timecode</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;smpte&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="n">clip_df_flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce_bool</span><span class="p">(</span><span class="n">clip</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;Drop frame&quot;</span><span class="p">))</span>
+            <span class="n">clip_fps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce_float</span><span class="p">(</span>
+                <span class="n">clip</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;FPS&quot;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_framerate</span>
+            <span class="p">)</span>
+            <span class="n">clip_start_tc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_clip_property</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="s2">&quot;Start TC&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">clip_start_tc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;Clip </span><span class="si">%s</span><span class="s2"> is missing Start TC metadata; skipping.&quot;</span><span class="p">,</span> <span class="n">clip</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+                <span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="n">clip_start_timecode</span> <span class="o">=</span> <span class="n">DfttTimecode</span><span class="p">(</span>
+                <span class="n">clip_start_tc</span><span class="p">,</span>
+                <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+                <span class="n">clip_fps</span><span class="p">,</span>
+                <span class="n">drop_frame</span><span class="o">=</span><span class="n">clip_df_flag</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">clip_tc_frame_offset</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">timeline_start_timecode</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;frame&quot;</span><span class="p">))</span>
+                <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">timelineitem_still_timecode</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;frame&quot;</span><span class="p">))</span>
+                <span class="o">-</span> <span class="n">timeline_item</span><span class="o">.</span><span class="n">get_start</span><span class="p">()</span>
+            <span class="p">)</span>
+
+            <span class="n">marker_source_tc</span> <span class="o">=</span> <span class="n">clip_start_timecode</span> <span class="o">+</span> <span class="n">clip_tc_frame_offset</span>
+
+            <span class="n">still</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">grab_still</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">still</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to grab still for clip </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">clip</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+                <span class="k">continue</span>
+
+            <span class="n">marker_still</span> <span class="o">=</span> <span class="n">MarkerStill</span><span class="p">(</span>
+                <span class="n">still</span><span class="p">,</span>
+                <span class="n">clip</span><span class="p">,</span>
+                <span class="n">timelineitem_still_timecode</span><span class="p">,</span>
+                <span class="n">marker_source_tc</span><span class="p">,</span>
+                <span class="p">{},</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marker_still</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">sleep_interval</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep_interval</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marker_still</span><span class="p">:</span> <span class="n">MarkerStill</span><span class="p">,</span> <span class="n">wildcard</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">wildcard</span> <span class="o">==</span> <span class="s2">&quot;clip_frame_tc&quot;</span><span class="p">:</span>
-            <span class="n">source_frame_tc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
-                <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_source_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;frame&quot;</span><span class="p">)</span>
-            <span class="p">)</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source_frame_tc</span><span class="si">:</span><span class="s2">08d</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="k">if</span> <span class="n">wildcard</span> <span class="o">==</span> <span class="s2">&quot;reel_number&quot;</span><span class="p">:</span>
-            <span class="n">reel_name</span> <span class="o">=</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;Reel Name&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">reel_name</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can not get reel name from clip property&quot;</span><span class="p">)</span>
-                <span class="k">return</span> <span class="s2">&quot;&quot;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(^[a-z0-9A-Z_]</span><span class="si">{6}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">reel_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">add_note</span><span class="p">(</span><span class="s2">&quot;Reel name is not valid,Can not get reel number&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">wildcard</span> <span class="o">==</span> <span class="s2">&quot;marker_note&quot;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;note&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">wildcard</span> <span class="o">==</span> <span class="s2">&quot;marker_name&quot;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
-        <span class="n">property_key</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">STILL_NAME_WILDCARD_MAPPING</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wildcard</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">STILL_NAME_WILDCARD_MAPPING</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wildcard</span><span class="p">)</span>
-            <span class="k">else</span> <span class="n">wildcard</span>
-        <span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resolve wildcard placeholders used while formatting filenames.&quot;&quot;&quot;</span>
 
+        <span class="n">handlers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;clip_frame_tc&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">marker_still</span><span class="o">.</span><span class="n">marker_source_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">))</span><span class="si">:</span><span class="s2">08d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;reel_number&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_reel_number</span><span class="p">(</span><span class="n">marker_still</span><span class="p">),</span>
+            <span class="s2">&quot;marker_note&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;note&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;marker_name&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">wildcard</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">handlers</span><span class="p">[</span><span class="n">wildcard</span><span class="p">]()</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="n">property_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">STILL_NAME_WILDCARD_MAPPING</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wildcard</span><span class="p">,</span> <span class="n">wildcard</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="n">property_key</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">property_key</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Can not get </span><span class="si">{</span><span class="n">wildcard</span><span class="si">}</span><span class="s2"> from clip property,return empty string&quot;</span>
+                <span class="s2">&quot;Can not get </span><span class="si">%s</span><span class="s2"> from clip property, returning empty string&quot;</span><span class="p">,</span> <span class="n">wildcard</span>
             <span class="p">)</span>
-        <span class="k">return</span> <span class="n">result</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">result</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_extract_reel_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marker_still</span><span class="p">:</span> <span class="n">MarkerStill</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">reel_name</span> <span class="o">=</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_clip_property</span><span class="p">(</span><span class="s2">&quot;Reel Name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">reel_name</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Cannot get reel name from clip property&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(^[a-z0-9A-Z_]</span><span class="si">{6}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">reel_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">error</span><span class="p">)</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Reel name is not valid; cannot get reel number&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
 
 <div class="viewcode-block" id="StillManager.export_stills">
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.export_stills.html#pybmd.toolkits.StillManager.export_stills">[docs]</a>
@@ -653,76 +880,65 @@
 <span class="sd">            subfolder (str, optional): subfolder name to export stills. Defaults to &quot;&quot;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="n">export_base_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">):</span>
-            <span class="n">export_base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">export_base_path</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">export_base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">export_base_path</span><span class="p">)</span>
+        <span class="n">base_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">export_base_path</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+        <span class="n">base_path</span> <span class="o">=</span> <span class="n">base_path</span> <span class="k">if</span> <span class="n">base_path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span> <span class="k">else</span> <span class="n">base_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">subfolder</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">subfolder</span><span class="p">:</span>
             <span class="n">use_subfolder</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="k">if</span> <span class="n">use_subfolder</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">subfolder</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-                <span class="n">subfolder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+            <span class="n">folder_name</span> <span class="o">=</span> <span class="n">subfolder</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">subfolder</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot; Input subfolder is empty, use timeline name : </span><span class="si">{</span><span class="n">subfolder</span><span class="si">}</span><span class="s2"> as subfolder name to export&quot;</span>
+                    <span class="s2">&quot;Input subfolder is empty, using timeline name </span><span class="si">%s</span><span class="s2"> as export folder&quot;</span><span class="p">,</span>
+                    <span class="n">folder_name</span><span class="p">,</span>
                 <span class="p">)</span>
-            <span class="n">export_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">export_base_path</span><span class="p">,</span> <span class="n">subfolder</span><span class="p">)</span>
+            <span class="n">export_path</span> <span class="o">=</span> <span class="n">base_path</span> <span class="o">/</span> <span class="n">folder_name</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">export_path</span> <span class="o">=</span> <span class="n">export_base_path</span>
+            <span class="n">export_path</span> <span class="o">=</span> <span class="n">base_path</span>
 
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Folder </span><span class="si">{</span><span class="n">export_path</span><span class="si">}</span><span class="s2"> already exist,skip create&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Create folder : </span><span class="si">{</span><span class="n">export_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">export_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
         <span class="n">wildcard_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\$(.*?)\$&quot;</span><span class="p">)</span>
-        <span class="n">wildcard_matchs</span> <span class="o">=</span> <span class="n">wildcard_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">file_name_format</span><span class="p">)</span>
+        <span class="n">wildcard_matches</span> <span class="o">=</span> <span class="n">wildcard_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">file_name_format</span><span class="p">)</span>
         <span class="n">file_name_template</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">wildcard_pattern</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;{\1}&quot;</span><span class="p">,</span> <span class="n">file_name_format</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;file_name_template : </span><span class="si">{</span><span class="n">file_name_template</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">export_folder_contain_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">export_path</span><span class="p">)]</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;file_name_template : </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file_name_template</span><span class="p">)</span>
 
-        <span class="n">existed_file_name_list</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span>
-        <span class="p">]</span>
+        <span class="n">existing_files</span> <span class="o">=</span> <span class="p">{</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">export_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">is_file</span><span class="p">()}</span>
+        <span class="n">original_contents</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">existing_files</span><span class="p">)</span>
 
-        <span class="n">_skip_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">skip_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">marker_still</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">:</span>
-            <span class="n">media_pool_item_obj</span> <span class="o">=</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span>
-            <span class="n">_file_prefix</span> <span class="o">=</span> <span class="n">file_name_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="o">**</span><span class="p">{</span>
-                    <span class="n">var</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_metadata</span><span class="p">(</span><span class="n">marker_still</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">wildcard_matchs</span>
-                <span class="p">}</span>
-            <span class="p">)</span>
-            <span class="n">target_file_name_ext</span> <span class="o">=</span> <span class="p">(</span><span class="n">_file_prefix</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="nb">format</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;target file name:</span><span class="si">{</span><span class="n">target_file_name_ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
-                <span class="n">exist_file</span> <span class="o">==</span> <span class="n">target_file_name_ext</span>
-                <span class="k">for</span> <span class="n">exist_file</span> <span class="ow">in</span> <span class="n">existed_file_name_list</span>
-            <span class="p">):</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;File :</span><span class="si">{</span><span class="n">_file_prefix</span><span class="si">}</span><span class="s2"> Type: </span><span class="si">{</span><span class="nb">format</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> exists! Skip export&quot;</span>
-                <span class="p">)</span>
-                <span class="n">_skip_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">_file_prefix</span> <span class="o">=</span> <span class="n">file_name_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="o">**</span><span class="p">{</span><span class="n">var</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_metadata</span><span class="p">(</span><span class="n">marker_still</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">wildcard_matches</span><span class="p">}</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Missing wildcard </span><span class="si">%s</span><span class="s2"> in metadata. Skipping still.&quot;</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
                 <span class="k">continue</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span><span class="o">.</span><span class="n">export_stills</span><span class="p">(</span>
-                    <span class="n">gallery_stills</span><span class="o">=</span><span class="p">[</span><span class="n">marker_still</span><span class="o">.</span><span class="n">still_obj</span><span class="p">],</span>
-                    <span class="n">folder_path</span><span class="o">=</span><span class="n">export_path</span><span class="p">,</span>
-                    <span class="n">file_prefix</span><span class="o">=</span><span class="n">_file_prefix</span><span class="p">,</span>
-                    <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
-                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">_file_prefix</span><span class="p">:</span>
+                <span class="n">_file_prefix</span> <span class="o">=</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+
+            <span class="n">target_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_file_prefix</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="nb">format</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;target file name:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">target_file_name</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">target_file_name</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;File </span><span class="si">%s</span><span class="s2"> exists. Skipping export.&quot;</span><span class="p">,</span> <span class="n">target_file_name</span><span class="p">)</span>
+                <span class="n">skip_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span><span class="o">.</span><span class="n">export_stills</span><span class="p">(</span>
+                <span class="n">gallery_stills</span><span class="o">=</span><span class="p">[</span><span class="n">marker_still</span><span class="o">.</span><span class="n">still_obj</span><span class="p">],</span>
+                <span class="n">folder_path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">export_path</span><span class="p">),</span>
+                <span class="n">file_prefix</span><span class="o">=</span><span class="n">_file_prefix</span><span class="p">,</span>
+                <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">existing_files</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">target_file_name</span><span class="p">)</span>
 
         <span class="c1"># check export folder</span>
-        <span class="n">exported_stills_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">scandir</span><span class="p">(</span><span class="n">export_path</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span>
-            <span class="p">]</span>
-        <span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">existed_file_name_list</span><span class="p">)</span>
+        <span class="n">exported_files</span> <span class="o">=</span> <span class="p">{</span><span class="n">entry</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">export_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">is_file</span><span class="p">()}</span>
+        <span class="n">exported_stills_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">exported_files</span> <span class="o">-</span> <span class="n">original_contents</span><span class="p">)</span>
 
         <span class="c1"># clear album</span>
         <span class="n">stills</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span><span class="o">.</span><span class="n">get_stills</span><span class="p">()</span>
@@ -731,13 +947,13 @@
         <span class="k">if</span> <span class="p">(</span>
             <span class="n">exported_stills_count</span> <span class="o">==</span> <span class="mi">0</span>
             <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
-            <span class="ow">and</span> <span class="n">_skip_count</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">skip_count</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">marker_still_list</span><span class="p">)</span>
         <span class="p">):</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;No stills exported to folder </span><span class="si">{</span><span class="n">export_path</span><span class="si">}</span><span class="s2">. Please check if you open the [gallery] in color page or not&quot;</span>
             <span class="p">)</span>
             <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rename_still</span><span class="p">(</span><span class="n">export_path</span><span class="p">,</span> <span class="n">clean_drx</span><span class="p">,</span> <span class="n">export_folder_contain_list</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rename_still</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">export_path</span><span class="p">),</span> <span class="n">clean_drx</span><span class="p">,</span> <span class="n">original_contents</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="StillManager.rename_still">
@@ -746,38 +962,42 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">still_file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">clean_drx</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="n">export_folder_exist_file_list</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(),</span>
+        <span class="n">export_folder_exist_file_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize exported still names and optionally clean up DRX files.&quot;&quot;&quot;</span>
+        <span class="n">existing_files</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">export_folder_exist_file_list</span> <span class="ow">or</span> <span class="p">[])</span>
+        <span class="n">target_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">still_file_path</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+        <span class="n">target_path</span> <span class="o">=</span> <span class="n">target_path</span> <span class="k">if</span> <span class="n">target_path</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span> <span class="k">else</span> <span class="n">target_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
         <span class="n">remove_count</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">still_file_path</span><span class="p">):</span>
-
-            <span class="k">if</span> <span class="n">f</span> <span class="o">==</span> <span class="s2">&quot;.DS_Store&quot;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">target_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">entry</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
                 <span class="k">continue</span>
-            <span class="k">if</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">export_folder_exist_file_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;.DS_Store&quot;</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">file_extention</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="p">:</span>
+                <span class="k">continue</span>
 
-            <span class="c1"># remove drx file</span>
-            <span class="k">if</span> <span class="n">file_extention</span> <span class="o">==</span> <span class="s2">&quot;.drx&quot;</span> <span class="ow">and</span> <span class="n">clean_drx</span><span class="p">:</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">still_file_path</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.drx&quot;</span> <span class="ow">and</span> <span class="n">clean_drx</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">entry</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+                    <span class="k">pass</span>
                 <span class="n">remove_count</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="k">continue</span>
 
-            <span class="n">_f</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(.*)_[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">_f</span><span class="p">):</span>
-                <span class="n">_file_name</span> <span class="o">=</span> <span class="n">_f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
-                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">still_file_path</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span>
-                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">still_file_path</span><span class="p">,</span> <span class="n">_file_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">file_extention</span><span class="p">,</span>
-                <span class="p">)</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_file_name</span><span class="si">}{</span><span class="n">file_extention</span><span class="si">}</span><span class="s2"> export sucessfully!&quot;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(.*)_[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}&quot;</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
                 <span class="k">continue</span>
 
+            <span class="n">new_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}{</span><span class="n">entry</span><span class="o">.</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">destination</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="n">new_name</span><span class="p">)</span>
+            <span class="n">entry</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> export successfully!&quot;</span><span class="p">,</span> <span class="n">destination</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="n">remove_count</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Delete </span><span class="si">{</span><span class="n">remove_count</span><span class="si">}</span><span class="s2"> drx files&quot;</span><span class="p">)</span></div>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Deleted </span><span class="si">%d</span><span class="s2"> drx files&quot;</span><span class="p">,</span> <span class="n">remove_count</span><span class="p">)</span></div>
 </div>
 
 </pre></div>
