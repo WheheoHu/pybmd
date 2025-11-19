@@ -45,7 +45,9 @@ class Gallery():
         Returns:
             bool: true if successful, false otherwise
         """        
-        return self._gallery.SetCurrentStillAlbum(gallery_still_album)
+        if gallery_still_album is None:
+            return False
+        return self._gallery.SetCurrentStillAlbum(gallery_still_album._gallery_still_album)
     ##############################################################################################################
     # Add at DR 19.1.0
     def get_gallery_power_grade_albums(self) -> List[GalleryStillAlbum]:
@@ -76,4 +78,3 @@ class Gallery():
         """
         album = self._gallery.CreateGalleryPowerGradeAlbum()
         return GalleryStillAlbum(album) if album else None
-
