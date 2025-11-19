@@ -1,5 +1,16 @@
 # Change Log for PyBMD
 ----
+# 2025.2.5
+## API
+### Gallery
+- Fix `set_current_still_album()` to unwrap the Resolve album object before passing it to the API
+
+## Toolkits
+### StillManager
+- Create a dedicated still album named `StillManager_{TimelineName}` when `create_gallery_still_album()` is available (Resolve ≥ 19.1.0)
+- Fall back to the previously selected album on older Resolve versions and log failures gracefully
+- Add `grab_all_still()` method to grab stills for all clips in the current timeline at a specified position (default: 0.5)
+----
 # 2025.2.4
 ## API
 ### Project
