@@ -515,7 +515,7 @@ class TimelineItem():
         Returns:
             bool: Returns True if TiItem to successfully assigned to given ColorGroup. 
         """
-        return self._timeline_item.AssignToColorGroup(color_group)
+        return self._timeline_item.AssignToColorGroup(color_group._color_group)
 
     def remove_from_color_group(self) -> bool:
         """Returns True if the TiItem is successfully removed from the ColorGroup it is in.
