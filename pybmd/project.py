@@ -325,5 +325,18 @@ class Project():
             Dict[str, Any]: A dictionary containing the job status and render time, or an error string if the render failed or was not attempted.
         """
         return self._project.RenderWithQuickExport(preset_name, param_dict)
-    
+
+    ##############################################################################################################################
+    # Add at DR 20.3.0
+
+    def apply_fairlight_preset_to_current_timeline(self, preset_name: str) -> bool:
+        """Applies a Fairlight preset to the current timeline.
+
+        Args:
+            preset_name (str): Name of the Fairlight preset to apply.
+
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+        return self._project.ApplyFairlightPresetToCurrentTimeline(preset_name)
     

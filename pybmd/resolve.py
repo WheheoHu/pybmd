@@ -279,3 +279,14 @@ class Resolve:
             bool: Returns True when 'keyframeMode'(enum) is successfully set.
         """
         return self._resolve.SetKeyframeMode(key_frame_mode.value)
+
+    ##############################################################################################################################
+    # Add at DR 20.3.0
+
+    def get_fairlight_presets(self) -> list:
+        """Returns a list of Fairlight preset names.
+
+        Returns:
+            list: List of Fairlight preset names available in the system.
+        """
+        return self._resolve.GetFairlightPresets()

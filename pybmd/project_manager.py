@@ -39,15 +39,18 @@ class ProjectManager:
         """
         return self._project_manager.CreateFolder(folder_name)
 
-    def create_project(self, project_name: str) -> Project:
+    def create_project(self, project_name: str, media_location_path: str = None) -> Project:
         """Creates and returns a project if projectName(string) is unique, and None if it is not.
 
         Args:
             project_name (str): Project name to create
+            media_location_path (str, optional): Optional media location path for the project. Defaults to None.
 
         Returns:
             Project: created project object
         """
+        if media_location_path is not None:
+            return Project(project=self._project_manager.CreateProject(project_name, media_location_path))
         return Project(project=self._project_manager.CreateProject(project_name))
 
     def delete_folder(self, folder_name: str) -> bool:

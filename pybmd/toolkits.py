@@ -171,7 +171,9 @@ class StillManager(object):
             )
 
         drop_frame_setting = self._timeline.get_setting("timelineDropFrameTimecode")
-        self._timeline_df_flag = bool(int(drop_frame_setting)) if drop_frame_setting else False
+        self._timeline_df_flag = (
+            bool(int(drop_frame_setting)) if drop_frame_setting else False
+        )
         self.marker_still_list: List[MarkerStill] = []
 
     def __repr__(self):
@@ -294,7 +296,8 @@ class StillManager(object):
             timeline_item = timeline.get_current_video_item()
             if timeline_item is None:
                 logger.warning(
-                    "No timeline item available at marker frame %s. Skipping.", marker_frameid
+                    "No timeline item available at marker frame %s. Skipping.",
+                    marker_frameid,
                 )
                 continue
 
@@ -385,7 +388,9 @@ class StillManager(object):
 
         timeline = self._resolve_timeline(timeline)
 
-        timelineitem_list = timeline.get_item_list_in_track(TrackType.VIDEO_TRACK, 1) or []
+        timelineitem_list = (
+            timeline.get_item_list_in_track(TrackType.VIDEO_TRACK, 1) or []
+        )
         if not timelineitem_list:
             logger.info("No clips found on VIDEO_TRACK 1; nothing to grab.")
             return self.marker_still_list
@@ -405,8 +410,11 @@ class StillManager(object):
                 logger.warning("Timeline item has no media pool clip; skipping.")
                 continue
 
-            timelineitem_start_timecode = (
-                timeline_start_timecode + timeline_item.get_start()
+            timelineitem_start_timecode = DfttTimecode(
+                timeline_item.get_start(),
+                "auto",
+                self._timeline_framerate,
+                drop_frame=self._timeline_df_flag,
             )
             still_position_frame_offset = int(
                 timeline_item.get_duration() * still_position
@@ -418,7 +426,9 @@ class StillManager(object):
             timeline.set_current_timecode(
                 timelineitem_still_timecode.timecode_output("smpte")
             )
-
+            logger.debug(
+                f"Set timeline TC to {timelineitem_still_timecode.timecode_output('smpte')} for clip {clip.get_name()}"
+            )
             clip_df_flag = self._coerce_bool(clip.get_clip_property("Drop frame"))
             clip_fps = self._coerce_float(
                 clip.get_clip_property("FPS"), self._timeline_framerate
@@ -444,7 +454,9 @@ class StillManager(object):
 
             marker_source_tc = clip_start_timecode + clip_tc_frame_offset
 
+            #grab still
             still = timeline.grab_still()
+            
             if still is None:
                 logger.warning("Failed to grab still for clip %s.", clip.get_name())
                 continue
@@ -502,6 +514,7 @@ class StillManager(object):
         file_name_format: str = "$file_name$_$clip_frame_tc$",
         format: StillFormat = StillFormat.TIF,
         clean_drx: bool = True,
+        clean_still_album: bool = False,
         use_subfolder: bool = False,
         subfolder: str = "",
     ):
@@ -512,6 +525,7 @@ class StillManager(object):
             file_name_format (str, optional): file name format. accept $file_name$,$reel_name$,$reel_number$,$frames$,$clip_frame_tc$ and all clip property keys show at Davinci Resolve GUI as wildcard. Defaults to "$file_name$_$clip_frame_tc$".
             format (StillFormat, optional): exported stills format. Defaults to StillFormat.TIF.
             clean_drx (bool, optional): clean drx files after stills exported. Defaults to True.
+            clean_still_album (bool, optional): clean still album after stills exported. Defaults to True.
             use_subfolder (bool, optional): use subfolder to export stills. Defaults to False.
             subfolder (str, optional): subfolder name to export stills. Defaults to "".
         """
@@ -540,14 +554,19 @@ class StillManager(object):
         file_name_template = re.sub(wildcard_pattern, r"{\1}", file_name_format)
         logger.debug("file_name_template : %s", file_name_template)
 
-        existing_files = {entry.name for entry in export_path.iterdir() if entry.is_file()}
+        existing_files = {
+            entry.name for entry in export_path.iterdir() if entry.is_file()
+        }
         original_contents = set(existing_files)
 
         skip_count = 0
         for marker_still in self.marker_still_list:
             try:
                 _file_prefix = file_name_template.format(
-                    **{var: self._get_metadata(marker_still, var) for var in wildcard_matches}
+                    **{
+                        var: self._get_metadata(marker_still, var)
+                        for var in wildcard_matches
+                    }
                 ).strip()
             except KeyError as exc:
                 logger.warning("Missing wildcard %s in metadata. Skipping still.", exc)
@@ -573,12 +592,15 @@ class StillManager(object):
             existing_files.add(target_file_name)
 
         # check export folder
-        exported_files = {entry.name for entry in export_path.iterdir() if entry.is_file()}
+        exported_files = {
+            entry.name for entry in export_path.iterdir() if entry.is_file()
+        }
         exported_stills_count = len(exported_files - original_contents)
 
         # clear album
-        stills = self._still_album.get_stills()
-        self._still_album.delete_stills(stills)
+        if clean_still_album:
+            stills = self._still_album.get_stills()
+            self._still_album.delete_stills(stills)
 
         if (
             exported_stills_count == 0
@@ -589,9 +611,9 @@ class StillManager(object):
                 f"No stills exported to folder {export_path}. Please check if you open the [gallery] in color page or not"
             )
             return
-        self.rename_still(str(export_path), clean_drx, original_contents)
+        self.clean_and_rename_stills(str(export_path), clean_drx, original_contents)
 
-    def rename_still(
+    def clean_and_rename_stills(
         self,
         still_file_path: str,
         clean_drx: bool = True,
@@ -600,7 +622,9 @@ class StillManager(object):
         """Normalize exported still names and optionally clean up DRX files."""
         existing_files = set(export_folder_exist_file_list or [])
         target_path = Path(still_file_path).expanduser()
-        target_path = target_path if target_path.is_absolute() else target_path.resolve()
+        target_path = (
+            target_path if target_path.is_absolute() else target_path.resolve()
+        )
 
         remove_count = 0
 

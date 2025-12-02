@@ -1,5 +1,29 @@
 # Change Log for PyBMD
 ----
+# 2025.3.0
+## API
+### Changes for DaVinci Resolve 20.3.0
+
+### Resolve
+- Add `get_fairlight_presets()` - Returns a list of Fairlight preset names
+
+### Project
+- Add `apply_fairlight_preset_to_current_timeline()` - Applies a Fairlight preset to the current timeline
+
+### ProjectManager
+- Update `create_project()` - Now supports optional `media_location_path` parameter
+
+### GalleryStillAlbum
+- Add `import_stills()` - Imports stills from file paths into the album
+
+### Timeline
+- Add adaptive audio track subtypes `ADAPTIVE_25` through `ADAPTIVE_36` to `OptionalSubTrackType` enum
+
+### Toolkits
+- Fix bug in `StillManager.grab_all_still()` method with incorrect timeline timecode handling
+- Modify `StillManager.export_still()` to include `clean_still_album` parameter to control album cleanup after export,default is False.
+
+----
 # 2025.2.5
 ## API
 ### Gallery

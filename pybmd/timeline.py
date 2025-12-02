@@ -79,6 +79,19 @@ class OptionalSubTrackType(Enum):
     ADAPTIVE_22 = "adaptive22"
     ADAPTIVE_23 = "adaptive23"
     ADAPTIVE_24 = "adaptive24"
+    # Added in DR 20.3.0
+    ADAPTIVE_25 = "adaptive25"
+    ADAPTIVE_26 = "adaptive26"
+    ADAPTIVE_27 = "adaptive27"
+    ADAPTIVE_28 = "adaptive28"
+    ADAPTIVE_29 = "adaptive29"
+    ADAPTIVE_30 = "adaptive30"
+    ADAPTIVE_31 = "adaptive31"
+    ADAPTIVE_32 = "adaptive32"
+    ADAPTIVE_33 = "adaptive33"
+    ADAPTIVE_34 = "adaptive34"
+    ADAPTIVE_35 = "adaptive35"
+    ADAPTIVE_36 = "adaptive36"
 
 
 def timeline_item_class_list_transfer(timeline_item_list: List[TimelineItem]) -> list:

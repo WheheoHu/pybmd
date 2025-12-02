@@ -1,4 +1,3 @@
-from os import path
 from typing import List
 from pybmd.gallery_still import GalleryStill
 
@@ -62,6 +61,20 @@ class GalleryStillAlbum():
 
         Returns:
             bool: ture if successful, false otherwise
-        """        
+        """
         return self._gallery_still_album.SetLabel(gallery_still, label)
+
+    ##############################################################################################################################
+    # Add at DR 20.3.0
+
+    def import_stills(self, file_paths: List[str]) -> bool:
+        """Imports stills from the specified file paths into the album.
+
+        Args:
+            file_paths (List[str]): List of file paths to import stills from.
+
+        Returns:
+            bool: True if import was successful, False otherwise.
+        """
+        return self._gallery_still_album.ImportStills(file_paths)
 
