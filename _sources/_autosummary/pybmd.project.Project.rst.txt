@@ -24,6 +24,7 @@ Project
       ~Project.__init__
       ~Project.add_color_group
       ~Project.add_render_job
+      ~Project.apply_fairlight_preset_to_current_timeline
       ~Project.delete_all_render_jobs
       ~Project.delete_color_group
       ~Project.delete_render_job

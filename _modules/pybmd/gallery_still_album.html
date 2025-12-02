@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=af819791"></script>
+    <script src="../../_static/documentation_options.js?v=865d4376"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/gallery_still_album';</script>
@@ -328,8 +328,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.gallery_still_album</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery_still</span><span class="w"> </span><span class="kn">import</span> <span class="n">GalleryStill</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
@@ -414,8 +413,25 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: ture if successful, false otherwise</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="o">.</span><span class="n">SetLabel</span><span class="p">(</span><span class="n">gallery_still</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div>
+
+
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 20.3.0</span>
+
+<div class="viewcode-block" id="GalleryStillAlbum.import_stills">
+<a class="viewcode-back" href="../../_autosummary/pybmd.gallery_still_album.GalleryStillAlbum.import_stills.html#pybmd.gallery_still_album.GalleryStillAlbum.import_stills">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_stills</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Imports stills from the specified file paths into the album.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_paths (List[str]): List of file paths to import stills from.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if import was successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="o">.</span><span class="n">ImportStills</span><span class="p">(</span><span class="n">file_paths</span><span class="p">)</span></div>
 </div>
 
 

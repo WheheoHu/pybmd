@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=af819791"></script>
+    <script src="../../_static/documentation_options.js?v=865d4376"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/project_manager';</script>
@@ -382,15 +382,18 @@
 
 <div class="viewcode-block" id="ProjectManager.create_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.create_project.html#pybmd.project_manager.ProjectManager.create_project">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">create_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">media_location_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates and returns a project if projectName(string) is unique, and None if it is not.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            project_name (str): Project name to create</span>
+<span class="sd">            media_location_path (str, optional): Optional media location path for the project. Defaults to None.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Project: created project object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">media_location_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">CreateProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">media_location_path</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">CreateProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">))</span></div>
 
 

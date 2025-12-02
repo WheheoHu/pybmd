@@ -1,0 +1,8 @@
+Resolve.get\_fairlight\_presets
+===============================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.get_fairlight_presets
+
+    .. autosummary::

@@ -27,6 +27,7 @@ Resolve
       ~Resolve.export_layout_preset
       ~Resolve.export_render_preset
       ~Resolve.get_current_page
+      ~Resolve.get_fairlight_presets
       ~Resolve.get_keyframe_mode
       ~Resolve.get_media_storage
       ~Resolve.get_product_name

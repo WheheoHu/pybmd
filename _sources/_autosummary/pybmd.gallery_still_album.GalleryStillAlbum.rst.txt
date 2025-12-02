@@ -26,6 +26,7 @@ GalleryStillAlbum
       ~GalleryStillAlbum.export_stills
       ~GalleryStillAlbum.get_label
       ~GalleryStillAlbum.get_stills
+      ~GalleryStillAlbum.import_stills
       ~GalleryStillAlbum.set_label
    
    

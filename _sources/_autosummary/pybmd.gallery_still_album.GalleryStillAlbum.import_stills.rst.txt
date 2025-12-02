@@ -1,0 +1,8 @@
+GalleryStillAlbum.import\_stills
+================================
+
+.. currentmodule:: pybmd.gallery_still_album
+
+.. automethod:: GalleryStillAlbum.import_stills
+
+    .. autosummary::

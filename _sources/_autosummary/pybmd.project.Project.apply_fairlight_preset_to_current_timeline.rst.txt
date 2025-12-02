@@ -1,0 +1,8 @@
+Project.apply\_fairlight\_preset\_to\_current\_timeline
+=======================================================
+
+.. currentmodule:: pybmd.project
+
+.. automethod:: Project.apply_fairlight_preset_to_current_timeline
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+StillManager.clean\_and\_rename\_stills
+=======================================
+
+.. currentmodule:: pybmd.toolkits
+
+.. automethod:: StillManager.clean_and_rename_stills
+
+    .. autosummary::

@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=af819791"></script>
+    <script src="../../_static/documentation_options.js?v=865d4376"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/project';</script>
@@ -788,9 +788,25 @@
 <span class="sd">            Dict[str, Any]: A dictionary containing the job status and render time, or an error string if the render failed or was not attempted.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">RenderWithQuickExport</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">param_dict</span><span class="p">)</span></div>
+
+
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 20.3.0</span>
+
+<div class="viewcode-block" id="Project.apply_fairlight_preset_to_current_timeline">
+<a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.apply_fairlight_preset_to_current_timeline.html#pybmd.project.Project.apply_fairlight_preset_to_current_timeline">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_fairlight_preset_to_current_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies a Fairlight preset to the current timeline.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            preset_name (str): Name of the Fairlight preset to apply.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">ApplyFairlightPresetToCurrentTimeline</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 </div>
 
-    
     
 </pre></div>
 

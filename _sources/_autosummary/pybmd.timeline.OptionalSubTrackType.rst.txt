@@ -53,5 +53,17 @@ OptionalSubTrackType
       ~OptionalSubTrackType.ADAPTIVE_22
       ~OptionalSubTrackType.ADAPTIVE_23
       ~OptionalSubTrackType.ADAPTIVE_24
+      ~OptionalSubTrackType.ADAPTIVE_25
+      ~OptionalSubTrackType.ADAPTIVE_26
+      ~OptionalSubTrackType.ADAPTIVE_27
+      ~OptionalSubTrackType.ADAPTIVE_28
+      ~OptionalSubTrackType.ADAPTIVE_29
+      ~OptionalSubTrackType.ADAPTIVE_30
+      ~OptionalSubTrackType.ADAPTIVE_31
+      ~OptionalSubTrackType.ADAPTIVE_32
+      ~OptionalSubTrackType.ADAPTIVE_33
+      ~OptionalSubTrackType.ADAPTIVE_34
+      ~OptionalSubTrackType.ADAPTIVE_35
+      ~OptionalSubTrackType.ADAPTIVE_36
    
    

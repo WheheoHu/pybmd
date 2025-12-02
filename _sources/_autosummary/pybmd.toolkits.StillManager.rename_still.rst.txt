@@ -1,8 +1,0 @@
-StillManager.rename\_still
-==========================
-
-.. currentmodule:: pybmd.toolkits
-
-.. automethod:: StillManager.rename_still
-
-    .. autosummary::
