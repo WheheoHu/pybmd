@@ -254,7 +254,7 @@ class Project():
             file_path (str): exported still path.filePath must end in valid export file format. 
 
         Returns:
-            bool: Returns True if succssful, False otherwise.
+            bool: Returns True if successful, False otherwise.
         """
         return self._project.ExportCurrentFrameAsStill(file_path)
        

@@ -1,5 +1,21 @@
 # Change Log for PyBMD
 ----
+# 2025.3.1
+## Fixes
+- Fix typo `gallert_still_album` -> `gallery_still_album` in gallery.py
+- Fix typo `ture` -> `true` in docstrings (gallery.py, gallery_still_album.py)
+- Fix typo `MeidaPoolItem` -> `MediaPoolItem` in timeline_item.py
+- Fix typo `meida` -> `media` in docstrings (timeline_item.py, media_pool.py)
+- Fix typo `succssful` -> `successful` in docstrings (project.py, resolve.py)
+- Fix typo `delet_marker_at_frame` -> `delete_marker_at_frame` in timeline_item.py
+- Fix typo `fram_num` -> `frame_num` in timeline_item.py
+- Fix typo `stero_eye` -> `stereo_eye` in media_storage.py
+- Fix typo `add_item_list_to_meida_pool` -> `add_item_list_to_media_pool` in media_storage.py
+- Fix typo `pen davinci` -> `open davinci` in resolve.py docstring
+- Fix typo `Porject` -> `Project` in CHANGELOG.md
+- Fix bug in `ProjectManager.import_project()`
+
+----
 # 2025.3.0
 ## API
 ### Changes for DaVinci Resolve 20.3.0
@@ -117,7 +133,7 @@
   
 ## Media Storage
 - Add `Item_Info` dataclass
-- Modify `add_item_list_to_meida_pool`
+- Modify `add_item_list_to_media_pool`
   
 ## Project
 - Add `export_current_frame_as_still`
@@ -319,7 +335,7 @@
 ### ProjectManager 
 - Added `load_cloud_project()`
 
-### Porject
+### Project
 - Added `delete_render_preset` 
 - Added `get_quick_export_render_presets`
 - Added `render_with_quick_export`

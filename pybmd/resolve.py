@@ -59,7 +59,7 @@ class Resolve:
 
         Args:
             resolve_ip (str, optional): davinci resolve ip. Defaults to 127.0.0.1.
-            auto_start (bool, optional): pen davinci automatically if it's not running, if you want to open davinci manually, change arg to false. Defaults to True.
+            auto_start (bool, optional): open davinci automatically if it's not running, if you want to open davinci manually, change arg to false. Defaults to True.
 
         Raises:
             ResolveInitError: davinci resolve init failed.you need to check if davinci resolve is running.
@@ -220,7 +220,7 @@ class Resolve:
             preset_path (str): path of preset file
 
         Returns:
-            bool: Returns True if succssful, False otherwise.
+            bool: Returns True if successful, False otherwise.
         """
         return self._resolve.ImportRenderPreset(preset_path)
 
@@ -232,7 +232,7 @@ class Resolve:
             export_path (str): export path
 
         Returns:
-            bool: Returns True if succssful, False otherwise.
+            bool: Returns True if successful, False otherwise.
         """
         return self._resolve.ExportRenderPreset(preset_name, export_path)
 
@@ -243,7 +243,7 @@ class Resolve:
             preset_path (str): path of preset
 
         Returns:
-            bool: Returns True if succssful, False otherwise.
+            bool: Returns True if successful, False otherwise.
         """
         return self._resolve.ImportBurnInPreset(preset_path)
 
@@ -255,7 +255,7 @@ class Resolve:
             export_path (str): path to export
 
         Returns:
-            bool: Returns True if succssful, False otherwise.
+            bool: Returns True if successful, False otherwise.
         """
         return self._resolve.ExportBurnInPreset(preset_name, export_path)
 

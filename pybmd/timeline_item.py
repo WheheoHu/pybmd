@@ -78,10 +78,10 @@ class TimelineItem():
         return self._timeline_item.AddMarker(frame_id, color, name, note, duration, custom_data)
 
     def add_take(self, media_pool_item: MediaPoolItem, start_frame: int, end_frame: int) -> bool:
-        """Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added. 
+        """Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added.
 
         Args:
-            media_pool_item (MediaPoolItem): MeidaPoolItem object to add as a new take.
+            media_pool_item (MediaPoolItem): MediaPoolItem object to add as a new take.
             start_frame (int): start frame of the take.
             end_frame (int): end frame of the take.
 
@@ -124,9 +124,9 @@ class TimelineItem():
         """Deletes the named Fusion composition."""
         return self._timeline_item.DeleteFusionCompByName(comp_name)
 
-    def delet_marker_at_frame(self, fram_num: int) -> bool:
-        """Delete marker at frameNum from the timeline item."""
-        return self._timeline_item.DeletMarkerAtFrame(fram_num)
+    def delete_marker_at_frame(self, frame_num: int) -> bool:
+        """Delete marker at frame_num from the timeline item."""
+        return self._timeline_item.DeleteMarkerAtFrame(frame_num)
 
     def delete_marker_by_custom_data(self, custom_data) -> bool:
         """Delete first matching marker with specified customData."""
@@ -221,7 +221,7 @@ class TimelineItem():
         """Returns the media pool item corresponding to the timeline item if one exists.
 
         Returns:
-            MediaPoolItem: meida pool item object
+            MediaPoolItem: media pool item object
         """
         return MediaPoolItem(self._timeline_item.GetMediaPoolItem())
 

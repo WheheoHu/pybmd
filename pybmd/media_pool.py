@@ -138,7 +138,7 @@ class MediaPool:
         """Delete mattes based on their file paths for specified media pool item
 
         Args:
-            media_pool_item (MediaPoolItem): meida pool item to delete mattes for
+            media_pool_item (MediaPoolItem): media pool item to delete mattes for
             paths (List[str]): matte file paths to delete
 
         Returns:

@@ -20,21 +20,21 @@ class MediaStorage:
     def __init__(self, media_storage):
         self._media_storage = media_storage
 
-    def add_clip_mattes_to_media_pool(self, media_pool_item: MediaPoolItem, paths: List[str], stero_eye: str = None) -> bool:
+    def add_clip_mattes_to_media_pool(self, media_pool_item: MediaPoolItem, paths: List[str], stereo_eye: str = None) -> bool:
         """Adds specified media files as mattes for the specified MediaPoolItem
 
         Args:
             media_pool_item (MediaPoolItem): MediaPoolItem to add mattes to
             paths (List[str]): file paths to add as mattes
-            stero_eye (str, optional): specifying which eye to add the matte to for stereo clips ("left" or "right"). Defaults to None.
+            stereo_eye (str, optional): specifying which eye to add the matte to for stereo clips ("left" or "right"). Defaults to None.
 
         Returns:
             bool: True if success, False if fail
         """
-        return self._media_storage.AddClipMattesToMediaPool(media_pool_item, paths, stero_eye)
+        return self._media_storage.AddClipMattesToMediaPool(media_pool_item, paths, stereo_eye)
 
-    def add_item_list_to_meida_pool(self, items: List[str] | List[Item_Info]) -> List[MediaPoolItem]:
-        """Adds specified file/folder paths from Media Storage into current Media Pool folder. 
+    def add_item_list_to_media_pool(self, items: List[str] | List[Item_Info]) -> List[MediaPoolItem]:
+        """Adds specified file/folder paths from Media Storage into current Media Pool folder.
 
         Args:
             items (List[str]): an array of file/folder paths
@@ -43,7 +43,7 @@ class MediaStorage:
             List[MediaPoolItem]: a list of MediaPoolItem objects created from the added items
         """
         # media_pool_item_list = []
-        # for media_pool_item in self.media_storage.AddItemListToMeidaPool(item_path_list):
+        # for media_pool_item in self.media_storage.AddItemListToMediaPool(item_path_list):
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
         # return media_pool_item_list
         if type(items[0]) is str:

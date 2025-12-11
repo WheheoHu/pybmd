@@ -116,7 +116,7 @@ class ProjectManager:
     #Modified at DR18.0.0
     def import_project(self, file_path: path, project_name: str = None) -> bool:
         """Imports a project from the file path provided with given project name. Returns True if successful."""
-        return self._project_manager.ImportPorject(str(file_path), project_name)
+        return self._project_manager.ImportProject(str(file_path), project_name)
 
     def load_project(self, project_name) -> "Project":
         """Loads and returns the@Project  with name = project_name (string) if there is a match found, and None if there is no matching Project."""

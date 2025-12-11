@@ -8,9 +8,9 @@ class Gallery():
     def __init__(self, gallery):
         self._gallery = gallery
 
-    def get_album_name(self, gallert_still_album: GalleryStillAlbum) -> str:
+    def get_album_name(self, gallery_still_album: GalleryStillAlbum) -> str:
         """return the album name of the GalleryStillAlbum object"""
-        return self._gallery.GetAlbumName(gallert_still_album)
+        return self._gallery.GetAlbumName(gallery_still_album)
 
     def get_current_still_album(self) -> GalleryStillAlbum:
         """return the current GalleryStillAlbum object"""
@@ -28,11 +28,11 @@ class Gallery():
         """set the album name of the GalleryStillAlbum object
 
         Args:
-            gallert_still_album (GalleryStillAlbum): gallery still album object
+            gallery_still_album (GalleryStillAlbum): gallery still album object
             album_name (str): name of the album
 
         Returns:
-            bool: ture if successful, false otherwise
+            bool: true if successful, false otherwise
         """
         return self._gallery.SetAlbumName(gallery_still_album._gallery_still_album, album_name)
 

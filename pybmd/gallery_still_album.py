@@ -60,7 +60,7 @@ class GalleryStillAlbum():
             label (str): label to set on gallery still
 
         Returns:
-            bool: ture if successful, false otherwise
+            bool: true if successful, false otherwise
         """
         return self._gallery_still_album.SetLabel(gallery_still, label)
 
