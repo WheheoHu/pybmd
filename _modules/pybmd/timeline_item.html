@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=865d4376"></script>
+    <script src="../../_static/documentation_options.js?v=2225c76f"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/timeline_item';</script>
@@ -436,10 +436,10 @@
 <div class="viewcode-block" id="TimelineItem.add_take">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_take.html#pybmd.timeline_item.TimelineItem.add_take">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_take</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">start_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            media_pool_item (MediaPoolItem): MeidaPoolItem object to add as a new take.</span>
+<span class="sd">            media_pool_item (MediaPoolItem): MediaPoolItem object to add as a new take.</span>
 <span class="sd">            start_frame (int): start frame of the take.</span>
 <span class="sd">            end_frame (int): end frame of the take.</span>
 
@@ -498,11 +498,11 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">DeleteFusionCompByName</span><span class="p">(</span><span class="n">comp_name</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="TimelineItem.delet_marker_at_frame">
-<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delet_marker_at_frame.html#pybmd.timeline_item.TimelineItem.delet_marker_at_frame">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">delet_marker_at_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fram_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete marker at frameNum from the timeline item.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">DeletMarkerAtFrame</span><span class="p">(</span><span class="n">fram_num</span><span class="p">)</span></div>
+<div class="viewcode-block" id="TimelineItem.delete_marker_at_frame">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delete_marker_at_frame.html#pybmd.timeline_item.TimelineItem.delete_marker_at_frame">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete_marker_at_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete marker at frame_num from the timeline item.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">DeleteMarkerAtFrame</span><span class="p">(</span><span class="n">frame_num</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.delete_marker_by_custom_data">
@@ -654,7 +654,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the media pool item corresponding to the timeline item if one exists.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            MediaPoolItem: meida pool item object</span>
+<span class="sd">            MediaPoolItem: media pool item object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">MediaPoolItem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetMediaPoolItem</span><span class="p">())</span></div>
 

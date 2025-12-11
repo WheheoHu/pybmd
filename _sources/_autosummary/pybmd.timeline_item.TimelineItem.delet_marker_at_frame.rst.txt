@@ -1,8 +1,0 @@
-TimelineItem.delet\_marker\_at\_frame
-=====================================
-
-.. currentmodule:: pybmd.timeline_item
-
-.. automethod:: TimelineItem.delet_marker_at_frame
-
-    .. autosummary::

@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=865d4376"></script>
+    <script src="../_static/documentation_options.js?v=2225c76f"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.gallery.Gallery';</script>
@@ -509,7 +509,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_storage.MediaStorage.html">MediaStorage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.__init__.html">MediaStorage.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool.html">MediaStorage.add_clip_mattes_to_media_pool</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool.html">MediaStorage.add_item_list_to_meida_pool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_item_list_to_media_pool.html">MediaStorage.add_item_list_to_media_pool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_timeline_mattes_to_media_pool.html">MediaStorage.add_timeline_mattes_to_media_pool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.get_file_list.html">MediaStorage.get_file_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.get_mounted_volume_list.html">MediaStorage.get_mounted_volume_list</a></li>
@@ -791,8 +791,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.clear_flags.html">TimelineItem.clear_flags</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.copy_grades.html">TimelineItem.copy_grades</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.create_magic_mask.html">TimelineItem.create_magic_mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delet_marker_at_frame.html">TimelineItem.delet_marker_at_frame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name.html">TimelineItem.delete_fusion_comp_by_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_at_frame.html">TimelineItem.delete_marker_at_frame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_by_color.html">TimelineItem.delete_marker_by_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_by_custom_data.html">TimelineItem.delete_marker_by_custom_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_take_by_index.html">TimelineItem.delete_take_by_index</a></li>
@@ -997,7 +997,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.gallery.Gallery.create_gallery_still_album.html#pybmd.gallery.Gallery.create_gallery_still_album" title="pybmd.gallery.Gallery.create_gallery_still_album"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_gallery_still_album</span></code></a>()</p></td>
 <td><p>Creates a new Still album.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.gallery.Gallery.get_album_name.html#pybmd.gallery.Gallery.get_album_name" title="pybmd.gallery.Gallery.get_album_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_album_name</span></code></a>(gallert_still_album)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.gallery.Gallery.get_album_name.html#pybmd.gallery.Gallery.get_album_name" title="pybmd.gallery.Gallery.get_album_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_album_name</span></code></a>(gallery_still_album)</p></td>
 <td><p>return the album name of the GalleryStillAlbum object</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.gallery.Gallery.get_current_still_album.html#pybmd.gallery.Gallery.get_current_still_album" title="pybmd.gallery.Gallery.get_current_still_album"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_current_still_album</span></code></a>()</p></td>
@@ -1020,11 +1020,11 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_album_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gallert_still_album</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GalleryStillAlbum</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/pybmd/gallery.html#Gallery.get_album_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-name descname"><span class="pre">get_album_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gallery_still_album</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GalleryStillAlbum</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/pybmd/gallery.html#Gallery.get_album_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>return the album name of the GalleryStillAlbum object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>gallert_still_album</strong> (<em>GalleryStillAlbum</em>)</p>
+<dd class="field-odd"><p><strong>gallery_still_album</strong> (<em>GalleryStillAlbum</em>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
@@ -1061,13 +1061,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>gallert_still_album</strong> (<em>GalleryStillAlbum</em>) – gallery still album object</p></li>
+<li><p><strong>gallery_still_album</strong> (<em>GalleryStillAlbum</em>) – gallery still album object</p></li>
 <li><p><strong>album_name</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – name of the album</p></li>
-<li><p><strong>gallery_still_album</strong> (<em>GalleryStillAlbum</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>ture if successful, false otherwise</p>
+<dd class="field-even"><p>true if successful, false otherwise</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>

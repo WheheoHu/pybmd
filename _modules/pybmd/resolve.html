@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=865d4376"></script>
+    <script src="../../_static/documentation_options.js?v=2225c76f"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/resolve';</script>
@@ -393,7 +393,7 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            resolve_ip (str, optional): davinci resolve ip. Defaults to 127.0.0.1.</span>
-<span class="sd">            auto_start (bool, optional): pen davinci automatically if it&#39;s not running, if you want to open davinci manually, change arg to false. Defaults to True.</span>
+<span class="sd">            auto_start (bool, optional): open davinci automatically if it&#39;s not running, if you want to open davinci manually, change arg to false. Defaults to True.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ResolveInitError: davinci resolve init failed.you need to check if davinci resolve is running.</span>
@@ -599,7 +599,7 @@
 <span class="sd">            preset_path (str): path of preset file</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">            bool: Returns True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ImportRenderPreset</span><span class="p">(</span><span class="n">preset_path</span><span class="p">)</span></div>
 
@@ -614,7 +614,7 @@
 <span class="sd">            export_path (str): export path</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">            bool: Returns True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ExportRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
 
@@ -628,7 +628,7 @@
 <span class="sd">            preset_path (str): path of preset</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">            bool: Returns True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ImportBurnInPreset</span><span class="p">(</span><span class="n">preset_path</span><span class="p">)</span></div>
 
@@ -643,7 +643,7 @@
 <span class="sd">            export_path (str): path to export</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            bool: Returns True if succssful, False otherwise.</span>
+<span class="sd">            bool: Returns True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ExportBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
 

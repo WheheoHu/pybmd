@@ -23,7 +23,7 @@ MediaStorage
    
       ~MediaStorage.__init__
       ~MediaStorage.add_clip_mattes_to_media_pool
-      ~MediaStorage.add_item_list_to_meida_pool
+      ~MediaStorage.add_item_list_to_media_pool
       ~MediaStorage.add_timeline_mattes_to_media_pool
       ~MediaStorage.get_file_list
       ~MediaStorage.get_mounted_volume_list

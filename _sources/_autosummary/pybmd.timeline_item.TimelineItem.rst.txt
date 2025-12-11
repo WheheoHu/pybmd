@@ -32,8 +32,8 @@ TimelineItem
       ~TimelineItem.clear_flags
       ~TimelineItem.copy_grades
       ~TimelineItem.create_magic_mask
-      ~TimelineItem.delet_marker_at_frame
       ~TimelineItem.delete_fusion_comp_by_name
+      ~TimelineItem.delete_marker_at_frame
       ~TimelineItem.delete_marker_by_color
       ~TimelineItem.delete_marker_by_custom_data
       ~TimelineItem.delete_take_by_index

@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=865d4376"></script>
+    <script src="../_static/documentation_options.js?v=2225c76f"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.timeline_item.TimelineItem';</script>
@@ -509,7 +509,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="pybmd.media_storage.MediaStorage.html">MediaStorage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.__init__.html">MediaStorage.__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool.html">MediaStorage.add_clip_mattes_to_media_pool</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool.html">MediaStorage.add_item_list_to_meida_pool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_item_list_to_media_pool.html">MediaStorage.add_item_list_to_media_pool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_timeline_mattes_to_media_pool.html">MediaStorage.add_timeline_mattes_to_media_pool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.get_file_list.html">MediaStorage.get_file_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.get_mounted_volume_list.html">MediaStorage.get_mounted_volume_list</a></li>
@@ -791,8 +791,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.clear_flags.html">TimelineItem.clear_flags</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.copy_grades.html">TimelineItem.copy_grades</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.create_magic_mask.html">TimelineItem.create_magic_mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delet_marker_at_frame.html">TimelineItem.delet_marker_at_frame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name.html">TimelineItem.delete_fusion_comp_by_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_at_frame.html">TimelineItem.delete_marker_at_frame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_by_color.html">TimelineItem.delete_marker_by_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_by_custom_data.html">TimelineItem.delete_marker_by_custom_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_take_by_index.html">TimelineItem.delete_take_by_index</a></li>
@@ -1021,11 +1021,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.create_magic_mask.html#pybmd.timeline_item.TimelineItem.create_magic_mask" title="pybmd.timeline_item.TimelineItem.create_magic_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_magic_mask</span></code></a>(mode)</p></td>
 <td><p>Returns True if magic mask was created successfully, False otherwise.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delet_marker_at_frame.html#pybmd.timeline_item.TimelineItem.delet_marker_at_frame" title="pybmd.timeline_item.TimelineItem.delet_marker_at_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delet_marker_at_frame</span></code></a>(fram_num)</p></td>
-<td><p>Delete marker at frameNum from the timeline item.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name" title="pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_fusion_comp_by_name</span></code></a>(comp_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name.html#pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name" title="pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_fusion_comp_by_name</span></code></a>(comp_name)</p></td>
 <td><p>Deletes the named Fusion composition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_at_frame.html#pybmd.timeline_item.TimelineItem.delete_marker_at_frame" title="pybmd.timeline_item.TimelineItem.delete_marker_at_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_marker_at_frame</span></code></a>(frame_num)</p></td>
+<td><p>Delete marker at frame_num from the timeline item.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_by_color.html#pybmd.timeline_item.TimelineItem.delete_marker_by_color" title="pybmd.timeline_item.TimelineItem.delete_marker_by_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_marker_by_color</span></code></a>(color)</p></td>
 <td><p>Delete all markers of the specified color from the timeline item.</p></td>
@@ -1297,7 +1297,7 @@ indicates a single green marker at clip offset 96</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>media_pool_item</strong> (<em>MediaPoolItem</em>) – MeidaPoolItem object to add as a new take.</p></li>
+<li><p><strong>media_pool_item</strong> (<em>MediaPoolItem</em>) – MediaPoolItem object to add as a new take.</p></li>
 <li><p><strong>start_frame</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – start frame of the take.</p></li>
 <li><p><strong>end_frame</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – end frame of the take.</p></li>
 </ul>
@@ -1384,11 +1384,11 @@ Returns True if successful.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">delet_marker_at_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fram_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline_item.html#TimelineItem.delet_marker_at_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Delete marker at frameNum from the timeline item.</p>
+<span class="sig-name descname"><span class="pre">delete_marker_at_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline_item.html#TimelineItem.delete_marker_at_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Delete marker at frame_num from the timeline item.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>fram_num</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>)</p>
+<dd class="field-odd"><p><strong>frame_num</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
@@ -1644,7 +1644,7 @@ Returns True if successful.</p>
 <dd><p>Returns the media pool item corresponding to the timeline item if one exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>meida pool item object</p>
+<dd class="field-odd"><p>media pool item object</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>MediaPoolItem</p>

@@ -38,13 +38,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=865d4376"></script>
+    <script src="../_static/documentation_options.js?v=2225c76f"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MediaStorage.add_item_list_to_meida_pool" href="pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool.html" />
+    <link rel="next" title="MediaStorage.add_item_list_to_media_pool" href="pybmd.media_storage.MediaStorage.add_item_list_to_media_pool.html" />
     <link rel="prev" title="MediaStorage.__init__" href="pybmd.media_storage.MediaStorage.__init__.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -509,7 +509,7 @@
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="pybmd.media_storage.MediaStorage.html">MediaStorage</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.__init__.html">MediaStorage.__init__</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">MediaStorage.add_clip_mattes_to_media_pool</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool.html">MediaStorage.add_item_list_to_meida_pool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_item_list_to_media_pool.html">MediaStorage.add_item_list_to_media_pool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.add_timeline_mattes_to_media_pool.html">MediaStorage.add_timeline_mattes_to_media_pool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.get_file_list.html">MediaStorage.get_file_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.media_storage.MediaStorage.get_mounted_volume_list.html">MediaStorage.get_mounted_volume_list</a></li>
@@ -791,8 +791,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.clear_flags.html">TimelineItem.clear_flags</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.copy_grades.html">TimelineItem.copy_grades</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.create_magic_mask.html">TimelineItem.create_magic_mask</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delet_marker_at_frame.html">TimelineItem.delet_marker_at_frame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_fusion_comp_by_name.html">TimelineItem.delete_fusion_comp_by_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_at_frame.html">TimelineItem.delete_marker_at_frame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_by_color.html">TimelineItem.delete_marker_by_color</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_marker_by_custom_data.html">TimelineItem.delete_marker_by_custom_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.delete_take_by_index.html">TimelineItem.delete_take_by_index</a></li>
@@ -985,14 +985,14 @@
 <h1>MediaStorage.add_clip_mattes_to_media_pool<a class="headerlink" href="#mediastorage-add-clip-mattes-to-media-pool" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool">
-<span class="sig-prename descclassname"><span class="pre">MediaStorage.</span></span><span class="sig-name descname"><span class="pre">add_clip_mattes_to_media_pool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">media_pool_item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MediaPoolItem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stero_eye</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/pybmd/media_storage.html#MediaStorage.add_clip_mattes_to_media_pool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">MediaStorage.</span></span><span class="sig-name descname"><span class="pre">add_clip_mattes_to_media_pool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">media_pool_item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MediaPoolItem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stereo_eye</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/pybmd/media_storage.html#MediaStorage.add_clip_mattes_to_media_pool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool" title="Link to this definition">#</a></dt>
 <dd><p>Adds specified media files as mattes for the specified MediaPoolItem</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>media_pool_item</strong> (<em>MediaPoolItem</em>) – MediaPoolItem to add mattes to</p></li>
 <li><p><strong>paths</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – file paths to add as mattes</p></li>
-<li><p><strong>stero_eye</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – specifying which eye to add the matte to for stereo clips (“left” or “right”). Defaults to None.</p></li>
+<li><p><strong>stereo_eye</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) – specifying which eye to add the matte to for stereo clips (“left” or “right”). Defaults to None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1031,11 +1031,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="pybmd.media_storage.MediaStorage.add_item_list_to_meida_pool.html"
+       href="pybmd.media_storage.MediaStorage.add_item_list_to_media_pool.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MediaStorage.add_item_list_to_meida_pool</p>
+        <p class="prev-next-title">MediaStorage.add_item_list_to_media_pool</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
