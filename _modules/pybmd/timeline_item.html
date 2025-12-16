@@ -331,9 +331,11 @@
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">asdict</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
+
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.export_type</span><span class="w"> </span><span class="kn">import</span> <span class="n">LUT_Export_Type</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.color_group</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColorGroup</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.fusion_comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">FusionComp</span>
@@ -347,6 +349,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.VersionType.html#pybmd.timeline_item.VersionType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">VersionType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;VersionType.&quot;&quot;&quot;</span>
+
     <span class="n">LOCAL</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">REMOTE</span> <span class="o">=</span> <span class="mi">1</span></div>
 
@@ -355,8 +358,9 @@
 <div class="viewcode-block" id="CDL_Map">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.CDL_Map.html#pybmd.timeline_item.CDL_Map">[docs]</a>
 <span class="nd">@dataclass</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">CDL_Map</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CDL_Map</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CDL_Map&quot;&quot;&quot;</span>
+
     <span class="n">NodeIndex</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">Slope</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">Offset</span><span class="p">:</span> <span class="nb">str</span>
@@ -368,8 +372,9 @@
 <div class="viewcode-block" id="MagicMask_Mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.MagicMask_Mode.html#pybmd.timeline_item.MagicMask_Mode">[docs]</a>
 <span class="nd">@dataclass</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">MagicMask_Mode</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MagicMask_Mode</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;MagicMask_Mode.&quot;&quot;&quot;</span>
+
     <span class="n">Forward</span> <span class="o">=</span> <span class="s2">&quot;F&quot;</span>
     <span class="n">Backward</span> <span class="o">=</span> <span class="s2">&quot;B&quot;</span>
     <span class="n">Bidirection</span> <span class="o">=</span> <span class="s2">&quot;BI&quot;</span></div>
@@ -378,24 +383,25 @@
 
 <div class="viewcode-block" id="TimelineItem">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.html#pybmd.timeline_item.TimelineItem">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">TimelineItem</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TimelineItem</span><span class="p">(</span><span class="n">WrapperBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;TimelineItem Object&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="TimelineItem.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.__init__.html#pybmd.timeline_item.TimelineItem.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_item</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span> <span class="o">=</span> <span class="n">timeline_item</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TimelineItem</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">timeline_item</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Timeline Item: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Timeline Item: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <div class="viewcode-block" id="TimelineItem.get_markers">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_markers.html#pybmd.timeline_item.TimelineItem.get_markers">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_markers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dict (frameId -&gt; {information}) of all markers and dicts with their information.</span>
-<span class="sd">            Example: a value of {96.0: {&#39;color&#39;: &#39;Green&#39;, &#39;duration&#39;: 1.0, &#39;note&#39;: &#39;&#39;, &#39;name&#39;: &#39;Marker 1&#39;, &#39;customData&#39;: &#39;&#39;}, ...}</span>
-<span class="sd">            indicates a single green marker at clip offset 96</span>
+<span class="sd">        Example: a value of {96.0: {&#39;color&#39;: &#39;Green&#39;, &#39;duration&#39;: 1.0, &#39;note&#39;: &#39;&#39;, &#39;name&#39;: &#39;Marker 1&#39;, &#39;customData&#39;: &#39;&#39;}, ...}</span>
+<span class="sd">        indicates a single green marker at clip offset 96</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetMarkers</span><span class="p">()</span></div>
 
@@ -409,15 +415,23 @@
 
 <div class="viewcode-block" id="TimelineItem.add_fusion_comp">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_fusion_comp.html#pybmd.timeline_item.TimelineItem.add_fusion_comp">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_fusion_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FusionComp&#39;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_fusion_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;FusionComp&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a new Fusion composition associated with the timeline item.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">FusionComp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AddFusionComp</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.add_marker">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_marker.html#pybmd.timeline_item.TimelineItem.add_marker">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new marker at given frameId position and with given marker information. </span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_marker</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">frame_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">note</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">duration</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">custom_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new marker at given frameId position and with given marker information.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            frame_id (str): frame position of the marker</span>
@@ -430,12 +444,16 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span><span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AddMarker</span><span class="p">(</span>
+            <span class="n">frame_id</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">custom_data</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.add_take">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.add_take.html#pybmd.timeline_item.TimelineItem.add_take">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_take</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">start_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_take</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">start_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end_frame</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds mediaPoolItem as a new take. Initializes a take selector for the timeline item if needed. By default, the full clip extents is added.</span>
 
 <span class="sd">        Args:</span>
@@ -446,7 +464,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AddTake</span><span class="p">(</span><span class="n">media_pool_item</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="p">,</span> <span class="n">start_frame</span><span class="p">,</span> <span class="n">end_frame</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AddTake</span><span class="p">(</span>
+            <span class="n">media_pool_item</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="p">,</span> <span class="n">start_frame</span><span class="p">,</span> <span class="n">end_frame</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.add_version">
@@ -480,9 +500,9 @@
 
 <div class="viewcode-block" id="TimelineItem.copy_grades">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.copy_grades.html#pybmd.timeline_item.TimelineItem.copy_grades">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">copy_grades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_timeline_items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;TimelineItem&#39;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy_grades</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_timeline_items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;TimelineItem&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Copies the current node stack layer grade to the same layer for each item in target_timeline_items. </span>
+<span class="sd">        Copies the current node stack layer grade to the same layer for each item in target_timeline_items.</span>
 <span class="sd">        Returns True if successful.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">timeline_item_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -516,7 +536,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delete_marker_by_color.html#pybmd.timeline_item.TimelineItem.delete_marker_by_color">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">delete_marker_by_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete all markers of the specified color from the timeline item. </span>
+<span class="sd">        Delete all markers of the specified color from the timeline item.</span>
 <span class="sd">        &quot;All&quot; as argument deletes all color markers.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">DeleteMarkerByColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
@@ -531,8 +551,10 @@
 
 <div class="viewcode-block" id="TimelineItem.delete_version_by_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.delete_version_by_name.html#pybmd.timeline_item.TimelineItem.delete_version_by_name">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">delete_version_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes a color version by name and versionType </span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete_version_by_name</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">version_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deletes a color version by name and versionType</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            version_name (str): version name to delete</span>
@@ -582,7 +604,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_end">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_end.html#pybmd.timeline_item.TimelineItem.get_end">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">subframe_precision</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subframe_precision</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
         <span class="c1"># Change at 19.0.2</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the end frame position on the timeline.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetEnd</span><span class="p">(</span><span class="n">subframe_precision</span><span class="p">)</span></div>
@@ -599,7 +621,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_fusion_comp_by_index.html#pybmd.timeline_item.TimelineItem.get_fusion_comp_by_index">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_fusion_comp_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comp_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;FusionComp&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the Fusion composition object based on given compIndex. </span>
+<span class="sd">        Returns the Fusion composition object based on given compIndex.</span>
 <span class="sd">        1 &lt;= compIndex &lt;= timelineItem.get_fusion_comp_count()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">FusionComp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetFusionCompByIndex</span><span class="p">(</span><span class="n">comp_index</span><span class="p">))</span></div>
@@ -628,7 +650,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_left_offset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_left_offset.html#pybmd.timeline_item.TimelineItem.get_left_offset">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_left_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">subframe_precision</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_left_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subframe_precision</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
         <span class="c1">### Change at 19.0.2</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the maximum extension by frame for clip from left side.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetLeftOffset</span><span class="p">(</span><span class="n">subframe_precision</span><span class="p">)</span></div>
@@ -692,7 +714,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_right_offset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_right_offset.html#pybmd.timeline_item.TimelineItem.get_right_offset">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_right_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">subframe_precision</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_right_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subframe_precision</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
         <span class="c1">### Change at 19.0.2</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the maximum extension by frame for clip from right side.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetRightOffset</span><span class="p">(</span><span class="n">subframe_precision</span><span class="p">)</span></div>
@@ -707,7 +729,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_start">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_start.html#pybmd.timeline_item.TimelineItem.get_start">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">subframe_precision</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subframe_precision</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
         <span class="c1">### Change at 19.0.2</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the start frame position on the timeline.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetStart</span><span class="p">(</span><span class="n">subframe_precision</span><span class="p">)</span></div>
@@ -723,7 +745,7 @@
 <div class="viewcode-block" id="TimelineItem.get_stereo_left_floating_window_params">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params.html#pybmd.timeline_item.TimelineItem.get_stereo_left_floating_window_params">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_stereo_left_floating_window_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;For the LEFT eye -&gt; returns a dict (offset -&gt; dict) of keyframe offsets and respective floating window params. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;For the LEFT eye -&gt; returns a dict (offset -&gt; dict) of keyframe offsets and respective floating window params.</span>
 <span class="sd">        Value at particular offset includes the left, right, top and bottom floating window values.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetStereoLeftFloatingWindowParams</span><span class="p">()</span></div>
 
@@ -731,7 +753,7 @@
 <div class="viewcode-block" id="TimelineItem.get_stereo_right_floating_window_params">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params.html#pybmd.timeline_item.TimelineItem.get_stereo_right_floating_window_params">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_stereo_right_floating_window_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;For the RIGHT eye -&gt; returns a dict (offset -&gt; dict) of keyframe offsets and respective floating window params. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;For the RIGHT eye -&gt; returns a dict (offset -&gt; dict) of keyframe offsets and respective floating window params.</span>
 <span class="sd">        Value at particular offset includes the left, right, top and bottom floating window values.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetStereoRightFloatingWindowParams</span><span class="p">()</span></div>
 
@@ -787,11 +809,13 @@
 
 <div class="viewcode-block" id="TimelineItem.load_version_by_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.load_version_by_name.html#pybmd.timeline_item.TimelineItem.load_version_by_name">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">load_version_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_version_by_name</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">version_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads a named color version as the active version.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            version_name (str): version name to load    </span>
+<span class="sd">            version_name (str): version name to load</span>
 <span class="sd">            version_type (VersionType): VersionType object</span>
 
 <span class="sd">        Returns:</span>
@@ -809,9 +833,13 @@
 
 <div class="viewcode-block" id="TimelineItem.rename_version_by_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.rename_version_by_name.html#pybmd.timeline_item.TimelineItem.rename_version_by_name">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">rename_version_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Renames the color version identified by oldName and versionType &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">RenameVersionByName</span><span class="p">(</span><span class="n">old_name</span><span class="p">,</span> <span class="n">new_name</span><span class="p">,</span> <span class="n">version_type</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rename_version_by_name</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">old_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version_type</span><span class="p">:</span> <span class="n">VersionType</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Renames the color version identified by oldName and versionType&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">RenameVersionByName</span><span class="p">(</span>
+            <span class="n">old_name</span><span class="p">,</span> <span class="n">new_name</span><span class="p">,</span> <span class="n">version_type</span><span class="o">.</span><span class="n">value</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.select_take_by_index">
@@ -924,7 +952,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets clip enabled status.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            bool: clip enabled status </span>
+<span class="sd">            bool: clip enabled status</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetClipEnabled</span><span class="p">()</span></div>
 
@@ -961,10 +989,10 @@
 <div class="viewcode-block" id="TimelineItem.create_magic_mask">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.create_magic_mask.html#pybmd.timeline_item.TimelineItem.create_magic_mask">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_magic_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">MagicMask_Mode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if magic mask was created successfully, False otherwise. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if magic mask was created successfully, False otherwise.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            mode (MagicMask_Mode): mode </span>
+<span class="sd">            mode (MagicMask_Mode): mode</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if magic mask was created successfully, False otherwise.</span>
@@ -997,7 +1025,7 @@
 <div class="viewcode-block" id="TimelineItem.smart_reframe">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.smart_reframe.html#pybmd.timeline_item.TimelineItem.smart_reframe">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">smart_reframe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Performs Smart Reframe. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Performs Smart Reframe.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: _descriReturns True if successful, False otherwise.</span>
@@ -1011,7 +1039,7 @@
 <div class="viewcode-block" id="TimelineItem.get_node_graph">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_node_graph.html#pybmd.timeline_item.TimelineItem.get_node_graph">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_node_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Graph&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the clip&#39;s node graph object </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the clip&#39;s node graph object</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            layer_index (int):  1 &lt;= layer_index &lt;= project.GetSetting(&quot;nodeStackLayers&quot;).</span>
@@ -1036,15 +1064,15 @@
 <div class="viewcode-block" id="TimelineItem.assign_to_color_group">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.assign_to_color_group.html#pybmd.timeline_item.TimelineItem.assign_to_color_group">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">assign_to_color_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_group</span><span class="p">:</span> <span class="n">ColorGroup</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if TiItem to successfully assigned to given ColorGroup. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if TiItem to successfully assigned to given ColorGroup.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            color_group (ColorGroup): ColorGroup must be an existing group in the current project.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            bool: Returns True if TiItem to successfully assigned to given ColorGroup. </span>
+<span class="sd">            bool: Returns True if TiItem to successfully assigned to given ColorGroup.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AssignToColorGroup</span><span class="p">(</span><span class="n">color_group</span><span class="o">.</span><span class="n">_color_group</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AssignToColorGroup</span><span class="p">(</span><span class="n">color_group</span><span class="o">.</span><span class="n">_resolve_object</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.remove_from_color_group">
@@ -1061,7 +1089,7 @@
 <div class="viewcode-block" id="TimelineItem.export_LUT">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.export_LUT.html#pybmd.timeline_item.TimelineItem.export_LUT">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">export_LUT</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">export_type</span><span class="p">:</span> <span class="s2">&quot;LUT_Export_Type&quot;</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Exports LUTs from tiItem </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports LUTs from tiItem</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            export_type (LUT_Export_Type): export lut type</span>
@@ -1077,7 +1105,7 @@
 <div class="viewcode-block" id="TimelineItem.get_linked_items">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_linked_items.html#pybmd.timeline_item.TimelineItem.get_linked_items">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_linked_items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;TimelineItem&quot;</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns a list of linked timeline items.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of linked timeline items.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List[TimelineItem]: a list of linked timeline items.</span>
@@ -1113,10 +1141,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetSourceAudioChannelMapping</span><span class="p">()</span></div>
 
-    
+
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR 19.0.2</span>
-    
+
 <div class="viewcode-block" id="TimelineItem.get_source_end_frame">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_end_frame.html#pybmd.timeline_item.TimelineItem.get_source_end_frame">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_end_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -1127,7 +1155,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetSourceEndFrame</span><span class="p">()</span></div>
 
-    
+
 <div class="viewcode-block" id="TimelineItem.get_source_end_time">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_end_time.html#pybmd.timeline_item.TimelineItem.get_source_end_time">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_end_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -1138,29 +1166,29 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetSourceEndTime</span><span class="p">()</span></div>
 
-    
+
 <div class="viewcode-block" id="TimelineItem.get_source_start_frame">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_start_frame.html#pybmd.timeline_item.TimelineItem.get_source_start_frame">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_start_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the start frame position of the media pool clip in the timeline clip.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            int: start frame position of the media pool clip</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetSourceStartFrame</span><span class="p">()</span></div>
 
-    
+
 <div class="viewcode-block" id="TimelineItem.get_source_start_time">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_start_time.html#pybmd.timeline_item.TimelineItem.get_source_start_time">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the start time position of the media pool clip in the timeline clip.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            float: start time position of the media pool clip</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetSourceStartTime</span><span class="p">()</span></div>
 
-    
+
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR 19.1.0</span>
 <div class="viewcode-block" id="TimelineItem.get_color_output_cache_enabled">
@@ -1215,19 +1243,19 @@
 
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR 20.1.0</span>
-    
+
 <div class="viewcode-block" id="TimelineItem.get_voice_isolation_state">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_voice_isolation_state.html#pybmd.timeline_item.TimelineItem.get_voice_isolation_state">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_voice_isolation_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Voice Isolation State of the timeline item.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            dict: Dictionary with keys {&#39;isEnabled&#39;: bool, &#39;amount&#39;: int}. </span>
+<span class="sd">            dict: Dictionary with keys {&#39;isEnabled&#39;: bool, &#39;amount&#39;: int}.</span>
 <span class="sd">                  amount is in range of [0, 100]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetVoiceIsolationState</span><span class="p">()</span></div>
 
-    
+
 <div class="viewcode-block" id="TimelineItem.set_voice_isolation_state">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_voice_isolation_state.html#pybmd.timeline_item.TimelineItem.set_voice_isolation_state">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_voice_isolation_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voice_isolation_state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -1247,14 +1275,13 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.reset_all_node_colors.html#pybmd.timeline_item.TimelineItem.reset_all_node_colors">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset_all_node_colors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;!!!! NOT WORKING API !!!!Reset node color for all nodes in the active version of the clip.</span>
-<span class="sd">            </span>
+
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">ResetAllNodeColors</span><span class="p">()</span></div>
 </div>
-
 
 </pre></div>
 

@@ -338,16 +338,19 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.ui_dispather.UI_Dispather.html#pybmd.ui_dispather.UI_Dispather">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">UI_Dispather</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for UI_Dispather.&quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="UI_Dispather.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.ui_dispather.UI_Dispather.__init__.html#pybmd.ui_dispather.UI_Dispather.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ui_manager</span><span class="p">:</span><span class="n">UI_Manager</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ui_dispather</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_bmd_module_object</span><span class="o">.</span><span class="n">UIDispatcher</span><span class="p">(</span><span class="n">ui_manager</span><span class="o">.</span><span class="n">_ui_manager</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ui_manager</span><span class="p">:</span> <span class="n">UI_Manager</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ui_dispather</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_bmd_module_object</span><span class="o">.</span><span class="n">UIDispatcher</span><span class="p">(</span>
+            <span class="n">ui_manager</span><span class="o">.</span><span class="n">_ui_manager</span>
+        <span class="p">)</span></div>
 
-        
+
 <div class="viewcode-block" id="UI_Dispather.add_window">
 <a class="viewcode-back" href="../../_autosummary/pybmd.ui_dispather.UI_Dispather.add_window.html#pybmd.ui_dispather.UI_Dispather.add_window">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">children</span><span class="p">:</span><span class="n">List</span><span class="p">):</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">id</span><span class="p">,</span><span class="n">children</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">children</span><span class="p">:</span> <span class="n">List</span><span class="p">):</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">children</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

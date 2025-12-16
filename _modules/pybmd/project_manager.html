@@ -329,6 +329,7 @@
                   
   <h1>Source code for pybmd.project_manager</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.project</span><span class="w"> </span><span class="kn">import</span> <span class="n">Project</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 
@@ -341,17 +342,17 @@
 
 <div class="viewcode-block" id="ProjectManager">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.html#pybmd.project_manager.ProjectManager">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">ProjectManager</span><span class="p">:</span>
-
+<span class="k">class</span><span class="w"> </span><span class="nc">ProjectManager</span><span class="p">(</span><span class="n">WrapperBase</span><span class="p">):</span>
     <span class="n">_project_manager</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_current_project</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="ProjectManager.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.__init__.html#pybmd.project_manager.ProjectManager.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_manager</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span> <span class="o">=</span> <span class="n">project_manager</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ProjectManager</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">project_manager</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
 
-   
+
 <div class="viewcode-block" id="ProjectManager.close_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.close_project.html#pybmd.project_manager.ProjectManager.close_project">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">close_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="n">Project</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -382,7 +383,9 @@
 
 <div class="viewcode-block" id="ProjectManager.create_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.create_project.html#pybmd.project_manager.ProjectManager.create_project">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">create_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">media_location_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_project</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">media_location_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates and returns a project if projectName(string) is unique, and None if it is not.</span>
 
 <span class="sd">        Args:</span>
@@ -393,7 +396,11 @@
 <span class="sd">            Project: created project object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">media_location_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">CreateProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">media_location_path</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">Project</span><span class="p">(</span>
+                <span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">CreateProject</span><span class="p">(</span>
+                    <span class="n">project_name</span><span class="p">,</span> <span class="n">media_location_path</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">CreateProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">))</span></div>
 
 
@@ -420,7 +427,9 @@
 
 <div class="viewcode-block" id="ProjectManager.export_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.export_project.html#pybmd.project_manager.ProjectManager.export_project">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">export_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="n">with_stills_and_luts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_project</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="n">with_stills_and_luts</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports project to provided file path</span>
 
 <span class="sd">        Args:</span>
@@ -431,7 +440,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if project was exported, False otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">ExportProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span> <span class="n">with_stills_and_luts</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">ExportProject</span><span class="p">(</span>
+            <span class="n">project_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span> <span class="n">with_stills_and_luts</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ProjectManager.get_current_database">
@@ -487,7 +498,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">GotoRootFolder</span><span class="p">()</span></div>
 
 
-    <span class="c1">#Modified at DR18.0.0</span>
+    <span class="c1"># Modified at DR18.0.0</span>
 <div class="viewcode-block" id="ProjectManager.import_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.import_project.html#pybmd.project_manager.ProjectManager.import_project">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">import_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -509,7 +520,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">OpenFolder</span><span class="p">(</span><span class="n">folder_name</span><span class="p">)</span></div>
 
 
-    <span class="c1">#Modified at DR18.0.0</span>
+    <span class="c1"># Modified at DR18.0.0</span>
 <div class="viewcode-block" id="ProjectManager.restore_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.restore_project.html#pybmd.project_manager.ProjectManager.restore_project">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">restore_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -537,22 +548,47 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">SetCurrentDatabase</span><span class="p">(</span><span class="n">database_info</span><span class="p">)</span></div>
 
-    
+
     <span class="c1">##########################################################################################################################</span>
-    <span class="c1">#Add at DR18.0.0</span>
-    
+    <span class="c1"># Add at DR18.0.0</span>
+
 <div class="viewcode-block" id="ProjectManager.archive_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.archive_project.html#pybmd.project_manager.ProjectManager.archive_project">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">archive_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">is_archive_src_media</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">is_archive_render_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">is_archive_proxy_media</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Archives project to provided filePath with the configuration as provided by the optional arguments&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">ArchiveProject</span><span class="p">(</span><span class="n">project_name</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">is_archive_src_media</span><span class="p">,</span> <span class="n">is_archive_render_cache</span><span class="p">,</span> <span class="n">is_archive_proxy_media</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">archive_project</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">project_name</span><span class="p">,</span>
+        <span class="n">file_path</span><span class="p">,</span>
+        <span class="n">is_archive_src_media</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">is_archive_render_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">is_archive_proxy_media</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Archives project to provided filePath with the configuration as provided by the optional arguments</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            project_name (str): project to archive</span>
+<span class="sd">            file_path (path): file path to archive to</span>
+<span class="sd">            is_archive_src_media (bool, optional): archive project with source media. Defaults to True.</span>
+<span class="sd">            is_archive_render_cache (bool, optional): archive project with render cache. Defaults to True.</span>
+<span class="sd">            is_archive_proxy_media (bool, optional): archive project with proxy media. Defaults to False.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns true if archive project is successful; false otherwise</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">ArchiveProject</span><span class="p">(</span>
+            <span class="n">project_name</span><span class="p">,</span>
+            <span class="n">file_path</span><span class="p">,</span>
+            <span class="n">is_archive_src_media</span><span class="p">,</span>
+            <span class="n">is_archive_render_cache</span><span class="p">,</span>
+            <span class="n">is_archive_proxy_media</span><span class="p">,</span>
+        <span class="p">)</span></div>
 
 
     <span class="c1">##############################################################################################################################</span>
-    <span class="c1">#Add at DR18.6.4</span>
+    <span class="c1"># Add at DR18.6.4</span>
 <div class="viewcode-block" id="ProjectManager.create_cloud_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.create_cloud_project.html#pybmd.project_manager.ProjectManager.create_cloud_project">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">create_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cloud_setting</span><span class="p">:</span> <span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates and returns a cloud project.</span>
 
 <span class="sd">        Args:</span>
@@ -560,13 +596,15 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Project: returns a cloud project</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">CreateCloudProject</span><span class="p">(</span><span class="n">cloud_setting</span><span class="o">.</span><span class="n">asdict</span><span class="p">()))</span></div>
 
-    
+
 <div class="viewcode-block" id="ProjectManager.import_cloud_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.import_cloud_project.html#pybmd.project_manager.ProjectManager.import_cloud_project">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">import_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">file_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">import_cloud_project</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cloud_setting</span><span class="p">:</span> <span class="s2">&quot;CloudProjectsSetting&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Args:</span>
@@ -575,13 +613,17 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if import cloud project is successful; False otherwise</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">ImportCloudProject</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span><span class="n">cloud_setting</span><span class="o">.</span><span class="n">asdict</span><span class="p">())</span></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">ImportCloudProject</span><span class="p">(</span>
+            <span class="n">file_path</span><span class="p">,</span> <span class="n">cloud_setting</span><span class="o">.</span><span class="n">asdict</span><span class="p">()</span>
+        <span class="p">)</span></div>
 
-    
+
 <div class="viewcode-block" id="ProjectManager.restore_cloud_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.restore_cloud_project.html#pybmd.project_manager.ProjectManager.restore_cloud_project">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">restore_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">folder_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">restore_cloud_project</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">folder_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cloud_setting</span><span class="p">:</span> <span class="s2">&quot;CloudProjectsSetting&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Args:</span>
@@ -590,15 +632,17 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if restore cloud project is successful; False otherwise</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">RestoreCloudProject</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span><span class="n">cloud_setting</span><span class="o">.</span><span class="n">asdict</span><span class="p">())</span></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">RestoreCloudProject</span><span class="p">(</span>
+            <span class="n">folder_path</span><span class="p">,</span> <span class="n">cloud_setting</span><span class="o">.</span><span class="n">asdict</span><span class="p">()</span>
+        <span class="p">)</span></div>
 
 
-<span class="c1">##############################################################################################################################</span>
-<span class="c1"># #Add at DR19.1.0</span>
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># #Add at DR19.1.0</span>
 <div class="viewcode-block" id="ProjectManager.load_cloud_project">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.load_cloud_project.html#pybmd.project_manager.ProjectManager.load_cloud_project">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">load_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cloud_setting</span><span class="p">:</span><span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_cloud_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cloud_setting</span><span class="p">:</span> <span class="s2">&quot;CloudProjectsSetting&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Project</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads and returns a cloud project with the following cloud settings if there is a match found, and None if there is no matching cloud project</span>
 
 <span class="sd">        Args:</span>
@@ -609,12 +653,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Project</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_project_manager</span><span class="o">.</span><span class="n">LoadCloudProject</span><span class="p">(</span><span class="n">cloud_setting</span><span class="p">))</span></div>
 
-    
-<span class="c1"># More function BELOW!</span>
+
+    <span class="c1"># More function BELOW!</span>
 
 <div class="viewcode-block" id="ProjectManager.database_info">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project_manager.ProjectManager.database_info.html#pybmd.project_manager.ProjectManager.database_info">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">database_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_DbType</span><span class="p">,</span> <span class="n">_DbName</span><span class="p">,</span> <span class="n">_IpAddress</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">database_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_DbType</span><span class="p">,</span> <span class="n">_DbName</span><span class="p">,</span> <span class="n">_IpAddress</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;database_info(DbType, DbName, IpAddress) generated for the database connection&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">DbType</span><span class="o">=</span><span class="n">_DbType</span><span class="p">,</span> <span class="n">DbName</span><span class="o">=</span><span class="n">_DbName</span><span class="p">,</span> <span class="n">IpAddress</span><span class="o">=</span><span class="n">_IpAddress</span><span class="p">)</span></div>
 

@@ -328,9 +328,10 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.color_group</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span><span class="n">TYPE_CHECKING</span>
-
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">Graph</span>
+
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.timeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timeline</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.timeline_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimelineItem</span>
@@ -338,14 +339,14 @@
 
 <div class="viewcode-block" id="ColorGroup">
 <a class="viewcode-back" href="../../_autosummary/pybmd.color_group.ColorGroup.html#pybmd.color_group.ColorGroup">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">ColorGroup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ColorGroup</span><span class="p">(</span><span class="n">WrapperBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for ColorGroup.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ColorGroup.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.color_group.ColorGroup.__init__.html#pybmd.color_group.ColorGroup.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_group</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ColorGroup</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_color_group</span> <span class="o">=</span> <span class="n">color_group</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ColorGroup</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">color_group</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
 
 
 <div class="viewcode-block" id="ColorGroup.get_name">
@@ -375,8 +376,8 @@
 
 <div class="viewcode-block" id="ColorGroup.get_clips_in_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.color_group.ColorGroup.get_clips_in_timeline.html#pybmd.color_group.ColorGroup.get_clips_in_timeline">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_clips_in_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="s1">&#39;Timeline&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;TimelineItem&#39;</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of TimelineItem that are in colorGroup in the given Timeline. </span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_clips_in_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="s2">&quot;Timeline&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;TimelineItem&quot;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of TimelineItem that are in colorGroup in the given Timeline.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            timeline (Timeline): Timeline is Current Timeline by default.</span>
@@ -384,7 +385,11 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            List[TimelineItem]: a list of TimelineItem that are in colorGroup in the given Timeline.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color_group</span><span class="o">.</span><span class="n">GetClipsInTimeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">.</span><span class="n">_timeline</span><span class="p">)</span></div>
+        <span class="n">timeline_item_list</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">TimelineItem</span><span class="p">(</span><span class="n">ti_item</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">ti_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color_group</span><span class="o">.</span><span class="n">GetClipsInTimeline</span><span class="p">(</span><span class="n">timeline</span><span class="o">.</span><span class="n">_timeline</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">timeline_item_list</span></div>
 
 
 <div class="viewcode-block" id="ColorGroup.get_pre_clip_node_graph">

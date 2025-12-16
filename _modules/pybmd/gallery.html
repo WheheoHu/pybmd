@@ -329,19 +329,20 @@
                   
   <h1>Source code for pybmd.gallery</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery_still_album</span><span class="w"> </span><span class="kn">import</span> <span class="n">GalleryStillAlbum</span>
 
 
 <div class="viewcode-block" id="Gallery">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.html#pybmd.gallery.Gallery">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Gallery</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Gallery</span><span class="p">(</span><span class="n">WrapperBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;docstring for Gallery.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Gallery.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.__init__.html#pybmd.gallery.Gallery.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span> <span class="o">=</span> <span class="n">gallery</span></div>
-
+        <span class="nb">super</span><span class="p">(</span><span class="n">Gallery</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">gallery</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
 
 <div class="viewcode-block" id="Gallery.get_album_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.get_album_name.html#pybmd.gallery.Gallery.get_album_name">[docs]</a>

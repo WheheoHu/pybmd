@@ -1,0 +1,6 @@
+pybmd.error.WrapperInitError
+============================
+
+.. currentmodule:: pybmd.error
+
+.. autoexception:: WrapperInitError

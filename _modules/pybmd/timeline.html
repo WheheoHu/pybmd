@@ -337,6 +337,7 @@
     <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoCaptionSettings</span>
 
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_pool_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaPoolItem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery_still</span><span class="w"> </span><span class="kn">import</span> <span class="n">GalleryStill</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">Graph</span>
@@ -447,13 +448,14 @@
 
 <div class="viewcode-block" id="Timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.html#pybmd.timeline.Timeline">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Timeline</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Timeline</span><span class="p">(</span><span class="n">WrapperBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Timeline Object&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Timeline.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.__init__.html#pybmd.timeline.Timeline.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span> <span class="o">=</span> <span class="n">timeline</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Timeline</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">timeline</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -1148,15 +1150,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetMarkInOut</span><span class="p">()</span></div>
 
-    
+
 <div class="viewcode-block" id="Timeline.set_mark_in_out">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.set_mark_in_out.html#pybmd.timeline.Timeline.set_mark_in_out">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_mark_in_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mark_in</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mark_out</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mark_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_mark_in_out</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">mark_in</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mark_out</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mark_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mark in/out points on the timeline.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            mark_in (int): Frame number for in point</span>
-<span class="sd">            mark_out (int): Frame number for out point  </span>
+<span class="sd">            mark_out (int): Frame number for out point</span>
 <span class="sd">            mark_type (str, optional): Type of mark to set - &quot;video&quot;, &quot;audio&quot; or &quot;all&quot;. Defaults to &quot;all&quot;.</span>
 
 <span class="sd">        Returns:</span>
@@ -1164,7 +1168,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">SetMarkInOut</span><span class="p">(</span><span class="n">mark_in</span><span class="p">,</span> <span class="n">mark_out</span><span class="p">,</span> <span class="n">mark_type</span><span class="p">)</span></div>
 
-    
+
 <div class="viewcode-block" id="Timeline.clear_mark_in_out">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.clear_mark_in_out.html#pybmd.timeline.Timeline.clear_mark_in_out">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear_mark_in_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mark_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -1178,10 +1182,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">ClearMarkInOut</span><span class="p">(</span><span class="n">mark_type</span><span class="p">)</span></div>
 
-    
+
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR 20.1.0</span>
-    
+
 <div class="viewcode-block" id="Timeline.get_voice_isolation_state">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.get_voice_isolation_state.html#pybmd.timeline.Timeline.get_voice_isolation_state">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_voice_isolation_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
@@ -1191,15 +1195,17 @@
 <span class="sd">            track_index (int): Track index. 1 &lt;= track_index &lt;= GetTrackCount(&quot;audio&quot;)</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            dict: Dictionary with keys {&#39;isEnabled&#39;: bool, &#39;amount&#39;: int}. </span>
+<span class="sd">            dict: Dictionary with keys {&#39;isEnabled&#39;: bool, &#39;amount&#39;: int}.</span>
 <span class="sd">                  amount is in range of [0, 100]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline</span><span class="o">.</span><span class="n">GetVoiceIsolationState</span><span class="p">(</span><span class="n">track_index</span><span class="p">)</span></div>
 
-    
+
 <div class="viewcode-block" id="Timeline.set_voice_isolation_state">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline.Timeline.set_voice_isolation_state.html#pybmd.timeline.Timeline.set_voice_isolation_state">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_voice_isolation_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">voice_isolation_state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_voice_isolation_state</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">track_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">voice_isolation_state</span><span class="p">:</span> <span class="nb">dict</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Voice Isolation state of audio track with given track index.</span>
 
 <span class="sd">        Args:</span>
