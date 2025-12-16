@@ -1,5 +1,9 @@
 # Change Log for PyBMD
 ----
+# 2025.3.2
+## Refactoring
+- Add WrapperBase class to reduce code duplication in wrapper classes
+
 # 2025.3.1
 ## Fixes
 - Fix typo `gallert_still_album` -> `gallery_still_album` in gallery.py
