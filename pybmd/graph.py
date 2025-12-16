@@ -1,12 +1,14 @@
-
 from typing import List
 
+from pybmd._wrapper_base import WrapperBase
 
-class Graph(object):
+
+class Graph(WrapperBase):
     """docstring for Graph."""
 
     def __init__(self, graph):
-        self._graph = graph
+        super(Graph, self).__init__(graph)
+        self._graph = self._resolve_object
 
     def get_num_nodes(self) -> int:
         """Returns the number of nodes in the graph
@@ -14,9 +16,9 @@ class Graph(object):
         Returns:
             int: number of nodes in the graph
         """
-        return self._graph.GetNumNodes() 
-    
-    def set_lut(self,node_index:int,lut_path:str) -> bool:
+        return self._graph.GetNumNodes()
+
+    def set_lut(self, node_index: int, lut_path: str) -> bool:
         """Sets LUT on the node mapping the node index provided
         Args:
             node_index (int): 1 <= nodeIndex <= self.GetNumNodes().
@@ -25,9 +27,9 @@ class Graph(object):
         Returns:
             bool: The operation is successful for valid lut paths that Resolve has already discovered (see Project.RefreshLUTList).
         """
-        return self._graph.SetLUT(node_index,lut_path)
-    
-    def get_lut(self,node_index:str) -> str:
+        return self._graph.SetLUT(node_index, lut_path)
+
+    def get_lut(self, node_index: str) -> str:
         """Gets relative LUT path based on the node index provided
 
         Args:
@@ -37,7 +39,8 @@ class Graph(object):
             str: relative LUT path
         """
         return self._graph.GetLUT(node_index)
-    def get_node_label(self,node_index:int) -> str:
+
+    def get_node_label(self, node_index: int) -> str:
         """Returns the label of the node at nodeIndex.
 
         Args:
@@ -47,8 +50,8 @@ class Graph(object):
             str: the label of the node at nodeIndex.
         """
         return self._graph.GetNodeLabel(node_index)
-    
-    def get_tools_in_node(self,node_index:int) -> List[str]:
+
+    def get_tools_in_node(self, node_index: int) -> List[str]:
         """Returns toolsList (list of strings) of the tools used in the node indicated by given nodeIndex (int).
 
         Args:
@@ -58,8 +61,8 @@ class Graph(object):
             List[str]: toolsList (list of strings) of the tools used in the node indicated by given nodeIndex (int).
         """
         return self._graph.GetToolsInNode(node_index)
-    
-    def set_node_enabled(self,node_index:int,is_enable:bool) -> bool:
+
+    def set_node_enabled(self, node_index: int, is_enable: bool) -> bool:
         """Sets the node at the given nodeIndex (int) to isEnabled (bool).
 
         Args:
@@ -69,8 +72,8 @@ class Graph(object):
         Returns:
             bool: Return True if the operation is successful.
         """
-        return self._graph.SetNodeEnabled(node_index,is_enable)
-    
+        return self._graph.SetNodeEnabled(node_index, is_enable)
+
     ##############################################################################################################
     # Add at DR 19.1.0
     def set_node_cache_mode(self, node_index: int, cache_value: int) -> bool:
@@ -108,7 +111,7 @@ class Graph(object):
 
         Args:
             path (str): File path to the DRX file
-            grade_mode (int, optional): 0="No keyframes", 1="Source Timecode aligned", 
+            grade_mode (int, optional): 0="No keyframes", 1="Source Timecode aligned",
                 2="Start Frames aligned". Defaults to 0.
 
         Returns:

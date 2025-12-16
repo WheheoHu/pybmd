@@ -1,11 +1,13 @@
 from typing import List
+from pybmd._wrapper_base import WrapperBase
 from pybmd.media_pool_item import MediaPoolItem
 
 
-class Folder():
+class Folder(WrapperBase):
     
     def __init__(self, folder):
-        self._folder = folder
+        super(Folder, self).__init__(folder)
+        self._folder = self._resolve_object
     
     def __repr__(self) -> str:
         return f'Folder: {self.get_name()}'

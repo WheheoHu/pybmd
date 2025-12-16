@@ -1,12 +1,15 @@
 from typing import Any, Dict
 from multimethod import multimethod
 
+from pybmd._wrapper_base import WrapperBase
 
-class MediaPoolItem:
+
+class MediaPoolItem(WrapperBase):
     """docstring for MediaPoolItem."""
 
     def __init__(self, media_pool_item):
-        self._media_pool_item = media_pool_item
+        super(MediaPoolItem, self).__init__(media_pool_item)
+        self._media_pool_item = self._resolve_object
 
     def __repr__(self) -> str:
         return f"Media Pool Item: {self.get_name()}"
@@ -347,8 +350,8 @@ class MediaPoolItem:
             bool: Returns True if successful.
         """
         return self._media_pool_item.SetMarkInOut(mark_in, mark_out, type)
-    
-    def clear_mark_in_out(self,type:str='all') -> bool:
+
+    def clear_mark_in_out(self, type: str = "all") -> bool:
         """Clears mark in/out of type "video", "audio" or "all" (default).
 
         Args:

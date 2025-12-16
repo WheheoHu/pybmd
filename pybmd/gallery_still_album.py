@@ -1,4 +1,5 @@
 from typing import List
+from pybmd._wrapper_base import WrapperBase
 from pybmd.gallery_still import GalleryStill
 
 from enum import Enum
@@ -6,6 +7,7 @@ from enum import Enum
 
 class StillFormat(Enum):
     """StillFormats"""
+
     DPX = "dpx"
     CIN = "cin"
     TIF = "tif"
@@ -16,19 +18,26 @@ class StillFormat(Enum):
     XPM = "xpm"
 
 
-class GalleryStillAlbum():
+class GalleryStillAlbum(WrapperBase):
     """docstring for GalleryStillAlbum."""
 
     def __init__(self, gallery_still_album):
-        self._gallery_still_album = gallery_still_album
+        super(GalleryStillAlbum, self).__init__(gallery_still_album)
+        self._gallery_still_album = self._resolve_object
 
     def delete_stills(self, gallery_stills: List[GalleryStill]) -> bool:
         """Delete the given gallery stills from the album."""
         gallery_still_list = [still._gallery_still for still in gallery_stills]
         return self._gallery_still_album.DeleteStills(gallery_still_list)
 
-    def export_stills(self, gallery_stills: List[GalleryStill], folder_path: str, file_prefix: str, format: StillFormat) -> bool:
-        """Exports list of GalleryStill objects 'galleryStill' to directory 'folderPath', with filename prefix 'filePrefix', using file format 'format' 
+    def export_stills(
+        self,
+        gallery_stills: List[GalleryStill],
+        folder_path: str,
+        file_prefix: str,
+        format: StillFormat,
+    ) -> bool:
+        """Exports list of GalleryStill objects 'galleryStill' to directory 'folderPath', with filename prefix 'filePrefix', using file format 'format'
 
         Args:
             gallery_stills (List[GalleryStill]): a list of GalleryStill objects to export
@@ -39,7 +48,9 @@ class GalleryStillAlbum():
             bool: function returns true if export was successful, false otherwise
         """
         gallery_still_list = [still._gallery_still for still in gallery_stills]
-        return self._gallery_still_album.ExportStills(gallery_still_list, str(folder_path), file_prefix, format.value)
+        return self._gallery_still_album.ExportStills(
+            gallery_still_list, str(folder_path), file_prefix, format.value
+        )
 
     def get_label(self, gallery_still: GalleryStill) -> str:
         """Returns label of given gallery still."""
@@ -77,4 +88,3 @@ class GalleryStillAlbum():
             bool: True if import was successful, False otherwise.
         """
         return self._gallery_still_album.ImportStills(file_paths)
-

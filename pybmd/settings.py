@@ -389,7 +389,6 @@ class AudioSyncSettingIndex(Enum):
 
 @dataclass
 class AudioSyncSetting:
-
     _audioSyncMode: AudioSyncMode = AudioSyncMode.AUDIO_SYNC_TIMECODE
     _channelNumber: int = 1
     _retainEmbeddedAudio: bool = False

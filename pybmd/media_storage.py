@@ -1,5 +1,6 @@
 from typing import List
 
+from pybmd._wrapper_base import WrapperBase
 from pybmd.media_pool_item import MediaPoolItem
 
 from dataclasses import dataclass
@@ -7,20 +8,24 @@ from dataclasses import asdict
 
 
 @dataclass
-class Item_Info():
+class Item_Info:
     """Item Info"""
+
     media: str
     start_frame: int
     end_frame: int
 
 
-class MediaStorage:
+class MediaStorage(WrapperBase):
     """MediaStorage."""
 
     def __init__(self, media_storage):
-        self._media_storage = media_storage
+        super(MediaStorage, self).__init__(media_storage)
+        self._media_storage = self._resolve_object
 
-    def add_clip_mattes_to_media_pool(self, media_pool_item: MediaPoolItem, paths: List[str], stereo_eye: str = None) -> bool:
+    def add_clip_mattes_to_media_pool(
+        self, media_pool_item: MediaPoolItem, paths: List[str], stereo_eye: str = None
+    ) -> bool:
         """Adds specified media files as mattes for the specified MediaPoolItem
 
         Args:
@@ -31,9 +36,13 @@ class MediaStorage:
         Returns:
             bool: True if success, False if fail
         """
-        return self._media_storage.AddClipMattesToMediaPool(media_pool_item, paths, stereo_eye)
+        return self._media_storage.AddClipMattesToMediaPool(
+            media_pool_item, paths, stereo_eye
+        )
 
-    def add_item_list_to_media_pool(self, items: List[str] | List[Item_Info]) -> List[MediaPoolItem]:
+    def add_item_list_to_media_pool(
+        self, items: List[str] | List[Item_Info]
+    ) -> List[MediaPoolItem]:
         """Adds specified file/folder paths from Media Storage into current Media Pool folder.
 
         Args:
@@ -47,16 +56,24 @@ class MediaStorage:
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
         # return media_pool_item_list
         if type(items[0]) is str:
-            return [MediaPoolItem(media_pool_item) for media_pool_item in self._media_storage.AddItemListToMediaPool(items)]
+            return [
+                MediaPoolItem(media_pool_item)
+                for media_pool_item in self._media_storage.AddItemListToMediaPool(items)
+            ]
         elif type(items[0]) is Item_Info:
-            temp_list=[asdict(item_info) for item_info in items]
-            return [MediaPoolItem(media_pool_item) for media_pool_item in self._media_storage.AddItemListToMediaPool(temp_list)]
+            temp_list = [asdict(item_info) for item_info in items]
+            return [
+                MediaPoolItem(media_pool_item)
+                for media_pool_item in self._media_storage.AddItemListToMediaPool(
+                    temp_list
+                )
+            ]
 
     def add_timeline_mattes_to_media_pool(self, paths) -> List[MediaPoolItem]:
-        """Adds specified media files as timeline mattes in current media pool folder. 
+        """Adds specified media files as timeline mattes in current media pool folder.
 
         Args:
-            paths (_type_): one or more file/folder paths. 
+            paths (_type_): one or more file/folder paths.
 
         Returns:
             List[MediaPoolItem]:a list of created MediaPoolItem
@@ -66,10 +83,15 @@ class MediaStorage:
         # for media_pool_item in self.media_storage.AddTimelineMattesToMediaPool(paths):
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
         # return media_pool_item_list
-        return [MediaPoolItem(media_pool_item) for media_pool_item in self._media_storage.AddTimelineMattesToMediaPool(paths)]
+        return [
+            MediaPoolItem(media_pool_item)
+            for media_pool_item in self._media_storage.AddTimelineMattesToMediaPool(
+                paths
+            )
+        ]
 
     def get_file_list(self, folder_path: str) -> List[str]:
-        """Returns list of media and file listings in the given absolute folder path. 
+        """Returns list of media and file listings in the given absolute folder path.
 
         Args:
             folder_path (str): absolute folder path

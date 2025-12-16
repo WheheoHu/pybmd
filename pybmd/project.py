@@ -1,5 +1,6 @@
 from dataclasses import asdict
 from typing import TYPE_CHECKING, Any, Dict, List
+from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
@@ -12,23 +13,21 @@ if TYPE_CHECKING:
 RenderResolution = List[dict]
 
 
-
-
-class Project():
+class Project(WrapperBase):
     """Project Object"""
 
-
     def __init__(self, project):
-        self._project = project
+        super(Project, self).__init__(project)
+        self._project = self._resolve_object
 
     def __repr__(self) -> str:
-        return f'Project: {self.get_name()}'
+        return f"Project: {self.get_name()}"
 
     def get_self_project(self):
         return self._project
 
     def add_render_job(self) -> str:
-        """Adds a render job based on current render settings to the render queue. 
+        """Adds a render job based on current render settings to the render queue.
 
         Returns:
             str: A unique job id (string) for the new render job.
@@ -58,7 +57,6 @@ class Project():
             return Timeline(self._project.GetCurrentTimeline())
         else:
             raise TypeError("No current timeline,Please open a timeline")
-        
 
     def get_gallery(self) -> Gallery:
         """Returns the Gallery object."""
@@ -104,7 +102,7 @@ class Project():
         return self._project.GetRenderPresetList()
 
     def get_render_resolutions(self, format: str, codec: str) -> RenderResolution:
-        """Returns list of resolutions applicable for the given render format (string) and render codec (string). 
+        """Returns list of resolutions applicable for the given render format (string) and render codec (string).
 
         Args:
             format (str): format
@@ -117,7 +115,7 @@ class Project():
         return self._project.GetRenderResolutions(format, codec)
 
     def get_setting(self, setting_name: str = "") -> str:
-        """Returns value of project setting (indicated by setting_name, string). """
+        """Returns value of project setting (indicated by setting_name, string)."""
         # call *without parameters/NoneType * to get a snapshot of all queryable properties
         return self._project.GetSetting(setting_name)
 
@@ -150,7 +148,7 @@ class Project():
         return self._project.SetCurrentRenderFormatAndCodec(format, codec)
 
     def set_current_render_mode(self, render_mode: int) -> bool:
-        """Sets the render mode. 
+        """Sets the render mode.
 
         Args:
             render_mode (int): Specify renderMode = 0 for Individual clips, 1 for Single clip.
@@ -218,9 +216,11 @@ class Project():
     ##############################################################################################################################
     # Add at DR18.1.3
 
-    def insert_audio_to_current_track_at_playhead(self, media_path: str, start_offset_in_samples: int, duration_in_samples: int) -> bool:
-        """Inserts the media specified by mediaPath (string) with startOffsetInSamples (int) and durationInSamples (int) at the playhead on a selected track on the Fairlight page. 
-        
+    def insert_audio_to_current_track_at_playhead(
+        self, media_path: str, start_offset_in_samples: int, duration_in_samples: int
+    ) -> bool:
+        """Inserts the media specified by mediaPath (string) with startOffsetInSamples (int) and durationInSamples (int) at the playhead on a selected track on the Fairlight page.
+
         Args:
             media_path (str)
             start_offset_in_samples (int)
@@ -228,38 +228,41 @@ class Project():
 
         Returns:
             bool: Returns True if successful, otherwise False.
-        """        
-        return self._project.InsertAudioToCurrentTrackAtPlayhead(media_path, start_offset_in_samples, duration_in_samples)
+        """
+        return self._project.InsertAudioToCurrentTrackAtPlayhead(
+            media_path, start_offset_in_samples, duration_in_samples
+        )
 
     ##############################################################################################################################
     # Add at DR18.5.0 Beta
-    
-    def load_burn_in_preset(self,preset_name:str) -> bool:
-        """Loads user defined data burn in preset for project when supplied presetName (string). 
+
+    def load_burn_in_preset(self, preset_name: str) -> bool:
+        """Loads user defined data burn in preset for project when supplied presetName (string).
 
         Args:
             preset_name (str): preset name
 
         Returns:
             bool: Returns true if successful.
-        """        
+        """
         return self._project.LoadBurnInPreset(preset_name)
+
     ##############################################################################################################################
-    # Add at DR18.5.0 
-    
-    def export_current_frame_as_still(self,file_path:str) -> bool:
-        """Exports current frame as still to supplied filePath. 
+    # Add at DR18.5.0
+
+    def export_current_frame_as_still(self, file_path: str) -> bool:
+        """Exports current frame as still to supplied filePath.
 
         Args:
-            file_path (str): exported still path.filePath must end in valid export file format. 
+            file_path (str): exported still path.filePath must end in valid export file format.
 
         Returns:
             bool: Returns True if successful, False otherwise.
         """
         return self._project.ExportCurrentFrameAsStill(file_path)
-       
+
     ##############################################################################################################################
-    # Add at DR 19.0.0 
+    # Add at DR 19.0.0
     def get_color_groups_list(self) -> List[ColorGroup]:
         """Returns a list of all group objects in the timeline.
 
@@ -270,9 +273,9 @@ class Project():
         for color_group in self._project.GetColorGroupsList():
             color_group_list.append(ColorGroup(color_group))
         return color_group_list
-    
-    def add_color_group(self,group_name:str) -> ColorGroup:
-        """Creates a new ColorGroup. 
+
+    def add_color_group(self, group_name: str) -> ColorGroup:
+        """Creates a new ColorGroup.
 
         Args:
             group_name (str): groupName must be a unique string.
@@ -280,9 +283,9 @@ class Project():
         Returns:
             ColorGroup: ColorGroup object if successful, otherwise None.
         """
-        return ColorGroup(self._project.AddColorGroup(group_name)  )
-    
-    def delete_color_group(self,color_group:ColorGroup) -> bool:
+        return ColorGroup(self._project.AddColorGroup(group_name))
+
+    def delete_color_group(self, color_group: ColorGroup) -> bool:
         """Deletes the given color group and sets clips to ungrouped.
 
         Args:
@@ -291,12 +294,12 @@ class Project():
         Returns:
             bool: Return True if successful, otherwise False.
         """
-        return self._project.DeleteColorGroup(color_group._color_group) 
-    
+        return self._project.DeleteColorGroup(color_group._color_group)
+
     ##############################################################################################################################
-    # Add at DR 19.1.0 
-    
-    def delete_render_preset(self,preset_name:str) -> bool:
+    # Add at DR 19.1.0
+
+    def delete_render_preset(self, preset_name: str) -> bool:
         """Delete render preset by provided name
 
         Args:
@@ -304,16 +307,18 @@ class Project():
 
         Returns:
             bool: Returns True if successful, otherwise False.
-        """ 
+        """
         return self._project.DeleteRenderPreset(preset_name)
-    
+
     def get_quick_export_render_presets(self) -> List[str]:
         """
         Returns a list of names of all Quick Export render presets.
         """
         return self._project.GetQuickExportRenderPresets()
-    
-    def render_with_quick_export(self, preset_name: str, param_dict: Dict[str, Any]) -> Dict[str, Any]:
+
+    def render_with_quick_export(
+        self, preset_name: str, param_dict: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """
         Starts a Quick Export render using the specified preset name and parameter dictionary.
 
@@ -339,4 +344,3 @@ class Project():
             bool: True if successful, False otherwise.
         """
         return self._project.ApplyFairlightPresetToCurrentTimeline(preset_name)
-    

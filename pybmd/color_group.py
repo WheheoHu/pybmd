@@ -1,17 +1,18 @@
-from typing import List,TYPE_CHECKING
-
+from typing import List, TYPE_CHECKING
+from pybmd._wrapper_base import WrapperBase
 from pybmd.graph import Graph
+
 if TYPE_CHECKING:
     from pybmd.timeline import Timeline
     from pybmd.timeline_item import TimelineItem
 
 
-class ColorGroup(object):
+class ColorGroup(WrapperBase):
     """docstring for ColorGroup."""
 
     def __init__(self, color_group):
-        super(ColorGroup, self).__init__()
-        self._color_group = color_group
+        super(ColorGroup, self).__init__(color_group)
+        self._color_group = self._resolve_object
 
     def get_name(self) -> str:
         """Returns the name (string) of the ColorGroup.
@@ -32,8 +33,8 @@ class ColorGroup(object):
         """
         return self._color_group.SetName(group_name)
 
-    def get_clips_in_timeline(self, timeline: 'Timeline') -> List['TimelineItem']:
-        """Returns a list of TimelineItem that are in colorGroup in the given Timeline. 
+    def get_clips_in_timeline(self, timeline: "Timeline") -> List["TimelineItem"]:
+        """Returns a list of TimelineItem that are in colorGroup in the given Timeline.
 
         Args:
             timeline (Timeline): Timeline is Current Timeline by default.
@@ -41,7 +42,11 @@ class ColorGroup(object):
         Returns:
             List[TimelineItem]: a list of TimelineItem that are in colorGroup in the given Timeline.
         """
-        return self._color_group.GetClipsInTimeline(timeline._timeline)
+        timeline_item_list = [
+            TimelineItem(ti_item)
+            for ti_item in self._color_group.GetClipsInTimeline(timeline._timeline)
+        ]
+        return timeline_item_list
 
     def get_pre_clip_node_graph(self) -> Graph:
         """Returns the ColorGroup Pre-clip graph.

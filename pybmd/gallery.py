@@ -1,13 +1,14 @@
 from typing import List, Optional
+from pybmd._wrapper_base import WrapperBase
 from pybmd.gallery_still_album import GalleryStillAlbum
 
 
-class Gallery():
+class Gallery(WrapperBase):
     """docstring for Gallery."""
 
     def __init__(self, gallery):
-        self._gallery = gallery
-
+        super(Gallery, self).__init__(gallery)
+        self._gallery = self._resolve_object
     def get_album_name(self, gallery_still_album: GalleryStillAlbum) -> str:
         """return the album name of the GalleryStillAlbum object"""
         return self._gallery.GetAlbumName(gallery_still_album)

@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, List
 
 from multimethod import multimethod
+from pybmd._wrapper_base import WrapperBase
 from pybmd.folder import Folder
 from pybmd.media_pool_item import MediaPoolItem
 
@@ -56,11 +57,12 @@ class TimelineImportOptions:
 #     return return_list
 
 
-class MediaPool:
+class MediaPool(WrapperBase):
     """MediaPool Object"""
 
     def __init__(self, media_pool):
-        self._media_pool = media_pool
+        super(MediaPool, self).__init__(media_pool)
+        self._media_pool = self._resolve_object
 
     def add_sub_folder(self, folder: Folder, name: str) -> Folder:
         """add sub folder to folder
@@ -167,7 +169,9 @@ class MediaPool:
             [timeline._timeline for timeline in timelines]
         )
 
-    def export_metadata(self, file_name: str, clips: List[MediaPoolItem]=None) -> bool:
+    def export_metadata(
+        self, file_name: str, clips: List[MediaPoolItem] = None
+    ) -> bool:
         """export metadata to csv file
 
         Args:
@@ -179,7 +183,7 @@ class MediaPool:
         """
         if not clips:
             return self._media_pool.ExportMetadata(file_name)
-        
+
         return self._media_pool.ExportMetadata(
             file_name, [clip._media_pool_item for clip in clips]
         )
@@ -394,7 +398,6 @@ class MediaPool:
     ##########################################################################################################################
     # Add at DR19.1.0
 
-    
     def auto_sync_audio(
         self,
         media_pool_items: List["MediaPoolItem"],
@@ -402,7 +405,7 @@ class MediaPool:
     ) -> bool:
         """Syncs audio for specified [MediaPoolItems] (list). The list must contain a minimum of two MediaPoolItems - at least one video and one audio clip.
         #BUG NOT WORKING IN DR19.1.X because Resolve's API not working
-        
+
         Args:
             media_pool_items (List[MediaPoolItem]): _description_
             audio_sync_settings (AudioSyncSetting): _description_

@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from pybmd.settings import AutoCaptionSettings
 
 
+from pybmd._wrapper_base import WrapperBase
 from pybmd.media_pool_item import MediaPoolItem
 from pybmd.gallery_still import GalleryStill
 from pybmd.graph import Graph
@@ -103,11 +104,12 @@ def timeline_item_class_list_transfer(timeline_item_list: List[TimelineItem]) ->
     return timeline_item_trans_list
 
 
-class Timeline:
+class Timeline(WrapperBase):
     """Timeline Object"""
 
     def __init__(self, timeline):
-        self._timeline = timeline
+        super(Timeline, self).__init__(timeline)
+        self._timeline = self._resolve_object
 
     def __repr__(self) -> str:
         return f"Timeline: {self.get_name()}"
@@ -639,20 +641,22 @@ class Timeline:
                 Keys are omitted if marks are not set.
         """
         return self._timeline.GetMarkInOut()
-    
-    def set_mark_in_out(self, mark_in: int, mark_out: int, mark_type: str = "all") -> bool:
+
+    def set_mark_in_out(
+        self, mark_in: int, mark_out: int, mark_type: str = "all"
+    ) -> bool:
         """Sets mark in/out points on the timeline.
 
         Args:
             mark_in (int): Frame number for in point
-            mark_out (int): Frame number for out point  
+            mark_out (int): Frame number for out point
             mark_type (str, optional): Type of mark to set - "video", "audio" or "all". Defaults to "all".
 
         Returns:
             bool: True if successful, False otherwise
         """
         return self._timeline.SetMarkInOut(mark_in, mark_out, mark_type)
-    
+
     def clear_mark_in_out(self, mark_type: str = "all") -> bool:
         """Clears mark in/out points from the timeline.
 
@@ -663,10 +667,10 @@ class Timeline:
             bool: True if successful, False otherwise
         """
         return self._timeline.ClearMarkInOut(mark_type)
-    
+
     ##############################################################################################################################
     # Add at DR 20.1.0
-    
+
     def get_voice_isolation_state(self, track_index: int) -> dict:
         """Returns the Voice Isolation State for the given audio track.
 
@@ -674,12 +678,14 @@ class Timeline:
             track_index (int): Track index. 1 <= track_index <= GetTrackCount("audio")
 
         Returns:
-            dict: Dictionary with keys {'isEnabled': bool, 'amount': int}. 
+            dict: Dictionary with keys {'isEnabled': bool, 'amount': int}.
                   amount is in range of [0, 100]
         """
         return self._timeline.GetVoiceIsolationState(track_index)
-    
-    def set_voice_isolation_state(self, track_index: int, voice_isolation_state: dict) -> bool:
+
+    def set_voice_isolation_state(
+        self, track_index: int, voice_isolation_state: dict
+    ) -> bool:
         """Sets Voice Isolation state of audio track with given track index.
 
         Args:
