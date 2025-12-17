@@ -579,7 +579,7 @@ wheels = [
 
 [[package]]
 name = "pybmd"
-version = "2025.3.0"
+version = "2025.3.2"
 source = { editable = "." }
 dependencies = [
     { name = "dftt-timecode" },
