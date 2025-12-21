@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import logging
+import os
 from pathlib import Path
 import time
 import re
@@ -454,9 +455,9 @@ class StillManager(object):
 
             marker_source_tc = clip_start_timecode + clip_tc_frame_offset
 
-            #grab still
+            # grab still
             still = timeline.grab_still()
-            
+
             if still is None:
                 logger.warning("Failed to grab still for clip %s.", clip.get_name())
                 continue
@@ -547,6 +548,8 @@ class StillManager(object):
         else:
             export_path = base_path
 
+        export_result = {}
+
         export_path.mkdir(parents=True, exist_ok=True)
 
         wildcard_pattern = re.compile(r"\$(.*?)\$")
@@ -581,14 +584,25 @@ class StillManager(object):
             if target_file_name in existing_files:
                 logger.info("File %s exists. Skipping export.", target_file_name)
                 skip_count += 1
+                export_result[target_file_name] = {
+                    "exported": False,
+                    "message": "File already exists, skipped."
+                }
                 continue
 
-            self._still_album.export_stills(
+            export_success = self._still_album.export_stills(
                 gallery_stills=[marker_still.still_obj],
                 folder_path=str(export_path),
                 file_prefix=_file_prefix,
                 format=format,
             )
+            export_result[target_file_name] = {
+                "exported": export_success,
+                "file_path": str(os.path.join(export_path, target_file_name)),
+                "clip_name": marker_still.clip_obj.get_name(),
+                "record_tc": marker_still.marker_record_tc.timecode_output("smpte"),
+                "source_tc": marker_still.marker_source_tc.timecode_output("smpte"),
+            }
             existing_files.add(target_file_name)
 
         # check export folder
@@ -612,6 +626,8 @@ class StillManager(object):
             )
             return
         self.clean_and_rename_stills(str(export_path), clean_drx, original_contents)
+
+        return export_result
 
     def clean_and_rename_stills(
         self,
