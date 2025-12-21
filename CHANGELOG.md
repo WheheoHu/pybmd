@@ -1,5 +1,10 @@
 # Change Log for PyBMD
 ----
+# 2025.3.3
+## Toolkits
+### StillManager
+- `export_still` now includes still details in the returned dictionary
+
 # 2025.3.2
 ## Refactoring
 - Add WrapperBase class to reduce code duplication in wrapper classes
