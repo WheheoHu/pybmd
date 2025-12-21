@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=15dd4d05"></script>
+    <script src="../../_static/documentation_options.js?v=b1a5c91c"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/toolkits';</script>
@@ -330,6 +330,7 @@
   <h1>Source code for pybmd.toolkits</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
@@ -815,9 +816,9 @@
 
             <span class="n">marker_source_tc</span> <span class="o">=</span> <span class="n">clip_start_timecode</span> <span class="o">+</span> <span class="n">clip_tc_frame_offset</span>
 
-            <span class="c1">#grab still</span>
+            <span class="c1"># grab still</span>
             <span class="n">still</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">grab_still</span><span class="p">()</span>
-            
+
             <span class="k">if</span> <span class="n">still</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to grab still for clip </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">clip</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
                 <span class="k">continue</span>
@@ -911,6 +912,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">export_path</span> <span class="o">=</span> <span class="n">base_path</span>
 
+        <span class="n">export_result</span> <span class="o">=</span> <span class="p">{}</span>
+
         <span class="n">export_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="n">wildcard_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\$(.*?)\$&quot;</span><span class="p">)</span>
@@ -945,14 +948,25 @@
             <span class="k">if</span> <span class="n">target_file_name</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;File </span><span class="si">%s</span><span class="s2"> exists. Skipping export.&quot;</span><span class="p">,</span> <span class="n">target_file_name</span><span class="p">)</span>
                 <span class="n">skip_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">export_result</span><span class="p">[</span><span class="n">target_file_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;exported&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;File already exists, skipped.&quot;</span>
+                <span class="p">}</span>
                 <span class="k">continue</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span><span class="o">.</span><span class="n">export_stills</span><span class="p">(</span>
+            <span class="n">export_success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_still_album</span><span class="o">.</span><span class="n">export_stills</span><span class="p">(</span>
                 <span class="n">gallery_stills</span><span class="o">=</span><span class="p">[</span><span class="n">marker_still</span><span class="o">.</span><span class="n">still_obj</span><span class="p">],</span>
                 <span class="n">folder_path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">export_path</span><span class="p">),</span>
                 <span class="n">file_prefix</span><span class="o">=</span><span class="n">_file_prefix</span><span class="p">,</span>
                 <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
             <span class="p">)</span>
+            <span class="n">export_result</span><span class="p">[</span><span class="n">target_file_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;exported&quot;</span><span class="p">:</span> <span class="n">export_success</span><span class="p">,</span>
+                <span class="s2">&quot;file_path&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">export_path</span><span class="p">,</span> <span class="n">target_file_name</span><span class="p">)),</span>
+                <span class="s2">&quot;clip_name&quot;</span><span class="p">:</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">clip_obj</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
+                <span class="s2">&quot;record_tc&quot;</span><span class="p">:</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_record_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;smpte&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;source_tc&quot;</span><span class="p">:</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_source_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s2">&quot;smpte&quot;</span><span class="p">),</span>
+            <span class="p">}</span>
             <span class="n">existing_files</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">target_file_name</span><span class="p">)</span>
 
         <span class="c1"># check export folder</span>
@@ -975,7 +989,9 @@
                 <span class="sa">f</span><span class="s2">&quot;No stills exported to folder </span><span class="si">{</span><span class="n">export_path</span><span class="si">}</span><span class="s2">. Please check if you open the [gallery] in color page or not&quot;</span>
             <span class="p">)</span>
             <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">clean_and_rename_stills</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">export_path</span><span class="p">),</span> <span class="n">clean_drx</span><span class="p">,</span> <span class="n">original_contents</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clean_and_rename_stills</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">export_path</span><span class="p">),</span> <span class="n">clean_drx</span><span class="p">,</span> <span class="n">original_contents</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">export_result</span></div>
 
 
 <div class="viewcode-block" id="StillManager.clean_and_rename_stills">
