@@ -1,0 +1,8 @@
+TimelineItem.set\_property
+==========================
+
+.. currentmodule:: pybmd.timeline_item
+
+.. automethod:: TimelineItem.set_property
+
+    .. autosummary::

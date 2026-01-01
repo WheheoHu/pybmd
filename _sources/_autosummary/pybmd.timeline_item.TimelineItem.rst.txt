@@ -96,6 +96,7 @@ TimelineItem
       ~TimelineItem.set_color_output_cache
       ~TimelineItem.set_fusion_output_cache
       ~TimelineItem.set_name
+      ~TimelineItem.set_property
       ~TimelineItem.set_voice_isolation_state
       ~TimelineItem.smart_reframe
       ~TimelineItem.stabilize

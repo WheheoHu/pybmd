@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=b1a5c91c"></script>
+    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/timeline_item';</script>
@@ -704,7 +704,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_property">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_property.html#pybmd.timeline_item.TimelineItem.get_property">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_key</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;returns the value of the specified key.</span>
 
 <span class="sd">        if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys</span>
@@ -1100,6 +1100,23 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">ExportLUT</span><span class="p">(</span><span class="n">export_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">export_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TimelineItem.set_property">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_property.html#pybmd.timeline_item.TimelineItem.set_property">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">property_value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the value of property &quot;propertyKey&quot; to value &quot;propertyValue&quot;.</span>
+
+<span class="sd">        Refer to &quot;Looking up Timeline item properties&quot; for more information.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            property_key (str): The property key to set</span>
+<span class="sd">            property_value: The value to set for the property</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">SetProperty</span><span class="p">(</span><span class="n">property_key</span><span class="p">,</span> <span class="n">property_value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_linked_items">

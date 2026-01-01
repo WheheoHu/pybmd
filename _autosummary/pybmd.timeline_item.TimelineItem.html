@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=b1a5c91c"></script>
+    <script src="../_static/documentation_options.js?v=6cbb5e0f"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/pybmd.timeline_item.TimelineItem';</script>
@@ -856,6 +856,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_color_output_cache.html">TimelineItem.set_color_output_cache</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_fusion_output_cache.html">TimelineItem.set_fusion_output_cache</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_name.html">TimelineItem.set_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_property.html">TimelineItem.set_property</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_voice_isolation_state.html">TimelineItem.set_voice_isolation_state</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.smart_reframe.html">TimelineItem.smart_reframe</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html">TimelineItem.stabilize</a></li>
@@ -1112,7 +1113,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_node_graph.html#pybmd.timeline_item.TimelineItem.get_node_graph" title="pybmd.timeline_item.TimelineItem.get_node_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_graph</span></code></a>(layer_index)</p></td>
 <td><p>Returns the clip's node graph object</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_property.html#pybmd.timeline_item.TimelineItem.get_property" title="pybmd.timeline_item.TimelineItem.get_property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code></a>(property_key)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_property.html#pybmd.timeline_item.TimelineItem.get_property" title="pybmd.timeline_item.TimelineItem.get_property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property</span></code></a>([property_key])</p></td>
 <td><p>returns the value of the specified key.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.get_right_offset.html#pybmd.timeline_item.TimelineItem.get_right_offset" title="pybmd.timeline_item.TimelineItem.get_right_offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_right_offset</span></code></a>([subframe_precision])</p></td>
@@ -1214,16 +1215,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_name.html#pybmd.timeline_item.TimelineItem.set_name" title="pybmd.timeline_item.TimelineItem.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(name)</p></td>
 <td><p>Sets the clip's name to the specified string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_voice_isolation_state.html#pybmd.timeline_item.TimelineItem.set_voice_isolation_state" title="pybmd.timeline_item.TimelineItem.set_voice_isolation_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_voice_isolation_state</span></code></a>(voice_isolation_state)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_property.html#pybmd.timeline_item.TimelineItem.set_property" title="pybmd.timeline_item.TimelineItem.set_property"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_property</span></code></a>(property_key, property_value)</p></td>
+<td><p>Sets the value of property &quot;propertyKey&quot; to value &quot;propertyValue&quot;.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.set_voice_isolation_state.html#pybmd.timeline_item.TimelineItem.set_voice_isolation_state" title="pybmd.timeline_item.TimelineItem.set_voice_isolation_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_voice_isolation_state</span></code></a>(voice_isolation_state)</p></td>
 <td><p>Sets Voice Isolation state of the timeline item.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.smart_reframe.html#pybmd.timeline_item.TimelineItem.smart_reframe" title="pybmd.timeline_item.TimelineItem.smart_reframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smart_reframe</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.smart_reframe.html#pybmd.timeline_item.TimelineItem.smart_reframe" title="pybmd.timeline_item.TimelineItem.smart_reframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smart_reframe</span></code></a>()</p></td>
 <td><p>Performs Smart Reframe.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html#pybmd.timeline_item.TimelineItem.stabilize" title="pybmd.timeline_item.TimelineItem.stabilize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stabilize</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.stabilize.html#pybmd.timeline_item.TimelineItem.stabilize" title="pybmd.timeline_item.TimelineItem.stabilize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stabilize</span></code></a>()</p></td>
 <td><p>Returns True if stabilization was successful, False otherwise</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.update_sidecar.html#pybmd.timeline_item.TimelineItem.update_sidecar" title="pybmd.timeline_item.TimelineItem.update_sidecar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_sidecar</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pybmd.timeline_item.TimelineItem.update_sidecar.html#pybmd.timeline_item.TimelineItem.update_sidecar" title="pybmd.timeline_item.TimelineItem.update_sidecar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_sidecar</span></code></a>()</p></td>
 <td><p>Updates sidecar file for BRAW clips or RMD file for R3D clips.</p></td>
 </tr>
 </tbody>
@@ -1683,9 +1687,14 @@ Returns True if successful.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/timeline_item.html#TimelineItem.get_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<span class="sig-name descname"><span class="pre">get_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pybmd/timeline_item.html#TimelineItem.get_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>returns the value of the specified key.</p>
 <p>if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>property_key</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -2136,6 +2145,27 @@ Value at particular offset includes the left, right, top and bottom floating win
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Returns True if successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">property_value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/pybmd/timeline_item.html#TimelineItem.set_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Sets the value of property “propertyKey” to value “propertyValue”.</p>
+<p>Refer to “Looking up Timeline item properties” for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>property_key</strong> (<a class="reference external" href="https://docs.python.org/3.11/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The property key to set</p></li>
+<li><p><strong>property_value</strong> – The value to set for the property</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.11/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
