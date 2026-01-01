@@ -262,7 +262,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.SetName(name)
 
-    def get_property(self, property_key):
+    def get_property(self, property_key: str = None):
         """returns the value of the specified key.
 
         if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys
@@ -565,6 +565,20 @@ class TimelineItem(WrapperBase):
         """
 
         return self._timeline_item.ExportLUT(export_type.value, export_path)
+
+    def set_property(self, property_key: str, property_value) -> bool:
+        """Sets the value of property "propertyKey" to value "propertyValue".
+
+        Refer to "Looking up Timeline item properties" for more information.
+
+        Args:
+            property_key (str): The property key to set
+            property_value: The value to set for the property
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline_item.SetProperty(property_key, property_value)
 
     def get_linked_items(self) -> List["TimelineItem"]:
         """Returns a list of linked timeline items.

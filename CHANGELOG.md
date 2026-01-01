@@ -1,5 +1,11 @@
 # Change Log for PyBMD
 ----
+# 2026.0.1
+## API
+### TimelineItem
+- Modify `get_property()` - Returns the value of the specified property key or all properties if no key is provided
+- Add `set_property()` - Sets the value of the specified property key
+
 # 2025.3.3
 ## Toolkits
 ### StillManager
