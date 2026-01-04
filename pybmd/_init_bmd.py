@@ -3,6 +3,7 @@ from enum import Enum
 import importlib.util
 import importlib.machinery
 
+import os
 import sys
 
 from pybmd.error import UnsupportSystemError
@@ -27,6 +28,10 @@ def _init_bmd_module():
     if sys.platform.startswith("darwin"):
         PYLIB = DEFAULT_LIB_PATH.LIB_MAC.value
     elif sys.platform.startswith("win"):
+        # For virtual environments (e.g., created by uv), set PYTHON3HOME
+        # so that embedded DLLs (e.g., fusionscript.dll) can locate the correct Python installation.
+        if sys.base_prefix != sys.prefix:
+            os.environ["PYTHON3HOME"] = sys.base_exec_prefix
         PYLIB = DEFAULT_LIB_PATH.LIB_Windows.value
     elif sys.platform.startswith("linux"):
         PYLIB = DEFAULT_LIB_PATH.LIB_LINUX.value
