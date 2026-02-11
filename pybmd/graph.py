@@ -1,6 +1,7 @@
 from typing import List
 
 from pybmd._wrapper_base import WrapperBase
+from pybmd.decorators import requires_resolve_version
 
 
 class Graph(WrapperBase):
@@ -76,6 +77,7 @@ class Graph(WrapperBase):
 
     ##############################################################################################################
     # Add at DR 19.1.0
+    @requires_resolve_version(added_in="19.1.0")
     def set_node_cache_mode(self, node_index: int, cache_value: int) -> bool:
         """Sets the cache mode type on the node.
 
@@ -89,9 +91,16 @@ class Graph(WrapperBase):
 
         Returns:
             bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 19.1.0
+
+        Version:
+            Added in DaVinci Resolve 19.1.0
         """
         return self._graph.SetNodeCacheMode(node_index, cache_value)
 
+    @requires_resolve_version(added_in="19.1.0")
     def get_node_cache_mode(self, node_index: int) -> int:
         """Gets the cache mode type on the node.
 
@@ -106,6 +115,7 @@ class Graph(WrapperBase):
         """
         return self._graph.GetNodeCacheMode(node_index)
 
+    @requires_resolve_version(added_in="19.1.0")
     def apply_grade_from_drx(self, path: str, grade_mode: int = 0) -> bool:
         """Loads a still from given file path and applies grade to graph.
 
@@ -119,6 +129,7 @@ class Graph(WrapperBase):
         """
         return self._graph.ApplyGradeFromDRX(path, grade_mode)
 
+    @requires_resolve_version(added_in="19.1.0")
     def apply_arri_cdl_lut(self) -> bool:
         """Applies ARRI CDL and LUT.
 
@@ -127,6 +138,7 @@ class Graph(WrapperBase):
         """
         return self._graph.ApplyArriCdlLut()
 
+    @requires_resolve_version(added_in="19.1.0")
     def reset_all_grades(self) -> bool:
         """Resets all grades in the graph.
 

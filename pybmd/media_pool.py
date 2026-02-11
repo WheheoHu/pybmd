@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING, List
 
 from multimethod import multimethod
 from pybmd._wrapper_base import WrapperBase
+from pybmd.decorators import requires_resolve_version
 from pybmd.folder import Folder
 from pybmd.media_pool_item import MediaPoolItem
 
@@ -105,8 +106,6 @@ class MediaPool(WrapperBase):
         """create empty timeline"""
         return Timeline(self._media_pool.CreateEmptyTimeline(name))
 
-    # @dispatch(str, Iterable)
-    # type: ignore
     def create_timeline_from_clips(self, name: str, clips) -> Timeline:
         """create new timeline from clips with name
 
@@ -129,6 +128,8 @@ class MediaPool(WrapperBase):
                     name, [asdict(ClipInfo) for clip in clips]
                 )
             )
+        else:
+            raise ValueError("clips must contain MediaPoolItem or ClipInfo objects")
 
     # @dispatch(str, List[ClipInfo])
     # def create_timeline_from_clips(self, name: str, clip_infos: List[ClipInfo]) -> Timeline:
@@ -170,7 +171,7 @@ class MediaPool(WrapperBase):
         )
 
     def export_metadata(
-        self, file_name: str, clips: List[MediaPoolItem] = None
+        self, file_name: str, clips: List[MediaPoolItem] | None = None
     ) -> bool:
         """export metadata to csv file
 
@@ -225,8 +226,6 @@ class MediaPool(WrapperBase):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
-    # @dispatch(List[str])
-    # type: ignore
     def import_media(self, file_paths: List[str]) -> List[MediaPoolItem]:
         """Imports specified file/folder paths into current Media Pool folder.
 
@@ -327,8 +326,19 @@ class MediaPool(WrapperBase):
 
     ##########################################################################################################################
     # Add at DR18.0.0
+    @requires_resolve_version(added_in="18.0.0")
     def refresh_folders(self) -> bool:
-        """Updates the folders in collaboration mode"""
+        """Updates the folders in collaboration mode
+
+        Returns:
+            bool: True if successful
+
+        Raises:
+            APIVersionError: If Resolve version < 18.0.0
+
+        Version:
+            Added in DaVinci Resolve 18.0.0
+        """
         return self._media_pool.RefreshFolders()
 
     def get_unique_id(self) -> str:
@@ -338,6 +348,7 @@ class MediaPool(WrapperBase):
     ##########################################################################################################################
     # Add at DR18.5.0 Beta
 
+    @requires_resolve_version(added_in="18.5.0")
     def import_folder_from_file(self, file_path: str, source_clips_path: str) -> bool:
         """Returns true if import from given DRB filePath is successful, false otherwise
 
@@ -347,11 +358,18 @@ class MediaPool(WrapperBase):
 
         Returns:
             bool: Returns true if import from given DRB filePath is successful, false otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 18.5.0
+
+        Version:
+            Added in DaVinci Resolve 18.5.0 Beta
         """
         return self._media_pool.ImportFolderFromFile(file_path, source_clips_path)
 
     ##########################################################################################################################
     # Add at DR18.6.4
+    @requires_resolve_version(added_in="18.6.4")
     def create_stereo_clip(
         self, left_media_pool_item: MediaPoolItem, right_media_pool_item: MediaPoolItem
     ) -> MediaPoolItem:
@@ -363,6 +381,12 @@ class MediaPool(WrapperBase):
 
         Returns:
             MediaPoolItem: 3D stereoscopic media pool entry
+
+        Raises:
+            APIVersionError: If Resolve version < 18.6.4
+
+        Version:
+            Added in DaVinci Resolve 18.6.4
         """
         return MediaPoolItem(
             self._media_pool.CreateStereoClip(
@@ -373,17 +397,25 @@ class MediaPool(WrapperBase):
 
     ##########################################################################################################################
     # Add at DR19.0.2
+    @requires_resolve_version(added_in="19.0.2")
     def get_selected_clips(self) -> List[MediaPoolItem]:
         """Returns the current selected MediaPoolItems
 
         Returns:
             List[MediaPoolItem]: current selected MediaPoolItems
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.2
+
+        Version:
+            Added in DaVinci Resolve 19.0.2
         """
         media_pool_items = list()
         for mp_item in self._media_pool.GetSelectedClips():
             media_pool_items.append(MediaPoolItem(mp_item))
         return media_pool_items
 
+    @requires_resolve_version(added_in="19.0.2")
     def set_selected_clip(self, media_pool_item: MediaPoolItem) -> bool:
         """Sets the selected MediaPoolItem to the given MediaPoolItem
 
@@ -398,6 +430,9 @@ class MediaPool(WrapperBase):
     ##########################################################################################################################
     # Add at DR19.1.0
 
+    @requires_resolve_version(
+        added_in="19.1.0", notes="Currently non-functional due to API issues"
+    )
     def auto_sync_audio(
         self,
         media_pool_items: List["MediaPoolItem"],
@@ -412,5 +447,11 @@ class MediaPool(WrapperBase):
 
         Returns:
             bool: Returns True if successful. Refer to 'AudioSyncSetting' section for details.
+
+        Raises:
+            APIVersionError: If Resolve version < 19.1.0
+
+        Version:
+            Added in DaVinci Resolve 19.1.0
         """
         return self._media_pool.AutoSyncAudio(media_pool_items, audio_sync_settings)

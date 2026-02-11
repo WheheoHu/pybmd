@@ -3,13 +3,9 @@ from dataclasses import dataclass
 from typing import Any
 
 from pybmd.error import ResolveInitError
-
 from pybmd._init_bmd import _resolve_object as _resolve
-
-
 if _resolve is None:
-    raise ResolveInitError
-
+        raise ResolveInitError
 
 class SettingParameter(object):
     """docstring for SettingParamater."""
@@ -56,7 +52,7 @@ class RenderSetting:
     VideoQuality: Any = 0
 
     AudioCodec: str = "aac"
-    AudioBitDepth: int = "24"
+    AudioBitDepth: int = 24
     AudioSampleRate: int = 48000
 
     # example: "Same as Project", "AstroDesign"
@@ -88,6 +84,7 @@ class RenderSetting:
 class CloudSyncMode(Enum):
     """Docstring for CloudSyncMode."""
 
+    # Lazy import to avoid circular dependency issues
     NONE: float = _resolve.CLOUD_SYNC_NONE
     PROXY_ONLY: float = _resolve.CLOUD_SYNC_PROXY_ONLY
     PROXY_AND_ORIG: float = _resolve.CLOUD_SYNC_PROXY_AND_ORIG
@@ -105,6 +102,7 @@ class CloudProjectSettingEnum(Enum):
 
 class CloudProjectsSetting:
     """Setting for CloudProject"""
+
 
     def __init__(
         self,
@@ -198,7 +196,6 @@ class CloudProjectsSetting:
 
 class LanguageID(Enum):
     """Docstring for LanguageID."""
-
     AUTO = _resolve.AUTO_CAPTION_AUTO
     DANISH = _resolve.AUTO_CAPTION_DANISH
     DUTCH = _resolve.AUTO_CAPTION_DUTCH

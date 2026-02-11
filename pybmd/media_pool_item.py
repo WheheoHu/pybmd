@@ -2,6 +2,7 @@ from typing import Any, Dict
 from multimethod import multimethod
 
 from pybmd._wrapper_base import WrapperBase
+from pybmd.decorators import requires_resolve_version, minimum_resolve_version
 
 
 class MediaPoolItem(WrapperBase):
@@ -172,6 +173,7 @@ class MediaPoolItem(WrapperBase):
         """return name of the clip."""
         return self._media_pool_item.GetName()
 
+    @requires_resolve_version(added_in="20.2.0")
     def set_name(self, name: str) -> bool:
         """Sets the clip's name to the specified string.
 
@@ -180,6 +182,12 @@ class MediaPoolItem(WrapperBase):
 
         Returns:
             bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 20.2.0
+
+        Version:
+            Added in DaVinci Resolve 20.2.0
         """
         return self._media_pool_item.SetName(name)
 
@@ -253,7 +261,7 @@ class MediaPoolItem(WrapperBase):
     ###############################################################################
     # Add at DR18.0.0
 
-    # TODO Add version check
+    @minimum_resolve_version("18.0.0")
     def get_unique_id(self) -> str:
         """return unique id of the clip."""
         return self._media_pool_item.GetUniqueId()
@@ -261,6 +269,7 @@ class MediaPoolItem(WrapperBase):
     ##############################################################################################################################
     # Add at DR18.5.0
 
+    @minimum_resolve_version("18.5.0")
     def transcribe_audio(self) -> bool:
         """Transcribes audio of the MediaPoolItem.
 
@@ -269,6 +278,7 @@ class MediaPoolItem(WrapperBase):
         """
         return self._media_pool_item.TranscribeAudio()
 
+    @minimum_resolve_version("18.5.0")
     def clear_transcription(self) -> bool:
         """Clears audio transcription of the MediaPoolItem.
 
@@ -280,18 +290,26 @@ class MediaPoolItem(WrapperBase):
     ##############################################################################################################################
     # Add at DR 19.0.0
 
+    @requires_resolve_version(added_in="19.0.0")
     def get_audio_mapping(self) -> str:
         """Returns a string with MediaPoolItem's audio mapping information. Check 'Audio Mapping' section for more information.
 
         Returns:
             str: json formatted string
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.0
+
+        Version:
+            Added in DaVinci Resolve 19.0.0
         """
         return self._media_pool_item.GetAudioMapping()
 
     ##############################################################################################################################
     # Add at DR 19.0.2
 
-    def get_third_party_metadata(self, metadata_type: str = None) -> str | dict:
+    @requires_resolve_version(added_in="19.0.2")
+    def get_third_party_metadata(self, metadata_type: str | None = None) -> str | dict:
         """Returns the third party metadata value for the key 'metadataType'.
 
         Args:
@@ -299,10 +317,17 @@ class MediaPoolItem(WrapperBase):
 
         Returns:
             str | dict: third party metadata value
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.2
+
+        Version:
+            Added in DaVinci Resolve 19.0.2
         """
         return self._media_pool_item.GetThirdPartyMetadata(metadata_type)
 
     @multimethod
+    @requires_resolve_version(added_in="19.0.2")
     def set_third_party_metadata(self, metadata_type: str, metadata_value: str) -> bool:
         """Sets/Add the given third party metadata to metadata_value (string).
 
@@ -318,6 +343,7 @@ class MediaPoolItem(WrapperBase):
         )
 
     @multimethod
+    @requires_resolve_version(added_in="19.0.2")
     def set_third_party_metadata(self, metadata_dict: dict) -> bool:  # noqa: F811
         """Sets/Add the given third party metadata to metadata_value (string).
 
@@ -332,12 +358,24 @@ class MediaPoolItem(WrapperBase):
     ##############################################################################################################################
     # Add at DR 19.1.0
 
+    @requires_resolve_version(added_in="19.1.0")
     def get_mark_in_out(
         self,
     ) -> Dict[str, Any]:
-        """Returns dict of in/out marks set (keys omitted if not set), example: {'video': {'in': 0, 'out': 134}, 'audio': {'in': 0, 'out': 134}}"""
+        """Returns dict of in/out marks set (keys omitted if not set), example: {'video': {'in': 0, 'out': 134}, 'audio': {'in': 0, 'out': 134}}
+
+        Returns:
+            Dict[str, Any]: Dictionary of in/out marks
+
+        Raises:
+            APIVersionError: If Resolve version < 19.1.0
+
+        Version:
+            Added in DaVinci Resolve 19.1.0
+        """
         return self._media_pool_item.GetMarkInOut()
 
+    @requires_resolve_version(added_in="19.1.0")
     def set_mark_in_out(self, mark_in: int, mark_out: int, type: str = "all") -> bool:
         """Sets mark in/out of type "video", "audio" or "all" (default).
 
@@ -351,6 +389,7 @@ class MediaPoolItem(WrapperBase):
         """
         return self._media_pool_item.SetMarkInOut(mark_in, mark_out, type)
 
+    @requires_resolve_version(added_in="19.1.0")
     def clear_mark_in_out(self, type: str = "all") -> bool:
         """Clears mark in/out of type "video", "audio" or "all" (default).
 
@@ -365,6 +404,7 @@ class MediaPoolItem(WrapperBase):
     ##############################################################################################################################
     # Add at DR 20.0.0
 
+    @requires_resolve_version(added_in="20.0.0")
     def link_full_resolution_media(self, full_res_media_path: str) -> bool:
         """Links proxy media to full resolution media files specified via its path.
 
@@ -373,9 +413,16 @@ class MediaPoolItem(WrapperBase):
 
         Returns:
             bool: Returns True if successful.
+
+        Raises:
+            APIVersionError: If Resolve version < 20.0.0
+
+        Version:
+            Added in DaVinci Resolve 20.0.0
         """
         return self._media_pool_item.LinkFullResolutionMedia(full_res_media_path)
 
+    @requires_resolve_version(added_in="20.0.0")
     def replace_clip_preserve_sub_clip(self, file_path: str) -> bool:
         """Replaces the underlying asset and metadata of a video or audio clip with the specified absolute clip path, preserving original sub clip extents.
 
@@ -384,13 +431,26 @@ class MediaPoolItem(WrapperBase):
 
         Returns:
             bool: Returns True if successful.
+
+        Raises:
+            APIVersionError: If Resolve version < 20.0.0
+
+        Version:
+            Added in DaVinci Resolve 20.0.0
         """
         return self._media_pool_item.ReplaceClipPreserveSubClip(file_path)
 
+    @requires_resolve_version(added_in="20.0.0")
     def monitor_growing_file(self) -> bool:
         """Monitor a file as long as it keeps growing (stops if the file does not grow for some time).
 
         Returns:
             bool: Returns True if successful.
+
+        Raises:
+            APIVersionError: If Resolve version < 20.0.0
+
+        Version:
+            Added in DaVinci Resolve 20.0.0
         """
         return self._media_pool_item.MonitorGrowingFile()

@@ -8,6 +8,7 @@ if TYPE_CHECKING:
 
 
 from pybmd._wrapper_base import WrapperBase
+from pybmd.decorators import requires_resolve_version, minimum_resolve_version
 from pybmd.media_pool_item import MediaPoolItem
 from pybmd.gallery_still import GalleryStill
 from pybmd.graph import Graph
@@ -410,25 +411,29 @@ class Timeline(WrapperBase):
 
     #######################################################################################################################
     # Add at DR18.0.0
-
+    @minimum_resolve_version("18.0.0")
     def set_start_timecode(self, timecode: str) -> bool:
         """Set the start timecode of the timeline to the string 'timecode'. Returns true when the change is successful, false otherwise."""
         return self._timeline.SetStartTimecode(timecode)
 
+    @minimum_resolve_version("18.0.0")
     def get_start_timecode(self) -> str:
         """Returns the start timecode for the timeline."""
         return self._timeline.GetStartTimecode()
 
+    @minimum_resolve_version("18.0.0")
     def insert_fusion_composition_into_timeline(self) -> TimelineItem:
         """Inserts a Fusion composition into the timeline.Returns a TimelineItem object."""
         return TimelineItem(self._timeline.InsertFusionCompositionIntoTimeline())
 
+    @minimum_resolve_version("18.0.0")
     def get_unique_id(self) -> str:
         """Returns a unique ID for the timeline"""
         return self._timeline.GetUniqueId()
 
     ##############################################################################################################################
     # Add at DR18.5.0
+    @minimum_resolve_version("18.5.0")
     def add_track(
         self, track_type: TrackType, track_options: OptionalSubTrackType | Dict
     ) -> bool:
@@ -447,6 +452,7 @@ class Timeline(WrapperBase):
         elif isinstance(track_options, dict):
             return self._timeline.AddTrack(track_type.value, track_options)
 
+    @minimum_resolve_version("18.5.0")
     def delete_track(self, track_type: TrackType, track_index: int) -> bool:
         """Deletes track of trackType ("video", "subtitle", "audio") and given trackIndex.
 
@@ -460,6 +466,7 @@ class Timeline(WrapperBase):
         """
         return self._timeline.DeleteTrack(track_type.value, track_index)
 
+    @minimum_resolve_version("18.5.0")
     def set_track_enable(
         self, track_type: TrackType, track_index: int, is_enable: bool
     ) -> bool:
@@ -477,6 +484,7 @@ class Timeline(WrapperBase):
         """
         return self._timeline.SetTrackEnable(track_type.value, track_index, is_enable)
 
+    @minimum_resolve_version("18.5.0")
     def get_is_track_enabled(self, track_type, track_index) -> bool:
         """
 
@@ -489,6 +497,7 @@ class Timeline(WrapperBase):
         """
         return self._timeline.GetIsTrackEnabled(track_type, track_index)
 
+    @minimum_resolve_version("18.5.0")
     def set_track_lock(
         self, track_type: TrackType, track_index: int, is_locked: bool
     ) -> bool:
@@ -504,6 +513,7 @@ class Timeline(WrapperBase):
         """
         return self._timeline.SetTrackLock(track_type, track_index, is_locked)
 
+    @minimum_resolve_version("18.5.0")
     def get_is_track_locked(self, track_type: TrackType, track_index: int) -> bool:
         """Returns True if track with given trackType and trackIndex is locked and False otherwise.
 
@@ -517,6 +527,7 @@ class Timeline(WrapperBase):
         """
         return self._timeline.GetIsTrackLocked(track_type, track_index)
 
+    @minimum_resolve_version("18.5.0")
     def delete_clips(
         self, timeline_items: List[TimelineItem], ripple_delete: bool = False
     ) -> bool:
@@ -534,6 +545,7 @@ class Timeline(WrapperBase):
             ripple_delete,
         )
 
+    @minimum_resolve_version("18.5.0")
     def set_clips_linked(
         self, timeline_items: List[TimelineItem], is_linked: bool
     ) -> bool:
@@ -551,6 +563,8 @@ class Timeline(WrapperBase):
             is_linked,
         )
 
+    @minimum_resolve_version("18.5.0")
+    @requires_resolve_version(added_in="18.6.4")
     def create_subtitles_from_audio(
         self, auto_caption_settings: "AutoCaptionSettings"
     ) -> bool:
@@ -559,9 +573,16 @@ class Timeline(WrapperBase):
 
         Returns:
             bool: Returns True on success, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 18.6.4
+
+        Version:
+            Modified in DaVinci Resolve 18.6.4
         """
         return self._timeline.CreateSubtitlesFromAudio(auto_caption_settings.asdict())
 
+    @minimum_resolve_version("18.5.0")
     def detect_scene_cuts(self) -> bool:
         """Detects and makes scene cuts along the timeline.
 
@@ -572,7 +593,7 @@ class Timeline(WrapperBase):
 
     ##############################################################################################################################
     # Add at DR18.6.4
-
+    @minimum_resolve_version("18.6.4")
     def convert_timeline_to_stereo(self) -> bool:
         """Converts timeline to stereo.
 
@@ -584,14 +605,22 @@ class Timeline(WrapperBase):
     ##############################################################################################################################
     # Add at DR 19.0.0
 
+    @requires_resolve_version(added_in="19.0.0")
     def get_node_graph(self) -> Graph:
         """Returns the timeline's node graph object.
 
         Returns:
             Graph: timeline's node graph object.
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.0
+
+        Version:
+            Added in DaVinci Resolve 19.0.0
         """
         return Graph(self._timeline.GetNodeGraph())
 
+    @requires_resolve_version(added_in="19.0.0")
     def analyze_dolby_vision(
         self, timeline_item_list: List[TimelineItem] = list(), analysis_type=None
     ) -> bool:
@@ -608,6 +637,7 @@ class Timeline(WrapperBase):
 
     ##############################################################################################################################
     # Add at DR 19.0.1
+    @requires_resolve_version(added_in="19.0.1")
     def get_track_sub_type(self, track_index: int, track_type: str = "audio") -> str:
         """_summary_
 
@@ -617,18 +647,32 @@ class Timeline(WrapperBase):
 
         Returns:
             str: audio track's format,value is one of {"mono", "stereo", "5.1", "5.1film", "7.1", "7.1film", "adaptive1", ... , "adaptive24"}
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.1
+
+        Version:
+            Added in DaVinci Resolve 19.0.1
         """
         return self._timeline.GetTrackSubType(track_type, track_index)
 
     ##############################################################################################################################
     # Add at DR 19.1.0
+    @requires_resolve_version(added_in="19.1.0")
     def get_media_pool_item(self) -> "MediaPoolItem":
         """
         Returns:
             MediaPoolItem: Returns the media pool item corresponding to the timeline
+
+        Raises:
+            APIVersionError: If Resolve version < 19.1.0
+
+        Version:
+            Added in DaVinci Resolve 19.1.0
         """
         return MediaPoolItem(self._timeline.GetMediaPoolItem())
 
+    @requires_resolve_version(added_in="19.1.0")
     def get_mark_in_out(self) -> dict:
         """Gets the in/out marks set on the timeline.
 
@@ -642,6 +686,7 @@ class Timeline(WrapperBase):
         """
         return self._timeline.GetMarkInOut()
 
+    @requires_resolve_version(added_in="19.1.0")
     def set_mark_in_out(
         self, mark_in: int, mark_out: int, mark_type: str = "all"
     ) -> bool:
@@ -657,6 +702,7 @@ class Timeline(WrapperBase):
         """
         return self._timeline.SetMarkInOut(mark_in, mark_out, mark_type)
 
+    @requires_resolve_version(added_in="19.1.0")
     def clear_mark_in_out(self, mark_type: str = "all") -> bool:
         """Clears mark in/out points from the timeline.
 
@@ -671,6 +717,7 @@ class Timeline(WrapperBase):
     ##############################################################################################################################
     # Add at DR 20.1.0
 
+    @requires_resolve_version(added_in="20.1.0")
     def get_voice_isolation_state(self, track_index: int) -> dict:
         """Returns the Voice Isolation State for the given audio track.
 
@@ -680,9 +727,16 @@ class Timeline(WrapperBase):
         Returns:
             dict: Dictionary with keys {'isEnabled': bool, 'amount': int}.
                   amount is in range of [0, 100]
+
+        Raises:
+            APIVersionError: If Resolve version < 20.1.0
+
+        Version:
+            Added in DaVinci Resolve 20.1.0
         """
         return self._timeline.GetVoiceIsolationState(track_index)
 
+    @requires_resolve_version(added_in="20.1.0")
     def set_voice_isolation_state(
         self, track_index: int, voice_isolation_state: dict
     ) -> bool:
@@ -695,5 +749,11 @@ class Timeline(WrapperBase):
 
         Returns:
             bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 20.1.0
+
+        Version:
+            Added in DaVinci Resolve 20.1.0
         """
         return self._timeline.SetVoiceIsolationState(track_index, voice_isolation_state)

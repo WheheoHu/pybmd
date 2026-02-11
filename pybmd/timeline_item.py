@@ -1,3 +1,4 @@
+import re
 from dataclasses import dataclass
 from dataclasses import asdict
 from typing import List, Tuple, TYPE_CHECKING
@@ -7,6 +8,7 @@ if TYPE_CHECKING:
 
 from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
+from pybmd.decorators import requires_resolve_version, minimum_resolve_version
 
 from pybmd.fusion_comp import FusionComp
 from pybmd.graph import Graph
@@ -251,6 +253,7 @@ class TimelineItem(WrapperBase):
         """Returns the item name."""
         return self._timeline_item.GetName()
 
+    @requires_resolve_version(added_in="20.2.0")
     def set_name(self, name: str) -> bool:
         """Sets the clip's name to the specified string.
 
@@ -259,10 +262,16 @@ class TimelineItem(WrapperBase):
 
         Returns:
             bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 20.2.0
+
+        Version:
+            Added in DaVinci Resolve 20.2.0
         """
         return self._timeline_item.SetName(name)
 
-    def get_property(self, property_key: str = None):
+    def get_property(self, property_key: str | None = None):
         """returns the value of the specified key.
 
         if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys
@@ -377,45 +386,48 @@ class TimelineItem(WrapperBase):
         return self._timeline_item.SetClipColor(color_name)
 
     # Remove at DR 19.0.0
-    # def set_lut(self, node_index: int, lutpath: str) -> bool:
-    #     """Sets LUT on the node mapping the nodeIndex provided
+    @requires_resolve_version(removed_in="19.0.0")
+    def set_lut(self, node_index: int, lutpath: str) -> bool:
+        """Sets LUT on the node mapping the nodeIndex provided
 
-    #     Args:
-    #         node_index (int): 1 <= nodeIndex <= total number of nodes.
-    #         lutpath (str): can be an absolute path, or a relative path (based off custom LUT paths or the master LUT path).
+        Args:
+            node_index (int): 1 <= nodeIndex <= total number of nodes.
+            lutpath (str): can be an absolute path, or a relative path (based off custom LUT paths or the master LUT path).
 
-    #     Returns:
-    #         bool: True if successful, False otherwise
-    #     """
-    #     return self._timeline_item.SetLUT(node_index, str(lutpath))
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline_item.SetLUT(node_index, str(lutpath))
 
     ####################################################################################################################
     # add in davinci resolve 17.4.6
 
-    # Remove at DR 19.0.0
-    # def get_num_node(self) -> int:
-    #     """Returns the number of nodes in the current graph for the timeline item"""
-    #     return self._timeline_item.GetNumNode()
+    @requires_resolve_version(added_in="17.4.6", removed_in="19.0.0")
+    def get_num_node(self) -> int:
+        """Returns the number of nodes in the current graph for the timeline item"""
+        return self._timeline_item.GetNumNode()
 
-    # Remove at DR 19.0.0
-    # def get_lut(self, node_index: int) -> str:
-    #     """Gets relative LUT path based on the node index provided
+    @requires_resolve_version(added_in="17.4.6", removed_in="19.0.0")
+    def get_lut(self, node_index: int) -> str:
+        """Gets relative LUT path based on the node index provided
 
-    #     Args:
-    #         node_index (int): 1 <= nodeIndex <= total number of nodes.
+        Args:
+            node_index (int): 1 <= nodeIndex <= total number of nodes.
 
-    #     Returns:
-    #         str: lut path
-    #     """
-    #     return self._timeline_item.GetLUT(node_index)
+        Returns:
+            str: lut path
+        """
+        return self._timeline_item.GetLUT(node_index)
 
     ##########################################################################################################################
     # Add at DR18.0.0
 
+    @requires_resolve_version(added_in="18.0.0")
     def update_sidecar(self) -> bool:
         """Updates sidecar file for BRAW clips or RMD file for R3D clips."""
         return self._timeline_item.UpdateSidecar()
 
+    @requires_resolve_version(added_in="18.0.0")
     def get_unique_id(self) -> str:
         """Returns a unique ID for the timeline item"""
         return self._timeline_item.GetUniqueId()
@@ -424,14 +436,16 @@ class TimelineItem(WrapperBase):
     # Add at DR18.5.0 Beta
 
     # Remove at DR 19.1.0
-    # def apply_arri_cdl_lut(self) -> bool:
-    #     """Applies ARRI CDL and LUT.
+    @requires_resolve_version(added_in="18.5.0", removed_in="19.1.0")
+    def apply_arri_cdl_lut(self) -> bool:
+        """Applies ARRI CDL and LUT.
 
-    #     Returns:
-    #         bool: Returns True if successful, False otherwise.
-    #     """
-    #     return self._timeline_item.ApplyArriCdlLut()
+        Returns:
+            bool: Returns True if successful, False otherwise.
+        """
+        return self._timeline_item.ApplyArriCdlLut()
 
+    @minimum_resolve_version("18.5.0")
     def set_clip_enabled(self, bool_value: bool) -> bool:
         """Sets clip enabled based on argument.
 
@@ -443,6 +457,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.SetClipEnabled(bool_value)
 
+    @minimum_resolve_version("18.5.0")
     def get_clip_enabled(self) -> bool:
         """Gets clip enabled status.
 
@@ -451,6 +466,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.GetClipEnabled()
 
+    @minimum_resolve_version("18.5.0")
     def load_burn_in_preset(self, preset_name: str) -> bool:
         """Loads user defined data burn in preset for clip when supplied presetName (string). Returns true if successful.
 
@@ -463,20 +479,22 @@ class TimelineItem(WrapperBase):
         return self._timeline_item.LoadBurnInPreset(preset_name)
 
     # Remove at DR 19.0.0
-    # def get_node_label(self, node_index: int) -> str:
-    #     """Returns the label of the node at nodeIndex.
+    @requires_resolve_version(added_in="18.5.0", removed_in="19.0.0")
+    def get_node_label(self, node_index: int) -> str:
+        """Returns the label of the node at nodeIndex.
 
-    #     Args:
-    #         node_index (int): node index
+        Args:
+            node_index (int): node index
 
-    #     Returns:
-    #         str: node label
-    #     """
-    #     return self._timeline_item.GetNodeLabel(node_index)
+        Returns:
+            str: node label
+        """
+        return self._timeline_item.GetNodeLabel(node_index)
 
     ##############################################################################################################################
     # Add at DR18.5.0
 
+    @minimum_resolve_version("18.5.0")
     def create_magic_mask(self, mode: MagicMask_Mode) -> bool:
         """Returns True if magic mask was created successfully, False otherwise.
 
@@ -486,8 +504,9 @@ class TimelineItem(WrapperBase):
         Returns:
             bool: Returns True if magic mask was created successfully, False otherwise.
         """
-        return self._timeline_item.CreateMagicMask(mode.value)
+        return self._timeline_item.CreateMagicMask(mode)
 
+    @minimum_resolve_version("18.5.0")
     def regenerate_magic_mask(self) -> bool:
         """Returns True if magic mask was regenerated successfully, False otherwise.
 
@@ -496,6 +515,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.RegenerateMagicMask()
 
+    @minimum_resolve_version("18.5.0")
     def stabilize(self) -> bool:
         """Returns True if stabilization was successful, False otherwise
 
@@ -504,6 +524,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.Stabilize()
 
+    @minimum_resolve_version("18.5.0")
     def smart_reframe(self) -> bool:
         """Performs Smart Reframe.
 
@@ -515,6 +536,7 @@ class TimelineItem(WrapperBase):
     ##############################################################################################################################
     # Add at DR 19.0.0
 
+    @requires_resolve_version(added_in="19.0.0")
     def get_node_graph(self, layer_index: int) -> "Graph":
         """Returns the clip's node graph object
 
@@ -523,9 +545,16 @@ class TimelineItem(WrapperBase):
 
         Returns:
             Graph: The clip's node graph object at layer_index. Returns the first layer if layer_index is skipped.
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.0
+
+        Version:
+            Added in DaVinci Resolve 19.0.0
         """
         return Graph(self._timeline_item.GetNodeGraph(layer_index))
 
+    @minimum_resolve_version("19.0.0")
     def get_color_group(self) -> "ColorGroup":
         """Returns the clip's color group if one exists.
 
@@ -534,6 +563,7 @@ class TimelineItem(WrapperBase):
         """
         return ColorGroup(self._timeline_item.GetColorGroup())
 
+    @minimum_resolve_version("19.0.0")
     def assign_to_color_group(self, color_group: ColorGroup) -> bool:
         """Returns True if TiItem to successfully assigned to given ColorGroup.
 
@@ -545,6 +575,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.AssignToColorGroup(color_group._resolve_object)
 
+    @minimum_resolve_version("19.0.0")
     def remove_from_color_group(self) -> bool:
         """Returns True if the TiItem is successfully removed from the ColorGroup it is in.
 
@@ -553,6 +584,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.RemoveFromColorGroup()
 
+    @minimum_resolve_version("19.0.0")
     def export_LUT(self, export_type: "LUT_Export_Type", export_path: str) -> bool:
         """Exports LUTs from tiItem
 
@@ -566,6 +598,7 @@ class TimelineItem(WrapperBase):
 
         return self._timeline_item.ExportLUT(export_type.value, export_path)
 
+    @minimum_resolve_version("19.0.0")
     def set_property(self, property_key: str, property_value) -> bool:
         """Sets the value of property "propertyKey" to value "propertyValue".
 
@@ -580,6 +613,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.SetProperty(property_key, property_value)
 
+    @minimum_resolve_version("19.0.0")
     def get_linked_items(self) -> List["TimelineItem"]:
         """Returns a list of linked timeline items.
 
@@ -591,6 +625,7 @@ class TimelineItem(WrapperBase):
             timeline_item_list.append(TimelineItem(value))
         return timeline_item_list
 
+    @minimum_resolve_version("19.0.0")
     def get_track_type_and_index(self) -> Tuple[str, int]:
         """Returns a list of two values that correspond to the TimelineItem's trackType (string) and trackIndex (int) respectively.
 
@@ -603,25 +638,40 @@ class TimelineItem(WrapperBase):
     ##############################################################################################################################
     # Add at DR 19.0.1
 
+    @requires_resolve_version(added_in="19.0.1")
     def get_source_audio_channel_mapping(self) -> str:
         """Returns a string with TimelineItem's audio mapping information.
 
         Returns:
             str: json formatted string
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.1
+
+        Version:
+            Added in DaVinci Resolve 19.0.1
         """
         return self._timeline_item.GetSourceAudioChannelMapping()
 
     ##############################################################################################################################
     # Add at DR 19.0.2
 
+    @requires_resolve_version(added_in="19.0.2")
     def get_source_end_frame(self) -> int:
         """Returns the end frame position of the media pool clip in the timeline clip.
 
         Returns:
             int: end frame position of the media pool clip
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.2
+
+        Version:
+            Added in DaVinci Resolve 19.0.2
         """
         return self._timeline_item.GetSourceEndFrame()
 
+    @requires_resolve_version(added_in="19.0.2")
     def get_source_end_time(self) -> float:
         """Returns the end time position of the media pool clip in the timeline clip.
 
@@ -630,6 +680,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.GetSourceEndTime()
 
+    @requires_resolve_version(added_in="19.0.2")
     def get_source_start_frame(self) -> int:
         """Returns the start frame position of the media pool clip in the timeline clip.
 
@@ -638,6 +689,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.GetSourceStartFrame()
 
+    @requires_resolve_version(added_in="19.0.2")
     def get_source_start_time(self) -> float:
         """Returns the start time position of the media pool clip in the timeline clip.
 
@@ -648,6 +700,7 @@ class TimelineItem(WrapperBase):
 
     ##############################################################################################################################
     # Add at DR 19.1.0
+    @minimum_resolve_version("19.1.0")
     def get_color_output_cache_enabled(self) -> bool:
         """Checks if color output cache is enabled for this timeline item.
 
@@ -656,6 +709,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.GetIsColorOutputCacheEnabled()
 
+    @minimum_resolve_version("19.1.0")
     def get_fusion_output_cache_enabled(self) -> bool:
         """Checks if fusion output cache is enabled for this timeline item.
 
@@ -664,6 +718,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.GetIsFusionOutputCacheEnabled()
 
+    @requires_resolve_version(added_in="19.1.0")
     def set_color_output_cache(self, cache_value: str) -> bool:
         """Sets color output caching state. Equivalent to clip context menu action 'Render Cache Color Output'.
 
@@ -675,6 +730,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.SetColorOutputCache(cache_value)
 
+    @requires_resolve_version(added_in="19.1.0")
     def set_fusion_output_cache(self, cache_value: str) -> bool:
         """Sets fusion output caching state. Equivalent to clip context menu action 'Render Cache Fusion Output'.
 
@@ -689,15 +745,23 @@ class TimelineItem(WrapperBase):
     ##############################################################################################################################
     # Add at DR 20.1.0
 
+    @requires_resolve_version(added_in="20.1.0")
     def get_voice_isolation_state(self) -> dict:
         """Returns the Voice Isolation State of the timeline item.
 
         Returns:
             dict: Dictionary with keys {'isEnabled': bool, 'amount': int}.
                   amount is in range of [0, 100]
+
+        Raises:
+            APIVersionError: If Resolve version < 20.1.0
+
+        Version:
+            Added in DaVinci Resolve 20.1.0
         """
         return self._timeline_item.GetVoiceIsolationState()
 
+    @requires_resolve_version(added_in="20.1.0")
     def set_voice_isolation_state(self, voice_isolation_state: dict) -> bool:
         """Sets Voice Isolation state of the timeline item.
 
@@ -707,14 +771,34 @@ class TimelineItem(WrapperBase):
 
         Returns:
             bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 20.1.0
+
+        Version:
+            Added in DaVinci Resolve 20.1.0
         """
         return self._timeline_item.SetVoiceIsolationState(voice_isolation_state)
 
+    ##############################################################################################################################
+    # Add at DR 20.2.0
+    @requires_resolve_version(
+        added_in="20.2.0", notes="Currently non-functional due to API issues"
+    )
     def reset_all_node_colors(self) -> bool:
-        """!!!! NOT WORKING API !!!!Reset node color for all nodes in the active version of the clip.
+        """Reset node color for all nodes in the active version of the clip.
 
+        Note:
+            This API is currently non-functional due to issues in DaVinci Resolve.
 
         Returns:
             bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 20.2.0
+
+        Version:
+            Added in DaVinci Resolve 20.2.0
+            Note: Currently non-functional due to API issues
         """
         return self._timeline_item.ResetAllNodeColors()
