@@ -14,7 +14,7 @@ DatabaseList = List[Dict]
 class ProjectManager(WrapperBase):
     def __init__(self, project_manager):
         super(ProjectManager, self).__init__(project_manager)
-        self._project_manager = self._resolve_object
+        self._project_manager = self._object
 
     def close_project(self, project: Project) -> bool:
         """close project

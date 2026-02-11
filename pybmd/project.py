@@ -19,7 +19,7 @@ class Project(WrapperBase):
 
     def __init__(self, project):
         super(Project, self).__init__(project)
-        self._project = self._resolve_object
+        self._project = self._object
 
     def __repr__(self) -> str:
         return f"Project: {self.get_name()}"

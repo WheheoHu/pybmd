@@ -63,7 +63,7 @@ class MediaPool(WrapperBase):
 
     def __init__(self, media_pool):
         super(MediaPool, self).__init__(media_pool)
-        self._media_pool = self._resolve_object
+        self._media_pool = self._object
 
     def add_sub_folder(self, folder: Folder, name: str) -> Folder:
         """add sub folder to folder

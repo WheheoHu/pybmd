@@ -1,23 +1,33 @@
 from enum import Enum
+from typing import Any
 
 from pybmd.error import ResolveInitError
-
-
 from ._init_bmd import _resolve_object as _resolve
 
 
 if _resolve is None:
     raise ResolveInitError
 
+def _get_resolve_constant(attr_name: str, default: Any = None) -> Any:
+    """Safely get a constant from the resolve object.
+
+    Returns the constant if _resolve_object is initialized, otherwise returns default.
+    """
+    if _resolve is not None:
+        return getattr(_resolve, attr_name, default)
+    return default
+
 
 class LUT_Export_Type(Enum):
-    CUBE_17PT=_resolve.EXPORT_LUT_17PTCUBE
-    CUBE_33PT=_resolve.EXPORT_LUT_33PTCUBE
-    CUBE_65PT=_resolve.EXPORT_LUT_65PTCUBE
-    VLUT_PS=_resolve.EXPORT_LUT_PANASONICVLUT
-    
+
+    CUBE_17PT = _resolve.EXPORT_LUT_17PTCUBE
+    CUBE_33PT = _resolve.EXPORT_LUT_33PTCUBE
+    CUBE_65PT = _resolve.EXPORT_LUT_65PTCUBE
+    VLUT_PS = _resolve.EXPORT_LUT_PANASONICVLUT
+
 
 class Timeline_Export_Type(Enum):
+
     EXPORT_AAF = _resolve.EXPORT_AAF
     EXPORT_DRT = _resolve.EXPORT_DRT
     EXPORT_EDL = _resolve.EXPORT_EDL
@@ -45,10 +55,10 @@ class Timeline_Export_Type(Enum):
     # Add at DR 19.0.0
     EXPORT_ALE = _resolve.EXPORT_ALE
     EXPORT_ALE_CDL = _resolve.EXPORT_ALE_CDL
-    
-    
+
+
 class Timeline_Export_Subtype(Enum):
-     # timeline exportSubtype can be one of the following enums:
+    # timeline exportSubtype can be one of the following enums:
     # for exportType is EXPORT_AAF:
     EXPORT_AAF_NEW = _resolve.EXPORT_AAF_NEW
     EXPORT_AAF_EXISTING = _resolve.EXPORT_AAF_EXISTING
@@ -57,4 +67,3 @@ class Timeline_Export_Subtype(Enum):
     EXPORT_CDL = _resolve.EXPORT_CDL
     EXPORT_SDL = _resolve.EXPORT_SDL
     EXPORT_MISSING_CLIPS = _resolve.EXPORT_MISSING_CLIPS
-    

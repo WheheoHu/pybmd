@@ -21,7 +21,7 @@ class MediaStorage(WrapperBase):
 
     def __init__(self, media_storage):
         super(MediaStorage, self).__init__(media_storage)
-        self._media_storage = self._resolve_object
+        self._media_storage = self._object
 
     def add_clip_mattes_to_media_pool(
         self, media_pool_item: MediaPoolItem, paths: List[str], stereo_eye: str = None

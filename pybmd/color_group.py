@@ -12,7 +12,7 @@ class ColorGroup(WrapperBase):
 
     def __init__(self, color_group):
         super(ColorGroup, self).__init__(color_group)
-        self._color_group = self._resolve_object
+        self._color_group = self._object
 
     def get_name(self) -> str:
         """Returns the name (string) of the ColorGroup.

@@ -7,7 +7,7 @@ class Folder(WrapperBase):
     
     def __init__(self, folder):
         super(Folder, self).__init__(folder)
-        self._folder = self._resolve_object
+        self._folder = self._object
     
     def __repr__(self) -> str:
         return f'Folder: {self.get_name()}'

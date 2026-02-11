@@ -1,11 +1,8 @@
-import re
 from dataclasses import dataclass
 from dataclasses import asdict
 from typing import List, Tuple, TYPE_CHECKING
-
 if TYPE_CHECKING:
     from pybmd.export_type import LUT_Export_Type
-
 from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
 from pybmd.decorators import requires_resolve_version, minimum_resolve_version
@@ -49,7 +46,7 @@ class TimelineItem(WrapperBase):
 
     def __init__(self, timeline_item):
         super(TimelineItem, self).__init__(timeline_item)
-        self._timeline_item = self._resolve_object
+        self._timeline_item = self._object
 
     def __repr__(self) -> str:
         return f"Timeline Item: {self.get_name()}"
@@ -573,7 +570,7 @@ class TimelineItem(WrapperBase):
         Returns:
             bool: Returns True if TiItem to successfully assigned to given ColorGroup.
         """
-        return self._timeline_item.AssignToColorGroup(color_group._resolve_object)
+        return self._timeline_item.AssignToColorGroup(color_group._object)
 
     @minimum_resolve_version("19.0.0")
     def remove_from_color_group(self) -> bool:

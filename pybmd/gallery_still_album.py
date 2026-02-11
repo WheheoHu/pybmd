@@ -24,7 +24,7 @@ class GalleryStillAlbum(WrapperBase):
 
     def __init__(self, gallery_still_album):
         super(GalleryStillAlbum, self).__init__(gallery_still_album)
-        self._gallery_still_album = self._resolve_object
+        self._gallery_still_album = self._object
 
     def delete_stills(self, gallery_stills: List[GalleryStill]) -> bool:
         """Delete the given gallery stills from the album."""

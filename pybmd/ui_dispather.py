@@ -8,7 +8,7 @@ class UI_Dispather(object):
     """docstring for UI_Dispather."""
 
     def __init__(self, ui_manager: UI_Manager):
-        self._ui_dispather = _init_bmd._bmd_module_object.UIDispatcher(
+        self._ui_dispather = _init_bmd._bmd_module_object.UIDispatcher(  # ty:ignore[unresolved-attribute]
             ui_manager._ui_manager
         )
 

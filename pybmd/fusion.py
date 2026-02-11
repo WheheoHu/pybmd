@@ -8,7 +8,7 @@ class Fusion(WrapperBase):
 
     def __init__(self, fusion_obj):
         super(Fusion, self).__init__(fusion_obj)
-        self._fusion = self._resolve_object
+        self._fusion = self._object
         self._ui_manager = UI_Manager(self._fusion.UIManager)
 
     @property
@@ -27,5 +27,5 @@ class Fusion(WrapperBase):
     def load_prefs(self, file_name: str = "") -> bool:
         return self._fusion.LoadPrefs(file_name)
 
-    def save_prefs(self, file_name: str = None) -> bool:
+    def save_prefs(self, file_name: str) -> bool:
         return self._fusion.SavePrefs(file_name)

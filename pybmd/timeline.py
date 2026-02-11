@@ -110,7 +110,7 @@ class Timeline(WrapperBase):
 
     def __init__(self, timeline):
         super(Timeline, self).__init__(timeline)
-        self._timeline = self._resolve_object
+        self._timeline = self._object
 
     def __repr__(self) -> str:
         return f"Timeline: {self.get_name()}"

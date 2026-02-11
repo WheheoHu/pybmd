@@ -10,7 +10,7 @@ class MediaPoolItem(WrapperBase):
 
     def __init__(self, media_pool_item):
         super(MediaPoolItem, self).__init__(media_pool_item)
-        self._media_pool_item = self._resolve_object
+        self._media_pool_item = self._object
 
     def __repr__(self) -> str:
         return f"Media Pool Item: {self.get_name()}"

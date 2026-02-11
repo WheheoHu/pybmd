@@ -4,7 +4,8 @@
       "Bash(ls:*)",
       "Bash(python test_version_checking.py:*)",
       "Bash(uv sync:*)",
-      "Bash(uv run python:*)"
+      "Bash(uv run python:*)",
+      "Bash(python:*)"
     ]
   }
 }

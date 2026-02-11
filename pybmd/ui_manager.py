@@ -6,4 +6,4 @@ class UI_Manager(WrapperBase):
 
     def __init__(self, ui_manager):
         super(UI_Manager, self).__init__(ui_manager)
-        self._ui_manager = self._resolve_object
+        self._ui_manager = self._object

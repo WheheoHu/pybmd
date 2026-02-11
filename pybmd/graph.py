@@ -9,7 +9,7 @@ class Graph(WrapperBase):
 
     def __init__(self, graph):
         super(Graph, self).__init__(graph)
-        self._graph = self._resolve_object
+        self._graph = self._object
 
     def get_num_nodes(self) -> int:
         """Returns the number of nodes in the graph

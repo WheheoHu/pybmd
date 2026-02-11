@@ -23,6 +23,7 @@ dependencies = [
     "psutil",
     "dftt-timecode",
     "multimethod",
+    "pydantic>=2.12.5",
 ]
 
 [project.urls]

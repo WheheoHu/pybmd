@@ -6,4 +6,4 @@ class GalleryStill(WrapperBase):
 
     def __init__(self, gallery_still):
         super(GalleryStill, self).__init__(gallery_still)
-        self._gallery_still = self._resolve_object
+        self._gallery_still = self._object

@@ -3,9 +3,35 @@ from dataclasses import dataclass
 from typing import Any
 
 from pybmd.error import ResolveInitError
-from pybmd._init_bmd import _resolve_object as _resolve
-if _resolve is None:
+
+# Lazy import to avoid circular dependencies
+# The _resolve_object may be None if Resolve isn't initialized yet
+from pybmd._init_bmd import _resolve_object
+
+
+def _get_resolve_object():
+    """Lazy import of resolve object to avoid circular imports.
+
+    This function validates that Resolve is initialized before use.
+    """
+    if _resolve_object is None:
         raise ResolveInitError
+    return _resolve_object
+
+
+# For Enum definitions that need constants at class definition time,
+# we need to handle the case where _resolve_object is None.
+# This allows the module to be imported even when Resolve isn't running,
+# which is useful for type checking, documentation, and IDE support.
+def _get_resolve_constant(attr_name: str, default: Any = None) -> Any:
+    """Safely get a constant from the resolve object.
+
+    Returns the constant if _resolve_object is initialized, otherwise returns default.
+    """
+    if _resolve_object is not None:
+        return getattr(_resolve_object, attr_name, default)
+    return default
+
 
 class SettingParameter(object):
     """docstring for SettingParamater."""
@@ -85,32 +111,35 @@ class CloudSyncMode(Enum):
     """Docstring for CloudSyncMode."""
 
     # Lazy import to avoid circular dependency issues
-    NONE: float = _resolve.CLOUD_SYNC_NONE
-    PROXY_ONLY: float = _resolve.CLOUD_SYNC_PROXY_ONLY
-    PROXY_AND_ORIG: float = _resolve.CLOUD_SYNC_PROXY_AND_ORIG
+    NONE = _get_resolve_constant("CLOUD_SYNC_NONE", 0)
+    PROXY_ONLY = _get_resolve_constant("CLOUD_SYNC_PROXY_ONLY", 1)
+    PROXY_AND_ORIG = _get_resolve_constant("CLOUD_SYNC_PROXY_AND_ORIG", 2)
 
 
 class CloudProjectSettingEnum(Enum):
     """Docstring for CloudProjectSettingEnum."""
 
-    PROJECT_NAME: str = _resolve.CLOUD_SETTING_PROJECT_NAME
-    PROJECT_MEDIA_PATH: str = _resolve.CLOUD_SETTING_PROJECT_MEDIA_PATH
-    IS_COLLAB: bool = _resolve.CLOUD_SETTING_IS_COLLAB
-    SYNC_MODE: float = _resolve.CLOUD_SETTING_SYNC_MODE
-    IS_CAMERA_ACCESS: bool = _resolve.CLOUD_SETTING_IS_CAMERA_ACCESS
+    PROJECT_NAME: str = _get_resolve_constant("CLOUD_SETTING_PROJECT_NAME", "")
+    PROJECT_MEDIA_PATH: str = _get_resolve_constant(
+        "CLOUD_SETTING_PROJECT_MEDIA_PATH", ""
+    )
+    IS_COLLAB: bool = _get_resolve_constant("CLOUD_SETTING_IS_COLLAB", False)
+    SYNC_MODE: float = _get_resolve_constant("CLOUD_SETTING_SYNC_MODE", 0.0)
+    IS_CAMERA_ACCESS: bool = _get_resolve_constant(
+        "CLOUD_SETTING_IS_CAMERA_ACCESS", False
+    )
 
 
 class CloudProjectsSetting:
     """Setting for CloudProject"""
 
-
     def __init__(
         self,
-        cloud_setting_project_name: str = _resolve.CLOUD_SETTING_PROJECT_NAME,
-        cloud_setting_project_media_path: str = _resolve.CLOUD_SETTING_PROJECT_MEDIA_PATH,
-        cloud_setting_is_collab: bool = _resolve.CLOUD_SETTING_IS_COLLAB,
-        cloud_setting_sync_mode: CloudSyncMode = _resolve.CLOUD_SETTING_SYNC_MODE,
-        cloud_setting_is_camera_access: bool = _resolve.CLOUD_SETTING_IS_CAMERA_ACCESS,
+        cloud_setting_project_name: str = "",
+        cloud_setting_project_media_path: str = "",
+        cloud_setting_is_collab: bool = False,
+        cloud_setting_sync_mode: CloudSyncMode = CloudSyncMode.PROXY_ONLY,
+        cloud_setting_is_camera_access: bool = False,
     ):
         """Initialize CloudProjectsSetting.
 
@@ -196,22 +225,25 @@ class CloudProjectsSetting:
 
 class LanguageID(Enum):
     """Docstring for LanguageID."""
-    AUTO = _resolve.AUTO_CAPTION_AUTO
-    DANISH = _resolve.AUTO_CAPTION_DANISH
-    DUTCH = _resolve.AUTO_CAPTION_DUTCH
-    ENGLISH = _resolve.AUTO_CAPTION_ENGLISH
-    FRENCH = _resolve.AUTO_CAPTION_FRENCH
-    GERMAN = _resolve.AUTO_CAPTION_GERMAN
-    ITALIAN = _resolve.AUTO_CAPTION_ITALIAN
-    JAPANESE = _resolve.AUTO_CAPTION_JAPANESE
-    KOREAN = _resolve.AUTO_CAPTION_KOREAN
-    MANDARIN_SIMPLIFIED = _resolve.AUTO_CAPTION_MANDARIN_SIMPLIFIED
-    MANDARIN_TRADITIONAL = _resolve.AUTO_CAPTION_MANDARIN_TRADITIONAL
-    NORWEGIAN = _resolve.AUTO_CAPTION_NORWEGIAN
-    PORTUGUESE = _resolve.AUTO_CAPTION_PORTUGUESE
-    RUSSIAN = _resolve.AUTO_CAPTION_RUSSIAN
-    SPANISH = _resolve.AUTO_CAPTION_SPANISH
-    SWEDISH = _resolve.AUTO_CAPTION_SWEDISH
+
+    AUTO = _get_resolve_constant("AUTO_CAPTION_AUTO", 0)
+    DANISH = _get_resolve_constant("AUTO_CAPTION_DANISH", 1)
+    DUTCH = _get_resolve_constant("AUTO_CAPTION_DUTCH", 2)
+    ENGLISH = _get_resolve_constant("AUTO_CAPTION_ENGLISH", 3)
+    FRENCH = _get_resolve_constant("AUTO_CAPTION_FRENCH", 4)
+    GERMAN = _get_resolve_constant("AUTO_CAPTION_GERMAN", 5)
+    ITALIAN = _get_resolve_constant("AUTO_CAPTION_ITALIAN", 6)
+    JAPANESE = _get_resolve_constant("AUTO_CAPTION_JAPANESE", 7)
+    KOREAN = _get_resolve_constant("AUTO_CAPTION_KOREAN", 8)
+    MANDARIN_SIMPLIFIED = _get_resolve_constant("AUTO_CAPTION_MANDARIN_SIMPLIFIED", 9)
+    MANDARIN_TRADITIONAL = _get_resolve_constant(
+        "AUTO_CAPTION_MANDARIN_TRADITIONAL", 10
+    )
+    NORWEGIAN = _get_resolve_constant("AUTO_CAPTION_NORWEGIAN", 11)
+    PORTUGUESE = _get_resolve_constant("AUTO_CAPTION_PORTUGUESE", 12)
+    RUSSIAN = _get_resolve_constant("AUTO_CAPTION_RUSSIAN", 13)
+    SPANISH = _get_resolve_constant("AUTO_CAPTION_SPANISH", 14)
+    SWEDISH = _get_resolve_constant("AUTO_CAPTION_SWEDISH", 15)
 
 
 #######################################
@@ -221,26 +253,26 @@ class LanguageID(Enum):
 class PresetType(Enum):
     """Docstring for PresetType."""
 
-    SUBTITLE_DEFAULT = _resolve.AUTO_CAPTION_SUBTITLE_DEFAULT
-    TELETEXT = _resolve.AUTO_CAPTION_TELETEXT
-    NETFLIX = _resolve.AUTO_CAPTION_NETFLIX
+    SUBTITLE_DEFAULT = _get_resolve_constant("AUTO_CAPTION_SUBTITLE_DEFAULT", 0)
+    TELETEXT = _get_resolve_constant("AUTO_CAPTION_TELETEXT", 1)
+    NETFLIX = _get_resolve_constant("AUTO_CAPTION_NETFLIX", 2)
 
 
 class LineBreakTypes(Enum):
     """Docstring for LineBreakTypes."""
 
-    LINE_SINGLE = _resolve.AUTO_CAPTION_LINE_SINGLE
-    LINE_DOUBLE = _resolve.AUPTO_CAPTION_LINE_DOUBLE
+    LINE_SINGLE = _get_resolve_constant("AUTO_CAPTION_LINE_SINGLE", 0)
+    LINE_DOUBLE = _get_resolve_constant("AUPTO_CAPTION_LINE_DOUBLE", 1)
 
 
 class AutoCaptionSettingsEnum(Enum):
     """Docstring for MyEnum."""
 
-    LANGUAGE = _resolve.SUBTITLE_LANGUAGE
-    CAPTION_PRESET = _resolve.SUBTITLE_CAPTION_PRESET
-    CHARS_PER_LINE = _resolve.SUBTITLE_CHARS_PER_LINE
-    LINE_BREAK = _resolve.SUBTITLE_LINE_BREAK
-    GAP = _resolve.SUBTITLE_GAP
+    LANGUAGE = _get_resolve_constant("SUBTITLE_LANGUAGE", 0.0)
+    CAPTION_PRESET = _get_resolve_constant("SUBTITLE_CAPTION_PRESET", 1.0)
+    CHARS_PER_LINE = _get_resolve_constant("SUBTITLE_CHARS_PER_LINE", 2.0)
+    LINE_BREAK = _get_resolve_constant("SUBTITLE_LINE_BREAK", 3.0)
+    GAP = _get_resolve_constant("SUBTITLE_GAP", 4.0)
 
 
 class AutoCaptionSettings:
@@ -368,8 +400,8 @@ class CloudSyncState(Enum):
 
 
 class AudioSyncMode(Enum):
-    AUDIO_SYNC_WAVEFORM = _resolve.AUDIO_SYNC_WAVEFORM
-    AUDIO_SYNC_TIMECODE = _resolve.AUDIO_SYNC_TIMECODE
+    AUDIO_SYNC_WAVEFORM = _get_resolve_constant("AUDIO_SYNC_WAVEFORM", 0)
+    AUDIO_SYNC_TIMECODE = _get_resolve_constant("AUDIO_SYNC_TIMECODE", 1)
 
 
 class AudioSyncChannel(Enum):
@@ -378,10 +410,14 @@ class AudioSyncChannel(Enum):
 
 
 class AudioSyncSettingIndex(Enum):
-    AUDIO_SYNC_MODE = _resolve.AUDIO_SYNC_MODE
-    AUDIO_SYNC_CHANNEL_NUMBER = _resolve.AUDIO_SYNC_CHANNEL_NUMBER
-    AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO = _resolve.AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO
-    AUDIO_SYNC_RETAIN_VIDEO_METADATA = _resolve.AUDIO_SYNC_RETAIN_VIDEO_METADATA
+    AUDIO_SYNC_MODE = _get_resolve_constant("AUDIO_SYNC_MODE", 0.0)
+    AUDIO_SYNC_CHANNEL_NUMBER = _get_resolve_constant("AUDIO_SYNC_CHANNEL_NUMBER", 1.0)
+    AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO = _get_resolve_constant(
+        "AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO", 2.0
+    )
+    AUDIO_SYNC_RETAIN_VIDEO_METADATA = _get_resolve_constant(
+        "AUDIO_SYNC_RETAIN_VIDEO_METADATA", 3.0
+    )
 
 
 @dataclass

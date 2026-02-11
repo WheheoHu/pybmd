@@ -9,7 +9,7 @@ class Gallery(WrapperBase):
 
     def __init__(self, gallery):
         super(Gallery, self).__init__(gallery)
-        self._gallery = self._resolve_object
+        self._gallery = self._object
 
     def get_album_name(self, gallery_still_album: GalleryStillAlbum) -> str:
         """return the album name of the GalleryStillAlbum object"""
