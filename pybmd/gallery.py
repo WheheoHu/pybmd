@@ -1,5 +1,6 @@
 from typing import List, Optional
 from pybmd._wrapper_base import WrapperBase
+from pybmd.decorators import requires_resolve_version
 from pybmd.gallery_still_album import GalleryStillAlbum
 
 
@@ -9,6 +10,7 @@ class Gallery(WrapperBase):
     def __init__(self, gallery):
         super(Gallery, self).__init__(gallery)
         self._gallery = self._resolve_object
+
     def get_album_name(self, gallery_still_album: GalleryStillAlbum) -> str:
         """return the album name of the GalleryStillAlbum object"""
         return self._gallery.GetAlbumName(gallery_still_album)
@@ -21,11 +23,12 @@ class Gallery(WrapperBase):
         """return a list of GalleryStillAlbum objects"""
         gallery_still_album_list = []
         for gallery_still_album in self._gallery.GetGalleryStillAlbums():
-            gallery_still_album_list.append(
-                GalleryStillAlbum(gallery_still_album))
+            gallery_still_album_list.append(GalleryStillAlbum(gallery_still_album))
         return gallery_still_album_list
 
-    def set_album_name(self, gallery_still_album: GalleryStillAlbum, album_name: str) -> bool:
+    def set_album_name(
+        self, gallery_still_album: GalleryStillAlbum, album_name: str
+    ) -> bool:
         """set the album name of the GalleryStillAlbum object
 
         Args:
@@ -35,7 +38,9 @@ class Gallery(WrapperBase):
         Returns:
             bool: true if successful, false otherwise
         """
-        return self._gallery.SetAlbumName(gallery_still_album._gallery_still_album, album_name)
+        return self._gallery.SetAlbumName(
+            gallery_still_album._gallery_still_album, album_name
+        )
 
     def set_current_still_album(self, gallery_still_album: GalleryStillAlbum) -> bool:
         """set the current GalleryStillAlbum object
@@ -45,23 +50,34 @@ class Gallery(WrapperBase):
 
         Returns:
             bool: true if successful, false otherwise
-        """        
+        """
         if gallery_still_album is None:
             return False
-        return self._gallery.SetCurrentStillAlbum(gallery_still_album._gallery_still_album)
+        return self._gallery.SetCurrentStillAlbum(
+            gallery_still_album._gallery_still_album
+        )
+
     ##############################################################################################################
     # Add at DR 19.1.0
+    @requires_resolve_version(added_in="19.1.0")
     def get_gallery_power_grade_albums(self) -> List[GalleryStillAlbum]:
         """Returns the gallery PowerGrade albums.
 
         Returns:
             List[GalleryStillAlbum]: List of gallery PowerGrade album objects
+
+        Raises:
+            APIVersionError: If Resolve version < 19.1.0
+
+        Version:
+            Added in DaVinci Resolve 19.1.0
         """
         power_grade_albums = []
         for album in self._gallery.GetGalleryPowerGradeAlbums():
             power_grade_albums.append(GalleryStillAlbum(album))
         return power_grade_albums
 
+    @requires_resolve_version(added_in="19.1.0")
     def create_gallery_still_album(self) -> Optional[GalleryStillAlbum]:
         """Creates a new Still album.
 
@@ -71,6 +87,7 @@ class Gallery(WrapperBase):
         album = self._gallery.CreateGalleryStillAlbum()
         return GalleryStillAlbum(album) if album else None
 
+    @requires_resolve_version(added_in="19.1.0")
     def create_gallery_power_grade_album(self) -> Optional[GalleryStillAlbum]:
         """Creates a new PowerGrade album.
 

@@ -1,3 +1,4 @@
+from pybmd.decorators import minimum_resolve_version
 from os import path
 from pybmd._wrapper_base import WrapperBase
 from pybmd.project import Project
@@ -11,9 +12,6 @@ DatabaseList = List[Dict]
 
 
 class ProjectManager(WrapperBase):
-    _project_manager = None
-    _current_project = None
-
     def __init__(self, project_manager):
         super(ProjectManager, self).__init__(project_manager)
         self._project_manager = self._resolve_object
@@ -41,7 +39,7 @@ class ProjectManager(WrapperBase):
         return self._project_manager.CreateFolder(folder_name)
 
     def create_project(
-        self, project_name: str, media_location_path: str = None
+        self, project_name: str, media_location_path: str | None = None
     ) -> Project:
         """Creates and returns a project if projectName(string) is unique, and None if it is not.
 
@@ -76,7 +74,7 @@ class ProjectManager(WrapperBase):
         return self._project_manager.DeleteProject(project_name)
 
     def export_project(
-        self, project_name: str, file_path: path, with_stills_and_luts=True
+        self, project_name: str, file_path: path, with_stills_and_luts: bool = True
     ) -> bool:
         """Exports project to provided file path
 
@@ -159,7 +157,7 @@ class ProjectManager(WrapperBase):
 
     ##########################################################################################################################
     # Add at DR18.0.0
-
+    @minimum_resolve_version("18.0.0")
     def archive_project(
         self,
         project_name,
@@ -169,7 +167,7 @@ class ProjectManager(WrapperBase):
         is_archive_proxy_media: bool = False,
     ) -> bool:
         """Archives project to provided filePath with the configuration as provided by the optional arguments
-        
+
         Args:
             project_name (str): project to archive
             file_path (path): file path to archive to
@@ -191,6 +189,7 @@ class ProjectManager(WrapperBase):
 
     ##############################################################################################################################
     # Add at DR18.6.4
+    @minimum_resolve_version("18.6.4")
     def create_cloud_project(self, cloud_setting: "CloudProjectsSetting") -> Project:
         """Creates and returns a cloud project.
 
@@ -202,6 +201,7 @@ class ProjectManager(WrapperBase):
         """
         return Project(self._project_manager.CreateCloudProject(cloud_setting.asdict()))
 
+    @minimum_resolve_version("18.6.4")
     def import_cloud_project(
         self, file_path: str, cloud_setting: "CloudProjectsSetting"
     ) -> bool:
@@ -218,6 +218,7 @@ class ProjectManager(WrapperBase):
             file_path, cloud_setting.asdict()
         )
 
+    @minimum_resolve_version("18.6.4")
     def restore_cloud_project(
         self, folder_path: str, cloud_setting: "CloudProjectsSetting"
     ) -> bool:
@@ -236,6 +237,7 @@ class ProjectManager(WrapperBase):
 
     ##############################################################################################################################
     # #Add at DR19.1.0
+    @minimum_resolve_version("19.1.0")
     def load_cloud_project(self, cloud_setting: "CloudProjectsSetting") -> Project:
         """Loads and returns a cloud project with the following cloud settings if there is a match found, and None if there is no matching cloud project
 

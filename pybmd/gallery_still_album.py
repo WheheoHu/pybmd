@@ -1,5 +1,6 @@
 from typing import List
 from pybmd._wrapper_base import WrapperBase
+from pybmd.decorators import requires_resolve_version
 from pybmd.gallery_still import GalleryStill
 
 from enum import Enum
@@ -78,6 +79,7 @@ class GalleryStillAlbum(WrapperBase):
     ##############################################################################################################################
     # Add at DR 20.3.0
 
+    @requires_resolve_version(added_in="20.3.0")
     def import_stills(self, file_paths: List[str]) -> bool:
         """Imports stills from the specified file paths into the album.
 
@@ -86,5 +88,11 @@ class GalleryStillAlbum(WrapperBase):
 
         Returns:
             bool: True if import was successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 20.3.0
+
+        Version:
+            Added in DaVinci Resolve 20.3.0
         """
         return self._gallery_still_album.ImportStills(file_paths)

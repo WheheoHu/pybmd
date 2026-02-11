@@ -2,6 +2,7 @@ from dataclasses import asdict
 from typing import TYPE_CHECKING, Any, Dict, List
 from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
+from pybmd.decorators import requires_resolve_version
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
 
@@ -209,13 +210,25 @@ class Project(WrapperBase):
     ##############################################################################################################################
     # Add at DR18.0.0
 
+    @requires_resolve_version(added_in="18.0.0")
     def get_unique_id(self) -> str:
-        """Returns unique id of the project Object."""
+        """Returns unique id of the project Object.
+
+        Returns:
+            str: Unique project ID
+
+        Raises:
+            APIVersionError: If Resolve version < 18.0.0
+
+        Version:
+            Added in DaVinci Resolve 18.0.0
+        """
         return self._project.GetUniqueId()
 
     ##############################################################################################################################
     # Add at DR18.1.3
 
+    @requires_resolve_version(added_in="18.1.3")
     def insert_audio_to_current_track_at_playhead(
         self, media_path: str, start_offset_in_samples: int, duration_in_samples: int
     ) -> bool:
@@ -228,6 +241,12 @@ class Project(WrapperBase):
 
         Returns:
             bool: Returns True if successful, otherwise False.
+
+        Raises:
+            APIVersionError: If Resolve version < 18.1.3
+
+        Version:
+            Added in DaVinci Resolve 18.1.3
         """
         return self._project.InsertAudioToCurrentTrackAtPlayhead(
             media_path, start_offset_in_samples, duration_in_samples
@@ -236,6 +255,7 @@ class Project(WrapperBase):
     ##############################################################################################################################
     # Add at DR18.5.0 Beta
 
+    @requires_resolve_version(added_in="18.5.0")
     def load_burn_in_preset(self, preset_name: str) -> bool:
         """Loads user defined data burn in preset for project when supplied presetName (string).
 
@@ -244,12 +264,19 @@ class Project(WrapperBase):
 
         Returns:
             bool: Returns true if successful.
+
+        Raises:
+            APIVersionError: If Resolve version < 18.5.0
+
+        Version:
+            Added in DaVinci Resolve 18.5.0 Beta
         """
         return self._project.LoadBurnInPreset(preset_name)
 
     ##############################################################################################################################
     # Add at DR18.5.0
 
+    @requires_resolve_version(added_in="18.5.0")
     def export_current_frame_as_still(self, file_path: str) -> bool:
         """Exports current frame as still to supplied filePath.
 
@@ -258,22 +285,36 @@ class Project(WrapperBase):
 
         Returns:
             bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 18.5.0
+
+        Version:
+            Added in DaVinci Resolve 18.5.0
         """
         return self._project.ExportCurrentFrameAsStill(file_path)
 
     ##############################################################################################################################
     # Add at DR 19.0.0
+    @requires_resolve_version(added_in="19.0.0")
     def get_color_groups_list(self) -> List[ColorGroup]:
         """Returns a list of all group objects in the timeline.
 
         Returns:
             List[ColorGroup]: a list of all group objects
+
+        Raises:
+            APIVersionError: If Resolve version < 19.0.0
+
+        Version:
+            Added in DaVinci Resolve 19.0.0
         """
         color_group_list = list()
         for color_group in self._project.GetColorGroupsList():
             color_group_list.append(ColorGroup(color_group))
         return color_group_list
 
+    @requires_resolve_version(added_in="19.0.0")
     def add_color_group(self, group_name: str) -> ColorGroup:
         """Creates a new ColorGroup.
 
@@ -299,6 +340,7 @@ class Project(WrapperBase):
     ##############################################################################################################################
     # Add at DR 19.1.0
 
+    @requires_resolve_version(added_in="19.1.0")
     def delete_render_preset(self, preset_name: str) -> bool:
         """Delete render preset by provided name
 
@@ -307,15 +349,23 @@ class Project(WrapperBase):
 
         Returns:
             bool: Returns True if successful, otherwise False.
+
+        Raises:
+            APIVersionError: If Resolve version < 19.1.0
+
+        Version:
+            Added in DaVinci Resolve 19.1.0
         """
         return self._project.DeleteRenderPreset(preset_name)
 
+    @requires_resolve_version(added_in="19.1.0")
     def get_quick_export_render_presets(self) -> List[str]:
         """
         Returns a list of names of all Quick Export render presets.
         """
         return self._project.GetQuickExportRenderPresets()
 
+    @requires_resolve_version(added_in="19.1.0")
     def render_with_quick_export(
         self, preset_name: str, param_dict: Dict[str, Any]
     ) -> Dict[str, Any]:
@@ -334,6 +384,7 @@ class Project(WrapperBase):
     ##############################################################################################################################
     # Add at DR 20.3.0
 
+    @requires_resolve_version(added_in="20.3.0")
     def apply_fairlight_preset_to_current_timeline(self, preset_name: str) -> bool:
         """Applies a Fairlight preset to the current timeline.
 
@@ -342,5 +393,11 @@ class Project(WrapperBase):
 
         Returns:
             bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 20.3.0
+
+        Version:
+            Added in DaVinci Resolve 20.3.0
         """
         return self._project.ApplyFairlightPresetToCurrentTimeline(preset_name)
