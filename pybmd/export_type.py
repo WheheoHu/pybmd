@@ -1,7 +1,8 @@
 from enum import Enum
 
 from pybmd._init_bmd import _resolve_object as _resolve
-
+if not _resolve:
+    raise ImportError("Failed to import DaVinci Resolve object. Make sure DaVinci Resolve is running and the Python API is properly set up.")
 class LUT_Export_Type(Enum):
     CUBE_17PT = _resolve.EXPORT_LUT_17PTCUBE
     CUBE_33PT = _resolve.EXPORT_LUT_33PTCUBE

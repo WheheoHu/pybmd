@@ -5,7 +5,9 @@
       "Bash(python test_version_checking.py:*)",
       "Bash(uv sync:*)",
       "Bash(uv run python:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(uv run sphinx-build:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }

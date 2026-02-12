@@ -9,7 +9,8 @@ from pydantic import (
     SerializerFunctionWrapHandler,
 )
 from pybmd._init_bmd import _resolve_object as _resolve
-
+if not _resolve:
+    raise ImportError("DaVinci Resolve object is not initialized.")
 
 class RenderSetting(BaseModel):
     """RenderSetting Object to store render setting."""

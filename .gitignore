@@ -26,3 +26,4 @@ docs/_autosummary
 .env
 .vscode/settings.json
 CLAUDE.md
+docs/build

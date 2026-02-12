@@ -51,8 +51,8 @@ def _init_bmd_module():
     return cast("BMDModule", bmd_module)
 
 
-_bmd_module_object: BMDModule
-_resolve_object: ResolveObject
+_bmd_module_object: BMDModule | None = None
+_resolve_object: ResolveObject | None = None
 
 
 def _init_resolve(davinci_ip: str = "127.0.0.1"):
