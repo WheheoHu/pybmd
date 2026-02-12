@@ -214,7 +214,7 @@ class Timeline(WrapperBase):
         self,
         file_name: str,
         export_type: "Timeline_Export_Type",
-        export_subtype: "Timeline_Export_Subtype" = None,
+        export_subtype: "Timeline_Export_Subtype" | None = None,
     ) -> bool:
         """Exports timeline to 'fileName' as per input exportType & exportSubtype format.
 
@@ -224,6 +224,8 @@ class Timeline(WrapperBase):
 
         #     timeline.export(file_path,LOCAL_RESOLVE.EXPORT_DRT)
         """
+        if export_subtype is None:
+            return self._timeline.Export(file_name, export_type.value)
         return self._timeline.Export(file_name, export_type.value, export_subtype.value)
 
     def get_current_clip_thumbnail_image(self) -> dict:
@@ -580,7 +582,9 @@ class Timeline(WrapperBase):
         Version:
             Modified in DaVinci Resolve 18.6.4
         """
-        return self._timeline.CreateSubtitlesFromAudio(auto_caption_settings.asdict())
+        return self._timeline.CreateSubtitlesFromAudio(
+            auto_caption_settings.model_dump()
+        )
 
     @minimum_resolve_version("18.5.0")
     def detect_scene_cuts(self) -> bool:

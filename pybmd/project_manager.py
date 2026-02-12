@@ -1,5 +1,5 @@
 from pybmd.decorators import minimum_resolve_version
-from os import path
+from pathlib import Path
 from pybmd._wrapper_base import WrapperBase
 from pybmd.project import Project
 from typing import TYPE_CHECKING, Dict, List
@@ -74,7 +74,7 @@ class ProjectManager(WrapperBase):
         return self._project_manager.DeleteProject(project_name)
 
     def export_project(
-        self, project_name: str, file_path: path, with_stills_and_luts: bool = True
+        self, project_name: str, file_path: Path, with_stills_and_luts: bool = True
     ) -> bool:
         """Exports project to provided file path
 
@@ -123,7 +123,7 @@ class ProjectManager(WrapperBase):
         return self._project_manager.GotoRootFolder()
 
     # Modified at DR18.0.0
-    def import_project(self, file_path: path, project_name: str = None) -> bool:
+    def import_project(self, file_path: Path, project_name: str) -> bool:
         """Imports a project from the file path provided with given project name. Returns True if successful."""
         return self._project_manager.ImportProject(str(file_path), project_name)
 
@@ -136,7 +136,7 @@ class ProjectManager(WrapperBase):
         return self._project_manager.OpenFolder(folder_name)
 
     # Modified at DR18.0.0
-    def restore_project(self, file_path: path, project_name: str = None) -> bool:
+    def restore_project(self, file_path: Path, project_name: str) -> bool:
         """Restores a project from the file path provided with given project name. Returns True if successful."""
         return self._project_manager.RestoreProject(str(file_path), project_name)
 
@@ -199,7 +199,7 @@ class ProjectManager(WrapperBase):
         Returns:
             Project: returns a cloud project
         """
-        return Project(self._project_manager.CreateCloudProject(cloud_setting.asdict()))
+        return Project(self._project_manager.CreateCloudProject(cloud_setting.model_dump()))
 
     @minimum_resolve_version("18.6.4")
     def import_cloud_project(
@@ -215,7 +215,7 @@ class ProjectManager(WrapperBase):
             bool: Returns True if import cloud project is successful; False otherwise
         """
         return self._project_manager.ImportCloudProject(
-            file_path, cloud_setting.asdict()
+            file_path, cloud_setting.model_dump()
         )
 
     @minimum_resolve_version("18.6.4")
@@ -232,7 +232,7 @@ class ProjectManager(WrapperBase):
             bool: Returns True if restore cloud project is successful; False otherwise
         """
         return self._project_manager.RestoreCloudProject(
-            folder_path, cloud_setting.asdict()
+            folder_path, cloud_setting.model_dump()
         )
 
     ##############################################################################################################################
@@ -247,7 +247,7 @@ class ProjectManager(WrapperBase):
         Returns:
             Project: returns a cloud project
         """
-        return Project(self._project_manager.LoadCloudProject(cloud_setting))
+        return Project(self._project_manager.LoadCloudProject(cloud_setting.model_dump()))
 
     # More function BELOW!
 

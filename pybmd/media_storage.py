@@ -1,19 +1,16 @@
-from typing import List
+from typing import List, cast
+
+from pydantic import BaseModel, Field
 
 from pybmd._wrapper_base import WrapperBase
 from pybmd.media_pool_item import MediaPoolItem
 
-from dataclasses import dataclass
-from dataclasses import asdict
 
-
-@dataclass
-class Item_Info:
+class Item_Info(BaseModel):
     """Item Info"""
-
     media: str
-    start_frame: int
-    end_frame: int
+    start_frame: int = Field(..., description="Start frame of the media item", ge=0)
+    end_frame: int = Field(..., description="End frame of the media item", ge=0)
 
 
 class MediaStorage(WrapperBase):
@@ -24,7 +21,7 @@ class MediaStorage(WrapperBase):
         self._media_storage = self._object
 
     def add_clip_mattes_to_media_pool(
-        self, media_pool_item: MediaPoolItem, paths: List[str], stereo_eye: str = None
+        self, media_pool_item: MediaPoolItem, paths: List[str], stereo_eye: str
     ) -> bool:
         """Adds specified media files as mattes for the specified MediaPoolItem
 
@@ -55,19 +52,22 @@ class MediaStorage(WrapperBase):
         # for media_pool_item in self.media_storage.AddItemListToMediaPool(item_path_list):
         #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
         # return media_pool_item_list
-        if type(items[0]) is str:
+        if all(isinstance(item, str) for item in items):
             return [
                 MediaPoolItem(media_pool_item)
                 for media_pool_item in self._media_storage.AddItemListToMediaPool(items)
             ]
-        elif type(items[0]) is Item_Info:
-            temp_list = [asdict(item_info) for item_info in items]
+        elif all(isinstance(item, Item_Info) for item in items):
+            item_info_list = cast(List[Item_Info], items)
+            temp_list = [item_info.model_dump() for item_info in item_info_list]
             return [
                 MediaPoolItem(media_pool_item)
                 for media_pool_item in self._media_storage.AddItemListToMediaPool(
                     temp_list
                 )
             ]
+        else:
+            raise ValueError("Invalid item type. Must be List[str] or List[Item_Info].")
 
     def add_timeline_mattes_to_media_pool(self, paths) -> List[MediaPoolItem]:
         """Adds specified media files as timeline mattes in current media pool folder.

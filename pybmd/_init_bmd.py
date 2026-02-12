@@ -1,3 +1,4 @@
+from typing import cast
 from enum import Enum
 
 import importlib.util
@@ -6,6 +7,7 @@ import importlib.machinery
 import os
 import sys
 
+from pybmd._resolve_types import BMDModule, ResolveObject
 from pybmd.error import UnsupportSystemError, ResolveInitError
 
 
@@ -46,10 +48,11 @@ def _init_bmd_module():
     else:
         raise UnsupportSystemError()
     bmd_module = _load_dynamic(module_name="fusionscript", module_path=PYLIB)
-    return bmd_module
+    return cast("BMDModule", bmd_module)
 
 
-_bmd_module_object = None
+_bmd_module_object: BMDModule
+_resolve_object: ResolveObject
 
 
 def _init_resolve(davinci_ip: str = "127.0.0.1"):
@@ -57,8 +60,28 @@ def _init_resolve(davinci_ip: str = "127.0.0.1"):
     Args:
         davinci_ip (str, optional): Default value is local (127.0.0.1).
     """
+    global _bmd_module_object
+    if not _bmd_module_object:
+        raise ResolveInitError(
+            "BMD module is not initialized. Ensure that _init_bmd_module() is called first."
+        )
+    return _bmd_module_object.scriptapp("Resolve", davinci_ip)
 
-    return _bmd_module_object.scriptapp("Resolve", davinci_ip)  # ty:ignore[unresolved-attribute]
 
+def is_resolve_initialized() -> bool:
+    """Check if the Resolve object has been initialized.
 
-_resolve_object = None
+    Returns:
+        True if Resolve() has been instantiated and is ready to use
+
+    Example:
+        >>> from pybmd._init_bmd import is_resolve_initialized
+        >>> is_resolve_initialized()
+        False
+        >>> from pybmd import Resolve
+        >>> resolve = Resolve()
+        >>> is_resolve_initialized()
+        True
+    """
+    global _resolve_object
+    return _resolve_object is not None

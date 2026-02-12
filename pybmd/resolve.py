@@ -94,6 +94,9 @@ class Resolve:
         self._resolve = self._initialize_resolve(resolve_ip)
         self._version = self._resolve.GetVersion()
 
+        # Populate the global _resolve_object so other modules can access constants
+        _init_bmd._resolve_object = self._resolve
+
         global RESOLVE_VERSION
         RESOLVE_VERSION = self._version
 

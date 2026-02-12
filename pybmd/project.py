@@ -1,4 +1,3 @@
-from dataclasses import asdict
 from typing import TYPE_CHECKING, Any, Dict, List
 from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
@@ -183,7 +182,7 @@ class Project(WrapperBase):
         if type(render_setting) is dict:
             return self._project.SetRenderSettings(render_setting)
         else:
-            return self._project.SetRenderSettings(asdict(render_setting))
+            return self._project.SetRenderSettings(render_setting.model_dump())
 
     def set_setting(self, setting_name: str, setting_value: str):
         """Sets value of project setting (indicated by setting_name, string).

@@ -1,25 +1,8 @@
 from enum import Enum
-from typing import Any
 
-from pybmd.error import ResolveInitError
-from ._init_bmd import _resolve_object as _resolve
-
-
-if _resolve is None:
-    raise ResolveInitError
-
-def _get_resolve_constant(attr_name: str, default: Any = None) -> Any:
-    """Safely get a constant from the resolve object.
-
-    Returns the constant if _resolve_object is initialized, otherwise returns default.
-    """
-    if _resolve is not None:
-        return getattr(_resolve, attr_name, default)
-    return default
-
+from pybmd._init_bmd import _resolve_object as _resolve
 
 class LUT_Export_Type(Enum):
-
     CUBE_17PT = _resolve.EXPORT_LUT_17PTCUBE
     CUBE_33PT = _resolve.EXPORT_LUT_33PTCUBE
     CUBE_65PT = _resolve.EXPORT_LUT_65PTCUBE
@@ -27,7 +10,6 @@ class LUT_Export_Type(Enum):
 
 
 class Timeline_Export_Type(Enum):
-
     EXPORT_AAF = _resolve.EXPORT_AAF
     EXPORT_DRT = _resolve.EXPORT_DRT
     EXPORT_EDL = _resolve.EXPORT_EDL

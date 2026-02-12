@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 from dataclasses import asdict
 from typing import List, Tuple, TYPE_CHECKING
+
 if TYPE_CHECKING:
     from pybmd.export_type import LUT_Export_Type
+
 from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
 from pybmd.decorators import requires_resolve_version, minimum_resolve_version

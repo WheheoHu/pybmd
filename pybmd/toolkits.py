@@ -38,7 +38,7 @@ def change_timeline_resolution(timeline: Timeline, width, height) -> bool:
 def get_all_timeline(project: Project) -> List[Timeline]:
     """Returns all timeline in the project."""
     if project.get_timeline_count() == 0:
-        return None
+        return []
     else:
         return [
             project.get_timeline_by_index(timeline_index)
@@ -56,29 +56,19 @@ def get_timeline(project: Project, timeline_name: str) -> Timeline:
     Returns:
         Timeline: timeline object matching the name, None if not found.
     """
-    all_timeline = get_all_timeline(project)
-    if bool(all_timeline):
-        timeline_dict = {timeline.get_name(): timeline for timeline in all_timeline}
-        return timeline_dict.get(timeline_name)
+    if all_timeline := get_all_timeline(project):
+        matched_timeline = [
+            timeline
+            for timeline in all_timeline
+            if timeline.get_name() == timeline_name
+        ]
+
+        if matched_timeline and len(matched_timeline) == 1:
+            return matched_timeline[0]
+        else:
+            raise ValueError(f"Timeline {timeline_name} multiple found.")
     else:
-        return None
-
-
-def get_subfolder(folder: Folder, subfolder_name: str) -> Folder:
-    """go to sub folder by name.
-
-    Args:
-        media_pool (MediaPool): media pool object
-        folder_name (str): sub folder name
-
-    Returns:
-        bool: True if successful.
-    """
-    subfolder_list = {
-        folder.get_name(): folder for folder in folder.get_sub_folder_list()
-    }
-
-    return subfolder_list.get(subfolder_name)
+        raise ValueError("Project has no timeline.")
 
 
 # TODO get_folder_by_path(check path before get ,if folder not exist,create or raise error)
@@ -263,7 +253,7 @@ class StillManager(object):
         return bool(result)
 
     def grab_still_from_timeline_markers(
-        self, timeline: Timeline = None, grab_sleep_time: float = 0.5
+        self, timeline: Timeline | None = None, grab_sleep_time: float = 0.5
     ) -> List[MarkerStill]:
         """Grab stills at each marker location on the requested timeline.
 
@@ -363,7 +353,7 @@ class StillManager(object):
 
     def grab_all_still(
         self,
-        timeline: Timeline = None,
+        timeline: Timeline | None = None,
         grab_sleep_time: float = 0.5,
         still_position: float = 0.5,
     ):
@@ -479,7 +469,9 @@ class StillManager(object):
         """Resolve wildcard placeholders used while formatting filenames."""
 
         handlers = {
-            "clip_frame_tc": lambda: f"{int(marker_still.marker_source_tc.timecode_output('frame')):08d}",
+            "clip_frame_tc": lambda: (
+                f"{int(marker_still.marker_source_tc.timecode_output('frame')):08d}"
+            ),
             "reel_number": lambda: self._extract_reel_number(marker_still),
             "marker_note": lambda: marker_still.marker_info.get("note", ""),
             "marker_name": lambda: marker_still.marker_info.get("name", ""),
@@ -586,7 +578,7 @@ class StillManager(object):
                 skip_count += 1
                 export_result[target_file_name] = {
                     "exported": False,
-                    "message": "File already exists, skipped."
+                    "message": "File already exists, skipped.",
                 }
                 continue
 
