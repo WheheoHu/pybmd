@@ -25,5 +25,4 @@ docs/_autosummary
 .vscode/launch.json
 .env
 .vscode/settings.json
-CLAUDE.md
 docs/build
