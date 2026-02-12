@@ -1,5 +1,59 @@
 # Change Log for PyBMD
 ----
+# 2026.1.0
+## Infrastructure
+### Windows Support Fix
+- Set PYTHON3HOME environment variable for virtual environments on Windows (e.g., created by uv) to fix compatibility issues with Windows virtual environments
+
+## API Enhancements
+### Version Management System
+- Introduce comprehensive version checking system for API compatibility with DaVinci Resolve versions
+- Add `version_info.py` module with `Version`, `APIStatus`, and `VersionConstraint` classes
+- Create `VersionRegistry` in `version_registry.py` to centralize API version constraints
+- Add version management decorators (`@require_version`, `@deprecated_in_version`) for automatic compatibility checks
+- Update multiple modules (`timeline_item.py`, `gallery.py`, `media_pool.py`, `project.py`, etc.) with version decorators
+
+### Type Safety Improvements
+- Create `_resolve_types.py` to define protocols for `BMDModule` and `ResolveObject`
+- Add type casting and improved type hints across modules (`_init_bmd.py`, `timeline.py`, `timeline_item.py`)
+- Enhanced error handling in timeline retrieval functions with proper exceptions
+
+## Refactoring
+### Pydantic Models
+- **RenderSetting** (settings.py): Convert from dataclass to Pydantic BaseModel with comprehensive validation
+  - Add `Field` with descriptions for all properties (moved from inline comments)
+  - Add type constraints using `Literal` for restricted values:
+    - `UniqueFilenameStyle`: `Literal[0, 1]` (0 for prefix, 1 for suffix)
+    - `AlphaMode`: `Literal[0, 1]` (0 for Premultiplied, 1 for Straight)
+    - `SubtitleFormat`: `Literal["BurnIn", "EmbeddedCaptions", "SeparateFile"]`
+  - Add numeric validation constraints (ge=0 for MarkIn/MarkOut, gt=0 for dimensions/rates)
+  - Add `VideoQuality` type as `int | Literal["Least", "Low", "Medium", "High", "Best"]`
+  - Add custom field validators for `VideoQuality` and `MarkOut` validation
+
+- **Item_Info** (media_storage.py): Convert from dataclass to Pydantic BaseModel
+  - Add field descriptions and validation for `start_frame` and `end_frame` (ge=0)
+  - Update `add_item_list_to_media_pool()` to use `model_dump()` instead of `asdict()`
+
+- **Settings Module Cleanup**:
+  - Remove `SettingParameter` legacy class
+  - Remove `_get_resolve_object()` and `_get_resolve_constant()` helper functions
+  - Simplify imports and directly use `_resolve_object` from `_init_bmd`
+  - Convert all settings classes to use Pydantic's `BaseModel` and `Field`
+  - Add `BaseIndexSetting` base class with `model_serializer` for index-based serialization
+
+### UI Components
+- Update `UI_Dispatcher` to ignore unresolved attribute warnings
+- Fix `UI_Manager` initialization to correctly assign `_ui_manager` from `_object`
+
+### Data Handling
+- Update `project.py` and `project_manager.py` to use Pydantic's `model_dump()` for data serialization
+- Refactor `export_type.py` to remove unnecessary checks and directly use the resolved object
+
+### Toolkits
+- Adjust toolkit functions to return empty lists instead of `None` for consistency
+- Improve error handling in timeline retrieval functions
+
+----
 # 2026.0.1
 ## API
 ### TimelineItem
