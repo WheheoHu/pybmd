@@ -1,0 +1,8 @@
+Item\_Info.validate
+===================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.validate
+
+    .. autosummary::

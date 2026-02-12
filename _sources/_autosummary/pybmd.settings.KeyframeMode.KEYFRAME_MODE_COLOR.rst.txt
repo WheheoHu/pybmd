@@ -1,0 +1,6 @@
+pybmd.settings.KeyframeMode.KEYFRAME\_MODE\_COLOR
+=================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: KeyframeMode.KEYFRAME_MODE_COLOR

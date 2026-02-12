@@ -1,0 +1,6 @@
+pybmd.settings.BaseIndexSetting.model\_fields\_set
+==================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoproperty:: BaseIndexSetting.model_fields_set

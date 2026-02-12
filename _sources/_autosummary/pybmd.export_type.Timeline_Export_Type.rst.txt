@@ -1,0 +1,44 @@
+Timeline\_Export\_Type
+======================
+
+.. currentmodule:: pybmd.export_type
+
+.. autoclass:: Timeline_Export_Type
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~Timeline_Export_Type.EXPORT_AAF
+      ~Timeline_Export_Type.EXPORT_DRT
+      ~Timeline_Export_Type.EXPORT_EDL
+      ~Timeline_Export_Type.EXPORT_FCP_7_XML
+      ~Timeline_Export_Type.EXPORT_FCPXML_1_8
+      ~Timeline_Export_Type.EXPORT_FCPXML_1_9
+      ~Timeline_Export_Type.EXPORT_FCPXML_1_10
+      ~Timeline_Export_Type.EXPORT_HDR_10_PROFILE_A
+      ~Timeline_Export_Type.EXPORT_HDR_10_PROFILE_B
+      ~Timeline_Export_Type.EXPORT_TEXT_CSV
+      ~Timeline_Export_Type.EXPORT_TEXT_TAB
+      ~Timeline_Export_Type.EXPORT_DOLBY_VISION_VER_2_9
+      ~Timeline_Export_Type.EXPORT_DOLBY_VISION_VER_4_0
+      ~Timeline_Export_Type.EXPORT_DOLBY_VISION_VER_5_1
+      ~Timeline_Export_Type.EXPORT_OTIO
+      ~Timeline_Export_Type.EXPORT_ALE
+      ~Timeline_Export_Type.EXPORT_ALE_CDL
+   
+   

@@ -1,0 +1,8 @@
+Item\_Info.parse\_file
+======================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.parse_file
+
+    .. autosummary::

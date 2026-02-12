@@ -1,0 +1,29 @@
+LineBreakTypes
+==============
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: LineBreakTypes
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~LineBreakTypes.LINE_SINGLE
+      ~LineBreakTypes.LINE_DOUBLE
+   
+   

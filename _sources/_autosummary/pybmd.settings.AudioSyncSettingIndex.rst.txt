@@ -1,0 +1,31 @@
+AudioSyncSettingIndex
+=====================
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: AudioSyncSettingIndex
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~AudioSyncSettingIndex.AUDIO_SYNC_MODE
+      ~AudioSyncSettingIndex.AUDIO_SYNC_CHANNEL_NUMBER
+      ~AudioSyncSettingIndex.AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO
+      ~AudioSyncSettingIndex.AUDIO_SYNC_RETAIN_VIDEO_METADATA
+   
+   

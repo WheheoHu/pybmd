@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.model\_fields
+==========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.model_fields

@@ -1,0 +1,8 @@
+VersionRegistry.\_\_init\_\_
+============================
+
+.. currentmodule:: pybmd.version_registry
+
+.. automethod:: VersionRegistry.__init__
+
+    .. autosummary::

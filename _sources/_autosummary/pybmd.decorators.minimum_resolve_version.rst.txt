@@ -1,0 +1,6 @@
+pybmd.decorators.minimum\_resolve\_version
+==========================================
+
+.. currentmodule:: pybmd.decorators
+
+.. autofunction:: minimum_resolve_version

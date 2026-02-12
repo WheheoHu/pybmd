@@ -1,0 +1,91 @@
+RenderSetting
+=============
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: RenderSetting
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~RenderSetting.__init__
+      ~RenderSetting.construct
+      ~RenderSetting.copy
+      ~RenderSetting.dict
+      ~RenderSetting.from_orm
+      ~RenderSetting.json
+      ~RenderSetting.model_construct
+      ~RenderSetting.model_copy
+      ~RenderSetting.model_dump
+      ~RenderSetting.model_dump_json
+      ~RenderSetting.model_json_schema
+      ~RenderSetting.model_parametrized_name
+      ~RenderSetting.model_post_init
+      ~RenderSetting.model_rebuild
+      ~RenderSetting.model_validate
+      ~RenderSetting.model_validate_json
+      ~RenderSetting.model_validate_strings
+      ~RenderSetting.parse_file
+      ~RenderSetting.parse_obj
+      ~RenderSetting.parse_raw
+      ~RenderSetting.schema
+      ~RenderSetting.schema_json
+      ~RenderSetting.update_forward_refs
+      ~RenderSetting.validate
+      ~RenderSetting.validate_mark_out
+      ~RenderSetting.validate_video_quality
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~RenderSetting.model_computed_fields
+      ~RenderSetting.model_config
+      ~RenderSetting.model_extra
+      ~RenderSetting.model_fields
+      ~RenderSetting.model_fields_set
+      ~RenderSetting.TargetDir
+      ~RenderSetting.CustomName
+      ~RenderSetting.SelectAllFrames
+      ~RenderSetting.MarkIn
+      ~RenderSetting.MarkOut
+      ~RenderSetting.UniqueFilenameStyle
+      ~RenderSetting.ExportVideo
+      ~RenderSetting.ExportAudio
+      ~RenderSetting.FormatWidth
+      ~RenderSetting.FormatHeight
+      ~RenderSetting.FrameRate
+      ~RenderSetting.PixelAspectRatio
+      ~RenderSetting.VideoQuality
+      ~RenderSetting.AudioCodec
+      ~RenderSetting.AudioBitDepth
+      ~RenderSetting.AudioSampleRate
+      ~RenderSetting.ColorSpaceTag
+      ~RenderSetting.GammaTag
+      ~RenderSetting.ExportAlpha
+      ~RenderSetting.EncodingProfile
+      ~RenderSetting.MultiPassEncode
+      ~RenderSetting.AlphaMode
+      ~RenderSetting.NetworkOptimization
+      ~RenderSetting.ExportSubtitle
+      ~RenderSetting.SubtitleFormat
+   
+   

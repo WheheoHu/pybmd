@@ -1,0 +1,8 @@
+Version.\_\_init\_\_
+====================
+
+.. currentmodule:: pybmd.version_info
+
+.. automethod:: Version.__init__
+
+    .. autosummary::

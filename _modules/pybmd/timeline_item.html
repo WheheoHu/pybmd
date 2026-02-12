@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/timeline_item';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -337,6 +337,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.color_group</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColorGroup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">requires_resolve_version</span><span class="p">,</span> <span class="n">minimum_resolve_version</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.fusion_comp</span><span class="w"> </span><span class="kn">import</span> <span class="n">FusionComp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">Graph</span>
@@ -390,7 +391,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.__init__.html#pybmd.timeline_item.TimelineItem.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline_item</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TimelineItem</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">timeline_item</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -690,6 +691,7 @@
 
 <div class="viewcode-block" id="TimelineItem.set_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_name.html#pybmd.timeline_item.TimelineItem.set_name">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.2.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the clip&#39;s name to the specified string.</span>
 
@@ -698,13 +700,19 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.2.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.2.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_property">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_property.html#pybmd.timeline_item.TimelineItem.get_property">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;returns the value of the specified key.</span>
 
 <span class="sd">        if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys</span>
@@ -871,43 +879,54 @@
 
 
     <span class="c1"># Remove at DR 19.0.0</span>
-    <span class="c1"># def set_lut(self, node_index: int, lutpath: str) -&gt; bool:</span>
-    <span class="c1">#     &quot;&quot;&quot;Sets LUT on the node mapping the nodeIndex provided</span>
+<div class="viewcode-block" id="TimelineItem.set_lut">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_lut.html#pybmd.timeline_item.TimelineItem.set_lut">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">removed_in</span><span class="o">=</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">lutpath</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets LUT on the node mapping the nodeIndex provided</span>
 
-    <span class="c1">#     Args:</span>
-    <span class="c1">#         node_index (int): 1 &lt;= nodeIndex &lt;= total number of nodes.</span>
-    <span class="c1">#         lutpath (str): can be an absolute path, or a relative path (based off custom LUT paths or the master LUT path).</span>
+<span class="sd">        Args:</span>
+<span class="sd">            node_index (int): 1 &lt;= nodeIndex &lt;= total number of nodes.</span>
+<span class="sd">            lutpath (str): can be an absolute path, or a relative path (based off custom LUT paths or the master LUT path).</span>
 
-    <span class="c1">#     Returns:</span>
-    <span class="c1">#         bool: True if successful, False otherwise</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#     return self._timeline_item.SetLUT(node_index, str(lutpath))</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">SetLUT</span><span class="p">(</span><span class="n">node_index</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">lutpath</span><span class="p">))</span></div>
+
 
     <span class="c1">####################################################################################################################</span>
     <span class="c1"># add in davinci resolve 17.4.6</span>
 
-    <span class="c1"># Remove at DR 19.0.0</span>
-    <span class="c1"># def get_num_node(self) -&gt; int:</span>
-    <span class="c1">#     &quot;&quot;&quot;Returns the number of nodes in the current graph for the timeline item&quot;&quot;&quot;</span>
-    <span class="c1">#     return self._timeline_item.GetNumNode()</span>
+<div class="viewcode-block" id="TimelineItem.get_num_node">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_num_node.html#pybmd.timeline_item.TimelineItem.get_num_node">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;17.4.6&quot;</span><span class="p">,</span> <span class="n">removed_in</span><span class="o">=</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_num_node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the number of nodes in the current graph for the timeline item&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetNumNode</span><span class="p">()</span></div>
 
-    <span class="c1"># Remove at DR 19.0.0</span>
-    <span class="c1"># def get_lut(self, node_index: int) -&gt; str:</span>
-    <span class="c1">#     &quot;&quot;&quot;Gets relative LUT path based on the node index provided</span>
 
-    <span class="c1">#     Args:</span>
-    <span class="c1">#         node_index (int): 1 &lt;= nodeIndex &lt;= total number of nodes.</span>
+<div class="viewcode-block" id="TimelineItem.get_lut">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_lut.html#pybmd.timeline_item.TimelineItem.get_lut">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;17.4.6&quot;</span><span class="p">,</span> <span class="n">removed_in</span><span class="o">=</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets relative LUT path based on the node index provided</span>
 
-    <span class="c1">#     Returns:</span>
-    <span class="c1">#         str: lut path</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#     return self._timeline_item.GetLUT(node_index)</span>
+<span class="sd">        Args:</span>
+<span class="sd">            node_index (int): 1 &lt;= nodeIndex &lt;= total number of nodes.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: lut path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetLUT</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></div>
+
 
     <span class="c1">##########################################################################################################################</span>
     <span class="c1"># Add at DR18.0.0</span>
 
 <div class="viewcode-block" id="TimelineItem.update_sidecar">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.update_sidecar.html#pybmd.timeline_item.TimelineItem.update_sidecar">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">update_sidecar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates sidecar file for BRAW clips or RMD file for R3D clips.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">UpdateSidecar</span><span class="p">()</span></div>
@@ -915,6 +934,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_unique_id">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_unique_id.html#pybmd.timeline_item.TimelineItem.get_unique_id">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a unique ID for the timeline item&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
@@ -924,16 +944,21 @@
     <span class="c1"># Add at DR18.5.0 Beta</span>
 
     <span class="c1"># Remove at DR 19.1.0</span>
-    <span class="c1"># def apply_arri_cdl_lut(self) -&gt; bool:</span>
-    <span class="c1">#     &quot;&quot;&quot;Applies ARRI CDL and LUT.</span>
+<div class="viewcode-block" id="TimelineItem.apply_arri_cdl_lut">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut.html#pybmd.timeline_item.TimelineItem.apply_arri_cdl_lut">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">,</span> <span class="n">removed_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_arri_cdl_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies ARRI CDL and LUT.</span>
 
-    <span class="c1">#     Returns:</span>
-    <span class="c1">#         bool: Returns True if successful, False otherwise.</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#     return self._timeline_item.ApplyArriCdlLut()</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: Returns True if successful, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">ApplyArriCdlLut</span><span class="p">()</span></div>
+
 
 <div class="viewcode-block" id="TimelineItem.set_clip_enabled">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_clip_enabled.html#pybmd.timeline_item.TimelineItem.set_clip_enabled">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_clip_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bool_value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets clip enabled based on argument.</span>
 
@@ -948,6 +973,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_clip_enabled">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_clip_enabled.html#pybmd.timeline_item.TimelineItem.get_clip_enabled">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_clip_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets clip enabled status.</span>
 
@@ -959,6 +985,7 @@
 
 <div class="viewcode-block" id="TimelineItem.load_burn_in_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.load_burn_in_preset.html#pybmd.timeline_item.TimelineItem.load_burn_in_preset">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">load_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads user defined data burn in preset for clip when supplied presetName (string). Returns true if successful.</span>
 
@@ -972,22 +999,27 @@
 
 
     <span class="c1"># Remove at DR 19.0.0</span>
-    <span class="c1"># def get_node_label(self, node_index: int) -&gt; str:</span>
-    <span class="c1">#     &quot;&quot;&quot;Returns the label of the node at nodeIndex.</span>
+<div class="viewcode-block" id="TimelineItem.get_node_label">
+<a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_node_label.html#pybmd.timeline_item.TimelineItem.get_node_label">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">,</span> <span class="n">removed_in</span><span class="o">=</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_node_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the label of the node at nodeIndex.</span>
 
-    <span class="c1">#     Args:</span>
-    <span class="c1">#         node_index (int): node index</span>
+<span class="sd">        Args:</span>
+<span class="sd">            node_index (int): node index</span>
 
-    <span class="c1">#     Returns:</span>
-    <span class="c1">#         str: node label</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#     return self._timeline_item.GetNodeLabel(node_index)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: node label</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetNodeLabel</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></div>
+
 
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.5.0</span>
 
 <div class="viewcode-block" id="TimelineItem.create_magic_mask">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.create_magic_mask.html#pybmd.timeline_item.TimelineItem.create_magic_mask">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_magic_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">MagicMask_Mode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if magic mask was created successfully, False otherwise.</span>
 
@@ -997,11 +1029,12 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if magic mask was created successfully, False otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">CreateMagicMask</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">CreateMagicMask</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.regenerate_magic_mask">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.regenerate_magic_mask.html#pybmd.timeline_item.TimelineItem.regenerate_magic_mask">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">regenerate_magic_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if magic mask was regenerated successfully, False otherwise.</span>
 
@@ -1013,6 +1046,7 @@
 
 <div class="viewcode-block" id="TimelineItem.stabilize">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.stabilize.html#pybmd.timeline_item.TimelineItem.stabilize">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">stabilize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if stabilization was successful, False otherwise</span>
 
@@ -1024,6 +1058,7 @@
 
 <div class="viewcode-block" id="TimelineItem.smart_reframe">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.smart_reframe.html#pybmd.timeline_item.TimelineItem.smart_reframe">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">smart_reframe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Performs Smart Reframe.</span>
 
@@ -1038,6 +1073,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_node_graph">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_node_graph.html#pybmd.timeline_item.TimelineItem.get_node_graph">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_node_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Graph&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the clip&#39;s node graph object</span>
 
@@ -1046,12 +1082,19 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Graph: The clip&#39;s node graph object at layer_index. Returns the first layer if layer_index is skipped.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.0.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.0.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Graph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetNodeGraph</span><span class="p">(</span><span class="n">layer_index</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_color_group">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_color_group.html#pybmd.timeline_item.TimelineItem.get_color_group">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_color_group</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ColorGroup&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the clip&#39;s color group if one exists.</span>
 
@@ -1063,6 +1106,7 @@
 
 <div class="viewcode-block" id="TimelineItem.assign_to_color_group">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.assign_to_color_group.html#pybmd.timeline_item.TimelineItem.assign_to_color_group">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">assign_to_color_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_group</span><span class="p">:</span> <span class="n">ColorGroup</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if TiItem to successfully assigned to given ColorGroup.</span>
 
@@ -1072,11 +1116,12 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if TiItem to successfully assigned to given ColorGroup.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AssignToColorGroup</span><span class="p">(</span><span class="n">color_group</span><span class="o">.</span><span class="n">_resolve_object</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">AssignToColorGroup</span><span class="p">(</span><span class="n">color_group</span><span class="o">.</span><span class="n">_object</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.remove_from_color_group">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.remove_from_color_group.html#pybmd.timeline_item.TimelineItem.remove_from_color_group">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_from_color_group</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if the TiItem is successfully removed from the ColorGroup it is in.</span>
 
@@ -1088,6 +1133,7 @@
 
 <div class="viewcode-block" id="TimelineItem.export_LUT">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.export_LUT.html#pybmd.timeline_item.TimelineItem.export_LUT">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">export_LUT</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">export_type</span><span class="p">:</span> <span class="s2">&quot;LUT_Export_Type&quot;</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports LUTs from tiItem</span>
 
@@ -1104,6 +1150,7 @@
 
 <div class="viewcode-block" id="TimelineItem.set_property">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_property.html#pybmd.timeline_item.TimelineItem.set_property">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">property_value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the value of property &quot;propertyKey&quot; to value &quot;propertyValue&quot;.</span>
 
@@ -1121,6 +1168,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_linked_items">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_linked_items.html#pybmd.timeline_item.TimelineItem.get_linked_items">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_linked_items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;TimelineItem&quot;</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of linked timeline items.</span>
 
@@ -1135,6 +1183,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_track_type_and_index">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_track_type_and_index.html#pybmd.timeline_item.TimelineItem.get_track_type_and_index">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_track_type_and_index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of two values that correspond to the TimelineItem&#39;s trackType (string) and trackIndex (int) respectively.</span>
 
@@ -1150,11 +1199,18 @@
 
 <div class="viewcode-block" id="TimelineItem.get_source_audio_channel_mapping">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_audio_channel_mapping.html#pybmd.timeline_item.TimelineItem.get_source_audio_channel_mapping">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.1&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_audio_channel_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a string with TimelineItem&#39;s audio mapping information.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: json formatted string</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.0.1</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.0.1</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetSourceAudioChannelMapping</span><span class="p">()</span></div>
 
@@ -1164,17 +1220,25 @@
 
 <div class="viewcode-block" id="TimelineItem.get_source_end_frame">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_end_frame.html#pybmd.timeline_item.TimelineItem.get_source_end_frame">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_end_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the end frame position of the media pool clip in the timeline clip.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            int: end frame position of the media pool clip</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.0.2</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.0.2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetSourceEndFrame</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.get_source_end_time">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_end_time.html#pybmd.timeline_item.TimelineItem.get_source_end_time">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_end_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the end time position of the media pool clip in the timeline clip.</span>
 
@@ -1186,6 +1250,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_source_start_frame">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_start_frame.html#pybmd.timeline_item.TimelineItem.get_source_start_frame">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_start_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the start frame position of the media pool clip in the timeline clip.</span>
 
@@ -1197,6 +1262,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_source_start_time">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_source_start_time.html#pybmd.timeline_item.TimelineItem.get_source_start_time">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_source_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the start time position of the media pool clip in the timeline clip.</span>
 
@@ -1210,6 +1276,7 @@
     <span class="c1"># Add at DR 19.1.0</span>
 <div class="viewcode-block" id="TimelineItem.get_color_output_cache_enabled">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_color_output_cache_enabled.html#pybmd.timeline_item.TimelineItem.get_color_output_cache_enabled">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_color_output_cache_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if color output cache is enabled for this timeline item.</span>
 
@@ -1221,6 +1288,7 @@
 
 <div class="viewcode-block" id="TimelineItem.get_fusion_output_cache_enabled">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_fusion_output_cache_enabled.html#pybmd.timeline_item.TimelineItem.get_fusion_output_cache_enabled">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_fusion_output_cache_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if fusion output cache is enabled for this timeline item.</span>
 
@@ -1232,6 +1300,7 @@
 
 <div class="viewcode-block" id="TimelineItem.set_color_output_cache">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_color_output_cache.html#pybmd.timeline_item.TimelineItem.set_color_output_cache">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_color_output_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets color output caching state. Equivalent to clip context menu action &#39;Render Cache Color Output&#39;.</span>
 
@@ -1246,6 +1315,7 @@
 
 <div class="viewcode-block" id="TimelineItem.set_fusion_output_cache">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_fusion_output_cache.html#pybmd.timeline_item.TimelineItem.set_fusion_output_cache">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_fusion_output_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets fusion output caching state. Equivalent to clip context menu action &#39;Render Cache Fusion Output&#39;.</span>
 
@@ -1263,18 +1333,26 @@
 
 <div class="viewcode-block" id="TimelineItem.get_voice_isolation_state">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.get_voice_isolation_state.html#pybmd.timeline_item.TimelineItem.get_voice_isolation_state">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_voice_isolation_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the Voice Isolation State of the timeline item.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: Dictionary with keys {&#39;isEnabled&#39;: bool, &#39;amount&#39;: int}.</span>
 <span class="sd">                  amount is in range of [0, 100]</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.1.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.1.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">GetVoiceIsolationState</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="TimelineItem.set_voice_isolation_state">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.set_voice_isolation_state.html#pybmd.timeline_item.TimelineItem.set_voice_isolation_state">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_voice_isolation_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voice_isolation_state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Voice Isolation state of the timeline item.</span>
 
@@ -1284,18 +1362,38 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.1.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.1.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">SetVoiceIsolationState</span><span class="p">(</span><span class="n">voice_isolation_state</span><span class="p">)</span></div>
 
 
+    <span class="c1">##############################################################################################################################</span>
+    <span class="c1"># Add at DR 20.2.0</span>
 <div class="viewcode-block" id="TimelineItem.reset_all_node_colors">
 <a class="viewcode-back" href="../../_autosummary/pybmd.timeline_item.TimelineItem.reset_all_node_colors.html#pybmd.timeline_item.TimelineItem.reset_all_node_colors">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span>
+        <span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.2.0&quot;</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="s2">&quot;Currently non-functional due to API issues&quot;</span>
+    <span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset_all_node_colors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;!!!! NOT WORKING API !!!!Reset node color for all nodes in the active version of the clip.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset node color for all nodes in the active version of the clip.</span>
 
+<span class="sd">        Note:</span>
+<span class="sd">            This API is currently non-functional due to issues in DaVinci Resolve.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.2.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.2.0</span>
+<span class="sd">            Note: Currently non-functional due to API issues</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeline_item</span><span class="o">.</span><span class="n">ResetAllNodeColors</span><span class="p">()</span></div>
 </div>
@@ -1341,7 +1439,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -1350,7 +1448,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

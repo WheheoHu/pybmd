@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectsSetting.model\_config
+=================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectsSetting.model_config

@@ -1,0 +1,8 @@
+BaseIndexSetting.model\_post\_init
+==================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.model_post_init
+
+    .. autosummary::

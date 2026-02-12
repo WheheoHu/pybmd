@@ -1,0 +1,8 @@
+CloudProjectsSetting.model\_rebuild
+===================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.model_rebuild
+
+    .. autosummary::

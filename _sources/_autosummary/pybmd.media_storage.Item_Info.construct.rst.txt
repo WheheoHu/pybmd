@@ -1,0 +1,8 @@
+Item\_Info.construct
+====================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.construct
+
+    .. autosummary::

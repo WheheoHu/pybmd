@@ -1,0 +1,8 @@
+CloudProjectsSetting.ser\_model
+===============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.ser_model
+
+    .. autosummary::

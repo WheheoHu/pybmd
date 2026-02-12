@@ -1,0 +1,8 @@
+VersionConstraint.\_\_init\_\_
+==============================
+
+.. currentmodule:: pybmd.version_info
+
+.. automethod:: VersionConstraint.__init__
+
+    .. autosummary::

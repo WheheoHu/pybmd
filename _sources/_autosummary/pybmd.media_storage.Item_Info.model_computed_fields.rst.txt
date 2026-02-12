@@ -1,0 +1,6 @@
+pybmd.media\_storage.Item\_Info.model\_computed\_fields
+=======================================================
+
+.. currentmodule:: pybmd.media_storage
+
+.. autoattribute:: Item_Info.model_computed_fields

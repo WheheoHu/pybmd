@@ -1,0 +1,6 @@
+pybmd.settings.AudioSyncSettingIndex.AUDIO\_SYNC\_MODE
+======================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AudioSyncSettingIndex.AUDIO_SYNC_MODE

@@ -1,0 +1,8 @@
+AutoCaptionSettings.ser\_model
+==============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.ser_model
+
+    .. autosummary::

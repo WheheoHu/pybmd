@@ -1,0 +1,8 @@
+AutoCaptionSettings.update\_forward\_refs
+=========================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.update_forward_refs
+
+    .. autosummary::

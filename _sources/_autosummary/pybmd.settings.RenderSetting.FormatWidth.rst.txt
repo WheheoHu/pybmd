@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.FormatWidth
+========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.FormatWidth

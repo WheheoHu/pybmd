@@ -1,0 +1,32 @@
+CloudProjectSettingIndex
+========================
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: CloudProjectSettingIndex
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~CloudProjectSettingIndex.PROJECT_NAME
+      ~CloudProjectSettingIndex.PROJECT_MEDIA_PATH
+      ~CloudProjectSettingIndex.IS_COLLAB
+      ~CloudProjectSettingIndex.SYNC_MODE
+      ~CloudProjectSettingIndex.IS_CAMERA_ACCESS
+   
+   

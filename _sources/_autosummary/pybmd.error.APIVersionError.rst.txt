@@ -1,0 +1,6 @@
+pybmd.error.APIVersionError
+===========================
+
+.. currentmodule:: pybmd.error
+
+.. autoexception:: APIVersionError

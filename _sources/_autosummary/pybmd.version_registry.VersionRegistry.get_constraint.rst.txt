@@ -1,0 +1,8 @@
+VersionRegistry.get\_constraint
+===============================
+
+.. currentmodule:: pybmd.version_registry
+
+.. automethod:: VersionRegistry.get_constraint
+
+    .. autosummary::

@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectSettingIndex.IS\_CAMERA\_ACCESS
+==========================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectSettingIndex.IS_CAMERA_ACCESS

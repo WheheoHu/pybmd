@@ -22,6 +22,29 @@ Item\_Info
       
    
       ~Item_Info.__init__
+      ~Item_Info.construct
+      ~Item_Info.copy
+      ~Item_Info.dict
+      ~Item_Info.from_orm
+      ~Item_Info.json
+      ~Item_Info.model_construct
+      ~Item_Info.model_copy
+      ~Item_Info.model_dump
+      ~Item_Info.model_dump_json
+      ~Item_Info.model_json_schema
+      ~Item_Info.model_parametrized_name
+      ~Item_Info.model_post_init
+      ~Item_Info.model_rebuild
+      ~Item_Info.model_validate
+      ~Item_Info.model_validate_json
+      ~Item_Info.model_validate_strings
+      ~Item_Info.parse_file
+      ~Item_Info.parse_obj
+      ~Item_Info.parse_raw
+      ~Item_Info.schema
+      ~Item_Info.schema_json
+      ~Item_Info.update_forward_refs
+      ~Item_Info.validate
    
    
 
@@ -32,6 +55,11 @@ Item\_Info
    .. autosummary::
       :toctree:
    
+      ~Item_Info.model_computed_fields
+      ~Item_Info.model_config
+      ~Item_Info.model_extra
+      ~Item_Info.model_fields
+      ~Item_Info.model_fields_set
       ~Item_Info.media
       ~Item_Info.start_frame
       ~Item_Info.end_frame

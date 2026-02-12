@@ -1,0 +1,8 @@
+Item\_Info.model\_post\_init
+============================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.model_post_init
+
+    .. autosummary::

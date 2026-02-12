@@ -1,0 +1,8 @@
+RenderSetting.model\_post\_init
+===============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.model_post_init
+
+    .. autosummary::

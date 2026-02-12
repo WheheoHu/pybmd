@@ -1,0 +1,65 @@
+BaseIndexSetting
+================
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: BaseIndexSetting
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~BaseIndexSetting.__init__
+      ~BaseIndexSetting.construct
+      ~BaseIndexSetting.copy
+      ~BaseIndexSetting.dict
+      ~BaseIndexSetting.from_orm
+      ~BaseIndexSetting.json
+      ~BaseIndexSetting.model_construct
+      ~BaseIndexSetting.model_copy
+      ~BaseIndexSetting.model_dump
+      ~BaseIndexSetting.model_dump_json
+      ~BaseIndexSetting.model_json_schema
+      ~BaseIndexSetting.model_parametrized_name
+      ~BaseIndexSetting.model_post_init
+      ~BaseIndexSetting.model_rebuild
+      ~BaseIndexSetting.model_validate
+      ~BaseIndexSetting.model_validate_json
+      ~BaseIndexSetting.model_validate_strings
+      ~BaseIndexSetting.parse_file
+      ~BaseIndexSetting.parse_obj
+      ~BaseIndexSetting.parse_raw
+      ~BaseIndexSetting.schema
+      ~BaseIndexSetting.schema_json
+      ~BaseIndexSetting.ser_model
+      ~BaseIndexSetting.update_forward_refs
+      ~BaseIndexSetting.validate
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~BaseIndexSetting.model_computed_fields
+      ~BaseIndexSetting.model_config
+      ~BaseIndexSetting.model_extra
+      ~BaseIndexSetting.model_fields
+      ~BaseIndexSetting.model_fields_set
+   
+   

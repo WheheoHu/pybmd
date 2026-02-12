@@ -1,0 +1,8 @@
+CloudProjectsSetting.construct
+==============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.construct
+
+    .. autosummary::

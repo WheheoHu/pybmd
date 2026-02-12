@@ -1,0 +1,6 @@
+pybmd.decorators.requires\_resolve\_version
+===========================================
+
+.. currentmodule:: pybmd.decorators
+
+.. autofunction:: requires_resolve_version

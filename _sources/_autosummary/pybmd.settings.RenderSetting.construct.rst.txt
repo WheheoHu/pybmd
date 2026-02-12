@@ -1,0 +1,8 @@
+RenderSetting.construct
+=======================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.construct
+
+    .. autosummary::

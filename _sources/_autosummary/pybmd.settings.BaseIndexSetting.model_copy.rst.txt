@@ -1,0 +1,8 @@
+BaseIndexSetting.model\_copy
+============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.model_copy
+
+    .. autosummary::

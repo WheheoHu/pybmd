@@ -1,0 +1,31 @@
+version\_registry
+=================
+
+.. automodule:: pybmd.version_registry
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      VersionRegistry
+   
+   
+
+   
+   
+   
+
+
+

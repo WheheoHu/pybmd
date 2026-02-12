@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.ExportSubtitle
+===========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.ExportSubtitle

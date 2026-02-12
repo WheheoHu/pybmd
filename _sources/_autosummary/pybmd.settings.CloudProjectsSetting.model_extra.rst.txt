@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectsSetting.model\_extra
+================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoproperty:: CloudProjectsSetting.model_extra

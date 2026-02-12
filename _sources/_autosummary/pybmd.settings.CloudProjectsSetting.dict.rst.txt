@@ -1,0 +1,8 @@
+CloudProjectsSetting.dict
+=========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.dict
+
+    .. autosummary::

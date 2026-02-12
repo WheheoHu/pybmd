@@ -1,0 +1,8 @@
+BaseIndexSetting.model\_validate\_strings
+=========================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.model_validate_strings
+
+    .. autosummary::

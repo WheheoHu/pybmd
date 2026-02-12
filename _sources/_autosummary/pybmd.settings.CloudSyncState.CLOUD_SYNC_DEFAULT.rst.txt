@@ -1,0 +1,6 @@
+pybmd.settings.CloudSyncState.CLOUD\_SYNC\_DEFAULT
+==================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudSyncState.CLOUD_SYNC_DEFAULT

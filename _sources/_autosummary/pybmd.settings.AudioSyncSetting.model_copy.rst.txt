@@ -1,0 +1,8 @@
+AudioSyncSetting.model\_copy
+============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.model_copy
+
+    .. autosummary::

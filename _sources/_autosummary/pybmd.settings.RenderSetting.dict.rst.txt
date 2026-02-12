@@ -1,0 +1,8 @@
+RenderSetting.dict
+==================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.dict
+
+    .. autosummary::

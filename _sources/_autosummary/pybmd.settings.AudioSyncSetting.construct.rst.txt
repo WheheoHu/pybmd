@@ -1,0 +1,8 @@
+AudioSyncSetting.construct
+==========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.construct
+
+    .. autosummary::

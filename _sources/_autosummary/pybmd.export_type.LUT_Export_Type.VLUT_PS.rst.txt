@@ -1,0 +1,6 @@
+pybmd.export\_type.LUT\_Export\_Type.VLUT\_PS
+=============================================
+
+.. currentmodule:: pybmd.export_type
+
+.. autoattribute:: LUT_Export_Type.VLUT_PS

@@ -1,0 +1,8 @@
+AutoCaptionSettings.parse\_raw
+==============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.parse_raw
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+AudioSyncSetting.model\_validate\_json
+======================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.model_validate_json
+
+    .. autosummary::

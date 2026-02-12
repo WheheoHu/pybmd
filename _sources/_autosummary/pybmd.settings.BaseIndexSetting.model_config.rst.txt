@@ -1,0 +1,6 @@
+pybmd.settings.BaseIndexSetting.model\_config
+=============================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: BaseIndexSetting.model_config

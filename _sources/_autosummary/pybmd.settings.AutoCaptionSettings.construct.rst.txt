@@ -1,0 +1,8 @@
+AutoCaptionSettings.construct
+=============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.construct
+
+    .. autosummary::

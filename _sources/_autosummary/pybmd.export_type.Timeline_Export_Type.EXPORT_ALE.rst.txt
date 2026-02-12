@@ -1,0 +1,6 @@
+pybmd.export\_type.Timeline\_Export\_Type.EXPORT\_ALE
+=====================================================
+
+.. currentmodule:: pybmd.export_type
+
+.. autoattribute:: Timeline_Export_Type.EXPORT_ALE

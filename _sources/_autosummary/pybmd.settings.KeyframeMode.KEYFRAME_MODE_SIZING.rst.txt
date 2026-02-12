@@ -1,0 +1,6 @@
+pybmd.settings.KeyframeMode.KEYFRAME\_MODE\_SIZING
+==================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: KeyframeMode.KEYFRAME_MODE_SIZING

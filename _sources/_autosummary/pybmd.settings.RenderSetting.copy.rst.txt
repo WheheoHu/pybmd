@@ -1,0 +1,8 @@
+RenderSetting.copy
+==================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.copy
+
+    .. autosummary::

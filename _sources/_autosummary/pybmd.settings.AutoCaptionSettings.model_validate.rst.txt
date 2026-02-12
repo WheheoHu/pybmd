@@ -1,0 +1,8 @@
+AutoCaptionSettings.model\_validate
+===================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.model_validate
+
+    .. autosummary::

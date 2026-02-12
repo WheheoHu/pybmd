@@ -1,0 +1,6 @@
+pybmd.export\_type.Timeline\_Export\_Type.EXPORT\_FCP\_7\_XML
+=============================================================
+
+.. currentmodule:: pybmd.export_type
+
+.. autoattribute:: Timeline_Export_Type.EXPORT_FCP_7_XML

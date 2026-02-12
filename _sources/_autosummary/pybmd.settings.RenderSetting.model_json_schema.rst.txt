@@ -1,0 +1,8 @@
+RenderSetting.model\_json\_schema
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.model_json_schema
+
+    .. autosummary::

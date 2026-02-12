@@ -1,0 +1,8 @@
+BaseIndexSetting.parse\_raw
+===========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.parse_raw
+
+    .. autosummary::

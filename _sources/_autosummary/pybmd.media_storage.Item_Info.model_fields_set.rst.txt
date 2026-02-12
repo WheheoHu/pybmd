@@ -1,0 +1,6 @@
+pybmd.media\_storage.Item\_Info.model\_fields\_set
+==================================================
+
+.. currentmodule:: pybmd.media_storage
+
+.. autoproperty:: Item_Info.model_fields_set

@@ -1,0 +1,8 @@
+CloudProjectsSetting.model\_parametrized\_name
+==============================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.model_parametrized_name
+
+    .. autosummary::

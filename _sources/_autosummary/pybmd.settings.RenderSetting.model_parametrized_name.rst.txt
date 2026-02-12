@@ -1,0 +1,8 @@
+RenderSetting.model\_parametrized\_name
+=======================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.model_parametrized_name
+
+    .. autosummary::

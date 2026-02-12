@@ -1,0 +1,6 @@
+pybmd.settings.AudioSyncMode.AUDIO\_SYNC\_WAVEFORM
+==================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AudioSyncMode.AUDIO_SYNC_WAVEFORM

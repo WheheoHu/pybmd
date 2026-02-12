@@ -1,0 +1,8 @@
+RenderSetting.update\_forward\_refs
+===================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.update_forward_refs
+
+    .. autosummary::

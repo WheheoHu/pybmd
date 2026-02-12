@@ -1,0 +1,8 @@
+CloudProjectsSetting.validate
+=============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.validate
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+RenderSetting.from\_orm
+=======================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.from_orm
+
+    .. autosummary::

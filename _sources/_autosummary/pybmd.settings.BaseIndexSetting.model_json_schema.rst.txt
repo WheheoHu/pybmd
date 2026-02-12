@@ -1,0 +1,8 @@
+BaseIndexSetting.model\_json\_schema
+====================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.model_json_schema
+
+    .. autosummary::

@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/gallery';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -330,6 +330,7 @@
   <h1>Source code for pybmd.gallery</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">requires_resolve_version</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery_still_album</span><span class="w"> </span><span class="kn">import</span> <span class="n">GalleryStillAlbum</span>
 
 
@@ -342,7 +343,8 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.__init__.html#pybmd.gallery.Gallery.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Gallery</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">gallery</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object</span></div>
+
 
 <div class="viewcode-block" id="Gallery.get_album_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.get_album_name.html#pybmd.gallery.Gallery.get_album_name">[docs]</a>
@@ -364,14 +366,15 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return a list of GalleryStillAlbum objects&quot;&quot;&quot;</span>
         <span class="n">gallery_still_album_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">gallery_still_album</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">GetGalleryStillAlbums</span><span class="p">():</span>
-            <span class="n">gallery_still_album_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">GalleryStillAlbum</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="p">))</span>
+            <span class="n">gallery_still_album_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GalleryStillAlbum</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">gallery_still_album_list</span></div>
 
 
 <div class="viewcode-block" id="Gallery.set_album_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.set_album_name.html#pybmd.gallery.Gallery.set_album_name">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_album_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still_album</span><span class="p">:</span> <span class="n">GalleryStillAlbum</span><span class="p">,</span> <span class="n">album_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_album_name</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">gallery_still_album</span><span class="p">:</span> <span class="n">GalleryStillAlbum</span><span class="p">,</span> <span class="n">album_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;set the album name of the GalleryStillAlbum object</span>
 
 <span class="sd">        Args:</span>
@@ -381,7 +384,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false otherwise</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">SetAlbumName</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="p">,</span> <span class="n">album_name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">SetAlbumName</span><span class="p">(</span>
+            <span class="n">gallery_still_album</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="p">,</span> <span class="n">album_name</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Gallery.set_current_still_album">
@@ -394,20 +399,30 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: true if successful, false otherwise</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">gallery_still_album</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">SetCurrentStillAlbum</span><span class="p">(</span><span class="n">gallery_still_album</span><span class="o">.</span><span class="n">_gallery_still_album</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">SetCurrentStillAlbum</span><span class="p">(</span>
+            <span class="n">gallery_still_album</span><span class="o">.</span><span class="n">_gallery_still_album</span>
+        <span class="p">)</span></div>
+
 
     <span class="c1">##############################################################################################################</span>
     <span class="c1"># Add at DR 19.1.0</span>
 <div class="viewcode-block" id="Gallery.get_gallery_power_grade_albums">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.get_gallery_power_grade_albums.html#pybmd.gallery.Gallery.get_gallery_power_grade_albums">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_gallery_power_grade_albums</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">GalleryStillAlbum</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the gallery PowerGrade albums.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List[GalleryStillAlbum]: List of gallery PowerGrade album objects</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.1.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.1.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">power_grade_albums</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">album</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gallery</span><span class="o">.</span><span class="n">GetGalleryPowerGradeAlbums</span><span class="p">():</span>
@@ -417,6 +432,7 @@
 
 <div class="viewcode-block" id="Gallery.create_gallery_still_album">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.create_gallery_still_album.html#pybmd.gallery.Gallery.create_gallery_still_album">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_gallery_still_album</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GalleryStillAlbum</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new Still album.</span>
 
@@ -429,6 +445,7 @@
 
 <div class="viewcode-block" id="Gallery.create_gallery_power_grade_album">
 <a class="viewcode-back" href="../../_autosummary/pybmd.gallery.Gallery.create_gallery_power_grade_album.html#pybmd.gallery.Gallery.create_gallery_power_grade_album">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_gallery_power_grade_album</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GalleryStillAlbum</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new PowerGrade album.</span>
 
@@ -480,7 +497,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -489,7 +506,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

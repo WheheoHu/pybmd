@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectsSetting.project\_media\_path
+========================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectsSetting.project_media_path

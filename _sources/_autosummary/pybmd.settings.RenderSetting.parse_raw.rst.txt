@@ -1,0 +1,8 @@
+RenderSetting.parse\_raw
+========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.parse_raw
+
+    .. autosummary::

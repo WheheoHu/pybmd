@@ -1,0 +1,46 @@
+settings
+========
+
+.. automodule:: pybmd.settings
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      AudioSyncChannel
+      AudioSyncMode
+      AudioSyncSetting
+      AudioSyncSettingIndex
+      AutoCaptionSettings
+      AutoCaptionSettingsIndex
+      BaseIndexSetting
+      CloudProjectSettingIndex
+      CloudProjectsSetting
+      CloudSyncMode
+      CloudSyncState
+      KeyframeMode
+      LanguageID
+      LineBreakTypes
+      PresetType
+      RenderSetting
+   
+   
+
+   
+   
+   
+
+
+

@@ -1,0 +1,6 @@
+pybmd.settings.AutoCaptionSettings.model\_extra
+===============================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoproperty:: AutoCaptionSettings.model_extra

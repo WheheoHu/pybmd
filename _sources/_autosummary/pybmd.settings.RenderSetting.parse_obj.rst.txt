@@ -1,0 +1,8 @@
+RenderSetting.parse\_obj
+========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.parse_obj
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+BaseIndexSetting.model\_construct
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.model_construct
+
+    .. autosummary::

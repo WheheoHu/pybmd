@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectSettingIndex.IS\_COLLAB
+==================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectSettingIndex.IS_COLLAB

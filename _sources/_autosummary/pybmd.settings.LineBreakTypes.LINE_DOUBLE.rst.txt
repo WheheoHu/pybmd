@@ -1,0 +1,6 @@
+pybmd.settings.LineBreakTypes.LINE\_DOUBLE
+==========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: LineBreakTypes.LINE_DOUBLE

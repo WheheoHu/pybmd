@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectsSetting.model\_fields\_set
+======================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoproperty:: CloudProjectsSetting.model_fields_set

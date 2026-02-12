@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/graph';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -331,6 +331,7 @@
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">requires_resolve_version</span>
 
 
 <div class="viewcode-block" id="Graph">
@@ -342,7 +343,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.graph.Graph.__init__.html#pybmd.graph.Graph.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Graph</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object</span></div>
 
 
 <div class="viewcode-block" id="Graph.get_num_nodes">
@@ -431,6 +432,7 @@
     <span class="c1"># Add at DR 19.1.0</span>
 <div class="viewcode-block" id="Graph.set_node_cache_mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.graph.Graph.set_node_cache_mode.html#pybmd.graph.Graph.set_node_cache_mode">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_node_cache_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cache_value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the cache mode type on the node.</span>
 
@@ -444,12 +446,19 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.1.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.1.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">SetNodeCacheMode</span><span class="p">(</span><span class="n">node_index</span><span class="p">,</span> <span class="n">cache_value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Graph.get_node_cache_mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.graph.Graph.get_node_cache_mode.html#pybmd.graph.Graph.get_node_cache_mode">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_node_cache_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the cache mode type on the node.</span>
 
@@ -467,6 +476,7 @@
 
 <div class="viewcode-block" id="Graph.apply_grade_from_drx">
 <a class="viewcode-back" href="../../_autosummary/pybmd.graph.Graph.apply_grade_from_drx.html#pybmd.graph.Graph.apply_grade_from_drx">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">apply_grade_from_drx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">grade_mode</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads a still from given file path and applies grade to graph.</span>
 
@@ -483,6 +493,7 @@
 
 <div class="viewcode-block" id="Graph.apply_arri_cdl_lut">
 <a class="viewcode-back" href="../../_autosummary/pybmd.graph.Graph.apply_arri_cdl_lut.html#pybmd.graph.Graph.apply_arri_cdl_lut">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">apply_arri_cdl_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies ARRI CDL and LUT.</span>
 
@@ -494,6 +505,7 @@
 
 <div class="viewcode-block" id="Graph.reset_all_grades">
 <a class="viewcode-back" href="../../_autosummary/pybmd.graph.Graph.reset_all_grades.html#pybmd.graph.Graph.reset_all_grades">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset_all_grades</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets all grades in the graph.</span>
 
@@ -544,7 +556,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -553,7 +565,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

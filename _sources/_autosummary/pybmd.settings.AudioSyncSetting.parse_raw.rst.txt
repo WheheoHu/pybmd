@@ -1,0 +1,8 @@
+AudioSyncSetting.parse\_raw
+===========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.parse_raw
+
+    .. autosummary::

@@ -1,0 +1,6 @@
+pybmd.settings.AutoCaptionSettingsIndex.GAP
+===========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AutoCaptionSettingsIndex.GAP

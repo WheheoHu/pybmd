@@ -1,0 +1,6 @@
+pybmd.settings.AutoCaptionSettingsIndex.LANGUAGE
+================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AutoCaptionSettingsIndex.LANGUAGE

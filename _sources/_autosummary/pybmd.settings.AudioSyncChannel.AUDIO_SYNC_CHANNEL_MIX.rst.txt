@@ -1,0 +1,6 @@
+pybmd.settings.AudioSyncChannel.AUDIO\_SYNC\_CHANNEL\_MIX
+=========================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AudioSyncChannel.AUDIO_SYNC_CHANNEL_MIX

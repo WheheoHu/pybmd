@@ -1,0 +1,6 @@
+pybmd.settings.AutoCaptionSettings.subtitle\_language
+=====================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AutoCaptionSettings.subtitle_language

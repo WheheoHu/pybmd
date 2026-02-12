@@ -1,0 +1,8 @@
+AudioSyncSetting.model\_json\_schema
+====================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.model_json_schema
+
+    .. autosummary::

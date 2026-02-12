@@ -1,0 +1,35 @@
+VersionRegistry
+===============
+
+.. currentmodule:: pybmd.version_registry
+
+.. autoclass:: VersionRegistry
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~VersionRegistry.__init__
+      ~VersionRegistry.clear
+      ~VersionRegistry.get_all_registered
+      ~VersionRegistry.get_constraint
+      ~VersionRegistry.list_apis
+      ~VersionRegistry.register
+   
+   
+
+   
+   
+   

@@ -1,0 +1,8 @@
+CloudProjectsSetting.from\_orm
+==============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.from_orm
+
+    .. autosummary::

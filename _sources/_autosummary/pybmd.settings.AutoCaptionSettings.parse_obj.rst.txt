@@ -1,0 +1,8 @@
+AutoCaptionSettings.parse\_obj
+==============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.parse_obj
+
+    .. autosummary::

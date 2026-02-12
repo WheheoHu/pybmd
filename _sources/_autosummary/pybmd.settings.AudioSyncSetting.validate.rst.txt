@@ -1,0 +1,8 @@
+AudioSyncSetting.validate
+=========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.validate
+
+    .. autosummary::

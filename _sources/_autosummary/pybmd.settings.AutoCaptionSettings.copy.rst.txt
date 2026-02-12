@@ -1,0 +1,8 @@
+AutoCaptionSettings.copy
+========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.copy
+
+    .. autosummary::

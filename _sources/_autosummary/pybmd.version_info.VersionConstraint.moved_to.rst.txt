@@ -1,0 +1,6 @@
+pybmd.version\_info.VersionConstraint.moved\_to
+===============================================
+
+.. currentmodule:: pybmd.version_info
+
+.. autoattribute:: VersionConstraint.moved_to

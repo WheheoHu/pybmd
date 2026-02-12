@@ -1,0 +1,6 @@
+pybmd.media\_storage.Item\_Info.model\_config
+=============================================
+
+.. currentmodule:: pybmd.media_storage
+
+.. autoattribute:: Item_Info.model_config

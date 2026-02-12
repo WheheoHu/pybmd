@@ -1,0 +1,8 @@
+VersionConstraint.is\_compatible
+================================
+
+.. currentmodule:: pybmd.version_info
+
+.. automethod:: VersionConstraint.is_compatible
+
+    .. autosummary::

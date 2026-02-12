@@ -1,0 +1,8 @@
+AudioSyncSetting.\_\_init\_\_
+=============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.__init__
+
+    .. autosummary::

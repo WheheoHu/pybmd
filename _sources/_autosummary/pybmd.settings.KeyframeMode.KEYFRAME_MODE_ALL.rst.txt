@@ -1,0 +1,6 @@
+pybmd.settings.KeyframeMode.KEYFRAME\_MODE\_ALL
+===============================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: KeyframeMode.KEYFRAME_MODE_ALL

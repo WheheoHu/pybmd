@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectsSetting.is\_collab
+==============================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectsSetting.is_collab

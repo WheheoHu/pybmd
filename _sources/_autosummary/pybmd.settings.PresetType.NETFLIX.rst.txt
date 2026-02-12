@@ -1,0 +1,6 @@
+pybmd.settings.PresetType.NETFLIX
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: PresetType.NETFLIX

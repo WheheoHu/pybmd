@@ -1,0 +1,8 @@
+RenderSetting.json
+==================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.json
+
+    .. autosummary::

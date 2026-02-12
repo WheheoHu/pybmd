@@ -1,0 +1,70 @@
+AutoCaptionSettings
+===================
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: AutoCaptionSettings
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~AutoCaptionSettings.__init__
+      ~AutoCaptionSettings.construct
+      ~AutoCaptionSettings.copy
+      ~AutoCaptionSettings.dict
+      ~AutoCaptionSettings.from_orm
+      ~AutoCaptionSettings.json
+      ~AutoCaptionSettings.model_construct
+      ~AutoCaptionSettings.model_copy
+      ~AutoCaptionSettings.model_dump
+      ~AutoCaptionSettings.model_dump_json
+      ~AutoCaptionSettings.model_json_schema
+      ~AutoCaptionSettings.model_parametrized_name
+      ~AutoCaptionSettings.model_post_init
+      ~AutoCaptionSettings.model_rebuild
+      ~AutoCaptionSettings.model_validate
+      ~AutoCaptionSettings.model_validate_json
+      ~AutoCaptionSettings.model_validate_strings
+      ~AutoCaptionSettings.parse_file
+      ~AutoCaptionSettings.parse_obj
+      ~AutoCaptionSettings.parse_raw
+      ~AutoCaptionSettings.schema
+      ~AutoCaptionSettings.schema_json
+      ~AutoCaptionSettings.ser_model
+      ~AutoCaptionSettings.update_forward_refs
+      ~AutoCaptionSettings.validate
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~AutoCaptionSettings.model_computed_fields
+      ~AutoCaptionSettings.model_config
+      ~AutoCaptionSettings.model_extra
+      ~AutoCaptionSettings.model_fields
+      ~AutoCaptionSettings.model_fields_set
+      ~AutoCaptionSettings.subtitle_language
+      ~AutoCaptionSettings.subtitle_caption_preset
+      ~AutoCaptionSettings.subtitle_chars_per_line
+      ~AutoCaptionSettings.subtitle_line_break
+      ~AutoCaptionSettings.subtitle_gap
+   
+   

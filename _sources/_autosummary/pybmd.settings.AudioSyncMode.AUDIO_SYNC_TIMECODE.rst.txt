@@ -1,0 +1,6 @@
+pybmd.settings.AudioSyncMode.AUDIO\_SYNC\_TIMECODE
+==================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AudioSyncMode.AUDIO_SYNC_TIMECODE

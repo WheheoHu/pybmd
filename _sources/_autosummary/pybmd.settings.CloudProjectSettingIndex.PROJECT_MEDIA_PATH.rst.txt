@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectSettingIndex.PROJECT\_MEDIA\_PATH
+============================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectSettingIndex.PROJECT_MEDIA_PATH

@@ -1,0 +1,6 @@
+pybmd.settings.CloudSyncMode.NONE
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudSyncMode.NONE

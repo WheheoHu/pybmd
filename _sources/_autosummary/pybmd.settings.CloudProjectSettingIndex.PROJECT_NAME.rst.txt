@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectSettingIndex.PROJECT\_NAME
+=====================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectSettingIndex.PROJECT_NAME

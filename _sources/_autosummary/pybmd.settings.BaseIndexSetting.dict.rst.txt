@@ -1,0 +1,8 @@
+BaseIndexSetting.dict
+=====================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.dict
+
+    .. autosummary::

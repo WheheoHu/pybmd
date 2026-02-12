@@ -1,0 +1,8 @@
+CloudProjectsSetting.model\_post\_init
+======================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.model_post_init
+
+    .. autosummary::

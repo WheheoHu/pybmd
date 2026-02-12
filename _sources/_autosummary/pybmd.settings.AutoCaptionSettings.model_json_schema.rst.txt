@@ -1,0 +1,8 @@
+AutoCaptionSettings.model\_json\_schema
+=======================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.model_json_schema
+
+    .. autosummary::

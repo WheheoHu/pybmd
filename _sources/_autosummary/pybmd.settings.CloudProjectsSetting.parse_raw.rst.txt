@@ -1,0 +1,8 @@
+CloudProjectsSetting.parse\_raw
+===============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.parse_raw
+
+    .. autosummary::

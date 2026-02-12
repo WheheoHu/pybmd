@@ -29,6 +29,7 @@
    :recursive:
 
    color_group
+   decorators
    error
    export_type
    folder
@@ -51,4 +52,6 @@
    toolkits
    ui_dispather
    ui_manager
+   version_info
+   version_registry
 

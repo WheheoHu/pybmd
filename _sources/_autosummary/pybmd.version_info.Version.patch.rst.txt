@@ -1,0 +1,6 @@
+pybmd.version\_info.Version.patch
+=================================
+
+.. currentmodule:: pybmd.version_info
+
+.. autoattribute:: Version.patch

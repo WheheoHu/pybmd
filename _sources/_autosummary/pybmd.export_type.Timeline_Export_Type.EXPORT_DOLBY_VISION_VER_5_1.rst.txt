@@ -1,0 +1,6 @@
+pybmd.export\_type.Timeline\_Export\_Type.EXPORT\_DOLBY\_VISION\_VER\_5\_1
+==========================================================================
+
+.. currentmodule:: pybmd.export_type
+
+.. autoattribute:: Timeline_Export_Type.EXPORT_DOLBY_VISION_VER_5_1

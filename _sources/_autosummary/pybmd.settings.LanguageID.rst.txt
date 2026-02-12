@@ -1,0 +1,43 @@
+LanguageID
+==========
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: LanguageID
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~LanguageID.AUTO
+      ~LanguageID.DANISH
+      ~LanguageID.DUTCH
+      ~LanguageID.ENGLISH
+      ~LanguageID.FRENCH
+      ~LanguageID.GERMAN
+      ~LanguageID.ITALIAN
+      ~LanguageID.JAPANESE
+      ~LanguageID.KOREAN
+      ~LanguageID.MANDARIN_SIMPLIFIED
+      ~LanguageID.MANDARIN_TRADITIONAL
+      ~LanguageID.NORWEGIAN
+      ~LanguageID.PORTUGUESE
+      ~LanguageID.RUSSIAN
+      ~LanguageID.SPANISH
+      ~LanguageID.SWEDISH
+   
+   

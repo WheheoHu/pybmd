@@ -1,0 +1,8 @@
+AudioSyncSetting.from\_orm
+==========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.from_orm
+
+    .. autosummary::

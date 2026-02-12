@@ -1,0 +1,8 @@
+Item\_Info.copy
+===============
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.copy
+
+    .. autosummary::

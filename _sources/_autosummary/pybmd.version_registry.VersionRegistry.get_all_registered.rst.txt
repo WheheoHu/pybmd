@@ -1,0 +1,8 @@
+VersionRegistry.get\_all\_registered
+====================================
+
+.. currentmodule:: pybmd.version_registry
+
+.. automethod:: VersionRegistry.get_all_registered
+
+    .. autosummary::

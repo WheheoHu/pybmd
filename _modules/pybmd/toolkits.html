@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/toolkits';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -373,7 +373,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">get_all_timeline</span><span class="p">(</span><span class="n">project</span><span class="p">:</span> <span class="n">Project</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Timeline</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns all timeline in the project.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">get_timeline_count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="p">[]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[</span>
             <span class="n">project</span><span class="o">.</span><span class="n">get_timeline_by_index</span><span class="p">(</span><span class="n">timeline_index</span><span class="p">)</span>
@@ -394,32 +394,19 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Timeline: timeline object matching the name, None if not found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">all_timeline</span> <span class="o">=</span> <span class="n">get_all_timeline</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">all_timeline</span><span class="p">):</span>
-        <span class="n">timeline_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">timeline</span><span class="o">.</span><span class="n">get_name</span><span class="p">():</span> <span class="n">timeline</span> <span class="k">for</span> <span class="n">timeline</span> <span class="ow">in</span> <span class="n">all_timeline</span><span class="p">}</span>
-        <span class="k">return</span> <span class="n">timeline_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeline_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">all_timeline</span> <span class="o">:=</span> <span class="n">get_all_timeline</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+        <span class="n">matched_timeline</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">timeline</span>
+            <span class="k">for</span> <span class="n">timeline</span> <span class="ow">in</span> <span class="n">all_timeline</span>
+            <span class="k">if</span> <span class="n">timeline</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">==</span> <span class="n">timeline_name</span>
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">matched_timeline</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">matched_timeline</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">matched_timeline</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeline </span><span class="si">{</span><span class="n">timeline_name</span><span class="si">}</span><span class="s2"> multiple found.&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span></div>
-
-
-
-<div class="viewcode-block" id="get_subfolder">
-<a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.get_subfolder.html#pybmd.toolkits.get_subfolder">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_subfolder</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="n">Folder</span><span class="p">,</span> <span class="n">subfolder_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Folder</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;go to sub folder by name.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        media_pool (MediaPool): media pool object</span>
-<span class="sd">        folder_name (str): sub folder name</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        bool: True if successful.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">subfolder_list</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">folder</span><span class="o">.</span><span class="n">get_name</span><span class="p">():</span> <span class="n">folder</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder</span><span class="o">.</span><span class="n">get_sub_folder_list</span><span class="p">()</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">subfolder_list</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subfolder_name</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Project has no timeline.&quot;</span><span class="p">)</span></div>
 
 
 
@@ -621,7 +608,7 @@
 <div class="viewcode-block" id="StillManager.grab_still_from_timeline_markers">
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.grab_still_from_timeline_markers.html#pybmd.toolkits.StillManager.grab_still_from_timeline_markers">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">grab_still_from_timeline_markers</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">grab_sleep_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">grab_sleep_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MarkerStill</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Grab stills at each marker location on the requested timeline.</span>
 
@@ -724,7 +711,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.toolkits.StillManager.grab_all_still.html#pybmd.toolkits.StillManager.grab_all_still">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">grab_all_still</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">timeline</span><span class="p">:</span> <span class="n">Timeline</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">grab_sleep_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
         <span class="n">still_position</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
     <span class="p">):</span>
@@ -841,7 +828,9 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Resolve wildcard placeholders used while formatting filenames.&quot;&quot;&quot;</span>
 
         <span class="n">handlers</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;clip_frame_tc&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">marker_still</span><span class="o">.</span><span class="n">marker_source_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">))</span><span class="si">:</span><span class="s2">08d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;clip_frame_tc&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">marker_still</span><span class="o">.</span><span class="n">marker_source_tc</span><span class="o">.</span><span class="n">timecode_output</span><span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">))</span><span class="si">:</span><span class="s2">08d</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">),</span>
             <span class="s2">&quot;reel_number&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_reel_number</span><span class="p">(</span><span class="n">marker_still</span><span class="p">),</span>
             <span class="s2">&quot;marker_note&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;note&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
             <span class="s2">&quot;marker_name&quot;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">marker_still</span><span class="o">.</span><span class="n">marker_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
@@ -950,7 +939,7 @@
                 <span class="n">skip_count</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="n">export_result</span><span class="p">[</span><span class="n">target_file_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                     <span class="s2">&quot;exported&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-                    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;File already exists, skipped.&quot;</span>
+                    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;File already exists, skipped.&quot;</span><span class="p">,</span>
                 <span class="p">}</span>
                 <span class="k">continue</span>
 
@@ -1081,7 +1070,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -1090,7 +1079,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

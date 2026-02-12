@@ -1,0 +1,8 @@
+BaseIndexSetting.ser\_model
+===========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.ser_model
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+AudioSyncSetting.update\_forward\_refs
+======================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.update_forward_refs
+
+    .. autosummary::

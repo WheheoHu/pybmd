@@ -1,0 +1,6 @@
+pybmd.settings.CloudSyncState.CLOUD\_SYNC\_DOWNLOAD\_IN\_QUEUE
+==============================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudSyncState.CLOUD_SYNC_DOWNLOAD_IN_QUEUE

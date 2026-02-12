@@ -1,0 +1,6 @@
+pybmd.media\_storage.Item\_Info.model\_extra
+============================================
+
+.. currentmodule:: pybmd.media_storage
+
+.. autoproperty:: Item_Info.model_extra

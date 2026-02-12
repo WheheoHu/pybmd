@@ -1,0 +1,8 @@
+VersionRegistry.list\_apis
+==========================
+
+.. currentmodule:: pybmd.version_registry
+
+.. automethod:: VersionRegistry.list_apis
+
+    .. autosummary::

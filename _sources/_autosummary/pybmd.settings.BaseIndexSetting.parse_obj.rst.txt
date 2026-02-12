@@ -1,0 +1,8 @@
+BaseIndexSetting.parse\_obj
+===========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.parse_obj
+
+    .. autosummary::

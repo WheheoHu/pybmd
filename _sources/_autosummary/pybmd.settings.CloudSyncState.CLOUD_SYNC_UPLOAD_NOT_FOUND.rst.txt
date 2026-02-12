@@ -1,0 +1,6 @@
+pybmd.settings.CloudSyncState.CLOUD\_SYNC\_UPLOAD\_NOT\_FOUND
+=============================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudSyncState.CLOUD_SYNC_UPLOAD_NOT_FOUND

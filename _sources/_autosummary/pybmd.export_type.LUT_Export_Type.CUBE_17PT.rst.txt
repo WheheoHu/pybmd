@@ -1,0 +1,6 @@
+pybmd.export\_type.LUT\_Export\_Type.CUBE\_17PT
+===============================================
+
+.. currentmodule:: pybmd.export_type
+
+.. autoattribute:: LUT_Export_Type.CUBE_17PT

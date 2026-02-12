@@ -1,0 +1,8 @@
+CloudProjectsSetting.update\_forward\_refs
+==========================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.update_forward_refs
+
+    .. autosummary::

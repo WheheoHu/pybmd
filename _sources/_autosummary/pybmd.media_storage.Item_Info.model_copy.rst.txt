@@ -1,0 +1,8 @@
+Item\_Info.model\_copy
+======================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.model_copy
+
+    .. autosummary::

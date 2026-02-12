@@ -1,0 +1,6 @@
+pybmd.export\_type.Timeline\_Export\_Type.EXPORT\_HDR\_10\_PROFILE\_A
+=====================================================================
+
+.. currentmodule:: pybmd.export_type
+
+.. autoattribute:: Timeline_Export_Type.EXPORT_HDR_10_PROFILE_A

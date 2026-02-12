@@ -1,0 +1,8 @@
+AudioSyncSetting.model\_rebuild
+===============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.model_rebuild
+
+    .. autosummary::

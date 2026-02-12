@@ -1,0 +1,8 @@
+AudioSyncSetting.schema
+=======================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.schema
+
+    .. autosummary::

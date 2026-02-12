@@ -1,0 +1,8 @@
+AutoCaptionSettings.model\_parametrized\_name
+=============================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.model_parametrized_name
+
+    .. autosummary::

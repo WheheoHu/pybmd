@@ -1,0 +1,8 @@
+Item\_Info.model\_json\_schema
+==============================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.model_json_schema
+
+    .. autosummary::

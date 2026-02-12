@@ -1,0 +1,8 @@
+AudioSyncSetting.parse\_obj
+===========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AudioSyncSetting.parse_obj
+
+    .. autosummary::

@@ -1,0 +1,8 @@
+RenderSetting.validate\_video\_quality
+======================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.validate_video_quality
+
+    .. autosummary::

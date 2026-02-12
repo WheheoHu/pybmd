@@ -1,0 +1,43 @@
+VersionConstraint
+=================
+
+.. currentmodule:: pybmd.version_info
+
+.. autoclass:: VersionConstraint
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~VersionConstraint.__init__
+      ~VersionConstraint.get_status
+      ~VersionConstraint.is_compatible
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~VersionConstraint.added_in
+      ~VersionConstraint.deprecated_in
+      ~VersionConstraint.moved_to
+      ~VersionConstraint.notes
+      ~VersionConstraint.removed_in
+   
+   

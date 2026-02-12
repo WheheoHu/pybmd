@@ -1,0 +1,8 @@
+CloudProjectsSetting.model\_validate\_strings
+=============================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.model_validate_strings
+
+    .. autosummary::

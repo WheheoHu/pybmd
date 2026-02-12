@@ -1,0 +1,8 @@
+AutoCaptionSettings.model\_post\_init
+=====================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.model_post_init
+
+    .. autosummary::

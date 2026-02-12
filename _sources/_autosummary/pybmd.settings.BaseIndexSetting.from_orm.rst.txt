@@ -1,0 +1,8 @@
+BaseIndexSetting.from\_orm
+==========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.from_orm
+
+    .. autosummary::

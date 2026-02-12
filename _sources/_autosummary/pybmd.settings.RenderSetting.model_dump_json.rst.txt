@@ -1,0 +1,8 @@
+RenderSetting.model\_dump\_json
+===============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.model_dump_json
+
+    .. autosummary::

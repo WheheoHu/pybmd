@@ -1,0 +1,8 @@
+RenderSetting.validate\_mark\_out
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.validate_mark_out
+
+    .. autosummary::

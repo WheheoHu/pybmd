@@ -1,0 +1,6 @@
+pybmd.export\_type.Timeline\_Export\_Subtype.EXPORT\_CDL
+========================================================
+
+.. currentmodule:: pybmd.export_type
+
+.. autoattribute:: Timeline_Export_Subtype.EXPORT_CDL

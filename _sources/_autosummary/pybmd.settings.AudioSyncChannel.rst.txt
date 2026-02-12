@@ -1,0 +1,29 @@
+AudioSyncChannel
+================
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: AudioSyncChannel
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~AudioSyncChannel.AUDIO_SYNC_CHANNEL_AUTOMATIC
+      ~AudioSyncChannel.AUDIO_SYNC_CHANNEL_MIX
+   
+   

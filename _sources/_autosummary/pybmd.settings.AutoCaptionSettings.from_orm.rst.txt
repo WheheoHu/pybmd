@@ -1,0 +1,8 @@
+AutoCaptionSettings.from\_orm
+=============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.from_orm
+
+    .. autosummary::

@@ -1,0 +1,6 @@
+pybmd.settings.AutoCaptionSettings.model\_fields\_set
+=====================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoproperty:: AutoCaptionSettings.model_fields_set

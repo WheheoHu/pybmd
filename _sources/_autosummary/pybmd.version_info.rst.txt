@@ -1,0 +1,33 @@
+version\_info
+=============
+
+.. automodule:: pybmd.version_info
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: class.rst
+   
+      APIStatus
+      Version
+      VersionConstraint
+   
+   
+
+   
+   
+   
+
+
+

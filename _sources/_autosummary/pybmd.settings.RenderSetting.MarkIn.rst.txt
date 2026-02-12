@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.MarkIn
+===================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.MarkIn

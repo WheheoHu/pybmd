@@ -1,0 +1,6 @@
+pybmd.version\_info.Version.minor
+=================================
+
+.. currentmodule:: pybmd.version_info
+
+.. autoattribute:: Version.minor

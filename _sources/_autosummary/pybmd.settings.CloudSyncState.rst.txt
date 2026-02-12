@@ -1,0 +1,39 @@
+CloudSyncState
+==============
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: CloudSyncState
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~CloudSyncState.CLOUD_SYNC_DEFAULT
+      ~CloudSyncState.CLOUD_SYNC_DOWNLOAD_IN_QUEUE
+      ~CloudSyncState.CLOUD_SYNC_DOWNLOAD_IN_PROGRESS
+      ~CloudSyncState.CLOUD_SYNC_DOWNLOAD_SUCCESS
+      ~CloudSyncState.CLOUD_SYNC_DOWNLOAD_FAIL
+      ~CloudSyncState.CLOUD_SYNC_DOWNLOAD_NOT_FOUND
+      ~CloudSyncState.CLOUD_SYNC_UPLOAD_IN_QUEUE
+      ~CloudSyncState.CLOUD_SYNC_UPLOAD_IN_PROGRESS
+      ~CloudSyncState.CLOUD_SYNC_UPLOAD_SUCCESS
+      ~CloudSyncState.CLOUD_SYNC_UPLOAD_FAIL
+      ~CloudSyncState.CLOUD_SYNC_UPLOAD_NOT_FOUND
+      ~CloudSyncState.CLOUD_SYNC_SUCCESS
+   
+   

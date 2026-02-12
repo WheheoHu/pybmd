@@ -1,0 +1,6 @@
+pybmd.settings.AutoCaptionSettingsIndex.LINE\_BREAK
+===================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AutoCaptionSettingsIndex.LINE_BREAK

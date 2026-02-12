@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_pool_item';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -332,6 +332,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">multimethod</span><span class="w"> </span><span class="kn">import</span> <span class="n">multimethod</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">requires_resolve_version</span><span class="p">,</span> <span class="n">minimum_resolve_version</span>
 
 
 <div class="viewcode-block" id="MediaPoolItem">
@@ -343,7 +344,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.__init__.html#pybmd.media_pool_item.MediaPoolItem.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MediaPoolItem</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -557,6 +558,7 @@
 
 <div class="viewcode-block" id="MediaPoolItem.set_name">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.set_name.html#pybmd.media_pool_item.MediaPoolItem.set_name">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.2.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the clip&#39;s name to the specified string.</span>
 
@@ -565,6 +567,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.2.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.2.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
@@ -660,9 +668,9 @@
     <span class="c1">###############################################################################</span>
     <span class="c1"># Add at DR18.0.0</span>
 
-    <span class="c1"># TODO Add version check</span>
 <div class="viewcode-block" id="MediaPoolItem.get_unique_id">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_unique_id.html#pybmd.media_pool_item.MediaPoolItem.get_unique_id">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;return unique id of the clip.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
@@ -673,6 +681,7 @@
 
 <div class="viewcode-block" id="MediaPoolItem.transcribe_audio">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.transcribe_audio.html#pybmd.media_pool_item.MediaPoolItem.transcribe_audio">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">transcribe_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Transcribes audio of the MediaPoolItem.</span>
 
@@ -684,6 +693,7 @@
 
 <div class="viewcode-block" id="MediaPoolItem.clear_transcription">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.clear_transcription.html#pybmd.media_pool_item.MediaPoolItem.clear_transcription">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear_transcription</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears audio transcription of the MediaPoolItem.</span>
 
@@ -698,11 +708,18 @@
 
 <div class="viewcode-block" id="MediaPoolItem.get_audio_mapping">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_audio_mapping.html#pybmd.media_pool_item.MediaPoolItem.get_audio_mapping">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_audio_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a string with MediaPoolItem&#39;s audio mapping information. Check &#39;Audio Mapping&#39; section for more information.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: json formatted string</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.0.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.0.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetAudioMapping</span><span class="p">()</span></div>
 
@@ -712,7 +729,8 @@
 
 <div class="viewcode-block" id="MediaPoolItem.get_third_party_metadata">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_third_party_metadata.html#pybmd.media_pool_item.MediaPoolItem.get_third_party_metadata">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the third party metadata value for the key &#39;metadataType&#39;.</span>
 
 <span class="sd">        Args:</span>
@@ -720,11 +738,18 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str | dict: third party metadata value</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.0.2</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.0.2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetThirdPartyMetadata</span><span class="p">(</span><span class="n">metadata_type</span><span class="p">)</span></div>
 
 
     <span class="nd">@multimethod</span>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">metadata_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets/Add the given third party metadata to metadata_value (string).</span>
 
@@ -742,6 +767,7 @@
 <div class="viewcode-block" id="MediaPoolItem.set_third_party_metadata">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.set_third_party_metadata.html#pybmd.media_pool_item.MediaPoolItem.set_third_party_metadata">[docs]</a>
     <span class="nd">@multimethod</span>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_third_party_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># noqa: F811</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets/Add the given third party metadata to metadata_value (string).</span>
 
@@ -759,15 +785,27 @@
 
 <div class="viewcode-block" id="MediaPoolItem.get_mark_in_out">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.get_mark_in_out.html#pybmd.media_pool_item.MediaPoolItem.get_mark_in_out">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_mark_in_out</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns dict of in/out marks set (keys omitted if not set), example: {&#39;video&#39;: {&#39;in&#39;: 0, &#39;out&#39;: 134}, &#39;audio&#39;: {&#39;in&#39;: 0, &#39;out&#39;: 134}}&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns dict of in/out marks set (keys omitted if not set), example: {&#39;video&#39;: {&#39;in&#39;: 0, &#39;out&#39;: 134}, &#39;audio&#39;: {&#39;in&#39;: 0, &#39;out&#39;: 134}}</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str, Any]: Dictionary of in/out marks</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.1.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.1.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">GetMarkInOut</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.set_mark_in_out">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.set_mark_in_out.html#pybmd.media_pool_item.MediaPoolItem.set_mark_in_out">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_mark_in_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mark_in</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mark_out</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mark in/out of type &quot;video&quot;, &quot;audio&quot; or &quot;all&quot; (default).</span>
 
@@ -784,6 +822,7 @@
 
 <div class="viewcode-block" id="MediaPoolItem.clear_mark_in_out">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.clear_mark_in_out.html#pybmd.media_pool_item.MediaPoolItem.clear_mark_in_out">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear_mark_in_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears mark in/out of type &quot;video&quot;, &quot;audio&quot; or &quot;all&quot; (default).</span>
 
@@ -801,6 +840,7 @@
 
 <div class="viewcode-block" id="MediaPoolItem.link_full_resolution_media">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.link_full_resolution_media.html#pybmd.media_pool_item.MediaPoolItem.link_full_resolution_media">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">link_full_resolution_media</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">full_res_media_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Links proxy media to full resolution media files specified via its path.</span>
 
@@ -809,12 +849,19 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.0.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.0.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">LinkFullResolutionMedia</span><span class="p">(</span><span class="n">full_res_media_path</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.replace_clip_preserve_sub_clip">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.replace_clip_preserve_sub_clip.html#pybmd.media_pool_item.MediaPoolItem.replace_clip_preserve_sub_clip">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">replace_clip_preserve_sub_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Replaces the underlying asset and metadata of a video or audio clip with the specified absolute clip path, preserving original sub clip extents.</span>
 
@@ -823,17 +870,30 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.0.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.0.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">ReplaceClipPreserveSubClip</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaPoolItem.monitor_growing_file">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool_item.MediaPoolItem.monitor_growing_file.html#pybmd.media_pool_item.MediaPoolItem.monitor_growing_file">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">monitor_growing_file</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Monitor a file as long as it keeps growing (stops if the file does not grow for some time).</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.0.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.0.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool_item</span><span class="o">.</span><span class="n">MonitorGrowingFile</span><span class="p">()</span></div>
 </div>
@@ -879,7 +939,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -888,7 +948,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

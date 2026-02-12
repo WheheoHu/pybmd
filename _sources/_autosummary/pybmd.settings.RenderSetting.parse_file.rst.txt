@@ -1,0 +1,8 @@
+RenderSetting.parse\_file
+=========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.parse_file
+
+    .. autosummary::

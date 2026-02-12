@@ -1,0 +1,6 @@
+pybmd.settings.AudioSyncSettingIndex.AUDIO\_SYNC\_CHANNEL\_NUMBER
+=================================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AudioSyncSettingIndex.AUDIO_SYNC_CHANNEL_NUMBER

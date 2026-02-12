@@ -1,0 +1,6 @@
+pybmd.settings.AudioSyncSetting.model\_fields
+=============================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AudioSyncSetting.model_fields

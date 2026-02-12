@@ -1,0 +1,8 @@
+CloudProjectsSetting.\_\_init\_\_
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.__init__
+
+    .. autosummary::

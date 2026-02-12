@@ -1,0 +1,8 @@
+Item\_Info.from\_orm
+====================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.from_orm
+
+    .. autosummary::

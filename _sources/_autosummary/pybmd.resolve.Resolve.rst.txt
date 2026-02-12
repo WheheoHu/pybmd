@@ -22,6 +22,7 @@ Resolve
       
    
       ~Resolve.__init__
+      ~Resolve.check_api_compatibility
       ~Resolve.delete_layout_preset
       ~Resolve.export_burn_in_preset
       ~Resolve.export_layout_preset
@@ -33,10 +34,13 @@ Resolve
       ~Resolve.get_product_name
       ~Resolve.get_project_manager
       ~Resolve.get_version
+      ~Resolve.get_version_info
       ~Resolve.get_version_string
       ~Resolve.import_burn_in_preset
       ~Resolve.import_layout_preset
       ~Resolve.import_render_preset
+      ~Resolve.is_version_at_least
+      ~Resolve.list_incompatible_apis
       ~Resolve.load_layout_preset
       ~Resolve.open_page
       ~Resolve.quit

@@ -1,0 +1,8 @@
+BaseIndexSetting.model\_dump
+============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.model_dump
+
+    .. autosummary::

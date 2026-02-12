@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/resolve';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -330,13 +330,16 @@
   <h1>Source code for pybmd.resolve</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">psutil</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.error</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResolveInitError</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaStorage</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.project_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProjectManager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.fusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fusion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.version_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">Version</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.version_registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">VersionRegistry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimum_resolve_version</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeyframeMode</span>
@@ -386,6 +389,26 @@
 <span class="sd">    Base for everything</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the Resolve connection.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            resolve_ip: IP address of the DaVinci Resolve instance</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Resolve object</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ResolveInitError: If initialization fails</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_bmd_module_object</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_init_bmd_module</span><span class="p">()</span>
+        <span class="n">resolve_obj</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_init_resolve</span><span class="p">(</span><span class="n">davinci_ip</span><span class="o">=</span><span class="n">resolve_ip</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">resolve_obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ResolveInitError</span>
+
+        <span class="k">return</span> <span class="n">resolve_obj</span>
+
 <div class="viewcode-block" id="Resolve.__init__">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.__init__.html#pybmd.resolve.Resolve.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolve_ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">auto_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -402,16 +425,14 @@
         <span class="k">if</span> <span class="n">auto_start</span><span class="p">:</span>
             <span class="n">_start_local_resolve</span><span class="p">()</span>
 
-        <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_bmd_module_object</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_init_bmd_module</span><span class="p">()</span>
-        <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_resolve_object</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_init_resolve</span><span class="p">(</span><span class="n">davinci_ip</span><span class="o">=</span><span class="n">resolve_ip</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_resolve</span><span class="p">(</span><span class="n">resolve_ip</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span> <span class="o">=</span> <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_resolve_object</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ResolveInitError</span>
+        <span class="c1"># Populate the global _resolve_object so other modules can access constants</span>
+        <span class="n">_init_bmd</span><span class="o">.</span><span class="n">_resolve_object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span>
 
         <span class="k">global</span> <span class="n">RESOLVE_VERSION</span>
-        <span class="n">RESOLVE_VERSION</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span></div>
+        <span class="n">RESOLVE_VERSION</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span></div>
 
 
 <div class="viewcode-block" id="Resolve.delete_layout_preset">
@@ -425,7 +446,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: result</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">DeleteLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">DeleteLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Resolve.export_layout_preset">
@@ -440,7 +461,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: result</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ExportLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">))</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ExportLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">))</span></div>
 
 
     <span class="nd">@property</span>
@@ -456,7 +477,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            str: Returned value can be one of (&quot;media&quot;, &quot;cut&quot;, &quot;edit&quot;, &quot;fusion&quot;, &quot;color&quot;, &quot;fairlight&quot;, &quot;deliver&quot;, None).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetCurrentPage</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetCurrentPage</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Resolve.get_media_storage">
@@ -478,7 +499,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            str: product name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetProductName</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetProductName</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Resolve.get_project_manager">
@@ -500,7 +521,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            list: list of product version fields</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Resolve.get_version_string">
@@ -511,7 +532,100 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            str: product version string</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetVersionString</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">GetVersionString</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Resolve.get_version_info">
+<a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_version_info.html#pybmd.resolve.Resolve.get_version_info">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_version_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Version</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns structured version information.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Version: Version object with major, minor, patch components</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; resolve = Resolve()</span>
+<span class="sd">            &gt;&gt;&gt; version = resolve.get_version_info()</span>
+<span class="sd">            &gt;&gt;&gt; print(f&quot;Running Resolve {version}&quot;)</span>
+<span class="sd">            Running Resolve 20.2.0</span>
+<span class="sd">            &gt;&gt;&gt; version.major</span>
+<span class="sd">            20</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Version</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Resolve.is_version_at_least">
+<a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.is_version_at_least.html#pybmd.resolve.Resolve.is_version_at_least">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_version_at_least</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">version_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if current Resolve version is at least the specified version.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            version_str: Version string like &quot;20.0.0&quot; or &quot;19.1&quot;</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if current version &gt;= specified version</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; resolve = Resolve()</span>
+<span class="sd">            &gt;&gt;&gt; resolve.is_version_at_least(&quot;20.0.0&quot;)</span>
+<span class="sd">            True</span>
+<span class="sd">            &gt;&gt;&gt; resolve.is_version_at_least(&quot;21.0.0&quot;)</span>
+<span class="sd">            False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">required</span> <span class="o">=</span> <span class="n">Version</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">version_str</span><span class="p">)</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_version_info</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">current</span> <span class="o">&gt;=</span> <span class="n">required</span></div>
+
+
+<div class="viewcode-block" id="Resolve.check_api_compatibility">
+<a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.check_api_compatibility.html#pybmd.resolve.Resolve.check_api_compatibility">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_api_compatibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if an API is compatible with current Resolve version.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            api_name: Full API identifier (e.g., &quot;TimelineItem.set_name&quot;)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple of (is_compatible, status_message)</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; resolve = Resolve()</span>
+<span class="sd">            &gt;&gt;&gt; is_ok, msg = resolve.check_api_compatibility(&quot;TimelineItem.set_name&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; print(f&quot;TimelineItem.set_name: {msg}&quot;)</span>
+<span class="sd">            TimelineItem.set_name: API available</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">constraint</span> <span class="o">=</span> <span class="n">VersionRegistry</span><span class="o">.</span><span class="n">get_constraint</span><span class="p">(</span><span class="n">api_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">constraint</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;No version constraints defined&quot;</span><span class="p">)</span>
+
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_version_info</span><span class="p">()</span>
+        <span class="n">is_compat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="n">constraint</span><span class="o">.</span><span class="n">get_status</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">is_compat</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Resolve.list_incompatible_apis">
+<a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.list_incompatible_apis.html#pybmd.resolve.Resolve.list_incompatible_apis">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_incompatible_apis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List all APIs incompatible with current Resolve version.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of (api_name, reason) tuples</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; resolve = Resolve()</span>
+<span class="sd">            &gt;&gt;&gt; incompatible = resolve.list_incompatible_apis()</span>
+<span class="sd">            &gt;&gt;&gt; for api_name, reason in incompatible:</span>
+<span class="sd">            ...     print(f&quot;❌ {api_name}: {reason}&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_version_info</span><span class="p">()</span>
+        <span class="n">incompatible</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">api_id</span><span class="p">,</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="n">VersionRegistry</span><span class="o">.</span><span class="n">get_all_registered</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">is_compat</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="n">constraint</span><span class="o">.</span><span class="n">get_status</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">is_compat</span><span class="p">:</span>
+                <span class="n">incompatible</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">api_id</span><span class="p">,</span> <span class="n">message</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">incompatible</span></div>
 
 
 <div class="viewcode-block" id="Resolve.import_layout_preset">
@@ -521,7 +635,7 @@
 <span class="sd">        The optional argument &#39;preset_name&#39; specifies how the preset shall be named.</span>
 <span class="sd">        If not specified, the preset is named based on the filename.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ImportLayoutPreset</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">),</span> <span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">ImportLayoutPreset</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">preset_file_path</span><span class="p">),</span> <span class="n">preset_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Resolve.load_layout_preset">
@@ -535,7 +649,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">LoadLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">LoadLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Resolve.open_page">
@@ -549,14 +663,14 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">OpenPage</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">OpenPage</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Resolve.quit">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.quit.html#pybmd.resolve.Resolve.quit">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Quits the Resolve App.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Resolve.save_layout_preset">
@@ -570,7 +684,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">SaveLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">SaveLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Resolve.update_layout_preset">
@@ -584,14 +698,14 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">UpdateLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">UpdateLayoutPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
 
     <span class="c1">##############################################################################################################################</span>
     <span class="c1"># Add at DR18.6.0</span>
-
 <div class="viewcode-block" id="Resolve.import_render_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.import_render_preset.html#pybmd.resolve.Resolve.import_render_preset">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.6.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">import_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a preset from presetPath (string) and set it as current preset for rendering.</span>
 
@@ -606,6 +720,7 @@
 
 <div class="viewcode-block" id="Resolve.export_render_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.export_render_preset.html#pybmd.resolve.Resolve.export_render_preset">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.6.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">export_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a preset to a given path (string) if presetName(string) exists.</span>
 
@@ -621,6 +736,7 @@
 
 <div class="viewcode-block" id="Resolve.import_burn_in_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.import_burn_in_preset.html#pybmd.resolve.Resolve.import_burn_in_preset">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.6.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">import_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Import a data burn in preset from a given presetPath (string)</span>
 
@@ -635,6 +751,7 @@
 
 <div class="viewcode-block" id="Resolve.export_burn_in_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.export_burn_in_preset.html#pybmd.resolve.Resolve.export_burn_in_preset">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;18.6.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">export_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">export_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Export a data burn in preset to a given path (string) if presetName (string) exists.</span>
 
@@ -652,6 +769,7 @@
     <span class="c1"># Add at DR 19.0.0</span>
 <div class="viewcode-block" id="Resolve.get_keyframe_mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_keyframe_mode.html#pybmd.resolve.Resolve.get_keyframe_mode">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_keyframe_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Refer to section &#39;Keyframe Mode information&#39; for details.</span>
 
@@ -663,6 +781,7 @@
 
 <div class="viewcode-block" id="Resolve.set_keyframe_mode">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.set_keyframe_mode.html#pybmd.resolve.Resolve.set_keyframe_mode">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_keyframe_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_frame_mode</span><span class="p">:</span> <span class="s2">&quot;KeyframeMode&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Refer to section &#39;Keyframe Mode information&#39; below for details.</span>
 
@@ -675,11 +794,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="o">.</span><span class="n">SetKeyframeMode</span><span class="p">(</span><span class="n">key_frame_mode</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
 
-    <span class="c1">##############################################################################################################################</span>
-    <span class="c1"># Add at DR 20.3.0</span>
-
 <div class="viewcode-block" id="Resolve.get_fairlight_presets">
 <a class="viewcode-back" href="../../_autosummary/pybmd.resolve.Resolve.get_fairlight_presets.html#pybmd.resolve.Resolve.get_fairlight_presets">[docs]</a>
+    <span class="nd">@minimum_resolve_version</span><span class="p">(</span><span class="s2">&quot;20.3.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_fairlight_presets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of Fairlight preset names.</span>
 
@@ -730,7 +847,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -739,7 +856,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

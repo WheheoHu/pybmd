@@ -1,0 +1,8 @@
+RenderSetting.model\_rebuild
+============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.model_rebuild
+
+    .. autosummary::

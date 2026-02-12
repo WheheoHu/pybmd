@@ -1,0 +1,8 @@
+RenderSetting.validate
+======================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.validate
+
+    .. autosummary::

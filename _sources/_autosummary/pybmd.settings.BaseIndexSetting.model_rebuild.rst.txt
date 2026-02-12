@@ -1,0 +1,8 @@
+BaseIndexSetting.model\_rebuild
+===============================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.model_rebuild
+
+    .. autosummary::

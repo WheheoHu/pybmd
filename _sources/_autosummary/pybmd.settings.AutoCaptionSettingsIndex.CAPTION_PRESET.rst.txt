@@ -1,0 +1,6 @@
+pybmd.settings.AutoCaptionSettingsIndex.CAPTION\_PRESET
+=======================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AutoCaptionSettingsIndex.CAPTION_PRESET

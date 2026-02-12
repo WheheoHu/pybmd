@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/error';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -328,15 +328,18 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.error</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+
 <div class="viewcode-block" id="ResolveInitError">
 <a class="viewcode-back" href="../../_autosummary/pybmd.error.ResolveInitError.html#pybmd.error.ResolveInitError">[docs]</a>
-<span></span><span class="k">class</span><span class="w"> </span><span class="nc">ResolveInitError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ResolveInitError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error for Resolve Init</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Init Resolve failed,please check if davinci resolve is running&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
-        
+
 <div class="viewcode-block" id="UnsupportSystemError">
 <a class="viewcode-back" href="../../_autosummary/pybmd.error.UnsupportSystemError.html#pybmd.error.UnsupportSystemError">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">UnsupportSystemError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
@@ -345,7 +348,7 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Unsupport system!&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
-        
+
 
 <div class="viewcode-block" id="WrapperInitError">
 <a class="viewcode-back" href="../../_autosummary/pybmd.error.WrapperInitError.html#pybmd.error.WrapperInitError">[docs]</a>
@@ -354,6 +357,50 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Init Wrapper failed,please check if the input argument is valid&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="APIVersionError">
+<a class="viewcode-back" href="../../_autosummary/pybmd.error.APIVersionError.html#pybmd.error.APIVersionError">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">APIVersionError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Error for API version incompatibility.</span>
+
+<span class="sd">    Raised when attempting to use an API that is not compatible with</span>
+<span class="sd">    the current DaVinci Resolve version.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        api_name: Name of the incompatible API</span>
+<span class="sd">        current_version: Current Resolve version string</span>
+<span class="sd">        constraint: Description of version constraint</span>
+<span class="sd">        moved_to: New location if API was moved (optional)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">api_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">current_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">constraint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">moved_to</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;API &#39;</span><span class="si">{</span><span class="n">api_name</span><span class="si">}</span><span class="s2">&#39; is not compatible with Resolve version </span><span class="si">{</span><span class="n">current_version</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">constraint</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">moved_to</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; Consider using &#39;</span><span class="si">{</span><span class="n">moved_to</span><span class="si">}</span><span class="s2">&#39; instead.&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api_name</span> <span class="o">=</span> <span class="n">api_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_version</span> <span class="o">=</span> <span class="n">current_version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constraint</span> <span class="o">=</span> <span class="n">constraint</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">moved_to</span> <span class="o">=</span> <span class="n">moved_to</span></div>
+
+
+
+<div class="viewcode-block" id="APIDeprecationWarning">
+<a class="viewcode-back" href="../../_autosummary/pybmd.error.APIDeprecationWarning.html#pybmd.error.APIDeprecationWarning">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">APIDeprecationWarning</span><span class="p">(</span><span class="ne">Warning</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Warning for deprecated APIs.</span>
+
+<span class="sd">    Emitted when using an API that has been deprecated but still functions.</span>
+<span class="sd">    The warning message typically suggests an alternative API to use.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
 
 </pre></div>
 
@@ -396,7 +443,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -405,7 +452,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

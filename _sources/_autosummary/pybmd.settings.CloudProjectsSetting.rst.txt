@@ -1,0 +1,70 @@
+CloudProjectsSetting
+====================
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: CloudProjectsSetting
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~CloudProjectsSetting.__init__
+      ~CloudProjectsSetting.construct
+      ~CloudProjectsSetting.copy
+      ~CloudProjectsSetting.dict
+      ~CloudProjectsSetting.from_orm
+      ~CloudProjectsSetting.json
+      ~CloudProjectsSetting.model_construct
+      ~CloudProjectsSetting.model_copy
+      ~CloudProjectsSetting.model_dump
+      ~CloudProjectsSetting.model_dump_json
+      ~CloudProjectsSetting.model_json_schema
+      ~CloudProjectsSetting.model_parametrized_name
+      ~CloudProjectsSetting.model_post_init
+      ~CloudProjectsSetting.model_rebuild
+      ~CloudProjectsSetting.model_validate
+      ~CloudProjectsSetting.model_validate_json
+      ~CloudProjectsSetting.model_validate_strings
+      ~CloudProjectsSetting.parse_file
+      ~CloudProjectsSetting.parse_obj
+      ~CloudProjectsSetting.parse_raw
+      ~CloudProjectsSetting.schema
+      ~CloudProjectsSetting.schema_json
+      ~CloudProjectsSetting.ser_model
+      ~CloudProjectsSetting.update_forward_refs
+      ~CloudProjectsSetting.validate
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~CloudProjectsSetting.model_computed_fields
+      ~CloudProjectsSetting.model_config
+      ~CloudProjectsSetting.model_extra
+      ~CloudProjectsSetting.model_fields
+      ~CloudProjectsSetting.model_fields_set
+      ~CloudProjectsSetting.project_name
+      ~CloudProjectsSetting.project_media_path
+      ~CloudProjectsSetting.is_collab
+      ~CloudProjectsSetting.sync_mode
+      ~CloudProjectsSetting.is_camera_access
+   
+   

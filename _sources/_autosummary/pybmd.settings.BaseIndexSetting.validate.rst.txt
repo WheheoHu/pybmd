@@ -1,0 +1,8 @@
+BaseIndexSetting.validate
+=========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.validate
+
+    .. autosummary::

@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectSettingIndex.SYNC\_MODE
+==================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectSettingIndex.SYNC_MODE

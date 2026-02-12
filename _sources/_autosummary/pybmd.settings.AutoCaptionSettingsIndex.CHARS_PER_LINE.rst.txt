@@ -1,0 +1,6 @@
+pybmd.settings.AutoCaptionSettingsIndex.CHARS\_PER\_LINE
+========================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: AutoCaptionSettingsIndex.CHARS_PER_LINE

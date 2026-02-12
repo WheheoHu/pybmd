@@ -22,6 +22,8 @@ error
    .. autosummary::
       :toctree: 
    
+      APIDeprecationWarning
+      APIVersionError
       ResolveInitError
       UnsupportSystemError
       WrapperInitError

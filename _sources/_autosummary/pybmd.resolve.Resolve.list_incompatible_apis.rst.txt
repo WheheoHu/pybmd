@@ -1,0 +1,8 @@
+Resolve.list\_incompatible\_apis
+================================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.list_incompatible_apis
+
+    .. autosummary::

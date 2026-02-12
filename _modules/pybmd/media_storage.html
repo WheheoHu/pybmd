@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_storage';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -328,24 +328,21 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.media_storage</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_pool_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaPoolItem</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">asdict</span>
-
 
 <div class="viewcode-block" id="Item_Info">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.Item_Info.html#pybmd.media_storage.Item_Info">[docs]</a>
-<span class="nd">@dataclass</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">Item_Info</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Item_Info</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Item Info&quot;&quot;&quot;</span>
-
     <span class="n">media</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">start_frame</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">end_frame</span><span class="p">:</span> <span class="nb">int</span></div>
+    <span class="n">start_frame</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Start frame of the media item&quot;</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">end_frame</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;End frame of the media item&quot;</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
 
 
 
@@ -358,13 +355,13 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.__init__.html#pybmd.media_storage.MediaStorage.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_storage</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MediaStorage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">media_storage</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_media_storage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_media_storage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object</span></div>
 
 
 <div class="viewcode-block" id="MediaStorage.add_clip_mattes_to_media_pool">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool.html#pybmd.media_storage.MediaStorage.add_clip_mattes_to_media_pool">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_clip_mattes_to_media_pool</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">stereo_eye</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">stereo_eye</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds specified media files as mattes for the specified MediaPoolItem</span>
 
@@ -398,19 +395,22 @@
         <span class="c1"># for media_pool_item in self.media_storage.AddItemListToMediaPool(item_path_list):</span>
         <span class="c1">#     media_pool_item_list.append(MediaPoolItem(media_pool_item))</span>
         <span class="c1"># return media_pool_item_list</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">[</span>
                 <span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_storage</span><span class="o">.</span><span class="n">AddItemListToMediaPool</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
             <span class="p">]</span>
-        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="n">Item_Info</span><span class="p">:</span>
-            <span class="n">temp_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">asdict</span><span class="p">(</span><span class="n">item_info</span><span class="p">)</span> <span class="k">for</span> <span class="n">item_info</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Item_Info</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">):</span>
+            <span class="n">item_info_list</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">Item_Info</span><span class="p">],</span> <span class="n">items</span><span class="p">)</span>
+            <span class="n">temp_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">item_info</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span> <span class="k">for</span> <span class="n">item_info</span> <span class="ow">in</span> <span class="n">item_info_list</span><span class="p">]</span>
             <span class="k">return</span> <span class="p">[</span>
                 <span class="n">MediaPoolItem</span><span class="p">(</span><span class="n">media_pool_item</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">media_pool_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_storage</span><span class="o">.</span><span class="n">AddItemListToMediaPool</span><span class="p">(</span>
                     <span class="n">temp_list</span>
                 <span class="p">)</span>
-            <span class="p">]</span></div>
+            <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid item type. Must be List[str] or List[Item_Info].&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MediaStorage.add_timeline_mattes_to_media_pool">
@@ -513,7 +513,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -522,7 +522,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

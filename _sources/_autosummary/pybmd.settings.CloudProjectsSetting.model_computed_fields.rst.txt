@@ -1,0 +1,6 @@
+pybmd.settings.CloudProjectsSetting.model\_computed\_fields
+===========================================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: CloudProjectsSetting.model_computed_fields

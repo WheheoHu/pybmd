@@ -1,0 +1,6 @@
+pybmd.decorators.version\_range
+===============================
+
+.. currentmodule:: pybmd.decorators
+
+.. autofunction:: version_range

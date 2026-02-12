@@ -1,0 +1,8 @@
+BaseIndexSetting.model\_parametrized\_name
+==========================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.model_parametrized_name
+
+    .. autosummary::

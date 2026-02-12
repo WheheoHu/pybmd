@@ -1,0 +1,8 @@
+BaseIndexSetting.update\_forward\_refs
+======================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.update_forward_refs
+
+    .. autosummary::

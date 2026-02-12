@@ -1,0 +1,8 @@
+RenderSetting.schema
+====================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.schema
+
+    .. autosummary::

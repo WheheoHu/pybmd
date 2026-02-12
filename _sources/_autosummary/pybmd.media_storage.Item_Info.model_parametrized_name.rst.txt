@@ -1,0 +1,8 @@
+Item\_Info.model\_parametrized\_name
+====================================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.model_parametrized_name
+
+    .. autosummary::

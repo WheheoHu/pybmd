@@ -1,0 +1,6 @@
+pybmd.settings.PresetType.SUBTITLE\_DEFAULT
+===========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: PresetType.SUBTITLE_DEFAULT

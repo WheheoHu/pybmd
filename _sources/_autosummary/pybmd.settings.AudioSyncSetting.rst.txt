@@ -1,0 +1,65 @@
+AudioSyncSetting
+================
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: AudioSyncSetting
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~AudioSyncSetting.__init__
+      ~AudioSyncSetting.construct
+      ~AudioSyncSetting.copy
+      ~AudioSyncSetting.dict
+      ~AudioSyncSetting.from_orm
+      ~AudioSyncSetting.json
+      ~AudioSyncSetting.model_construct
+      ~AudioSyncSetting.model_copy
+      ~AudioSyncSetting.model_dump
+      ~AudioSyncSetting.model_dump_json
+      ~AudioSyncSetting.model_json_schema
+      ~AudioSyncSetting.model_parametrized_name
+      ~AudioSyncSetting.model_post_init
+      ~AudioSyncSetting.model_rebuild
+      ~AudioSyncSetting.model_validate
+      ~AudioSyncSetting.model_validate_json
+      ~AudioSyncSetting.model_validate_strings
+      ~AudioSyncSetting.parse_file
+      ~AudioSyncSetting.parse_obj
+      ~AudioSyncSetting.parse_raw
+      ~AudioSyncSetting.schema
+      ~AudioSyncSetting.schema_json
+      ~AudioSyncSetting.ser_model
+      ~AudioSyncSetting.update_forward_refs
+      ~AudioSyncSetting.validate
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~AudioSyncSetting.model_computed_fields
+      ~AudioSyncSetting.model_config
+      ~AudioSyncSetting.model_extra
+      ~AudioSyncSetting.model_fields
+      ~AudioSyncSetting.model_fields_set
+   
+   

@@ -1,0 +1,6 @@
+pybmd.settings.RenderSetting.SubtitleFormat
+===========================================
+
+.. currentmodule:: pybmd.settings
+
+.. autoattribute:: RenderSetting.SubtitleFormat

@@ -1,0 +1,30 @@
+KeyframeMode
+============
+
+.. currentmodule:: pybmd.settings
+
+.. autoclass:: KeyframeMode
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~KeyframeMode.KEYFRAME_MODE_ALL
+      ~KeyframeMode.KEYFRAME_MODE_COLOR
+      ~KeyframeMode.KEYFRAME_MODE_SIZING
+   
+   

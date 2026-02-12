@@ -1,0 +1,8 @@
+VersionConstraint.get\_status
+=============================
+
+.. currentmodule:: pybmd.version_info
+
+.. automethod:: VersionConstraint.get_status
+
+    .. autosummary::

@@ -1,0 +1,41 @@
+Version
+=======
+
+.. currentmodule:: pybmd.version_info
+
+.. autoclass:: Version
+   :members:            
+   :show-inheritance:   
+   :inherited-members: 
+   :noindex: 
+   
+   
+   
+
+
+   
+   .. rubric:: Methods
+   
+   .. autosummary::
+      :template: method.rst
+      :toctree:
+      
+   
+      ~Version.__init__
+      ~Version.from_list
+      ~Version.from_string
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree:
+   
+      ~Version.patch
+      ~Version.major
+      ~Version.minor
+   
+   

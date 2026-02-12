@@ -1,0 +1,8 @@
+AutoCaptionSettings.schema
+==========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: AutoCaptionSettings.schema
+
+    .. autosummary::

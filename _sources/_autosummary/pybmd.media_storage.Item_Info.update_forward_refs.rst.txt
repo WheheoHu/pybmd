@@ -1,0 +1,8 @@
+Item\_Info.update\_forward\_refs
+================================
+
+.. currentmodule:: pybmd.media_storage
+
+.. automethod:: Item_Info.update_forward_refs
+
+    .. autosummary::

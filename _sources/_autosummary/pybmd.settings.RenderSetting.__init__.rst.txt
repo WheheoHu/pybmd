@@ -1,0 +1,8 @@
+RenderSetting.\_\_init\_\_
+==========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: RenderSetting.__init__
+
+    .. autosummary::

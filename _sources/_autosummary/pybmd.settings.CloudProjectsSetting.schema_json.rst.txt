@@ -1,0 +1,8 @@
+CloudProjectsSetting.schema\_json
+=================================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.schema_json
+
+    .. autosummary::

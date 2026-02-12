@@ -1,0 +1,8 @@
+BaseIndexSetting.schema
+=======================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: BaseIndexSetting.schema
+
+    .. autosummary::

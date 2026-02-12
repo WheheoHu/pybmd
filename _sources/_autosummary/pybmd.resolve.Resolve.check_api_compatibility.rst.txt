@@ -1,0 +1,8 @@
+Resolve.check\_api\_compatibility
+=================================
+
+.. currentmodule:: pybmd.resolve
+
+.. automethod:: Resolve.check_api_compatibility
+
+    .. autosummary::

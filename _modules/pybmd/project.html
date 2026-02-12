@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/project';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -328,10 +328,10 @@
                 <article class="bd-article">
                   
   <h1>Source code for pybmd.project</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">asdict</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.color_group</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColorGroup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">requires_resolve_version</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.gallery</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gallery</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_pool</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaPool</span>
 
@@ -352,7 +352,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.__init__.html#pybmd.project.Project.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Project</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_project</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -606,7 +606,7 @@
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">render_setting</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetRenderSettings</span><span class="p">(</span><span class="n">render_setting</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetRenderSettings</span><span class="p">(</span><span class="n">asdict</span><span class="p">(</span><span class="n">render_setting</span><span class="p">))</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">SetRenderSettings</span><span class="p">(</span><span class="n">render_setting</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="Project.set_setting">
@@ -645,8 +645,19 @@
 
 <div class="viewcode-block" id="Project.get_unique_id">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_unique_id.html#pybmd.project.Project.get_unique_id">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_unique_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns unique id of the project Object.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns unique id of the project Object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Unique project ID</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 18.0.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 18.0.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetUniqueId</span><span class="p">()</span></div>
 
 
@@ -655,6 +666,7 @@
 
 <div class="viewcode-block" id="Project.insert_audio_to_current_track_at_playhead">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.insert_audio_to_current_track_at_playhead.html#pybmd.project.Project.insert_audio_to_current_track_at_playhead">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.1.3&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">insert_audio_to_current_track_at_playhead</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">media_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_offset_in_samples</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">duration_in_samples</span><span class="p">:</span> <span class="nb">int</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -667,6 +679,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful, otherwise False.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 18.1.3</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 18.1.3</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">InsertAudioToCurrentTrackAtPlayhead</span><span class="p">(</span>
             <span class="n">media_path</span><span class="p">,</span> <span class="n">start_offset_in_samples</span><span class="p">,</span> <span class="n">duration_in_samples</span>
@@ -678,6 +696,7 @@
 
 <div class="viewcode-block" id="Project.load_burn_in_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.load_burn_in_preset.html#pybmd.project.Project.load_burn_in_preset">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">load_burn_in_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads user defined data burn in preset for project when supplied presetName (string).</span>
 
@@ -686,6 +705,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns true if successful.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 18.5.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 18.5.0 Beta</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">LoadBurnInPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
@@ -695,6 +720,7 @@
 
 <div class="viewcode-block" id="Project.export_current_frame_as_still">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.export_current_frame_as_still.html#pybmd.project.Project.export_current_frame_as_still">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">export_current_frame_as_still</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Exports current frame as still to supplied filePath.</span>
 
@@ -703,6 +729,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful, False otherwise.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 18.5.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 18.5.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">ExportCurrentFrameAsStill</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
 
@@ -711,11 +743,18 @@
     <span class="c1"># Add at DR 19.0.0</span>
 <div class="viewcode-block" id="Project.get_color_groups_list">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_color_groups_list.html#pybmd.project.Project.get_color_groups_list">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_color_groups_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ColorGroup</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of all group objects in the timeline.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List[ColorGroup]: a list of all group objects</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.0.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.0.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">color_group_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">color_group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">GetColorGroupsList</span><span class="p">():</span>
@@ -725,6 +764,7 @@
 
 <div class="viewcode-block" id="Project.add_color_group">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.add_color_group.html#pybmd.project.Project.add_color_group">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_color_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ColorGroup</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new ColorGroup.</span>
 
@@ -756,6 +796,7 @@
 
 <div class="viewcode-block" id="Project.delete_render_preset">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.delete_render_preset.html#pybmd.project.Project.delete_render_preset">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">delete_render_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete render preset by provided name</span>
 
@@ -764,12 +805,19 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful, otherwise False.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.1.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.1.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">DeleteRenderPreset</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Project.get_quick_export_render_presets">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.get_quick_export_render_presets.html#pybmd.project.Project.get_quick_export_render_presets">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_quick_export_render_presets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a list of names of all Quick Export render presets.</span>
@@ -779,6 +827,7 @@
 
 <div class="viewcode-block" id="Project.render_with_quick_export">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.render_with_quick_export.html#pybmd.project.Project.render_with_quick_export">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">render_with_quick_export</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
@@ -800,6 +849,7 @@
 
 <div class="viewcode-block" id="Project.apply_fairlight_preset_to_current_timeline">
 <a class="viewcode-back" href="../../_autosummary/pybmd.project.Project.apply_fairlight_preset_to_current_timeline.html#pybmd.project.Project.apply_fairlight_preset_to_current_timeline">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;20.3.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">apply_fairlight_preset_to_current_timeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies a Fairlight preset to the current timeline.</span>
 
@@ -808,6 +858,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if successful, False otherwise.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 20.3.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 20.3.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_project</span><span class="o">.</span><span class="n">ApplyFairlightPresetToCurrentTimeline</span><span class="p">(</span><span class="n">preset_name</span><span class="p">)</span></div>
 </div>
@@ -853,7 +909,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -862,7 +918,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

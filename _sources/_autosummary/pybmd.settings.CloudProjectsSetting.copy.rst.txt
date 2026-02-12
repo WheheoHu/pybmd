@@ -1,0 +1,8 @@
+CloudProjectsSetting.copy
+=========================
+
+.. currentmodule:: pybmd.settings
+
+.. automethod:: CloudProjectsSetting.copy
+
+    .. autosummary::

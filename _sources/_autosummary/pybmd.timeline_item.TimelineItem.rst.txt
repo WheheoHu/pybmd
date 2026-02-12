@@ -27,6 +27,7 @@ TimelineItem
       ~TimelineItem.add_marker
       ~TimelineItem.add_take
       ~TimelineItem.add_version
+      ~TimelineItem.apply_arri_cdl_lut
       ~TimelineItem.assign_to_color_group
       ~TimelineItem.clear_clip_color
       ~TimelineItem.clear_flags
@@ -56,12 +57,15 @@ TimelineItem
       ~TimelineItem.get_fusion_output_cache_enabled
       ~TimelineItem.get_left_offset
       ~TimelineItem.get_linked_items
+      ~TimelineItem.get_lut
       ~TimelineItem.get_marker_by_custom_data
       ~TimelineItem.get_marker_custom_data
       ~TimelineItem.get_markers
       ~TimelineItem.get_media_pool_item
       ~TimelineItem.get_name
       ~TimelineItem.get_node_graph
+      ~TimelineItem.get_node_label
+      ~TimelineItem.get_num_node
       ~TimelineItem.get_property
       ~TimelineItem.get_right_offset
       ~TimelineItem.get_selected_take_index
@@ -95,6 +99,7 @@ TimelineItem
       ~TimelineItem.set_clip_enabled
       ~TimelineItem.set_color_output_cache
       ~TimelineItem.set_fusion_output_cache
+      ~TimelineItem.set_lut
       ~TimelineItem.set_name
       ~TimelineItem.set_property
       ~TimelineItem.set_voice_isolation_state

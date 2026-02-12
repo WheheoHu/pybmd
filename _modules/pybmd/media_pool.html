@@ -37,9 +37,9 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6cbb5e0f"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/documentation_options.js?v=b916904f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybmd/media_pool';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -333,6 +333,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">multimethod</span><span class="w"> </span><span class="kn">import</span> <span class="n">multimethod</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd._wrapper_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">WrapperBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">requires_resolve_version</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.folder</span><span class="w"> </span><span class="kn">import</span> <span class="n">Folder</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pybmd.media_pool_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">MediaPoolItem</span>
 
@@ -405,7 +406,7 @@
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.__init__.html#pybmd.media_pool.MediaPool.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MediaPool</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">media_pool</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_object</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_object</span></div>
 
 
 <div class="viewcode-block" id="MediaPool.add_sub_folder">
@@ -458,8 +459,6 @@
         <span class="k">return</span> <span class="n">Timeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">CreateEmptyTimeline</span><span class="p">(</span><span class="n">name</span><span class="p">))</span></div>
 
 
-    <span class="c1"># @dispatch(str, Iterable)</span>
-    <span class="c1"># type: ignore</span>
 <div class="viewcode-block" id="MediaPool.create_timeline_from_clips">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.create_timeline_from_clips.html#pybmd.media_pool.MediaPool.create_timeline_from_clips">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_timeline_from_clips</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">clips</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timeline</span><span class="p">:</span>
@@ -483,7 +482,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">CreateTimelineFromClips</span><span class="p">(</span>
                     <span class="n">name</span><span class="p">,</span> <span class="p">[</span><span class="n">asdict</span><span class="p">(</span><span class="n">ClipInfo</span><span class="p">)</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="n">clips</span><span class="p">]</span>
                 <span class="p">)</span>
-            <span class="p">)</span></div>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;clips must contain MediaPoolItem or ClipInfo objects&quot;</span><span class="p">)</span></div>
 
 
     <span class="c1"># @dispatch(str, List[ClipInfo])</span>
@@ -540,7 +541,7 @@
 <div class="viewcode-block" id="MediaPool.export_metadata">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.export_metadata.html#pybmd.media_pool.MediaPool.export_metadata">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">export_metadata</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">clips</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">clips</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;export metadata to csv file</span>
 
@@ -608,8 +609,6 @@
         <span class="k">return</span> <span class="n">media_pool_item_list</span></div>
 
 
-    <span class="c1"># @dispatch(List[str])</span>
-    <span class="c1"># type: ignore</span>
 <div class="viewcode-block" id="MediaPool.import_media">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.import_media.html#pybmd.media_pool.MediaPool.import_media">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">import_media</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
@@ -733,8 +732,19 @@
     <span class="c1"># Add at DR18.0.0</span>
 <div class="viewcode-block" id="MediaPool.refresh_folders">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.refresh_folders.html#pybmd.media_pool.MediaPool.refresh_folders">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.0.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">refresh_folders</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the folders in collaboration mode&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the folders in collaboration mode</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if successful</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 18.0.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 18.0.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">RefreshFolders</span><span class="p">()</span></div>
 
 
@@ -750,6 +760,7 @@
 
 <div class="viewcode-block" id="MediaPool.import_folder_from_file">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.import_folder_from_file.html#pybmd.media_pool.MediaPool.import_folder_from_file">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.5.0&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">import_folder_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">source_clips_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns true if import from given DRB filePath is successful, false otherwise</span>
 
@@ -759,6 +770,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns true if import from given DRB filePath is successful, false otherwise</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 18.5.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 18.5.0 Beta</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">ImportFolderFromFile</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">source_clips_path</span><span class="p">)</span></div>
 
@@ -767,6 +784,7 @@
     <span class="c1"># Add at DR18.6.4</span>
 <div class="viewcode-block" id="MediaPool.create_stereo_clip">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.create_stereo_clip.html#pybmd.media_pool.MediaPool.create_stereo_clip">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;18.6.4&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_stereo_clip</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">left_media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">,</span> <span class="n">right_media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MediaPoolItem</span><span class="p">:</span>
@@ -778,6 +796,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            MediaPoolItem: 3D stereoscopic media pool entry</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 18.6.4</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 18.6.4</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">MediaPoolItem</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">CreateStereoClip</span><span class="p">(</span>
@@ -791,11 +815,18 @@
     <span class="c1"># Add at DR19.0.2</span>
 <div class="viewcode-block" id="MediaPool.get_selected_clips">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.get_selected_clips.html#pybmd.media_pool.MediaPool.get_selected_clips">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_selected_clips</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MediaPoolItem</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the current selected MediaPoolItems</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List[MediaPoolItem]: current selected MediaPoolItems</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.0.2</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.0.2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">media_pool_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">mp_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">GetSelectedClips</span><span class="p">():</span>
@@ -805,6 +836,7 @@
 
 <div class="viewcode-block" id="MediaPool.set_selected_clip">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.set_selected_clip.html#pybmd.media_pool.MediaPool.set_selected_clip">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span><span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.0.2&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_selected_clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">media_pool_item</span><span class="p">:</span> <span class="n">MediaPoolItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the selected MediaPoolItem to the given MediaPoolItem</span>
 
@@ -822,6 +854,9 @@
 
 <div class="viewcode-block" id="MediaPool.auto_sync_audio">
 <a class="viewcode-back" href="../../_autosummary/pybmd.media_pool.MediaPool.auto_sync_audio.html#pybmd.media_pool.MediaPool.auto_sync_audio">[docs]</a>
+    <span class="nd">@requires_resolve_version</span><span class="p">(</span>
+        <span class="n">added_in</span><span class="o">=</span><span class="s2">&quot;19.1.0&quot;</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="s2">&quot;Currently non-functional due to API issues&quot;</span>
+    <span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">auto_sync_audio</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">media_pool_items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;MediaPoolItem&quot;</span><span class="p">],</span>
@@ -836,6 +871,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Returns True if successful. Refer to &#39;AudioSyncSetting&#39; section for details.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            APIVersionError: If Resolve version &lt; 19.1.0</span>
+
+<span class="sd">        Version:</span>
+<span class="sd">            Added in DaVinci Resolve 19.1.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_media_pool</span><span class="o">.</span><span class="n">AutoSyncAudio</span><span class="p">(</span><span class="n">media_pool_items</span><span class="p">,</span> <span class="n">audio_sync_settings</span><span class="p">)</span></div>
 </div>
@@ -881,7 +922,7 @@
 
   <p class="copyright">
     
-      © Copyright 2023, Wheheo Hu.
+      © Copyright 2026, Wheheo Hu.
       <br/>
     
   </p>
@@ -890,7 +931,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

@@ -1,0 +1,6 @@
+pybmd.version\_info.APIStatus.MOVED
+===================================
+
+.. currentmodule:: pybmd.version_info
+
+.. autoattribute:: APIStatus.MOVED
