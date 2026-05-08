@@ -23,12 +23,12 @@ Samples
     How to use StillManager to grab a still from timeline markers
     """
     from pybmd import Resolve
+    from pybmd.toolkits import StillManager
     LOCAL_RESOLVE = Resolve()
     
     EXPORT_PATH = "./Stills"
-
-    current_project=LOCAL_RESOLVE.project_manager().get_current_project()
-    still_manager = pybmd.toolkits.StillManager(current_project)
+    current_project=LOCAL_RESOLVE.get_project_manager().get_current_project()
+    still_manager = StillManager(current_project)
     
     still_manager.grab_still_from_timeline_markers()
     still_manager.export_stills(EXPORT_PATH)
