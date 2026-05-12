@@ -1,5 +1,19 @@
 # Change Log for PyBMD
 ----
+# 2026.1.1
+## API
+### Timeline
+- `add_marker()` - Change `frame_id` parameter type from `str` to `int`
+- `add_marker()` - Change `duration` parameter type from `str` to `int` (counted by frames)
+
+### TimelineItem
+- `add_marker()` - Change `frame_id` parameter type from `str` to `int`
+- `add_marker()` - Change `duration` parameter type from `str` to `int` (counted by frames)
+
+## Docs
+- Update samples for `StillManager`
+
+----
 # 2026.1.0
 ## Infrastructure
 ### Windows Support Fix
