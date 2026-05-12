@@ -70,21 +70,21 @@ class TimelineItem(WrapperBase):
 
     def add_marker(
         self,
-        frame_id: str,
+        frame_id: int,
         color: str,
         name: str,
         note: str,
-        duration: str,
+        duration: int,
         custom_data: str,
     ) -> bool:
         """Creates a new marker at given frameId position and with given marker information.
 
         Args:
-            frame_id (str): frame position of the marker
+            frame_id (int): frame position of the marker
             color (str): color of the marker
             name (str): name of the marker
             note (str): note of the marker
-            duration (str): duration of the marker
+            duration (int): duration of the marker,count by frames.
             custom_data (str): custom data of the marker helps to attach user specific data to the marker.
 
         Returns:

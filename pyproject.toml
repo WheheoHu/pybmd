@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pybmd"
-version = "2026.1.1"
+version = "2026.1.2"
 description = "python library for Davinci Resolve(Repack)"
 readme = "README.md"
 license = {text = "LGPL-3.0-or-later"}
@@ -49,5 +49,6 @@ packages = ["pybmd"]
 [dependency-groups]
 dev = [
     "ipykernel>=6.30.1",
+    "ruff>=0.15.12",
     "ty>=0.0.14",
 ]
