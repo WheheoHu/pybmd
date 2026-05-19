@@ -1,4 +1,11 @@
 # Change Log for PyBMD
+
+# 2026.1.2
+### Project
+- `set_render_settings()` - Now supports partial updates. Only fields explicitly provided on the `RenderSetting` object are sent to DaVinci Resolve (via `model_dump(exclude_unset=True)`); any unset field keeps its current value in DR
+- `RenderSetting` - **Breaking**: all fields are now optional with no preset defaults (`X | None = None`). Previously every field was required. Construct with only the fields you want to change, e.g. `RenderSetting(FrameRate=24.0)`
+  
+
 ----
 # 2026.1.1
 ## API

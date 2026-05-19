@@ -170,19 +170,23 @@ class Project(WrapperBase):
         """Sets preset by given preset_name (string) into project."""
         return self._project.SetPreset(preset_name)
 
-    def set_render_settings(self, render_setting: "RenderSetting") -> bool:
+    def set_render_settings(self, render_setting: "RenderSetting | dict") -> bool:
         """Sets given settings for rendering.
 
+        Only fields explicitly provided by the user are sent to DaVinci Resolve;
+        any unset field keeps its current value in DR (partial update).
+
         Args:
-            render_setting (RenderSetting): RenderSetting object
+            render_setting: A RenderSetting object or a dict of setting overrides.
 
         Returns:
             bool: True if successful.
         """
-        if type(render_setting) is dict:
+        if isinstance(render_setting, dict):
             return self._project.SetRenderSettings(render_setting)
-        else:
-            return self._project.SetRenderSettings(render_setting.model_dump())
+        return self._project.SetRenderSettings(
+            render_setting.model_dump(exclude_unset=True)
+        )
 
     def set_setting(self, setting_name: str, setting_value: str):
         """Sets value of project setting (indicated by setting_name, string).

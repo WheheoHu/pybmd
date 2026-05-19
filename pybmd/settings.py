@@ -9,95 +9,99 @@ from pydantic import (
     SerializerFunctionWrapHandler,
 )
 from pybmd._init_bmd import _resolve_object as _resolve
+
 if not _resolve:
     raise ImportError("DaVinci Resolve object is not initialized.")
 
+
 class RenderSetting(BaseModel):
-    """RenderSetting Object to store render setting."""
+    """RenderSetting Object to store render setting.
 
-    TargetDir: str = Field(..., description="Target directory for rendered output")
-    CustomName: str = Field(..., description="Custom name for the rendered file")
+    All fields are optional. Only fields explicitly set by the user are forwarded
+    to DaVinci Resolve (see ``Project.set_render_settings``); unset fields keep
+    their current value in DR. No preset defaults are baked into the model.
+    """
 
-    SelectAllFrames: bool = Field(
-        default=True, description="Whether to render all frames or use MarkIn/MarkOut"
+    TargetDir: str | None = Field(
+        default=None, description="Target directory for rendered output"
     )
-    MarkIn: int = Field(default=0, ge=0, description="Start frame for rendering")
-    MarkOut: int = Field(default=0, ge=0, description="End frame for rendering")
+    CustomName: str | None = Field(
+        default=None, description="Custom name for the rendered file"
+    )
 
-    UniqueFilenameStyle: Literal[0, 1] = Field(
-        default=0, description="Filename uniqueness style: 0 for prefix, 1 for suffix"
+    SelectAllFrames: bool | None = Field(
+        default=None, description="Whether to render all frames or use MarkIn/MarkOut"
     )
-    ExportVideo: bool = Field(default=True, description="Whether to export video")
-    ExportAudio: bool = Field(default=True, description="Whether to export audio")
-    FormatWidth: int = Field(
-        default=1920, gt=0, description="Output video width in pixels"
-    )
-    FormatHeight: int = Field(
-        default=1080, gt=0, description="Output video height in pixels"
-    )
-    FrameRate: float = Field(default=29.97, gt=0, description="Output video frame rate")
+    MarkIn: int | None = Field(default=None, ge=0, description="Start frame for rendering")
+    MarkOut: int | None = Field(default=None, ge=0, description="End frame for rendering")
 
-    PixelAspectRatio: str = Field(
-        default="square",
+    UniqueFilenameStyle: Literal[0, 1] | None = Field(
+        default=None, description="Filename uniqueness style: 0 for prefix, 1 for suffix"
+    )
+    ExportVideo: bool | None = Field(default=None, description="Whether to export video")
+    ExportAudio: bool | None = Field(default=None, description="Whether to export audio")
+    FormatWidth: int | None = Field(default=None, gt=0, description="Output video width in pixels")
+    FormatHeight: int | None = Field(default=None, gt=0, description="Output video height in pixels")
+    FrameRate: float | None = Field(default=None, gt=0, description="Output video frame rate")
+
+    PixelAspectRatio: str | None = Field(
+        default=None,
         description='Pixel aspect ratio (SD: "16_9" or "4_3", other: "square" or "cinemascope")',
     )
 
-    VideoQuality: int | Literal["Least", "Low", "Medium", "High", "Best"] = Field(
-        default=0,
+    VideoQuality: int | Literal["Least", "Low", "Medium", "High", "Best"] | None = Field(
+        default=None,
         description="Video quality: 0 for automatic, 1+ for bit rate, or quality level string",
     )
 
-    AudioCodec: str = Field(default="aac", description="Audio codec to use")
-    AudioBitDepth: int = Field(default=24, gt=0, description="Audio bit depth in bits")
-    AudioSampleRate: int = Field(
-        default=48000, gt=0, description="Audio sample rate in Hz"
-    )
+    AudioCodec: str | None = Field(default=None, description="Audio codec to use")
+    AudioBitDepth: int | None = Field(default=None, gt=0, description="Audio bit depth in bits")
+    AudioSampleRate: int | None = Field(default=None, gt=0, description="Audio sample rate in Hz")
 
-    ColorSpaceTag: str = Field(
-        default="Same as Project",
+    ColorSpaceTag: str | None = Field(
+        default=None,
         description="Color space tag (e.g., 'Same as Project', 'AstroDesign')",
     )
 
-    GammaTag: str = Field(
-        default="Same as Project",
+    GammaTag: str | None = Field(
+        default=None,
         description="Gamma tag (e.g., 'Same as Project', 'ACEScct')",
     )
-    ExportAlpha: bool = Field(
-        default=False, description="Whether to export alpha channel"
-    )
+    ExportAlpha: bool | None = Field(default=None, description="Whether to export alpha channel")
 
-    EncodingProfile: str = Field(
-        default="Main10",
+    EncodingProfile: str | None = Field(
+        default=None,
         description="Encoding profile (e.g., 'Main10'). Only for H.264 and H.265",
     )
 
-    MultiPassEncode: bool = Field(
-        default=True, description="Whether to use multi-pass encoding. Only for H.264"
+    MultiPassEncode: bool | None = Field(
+        default=None, description="Whether to use multi-pass encoding. Only for H.264"
     )
 
-    AlphaMode: Literal[0, 1] = Field(
-        default=0,
+    AlphaMode: Literal[0, 1] | None = Field(
+        default=None,
         description="Alpha mode: 0 for Premultiplied, 1 for Straight. Only if ExportAlpha is True",
     )
 
-    NetworkOptimization: bool = Field(
-        default=True,
+    NetworkOptimization: bool | None = Field(
+        default=None,
         description="Network optimization. Only supported by QuickTime and MP4 formats",
     )
 
-    ExportSubtitle: bool = Field(
-        default=False,
-        description="Whether to export subtitles (DaVinci Resolve 20.2.0+)",
+    ExportSubtitle: bool | None = Field(
+        default=None, description="Whether to export subtitles (DaVinci Resolve 20.2.0+)"
     )
 
-    SubtitleFormat: Literal["BurnIn", "EmbeddedCaptions", "SeparateFile"] = Field(
-        default="BurnIn", description="Subtitle format type"
+    SubtitleFormat: Literal["BurnIn", "EmbeddedCaptions", "SeparateFile"] | None = Field(
+        default=None, description="Subtitle format type"
     )
 
     @field_validator("VideoQuality")
     @classmethod
     def validate_video_quality(cls, v: Any) -> Any:
         """Validate VideoQuality value."""
+        if v is None:
+            return v
         if isinstance(v, int) and v < 0:
             raise ValueError("VideoQuality integer value must be >= 0")
         if isinstance(v, str) and v not in ["Least", "Low", "Medium", "High", "Best"]:
@@ -108,9 +112,12 @@ class RenderSetting(BaseModel):
 
     @field_validator("MarkOut")
     @classmethod
-    def validate_mark_out(cls, v: int, info) -> int:
-        """Validate that MarkOut is >= MarkIn when provided."""
-        if info.data.get("MarkIn") is not None and v > 0 and v < info.data["MarkIn"]:
+    def validate_mark_out(cls, v: int | None, info) -> int | None:
+        """Validate that MarkOut is >= MarkIn when both provided."""
+        if v is None:
+            return v
+        mark_in = info.data.get("MarkIn")
+        if mark_in is not None and v > 0 and v < mark_in:
             raise ValueError("MarkOut must be >= MarkIn")
         return v
 
