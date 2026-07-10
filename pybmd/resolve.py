@@ -395,3 +395,15 @@ class Resolve:
             list: List of Fairlight preset names available in the system.
         """
         return self._resolve.GetFairlightPresets()
+
+    @minimum_resolve_version("21.0.2")
+    def disable_background_tasks_for_current_resolve_session(self) -> None:
+        """Disables all background tasks for the current Resolve session.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.2
+
+        Version:
+            Added in DaVinci Resolve 21.0.2
+        """
+        return self._resolve.DisableBackgroundTasksForCurrentResolveSession()

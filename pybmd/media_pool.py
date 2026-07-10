@@ -147,7 +147,9 @@ class MediaPool(WrapperBase):
         Returns:
             bool: true if successful, false if not
         """
-        return self._media_pool.DeleteClipMattes(media_pool_item, paths)
+        return self._media_pool.DeleteClipMattes(
+            media_pool_item._media_pool_item, paths
+        )
 
     def delete_clips(self, clips: List[MediaPoolItem]) -> bool:
         """Delete clips from media pool"""
@@ -189,10 +191,12 @@ class MediaPool(WrapperBase):
             file_name, [clip._media_pool_item for clip in clips]
         )
 
-    def get_clip_matte_list(self, media_pool_item) -> List[Path]:
+    def get_clip_matte_list(self, media_pool_item: MediaPoolItem) -> List[Path]:
         """get list of clip mattes for specified media pool item"""
         path_list = []
-        for str_path in self._media_pool.GetClipMatteList(media_pool_item):
+        for str_path in self._media_pool.GetClipMatteList(
+            media_pool_item._media_pool_item
+        ):
             path_list.append(Path(str_path))
         return path_list
 

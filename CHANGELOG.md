@@ -1,5 +1,50 @@
 # Change Log for PyBMD
 
+# 2026.2.0
+## API
+### Changes for DaVinci Resolve 21.0.2
+
+### Resolve
+- Add `disable_background_tasks_for_current_resolve_session()` - Disables all background tasks for the current Resolve session
+
+### Project
+- Add `reset_intellisearch_analysis()` - Clears Intellisearch analysis data (Studio/AI)
+- Add `generate_speech()` - Generates an audio `MediaPoolItem` from `SpeechGenerationSettings` and (optionally) adds it to the timeline at a given timecode (Studio/AI)
+
+### MediaPoolItem
+- Add `perform_audio_classification()` - Classifies the clip's audio into categories/subcategories (Studio/AI)
+- Add `clear_audio_classification()` - Clears the clip's audio classification (Studio/AI)
+- Add `remove_motion_blur()` - Applies motion deblur, returns the new `MediaPoolItem` (Studio/AI)
+- Add `analyze_for_intellisearch()` - Runs Intellisearch analysis (Studio/AI)
+- Add `analyze_for_slate()` - Runs Slate analysis using a `MarkerColor` (Studio/AI)
+- Update `transcribe_audio()` - Add optional `use_speaker_detection` parameter
+
+### Folder
+- Add `perform_audio_classification()`, `clear_audio_classification()`, `analyze_for_intellisearch()`, `analyze_for_slate()` (Studio/AI)
+- Add `remove_motion_blur()` - Returns a list of `[original, new]` `MediaPoolItem` pairs (Studio/AI)
+- Update `transcribe_audio()` - Add optional `use_speaker_detection` parameter
+
+### settings module
+- Add `SpeechGenerationSettings` (Pydantic model) for `Project.generate_speech`
+- Add `MotionDeblurSettings` (Pydantic model) for `remove_motion_blur`
+- Add `MarkerColor` enum for `analyze_for_slate`
+
+## Fixes
+### MediaPoolItem
+- Fix `delete_marker_by_color()` to call `DeleteMarkersByColor` (correct MediaPoolItem API name)
+- Fix `update_marker_custom_data()` to call `UpdateMarkerCustomData` (was the typo `UpdataMarkerCustomData`); `updata_marker_custom_data()` kept as a deprecated alias
+- Fix `get_clip_property()` / `get_metadata()` return type to `str | dict` and make the key optional (returns a dict of all properties when no key is given)
+
+### TimelineItem
+- Add `str | dict` return annotation to `get_property()`
+
+### Gallery / GalleryStillAlbum
+- Fix `Gallery.get_album_name()` and `GalleryStillAlbum.set_label()` to unwrap the underlying Resolve object before passing it to the API
+
+### MediaPool / MediaStorage
+- Fix `MediaPool.delete_clip_mattes()`, `MediaPool.get_clip_matte_list()` and `MediaStorage.add_clip_mattes_to_media_pool()` to unwrap the `MediaPoolItem` before passing it to the API
+
+----
 # 2026.1.2
 ### Project
 - `set_render_settings()` - Now supports partial updates. Only fields explicitly provided on the `RenderSetting` object are sent to DaVinci Resolve (via `model_dump(exclude_unset=True)`); any unset field keeps its current value in DR

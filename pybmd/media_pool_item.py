@@ -1,8 +1,12 @@
-from typing import Any, Dict
+from enum import Enum
+from typing import TYPE_CHECKING, Any, Dict
 from multimethod import multimethod
 
 from pybmd._wrapper_base import WrapperBase
 from pybmd.decorators import requires_resolve_version, minimum_resolve_version
+
+if TYPE_CHECKING:
+    from pybmd.settings import MotionDeblurSettings, MarkerColor
 
 
 class MediaPoolItem(WrapperBase):
@@ -88,12 +92,12 @@ class MediaPoolItem(WrapperBase):
         """delete all markers with the given color.
 
         Args:
-            color (str): color of the marker to delete
+            color (str): color of the marker to delete. An "All" argument deletes all color markers.
 
         Returns:
             bool: true if success, false if fail
         """
-        return self._media_pool_item.DeleteMarkerByColor(color)
+        return self._media_pool_item.DeleteMarkersByColor(color)
 
     def get_clip_color(self) -> str:
         """get clip color.
@@ -104,14 +108,14 @@ class MediaPoolItem(WrapperBase):
         return self._media_pool_item.GetClipColor()
 
     # TODO property_name as data class
-    def get_clip_property(self, property_name: str = "") -> str:
+    def get_clip_property(self, property_name: str | None = None) -> str | dict:
         """return clip property based on the property name.
 
         Args:
-            property_name (str, optional): clip property . Defaults to "".
+            property_name (str, optional): clip property. Defaults to None.
 
         Returns:
-            str: property value,if property is empty, return a dict of all clip properties.
+            str | dict: property value; if no property name is specified, a dict of all clip properties is returned.
         """
         return self._media_pool_item.GetClipProperty(property_name)
 
@@ -158,14 +162,14 @@ class MediaPoolItem(WrapperBase):
         return self._media_pool_item.GetMediaId()
 
     # TODO metadata_type as data class
-    def get_metadata(self, metadata_type: str = "") -> str:
+    def get_metadata(self, metadata_type: str | None = None) -> str | dict:
         """return metadata value of the key metadata_type.
 
         Args:
-            metadata_type (str, optional): metadata type. Defaults to "".
+            metadata_type (str, optional): metadata type. Defaults to None.
 
         Returns:
-            str: metadata value If no argument is specified, a dict of all set metadata properties is returned.
+            str | dict: metadata value; if no argument is specified, a dict of all set metadata properties is returned.
         """
         return self._media_pool_item.GetMetadata(metadata_type)
 
@@ -246,7 +250,7 @@ class MediaPoolItem(WrapperBase):
         """Unlinks proxy media from the current clip."""
         return self._media_pool_item.UnlinkProxyMedia()
 
-    def updata_marker_custom_data(self, frame_id: int, custom_data: str) -> bool:
+    def update_marker_custom_data(self, frame_id: int, custom_data: str) -> bool:
         """update marker custom data.
 
         Args:
@@ -256,7 +260,11 @@ class MediaPoolItem(WrapperBase):
         Returns:
             bool: true if success, false if fail
         """
-        return self._media_pool_item.UpdataMarkerCustomData(frame_id, custom_data)
+        return self._media_pool_item.UpdateMarkerCustomData(frame_id, custom_data)
+
+    def updata_marker_custom_data(self, frame_id: int, custom_data: str) -> bool:
+        """Deprecated: use :meth:`update_marker_custom_data` instead (kept for backward compatibility)."""
+        return self.update_marker_custom_data(frame_id, custom_data)
 
     ###############################################################################
     # Add at DR18.0.0
@@ -270,13 +278,19 @@ class MediaPoolItem(WrapperBase):
     # Add at DR18.5.0
 
     @minimum_resolve_version("18.5.0")
-    def transcribe_audio(self) -> bool:
+    def transcribe_audio(self, use_speaker_detection: bool | None = None) -> bool:
         """Transcribes audio of the MediaPoolItem.
+
+        Args:
+            use_speaker_detection (bool, optional): Whether to use speaker detection
+                when transcribing. If None, the project's setting is used. Defaults to None.
 
         Returns:
             bool: Returns True if successful; False otherwise
         """
-        return self._media_pool_item.TranscribeAudio()
+        if use_speaker_detection is None:
+            return self._media_pool_item.TranscribeAudio()
+        return self._media_pool_item.TranscribeAudio(use_speaker_detection)
 
     @minimum_resolve_version("18.5.0")
     def clear_transcription(self) -> bool:
@@ -454,3 +468,120 @@ class MediaPoolItem(WrapperBase):
             Added in DaVinci Resolve 20.0.0
         """
         return self._media_pool_item.MonitorGrowingFile()
+
+    ##############################################################################################################################
+    # Add at DR 21.0.2
+
+    @requires_resolve_version(added_in="21.0.2")
+    def perform_audio_classification(self) -> bool:
+        """Analyzes and classifies the audio of the MediaPoolItem into categories and subcategories.
+
+        Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
+        prerequisites; returns False if requirements are not met.
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.2
+
+        Version:
+            Added in DaVinci Resolve 21.0.2
+        """
+        return self._media_pool_item.PerformAudioClassification()
+
+    @requires_resolve_version(added_in="21.0.2")
+    def clear_audio_classification(self) -> bool:
+        """Clears audio classification of the MediaPoolItem.
+
+        Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
+        prerequisites; returns False if requirements are not met.
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.2
+
+        Version:
+            Added in DaVinci Resolve 21.0.2
+        """
+        return self._media_pool_item.ClearAudioClassification()
+
+    @requires_resolve_version(added_in="21.0.2")
+    def remove_motion_blur(
+        self, deblur_option: "MotionDeblurSettings | dict"
+    ) -> "MediaPoolItem":
+        """Applies motion deblur on the MediaPoolItem.
+
+        Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
+        prerequisites.
+
+        Args:
+            deblur_option (MotionDeblurSettings | dict): Motion deblur settings.
+                A ``MotionDeblurSettings`` model or a raw dict.
+
+        Returns:
+            MediaPoolItem: The newly created MediaPoolItem.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.2
+
+        Version:
+            Added in DaVinci Resolve 21.0.2
+        """
+        if isinstance(deblur_option, dict):
+            option_dict = deblur_option
+        else:
+            option_dict = deblur_option.model_dump(exclude_none=True)
+        return MediaPoolItem(self._media_pool_item.RemoveMotionBlur(option_dict))
+
+    @requires_resolve_version(added_in="21.0.2")
+    def analyze_for_intellisearch(
+        self, identify_faces: bool, is_better_mode: bool
+    ) -> bool:
+        """Performs Intellisearch analysis on the MediaPoolItem.
+
+        Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
+        prerequisites (AI IntelliSearch Faster/Better Extras); returns False if
+        requirements are not met.
+
+        Args:
+            identify_faces (bool): Whether to identify faces.
+            is_better_mode (bool): Whether to use Better mode (else Faster mode).
+
+        Returns:
+            bool: Returns True if required packages are installed and analysis is successful.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.2
+
+        Version:
+            Added in DaVinci Resolve 21.0.2
+        """
+        return self._media_pool_item.AnalyzeForIntellisearch(
+            identify_faces, is_better_mode
+        )
+
+    @requires_resolve_version(added_in="21.0.2")
+    def analyze_for_slate(self, marker_color: "MarkerColor | str") -> bool:
+        """Performs Slate analysis on the MediaPoolItem using the current settings and specified marker color.
+
+        Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
+        prerequisites (AI Slate ID Extras); returns False if requirements are not met.
+
+        Args:
+            marker_color (MarkerColor | str): Marker color to use. A ``MarkerColor``
+                enum member or the underlying color string.
+
+        Returns:
+            bool: Returns True if required packages are installed and analysis is successful.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.2
+
+        Version:
+            Added in DaVinci Resolve 21.0.2
+        """
+        color = marker_color.value if isinstance(marker_color, Enum) else marker_color
+        return self._media_pool_item.AnalyzeForSlate(color)

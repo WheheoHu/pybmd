@@ -86,3 +86,20 @@ class ResolveObject(Protocol):
     AUDIO_SYNC_CHANNEL_NUMBER: float
     AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO: float
     AUDIO_SYNC_RETAIN_VIDEO_METADATA: float
+
+    MARKER_BLUE: str
+    MARKER_CYAN: str
+    MARKER_GREEN: str
+    MARKER_YELLOW: str
+    MARKER_RED: str
+    MARKER_PINK: str
+    MARKER_PURPLE: str
+    MARKER_FUCHSIA: str
+    MARKER_ROSE: str
+    MARKER_LAVENDER: str
+    MARKER_SKY: str
+    MARKER_MINT: str
+    MARKER_LEMON: str
+    MARKER_SAND: str
+    MARKER_COCOA: str
+    MARKER_CREAM: str

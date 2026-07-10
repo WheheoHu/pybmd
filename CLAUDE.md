@@ -70,7 +70,7 @@ The project dynamically loads DaVinci Resolve's fusionscript library from:
 
 ### Version Compatibility
 
-The library supports DaVinci Resolve 18.6+ through 20.0.0 and tracks API changes across versions. See `CHANGELOG.md` for version-specific feature additions and the evolution from DR 18.6 through 20.0.0.
+The library supports DaVinci Resolve 18.6+ through 21.0.2 and tracks API changes across versions. See `CHANGELOG.md` for version-specific feature additions and the evolution from DR 18.6 through 21.0.2.
 
 ## Important Notes
 

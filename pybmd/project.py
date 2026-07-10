@@ -4,11 +4,12 @@ from pybmd.color_group import ColorGroup
 from pybmd.decorators import requires_resolve_version
 from pybmd.gallery import Gallery
 from pybmd.media_pool import MediaPool
+from pybmd.media_pool_item import MediaPoolItem
 
 from pybmd.timeline import Timeline
 
 if TYPE_CHECKING:
-    from pybmd.settings import RenderSetting
+    from pybmd.settings import RenderSetting, SpeechGenerationSettings
 
 RenderResolution = List[dict]
 
@@ -404,3 +405,56 @@ class Project(WrapperBase):
             Added in DaVinci Resolve 20.3.0
         """
         return self._project.ApplyFairlightPresetToCurrentTimeline(preset_name)
+
+    ##############################################################################################################################
+    # Add at DR 21.0.2
+
+    @requires_resolve_version(added_in="21.0.2")
+    def reset_intellisearch_analysis(self) -> bool:
+        """Clears Intellisearch analysis data.
+
+        Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
+        prerequisites; returns False if requirements are not met.
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.2
+
+        Version:
+            Added in DaVinci Resolve 21.0.2
+        """
+        return self._project.ResetIntellisearchAnalysis()
+
+    @requires_resolve_version(added_in="21.0.2")
+    def generate_speech(
+        self,
+        speech_generation_settings: "SpeechGenerationSettings | dict",
+        timecode: str,
+    ) -> MediaPoolItem:
+        """Generates an audio MediaPoolItem from the given speech generation settings.
+
+        Adds the generated clip to the timeline at ``timecode`` when the settings'
+        ``AddToTimeline`` is True. Studio-only (requires the AI Speech Generator
+        Extras download); returns the API's result unwrapped if requirements are not met.
+
+        Args:
+            speech_generation_settings (SpeechGenerationSettings | dict): Speech
+                generation settings. A ``SpeechGenerationSettings`` model or a raw dict.
+            timecode (str): Timecode at which to add the generated clip to the timeline.
+
+        Returns:
+            MediaPoolItem: The newly generated audio MediaPoolItem.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.2
+
+        Version:
+            Added in DaVinci Resolve 21.0.2
+        """
+        if isinstance(speech_generation_settings, dict):
+            settings_dict = speech_generation_settings
+        else:
+            settings_dict = speech_generation_settings.model_dump(exclude_none=True)
+        return MediaPoolItem(self._project.GenerateSpeech(settings_dict, timecode))

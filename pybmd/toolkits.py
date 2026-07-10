@@ -209,7 +209,7 @@ class StillManager(object):
         if clip is None:
             return default
         value = clip.get_clip_property(property_key)
-        if value in ("", None):
+        if not isinstance(value, str) or value == "":
             return default
         return value
 
@@ -301,9 +301,11 @@ class StillManager(object):
                 )
                 continue
 
-            clip_df_flag = self._coerce_bool(clip.get_clip_property("Drop frame"))
+            clip_df_flag = self._coerce_bool(
+                self._safe_clip_property(clip, "Drop frame")
+            )
             clip_fps = self._coerce_float(
-                clip.get_clip_property("FPS"), self._timeline_framerate
+                self._safe_clip_property(clip, "FPS"), self._timeline_framerate
             )
 
             clip_start_tc = self._safe_clip_property(clip, "Start TC")
@@ -420,9 +422,11 @@ class StillManager(object):
             logger.debug(
                 f"Set timeline TC to {timelineitem_still_timecode.timecode_output('smpte')} for clip {clip.get_name()}"
             )
-            clip_df_flag = self._coerce_bool(clip.get_clip_property("Drop frame"))
+            clip_df_flag = self._coerce_bool(
+                self._safe_clip_property(clip, "Drop frame")
+            )
             clip_fps = self._coerce_float(
-                clip.get_clip_property("FPS"), self._timeline_framerate
+                self._safe_clip_property(clip, "FPS"), self._timeline_framerate
             )
             clip_start_tc = self._safe_clip_property(clip, "Start TC")
             if clip_start_tc is None:
@@ -493,7 +497,7 @@ class StillManager(object):
 
     def _extract_reel_number(self, marker_still: MarkerStill) -> str:
         reel_name = marker_still.clip_obj.get_clip_property("Reel Name")
-        if not reel_name:
+        if not reel_name or isinstance(reel_name, dict):
             logger.warning("Cannot get reel name from clip property")
             return ""
         try:

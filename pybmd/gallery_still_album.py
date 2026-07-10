@@ -74,7 +74,7 @@ class GalleryStillAlbum(WrapperBase):
         Returns:
             bool: true if successful, false otherwise
         """
-        return self._gallery_still_album.SetLabel(gallery_still, label)
+        return self._gallery_still_album.SetLabel(gallery_still._gallery_still, label)
 
     ##############################################################################################################################
     # Add at DR 20.3.0

@@ -13,7 +13,7 @@ class Gallery(WrapperBase):
 
     def get_album_name(self, gallery_still_album: GalleryStillAlbum) -> str:
         """return the album name of the GalleryStillAlbum object"""
-        return self._gallery.GetAlbumName(gallery_still_album)
+        return self._gallery.GetAlbumName(gallery_still_album._gallery_still_album)
 
     def get_current_still_album(self) -> GalleryStillAlbum:
         """return the current GalleryStillAlbum object"""

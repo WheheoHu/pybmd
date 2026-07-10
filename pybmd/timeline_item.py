@@ -270,7 +270,7 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.SetName(name)
 
-    def get_property(self, property_key: str | None = None):
+    def get_property(self, property_key: str | None = None) -> str | dict:
         """returns the value of the specified key.
 
         if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys

@@ -295,3 +295,99 @@ class AudioSyncSetting(BaseIndexSetting):
         "_retainEmbeddedAudio": AudioSyncSettingIndex.AUDIO_SYNC_RETAIN_EMBEDDED_AUDIO,
         "_retainVideoMetadata": AudioSyncSettingIndex.AUDIO_SYNC_RETAIN_VIDEO_METADATA,
     }
+
+
+###################################
+# Speech Generation Settings (DR 21.0.2)
+
+
+class SpeechGenerationSettings(BaseModel):
+    """Settings for ``Project.generate_speech``.
+
+    String-keyed dictionary forwarded to DaVinci Resolve. All fields are optional;
+    only fields explicitly set are sent (use ``model_dump(exclude_none=True)``).
+    """
+
+    TextInput: str | None = Field(
+        default=None, description="Text to synthesize (max 350 chars)"
+    )
+    VoiceModel: str | None = Field(
+        default=None, description='Voice model, e.g. "Female 1", "Male 1", "Custom Voice"'
+    )
+    CustomVoiceFile: str | None = Field(
+        default=None, description="Full path of the custom voice file"
+    )
+    Speed: int | None = Field(default=None, description="Speech speed")
+    Variation: int | None = Field(default=None, description="Speech variation")
+    Pitch: int | None = Field(default=None, description="Speech pitch")
+    GenerationID: int | None = Field(default=None, description="Generation identifier")
+    Filename: str | None = Field(default=None, description="Output file name")
+    AddToTimeline: bool | None = Field(
+        default=None, description="Whether to add the generated clip to the timeline"
+    )
+    AudioTrack: int | None = Field(
+        default=None, description="Audio track index to place the clip on"
+    )
+
+
+###################################
+# Motion Deblur Settings (DR 21.0.2)
+
+
+class MotionDeblurSettings(BaseModel):
+    """Settings (``deblurOption``) for ``MediaPoolItem.remove_motion_blur`` and
+    ``Folder.remove_motion_blur``.
+
+    String-keyed dictionary forwarded to DaVinci Resolve. All fields are optional;
+    only fields explicitly set are sent (use ``model_dump(exclude_none=True)``).
+    """
+
+    FileName: str | None = Field(default=None, description="Output file name")
+    Format: str | None = Field(
+        default=None, description='Container format, e.g. "mov", "mp4"'
+    )
+    Codec: str | None = Field(
+        default=None, description='Codec, e.g. "H264", "ProRes422"'
+    )
+    EncodingProfile: str | None = Field(
+        default=None,
+        description='Encoding profile, e.g. "Main10". Only for H.264 and H.265',
+    )
+    UseExtremeMode: bool | None = Field(default=None, description="Use extreme mode")
+    UseMarkInMarkOut: bool | None = Field(
+        default=None, description="Only process between mark in and mark out"
+    )
+    RenderAtSourceRes: bool | None = Field(
+        default=None, description="Render at source resolution"
+    )
+    UseMoreGpuMemory: bool | None = Field(
+        default=None, description="Allow using more GPU memory"
+    )
+    Encoder: str | None = Field(
+        default=None, description="Encoder (Native or MainConcept). Only for H.265"
+    )
+
+
+###################################
+# Marker Color (DR 21.0.2)
+
+
+class MarkerColor(Enum):
+    """Marker color constants used by ``analyze_for_slate``."""
+
+    BLUE = _resolve.MARKER_BLUE
+    CYAN = _resolve.MARKER_CYAN
+    GREEN = _resolve.MARKER_GREEN
+    YELLOW = _resolve.MARKER_YELLOW
+    RED = _resolve.MARKER_RED
+    PINK = _resolve.MARKER_PINK
+    PURPLE = _resolve.MARKER_PURPLE
+    FUCHSIA = _resolve.MARKER_FUCHSIA
+    ROSE = _resolve.MARKER_ROSE
+    LAVENDER = _resolve.MARKER_LAVENDER
+    SKY = _resolve.MARKER_SKY
+    MINT = _resolve.MARKER_MINT
+    LEMON = _resolve.MARKER_LEMON
+    SAND = _resolve.MARKER_SAND
+    COCOA = _resolve.MARKER_COCOA
+    CREAM = _resolve.MARKER_CREAM

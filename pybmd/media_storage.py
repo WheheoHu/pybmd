@@ -34,7 +34,7 @@ class MediaStorage(WrapperBase):
             bool: True if success, False if fail
         """
         return self._media_storage.AddClipMattesToMediaPool(
-            media_pool_item, paths, stereo_eye
+            media_pool_item._media_pool_item, paths, stereo_eye
         )
 
     def add_item_list_to_media_pool(
