@@ -82,7 +82,7 @@ class Resolve:
 
         Args:
             resolve_ip (str, optional): davinci resolve ip. Defaults to 127.0.0.1.
-            auto_start (bool, optional): open davinci automatically if it's not running, if you want to open davinci manually, change arg to false. Defaults to True.
+            auto_start (bool, optional): open davinci automatically if it's not running, if you want to open davinci manually, change arg to false. Defaults to False.
 
         Raises:
             ResolveInitError: davinci resolve init failed.you need to check if davinci resolve is running.
