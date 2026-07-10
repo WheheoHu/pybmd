@@ -1,7 +1,7 @@
 name: dash-build
-on: 
+on:
   workflow_run:
-    workflows: ["pages-build-deployment"]
+    workflows: ["sphinx-build"]
     types:
       - completed
 
@@ -10,58 +10,33 @@ on:
 jobs:
   doc2dash:
     runs-on: macos-latest
+    # Only run after a successful sphinx-build, or on manual dispatch.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-        with:
-          version: "latest"
-      # - name: Set up Python
-      #   run: uv python install
+
       - name: install doc2dash
         run: |
           brew install hynek/tap/doc2dash
           #brew install tree
 
-      - name: clone gh-pages branch.
+      - name: Download docs HTML from sphinx-build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git clone https://github.com/WheheoHu/pybmd.git --branch gh-pages --single-branch gh-pages
+          RUN_ID="${{ github.event.workflow_run.id }}"
+          if [ -z "$RUN_ID" ]; then
+            RUN_ID=$(gh run list --workflow sphinx-build --status success --limit 1 --json databaseId --jq '.[0].databaseId')
+          fi
+          gh run download "$RUN_ID" -n docs-html -D ./docs-html
 
-      - name: Remove File
-        uses: JesseTG/rm@v1.0.0
-        with:
-          path: ./gh-pages/dash_doc/pybmd.docset
-        
       - name: doc2dash generate dash docset.
         run: |
-
-          #tree 
-          mkdir -p ./gh-pages/dash_doc/pybmd.docset
-          doc2dash ./gh-pages -n pybmd -i ./docs/dash_docset_icon/icon@2x.png
-          # -d ./gh-pages/dash_doc
-          cp -R pybmd.docset ./gh-pages/dash_doc/pybmd.docset
-          cd gh-pages
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "update dash docset" -a || true
-
-         
+          #tree
+          doc2dash ./docs-html -n pybmd -i ./docs/dash_docset_icon/icon@2x.png -f
 
       - name: upload dash doc as artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dash_docset
-          path: ./gh-pages/dash_doc/pybmd.docset
-          
-      - name: Remove File
-        uses: JesseTG/rm@v1.0.0
-        with:
-          path: ./gh-pages/dash_doc
-
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     branch: gh-pages
-      #     directory: gh-pages
-      #     github_token: ${{ secrets.GITHUB_TOKEN }} 
+          path: ./pybmd.docset
