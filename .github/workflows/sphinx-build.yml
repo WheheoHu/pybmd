@@ -41,13 +41,13 @@ jobs:
 
     # Upload the built site for the deploy job.
     - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v5
       with:
         path: docs/build/html
 
     # Upload the raw HTML so dash-build can generate the Dash docset from it.
     - name: Upload HTML artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-html
         path: docs/build/html
@@ -64,4 +64,4 @@ jobs:
     steps:
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v5
