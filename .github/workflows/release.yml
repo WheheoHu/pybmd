@@ -1,0 +1,99 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release, e.g. v2026.3.0 (must already exist)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # needed to create the GitHub Release
+
+    outputs:
+      tag: ${{ steps.resolve.outputs.tag }}
+
+    steps:
+    - name: Resolve tag and version
+      id: resolve
+      env:
+        EVENT_NAME: ${{ github.event_name }}
+        INPUT_TAG: ${{ inputs.tag }}
+        REF_NAME: ${{ github.ref_name }}
+      run: |
+        set -euo pipefail
+        if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+          TAG="$INPUT_TAG"
+        else
+          TAG="$REF_NAME"
+        fi
+        case "$TAG" in
+          v?*) ;;
+          *) echo "::error::tag '$TAG' must start with 'v', e.g. v2026.3.0"; exit 1 ;;
+        esac
+        echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+        echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+    - uses: actions/checkout@v6
+      with:
+        ref: ${{ steps.resolve.outputs.tag }}
+
+    - name: Verify tag matches pyproject.toml version
+      env:
+        TAG_VERSION: ${{ steps.resolve.outputs.version }}
+      run: |
+        set -euo pipefail
+        PY_VERSION=$(python3 -c 'import pathlib, tomllib; print(tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"])')
+        if [ "$PY_VERSION" != "$TAG_VERSION" ]; then
+          echo "::error::tag version '$TAG_VERSION' does not match pyproject.toml version '$PY_VERSION'"
+          exit 1
+        fi
+        echo "Version check passed: $PY_VERSION"
+
+    - name: Extract release notes from CHANGELOG.md
+      env:
+        VERSION: ${{ steps.resolve.outputs.version }}
+      run: python3 .github/scripts/extract_release_notes.py "$VERSION" notes.md
+
+    - name: Create or update GitHub Release
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG: ${{ steps.resolve.outputs.tag }}
+        VERSION: ${{ steps.resolve.outputs.version }}
+      run: |
+        set -euo pipefail
+        # Digits and dots only means a final release; an rc/a/b/dev suffix means a pre-release.
+        case "$VERSION" in
+          *[!0-9.]*) PRERELEASE=--prerelease ;;
+          *)         PRERELEASE= ;;
+        esac
+        # Upsert, so a manual re-run after a failed publish is not blocked by an existing Release.
+        if gh release view "$TAG" >/dev/null 2>&1; then
+          echo "Release $TAG already exists, updating its notes"
+          gh release edit "$TAG" --notes-file notes.md $PRERELEASE
+        else
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --notes-file notes.md \
+            --verify-tag \
+            $PRERELEASE
+        fi
+
+  publish:
+    needs: create-release
+    uses: ./.github/workflows/python-publish.yml
+    with:
+      ref: ${{ needs.create-release.outputs.tag }}
+    secrets: inherit

@@ -1,6 +1,8 @@
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
-
+# Builds the package with uv and uploads it to PyPI.
+#
+# Triggered either by release.yml (which creates the GitHub Release from a pushed
+# tag and then calls this workflow), or directly by a Release published by hand.
+#
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -12,6 +14,13 @@ on:
   release:
     types: [published]
 
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to build from; defaults to the triggering ref when empty'
+        required: false
+        type: string
+
 permissions:
   contents: read
 
@@ -21,15 +30,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
+      with:
+        ref: ${{ inputs.ref }}
 
     - name: Install uv
-      uses: astral-sh/setup-uv@v4
+      uses: astral-sh/setup-uv@v8.1.0
       with:
         version: "latest"
-
-    # - name: Set up Python
-    #   run: uv python install
 
     - name: Build package
       run: uv build
