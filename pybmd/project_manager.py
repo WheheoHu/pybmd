@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Dict, List
 
 
 if TYPE_CHECKING:
-    from pybmd.settings import CloudProjectsSetting
+    from pybmd.settings import CloudProjectsSetting, ProjectAttributes
 
 DatabaseList = List[Dict]
 
@@ -248,6 +248,35 @@ class ProjectManager(WrapperBase):
             Project: returns a cloud project
         """
         return Project(self._project_manager.LoadCloudProject(cloud_setting.model_dump()))
+
+    ##############################################################################################################################
+    # Add at DR 21.0.3
+    @minimum_resolve_version("21.0.3")
+    def get_project_attributes_in_current_folder(self) -> Dict[str, "ProjectAttributes"]:
+        """Returns the attributes of every project in the current folder.
+
+        Companion to :meth:`get_project_list_in_current_folder`, which only returns the
+        project names.
+
+        Returns:
+            Dict[str, ProjectAttributes]: project name -> its attributes
+                (``lastModifiedDate``, ``creationDate``, ``notes``,
+                ``liveCollaborationMode``)
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        from pybmd.settings import ProjectAttributes
+
+        return {
+            project_name: ProjectAttributes(**attributes)
+            for project_name, attributes in (
+                self._project_manager.GetProjectAttributesInCurrentFolder().items()
+            )
+        }
 
     # More function BELOW!
 

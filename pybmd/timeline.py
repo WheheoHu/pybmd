@@ -4,7 +4,12 @@ from typing import TYPE_CHECKING, Dict, List
 
 if TYPE_CHECKING:
     from pybmd.export_type import Timeline_Export_Subtype, Timeline_Export_Type
-    from pybmd.settings import AutoCaptionSettings
+    from pybmd.settings import (
+        AutoAlignOptions,
+        AutoCaptionSettings,
+        NormalizeAudioOptions,
+        OutputBlanking,
+    )
 
 
 from pybmd._wrapper_base import WrapperBase
@@ -284,8 +289,18 @@ class Timeline(WrapperBase):
         """Returns the name of the timeline."""
         return self._timeline.GetName()
 
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="Timeline.get_settings",
+        notes="Use get_settings() and index into the returned dict instead",
+    )
     def get_setting(self, setting_name: str = "") -> str:
-        """Returns value of timeline setting (indicated by settingName : string)."""
+        """Returns value of timeline setting (indicated by settingName : string).
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, use
+            :meth:`get_settings` and index into the returned dict instead.
+        """
         return self._timeline.GetSetting(setting_name)
 
     def get_start_frame(self) -> int:
@@ -378,6 +393,11 @@ class Timeline(WrapperBase):
         return self._timeline.SetName(timeline_name)
 
     # TODO setting_name to data class
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="Timeline.set_settings",
+        notes="Use set_settings({setting_name: setting_value}) instead",
+    )
     def set_setting(self, setting_name: str, setting_value: str) -> bool:
         """Sets timeline setting
 
@@ -387,6 +407,10 @@ class Timeline(WrapperBase):
 
         Returns:
             bool: True if successful, False otherwise.
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, use
+            ``set_settings({setting_name: setting_value})`` instead.
         """
         return self._timeline.SetSetting(setting_name, setting_value)
 
@@ -761,3 +785,186 @@ class Timeline(WrapperBase):
             Added in DaVinci Resolve 20.1.0
         """
         return self._timeline.SetVoiceIsolationState(track_index, voice_isolation_state)
+
+    ##############################################################################################################################
+    # Add at DR 21.0.4
+
+    @requires_resolve_version(added_in="21.0.4")
+    def get_selected_clips(self) -> List[TimelineItem]:
+        """Returns the currently selected timeline items.
+
+        Returns:
+            List[TimelineItem]: the currently selected timeline items
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.4
+
+        Version:
+            Added in DaVinci Resolve 21.0.4
+        """
+        selected_clips = self._timeline.GetSelectedClips()
+        if not selected_clips:
+            return []
+        return [TimelineItem(timeline_item) for timeline_item in selected_clips]
+
+    ##############################################################################################################################
+    # Add at DR 21.1.0
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_settings(self) -> Dict:
+        """Returns a dict with all timeline settings.
+
+        Returns the *project* settings instead when the timeline setting
+        ``"useCustomSettings"`` is ``"0"``. This is the dict-based replacement for
+        the single-key :meth:`get_setting`.
+
+        Returns:
+            Dict: all timeline settings
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline.GetSettings()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_settings(self, settings: Dict) -> bool:
+        """Sets the timeline settings with the specified dict of setting names and values.
+
+        This is the dict-based replacement for the single-key :meth:`set_setting`.
+
+        Args:
+            settings (Dict): dict of setting names and values
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline.SetSettings(settings)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_output_blanking(self) -> Dict:
+        """Returns the output blanking for the timeline.
+
+        Returns:
+            Dict: blanking in pixels, with the keys ``"Top"``, ``"Bottom"``,
+                ``"Left"`` and ``"Right"``
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline.GetOutputBlanking()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_output_blanking(self, output_blanking: "OutputBlanking | dict") -> bool:
+        """Sets the output blanking for the timeline.
+
+        Args:
+            output_blanking (OutputBlanking | dict): blanking in pixels, with the keys
+                ``"Top"``, ``"Bottom"``, ``"Left"`` and ``"Right"``
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        if isinstance(output_blanking, dict):
+            blanking_dict = output_blanking
+        else:
+            blanking_dict = output_blanking.model_dump(exclude_none=True)
+        return self._timeline.SetOutputBlanking(blanking_dict)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_normalize_audio_modes(self) -> List[str]:
+        """Returns the list of valid normalization mode names.
+
+        The returned names are the values accepted by the ``normalizationMode``
+        option of :meth:`normalize_audio_level`.
+
+        Returns:
+            List[str]: valid normalization mode names
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline.GetNormalizeAudioModes()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def normalize_audio_level(
+        self,
+        timeline_items: List[TimelineItem],
+        normalize_audio_options: "NormalizeAudioOptions | dict | None" = None,
+    ) -> bool:
+        """Normalizes the audio level of the specified timeline items.
+
+        Args:
+            timeline_items (List[TimelineItem]): timeline items to normalize
+            normalize_audio_options (NormalizeAudioOptions | dict, optional):
+                normalization options. Defaults to None, which uses DaVinci Resolve's
+                defaults ("Sample Peak Program", relative set level mode).
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        items = [timeline_item._timeline_item for timeline_item in timeline_items]
+        if normalize_audio_options is None:
+            return self._timeline.NormalizeAudioLevel(items)
+        if isinstance(normalize_audio_options, dict):
+            options_dict = normalize_audio_options
+        else:
+            options_dict = normalize_audio_options.model_dump(exclude_none=True)
+        return self._timeline.NormalizeAudioLevel(items, options_dict)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def auto_align_clips(
+        self,
+        timeline_items: List[TimelineItem],
+        auto_align_options: "AutoAlignOptions | dict | None" = None,
+    ) -> bool:
+        """Aligns the specified timeline items.
+
+        Args:
+            timeline_items (List[TimelineItem]): timeline items to align
+            auto_align_options (AutoAlignOptions | dict, optional): alignment options.
+                Defaults to None, which syncs using timecode.
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        items = [timeline_item._timeline_item for timeline_item in timeline_items]
+        if auto_align_options is None:
+            return self._timeline.AutoAlignClips(items)
+        if isinstance(auto_align_options, dict):
+            options_dict = auto_align_options
+        else:
+            options_dict = auto_align_options.model_dump(exclude_none=True)
+        return self._timeline.AutoAlignClips(items, options_dict)

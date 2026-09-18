@@ -14,30 +14,72 @@ from dataclasses import dataclass
 from dataclasses import asdict
 
 if TYPE_CHECKING:
-    from pybmd.settings import AudioSyncSetting
+    from pybmd.settings import AudioSyncSetting, MulticamOptions
 # TODO clip info for multi version compatible
 
 
 @dataclass
 class ClipInfo:
-    """ClipInfo dataclass"""
+    """ClipInfo dataclass
+
+    One entry of the ``clipInfo`` list taken by ``MediaPool.append_to_timeline`` and
+    ``MediaPool.create_timeline_from_clips``. Only ``media_pool_item`` is required -
+    every field left at ``None`` is omitted from the dict handed to DaVinci Resolve, so
+    Resolve applies its own default (the whole clip, both video and audio, appended after
+    the last clip).
+
+    Args:
+        media_pool_item (MediaPoolItem): clip to place
+        start_frame (int, optional): first source frame. Defaults to None.
+        end_frame (int, optional): last source frame. Defaults to None.
+        media_type (int, optional): 1 - video only, 2 - audio only; None for both.
+            Defaults to None.
+        track_index (int, optional): target track. Defaults to None.
+        record_frame (int | float, optional): timeline frame to place the clip at.
+            Defaults to None.
+    """
 
     media_pool_item: MediaPoolItem
-    start_frame: int
-    end_frame: int
-    media_type: int
-    track_index: int
-    record_frame: int | float
+    start_frame: int | None = None
+    end_frame: int | None = None
+    media_type: int | None = None
+    track_index: int | None = None
+    record_frame: int | float | None = None
 
-    def to_dict(self):
-        return {
-            "mediaPoolItem": self.media_pool_item._media_pool_item,
+    def to_dict(self) -> dict:
+        clip_info: dict = {"mediaPoolItem": self.media_pool_item._media_pool_item}
+        optional_keys = {
             "startFrame": self.start_frame,
             "endFrame": self.end_frame,
             "mediaType": self.media_type,
             "trackIndex": self.track_index,
             "recordFrame": self.record_frame,
         }
+        clip_info.update(
+            {key: value for key, value in optional_keys.items() if value is not None}
+        )
+        return clip_info
+
+
+@dataclass
+class ImportClipInfo:
+    """ImportClipInfo dataclass
+
+    One entry of the ``clipInfo`` list taken by ``MediaPool.import_media``. Used to
+    import an image sequence as a single MediaPoolItem.
+    """
+
+    file_path: str
+    start_index: int | None = None
+    end_index: int | None = None
+
+    def to_dict(self) -> dict:
+        clip_info: dict = {"FilePath": self.file_path}
+        if self.start_index is not None:
+            clip_info["StartIndex"] = self.start_index
+        if self.end_index is not None:
+            clip_info["EndIndex"] = self.end_index
+        return clip_info
 
 
 @dataclass
@@ -78,6 +120,11 @@ class MediaPool(WrapperBase):
         return Folder(self._media_pool.AddSubFolder(folder._folder, name))
 
     @multimethod
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="MediaPool.append_to_timeline([ClipInfo])",
+        notes="Deprecated calling convention since DR 21.1.0. Pass a list of ClipInfo instead",
+    )
     def append_to_timeline(self, clips: List["MediaPoolItem"]) -> List[TimelineItem]:
         """append clips to current timeline
 
@@ -86,6 +133,10 @@ class MediaPool(WrapperBase):
 
         Returns:
             List[TimelineItem]: timeline items of appended clips at timeline
+
+        Deprecated:
+            Passing a list of MediaPoolItem is a deprecated calling convention since
+            DaVinci Resolve 21.1.0. Pass a list of :class:`ClipInfo` instead.
         """
 
         temp_list = self._media_pool.AppendToTimeline(
@@ -106,34 +157,52 @@ class MediaPool(WrapperBase):
         """create empty timeline"""
         return Timeline(self._media_pool.CreateEmptyTimeline(name))
 
-    def create_timeline_from_clips(self, name: str, clips) -> Timeline:
+    @multimethod
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="MediaPool.create_timeline_from_clips(name, [ClipInfo])",
+        notes="Deprecated calling convention since DR 21.1.0. Pass a list of ClipInfo instead",
+    )
+    def create_timeline_from_clips(
+        self, name: str, clips: List["MediaPoolItem"]
+    ) -> Timeline:
         """create new timeline from clips with name
 
         Args:
             name (str): new timeline name
-            clips (_type_): clips to create timeline from
+            clips (List[MediaPoolItem]): clips to create timeline from
+
+        Returns:
+            Timeline: new timeline object
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, use
+            ``create_timeline_from_clips(name, [ClipInfo(...), ...])`` instead.
+        """
+        return Timeline(
+            self._media_pool.CreateTimelineFromClips(
+                name, [clip._media_pool_item for clip in clips]
+            )
+        )
+
+    @multimethod
+    def create_timeline_from_clips(  # noqa: F811
+        self, name: str, clip_info_list: List["ClipInfo"]
+    ) -> Timeline:
+        """create new timeline from ClipInfo list with name
+
+        Args:
+            name (str): new timeline name
+            clip_info_list (List[ClipInfo]): clip infos to create timeline from
 
         Returns:
             Timeline: new timeline object
         """
-        if type(clips[0]) is MediaPoolItem:
-            return Timeline(
-                self._media_pool.CreateTimelineFromClips(
-                    name, [clip.media_pool_item for clip in clips]
-                )
+        return Timeline(
+            self._media_pool.CreateTimelineFromClips(
+                name, [clip_info.to_dict() for clip_info in clip_info_list]
             )
-        elif type(clips[0]) is ClipInfo:
-            return Timeline(
-                self._media_pool.CreateTimelineFromClips(
-                    name, [asdict(ClipInfo) for clip in clips]
-                )
-            )
-        else:
-            raise ValueError("clips must contain MediaPoolItem or ClipInfo objects")
-
-    # @dispatch(str, List[ClipInfo])
-    # def create_timeline_from_clips(self, name: str, clip_infos: List[ClipInfo]) -> Timeline:
-    #     return self.media_pool.CreateTimelineFromClips(name, [asdict(ClipInfo) for ClipInfo in clip_infos])
+        )
 
     def delete_clip_mattes(
         self, media_pool_item: MediaPoolItem, paths: List[str]
@@ -230,6 +299,12 @@ class MediaPool(WrapperBase):
             media_pool_item_list.append(MediaPoolItem(media_pool_item))
         return media_pool_item_list
 
+    @multimethod
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="MediaPool.import_media([ImportClipInfo])",
+        notes="Deprecated calling convention since DR 21.1.0. Pass a list of ImportClipInfo instead",
+    )
     def import_media(self, file_paths: List[str]) -> List[MediaPoolItem]:
         """Imports specified file/folder paths into current Media Pool folder.
 
@@ -239,21 +314,76 @@ class MediaPool(WrapperBase):
 
         Returns:
             List[MediaPoolItem]: Returns a list of the MediaPoolItem created.
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, use
+            ``import_media([ImportClipInfo(file_path=path), ...])`` instead.
         """
-        # media_pool_item_list = []
-        # for media_pool_item in self.media_pool.ImportMedia(file_paths):
-        #     media_pool_item_list.append(MediaPoolItem(media_pool_item))
+        media_pool_items = self._media_pool.ImportMedia(file_paths)
+        if not media_pool_items:
+            return []
         return [
-            MediaPoolItem(media_pool_item)
-            for media_pool_item in self._media_pool.ImportMedia(file_paths)
+            MediaPoolItem(media_pool_item) for media_pool_item in media_pool_items
         ]
 
-    # @dispatch(List[dict])
-    # def import_media(self, clip_info: List[dict]) -> List[MediaPoolItem]:
-    #     media_pool_item_list = []
-    #     for media_pool_item in self.media_pool.ImportMedia(clip_info):
-    #         media_pool_item_list.append(MediaPoolItem(media_pool_item))
-    #     return media_pool_item_list
+    @multimethod
+    def import_media(  # noqa: F811
+        self, clip_info_list: List["ImportClipInfo"]
+    ) -> List[MediaPoolItem]:
+        """Imports file path(s) into current Media Pool folder as specified in the
+        ImportClipInfo list.
+
+        Each ImportClipInfo gets imported as one MediaPoolItem unless
+        'Show Individual Frames' is turned on.
+
+        Args:
+            clip_info_list (List[ImportClipInfo]): clip infos to import, e.g.
+                ``[ImportClipInfo("file_%03d.dpx", 1, 100)]`` imports
+                "file_[001-100].dpx".
+
+        Returns:
+            List[MediaPoolItem]: Returns a list of the MediaPoolItem created. Empty when
+                DaVinci Resolve imported nothing.
+
+        Note:
+            DaVinci Resolve only accepts this calling convention for image sequences,
+            i.e. entries carrying ``start_index`` / ``end_index``. Single media files
+            import nothing and yield an empty list - pass their paths as strings instead.
+        """
+        media_pool_items = self._media_pool.ImportMedia(
+            [clip_info.to_dict() for clip_info in clip_info_list]
+        )
+        if not media_pool_items:
+            return []
+        return [
+            MediaPoolItem(media_pool_item) for media_pool_item in media_pool_items
+        ]
+
+    @multimethod
+    def import_media(self, clip_info_list: List[dict]) -> List[MediaPoolItem]:  # noqa: F811
+        """Imports file path(s) into current Media Pool folder as specified in the
+        clipInfo dict list.
+
+        Args:
+            clip_info_list (List[dict]): dicts of "FilePath" (str), "StartIndex" (int)
+                and "EndIndex" (int), e.g.
+                ``[{"FilePath": "file_%03d.dpx", "StartIndex": 1, "EndIndex": 100}]``.
+
+        Returns:
+            List[MediaPoolItem]: Returns a list of the MediaPoolItem created. Empty when
+                DaVinci Resolve imported nothing.
+
+        Note:
+            DaVinci Resolve only accepts this calling convention for image sequences,
+            i.e. dicts carrying "StartIndex" / "EndIndex". Single media files import
+            nothing and yield an empty list - pass their paths as strings instead.
+        """
+        media_pool_items = self._media_pool.ImportMedia(clip_info_list)
+        if not media_pool_items:
+            return []
+        return [
+            MediaPoolItem(media_pool_item) for media_pool_item in media_pool_items
+        ]
 
     def import_timeline_from_file(
         self, file_path: str, import_option: TimelineImportOptions
@@ -459,3 +589,41 @@ class MediaPool(WrapperBase):
             Added in DaVinci Resolve 19.1.0
         """
         return self._media_pool.AutoSyncAudio(media_pool_items, audio_sync_settings)
+
+    ##########################################################################################################################
+    # Add at DR 21.1.0
+
+    @requires_resolve_version(added_in="21.1.0")
+    def create_multicam_clip(
+        self,
+        clips: List["MediaPoolItem"],
+        multicam_options: "MulticamOptions | dict",
+    ) -> List["MediaPoolItem"]:
+        """Creates a multicam clip from the specified [MediaPoolItems] (list).
+
+        Args:
+            clips (List[MediaPoolItem]): MediaPoolItems to build the multicam clip from.
+            multicam_options (MulticamOptions | dict): Multicam creation options. Refer
+                to 'MulticamOptions' section for details.
+
+        Returns:
+            List[MediaPoolItem]: The created multicam clip(s). Empty list if creation failed.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        media_pool_items = [clip._media_pool_item for clip in clips]
+        options_dict = (
+            multicam_options
+            if isinstance(multicam_options, dict)
+            else multicam_options.model_dump(exclude_none=True)
+        )
+        multicam_clips = self._media_pool.CreateMulticamClip(
+            media_pool_items, options_dict
+        )
+        if not multicam_clips:
+            return []
+        return [MediaPoolItem(multicam_clip) for multicam_clip in multicam_clips]

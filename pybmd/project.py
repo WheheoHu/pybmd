@@ -9,7 +9,11 @@ from pybmd.media_pool_item import MediaPoolItem
 from pybmd.timeline import Timeline
 
 if TYPE_CHECKING:
-    from pybmd.settings import RenderSetting, SpeechGenerationSettings
+    from pybmd.settings import (
+        ProjectSettingsPresetInfo,
+        RenderSetting,
+        SpeechGenerationSettings,
+    )
 
 RenderResolution = List[dict]
 
@@ -71,8 +75,18 @@ class Project(WrapperBase):
         """Return project name"""
         return self._project.GetName()
 
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="Project.get_project_settings_preset_list",
+        notes="Use get_project_settings_preset_list() instead",
+    )
     def get_preset_list(self) -> list:
-        """Returns a list of presets and their information."""
+        """Returns a list of presets and their information.
+
+        Deprecated:
+            Deprecated since DaVinci Resolve 21.1.0, use
+            :meth:`get_project_settings_preset_list` instead.
+        """
         return self._project.GetPresetList()
 
     def get_render_codecs(self, render_format: str) -> dict:
@@ -115,8 +129,18 @@ class Project(WrapperBase):
         # Sample: current_project.get_render_resolutions(format='mp4',codec='h264')
         return self._project.GetRenderResolutions(format, codec)
 
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="Project.get_settings",
+        notes="Use get_settings() and index into the returned dict instead",
+    )
     def get_setting(self, setting_name: str = "") -> str:
-        """Returns value of project setting (indicated by setting_name, string)."""
+        """Returns value of project setting (indicated by setting_name, string).
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, use
+            :meth:`get_settings` and index into the returned dict instead.
+        """
         # call *without parameters/NoneType * to get a snapshot of all queryable properties
         return self._project.GetSetting(setting_name)
 
@@ -167,8 +191,18 @@ class Project(WrapperBase):
         """Sets project name if given project_name (string) is unique."""
         return self._project.SetName(project_name)
 
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="Project.set_project_settings_preset",
+        notes="Use set_project_settings_preset() instead",
+    )
     def set_preset(self, preset_name: str) -> bool:
-        """Sets preset by given preset_name (string) into project."""
+        """Sets preset by given preset_name (string) into project.
+
+        Deprecated:
+            Deprecated since DaVinci Resolve 21.1.0, use
+            :meth:`set_project_settings_preset` instead.
+        """
         return self._project.SetPreset(preset_name)
 
     def set_render_settings(self, render_setting: "RenderSetting | dict") -> bool:
@@ -189,6 +223,11 @@ class Project(WrapperBase):
             render_setting.model_dump(exclude_unset=True)
         )
 
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="Project.set_settings",
+        notes='Use set_settings({setting_name: setting_value}) instead',
+    )
     def set_setting(self, setting_name: str, setting_value: str):
         """Sets value of project setting (indicated by setting_name, string).
 
@@ -198,6 +237,10 @@ class Project(WrapperBase):
 
         Returns:
             _type_: True if successful.
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, use
+            ``set_settings({setting_name: setting_value})`` instead.
         """
         return self._project.SetSetting(setting_name, setting_value)
 
@@ -458,3 +501,295 @@ class Project(WrapperBase):
         else:
             settings_dict = speech_generation_settings.model_dump(exclude_none=True)
         return MediaPoolItem(self._project.GenerateSpeech(settings_dict, timecode))
+
+    ##############################################################################################################################
+    # Add at DR 21.1.0
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_settings(self) -> Dict:
+        """Returns a dict with all project settings.
+
+        This is the dict-based replacement for the single-key
+        :meth:`get_setting`. Refer to DaVinci Resolve's "Project and Clip
+        Properties" documentation for the supported keys.
+
+        Returns:
+            Dict: all project settings
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.GetSettings()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_settings(self, settings: Dict) -> bool:
+        """Sets the project settings with the specified dict of setting names and values.
+
+        This is the dict-based replacement for the single-key :meth:`set_setting`.
+
+        Args:
+            settings (Dict): dict of setting names and values
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.SetSettings(settings)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_project_settings_preset_list(self) -> List["ProjectSettingsPresetInfo"]:
+        """Returns a list of project settings presets and their information.
+
+        Returns:
+            List[ProjectSettingsPresetInfo]: preset information (``Name``, ``Width``,
+                ``Height``)
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        from pybmd.settings import ProjectSettingsPresetInfo
+
+        return [
+            ProjectSettingsPresetInfo(**preset_info)
+            for preset_info in self._project.GetProjectSettingsPresetList()
+        ]
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_project_settings_preset(self, preset_name: str) -> bool:
+        """Sets the project settings preset named preset_name into the project.
+
+        Args:
+            preset_name (str): name of the project settings preset
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.SetProjectSettingsPreset(preset_name)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def update_project_settings_preset(self, preset_name: str) -> bool:
+        """Updates the project settings preset named preset_name with the current settings.
+
+        Args:
+            preset_name (str): name of the project settings preset
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.UpdateProjectSettingsPreset(preset_name)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def delete_project_settings_preset(self, preset_name: str) -> bool:
+        """Deletes the project settings preset named preset_name.
+
+        Args:
+            preset_name (str): name of the project settings preset
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.DeleteProjectSettingsPreset(preset_name)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def import_project_settings_preset(
+        self, preset_file_path: str, preset_name: str = ""
+    ) -> bool:
+        """Imports a project settings preset from preset_file_path.
+
+        Args:
+            preset_file_path (str): path of the preset file
+            preset_name (str, optional): how the preset shall be named. If not specified,
+                the preset is named based on the file base name.
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.ImportProjectSettingsPreset(
+            str(preset_file_path), preset_name
+        )
+
+    @requires_resolve_version(added_in="21.1.0")
+    def export_project_settings_preset(
+        self, preset_name: str, export_path: str
+    ) -> bool:
+        """Exports the project settings preset named preset_name to export_path.
+
+        Args:
+            preset_name (str): name of the project settings preset
+            export_path (str): path to export to
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.ExportProjectSettingsPreset(preset_name, str(export_path))
+
+    @requires_resolve_version(added_in="21.1.0")
+    def save_current_project_settings_as_new_preset(self, preset_name: str) -> bool:
+        """Saves the current project settings as a new preset named preset_name.
+
+        Args:
+            preset_name (str): name of the new project settings preset
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.SaveCurrentProjectSettingsAsNewPreset(preset_name)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def update_render_preset(self, preset_name: str) -> bool:
+        """Updates the render preset named preset_name with the current render settings.
+
+        Args:
+            preset_name (str): name of the render preset
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.UpdateRenderPreset(preset_name)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_quick_export_enabled_for_render_preset(
+        self, preset_name: str, is_enabled: bool
+    ) -> bool:
+        """Enables or disables quick export for the render preset named preset_name.
+
+        Args:
+            preset_name (str): name of the render preset
+            is_enabled (bool): True to enable quick export, False to disable it
+
+        Returns:
+            bool: True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.SetQuickExportEnabledForRenderPreset(
+            preset_name, is_enabled
+        )
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_audio_render_formats(self) -> Dict[str, str]:
+        """Returns a dict of available audio render formats.
+
+        Maps each format description to its file extension, e.g.
+        ``{"QuickTime": "mov", "Wave": "wav", ...}``.
+
+        Returns:
+            Dict[str, str]: format description -> file extension
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.GetAudioRenderFormats()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_audio_render_codecs(
+        self, audio_render_format_file_extension: str
+    ) -> Dict[str, str]:
+        """Returns the audio codecs available for the given audio render format.
+
+        Args:
+            audio_render_format_file_extension (str): file extension of the audio render
+                format, as returned by :meth:`get_audio_render_formats`, e.g. ``"mov"``.
+
+        Returns:
+            Dict[str, str]: codec description -> codec name
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._project.GetAudioRenderCodecs(audio_render_format_file_extension)
+
+    ##############################################################################################################################
+    # More function BELOW!
+
+    def set_super_scale_enhanced(
+        self, sharpness: float, noise_reduction: float
+    ) -> bool:
+        """Sets Super Scale to the "2x Enhanced" multiplier.
+
+        "2x Enhanced" is the one Super Scale mode that cannot be selected through
+        :meth:`set_settings`: it needs the four-argument
+        ``SetSetting("superScale", 2, sharpness, noiseReduction)`` calling convention,
+        which is the only ``SetSetting`` convention DaVinci Resolve 21.1.0 did *not*
+        deprecate, precisely because it has no ``SetSettings`` equivalent.
+
+        Every other Super Scale multiplier goes through
+        ``set_settings({"superScale": value})`` with 0=Auto, 1=none, 2=2x, 3=3x, 4=4x.
+
+        Args:
+            sharpness (float): sharpness strength, in the range [0.0, 1.0]
+            noise_reduction (float): noise reduction strength, in the range [0.0, 1.0]
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Note:
+            Read the applied strengths back with the read-only settings
+            ``superScaleSharpnessStrength`` and ``superScaleNoiseReductionStrength``.
+            Both strengths persist until this method changes them again - selecting
+            another multiplier through :meth:`set_settings` leaves them untouched.
+        """
+        return self._project.SetSetting("superScale", 2, sharpness, noise_reduction)

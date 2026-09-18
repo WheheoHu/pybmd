@@ -3,10 +3,15 @@ from typing import TYPE_CHECKING, Any, Dict
 from multimethod import multimethod
 
 from pybmd._wrapper_base import WrapperBase
-from pybmd.decorators import requires_resolve_version, minimum_resolve_version
+from pybmd.decorators import (
+    minimum_resolve_version,
+    requires_resolve_version,
+    warn_deprecated_calling_convention,
+)
 
 if TYPE_CHECKING:
-    from pybmd.settings import MotionDeblurSettings, MarkerColor
+    from pybmd.settings import MotionDeblurSettings, MarkerColor, Transcription
+    from pybmd.timeline import Timeline
 
 
 class MediaPoolItem(WrapperBase):
@@ -116,7 +121,17 @@ class MediaPoolItem(WrapperBase):
 
         Returns:
             str | dict: property value; if no property name is specified, a dict of all clip properties is returned.
+
+        Deprecated:
+            Passing 'property_name' is a deprecated calling convention since DaVinci
+            Resolve 21.1.0. Call without arguments and index into the returned dict.
         """
+        if property_name is not None:
+            warn_deprecated_calling_convention(
+                "MediaPoolItem.get_clip_property(property_name)",
+                deprecated_in="21.1.0",
+                moved_to="get_clip_property() and index into the returned dict",
+            )
         return self._media_pool_item.GetClipProperty(property_name)
 
     def get_flag_list(self) -> list:
@@ -170,7 +185,17 @@ class MediaPoolItem(WrapperBase):
 
         Returns:
             str | dict: metadata value; if no argument is specified, a dict of all set metadata properties is returned.
+
+        Deprecated:
+            Passing 'metadata_type' is a deprecated calling convention since DaVinci
+            Resolve 21.1.0. Call without arguments and index into the returned dict.
         """
+        if metadata_type is not None:
+            warn_deprecated_calling_convention(
+                "MediaPoolItem.get_metadata(metadata_type)",
+                deprecated_in="21.1.0",
+                moved_to="get_metadata() and index into the returned dict",
+            )
         return self._media_pool_item.GetMetadata(metadata_type)
 
     def get_name(self) -> str:
@@ -234,16 +259,33 @@ class MediaPoolItem(WrapperBase):
         return self._media_pool_item.SetClipProperty(property_type, property_value)
 
     # TODO metadata_type as data class
-    def set_metadata(self, metadata_type: str, metadata_value: str) -> bool:
-        """set metadata with the given metadata type and value.
+    def set_metadata(
+        self, metadata_type: str | dict, metadata_value: str | None = None
+    ) -> bool:
+        """set metadata with the given metadata dict, or metadata type and value.
 
         Args:
-            metadata_type (str): metadata type
-            metadata_value (str): metadata value
+            metadata_type (str | dict): metadata dict, e.g. ``{"Scene": "42"}``, or a
+                single metadata type
+            metadata_value (str, optional): metadata value, only used when a single
+                metadata type is given. Defaults to None.
 
         Returns:
             bool: true if success, false if fail
+
+        Deprecated:
+            The ``(metadata_type, metadata_value)`` calling convention is deprecated
+            since DaVinci Resolve 21.1.0, pass a dict instead - for single keys
+            ``set_metadata({"Scene": "42"})``.
         """
+        if isinstance(metadata_type, dict):
+            return self._media_pool_item.SetMetadata(metadata_type)
+
+        warn_deprecated_calling_convention(
+            "MediaPoolItem.set_metadata(metadata_type, metadata_value)",
+            deprecated_in="21.1.0",
+            moved_to="set_metadata({metadata_type: metadata_value})",
+        )
         return self._media_pool_item.SetMetadata(metadata_type, metadata_value)
 
     def unlink_proxy_media(self) -> bool:
@@ -341,7 +383,12 @@ class MediaPoolItem(WrapperBase):
         return self._media_pool_item.GetThirdPartyMetadata(metadata_type)
 
     @multimethod
-    @requires_resolve_version(added_in="19.0.2")
+    @requires_resolve_version(
+        added_in="19.0.2",
+        deprecated_in="21.1.0",
+        moved_to="set_third_party_metadata({metadata_type: metadata_value})",
+        notes="Deprecated calling convention since DR 21.1.0. Pass a dict instead",
+    )
     def set_third_party_metadata(self, metadata_type: str, metadata_value: str) -> bool:
         """Sets/Add the given third party metadata to metadata_value (string).
 
@@ -351,6 +398,11 @@ class MediaPoolItem(WrapperBase):
 
         Returns:
             bool: Returns True if successful.
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, pass a dict
+            instead - for single keys
+            ``set_third_party_metadata({metadata_type: metadata_value})``.
         """
         return self._media_pool_item.SetThirdPartyMetadata(
             metadata_type, metadata_value
@@ -585,3 +637,81 @@ class MediaPoolItem(WrapperBase):
         """
         color = marker_color.value if isinstance(marker_color, Enum) else marker_color
         return self._media_pool_item.AnalyzeForSlate(color)
+
+    ##############################################################################################################################
+    # Add at DR 21.0.4
+
+    @requires_resolve_version(added_in="21.0.4")
+    def get_timeline(self) -> "Timeline | None":
+        """Returns the Timeline object if the MediaPoolItem is a timeline clip.
+
+        Returns:
+            Timeline | None: The timeline this item represents, None if the
+                MediaPoolItem is not a timeline clip.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.4
+
+        Version:
+            Added in DaVinci Resolve 21.0.4
+        """
+        from pybmd.timeline import Timeline
+
+        timeline = self._media_pool_item.GetTimeline()
+        if not timeline:
+            return None
+        return Timeline(timeline)
+
+    ##############################################################################################################################
+    # Add at DR 21.1.0
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_transcription(
+        self, use_nested_clip_transcription: bool = False
+    ) -> "Transcription | dict":
+        """Returns transcription data for the MediaPoolItem, if available.
+
+        Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
+        prerequisites; returns an empty dict if no transcription is available.
+
+        Args:
+            use_nested_clip_transcription (bool, optional): Returns the transcription of
+                nested clips instead. Defaults to False.
+
+        Returns:
+            Transcription | dict: Transcription data. An empty dict when no
+                transcription is available. Refer to 'Transcription' section for details.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        from pybmd.settings import Transcription
+
+        transcription = self._media_pool_item.GetTranscription(
+            use_nested_clip_transcription
+        )
+        if not transcription:
+            return {}
+        return Transcription(**transcription)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_audio_mapping(self, audio_mapping: str) -> bool:
+        """Sets the audio mapping of the MediaPoolItem from a JSON string.
+
+        Args:
+            audio_mapping (str): json formatted string. Check 'Audio Mapping' section
+                for more information.
+
+        Returns:
+            bool: Returns True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._media_pool_item.SetAudioMapping(audio_mapping)

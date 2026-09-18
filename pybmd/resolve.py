@@ -1,18 +1,22 @@
 import subprocess
 import platform
-from typing import TYPE_CHECKING, List, Tuple
+from typing import TYPE_CHECKING, List, Optional, Tuple
 import psutil
 
 from pybmd.error import ResolveInitError
+from pybmd.gallery import Gallery
+from pybmd.media_pool import MediaPool
 from pybmd.media_storage import MediaStorage
+from pybmd.project import Project
 from pybmd.project_manager import ProjectManager
 from pybmd.fusion import Fusion
+from pybmd.timeline import Timeline
 from pybmd.version_info import Version
 from pybmd.version_registry import VersionRegistry
 from pybmd.decorators import minimum_resolve_version
 
 if TYPE_CHECKING:
-    from pybmd.settings import KeyframeMode
+    from pybmd.settings import EncryptDCTLOptions, KeyframeMode
 
 from . import _init_bmd
 
@@ -407,3 +411,390 @@ class Resolve:
             Added in DaVinci Resolve 21.0.2
         """
         return self._resolve.DisableBackgroundTasksForCurrentResolveSession()
+
+    ##############################################################################################################################
+    # Add at DR 21.0.3
+    @minimum_resolve_version("21.0.3")
+    def get_layout_preset_list(self) -> List[str]:
+        """Returns a list of available UI layout preset names.
+
+        Returns:
+            List[str]: available UI layout preset names
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.GetLayoutPresetList()
+
+    @minimum_resolve_version("21.0.3")
+    def get_burn_in_preset_list(self) -> List[str]:
+        """Returns a list of available data burn in preset names.
+
+        Returns:
+            List[str]: available data burn in preset names
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.GetBurnInPresetList()
+
+    @minimum_resolve_version("21.0.3")
+    def delete_burn_in_preset(self, preset_name: str) -> bool:
+        """Deletes the data burn in preset named preset_name.
+
+        Args:
+            preset_name (str): name of the data burn in preset
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.DeleteBurnInPreset(preset_name)
+
+    @minimum_resolve_version("21.0.3")
+    def get_user_preferences_preset_list(self) -> List[str]:
+        """Returns a list of available user preferences preset names.
+
+        Returns:
+            List[str]: available user preferences preset names
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.GetUserPreferencesPresetList()
+
+    @minimum_resolve_version("21.0.3")
+    def load_user_preferences_preset(self, preset_name: str) -> bool:
+        """Loads the user preferences preset named preset_name.
+
+        Args:
+            preset_name (str): name of the user preferences preset
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.LoadUserPreferencesPreset(preset_name)
+
+    @minimum_resolve_version("21.0.3")
+    def save_user_preferences_preset(self, preset_name: str) -> bool:
+        """Saves the current user preferences as a preset named preset_name.
+
+        Args:
+            preset_name (str): name of the new user preferences preset
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.SaveUserPreferencesPreset(preset_name)
+
+    @minimum_resolve_version("21.0.3")
+    def delete_user_preferences_preset(self, preset_name: str) -> bool:
+        """Deletes the user preferences preset named preset_name.
+
+        Args:
+            preset_name (str): name of the user preferences preset
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.DeleteUserPreferencesPreset(preset_name)
+
+    @minimum_resolve_version("21.0.3")
+    def import_user_preferences_preset(
+        self, preset_file_path: str, preset_name: str = ""
+    ) -> bool:
+        """Imports a user preferences preset from preset_file_path.
+
+        Args:
+            preset_file_path (str): path of the preset file
+            preset_name (str, optional): how the preset shall be named. If not specified,
+                the preset is named based on the file base name.
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.ImportUserPreferencesPreset(
+            str(preset_file_path), preset_name
+        )
+
+    @minimum_resolve_version("21.0.3")
+    def export_user_preferences_preset(self, preset_name: str, export_path: str) -> bool:
+        """Exports the user preferences preset named preset_name to export_path.
+
+        Args:
+            preset_name (str): name of the user preferences preset
+            export_path (str): path to export to
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.0.3
+
+        Version:
+            Added in DaVinci Resolve 21.0.3
+        """
+        return self._resolve.ExportUserPreferencesPreset(preset_name, str(export_path))
+
+    ##############################################################################################################################
+    # Add at DR 21.1.0
+    @minimum_resolve_version("21.1.0")
+    def get_current_project(self) -> Project:
+        """Returns the currently loaded Project.
+
+        Shortcut for ``get_project_manager().get_current_project()``.
+
+        Returns:
+            Project: currently loaded project
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return Project(self._resolve.GetCurrentProject())
+
+    @minimum_resolve_version("21.1.0")
+    def get_current_timeline(self) -> Optional[Timeline]:
+        """Returns the currently loaded Timeline.
+
+        Returns:
+            Timeline | None: currently loaded timeline, None if no timeline is open
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        current_timeline = self._resolve.GetCurrentTimeline()
+        if current_timeline is None:
+            return None
+        return Timeline(current_timeline)
+
+    @minimum_resolve_version("21.1.0")
+    def get_media_pool(self) -> MediaPool:
+        """Returns the MediaPool object for the current project.
+
+        Returns:
+            MediaPool: media pool of the current project
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return MediaPool(self._resolve.GetMediaPool())
+
+    @minimum_resolve_version("21.1.0")
+    def get_gallery(self) -> Gallery:
+        """Returns the Gallery object for the current project.
+
+        Returns:
+            Gallery: gallery of the current project
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return Gallery(self._resolve.GetGallery())
+
+    @minimum_resolve_version("21.1.0")
+    def get_keyboard_preset_list(self) -> List[str]:
+        """Returns a list of available keyboard preset names.
+
+        Returns:
+            List[str]: available keyboard preset names
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._resolve.GetKeyboardPresetList()
+
+    @minimum_resolve_version("21.1.0")
+    def get_current_keyboard_preset(self) -> str:
+        """Returns the name of the currently active keyboard preset.
+
+        Returns:
+            str: name of the active keyboard preset
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._resolve.GetCurrentKeyboardPreset()
+
+    @minimum_resolve_version("21.1.0")
+    def load_keyboard_preset(self, preset_name: str) -> bool:
+        """Loads the keyboard preset named preset_name.
+
+        Args:
+            preset_name (str): name of the keyboard preset
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._resolve.LoadKeyboardPreset(preset_name)
+
+    @minimum_resolve_version("21.1.0")
+    def delete_keyboard_preset(self, preset_name: str) -> bool:
+        """Deletes the keyboard preset named preset_name.
+
+        Args:
+            preset_name (str): name of the keyboard preset
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._resolve.DeleteKeyboardPreset(preset_name)
+
+    @minimum_resolve_version("21.1.0")
+    def import_keyboard_preset(
+        self, preset_file_path: str, preset_name: str = ""
+    ) -> bool:
+        """Imports a keyboard preset from preset_file_path.
+
+        Args:
+            preset_file_path (str): path of the preset file
+            preset_name (str, optional): how the preset shall be named. If not specified,
+                the preset is named based on the file base name.
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._resolve.ImportKeyboardPreset(str(preset_file_path), preset_name)
+
+    @minimum_resolve_version("21.1.0")
+    def export_keyboard_preset(self, preset_name: str, export_path: str) -> bool:
+        """Exports the keyboard preset named preset_name to export_path.
+
+        Args:
+            preset_name (str): name of the keyboard preset
+            export_path (str): path to export to
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._resolve.ExportKeyboardPreset(preset_name, str(export_path))
+
+    @minimum_resolve_version("21.1.0")
+    def validate_dctl(self, dctl_source: str) -> Optional[str]:
+        """Validates DCTL source code.
+
+        Note the inverted return contract: a **successful** validation returns ``None``,
+        a failed one returns the error message, e.g.
+        ``"DCTL Error: cannot find main DCTL function.\\n"``.
+
+        Args:
+            dctl_source (str): DCTL source code
+
+        Returns:
+            str | None: None when the DCTL is valid, an error string otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._resolve.ValidateDCTL(dctl_source)
+
+    @minimum_resolve_version("21.1.0")
+    def encrypt_dctl(
+        self, input_path: str, options: "EncryptDCTLOptions | dict | None" = None
+    ) -> bool:
+        """Encrypts the DCTL at input_path and writes it to an output folder.
+
+        Args:
+            input_path (str): path of the DCTL file to encrypt
+            options (EncryptDCTLOptions | dict, optional): encryption options.
+                Defaults to None, which uses the input filename, no expiry and the
+                user's home folder.
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        if options is None:
+            return self._resolve.EncryptDCTL(str(input_path))
+        if isinstance(options, dict):
+            options_dict = options
+        else:
+            options_dict = options.model_dump(exclude_none=True)
+        return self._resolve.EncryptDCTL(str(input_path), options_dict)

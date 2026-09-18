@@ -1,5 +1,149 @@
 # Change Log for PyBMD
 
+# 2026.3.0
+## API
+### Changes for DaVinci Resolve 21.0.3 / 21.0.4 / 21.1.0
+
+### Resolve
+- Add `get_layout_preset_list()` - Returns the list of UI layout presets (DR 21.0.3)
+- Add `get_burn_in_preset_list()` - Returns the list of data burn-in presets (DR 21.0.3)
+- Add `delete_burn_in_preset()` - Deletes the given data burn-in preset (DR 21.0.3)
+- Add `get_user_preferences_preset_list()` - Returns the list of user preferences presets (DR 21.0.3)
+- Add `load_user_preferences_preset()` - Loads the given user preferences preset (DR 21.0.3)
+- Add `save_user_preferences_preset()` - Saves the current user preferences as a preset (DR 21.0.3)
+- Add `delete_user_preferences_preset()` - Deletes the given user preferences preset (DR 21.0.3)
+- Add `import_user_preferences_preset()` - Imports a user preferences preset from a file (DR 21.0.3)
+- Add `export_user_preferences_preset()` - Exports a user preferences preset to a file (DR 21.0.3)
+- Add `get_current_project()` - Shortcut for `get_project_manager().get_current_project()` (DR 21.1.0)
+- Add `get_current_timeline()` - Shortcut for the current project's current timeline, `None` when there is none (DR 21.1.0)
+- Add `get_media_pool()` - Shortcut for the current project's media pool (DR 21.1.0)
+- Add `get_gallery()` - Shortcut for the current project's gallery (DR 21.1.0)
+- Add `get_keyboard_preset_list()` - Returns the list of keyboard customization presets (DR 21.1.0)
+- Add `get_current_keyboard_preset()` - Returns the name of the active keyboard preset (DR 21.1.0)
+- Add `load_keyboard_preset()` - Loads the given keyboard preset (DR 21.1.0)
+- Add `delete_keyboard_preset()` - Deletes the given keyboard preset (DR 21.1.0)
+- Add `import_keyboard_preset()` - Imports a keyboard preset from a file (DR 21.1.0)
+- Add `export_keyboard_preset()` - Exports a keyboard preset to a file (DR 21.1.0)
+- Add `validate_dctl()` - Validates DCTL source; returns `None` when the source is valid, an error string otherwise (DR 21.1.0)
+- Add `encrypt_dctl()` - Encrypts a DCTL file using `EncryptDCTLOptions` (DR 21.1.0)
+
+### Project
+- Add `get_settings()` - Returns all project settings as a dict (DR 21.1.0)
+- Add `set_settings()` - Sets multiple project settings from a dict in one call (DR 21.1.0)
+- Add `get_project_settings_preset_list()` - Returns a list of `ProjectSettingsPresetInfo` (DR 21.1.0)
+- Add `set_project_settings_preset()` - Applies the given project settings preset (DR 21.1.0)
+- Add `update_project_settings_preset()` - Updates the preset with the current project settings (DR 21.1.0)
+- Add `delete_project_settings_preset()` - Deletes the given project settings preset (DR 21.1.0)
+- Add `import_project_settings_preset()` - Imports a project settings preset from a file (DR 21.1.0)
+- Add `export_project_settings_preset()` - Exports a project settings preset to a file (DR 21.1.0)
+- Add `save_current_project_settings_as_new_preset()` - Saves the current settings as a new preset (DR 21.1.0)
+- Add `update_render_preset()` - Updates a render preset with the current render settings (DR 21.1.0)
+- Add `set_quick_export_enabled_for_render_preset()` - Shows/hides a render preset in Quick Export (DR 21.1.0)
+- Add `get_audio_render_formats()` - Returns the supported audio-only render formats (DR 21.1.0)
+- Add `get_audio_render_codecs()` - Returns the audio codecs available for a render format (DR 21.1.0)
+- Add `set_super_scale_enhanced()` - Selects the "2x Enhanced" Super Scale multiplier. This needs the four-argument `SetSetting("superScale", 2, sharpness, noiseReduction)` convention, the only `SetSetting` convention DaVinci Resolve 21.1.0 did *not* deprecate, because it has no `set_settings()` equivalent
+
+### ProjectManager
+- Add `get_project_attributes_in_current_folder()` - Returns a `{project_name: ProjectAttributes}` dict for the current folder (DR 21.0.3)
+
+### Timeline
+- Add `get_selected_clips()` - Returns the timeline items currently selected in the UI (DR 21.0.4)
+- Add `get_settings()` - Returns all timeline settings as a dict (DR 21.1.0)
+- Add `set_settings()` - Sets multiple timeline settings from a dict in one call (DR 21.1.0)
+- Add `get_output_blanking()` / `set_output_blanking()` - Reads/writes the timeline output blanking using `OutputBlanking` (DR 21.1.0)
+- Add `get_normalize_audio_modes()` - Returns the available audio normalization modes (DR 21.1.0)
+- Add `normalize_audio_level()` - Normalizes the audio level of the given timeline items using `NormalizeAudioOptions` (DR 21.1.0)
+- Add `auto_align_clips()` - Auto-aligns the given timeline items using `AutoAlignOptions` (DR 21.1.0)
+
+### TimelineItem
+- Add `get_type()` - Returns the item type (`"video"`, `"audio"`, `"generator"`, `"transition"`) (DR 21.1.0)
+- Add `get_properties()` / `set_properties()` - Reads/writes all item properties at once using `TimelineItemProperties` (DR 21.1.0)
+- Add `get_fades()` / `set_fades()` - Reads/writes fade in/out using `FadeInfo` (DR 21.1.0)
+- Add `get_speed()` / `set_speed()` - Reads/writes retime speed using `SpeedOptions` (DR 21.1.0)
+- Add `get_output_blanking()` / `set_output_blanking()` - Per-item output blanking; the getter returns `{}` while the item follows the timeline (DR 21.1.0)
+- Add `get_use_timeline_for_output_blanking()` / `set_use_timeline_for_output_blanking()` (DR 21.1.0)
+- Add `add_transition()` - Adds a transition described by `TransitionOptions`, returns the new `TimelineItem` (DR 21.1.0)
+- Add `flatten_multicam()` - Flattens a multicam clip using a `FlattenMulticamGradeOption` (DR 21.1.0)
+- Add `perform_multicam_smart_switch()` - Runs multicam smart switch using `SmartSwitchSettings` (Studio/AI) (DR 21.1.0)
+- Add `set_source_audio_channel_mapping()` - Sets the source audio channel mapping from a JSON string (DR 21.1.0)
+
+### MediaPool
+- Add `create_multicam_clip()` - Creates multicam clips from the given `MediaPoolItem` list using `MulticamOptions` (DR 21.1.0)
+- Add `ImportClipInfo` dataclass - `clipInfo` entry for `import_media`, so an image sequence can be imported as a single `MediaPoolItem`
+- Add `import_media()` overloads accepting `List[ImportClipInfo]` and `List[dict]`
+
+### MediaPoolItem
+- Add `get_timeline()` - Returns the `Timeline` a timeline-type media pool item represents (DR 21.0.4)
+- Add `get_transcription()` - Returns the clip transcription as a `Transcription` model (DR 21.1.0)
+- Add `set_audio_mapping()` - Sets the clip audio mapping from a JSON string (DR 21.1.0)
+- Update `set_metadata()` - Now also accepts a metadata dict, e.g. `set_metadata({"Scene": "42"})`
+
+### MediaStorage
+- Add `start_clone_media()` - Starts a clone job from a source folder to one or more target folders (DR 21.1.0)
+- Add `stop_clone_media()` - Stops the running clone job (DR 21.1.0)
+- Add `get_clone_status()` - Returns the clone job status as a `CloneStatus` model (DR 21.1.0)
+- Add `set_clone_tool_settings()` - Sets the clone tool settings from `CloneToolSettings`; resets to defaults when called without arguments (DR 21.1.0)
+
+### settings module
+- Add write models: `CloneToolSettings`, `NormalizeAudioOptions`, `AutoAlignOptions`, `EncryptDCTLOptions`, `OutputBlanking`, `FadeInfo`, `SpeedOptions`, `TransitionOptions`, `MulticamOptions`, `SmartSwitchSettings`, `TimelineItemProperties`
+- Add read models: `CloneStatus`, `ProjectSettingsPresetInfo`, `ProjectAttributes`, `Transcription`, `TranscriptionSegment`, `TranscriptionWord`
+- Add enums: `CloneChecksumType`, `NormalizeAudioSetLevelMode`, `AutoAlignSyncUsing`, `AutoAlignWaveformTrack`, `MulticamAngleSyncMode`, `MulticamAudioMode`, `MulticamAngleNameMode`, `MulticamDetectSameCameraClipsMode`, `FlattenMulticamGradeOption`, `SmartSwitchAnalysisMode`, `SmartSwitchWideAngleFrequency`, `SmartSwitchQuality`, `DynamicZoomEase`, `CompositeMode`, `RetimeProcess`, `MotionEstimation`, `Scaling`, `ResizeFilter`, `DialogueLevelerMode`
+- Add `RenderSetting` keys: `ClipStartFrame`, `TimelineStartTimecode`, `ReplaceExistingFilesInPlace`, `UseFullExtents`, `AddFrameHandles`, `DataBurnIn`
+- Update `AudioSyncChannel` - Now reads the `AUDIO_SYNC_CHANNEL_AUTOMATIC` / `AUDIO_SYNC_CHANNEL_MIX` constants instead of hardcoded values
+- Add the DR 21.1.0 constants to the `ResolveObject` protocol in `_resolve_types.py` (clone checksum types, normalize audio modes, auto align, multicam, flatten multicam, smart switch, dynamic zoom ease, composite modes, retime process, motion estimation incl. `MOTION_EST_METAL`, scaling, resize filters, dialogue leveler modes)
+
+## Deprecations
+DaVinci Resolve 21.1.0 deprecates several calling conventions. Nothing is removed - the wrappers
+below keep working and now emit an `APIDeprecationWarning` when the deprecated form is used.
+
+### Project
+- `get_setting()` → `get_settings()`
+- `set_setting()` → `set_settings({setting_name: setting_value})`
+- `get_preset_list()` → `get_project_settings_preset_list()`
+- `set_preset()` → `set_project_settings_preset()`
+
+### Timeline
+- `get_setting()` → `get_settings()`
+- `set_setting()` → `set_settings({setting_name: setting_value})`
+
+### TimelineItem
+- `get_property()` → `get_properties()`
+- `set_property()` → `set_properties({property_key: property_value})`
+
+### MediaPool
+- `append_to_timeline([MediaPoolItem])` → `append_to_timeline([ClipInfo])`
+- `create_timeline_from_clips(name, [MediaPoolItem])` → `create_timeline_from_clips(name, [ClipInfo])`
+- `import_media([path])` → `import_media([ImportClipInfo])`
+
+### MediaPoolItem
+- `get_metadata(metadata_type)` → `get_metadata()` and index into the returned dict
+- `get_clip_property(property_name)` → `get_clip_property()` and index into the returned dict
+- `set_metadata(metadata_type, metadata_value)` → `set_metadata({metadata_type: metadata_value})`
+- `set_third_party_metadata(metadata_type, metadata_value)` → `set_third_party_metadata({metadata_type: metadata_value})`
+
+### MediaStorage
+- `add_item_list_to_media_pool([path])` → `add_item_list_to_media_pool([Item_Info(media=path)])`
+
+## Fixes
+### MediaStorage
+- Fix `Item_Info` to serialize as the `startFrame` / `endFrame` keys DaVinci Resolve expects (they were sent as `start_frame` / `end_frame`, so `add_item_list_to_media_pool` silently ignored the frame range). Both the snake_case field names and the Resolve key names are accepted on init
+- Fix `set_clone_tool_settings()` to send an empty dict when resetting to defaults; calling `SetCloneToolSettings()` with no argument returns False
+- Document that every `start_clone_media()` target folder has to exist already - DaVinci Resolve returns False instead of creating it
+
+### MediaPool
+- Fix `create_timeline_from_clips(name, [MediaPoolItem])` to unwrap each item before passing it to the API
+- Fix `create_timeline_from_clips(name, [ClipInfo])` to serialize each `ClipInfo` via `to_dict()`; it previously passed the `ClipInfo` *class* through `asdict()` and emitted snake_case keys
+- Fix `ClipInfo` to only require `media_pool_item`; `start_frame`, `end_frame`, `media_type`, `track_index` and `record_frame` now default to `None` and are omitted from the dict handed to DaVinci Resolve. This makes `[ClipInfo(media_pool_item=item)]` - the migration path for the deprecated `[MediaPoolItem]` convention - expressible
+- Fix `import_media()` to return an empty list instead of raising `TypeError` when DaVinci Resolve returns nothing, and document that the `clipInfo` conventions only import image sequences (entries carrying `start_index` / `end_index`)
+
+### settings module
+- Fix `CloneStatus.JobStatus` to accept any string; DaVinci Resolve reports statuses beyond the documented set, e.g. `"InProgress"` while a clone job runs
+
+### decorators
+- Fix deprecation warnings raised from `@multimethod` overloads to blame the calling line instead of multimethod's dispatch machinery
+- Add `warn_deprecated_calling_convention()` for APIs where only one *calling convention* was deprecated, which is known at call time rather than at decoration time
+
+----
 # 2026.2.0
 ## API
 ### Changes for DaVinci Resolve 21.0.2

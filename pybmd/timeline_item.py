@@ -1,9 +1,18 @@
 from dataclasses import dataclass
 from dataclasses import asdict
-from typing import List, Tuple, TYPE_CHECKING
+from typing import Dict, List, Optional, Tuple, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from pybmd.export_type import LUT_Export_Type
+    from pybmd.settings import (
+        FadeInfo,
+        FlattenMulticamGradeOption,
+        OutputBlanking,
+        SmartSwitchSettings,
+        SpeedOptions,
+        TimelineItemProperties,
+        TransitionOptions,
+    )
 
 from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
@@ -270,10 +279,19 @@ class TimelineItem(WrapperBase):
         """
         return self._timeline_item.SetName(name)
 
+    @requires_resolve_version(
+        deprecated_in="21.1.0",
+        moved_to="TimelineItem.get_properties",
+        notes="Use get_properties() and index into the returned dict instead",
+    )
     def get_property(self, property_key: str | None = None) -> str | dict:
         """returns the value of the specified key.
 
         if no key is specified, the method returns a dictionary(python) or table(lua) for all supported keys
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, use
+            :meth:`get_properties` and index into the returned dict instead.
         """
         return self._timeline_item.GetProperty(property_key)
 
@@ -597,7 +615,12 @@ class TimelineItem(WrapperBase):
 
         return self._timeline_item.ExportLUT(export_type.value, export_path)
 
-    @minimum_resolve_version("19.0.0")
+    @requires_resolve_version(
+        added_in="19.0.0",
+        deprecated_in="21.1.0",
+        moved_to="TimelineItem.set_properties",
+        notes="Use set_properties({property_key: property_value}) instead",
+    )
     def set_property(self, property_key: str, property_value) -> bool:
         """Sets the value of property "propertyKey" to value "propertyValue".
 
@@ -609,6 +632,10 @@ class TimelineItem(WrapperBase):
 
         Returns:
             bool: True if successful, False otherwise
+
+        Deprecated:
+            Deprecated calling convention since DaVinci Resolve 21.1.0, use
+            ``set_properties({property_key: property_value})`` instead.
         """
         return self._timeline_item.SetProperty(property_key, property_value)
 
@@ -801,3 +828,321 @@ class TimelineItem(WrapperBase):
             Note: Currently non-functional due to API issues
         """
         return self._timeline_item.ResetAllNodeColors()
+
+    ##############################################################################################################################
+    # Add at DR 21.1.0
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_type(self) -> str:
+        """Returns the type of the item.
+
+        Returns:
+            str: one of "video", "audio", "generator" or "transition"
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.GetType()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_properties(self) -> Dict:
+        """Returns a dict with all supported item properties.
+
+        This is the dict-based replacement for the single-key :meth:`get_property`.
+        Refer to ``settings.TimelineItemProperties`` for the supported keys.
+
+        Returns:
+            Dict: all supported item properties
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.GetProperties()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_properties(self, properties: "TimelineItemProperties | dict") -> bool:
+        """Sets the item properties from the given dict of property keys and values.
+
+        This is the dict-based replacement for the single-key :meth:`set_property`.
+
+        Args:
+            properties (TimelineItemProperties | dict): properties to set
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        if isinstance(properties, dict):
+            properties_dict = properties
+        else:
+            properties_dict = properties.model_dump(exclude_none=True)
+        return self._timeline_item.SetProperties(properties_dict)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_fades(self) -> Dict:
+        """Returns the fade durations of the item's video or audio fader.
+
+        Which fader is addressed depends on the type of the item.
+
+        Returns:
+            Dict: ``{"FadeIn": int, "FadeOut": int}`` in frames
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.GetFades()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_fades(self, fades: "FadeInfo | dict") -> bool:
+        """Sets the fade durations of the item's video or audio fader.
+
+        Which fader is addressed depends on the type of the item.
+
+        Args:
+            fades (FadeInfo | dict): ``{"FadeIn": int, "FadeOut": int}`` in frames
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        if isinstance(fades, dict):
+            fades_dict = fades
+        else:
+            fades_dict = fades.model_dump(exclude_none=True)
+        return self._timeline_item.SetFades(fades_dict)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_speed(self) -> Dict:
+        """Returns the clip speed options.
+
+        Returns:
+            Dict: speed options, refer to ``settings.SpeedOptions`` for the keys
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.GetSpeed()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_speed(self, speed_options: "SpeedOptions | dict") -> bool:
+        """Sets the clip speed.
+
+        Args:
+            speed_options (SpeedOptions | dict): speed options. A ``Percentage`` of
+                ``0.0`` freezes the frame.
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        if isinstance(speed_options, dict):
+            options_dict = speed_options
+        else:
+            options_dict = speed_options.model_dump(exclude_none=True)
+        return self._timeline_item.SetSpeed(options_dict)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_output_blanking(self) -> Dict:
+        """Returns the output blanking for the clip.
+
+        Note:
+            The returned dict is **empty** when the clip uses the timeline's output
+            blanking. Use :meth:`get_use_timeline_for_output_blanking` to tell the two
+            cases apart.
+
+        Returns:
+            Dict: blanking in pixels, with the keys ``"Top"``, ``"Bottom"``,
+                ``"Left"`` and ``"Right"``, or ``{}``
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.GetOutputBlanking()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_output_blanking(self, output_blanking: "OutputBlanking | dict") -> bool:
+        """Sets the output blanking for the clip.
+
+        Note:
+            The clip must have its own blanking enabled first - call
+            ``set_use_timeline_for_output_blanking(False)``, otherwise this returns False.
+
+        Args:
+            output_blanking (OutputBlanking | dict): blanking in pixels, with the keys
+                ``"Top"``, ``"Bottom"``, ``"Left"`` and ``"Right"``
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        if isinstance(output_blanking, dict):
+            blanking_dict = output_blanking
+        else:
+            blanking_dict = output_blanking.model_dump(exclude_none=True)
+        return self._timeline_item.SetOutputBlanking(blanking_dict)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def get_use_timeline_for_output_blanking(self) -> bool:
+        """Gets the flag that makes the clip use the timeline's output blanking.
+
+        Returns:
+            bool: True when the clip uses the timeline's output blanking
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.GetUseTimelineForOutputBlanking()
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_use_timeline_for_output_blanking(
+        self, use_timeline_output_blanking: bool
+    ) -> bool:
+        """Sets the flag that makes the clip use the timeline's output blanking.
+
+        Args:
+            use_timeline_output_blanking (bool): True to use the timeline's output
+                blanking, False to use the clip's own
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.SetUseTimelineForOutputBlanking(
+            use_timeline_output_blanking
+        )
+
+    @requires_resolve_version(added_in="21.1.0")
+    def add_transition(
+        self, transition_options: "TransitionOptions | dict"
+    ) -> Optional["TimelineItem"]:
+        """Adds a transition to the start or end of this item.
+
+        Args:
+            transition_options (TransitionOptions | dict): transition options, e.g.
+                ``{"type": "Cross Dissolve", "category": "simple", "position": "end"}``
+
+        Returns:
+            TimelineItem | None: the created transition item, None on failure
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        if isinstance(transition_options, dict):
+            options_dict = transition_options
+        else:
+            options_dict = transition_options.model_dump(exclude_none=True)
+        transition_item = self._timeline_item.AddTransition(options_dict)
+        if transition_item is None:
+            return None
+        return TimelineItem(transition_item)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def flatten_multicam(self, grade_option: "FlattenMulticamGradeOption") -> bool:
+        """Flattens the multicam timeline item, using the given grade source.
+
+        Args:
+            grade_option (FlattenMulticamGradeOption): which grade to keep
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.FlattenMulticam(grade_option.value)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def perform_multicam_smart_switch(
+        self, smart_switch_settings: "SmartSwitchSettings | dict"
+    ) -> bool:
+        """Performs Multicam SmartSwitch on the multicam timeline item.
+
+        Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
+        prerequisites; returns False if requirements are not met.
+
+        Args:
+            smart_switch_settings (SmartSwitchSettings | dict): SmartSwitch settings
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        if isinstance(smart_switch_settings, dict):
+            settings_dict = smart_switch_settings
+        else:
+            settings_dict = smart_switch_settings.model_dump(exclude_none=True)
+        return self._timeline_item.PerformMulticamSmartSwitch(settings_dict)
+
+    @requires_resolve_version(added_in="21.1.0")
+    def set_source_audio_channel_mapping(self, audio_mapping: str) -> bool:
+        """Sets the source audio channel mapping of the item.
+
+        Counterpart of :meth:`get_source_audio_channel_mapping`.
+
+        Args:
+            audio_mapping (str): json formatted string describing the mapping
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.0
+
+        Version:
+            Added in DaVinci Resolve 21.1.0
+        """
+        return self._timeline_item.SetSourceAudioChannelMapping(audio_mapping)

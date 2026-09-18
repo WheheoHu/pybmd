@@ -103,3 +103,164 @@ class ResolveObject(Protocol):
     MARKER_SAND: str
     MARKER_COCOA: str
     MARKER_CREAM: str
+    ###########################################################
+    # Add at DR 21.1.0
+
+    # Clone tool checksum types
+    CLONE_CHECKSUM_TYPE_NONE: float
+    CLONE_CHECKSUM_TYPE_FILESIZE: float
+    CLONE_CHECKSUM_TYPE_CRC32: float
+    CLONE_CHECKSUM_TYPE_MD5: float
+    CLONE_CHECKSUM_TYPE_SHA256: float
+    CLONE_CHECKSUM_TYPE_SHA512: float
+    CLONE_CHECKSUM_TYPE_XXH_64: float
+
+    # Normalize audio set level modes
+    NORMALIZE_AUDIO_SET_LEVEL_RELATIVE: float
+    NORMALIZE_AUDIO_SET_LEVEL_INDEPENDENT: float
+
+    # Auto align clips
+    AUTO_ALIGN_CLIPS_USING_WAVEFORM: float
+    AUTO_ALIGN_CLIPS_USING_TIMECODE: float
+    AUTO_ALIGN_CLIPS_WAVEFORM_TRACK_MIX: float
+    AUTO_ALIGN_CLIPS_WAVEFORM_TRACK_AUTOMATIC: float
+
+    # Multicam angle sync modes
+    MULTICAM_ANGLE_SYNC_IN: float
+    MULTICAM_ANGLE_SYNC_OUT: float
+    MULTICAM_ANGLE_SYNC_TIMECODE: float
+    MULTICAM_ANGLE_SYNC_AUDIO: float
+    MULTICAM_ANGLE_SYNC_MARKER: float
+
+    # Audio sync channels
+    AUDIO_SYNC_CHANNEL_AUTOMATIC: float
+    AUDIO_SYNC_CHANNEL_MIX: float
+
+    # Multicam audio modes
+    MULTICAM_AUDIO_ADAPTIVE: float
+    MULTICAM_AUDIO_SOURCE: float
+    MULTICAM_AUDIO_REFERENCE: float
+    MULTICAM_AUDIO_ALL: float
+
+    # Multicam angle name modes
+    MULTICAM_ANGLE_NAME_SEQUENTIAL: float
+    MULTICAM_ANGLE_NAME_ANGLE: float
+    MULTICAM_ANGLE_NAME_CAMERA: float
+    MULTICAM_ANGLE_NAME_CLIP: float
+    MULTICAM_ANGLE_NAME_FILE: float
+
+    # Multicam same-camera detection modes
+    MULTICAM_DETECT_BY_CAMERA_NUMBER: float
+    MULTICAM_DETECT_BY_ANGLE: float
+    MULTICAM_DETECT_BY_REEL_NUMBER: float
+    MULTICAM_DETECT_BY_REEL_NAME: float
+    MULTICAM_DETECT_BY_ROLL_CARD: float
+    MULTICAM_DETECT_NONE: float
+
+    # Flatten multicam grade options
+    FLATTEN_MULTICAM_COPY_GRADE: float
+    FLATTEN_MULTICAM_RETAIN_GRADE_FROM_ANGLE: float
+
+    # Multicam smart switch analysis modes
+    SMART_SWITCH_ANALYSIS_MODE_NONE: float
+    SMART_SWITCH_ANALYSIS_MODE_DETECT_WIDE_ANGLE: float
+    SMART_SWITCH_ANALYSIS_MODE_AUDIO_ONLY: float
+
+    # Multicam smart switch wide angle frequencies
+    SMART_SWITCH_WIDE_ANGLE_FREQ_LOW: float
+    SMART_SWITCH_WIDE_ANGLE_FREQ_MEDIUM: float
+    SMART_SWITCH_WIDE_ANGLE_FREQ_HIGH: float
+
+    # Multicam smart switch quality
+    SMART_SWITCH_QUALITY_FASTER: float
+    SMART_SWITCH_QUALITY_BETTER: float
+
+    ###########################################################
+    # Timeline item properties
+
+    # Dynamic zoom ease
+    DYNAMIC_ZOOM_EASE_LINEAR: float
+    DYNAMIC_ZOOM_EASE_IN: float
+    DYNAMIC_ZOOM_EASE_OUT: float
+    DYNAMIC_ZOOM_EASE_IN_AND_OUT: float
+
+    # Composite modes
+    COMPOSITE_NORMAL: float
+    COMPOSITE_ADD: float
+    COMPOSITE_SUBTRACT: float
+    COMPOSITE_DIFF: float
+    COMPOSITE_MULTIPLY: float
+    COMPOSITE_SCREEN: float
+    COMPOSITE_OVERLAY: float
+    COMPOSITE_HARDLIGHT: float
+    COMPOSITE_SOFTLIGHT: float
+    COMPOSITE_DARKEN: float
+    COMPOSITE_LIGHTEN: float
+    COMPOSITE_COLOR_DODGE: float
+    COMPOSITE_COLOR_BURN: float
+    COMPOSITE_EXCLUSION: float
+    COMPOSITE_HUE: float
+    COMPOSITE_SATURATE: float
+    COMPOSITE_COLORIZE: float
+    COMPOSITE_LUMA_MASK: float
+    COMPOSITE_DIVIDE: float
+    COMPOSITE_LINEAR_DODGE: float
+    COMPOSITE_LINEAR_BURN: float
+    COMPOSITE_LINEAR_LIGHT: float
+    COMPOSITE_VIVID_LIGHT: float
+    COMPOSITE_PIN_LIGHT: float
+    COMPOSITE_HARD_MIX: float
+    COMPOSITE_LIGHTER_COLOR: float
+    COMPOSITE_DARKER_COLOR: float
+    COMPOSITE_FOREGROUND: float
+    COMPOSITE_ALPHA: float
+    COMPOSITE_INVERTED_ALPHA: float
+    COMPOSITE_LUM: float
+    COMPOSITE_INVERTED_LUM: float
+
+    # Retime process
+    RETIME_USE_PROJECT: float
+    RETIME_NEAREST: float
+    RETIME_FRAME_BLEND: float
+    RETIME_OPTICAL_FLOW: float
+
+    # Motion estimation
+    MOTION_EST_USE_PROJECT: float
+    MOTION_EST_STANDARD_FASTER: float
+    MOTION_EST_STANDARD_BETTER: float
+    MOTION_EST_ENHANCED_FASTER: float
+    MOTION_EST_ENHANCED_BETTER: float
+    MOTION_EST_SPEED_WARP_FASTER: float
+    MOTION_EST_SPEED_WARP_BETTER: float
+    MOTION_EST_METAL: float
+
+    # Scaling
+    SCALE_USE_PROJECT: float
+    SCALE_CROP: float
+    SCALE_FIT: float
+    SCALE_FILL: float
+    SCALE_STRETCH: float
+
+    # Resize filter
+    RESIZE_FILTER_USE_PROJECT: float
+    RESIZE_FILTER_SHARPER: float
+    RESIZE_FILTER_SMOOTHER: float
+    RESIZE_FILTER_BICUBIC: float
+    RESIZE_FILTER_BILINEAR: float
+    RESIZE_FILTER_BESSEL: float
+    RESIZE_FILTER_BOX: float
+    RESIZE_FILTER_CATMULL_ROM: float
+    RESIZE_FILTER_CUBIC: float
+    RESIZE_FILTER_GAUSSIAN: float
+    RESIZE_FILTER_LANCZOS: float
+    RESIZE_FILTER_MITCHELL: float
+    RESIZE_FILTER_NEAREST_NEIGHBOR: float
+    RESIZE_FILTER_QUADRATIC: float
+    RESIZE_FILTER_SINC: float
+    RESIZE_FILTER_LINEAR: float
+
+    # Dialogue leveler modes
+    DIALOGUE_LEVELER_MODE_ALLOW_WIDER_DYNAMICS: float
+    DIALOGUE_LEVELER_MODE_OPTIMIZE_MODERATE_LEVELS: float
+    DIALOGUE_LEVELER_MODE_MORE_LIFT_FOR_LOW_LEVELS: float
+    DIALOGUE_LEVELER_MODE_LIFT_SOFT_WHISPERY_SOURCES: float

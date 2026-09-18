@@ -11,7 +11,7 @@ complete wrapper around the Resolve scripting API — projects, media, timelines
 Fusion, and rendering. On top of that foundation it's growing into a **toolkit** of
 higher-level helpers (such as marker-based still export in `toolkits.StillManager`) that
 turn common workflows into a few lines of code, with more planned. It runs on **Windows**
-and **macOS**, and tracks the Resolve API across versions (DaVinci Resolve 18.6 → 21.0.2).
+and **macOS**, and tracks the Resolve API across versions (DaVinci Resolve 18.6 → 21.1.0).
 
 ## Features
 

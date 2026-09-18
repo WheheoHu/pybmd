@@ -14,8 +14,11 @@ Example:
 """
 
 import functools
+import os
 import warnings
 from typing import Callable, Optional, TypeVar, cast, Any
+
+import multimethod
 
 from pybmd.version_info import Version, VersionConstraint, APIStatus
 from pybmd.version_registry import VersionRegistry
@@ -23,6 +26,12 @@ from pybmd.error import APIVersionError, APIDeprecationWarning
 
 
 F = TypeVar('F', bound=Callable)
+
+# Frames from these files are skipped when attributing a deprecation warning, so the
+# warning blames user code instead of multimethod's dispatch machinery. Overloads
+# decorated with @multimethod are reached through multimethod.__call__, which would
+# otherwise absorb the warning's stacklevel.
+_SKIP_FILE_PREFIXES = (os.path.dirname(multimethod.__file__),)
 
 
 def requires_resolve_version(
@@ -131,7 +140,10 @@ def requires_resolve_version(
             # Warn if deprecated
             if status == APIStatus.DEPRECATED:
                 warnings.warn(
-                    f"{func.__name__}: {message}", APIDeprecationWarning, stacklevel=2
+                    f"{func.__name__}: {message}",
+                    APIDeprecationWarning,
+                    stacklevel=2,
+                    skip_file_prefixes=_SKIP_FILE_PREFIXES,
                 )
 
             # Call the original function
@@ -145,6 +157,55 @@ def requires_resolve_version(
         return cast(F, wrapper)
 
     return decorator
+
+
+def warn_deprecated_calling_convention(
+    api_name: str,
+    deprecated_in: str,
+    moved_to: Optional[str] = None,
+    stacklevel: int = 3,
+) -> None:
+    """Warn that the *calling convention* used to reach an API is deprecated.
+
+    Some DaVinci Resolve APIs did not get deprecated as a whole - only one of their
+    calling conventions did (e.g. ``SetMetadata(metadataType, metadataValue)`` versus
+    ``SetMetadata({metadata})``). Which convention was used is only known at call time,
+    so those wrappers call this helper on the legacy path instead of being decorated
+    with :func:`requires_resolve_version`. No constraint is registered in the
+    VersionRegistry, because the method itself stays fully supported.
+
+    Nothing is warned when the running Resolve version is older than 'deprecated_in',
+    or when no Resolve instance has been created yet.
+
+    Args:
+        api_name: Legacy convention identifier, e.g.
+            "MediaPoolItem.set_metadata(metadata_type, metadata_value)"
+        deprecated_in: Version string the convention was deprecated in (e.g. "21.1.0")
+        moved_to: Convention to use instead (e.g. "set_metadata({metadata})")
+        stacklevel: Stack level the warning points at. The default of 3 blames the
+            caller of the wrapper method.
+
+    Warns:
+        APIDeprecationWarning: If the running Resolve version deprecates the convention
+    """
+    # Lazy import to avoid circular dependency
+    from pybmd.resolve import RESOLVE_VERSION
+
+    if RESOLVE_VERSION is None:
+        return
+
+    if Version.from_list(RESOLVE_VERSION) < Version.from_string(deprecated_in):
+        return
+
+    message = f"{api_name}: API deprecated since version {deprecated_in}"
+    if moved_to:
+        message += f". Use {moved_to} instead"
+    warnings.warn(
+        message,
+        APIDeprecationWarning,
+        stacklevel=stacklevel,
+        skip_file_prefixes=_SKIP_FILE_PREFIXES,
+    )
 
 
 def minimum_resolve_version(version_str: str) -> Callable:
