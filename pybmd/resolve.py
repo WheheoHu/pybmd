@@ -1,6 +1,6 @@
 import subprocess
 import platform
-from typing import TYPE_CHECKING, List, Optional, Tuple
+from typing import TYPE_CHECKING, List, Literal, Optional, Tuple
 import psutil
 
 from pybmd.error import ResolveInitError
@@ -16,7 +16,7 @@ from pybmd.version_registry import VersionRegistry
 from pybmd.decorators import minimum_resolve_version
 
 if TYPE_CHECKING:
-    from pybmd.settings import EncryptDCTLOptions, KeyframeMode
+    from pybmd.settings import EffectInfo, EncryptDCTLOptions, KeyframeMode
 
 from . import _init_bmd
 
@@ -283,7 +283,7 @@ class Resolve:
         """Switches to indicated page in DaVinci Resolve.
 
         Args:
-            page_name (str): Input can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver").
+            page_name (str): Input can be one of ("media", "cut", "edit", "fusion", "color", "fairlight", "deliver", "photo"). The "photo" page exists since DaVinci Resolve 21.
 
         Returns:
             bool
@@ -798,3 +798,59 @@ class Resolve:
         else:
             options_dict = options.model_dump(exclude_none=True)
         return self._resolve.EncryptDCTL(str(input_path), options_dict)
+
+    ##############################################################################################################################
+    # Add at DR 21.1.2
+
+    @minimum_resolve_version("21.1.2")
+    def get_effects_list(
+        self, media_type: Optional[Literal["video", "photo", "audio"]] = None
+    ) -> List["EffectInfo"]:
+        """Returns the effects that can be applied to a timeline item or photo.
+
+        Pass an entry's ``category`` and ``id`` to ``TimelineItem.add_effect`` or
+        ``PhotoAlbumItem.add_effect``.
+
+        Args:
+            media_type (str, optional): "video", "photo" or "audio" restricts the list to
+                effects for that media type. DaVinci Resolve defaults to "video".
+
+        Returns:
+            List[EffectInfo]: the available effects
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.settings import EffectInfo
+
+        if media_type is None:
+            effects = self._resolve.GetEffectsList()
+        else:
+            effects = self._resolve.GetEffectsList(media_type)
+        return [EffectInfo(**effect) for effect in effects or []]
+
+    ##############################################################################################################################
+    # APIs in the DR 21.1.2 API reference that pybmd had not wrapped. Their changelog does
+    # not say which version introduced them, so they carry no version check.
+
+    def is_studio(self) -> bool:
+        """Returns whether this is DaVinci Resolve Studio rather than the free version.
+
+        Returns:
+            bool: True for DaVinci Resolve Studio
+        """
+        return self._resolve.IsStudio()
+
+    def set_high_priority(self, high_priority: bool) -> bool:
+        """Sets the script execution priority to high or normal.
+
+        Args:
+            high_priority (bool): True for high priority, False for normal
+
+        Returns:
+            bool: Returns True if successful, False otherwise.
+        """
+        return self._resolve.SetHighPriority(high_priority)

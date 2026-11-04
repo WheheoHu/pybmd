@@ -7,8 +7,11 @@ if TYPE_CHECKING:
     from pybmd.settings import (
         AutoAlignOptions,
         AutoCaptionSettings,
+        ExportFrameOptions,
+        ExportFrameResult,
         NormalizeAudioOptions,
         OutputBlanking,
+        TimelineItemPosition,
     )
 
 
@@ -207,7 +210,9 @@ class Timeline(WrapperBase):
         """Deletes all timeline markers of the specified color.
         An "All" argument is supported and deletes all timeline markers.
         """
-        return self._timeline.DeleteMarkerByColor(color)
+        # The API is DeleteMarkersByColor. pybmd used to call DeleteMarkerByColor,
+        # which does not exist, so this method raised "'NoneType' object is not callable".
+        return self._timeline.DeleteMarkersByColor(color)
 
     def duplicate_timeline(self, timeline_name: str) -> "Timeline":
         """Duplicates the timeline and returns the created timeline,
@@ -592,10 +597,17 @@ class Timeline(WrapperBase):
     @minimum_resolve_version("18.5.0")
     @requires_resolve_version(added_in="18.6.4")
     def create_subtitles_from_audio(
-        self, auto_caption_settings: "AutoCaptionSettings"
+        self, auto_caption_settings: "AutoCaptionSettings | None" = None
     ) -> bool:
         # Modified at DR 18.6.4
         """Creates subtitles from audio for the timeline.
+
+        Since DaVinci Resolve 21.1.1 this is non-blocking: it returns once the job has
+        started. Poll ``Project.get_create_subtitles_from_audio_status`` for progress.
+
+        Args:
+            auto_caption_settings (AutoCaptionSettings, optional): caption settings.
+                DaVinci Resolve uses its defaults when omitted. Defaults to None.
 
         Returns:
             bool: Returns True on success, False otherwise.
@@ -606,6 +618,8 @@ class Timeline(WrapperBase):
         Version:
             Modified in DaVinci Resolve 18.6.4
         """
+        if auto_caption_settings is None:
+            return self._timeline.CreateSubtitlesFromAudio()
         return self._timeline.CreateSubtitlesFromAudio(
             auto_caption_settings.model_dump()
         )
@@ -613,6 +627,9 @@ class Timeline(WrapperBase):
     @minimum_resolve_version("18.5.0")
     def detect_scene_cuts(self) -> bool:
         """Detects and makes scene cuts along the timeline.
+
+        Since DaVinci Resolve 21.1.1 this is non-blocking: it returns once the job has
+        started. Poll ``Project.get_detect_scene_cuts_status`` for progress.
 
         Returns:
             bool: Returns True if successful, False otherwise.
@@ -968,3 +985,138 @@ class Timeline(WrapperBase):
         else:
             options_dict = auto_align_options.model_dump(exclude_none=True)
         return self._timeline.AutoAlignClips(items, options_dict)
+
+    ##############################################################################################################################
+    # Add at DR 21.1.2
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_is_enabled(self) -> bool:
+        """Returns whether the timeline is enabled.
+
+        Returns:
+            bool: True if the timeline is enabled
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._timeline.GetIsEnabled()
+
+    @requires_resolve_version(added_in="21.1.2")
+    def set_is_enabled(self, enabled: bool) -> bool:
+        """Enables or disables the timeline.
+
+        Note:
+            In DaVinci Resolve 21.1.2, after disabling and re-enabling the current
+            timeline, editing APIs on it (``TimelineItem.add_effect``,
+            ``Timeline.move_items``, ``Timeline.delete_gaps``, ...) keep failing even
+            though :meth:`get_is_enabled` returns True again. Calling
+            ``Project.set_current_timeline`` with this timeline restores them.
+
+        Args:
+            enabled (bool): True to enable, False to disable
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._timeline.SetIsEnabled(enabled)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def export_frame(
+        self,
+        frame_offset: int,
+        export_frame_options: "ExportFrameOptions | dict | None" = None,
+    ) -> "ExportFrameResult | dict":
+        """Exports a frame of the timeline as a still image.
+
+        Args:
+            frame_offset (int): 0-based offset from the start of the timeline
+            export_frame_options (ExportFrameOptions | dict, optional): output options.
+                Returns a base64 encoded JPEG when omitted. Defaults to None.
+
+        Returns:
+            ExportFrameResult | dict: the export result, an empty dict if nothing was
+                returned. Use ``ExportFrameResult.decode_data()`` for the image bytes.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.settings import ExportFrameResult
+
+        if export_frame_options is None:
+            result = self._timeline.ExportFrame(frame_offset)
+        else:
+            if not isinstance(export_frame_options, dict):
+                export_frame_options = export_frame_options.model_dump(exclude_none=True)
+            result = self._timeline.ExportFrame(frame_offset, export_frame_options)
+        if not result:
+            return {}
+        return ExportFrameResult(**result)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def delete_gaps(self) -> bool:
+        """Deletes every gap between clips on the timeline, rippling later content to
+        close them.
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._timeline.DeleteGaps()
+
+    @requires_resolve_version(added_in="21.1.2")
+    def move_items(
+        self,
+        timeline_items: List[TimelineItem],
+        position: "TimelineItemPosition | dict",
+        move_linked_items: bool = True,
+        subframe_precision: bool = False,
+    ) -> bool:
+        """Moves timeline items as a group.
+
+        The leftmost item (lowest track on ties) goes to ``position`` and the others keep
+        their offsets relative to it. Fails, moving nothing, if any item cannot reach its
+        destination.
+
+        Args:
+            timeline_items (List[TimelineItem]): items to move
+            position (TimelineItemPosition | dict): ``trackIndex`` and/or ``startFrame``
+                of the destination; omitted keys keep their current value
+            move_linked_items (bool, optional): Move linked items too. Defaults to True.
+            subframe_precision (bool, optional): Allow fractional ``startFrame`` values
+                for audio clips when the "Align audio edits to frame boundaries"
+                preference is off. Defaults to False.
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        if not isinstance(position, dict):
+            position = position.model_dump(exclude_none=True)
+        return self._timeline.MoveItems(
+            [timeline_item._timeline_item for timeline_item in timeline_items],
+            position,
+            move_linked_items,
+            subframe_precision,
+        )

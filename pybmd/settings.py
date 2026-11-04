@@ -1,3 +1,4 @@
+import base64
 from enum import Enum
 from typing import Any, ClassVar, Literal
 from pydantic import (
@@ -6,6 +7,7 @@ from pydantic import (
     Field,
     field_validator,
     model_serializer,
+    model_validator,
     SerializerFunctionWrapHandler,
 )
 from pybmd._init_bmd import _resolve_object as _resolve
@@ -165,11 +167,14 @@ class BaseIndexSetting(BaseModel):
     @model_serializer(mode="wrap")
     def ser_model(self, handler: SerializerFunctionWrapHandler) -> dict[float, Any]:
         data = handler(self)
+        # Fields left at None are not sent, so optional settings added in newer
+        # DaVinci Resolve versions never reach an older version that lacks the key.
         return {
             self._field_to_index[field_name].value: (
                 value.value if isinstance(value, Enum) else value
             )
             for field_name, value in data.items()
+            if value is not None
         }
 
 
@@ -227,6 +232,57 @@ class LanguageID(Enum):
     SPANISH = _resolve.AUTO_CAPTION_SPANISH
     SWEDISH = _resolve.AUTO_CAPTION_SWEDISH
 
+    # Languages of the built-in model that pybmd had not listed yet
+    FINNISH = _resolve.AUTO_CAPTION_FINNISH
+    HINDI = _resolve.AUTO_CAPTION_HINDI
+    INDONESIAN = _resolve.AUTO_CAPTION_INDONESIAN
+    MALAY = _resolve.AUTO_CAPTION_MALAY
+    POLISH = _resolve.AUTO_CAPTION_POLISH
+    ROMANIAN = _resolve.AUTO_CAPTION_ROMANIAN
+    TURKISH = _resolve.AUTO_CAPTION_TURKISH
+    VIETNAMESE = _resolve.AUTO_CAPTION_VIETNAMESE
+    TAMIL = _resolve.AUTO_CAPTION_TAMIL
+    THAI = _resolve.AUTO_CAPTION_THAI
+
+    # Extended languages (DR 21.1.2). These need
+    # ``AutoCaptionSettings.subtitle_extended_language_support=True`` and the extended
+    # language models installed through the Extras Download Manager.
+    AFRIKAANS = _resolve.AUTO_CAPTION_AFRIKAANS
+    ARABIC = _resolve.AUTO_CAPTION_ARABIC
+    ARMENIAN = _resolve.AUTO_CAPTION_ARMENIAN
+    AZERBAIJANI = _resolve.AUTO_CAPTION_AZERBAIJANI
+    BELARUSIAN = _resolve.AUTO_CAPTION_BELARUSIAN
+    BOSNIAN = _resolve.AUTO_CAPTION_BOSNIAN
+    BULGARIAN = _resolve.AUTO_CAPTION_BULGARIAN
+    CANTONESE = _resolve.AUTO_CAPTION_CANTONESE
+    CATALAN = _resolve.AUTO_CAPTION_CATALAN
+    CROATIAN = _resolve.AUTO_CAPTION_CROATIAN
+    CZECH = _resolve.AUTO_CAPTION_CZECH
+    ESTONIAN = _resolve.AUTO_CAPTION_ESTONIAN
+    GALICIAN = _resolve.AUTO_CAPTION_GALICIAN
+    GREEK = _resolve.AUTO_CAPTION_GREEK
+    HEBREW = _resolve.AUTO_CAPTION_HEBREW
+    HUNGARIAN = _resolve.AUTO_CAPTION_HUNGARIAN
+    ICELANDIC = _resolve.AUTO_CAPTION_ICELANDIC
+    KANNADA = _resolve.AUTO_CAPTION_KANNADA
+    KAZAKH = _resolve.AUTO_CAPTION_KAZAKH
+    LATVIAN = _resolve.AUTO_CAPTION_LATVIAN
+    LITHUANIAN = _resolve.AUTO_CAPTION_LITHUANIAN
+    MACEDONIAN = _resolve.AUTO_CAPTION_MACEDONIAN
+    MAORI = _resolve.AUTO_CAPTION_MAORI
+    MARATHI = _resolve.AUTO_CAPTION_MARATHI
+    MYANMAR = _resolve.AUTO_CAPTION_MYANMAR
+    NEPALI = _resolve.AUTO_CAPTION_NEPALI
+    PERSIAN = _resolve.AUTO_CAPTION_PERSIAN
+    SERBIAN = _resolve.AUTO_CAPTION_SERBIAN
+    SLOVAK = _resolve.AUTO_CAPTION_SLOVAK
+    SLOVENIAN = _resolve.AUTO_CAPTION_SLOVENIAN
+    SWAHILI = _resolve.AUTO_CAPTION_SWAHILI
+    TAGALOG = _resolve.AUTO_CAPTION_TAGALOG
+    UKRAINIAN = _resolve.AUTO_CAPTION_UKRAINIAN
+    URDU = _resolve.AUTO_CAPTION_URDU
+    WELSH = _resolve.AUTO_CAPTION_WELSH
+
 
 #######################################
 # AUTO CAPTION SETTINGS
@@ -240,7 +296,10 @@ class PresetType(Enum):
 
 class LineBreakTypes(Enum):
     LINE_SINGLE = _resolve.AUTO_CAPTION_LINE_SINGLE
-    LINE_DOUBLE = _resolve.AUPTO_CAPTION_LINE_DOUBLE
+    # The constant is AUTO_CAPTION_LINE_DOUBLE. pybmd used to read the misspelt
+    # AUPTO_CAPTION_LINE_DOUBLE, which DaVinci Resolve does not define, so LINE_DOUBLE
+    # was None and silently aliased nothing useful.
+    LINE_DOUBLE = _resolve.AUTO_CAPTION_LINE_DOUBLE
 
 
 class AutoCaptionSettingsIndex(Enum):
@@ -249,6 +308,8 @@ class AutoCaptionSettingsIndex(Enum):
     CHARS_PER_LINE = _resolve.SUBTITLE_CHARS_PER_LINE
     LINE_BREAK = _resolve.SUBTITLE_LINE_BREAK
     GAP = _resolve.SUBTITLE_GAP
+    # Add at DR 21.1.2
+    EXTENDED_LANGUAGE_SUPPORT = _resolve.SUBTITLE_EXTENDED_LANGUAGE_SUPPORT
 
 
 class AutoCaptionSettings(BaseIndexSetting):
@@ -257,12 +318,19 @@ class AutoCaptionSettings(BaseIndexSetting):
     subtitle_chars_per_line: int = 42
     subtitle_line_break: LineBreakTypes = LineBreakTypes.LINE_SINGLE
     subtitle_gap: int = 0
+    subtitle_extended_language_support: bool | None = Field(
+        default=None,
+        description="Use the extended language models, required for the extended "
+        "LanguageID members (DR 21.1.2+). Fails if those models are not installed. "
+        "Not sent when None",
+    )
     _field_to_index: ClassVar[dict[str, AutoCaptionSettingsIndex]] = {
         "subtitle_language": AutoCaptionSettingsIndex.LANGUAGE,
         "subtitle_caption_preset": AutoCaptionSettingsIndex.CAPTION_PRESET,
         "subtitle_chars_per_line": AutoCaptionSettingsIndex.CHARS_PER_LINE,
         "subtitle_line_break": AutoCaptionSettingsIndex.LINE_BREAK,
         "subtitle_gap": AutoCaptionSettingsIndex.GAP,
+        "subtitle_extended_language_support": AutoCaptionSettingsIndex.EXTENDED_LANGUAGE_SUPPORT,
     }
 
 
@@ -305,6 +373,9 @@ class CloudSyncState(Enum):
 class AudioSyncMode(Enum):
     AUDIO_SYNC_WAVEFORM = _resolve.AUDIO_SYNC_WAVEFORM
     AUDIO_SYNC_TIMECODE = _resolve.AUDIO_SYNC_TIMECODE
+    AUDIO_SYNC_IN = _resolve.AUDIO_SYNC_IN
+    AUDIO_SYNC_OUT = _resolve.AUDIO_SYNC_OUT
+    AUDIO_SYNC_MARKER = _resolve.AUDIO_SYNC_MARKER
 
 
 class AudioSyncChannel(Enum):
@@ -1202,3 +1273,681 @@ class TimelineItemProperties(BaseModel):
     AudioDialogueLevelerOutputGain: float | None = Field(
         default=None, ge=0.0, le=6.0, description="0.0 to 6.0 dB"
     )
+
+    # --- Transition (DR 21.1.2+, transition items only) ---
+    # TransitionType and TransitionCategory are read only. They are excluded from
+    # model_dump() so a model filled from get_properties() can be passed back to
+    # set_properties(), which rejects the whole call when it sees a read-only key.
+    TransitionType: str | None = Field(
+        default=None,
+        exclude=True,
+        description='Transition type name, e.g. "Cross Dissolve" (read only)',
+    )
+    TransitionCategory: Literal["simple", "fusion", "ofx", "audio"] | None = Field(
+        default=None, exclude=True, description="Transition category (read only)"
+    )
+    TransitionDuration: int | None = Field(
+        default=None, gt=0, description="Transition duration in frames"
+    )
+    TransitionAlignment: Literal["left", "center", "right"] | None = Field(
+        default=None, description="Placement of the transition relative to the edit point"
+    )
+
+
+###################################
+# Analysis and render job status (DR 21.1.1)
+#
+# DR 21.1.1 made TranscribeAudio, AnalyzeForSlate, CreateSubtitlesFromAudio,
+# DetectSceneCuts, SmartReframe and RenderWithQuickExport non-blocking. These models
+# are returned by the matching ``Project.get_*_status`` methods. ``JobStatus`` is a plain
+# str, as DaVinci Resolve may report values beyond the documented set.
+
+
+class QuickExportRenderStatus(BaseModel):
+    """Status returned by ``Project.get_render_with_quick_export_status`` and
+    ``Project.render_photos_with_quick_export``."""
+
+    JobStatus: str | None = Field(
+        default=None,
+        description='"Rendering", "Render Complete", "Render Failed", "Render Cancelled", '
+        '"Upload Pending", "Uploading", "Upload Completed", "Upload Failed", '
+        '"Upload Cancelled", "Inactive" or "Unexpected"',
+    )
+    CompletionPercentage: int | None = Field(
+        default=None, description="Completion percentage (set for rendering jobs)"
+    )
+    TimeTakenToRenderInMs: int | None = Field(
+        default=None, description="Time taken to render (set on completion)"
+    )
+    EstimatedTimeRemainingInMs: int | None = Field(
+        default=None, description="Time remaining to render (set for rendering jobs)"
+    )
+    Error: str | None = Field(default=None, description="Error details (set on failure)")
+
+
+class TranscribeAudioStatus(BaseModel):
+    """Status returned by ``Project.get_transcribe_audio_status``."""
+
+    JobStatus: str | None = Field(
+        default=None,
+        description='"Inactive", "Initializing", "Analyzing", "Cancelling", "Cancelled" '
+        'or "Complete"',
+    )
+    CompletionPercentage: int | None = Field(
+        default=None, description="Completion percentage (set while in progress)"
+    )
+    CurrentClipIndex: int | None = Field(
+        default=None, description="Index of the clip being analyzed (set while in progress)"
+    )
+    TotalClips: int | None = Field(
+        default=None, description="Total clips to analyze (set while in progress)"
+    )
+    EstimatedTimeRemaining: int | None = Field(
+        default=None, description="Time remaining in seconds (set while in progress)"
+    )
+    Error: str | None = Field(default=None, description="Error details (set on failure)")
+
+
+class SlateAnalysisStatus(BaseModel):
+    """Status returned by ``Project.get_analyze_for_slate_status``."""
+
+    JobStatus: str | None = Field(
+        default=None,
+        description='"Inactive", "Initializing", "Analyzing", "Cancelling", "Cancelled", '
+        '"Complete" or "Failed"',
+    )
+    CompletionPercentage: int | None = Field(
+        default=None, description="Completion percentage (set during analysis)"
+    )
+    CurrentClipIndex: int | None = Field(
+        default=None, description="Index of the clip being analyzed (set during analysis)"
+    )
+    TotalClips: int | None = Field(
+        default=None, description="Total clips to analyze (set during analysis)"
+    )
+    EstimatedTimeRemaining: int | None = Field(
+        default=None, description="Time remaining in seconds (set during analysis)"
+    )
+    Error: str | None = Field(default=None, description="Error details (set on failure)")
+
+
+class SmartReframeStatus(BaseModel):
+    """Status returned by ``Project.get_smart_reframe_status``."""
+
+    JobStatus: str | None = Field(
+        default=None,
+        description='"Inactive", "Initializing", "Analyzing", "Cancelled", "Complete" '
+        'or "Failed"',
+    )
+    CompletionPercentage: int | None = Field(
+        default=None, description="Completion percentage (set during analysis)"
+    )
+    AnalysisSpeed: float | None = Field(
+        default=None, description="Analysis speed in fps (set during analysis)"
+    )
+    EstimatedTimeRemaining: int | None = Field(
+        default=None, description="Time remaining in seconds (set during analysis)"
+    )
+    Error: str | None = Field(default=None, description="Error details (set on failure)")
+
+
+class DetectSceneCutsStatus(BaseModel):
+    """Status returned by ``Project.get_detect_scene_cuts_status``."""
+
+    JobStatus: str | None = Field(
+        default=None, description='"Inactive", "Analyzing", "Complete" or "Cancelled"'
+    )
+    CompletionPercentage: int | None = Field(
+        default=None, description="Completion percentage (set during analysis)"
+    )
+    AnalysisSpeed: float | None = Field(
+        default=None, description="Analysis speed in fps (set during analysis)"
+    )
+    EstimatedTimeRemaining: int | None = Field(
+        default=None, description="Time remaining in seconds (set during analysis)"
+    )
+
+
+class CreateSubtitlesFromAudioStatus(BaseModel):
+    """Status returned by ``Project.get_create_subtitles_from_audio_status``."""
+
+    JobStatus: str | None = Field(
+        default=None,
+        description='"Inactive", "Initializing", "Analyzing", "Cancelling", "Cancelled", '
+        '"Complete" or "Failed"',
+    )
+    CompletionPercentage: int | None = Field(
+        default=None, description="Completion percentage (set during analysis)"
+    )
+    AnalysisSpeed: float | None = Field(
+        default=None, description="Analysis speed (set during analysis)"
+    )
+    EstimatedTimeRemaining: int | None = Field(
+        default=None, description="Time remaining in seconds (set during analysis)"
+    )
+    Error: str | None = Field(default=None, description="Error details (set on failure)")
+
+
+###################################
+# Effects (DR 21.1.2)
+
+
+class EffectInfo(BaseModel):
+    """Effect description returned by ``Resolve.get_effects_list`` and
+    ``Effect.get_info``. Pass ``category`` and ``id`` to ``add_effect``."""
+
+    category: str | None = Field(
+        default=None, description='"fusion", "ofx" or "audio"'
+    )
+    id: str | None = Field(default=None, description="Unique identifier of the effect")
+    name: str | None = Field(default=None, description="Display name of the effect")
+
+
+###################################
+# Export Frame (DR 21.1.2)
+
+
+class ExportFrameOptions(BaseModel):
+    """Settings (``exportFrameOptions``) for ``Timeline`` / ``TimelineItem`` /
+    ``MediaPoolItem`` / ``PhotoAlbumItem`` ``export_frame``.
+
+    All fields are optional; only fields explicitly set are sent
+    (use ``model_dump(exclude_none=True)``).
+    """
+
+    outputType: Literal["file", "encodedString"] | None = Field(
+        default=None,
+        description='"file" writes filePath, "encodedString" returns base64 data '
+        '(default: "encodedString")',
+    )
+    encodedImageFormat: Literal["jpg", "png"] | None = Field(
+        default=None,
+        description='Image format when outputType is "encodedString" (default: "jpg")',
+    )
+    filePath: str | None = Field(
+        default=None,
+        description='Output file path, format inferred from the extension. Required when '
+        'outputType is "file"',
+    )
+    maxDimension: int | None = Field(
+        default=None,
+        ge=0,
+        description="Caps the longer edge in pixels, scaling the other edge "
+        "proportionally (default: 0, no scaling)",
+    )
+
+    @model_validator(mode="after")
+    def _file_output_needs_path(self) -> "ExportFrameOptions":
+        if self.outputType == "file" and not self.filePath:
+            raise ValueError('filePath is required when outputType is "file"')
+        return self
+
+
+class ExportFrameResult(BaseModel):
+    """Result returned by the ``export_frame`` methods."""
+
+    success: bool | None = Field(
+        default=None, description="True if the frame was exported successfully"
+    )
+    error: str | None = Field(default=None, description="Error message (set on failure)")
+    data: str | None = Field(
+        default=None,
+        description='Base64-encoded image bytes (set when outputType is "encodedString" '
+        "and success is True)",
+    )
+
+    def decode_data(self) -> bytes | None:
+        """Returns the image bytes decoded from ``data``, or None when there is no data."""
+        if not self.data:
+            return None
+        return base64.b64decode(self.data)
+
+
+###################################
+# Timeline Item editing (DR 21.1.2)
+
+
+class TimelineItemPosition(BaseModel):
+    """Position used by ``TimelineItem.get_position`` / ``set_position`` and
+    ``Timeline.move_items``.
+
+    All fields are optional; only fields explicitly set are sent
+    (use ``model_dump(exclude_none=True)``).
+    """
+
+    trackType: Literal["video", "audio", "subtitle"] | None = Field(
+        default=None,
+        description="Track type. Returned by get_position, ignored by set_position and "
+        "move_items",
+    )
+    trackIndex: int | None = Field(
+        default=None, ge=1, description="1-based track index. Omit to keep the current track"
+    )
+    startFrame: float | None = Field(
+        default=None, description="Start frame. Omit to keep the current frame"
+    )
+
+
+class KeyframeTiming(Enum):
+    """Keyframe timing modes accepted by ``CopyAttributesOptions.keyframeTiming``."""
+
+    MAINTAIN = _resolve.KEYFRAME_TIMING_MAINTAIN
+    STRETCH_TO_FIT = _resolve.KEYFRAME_TIMING_STRETCH_TO_FIT
+
+
+class CopyAttributesOptions(BaseModel):
+    """Settings (``copyAttributesOptions``) for ``TimelineItem.copy_attributes``.
+
+    Mirrors the Edit page's "Paste Attributes" dialog. The ``all*`` flags select a
+    whole group. All fields are optional; only fields explicitly set are sent
+    (use ``model_dump(exclude_none=True)``).
+    """
+
+    model_config = ConfigDict(use_enum_values=True)
+
+    keyframeTiming: KeyframeTiming | None = Field(
+        default=None, description="Default: KeyframeTiming.MAINTAIN"
+    )
+
+    # --- Clip attributes ---
+    allClipAttributes: bool | None = Field(
+        default=None, description="Copy all clip attributes (clipColor, flags, markers)"
+    )
+    clipColor: bool | None = Field(default=None, description="Copy clip color")
+    flags: bool | None = Field(default=None, description="Copy flags")
+    markers: bool | None = Field(default=None, description="Copy markers")
+
+    # --- Video attributes ---
+    allVideoAttributes: bool | None = Field(
+        default=None, description="Copy all video attributes"
+    )
+    compositionMode: bool | None = Field(default=None, description="Copy composition mode")
+    opacity: bool | None = Field(default=None, description="Copy opacity")
+    position: bool | None = Field(default=None, description="Copy position")
+    rotationAngle: bool | None = Field(default=None, description="Copy rotation angle")
+    anchorPoint: bool | None = Field(default=None, description="Copy anchor point")
+    pitch: bool | None = Field(default=None, description="Copy pitch")
+    yaw: bool | None = Field(default=None, description="Copy yaw")
+    allZoomAttributes: bool | None = Field(
+        default=None, description="Copy all zoom attributes (scaleX, scaleY)"
+    )
+    scaleX: bool | None = Field(default=None, description="Copy scale X")
+    scaleY: bool | None = Field(default=None, description="Copy scale Y")
+    allCropAttributes: bool | None = Field(
+        default=None, description="Copy all crop attributes"
+    )
+    cropLeft: bool | None = Field(default=None, description="Copy left crop")
+    cropRight: bool | None = Field(default=None, description="Copy right crop")
+    cropTop: bool | None = Field(default=None, description="Copy top crop")
+    cropBottom: bool | None = Field(default=None, description="Copy bottom crop")
+    cropSoftness: bool | None = Field(default=None, description="Copy crop softness")
+    retainImagePosition: bool | None = Field(
+        default=None, description="Retain image position when copying crop"
+    )
+    allFlipAttributes: bool | None = Field(
+        default=None, description="Copy all flip attributes (flipV, flipH)"
+    )
+    flipV: bool | None = Field(default=None, description="Copy vertical flip")
+    flipH: bool | None = Field(default=None, description="Copy horizontal flip")
+    retimeProcess: bool | None = Field(default=None, description="Copy retime process")
+    motionEstimation: bool | None = Field(
+        default=None, description="Copy motion estimation"
+    )
+    videoPlugins: bool | None = Field(default=None, description="Copy video plugins/filters")
+    colorCorrection: bool | None = Field(
+        default=None, description="Copy color correction/grade"
+    )
+    fusionEffects: bool | None = Field(default=None, description="Copy Fusion effects")
+
+    # --- Audio attributes ---
+    allAudioAttributes: bool | None = Field(
+        default=None,
+        description="Copy all audio attributes (audioVolume, audioPlugins, audioEqualizer)",
+    )
+    audioVolume: bool | None = Field(default=None, description="Copy audio volume")
+    audioPlugins: bool | None = Field(default=None, description="Copy audio plugins/filters")
+    audioEqualizer: bool | None = Field(default=None, description="Copy audio equalizer")
+
+    # --- Retime ---
+    retimeEffect: bool | None = Field(
+        default=None, description="Copy retime/speed timemap"
+    )
+    rippleSequence: bool | None = Field(
+        default=None,
+        description="Ripple the sequence after pasting the timemap. Requires retimeEffect",
+    )
+
+
+class RemoveSilenceOptions(BaseModel):
+    """Settings (``removeSilenceOptions``) for ``TimelineItem.ripple_delete_silence``.
+
+    All fields are optional; only fields explicitly set are sent
+    (use ``model_dump(exclude_none=True)``).
+    """
+
+    threshold: float | None = Field(
+        default=None,
+        ge=-100.0,
+        le=10.0,
+        description="Silence threshold in dB, -100.0 to 10.0 (default: -25.0)",
+    )
+    preHead: int | None = Field(
+        default=None, ge=0, description="Pre-head padding in frames (default: 0)"
+    )
+    postTail: int | None = Field(
+        default=None, ge=0, description="Post-tail padding in frames (default: 0)"
+    )
+    minimumToStrip: int | None = Field(
+        default=None,
+        ge=0,
+        description="Minimum silence duration in frames to strip (default: timeline FPS)",
+    )
+    crossFadeAudio: bool | None = Field(
+        default=None, description="Add cross-fades at edit points (default: False)"
+    )
+
+
+class AudioLevelsInfo(BaseModel):
+    """Loudness returned by ``TimelineItem.analyze_audio_levels``."""
+
+    TruePeak: float | None = Field(
+        default=None,
+        description="True peak in dBFS, e.g. -4.5 (-100.0 if no level was measured)",
+    )
+    Integrated: float | None = Field(
+        default=None,
+        description="Integrated loudness in LUFS, e.g. -18.4 (-100.0 if no level was "
+        "measured)",
+    )
+
+
+###################################
+# Photo Albums (DR 21.1.2)
+
+
+class PhotoExportFormat(Enum):
+    """Image formats accepted by ``PhotoRenderSettings.Format``."""
+
+    JPEG = _resolve.PHOTO_FORMAT_JPEG
+    PNG = _resolve.PHOTO_FORMAT_PNG
+    HEIC = _resolve.PHOTO_FORMAT_HEIC
+    TIFF = _resolve.PHOTO_FORMAT_TIFF
+
+
+class PhotoAutoQuality(Enum):
+    """JPEG automatic quality levels accepted by ``PhotoRenderSettings.AutoQualityLevel``."""
+
+    LEAST = _resolve.PHOTO_AUTO_QUALITY_LEAST
+    LOW = _resolve.PHOTO_AUTO_QUALITY_LOW
+    MEDIUM = _resolve.PHOTO_AUTO_QUALITY_MEDIUM
+    HIGH = _resolve.PHOTO_AUTO_QUALITY_HIGH
+    BEST = _resolve.PHOTO_AUTO_QUALITY_BEST
+
+
+class PhotoTiffCompressionType(Enum):
+    """TIFF compression types accepted by ``TiffCompressionType``."""
+
+    NONE = _resolve.PHOTO_TIFF_COMPRESSION_NONE
+    LZW = _resolve.PHOTO_TIFF_COMPRESSION_LZW
+    ZIP = _resolve.PHOTO_TIFF_COMPRESSION_ZIP
+
+
+class PhotoScaleMode(Enum):
+    """Scaling modes accepted by ``PhotoRenderSettings.ScaleMode``."""
+
+    ORIGINAL = _resolve.PHOTO_SCALE_ORIGINAL
+    DIMENSIONS = _resolve.PHOTO_SCALE_DIMENSIONS
+    SHORT_SIDE = _resolve.PHOTO_SCALE_SHORT_SIDE
+    LONG_SIDE = _resolve.PHOTO_SCALE_LONG_SIDE
+    PERCENT = _resolve.PHOTO_SCALE_PERCENT
+    MEGAPIXELS = _resolve.PHOTO_SCALE_MEGAPIXELS
+
+
+class PhotoResolutionUnit(Enum):
+    """Resolution units accepted by ``PhotoRenderSettings.ResolutionUnit``."""
+
+    PPI = _resolve.PHOTO_RESOLUTION_UNIT_PPI
+    PPCM = _resolve.PHOTO_RESOLUTION_UNIT_PPCM
+
+
+class PhotoImageOrientation(Enum):
+    """Orientations accepted by ``PhotoAlbumItemProperties.ImageOrientation``."""
+
+    DEG_0 = _resolve.PHOTO_ORIENTATION_0_DEG
+    DEG_90_RIGHT = _resolve.PHOTO_ORIENTATION_90_DEG_RIGHT
+    DEG_180 = _resolve.PHOTO_ORIENTATION_180_DEG
+    DEG_90_LEFT = _resolve.PHOTO_ORIENTATION_90_DEG_LEFT
+
+
+class PhotoCropRatio(Enum):
+    """Crop ratio presets accepted by ``PhotoAlbumItemProperties.CropRatio``."""
+
+    AS_SHOT = _resolve.PHOTO_CROP_RATIO_AS_SHOT
+    CUSTOM = _resolve.PHOTO_CROP_RATIO_CUSTOM
+    RATIO_16X9 = _resolve.PHOTO_CROP_RATIO_16X9
+    RATIO_1X1 = _resolve.PHOTO_CROP_RATIO_1X1
+    RATIO_4X5 = _resolve.PHOTO_CROP_RATIO_4X5
+    RATIO_2X3 = _resolve.PHOTO_CROP_RATIO_2X3
+    RATIO_4X3 = _resolve.PHOTO_CROP_RATIO_4X3
+
+
+class PhotoLookType(Enum):
+    """Look presets accepted by ``PhotoAlbumItemProperties.SourceLookType``."""
+
+    DEFAULT = _resolve.PHOTO_LOOK_DEFAULT
+    BW = _resolve.PHOTO_LOOK_BW
+    BRIGHT = _resolve.PHOTO_LOOK_BRIGHT
+    COOL = _resolve.PHOTO_LOOK_COOL
+    DRAMATIC = _resolve.PHOTO_LOOK_DRAMATIC
+    GOLD = _resolve.PHOTO_LOOK_GOLD
+    NATURAL = _resolve.PHOTO_LOOK_NATURAL
+    RICH_CONTRAST = _resolve.PHOTO_LOOK_RICH_CONTRAST
+    ROSE = _resolve.PHOTO_LOOK_ROSE
+    VIBRANT = _resolve.PHOTO_LOOK_VIBRANT
+    WARM = _resolve.PHOTO_LOOK_WARM
+
+
+class PhotoRenderSettings(BaseModel):
+    """Settings for ``Project.set_photo_render_settings`` (Deliver page, photo albums).
+
+    Settings not given keep their current value. All fields are optional; only fields
+    explicitly set are sent (use ``model_dump(exclude_none=True)``).
+    """
+
+    model_config = ConfigDict(use_enum_values=True)
+
+    TargetDir: str | None = Field(default=None, description="Output directory path")
+    CustomName: str | None = Field(
+        default=None, description="Output filename prefix, supports tags"
+    )
+    UsePhotoAlbumName: bool | None = Field(
+        default=None,
+        description="Use the photo album name as the filename prefix instead of CustomName",
+    )
+    CustomSuffix: str | None = Field(
+        default=None, description="Output filename suffix, supports tags"
+    )
+    FilenameDigits: int | None = Field(
+        default=None,
+        ge=1,
+        le=10,
+        description="Number of digits in the filename frame number, 1 to 10",
+    )
+    Format: PhotoExportFormat | None = Field(default=None, description="Image format")
+    BitDepth: Literal[8, 10, 16] | None = Field(
+        default=None,
+        description="8 or 16 for PNG and TIFF, 8 or 10 for HEIC (HEIC on macOS only)",
+    )
+    ExportAlpha: bool | None = Field(
+        default=None, description="Export the alpha channel (PNG and TIFF only)"
+    )
+    AutoQualityLevel: PhotoAutoQuality | None = Field(
+        default=None,
+        description="Automatic quality level (JPEG only, cannot be combined with "
+        "ManualQualityPercent)",
+    )
+    ManualQualityPercent: int | None = Field(
+        default=None,
+        ge=0,
+        le=100,
+        description="Manual quality: JPEG 1 to 100, HEIC 0 to 100 (cannot be combined "
+        "with AutoQualityLevel)",
+    )
+    TiffCompressionType: PhotoTiffCompressionType | None = Field(
+        default=None, description="TIFF compression type (TIFF only)"
+    )
+    CompressionLevel: int | None = Field(
+        default=None,
+        ge=0,
+        le=9,
+        description="Compression level, 0 to 9 (PNG, and TIFF with ZIP compression)",
+    )
+    ScaleMode: PhotoScaleMode | None = Field(
+        default=None,
+        description="Scaling mode. Changing it requires the value field of the new mode",
+    )
+    ScaleWidth: int | None = Field(
+        default=None, gt=0, description="Output width in pixels (ScaleMode DIMENSIONS)"
+    )
+    ScaleHeight: int | None = Field(
+        default=None, gt=0, description="Output height in pixels (ScaleMode DIMENSIONS)"
+    )
+    ScaleShortSide: int | None = Field(
+        default=None, gt=0, description="Short side in pixels (ScaleMode SHORT_SIDE)"
+    )
+    ScaleLongSide: int | None = Field(
+        default=None, gt=0, description="Long side in pixels (ScaleMode LONG_SIDE)"
+    )
+    ScalePercent: int | None = Field(
+        default=None, ge=25, le=100, description="Scale in percent, 25 to 100 (ScaleMode PERCENT)"
+    )
+    ScaleMegapixels: float | None = Field(
+        default=None,
+        gt=0,
+        description="Output size in megapixels, one decimal place (ScaleMode MEGAPIXELS)",
+    )
+    AllowEnlarge: bool | None = Field(
+        default=None,
+        description="Allow scaling above the original size (not used with ORIGINAL or "
+        "PERCENT)",
+    )
+    Resolution: int | None = Field(
+        default=None,
+        ge=40,
+        le=3000,
+        description="Resolution in the unit given by ResolutionUnit, 40 to 3000",
+    )
+    ResolutionUnit: PhotoResolutionUnit | None = Field(
+        default=None, description="Resolution unit"
+    )
+    IncludeMetadata: bool | None = Field(
+        default=None, description="Embed metadata in the exported image"
+    )
+
+    @model_validator(mode="after")
+    def _one_quality_mode(self) -> "PhotoRenderSettings":
+        if self.AutoQualityLevel is not None and self.ManualQualityPercent is not None:
+            raise ValueError(
+                "AutoQualityLevel and ManualQualityPercent cannot be combined"
+            )
+        return self
+
+
+class PhotoQuickExportRenderSettings(BaseModel):
+    """Settings (``presetInfo``) for ``Project.render_photos_with_quick_export``.
+
+    ``TargetDir`` and ``CustomName`` are required. Only fields explicitly set are sent
+    (use ``model_dump(exclude_none=True)``).
+    """
+
+    model_config = ConfigDict(use_enum_values=True)
+
+    TargetDir: str = Field(description="Output directory path")
+    CustomName: str = Field(description="Output filename, supports tags")
+    BitDepth: Literal[8, 10, 16] | None = Field(
+        default=None,
+        description="8 or 16 for PNG and TIFF, 8 or 10 for HEIC (HEIC on macOS only, "
+        "default: 8)",
+    )
+    ManualQualityPercent: int | None = Field(
+        default=None,
+        ge=1,
+        le=100,
+        description="Image quality in percent, 1 to 100 (JPEG and HEIC only, default: 80)",
+    )
+    TiffCompressionType: PhotoTiffCompressionType | None = Field(
+        default=None, description="TIFF compression type (TIFF only, default: NONE)"
+    )
+    CompressionLevel: int | None = Field(
+        default=None,
+        ge=0,
+        le=9,
+        description="Compression level, 0 to 9 (PNG, and TIFF with ZIP compression, "
+        "default: 0)",
+    )
+    ScalePercent: Literal[100, 75, 50, 25] | None = Field(
+        default=None,
+        description="Scale in percent: 100, 75, 50 or 25 (JPEG, PNG and HEIC only, "
+        "default: 100)",
+    )
+    Resolution: int | None = Field(
+        default=None, ge=40, le=1200, description="Resolution in ppi, 40 to 1200 (default: 72)"
+    )
+    IncludeMetadata: bool | None = Field(
+        default=None, description="Embed metadata in the exported image (default: True)"
+    )
+
+
+class PhotoAlbumItemProperties(BaseModel):
+    """Properties used by ``PhotoAlbumItem.get_properties`` / ``set_properties``.
+
+    Field names are the exact property keys DaVinci Resolve expects. All keys and values
+    are validated by DaVinci Resolve before any is applied, so either all are set or
+    none is. Pixel values (Pan, Tilt, crop edges) refer to the oriented image. All fields
+    are optional; only fields explicitly set are sent (use ``model_dump(exclude_none=True)``).
+    """
+
+    model_config = ConfigDict(use_enum_values=True)
+
+    # --- Source Transform ---
+    SourceTransformEnabled: bool | None = Field(
+        default=None, description="Enable/disable the Source Transform filter section"
+    )
+    Pan: float | None = Field(default=None, description="-4.0*width to 4.0*width pixels")
+    Tilt: float | None = Field(default=None, description="-4.0*height to 4.0*height pixels")
+    ZoomX: float | None = Field(
+        default=None, ge=0.01, le=100.0, description="0.01 to 100.0 (1.0 = no zoom)"
+    )
+    ZoomY: float | None = Field(
+        default=None, ge=0.01, le=100.0, description="0.01 to 100.0 (1.0 = no zoom)"
+    )
+    ZoomGang: bool | None = Field(default=None, description="Link ZoomX and ZoomY")
+    RotationAngle: float | None = Field(
+        default=None, ge=-360.0, le=360.0, description="-360.0 to 360.0 degrees"
+    )
+    Pitch: float | None = Field(default=None, ge=-1.5, le=1.5, description="-1.5 to 1.5")
+    Yaw: float | None = Field(default=None, ge=-1.5, le=1.5, description="-1.5 to 1.5")
+    FlipX: bool | None = Field(default=None, description="Flip horizontally")
+    FlipY: bool | None = Field(default=None, description="Flip vertically")
+    ImageOrientation: PhotoImageOrientation | None = Field(
+        default=None, description="Image orientation"
+    )
+
+    # --- Source Cropping ---
+    SourceCroppingEnabled: bool | None = Field(
+        default=None, description="Enable/disable the Source Cropping filter section"
+    )
+    CropLeft: float | None = Field(default=None, ge=0.0, description="0.0 to width")
+    CropRight: float | None = Field(default=None, ge=0.0, description="0.0 to width")
+    CropTop: float | None = Field(default=None, ge=0.0, description="0.0 to height")
+    CropBottom: float | None = Field(default=None, ge=0.0, description="0.0 to height")
+    CropRatio: PhotoCropRatio | None = Field(default=None, description="Crop ratio preset")
+    CropLockAspectRatio: bool | None = Field(
+        default=None, description="Lock the crop aspect ratio"
+    )
+
+    # --- Source Looks ---
+    SourceLooksEnabled: bool | None = Field(
+        default=None, description="Enable/disable the Source Looks filter section"
+    )
+    SourceLookType: PhotoLookType | None = Field(default=None, description="Look preset")

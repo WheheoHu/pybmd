@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, List, Optional
 from pybmd._wrapper_base import WrapperBase
 from pybmd.decorators import requires_resolve_version
 from pybmd.media_pool_item import MediaPoolItem
@@ -59,16 +59,28 @@ class Folder(WrapperBase):
         return self._folder.Export(file_path)   
     ###########################################################################
     #Add at DR18.6.4
-    def transcribe_audio(self, use_speaker_detection: bool | None = None) -> bool:
+    def transcribe_audio(
+        self,
+        use_speaker_detection: bool | None = None,
+        transcribe_as_nested_clip: bool = False,
+    ) -> bool:
         """Transcribes audio of the MediaPoolItems within the folder and nested folders.
+
+        Since DaVinci Resolve 21.1.1 transcription is non-blocking: this returns once
+        the job has started. Poll ``Project.get_transcribe_audio_status`` for progress.
 
         Args:
             use_speaker_detection (bool, optional): Whether to use speaker detection
                 when transcribing. If None, the project's setting is used. Defaults to None.
+            transcribe_as_nested_clip (bool, optional): Transcribes timelines as nested
+                clips. Only sent when True; part of the DR 21.1.2 API reference.
+                Defaults to False.
 
         Returns:
             bool: Returns True if successful; False otherwise
         """
+        if transcribe_as_nested_clip:
+            return self._folder.TranscribeAudio(use_speaker_detection, True)
         if use_speaker_detection is None:
             return self._folder.TranscribeAudio()
         return self._folder.TranscribeAudio(use_speaker_detection)
@@ -185,6 +197,8 @@ class Folder(WrapperBase):
 
         Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
         prerequisites (AI Slate ID Extras); returns False if requirements are not met.
+        Since DaVinci Resolve 21.1.1 the analysis is non-blocking: poll
+        ``Project.get_analyze_for_slate_status`` for progress.
 
         Args:
             marker_color (MarkerColor | str): Marker color to use. A ``MarkerColor``
@@ -203,3 +217,24 @@ class Folder(WrapperBase):
         return self._folder.AnalyzeForSlate(color)
     
     
+
+    ###########################################################################
+    # Add at DR 21.1.2
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_parent_folder(self) -> Optional["Folder"]:
+        """Returns the folder that contains this folder.
+
+        Returns:
+            Folder | None: the parent folder, None for the root folder
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        parent_folder = self._folder.GetParentFolder()
+        if parent_folder is None:
+            return None
+        return Folder(parent_folder)

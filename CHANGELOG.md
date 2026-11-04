@@ -1,5 +1,99 @@
 # Change Log for PyBMD
 
+# 2026.4.0
+## API
+### Changes for DaVinci Resolve 21.1.1 / 21.1.2
+
+DaVinci Resolve 21.1.1 made `TranscribeAudio`, `AnalyzeForSlate`, `CreateSubtitlesFromAudio`,
+`DetectSceneCuts`, `SmartReframe` and `RenderWithQuickExport` non-blocking: the wrappers now return
+as soon as the job starts. Poll the new `Project.get_*_status()` methods for progress.
+
+### New classes
+- Add `PhotoAlbum` (`pybmd.photo_album`) - Timeline-like photo album: name, unique id, photo list, current item, `delete_photos()`, node graph, media pool item, `grab_still()` / `grab_all_stills()` (DR 21.1.2)
+- Add `PhotoAlbumItem` (`pybmd.photo_album_item`) - TimelineItem-like photo: Fusion compositions, flags, clip color, ratings, remote color versions, `set_cdl()`, node graph, `export_lut()`, color group, burn-in preset, effects, `export_frame()`, `get_properties()` / `set_properties()` (DR 21.1.2)
+- Add `Effect` (`pybmd.effect`) - An effect applied to a timeline item or photo: `get_info()`, `get_is_enabled()` / `set_is_enabled()`, `get_index()` / `set_index()` for ordering, `get_fusion_comp()` (DR 21.1.2)
+
+### Resolve
+- Add `get_effects_list()` - Returns the effects available for "video", "photo" or "audio" as `EffectInfo` models (DR 21.1.2)
+- Add `is_studio()` - Returns whether this is DaVinci Resolve Studio (in the DR 21.1.2 API reference; introducing version undocumented, so no version check)
+- Add `set_high_priority()` - Sets the script execution priority (in the DR 21.1.2 API reference; introducing version undocumented, so no version check)
+
+### ProjectManager
+- Add `get_current_folder()` - Returns the name of the current project folder
+- Add `get_project_last_modified_time()` - Returns a project's last modified time as an epoch timestamp (in the DR 21.1.2 API reference; returned `None` for every project in testing)
+
+### Project
+- Add `get_render_with_quick_export_status()`, `get_transcribe_audio_status()`, `get_analyze_for_slate_status()`, `get_smart_reframe_status()`, `get_detect_scene_cuts_status()`, `get_create_subtitles_from_audio_status()` - Progress of the now non-blocking jobs, as status models (DR 21.1.1)
+- Add `get_photo_album_count()`, `get_photo_album_by_index()`, `get_current_photo_album()`, `set_current_photo_album()` (DR 21.1.2)
+- Add `get_photo_quick_export_render_presets()` and `render_photos_with_quick_export()` - Quick Export for the current photo album using `PhotoQuickExportRenderSettings`. It does not run while the Deliver page is open (DR 21.1.2)
+- Add `set_photo_render_settings()` - Deliver page settings for photo albums using `PhotoRenderSettings`. In DR 21.1.2 it switches the UI to the Deliver page and returned False for every setting tested (DR 21.1.2)
+
+### MediaPool
+- Add `create_empty_photo_album()`, `create_photo_album_from_photos()`, `delete_photo_albums()`, `add_to_photo_album()` (DR 21.1.2)
+
+### MediaPoolItem
+- Add `get_photo_album()` - The photo album a photo album clip represents, `None` otherwise (DR 21.1.2)
+- Add `get_parent_folder()` - The folder containing the item (DR 21.1.2)
+- Add `export_frame()` - Exports a frame to a file or a base64 string, returns `ExportFrameResult` (DR 21.1.2)
+- Add `set_transcription()` - Replaces the transcription from a `Transcription` model or dict (Studio) (DR 21.1.2)
+- Add `clear_flags()`
+- Update `transcribe_audio()` - New `transcribe_as_nested_clip` argument, only sent when True
+
+### Folder
+- Add `get_parent_folder()` - The parent folder, `None` for the root folder (DR 21.1.2)
+- Update `transcribe_audio()` - New `transcribe_as_nested_clip` argument, only sent when True
+
+### Timeline
+- Add `get_is_enabled()` / `set_is_enabled()` (DR 21.1.2). In DR 21.1.2, after re-enabling the current timeline, edits on it fail until `Project.set_current_timeline()` is called again
+- Add `export_frame()` (DR 21.1.2)
+- Add `delete_gaps()` - Ripple-deletes every gap (DR 21.1.2)
+- Add `move_items()` - Moves timeline items as a group using `TimelineItemPosition` (DR 21.1.2)
+- Update `create_subtitles_from_audio()` - `auto_caption_settings` is now optional
+
+### TimelineItem
+- Add `set_left_offset()` / `set_right_offset()` - Trim edit points to leave a given number of media frames available (DR 21.1.2)
+- Add `get_position()` / `set_position()` - Absolute position as `TimelineItemPosition` (DR 21.1.2)
+- Add `add_effect()`, `get_effects()`, `delete_effects()` - Fusion, OFX and audio effects as `Effect` objects (DR 21.1.2)
+- Add `export_frame()` (DR 21.1.2)
+- Add `analyze_audio_levels()` - True peak and integrated loudness as `AudioLevelsInfo` (DR 21.1.2)
+- Add `copy_attributes()` - Edit page "Paste Attributes" using `CopyAttributesOptions` (DR 21.1.2)
+- Add `ripple_delete_silence()` - Using `RemoveSilenceOptions` (DR 21.1.2)
+- Add `update_marker_custom_data()`
+- Transition properties `TransitionType`, `TransitionCategory`, `TransitionDuration` and `TransitionAlignment` are available through `get_properties()` / `set_properties()` (DR 21.1.2)
+
+### Graph
+- Add `set_node_label()`, `get_node_color()`, `set_node_color()` (DR 21.1.2)
+- Update `apply_grade_from_drx()` - New `apply_to_all_layers` (DR 21.1.1) and `keyframe_mode` (DR 21.1.2) arguments. Each is only sent when used, and raises `APIVersionError` on a Resolve version that predates it
+
+### ColorGroup
+- Add `get_photos_in_photo_album()` - Photos of a photo album (the current one by default) in this group (DR 21.1.2)
+
+### settings module
+- Add write models: `ExportFrameOptions`, `TimelineItemPosition`, `CopyAttributesOptions`, `RemoveSilenceOptions`, `PhotoRenderSettings`, `PhotoQuickExportRenderSettings`, `PhotoAlbumItemProperties`
+- Add read models: `ExportFrameResult` (with `decode_data()` returning the image bytes), `AudioLevelsInfo`, `EffectInfo`, `QuickExportRenderStatus`, `TranscribeAudioStatus`, `SlateAnalysisStatus`, `SmartReframeStatus`, `DetectSceneCutsStatus`, `CreateSubtitlesFromAudioStatus`
+- Add enums: `KeyframeTiming`, `PhotoExportFormat`, `PhotoAutoQuality`, `PhotoTiffCompressionType`, `PhotoScaleMode`, `PhotoResolutionUnit`, `PhotoImageOrientation`, `PhotoCropRatio`, `PhotoLookType`
+- Add `TimelineItemProperties` fields `TransitionType` / `TransitionCategory` (read only, excluded from `model_dump()` so a model filled from `get_properties()` can be passed back) and `TransitionDuration` / `TransitionAlignment`
+- Add `AutoCaptionSettings.subtitle_extended_language_support` and `AutoCaptionSettingsIndex.EXTENDED_LANGUAGE_SUPPORT` (DR 21.1.2)
+- Add 45 `LanguageID` members: 10 built-in languages pybmd had not listed (Finnish, Hindi, Indonesian, Malay, Polish, Romanian, Turkish, Vietnamese, Tamil, Thai) and 35 extended languages that need `subtitle_extended_language_support` (DR 21.1.2)
+- Add `AudioSyncMode.AUDIO_SYNC_IN` / `AUDIO_SYNC_OUT` / `AUDIO_SYNC_MARKER`
+- Update `BaseIndexSetting` serialization to skip fields left at `None`, so optional keys added in newer Resolve versions are never sent to older ones
+- Add the DR 21.1.2 constants to the `ResolveObject` protocol in `_resolve_types.py`
+
+### decorators
+- Add `require_resolve_version_for_argument()` - Raises `APIVersionError` when an optional argument is used on a Resolve version that predates it
+
+## Fixes
+- Fix `TimelineItem.set_cdl()` calling `SetCdl`. The API is `SetCDL`, so the method raised `'NoneType' object is not callable`. It now also accepts a dict
+- Fix `Timeline.delete_marker_by_color()` and `TimelineItem.delete_marker_by_color()` calling `DeleteMarkerByColor`. The API is `DeleteMarkersByColor`; both raised `'NoneType' object is not callable`
+- Fix `MediaPoolItem.clear_flag_color()` calling the nonexistent `ClearFlagColor`; it now calls `ClearFlags`
+- Fix `ColorGroup.get_clips_in_timeline()` raising `NameError`: `TimelineItem` was only imported for type checking
+- Fix `LineBreakTypes.LINE_DOUBLE` reading the misspelt `AUPTO_CAPTION_LINE_DOUBLE`, which DaVinci Resolve does not define, so its value was `None`. It now reads `AUTO_CAPTION_LINE_DOUBLE`
+
+## Notes
+- DR 21.1.2 still only accepts the `ImportClipInfo` / dict form of `MediaPool.import_media()` for image sequences; single files still need the (deprecated) list-of-paths form
+- `TimelineItem.get_node_label()` stays blocked as removed in 19.0.0 - use `get_node_graph().get_node_label()`
+
+----
 # 2026.3.0
 ## API
 ### Changes for DaVinci Resolve 21.0.3 / 21.0.4 / 21.1.0

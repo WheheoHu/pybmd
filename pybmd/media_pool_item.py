@@ -10,7 +10,15 @@ from pybmd.decorators import (
 )
 
 if TYPE_CHECKING:
-    from pybmd.settings import MotionDeblurSettings, MarkerColor, Transcription
+    from pybmd.folder import Folder
+    from pybmd.photo_album import PhotoAlbum
+    from pybmd.settings import (
+        ExportFrameOptions,
+        ExportFrameResult,
+        MotionDeblurSettings,
+        MarkerColor,
+        Transcription,
+    )
     from pybmd.timeline import Timeline
 
 
@@ -27,6 +35,17 @@ class MediaPoolItem(WrapperBase):
     def add_flag(self, color: str) -> bool:
         """Add a flag to the clip."""
         return self._media_pool_item.AddFlag(color)
+
+    def clear_flags(self, color: str = "All") -> bool:
+        """Clears the flags of the given color. "All" clears every flag.
+
+        Args:
+            color (str, optional): flag color, e.g. "Blue", or "All". Defaults to "All".
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._media_pool_item.ClearFlags(color)
 
     def add_marker(
         self,
@@ -65,12 +84,16 @@ class MediaPoolItem(WrapperBase):
     def clear_flag_color(self, color: str) -> bool:
         """Clears the flag of the given color if one exists. An "All" argument is supported and clears all flags.
 
+        Same as :meth:`clear_flags`, kept for backward compatibility.
+
         :param color: color of the flag to clear
         :type color: str
         :return: true if success, false if fail
         :rtype: bool
         """
-        return self._media_pool_item.ClearFlagColor(color)
+        # DaVinci Resolve has no ClearFlagColor; this used to raise
+        # "'NoneType' object is not callable". ClearFlags is the actual API.
+        return self._media_pool_item.ClearFlags(color)
 
     def delete_marker_at_frame(self, frame_num: int) -> bool:
         """Delete marker at frame number from the media pool item.
@@ -320,16 +343,29 @@ class MediaPoolItem(WrapperBase):
     # Add at DR18.5.0
 
     @minimum_resolve_version("18.5.0")
-    def transcribe_audio(self, use_speaker_detection: bool | None = None) -> bool:
+    def transcribe_audio(
+        self,
+        use_speaker_detection: bool | None = None,
+        transcribe_as_nested_clip: bool = False,
+    ) -> bool:
         """Transcribes audio of the MediaPoolItem.
+
+        Since DaVinci Resolve 21.1.1 transcription is non-blocking: this returns once
+        the job has started. Poll ``Project.get_transcribe_audio_status`` for progress.
 
         Args:
             use_speaker_detection (bool, optional): Whether to use speaker detection
                 when transcribing. If None, the project's setting is used. Defaults to None.
+            transcribe_as_nested_clip (bool, optional): For a timeline item, transcribes
+                it as a nested clip (read back with
+                ``get_transcription(use_nested_clip_transcription=True)``). Only sent when
+                True; part of the DR 21.1.2 API reference. Defaults to False.
 
         Returns:
             bool: Returns True if successful; False otherwise
         """
+        if transcribe_as_nested_clip:
+            return self._media_pool_item.TranscribeAudio(use_speaker_detection, True)
         if use_speaker_detection is None:
             return self._media_pool_item.TranscribeAudio()
         return self._media_pool_item.TranscribeAudio(use_speaker_detection)
@@ -621,6 +657,8 @@ class MediaPoolItem(WrapperBase):
 
         Studio-only. Refer to DaVinci Resolve's "Studio and AI Scripting APIs"
         prerequisites (AI Slate ID Extras); returns False if requirements are not met.
+        Since DaVinci Resolve 21.1.1 the analysis is non-blocking: poll
+        ``Project.get_analyze_for_slate_status`` for progress.
 
         Args:
             marker_color (MarkerColor | str): Marker color to use. A ``MarkerColor``
@@ -715,3 +753,105 @@ class MediaPoolItem(WrapperBase):
             Added in DaVinci Resolve 21.1.0
         """
         return self._media_pool_item.SetAudioMapping(audio_mapping)
+
+    ##############################################################################################################################
+    # Add at DR 21.1.2
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_photo_album(self) -> "PhotoAlbum | None":
+        """Returns the photo album this media pool item represents.
+
+        Returns:
+            PhotoAlbum | None: the photo album, None if the item is not a photo album clip
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.photo_album import PhotoAlbum
+
+        photo_album = self._media_pool_item.GetPhotoAlbum()
+        if photo_album is None:
+            return None
+        return PhotoAlbum(photo_album)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_parent_folder(self) -> "Folder":
+        """Returns the media pool folder that contains this item.
+
+        Returns:
+            Folder: the containing folder
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.folder import Folder
+
+        return Folder(self._media_pool_item.GetParentFolder())
+
+    @requires_resolve_version(added_in="21.1.2")
+    def export_frame(
+        self,
+        frame_offset: int,
+        export_frame_options: "ExportFrameOptions | dict | None" = None,
+    ) -> "ExportFrameResult | dict":
+        """Exports a frame of the clip as a still image.
+
+        Args:
+            frame_offset (int): 0-based offset from the start of the clip
+            export_frame_options (ExportFrameOptions | dict, optional): output options.
+                Returns a base64 encoded JPEG when omitted. Defaults to None.
+
+        Returns:
+            ExportFrameResult | dict: the export result, an empty dict if nothing was
+                returned. Use ``ExportFrameResult.decode_data()`` for the image bytes.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.settings import ExportFrameResult
+
+        if export_frame_options is None:
+            result = self._media_pool_item.ExportFrame(frame_offset)
+        else:
+            if not isinstance(export_frame_options, dict):
+                export_frame_options = export_frame_options.model_dump(exclude_none=True)
+            result = self._media_pool_item.ExportFrame(frame_offset, export_frame_options)
+        if not result:
+            return {}
+        return ExportFrameResult(**result)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def set_transcription(self, transcription: "Transcription | dict") -> bool:
+        """Replaces the transcription of the MediaPoolItem.
+
+        Studio-only. ``segments`` must not be empty (use :meth:`clear_transcription`
+        to remove a transcription), every segment needs a non-empty ``words`` list and
+        segments must be in ascending, non-overlapping timecode order. Missing word
+        timings are interpolated. A timeline is transcribed as a nested clip. Refer to
+        DaVinci Resolve's 'Setting a Transcription' section for all rules.
+
+        Args:
+            transcription (Transcription | dict): the new transcription, in the format
+                returned by :meth:`get_transcription`
+
+        Returns:
+            bool: Returns True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        if not isinstance(transcription, dict):
+            transcription = transcription.model_dump(exclude_none=True)
+        return self._media_pool_item.SetTranscription(transcription)

@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
 from pybmd.decorators import requires_resolve_version
@@ -9,10 +9,19 @@ from pybmd.media_pool_item import MediaPoolItem
 from pybmd.timeline import Timeline
 
 if TYPE_CHECKING:
+    from pybmd.photo_album import PhotoAlbum
     from pybmd.settings import (
+        CreateSubtitlesFromAudioStatus,
+        DetectSceneCutsStatus,
+        PhotoQuickExportRenderSettings,
+        PhotoRenderSettings,
         ProjectSettingsPresetInfo,
+        QuickExportRenderStatus,
         RenderSetting,
+        SlateAnalysisStatus,
+        SmartReframeStatus,
         SpeechGenerationSettings,
+        TranscribeAudioStatus,
     )
 
 RenderResolution = List[dict]
@@ -419,6 +428,9 @@ class Project(WrapperBase):
         """
         Starts a Quick Export render using the specified preset name and parameter dictionary.
 
+        Since DaVinci Resolve 21.1.1 the render is non-blocking: this returns once the
+        job has started. Poll :meth:`get_render_with_quick_export_status` for progress.
+
         Args:
             preset_name (str): The name of the Quick Export render preset.
             param_dict (Dict[str, Any]): Dictionary of render settings, supported keys include "TargetDir", "CustomName", "VideoQuality", and "EnableUpload".("EnableUpload" key enables direct upload for supported web presets.)
@@ -793,3 +805,294 @@ class Project(WrapperBase):
             another multiplier through :meth:`set_settings` leaves them untouched.
         """
         return self._project.SetSetting("superScale", 2, sharpness, noise_reduction)
+
+    ##############################################################################################################################
+    # Add at DR 21.1.1
+    #
+    # DR 21.1.1 made TranscribeAudio, AnalyzeForSlate, CreateSubtitlesFromAudio,
+    # DetectSceneCuts, SmartReframe and RenderWithQuickExport non-blocking: they return as
+    # soon as the job starts. Poll the matching status method below for progress.
+
+    @requires_resolve_version(added_in="21.1.1")
+    def get_render_with_quick_export_status(self) -> "QuickExportRenderStatus | dict":
+        """Returns the progress of the active :meth:`render_with_quick_export` job.
+
+        Returns:
+            QuickExportRenderStatus | dict: job status, an empty dict if none was returned
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.1
+
+        Version:
+            Added in DaVinci Resolve 21.1.1
+        """
+        from pybmd.settings import QuickExportRenderStatus
+
+        status = self._project.GetRenderWithQuickExportStatus()
+        if not status:
+            return {}
+        return QuickExportRenderStatus(**status)
+
+    @requires_resolve_version(added_in="21.1.1")
+    def get_transcribe_audio_status(self) -> "TranscribeAudioStatus | dict":
+        """Returns the progress of the active ``transcribe_audio`` job (on a
+        ``MediaPoolItem`` or ``Folder``).
+
+        Returns:
+            TranscribeAudioStatus | dict: job status, an empty dict if none was returned
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.1
+
+        Version:
+            Added in DaVinci Resolve 21.1.1
+        """
+        from pybmd.settings import TranscribeAudioStatus
+
+        status = self._project.GetTranscribeAudioStatus()
+        if not status:
+            return {}
+        return TranscribeAudioStatus(**status)
+
+    @requires_resolve_version(added_in="21.1.1")
+    def get_analyze_for_slate_status(self) -> "SlateAnalysisStatus | dict":
+        """Returns the progress of the active ``analyze_for_slate`` job (on a
+        ``MediaPoolItem`` or ``Folder``).
+
+        Returns:
+            SlateAnalysisStatus | dict: job status, an empty dict if none was returned
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.1
+
+        Version:
+            Added in DaVinci Resolve 21.1.1
+        """
+        from pybmd.settings import SlateAnalysisStatus
+
+        status = self._project.GetAnalyzeForSlateStatus()
+        if not status:
+            return {}
+        return SlateAnalysisStatus(**status)
+
+    @requires_resolve_version(added_in="21.1.1")
+    def get_smart_reframe_status(self) -> "SmartReframeStatus | dict":
+        """Returns the progress of the active ``TimelineItem.smart_reframe`` job.
+
+        Returns:
+            SmartReframeStatus | dict: job status, an empty dict if none was returned
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.1
+
+        Version:
+            Added in DaVinci Resolve 21.1.1
+        """
+        from pybmd.settings import SmartReframeStatus
+
+        status = self._project.GetSmartReframeStatus()
+        if not status:
+            return {}
+        return SmartReframeStatus(**status)
+
+    @requires_resolve_version(added_in="21.1.1")
+    def get_detect_scene_cuts_status(self) -> "DetectSceneCutsStatus | dict":
+        """Returns the progress of the active ``Timeline.detect_scene_cuts`` job.
+
+        Returns:
+            DetectSceneCutsStatus | dict: job status, an empty dict if none was returned
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.1
+
+        Version:
+            Added in DaVinci Resolve 21.1.1
+        """
+        from pybmd.settings import DetectSceneCutsStatus
+
+        status = self._project.GetDetectSceneCutsStatus()
+        if not status:
+            return {}
+        return DetectSceneCutsStatus(**status)
+
+    @requires_resolve_version(added_in="21.1.1")
+    def get_create_subtitles_from_audio_status(
+        self,
+    ) -> "CreateSubtitlesFromAudioStatus | dict":
+        """Returns the progress of the active ``Timeline.create_subtitles_from_audio``
+        job.
+
+        Returns:
+            CreateSubtitlesFromAudioStatus | dict: job status, an empty dict if none was
+                returned
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.1
+
+        Version:
+            Added in DaVinci Resolve 21.1.1
+        """
+        from pybmd.settings import CreateSubtitlesFromAudioStatus
+
+        status = self._project.GetCreateSubtitlesFromAudioStatus()
+        if not status:
+            return {}
+        return CreateSubtitlesFromAudioStatus(**status)
+
+    ##############################################################################################################################
+    # Add at DR 21.1.2
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_photo_album_count(self) -> int:
+        """Returns the number of photo albums in the project.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._project.GetPhotoAlbumCount()
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_photo_album_by_index(self, idx: int) -> Optional["PhotoAlbum"]:
+        """Returns the photo album at the given index.
+
+        Args:
+            idx (int): 1 <= idx <= get_photo_album_count()
+
+        Returns:
+            PhotoAlbum | None: the photo album, None if there is none at idx
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.photo_album import PhotoAlbum
+
+        photo_album = self._project.GetPhotoAlbumByIndex(idx)
+        if photo_album is None:
+            return None
+        return PhotoAlbum(photo_album)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_current_photo_album(self) -> Optional["PhotoAlbum"]:
+        """Returns the currently loaded photo album.
+
+        Returns:
+            PhotoAlbum | None: the current photo album, None if there is none
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.photo_album import PhotoAlbum
+
+        photo_album = self._project.GetCurrentPhotoAlbum()
+        if photo_album is None:
+            return None
+        return PhotoAlbum(photo_album)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def set_current_photo_album(self, photo_album: "PhotoAlbum") -> bool:
+        """Makes the given photo album the current photo album of the project.
+
+        Args:
+            photo_album (PhotoAlbum): photo album to load
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._project.SetCurrentPhotoAlbum(photo_album._photo_album)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_photo_quick_export_render_presets(self) -> List[str]:
+        """Returns the names of the Quick Export render presets for photo albums.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._project.GetPhotoQuickExportRenderPresets()
+
+    @requires_resolve_version(added_in="21.1.2")
+    def set_photo_render_settings(
+        self, photo_render_settings: "PhotoRenderSettings | dict"
+    ) -> bool:
+        """Sets the Deliver page settings for rendering the current photo album.
+
+        Settings not given keep their current value.
+
+        Note:
+            In DaVinci Resolve 21.1.2 this call switches the UI to the Deliver page, and
+            it returned False for every setting tested (from the Photo, Deliver and
+            Color pages). Quick Export does not run from the Deliver page, so switch
+            pages again before :meth:`render_photos_with_quick_export`.
+
+        Args:
+            photo_render_settings (PhotoRenderSettings | dict): settings to change
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        if not isinstance(photo_render_settings, dict):
+            photo_render_settings = photo_render_settings.model_dump(exclude_none=True)
+        return self._project.SetPhotoRenderSettings(photo_render_settings)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def render_photos_with_quick_export(
+        self,
+        preset_name: str,
+        preset_info: "PhotoQuickExportRenderSettings | dict",
+    ) -> "QuickExportRenderStatus | dict":
+        """Renders the current photo album with a Quick Export preset.
+
+        The render is non-blocking: poll :meth:`get_render_with_quick_export_status`
+        for progress. Each photo is written as ``"<CustomName> - 01.<ext>"``,
+        ``"<CustomName> - 02.<ext>"``, ... in ``TargetDir``.
+
+        Note:
+            Quick Export fails with "Quick Export is not supported on the current page"
+            while the Deliver page is open (:meth:`set_photo_render_settings` opens
+            it). It works from the Photo, Color and Edit pages.
+
+        Args:
+            preset_name (str): name from :meth:`get_photo_quick_export_render_presets`
+            preset_info (PhotoQuickExportRenderSettings | dict): output settings;
+                ``TargetDir`` and ``CustomName`` are required
+
+        Returns:
+            QuickExportRenderStatus | dict: job status, an empty dict if none was returned
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.settings import QuickExportRenderStatus
+
+        if not isinstance(preset_info, dict):
+            preset_info = preset_info.model_dump(exclude_none=True)
+        status = self._project.RenderPhotosWithQuickExport(preset_name, preset_info)
+        if not status:
+            return {}
+        return QuickExportRenderStatus(**status)

@@ -5,11 +5,17 @@ from typing import Dict, List, Optional, Tuple, TYPE_CHECKING
 if TYPE_CHECKING:
     from pybmd.export_type import LUT_Export_Type
     from pybmd.settings import (
+        AudioLevelsInfo,
+        CopyAttributesOptions,
+        ExportFrameOptions,
+        ExportFrameResult,
         FadeInfo,
         FlattenMulticamGradeOption,
         OutputBlanking,
+        RemoveSilenceOptions,
         SmartSwitchSettings,
         SpeedOptions,
+        TimelineItemPosition,
         TimelineItemProperties,
         TransitionOptions,
     )
@@ -17,6 +23,7 @@ if TYPE_CHECKING:
 from pybmd._wrapper_base import WrapperBase
 from pybmd.color_group import ColorGroup
 from pybmd.decorators import requires_resolve_version, minimum_resolve_version
+from pybmd.effect import Effect
 
 from pybmd.fusion_comp import FusionComp
 from pybmd.graph import Graph
@@ -167,7 +174,24 @@ class TimelineItem(WrapperBase):
         Delete all markers of the specified color from the timeline item.
         "All" as argument deletes all color markers.
         """
-        return self._timeline_item.DeleteMarkerByColor(color)
+        # The API is DeleteMarkersByColor. pybmd used to call DeleteMarkerByColor,
+        # which does not exist, so this method raised "'NoneType' object is not callable".
+        return self._timeline_item.DeleteMarkersByColor(color)
+
+    def update_marker_custom_data(self, frame_id: int, custom_data: str) -> bool:
+        """Updates the customData of the marker at the given frame offset.
+
+        customData is not shown in the UI; scripts can use it to attach their own data
+        to markers.
+
+        Args:
+            frame_id (int): frame offset of the marker
+            custom_data (str): new custom data
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        return self._timeline_item.UpdateMarkerCustomData(frame_id, custom_data)
 
     def delete_take_by_index(self, index: int) -> bool:
         """Deletes a take by index, 1 <= idx <= number of takes."""
@@ -387,16 +411,20 @@ class TimelineItem(WrapperBase):
         """Selects a take by index, 1 <= idx <= number of takes."""
         return self._timeline_item.SelectTakeByIndex(index)
 
-    def set_cdl(self, cdl_map: CDL_Map) -> bool:
+    def set_cdl(self, cdl_map: "CDL_Map | dict") -> bool:
         """Sets the color correction lookup (CDL) for the timeline item.
 
         Args:
-            cdl_map (CDL_Map): CDL_Map object
+            cdl_map (CDL_Map | dict): ``NodeIndex``, ``Slope``, ``Offset``, ``Power`` and
+                ``Saturation``
 
         Returns:
             bool: True if successful, False otherwise
         """
-        return self._timeline_item.SetCdl(asdict(cdl_map))
+        # The API is SetCDL. pybmd used to call SetCdl, which does not exist, so this
+        # method raised "'NoneType' object is not callable".
+        cdl_dict = cdl_map if isinstance(cdl_map, dict) else asdict(cdl_map)
+        return self._timeline_item.SetCDL(cdl_dict)
 
     def set_clip_color(self, color_name: str) -> bool:
         """Sets the item color based on the colorName (string)."""
@@ -544,6 +572,12 @@ class TimelineItem(WrapperBase):
     @minimum_resolve_version("18.5.0")
     def smart_reframe(self) -> bool:
         """Performs Smart Reframe.
+
+        Smart Reframe repositions the subject within the item's existing frame; it does
+        not crop or rescale. To reframe to another aspect ratio, first set the timeline
+        resolution and its "timelineInputResMismatchBehavior" to "scaleToCrop". Since
+        DaVinci Resolve 21.1.1 this is non-blocking: poll
+        ``Project.get_smart_reframe_status`` for progress.
 
         Returns:
             bool: _descriReturns True if successful, False otherwise.
@@ -1146,3 +1180,301 @@ class TimelineItem(WrapperBase):
             Added in DaVinci Resolve 21.1.0
         """
         return self._timeline_item.SetSourceAudioChannelMapping(audio_mapping)
+
+    ##############################################################################################################################
+    # Add at DR 21.1.2
+
+    @requires_resolve_version(added_in="21.1.2")
+    def set_left_offset(
+        self,
+        offset: float,
+        subframe_precision: bool = False,
+        update_linked_items: bool = True,
+    ) -> bool:
+        """Moves the item's start edit point so that ``offset`` frames of media remain
+        available before it (the value :meth:`get_left_offset` then returns).
+
+        Args:
+            offset (float): media frames to leave available on the left side
+            subframe_precision (bool, optional): Allow fractional offsets for audio clips
+                when the "Align audio edits to frame boundaries" preference is off.
+                Defaults to False.
+            update_linked_items (bool, optional): Adjust linked items too.
+                Defaults to True.
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._timeline_item.SetLeftOffset(
+            offset, subframe_precision, update_linked_items
+        )
+
+    @requires_resolve_version(added_in="21.1.2")
+    def set_right_offset(
+        self,
+        offset: float,
+        subframe_precision: bool = False,
+        update_linked_items: bool = True,
+    ) -> bool:
+        """Moves the item's end edit point so that ``offset`` frames of media remain
+        available after it (the value :meth:`get_right_offset` then returns).
+
+        Args:
+            offset (float): media frames to leave available on the right side
+            subframe_precision (bool, optional): Allow fractional offsets for audio clips
+                when the "Align audio edits to frame boundaries" preference is off.
+                Defaults to False.
+            update_linked_items (bool, optional): Adjust linked items too.
+                Defaults to True.
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._timeline_item.SetRightOffset(
+            offset, subframe_precision, update_linked_items
+        )
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_position(
+        self, subframe_precision: bool = False
+    ) -> "TimelineItemPosition | dict":
+        """Returns the item's absolute position on the timeline.
+
+        Args:
+            subframe_precision (bool, optional): Return a fractional ``startFrame``.
+                Defaults to False.
+
+        Returns:
+            TimelineItemPosition | dict: ``trackType``, ``trackIndex`` and
+                ``startFrame``, an empty dict if nothing was returned
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.settings import TimelineItemPosition
+
+        position = self._timeline_item.GetPosition(subframe_precision)
+        if not position:
+            return {}
+        return TimelineItemPosition(**position)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def set_position(
+        self,
+        position: "TimelineItemPosition | dict",
+        move_linked_items: bool = True,
+        subframe_precision: bool = False,
+    ) -> bool:
+        """Moves the item on the timeline.
+
+        Args:
+            position (TimelineItemPosition | dict): ``trackIndex`` and/or ``startFrame``;
+                omitted keys keep their current value, ``trackType`` is ignored
+            move_linked_items (bool, optional): Move linked items too. Defaults to True.
+            subframe_precision (bool, optional): Allow a fractional ``startFrame`` for
+                audio clips when the "Align audio edits to frame boundaries" preference
+                is off. Defaults to False.
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        if not isinstance(position, dict):
+            position = position.model_dump(exclude_none=True)
+        return self._timeline_item.SetPosition(
+            position, move_linked_items, subframe_precision
+        )
+
+    @requires_resolve_version(added_in="21.1.2")
+    def add_effect(self, category: str, effect_id: str) -> Optional[Effect]:
+        """Applies an effect to the item.
+
+        Args:
+            category (str): "fusion", "ofx" or "audio"
+            effect_id (str): effect id, see ``Resolve.get_effects_list()``
+
+        Returns:
+            Effect | None: the applied effect, None on failure
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        effect = self._timeline_item.AddEffect(category, effect_id)
+        if effect is None:
+            return None
+        return Effect(effect)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def get_effects(self, category: str) -> List[Effect]:
+        """Returns the effects of the given category applied to the item.
+
+        Args:
+            category (str): "fusion", "ofx" or "audio"
+
+        Returns:
+            List[Effect]: the applied effects, in order
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return [Effect(effect) for effect in self._timeline_item.GetEffects(category) or []]
+
+    @requires_resolve_version(added_in="21.1.2")
+    def delete_effects(self, effects: List[Effect]) -> bool:
+        """Removes the given effects from the item.
+
+        Args:
+            effects (List[Effect]): effects to remove
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._timeline_item.DeleteEffects([effect._effect for effect in effects])
+
+    @requires_resolve_version(added_in="21.1.2")
+    def export_frame(
+        self,
+        frame_offset: int,
+        export_frame_options: "ExportFrameOptions | dict | None" = None,
+    ) -> "ExportFrameResult | dict":
+        """Exports a frame of the item as a still image.
+
+        Args:
+            frame_offset (int): 0-based offset from the start of the item
+            export_frame_options (ExportFrameOptions | dict, optional): output options.
+                Returns a base64 encoded JPEG when omitted. Defaults to None.
+
+        Returns:
+            ExportFrameResult | dict: the export result, an empty dict if nothing was
+                returned. Use ``ExportFrameResult.decode_data()`` for the image bytes.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.settings import ExportFrameResult
+
+        if export_frame_options is None:
+            result = self._timeline_item.ExportFrame(frame_offset)
+        else:
+            if not isinstance(export_frame_options, dict):
+                export_frame_options = export_frame_options.model_dump(exclude_none=True)
+            result = self._timeline_item.ExportFrame(frame_offset, export_frame_options)
+        if not result:
+            return {}
+        return ExportFrameResult(**result)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def analyze_audio_levels(self, standard: str) -> "AudioLevelsInfo | dict":
+        """Measures the loudness of the item.
+
+        Args:
+            standard (str): a mode name from ``Timeline.get_normalize_audio_modes()``,
+                except the peak-only "Sample Peak Program" and "True Peak" modes
+
+        Returns:
+            AudioLevelsInfo | dict: ``TruePeak`` (dBFS) and ``Integrated`` (LUFS), -100.0
+                when no level was measured. An empty dict if nothing was returned.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.settings import AudioLevelsInfo
+
+        levels = self._timeline_item.AnalyzeAudioLevels(standard)
+        if not levels:
+            return {}
+        return AudioLevelsInfo(**levels)
+
+    @requires_resolve_version(added_in="21.1.2")
+    def copy_attributes(
+        self,
+        target_items: List["TimelineItem"],
+        options: "CopyAttributesOptions | dict",
+    ) -> bool:
+        """Pastes the selected attributes of this item onto each target item, like the
+        Edit page's "Paste Attributes".
+
+        Works on the Edit and Cut pages.
+
+        Args:
+            target_items (List[TimelineItem]): items to paste onto
+            options (CopyAttributesOptions | dict): which attributes to paste
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        if not isinstance(options, dict):
+            options = options.model_dump(exclude_none=True)
+        return self._timeline_item.CopyAttributes(
+            [target_item._timeline_item for target_item in target_items], options
+        )
+
+    @requires_resolve_version(added_in="21.1.2")
+    def ripple_delete_silence(
+        self, remove_silence_options: "RemoveSilenceOptions | dict | None" = None
+    ) -> bool:
+        """Ripple deletes the silent parts of this audio item.
+
+        Args:
+            remove_silence_options (RemoveSilenceOptions | dict, optional): silence
+                detection options. DaVinci Resolve defaults are used when omitted.
+                Defaults to None.
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        if remove_silence_options is None:
+            return self._timeline_item.RippleDeleteSilence()
+        if not isinstance(remove_silence_options, dict):
+            remove_silence_options = remove_silence_options.model_dump(exclude_none=True)
+        return self._timeline_item.RippleDeleteSilence(remove_silence_options)

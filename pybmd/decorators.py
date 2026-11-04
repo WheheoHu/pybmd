@@ -208,6 +208,43 @@ def warn_deprecated_calling_convention(
     )
 
 
+def require_resolve_version_for_argument(
+    api_name: str,
+    argument_name: str,
+    added_in: str,
+) -> None:
+    """Raise if an optional argument is used on a Resolve version that predates it.
+
+    Some DaVinci Resolve APIs gained optional parameters in a later version than the API
+    itself (e.g. ``Graph.ApplyGradeFromDRX`` got ``applyToAllLayers`` in 21.1.1). The
+    method stays usable on older versions, so the check happens only on the code path
+    that sends the new argument, and no constraint is registered in the VersionRegistry.
+
+    Nothing is checked when no Resolve instance has been created yet.
+
+    Args:
+        api_name: Wrapper identifier, e.g. "Graph.apply_grade_from_drx"
+        argument_name: The optional argument that needs the newer version
+        added_in: Version string the argument was added in (e.g. "21.1.1")
+
+    Raises:
+        APIVersionError: If the running Resolve version is older than 'added_in'
+    """
+    # Lazy import to avoid circular dependency
+    from pybmd.resolve import RESOLVE_VERSION
+
+    if RESOLVE_VERSION is None:
+        return
+
+    current_version = Version.from_list(RESOLVE_VERSION)
+    if current_version < Version.from_string(added_in):
+        raise APIVersionError(
+            api_name=f"{api_name}({argument_name}=...)",
+            current_version=str(current_version),
+            constraint=f"Argument '{argument_name}' requires version >= {added_in}",
+        )
+
+
 def minimum_resolve_version(version_str: str) -> Callable:
     """Simplified decorator for APIs that only need minimum version.
 

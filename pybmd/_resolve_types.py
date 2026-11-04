@@ -71,7 +71,7 @@ class ResolveObject(Protocol):
     AUTO_CAPTION_NETFLIX: float
 
     AUTO_CAPTION_LINE_SINGLE: float
-    AUPTO_CAPTION_LINE_DOUBLE: float
+    AUTO_CAPTION_LINE_DOUBLE: float
 
     SUBTITLE_LANGUAGE: float
     SUBTITLE_CAPTION_PRESET: float
@@ -264,3 +264,125 @@ class ResolveObject(Protocol):
     DIALOGUE_LEVELER_MODE_OPTIMIZE_MODERATE_LEVELS: float
     DIALOGUE_LEVELER_MODE_MORE_LIFT_FOR_LOW_LEVELS: float
     DIALOGUE_LEVELER_MODE_LIFT_SOFT_WHISPERY_SOURCES: float
+
+    ###########################################################
+    # Constants pybmd had not declared yet (present in DR 21.1.2)
+
+    AUDIO_SYNC_IN: float
+    AUDIO_SYNC_OUT: float
+    AUDIO_SYNC_MARKER: float
+    MARKER_NONE: float
+
+    AUTO_CAPTION_FINNISH: float
+    AUTO_CAPTION_HINDI: float
+    AUTO_CAPTION_INDONESIAN: float
+    AUTO_CAPTION_MALAY: float
+    AUTO_CAPTION_POLISH: float
+    AUTO_CAPTION_ROMANIAN: float
+    AUTO_CAPTION_TURKISH: float
+    AUTO_CAPTION_VIETNAMESE: float
+    AUTO_CAPTION_TAMIL: float
+    AUTO_CAPTION_THAI: float
+
+    ###########################################################
+    # Add at DR 21.1.2
+
+    # Extended language support for auto captions
+    SUBTITLE_EXTENDED_LANGUAGE_SUPPORT: float
+    AUTO_CAPTION_AFRIKAANS: float
+    AUTO_CAPTION_ARABIC: float
+    AUTO_CAPTION_ARMENIAN: float
+    AUTO_CAPTION_AZERBAIJANI: float
+    AUTO_CAPTION_BELARUSIAN: float
+    AUTO_CAPTION_BOSNIAN: float
+    AUTO_CAPTION_BULGARIAN: float
+    AUTO_CAPTION_CANTONESE: float
+    AUTO_CAPTION_CATALAN: float
+    AUTO_CAPTION_CROATIAN: float
+    AUTO_CAPTION_CZECH: float
+    AUTO_CAPTION_ESTONIAN: float
+    AUTO_CAPTION_GALICIAN: float
+    AUTO_CAPTION_GREEK: float
+    AUTO_CAPTION_HEBREW: float
+    AUTO_CAPTION_HUNGARIAN: float
+    AUTO_CAPTION_ICELANDIC: float
+    AUTO_CAPTION_KANNADA: float
+    AUTO_CAPTION_KAZAKH: float
+    AUTO_CAPTION_LATVIAN: float
+    AUTO_CAPTION_LITHUANIAN: float
+    AUTO_CAPTION_MACEDONIAN: float
+    AUTO_CAPTION_MAORI: float
+    AUTO_CAPTION_MARATHI: float
+    AUTO_CAPTION_MYANMAR: float
+    AUTO_CAPTION_NEPALI: float
+    AUTO_CAPTION_PERSIAN: float
+    AUTO_CAPTION_SERBIAN: float
+    AUTO_CAPTION_SLOVAK: float
+    AUTO_CAPTION_SLOVENIAN: float
+    AUTO_CAPTION_SWAHILI: float
+    AUTO_CAPTION_TAGALOG: float
+    AUTO_CAPTION_UKRAINIAN: float
+    AUTO_CAPTION_URDU: float
+    AUTO_CAPTION_WELSH: float
+
+    # Copy attributes keyframe timing
+    KEYFRAME_TIMING_MAINTAIN: float
+    KEYFRAME_TIMING_STRETCH_TO_FIT: float
+
+    # Photo render formats
+    PHOTO_FORMAT_JPEG: float
+    PHOTO_FORMAT_PNG: float
+    PHOTO_FORMAT_HEIC: float
+    PHOTO_FORMAT_TIFF: float
+
+    # Photo JPEG automatic quality
+    PHOTO_AUTO_QUALITY_LEAST: float
+    PHOTO_AUTO_QUALITY_LOW: float
+    PHOTO_AUTO_QUALITY_MEDIUM: float
+    PHOTO_AUTO_QUALITY_HIGH: float
+    PHOTO_AUTO_QUALITY_BEST: float
+
+    # Photo TIFF compression
+    PHOTO_TIFF_COMPRESSION_NONE: float
+    PHOTO_TIFF_COMPRESSION_LZW: float
+    PHOTO_TIFF_COMPRESSION_ZIP: float
+
+    # Photo scale modes
+    PHOTO_SCALE_ORIGINAL: float
+    PHOTO_SCALE_DIMENSIONS: float
+    PHOTO_SCALE_SHORT_SIDE: float
+    PHOTO_SCALE_LONG_SIDE: float
+    PHOTO_SCALE_PERCENT: float
+    PHOTO_SCALE_MEGAPIXELS: float
+
+    # Photo resolution units
+    PHOTO_RESOLUTION_UNIT_PPI: float
+    PHOTO_RESOLUTION_UNIT_PPCM: float
+
+    # Photo album item orientation
+    PHOTO_ORIENTATION_0_DEG: float
+    PHOTO_ORIENTATION_90_DEG_RIGHT: float
+    PHOTO_ORIENTATION_180_DEG: float
+    PHOTO_ORIENTATION_90_DEG_LEFT: float
+
+    # Photo album item crop ratio presets
+    PHOTO_CROP_RATIO_AS_SHOT: float
+    PHOTO_CROP_RATIO_CUSTOM: float
+    PHOTO_CROP_RATIO_16X9: float
+    PHOTO_CROP_RATIO_1X1: float
+    PHOTO_CROP_RATIO_4X5: float
+    PHOTO_CROP_RATIO_2X3: float
+    PHOTO_CROP_RATIO_4X3: float
+
+    # Photo album item look presets
+    PHOTO_LOOK_DEFAULT: float
+    PHOTO_LOOK_BW: float
+    PHOTO_LOOK_BRIGHT: float
+    PHOTO_LOOK_COOL: float
+    PHOTO_LOOK_DRAMATIC: float
+    PHOTO_LOOK_GOLD: float
+    PHOTO_LOOK_NATURAL: float
+    PHOTO_LOOK_RICH_CONTRAST: float
+    PHOTO_LOOK_ROSE: float
+    PHOTO_LOOK_VIBRANT: float
+    PHOTO_LOOK_WARM: float

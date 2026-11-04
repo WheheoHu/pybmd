@@ -14,6 +14,8 @@ from dataclasses import dataclass
 from dataclasses import asdict
 
 if TYPE_CHECKING:
+    from pybmd.photo_album import PhotoAlbum
+    from pybmd.photo_album_item import PhotoAlbumItem
     from pybmd.settings import AudioSyncSetting, MulticamOptions
 # TODO clip info for multi version compatible
 
@@ -627,3 +629,99 @@ class MediaPool(WrapperBase):
         if not multicam_clips:
             return []
         return [MediaPoolItem(multicam_clip) for multicam_clip in multicam_clips]
+
+    ##########################################################################################################################
+    # Add at DR 21.1.2
+
+    @requires_resolve_version(added_in="21.1.2")
+    def create_empty_photo_album(self, name: str) -> "PhotoAlbum":
+        """Adds a new, empty photo album with the given name.
+
+        Args:
+            name (str): photo album name
+
+        Returns:
+            PhotoAlbum: the created photo album
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.photo_album import PhotoAlbum
+
+        return PhotoAlbum(self._media_pool.CreateEmptyPhotoAlbum(name))
+
+    @requires_resolve_version(added_in="21.1.2")
+    def create_photo_album_from_photos(
+        self, name: str, photos: List["MediaPoolItem"]
+    ) -> "PhotoAlbum":
+        """Creates a new photo album with the given name and adds the given still image
+        media pool items to it.
+
+        Args:
+            name (str): photo album name
+            photos (List[MediaPoolItem]): still image media pool items
+
+        Returns:
+            PhotoAlbum: the created photo album
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.photo_album import PhotoAlbum
+
+        return PhotoAlbum(
+            self._media_pool.CreatePhotoAlbumFromPhotos(
+                name, [photo._media_pool_item for photo in photos]
+            )
+        )
+
+    @requires_resolve_version(added_in="21.1.2")
+    def delete_photo_albums(self, photo_albums: List["PhotoAlbum"]) -> bool:
+        """Deletes the given photo albums from the media pool.
+
+        Args:
+            photo_albums (List[PhotoAlbum]): photo albums to delete
+
+        Returns:
+            bool: True if successful, False otherwise
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        return self._media_pool.DeletePhotoAlbums(
+            [photo_album._photo_album for photo_album in photo_albums]
+        )
+
+    @requires_resolve_version(added_in="21.1.2")
+    def add_to_photo_album(
+        self, photos: List["MediaPoolItem"]
+    ) -> List["PhotoAlbumItem"]:
+        """Adds the given still image media pool items to the current photo album.
+
+        Args:
+            photos (List[MediaPoolItem]): still image media pool items
+
+        Returns:
+            List[PhotoAlbumItem]: the added photos, an empty list on failure
+
+        Raises:
+            APIVersionError: If Resolve version < 21.1.2
+
+        Version:
+            Added in DaVinci Resolve 21.1.2
+        """
+        from pybmd.photo_album_item import PhotoAlbumItem
+
+        added_items = self._media_pool.AddToPhotoAlbum(
+            [photo._media_pool_item for photo in photos]
+        )
+        return [PhotoAlbumItem(item) for item in added_items or []]

@@ -122,6 +122,10 @@ class ProjectManager(WrapperBase):
         """Opens root folder in database."""
         return self._project_manager.GotoRootFolder()
 
+    def get_current_folder(self) -> str:
+        """Returns the name of the current project folder, an empty string at the root."""
+        return self._project_manager.GetCurrentFolder()
+
     # Modified at DR18.0.0
     def import_project(self, file_path: Path, project_name: str) -> bool:
         """Imports a project from the file path provided with given project name. Returns True if successful."""
@@ -277,6 +281,21 @@ class ProjectManager(WrapperBase):
                 self._project_manager.GetProjectAttributesInCurrentFolder().items()
             )
         }
+
+    ##############################################################################################################################
+    # An API in the DR 21.1.2 API reference that pybmd had not wrapped. The changelog does
+    # not say which version introduced it, so it carries no version check.
+
+    def get_project_last_modified_time(self, project_name: str) -> int:
+        """Returns the last modified time of the given project.
+
+        Args:
+            project_name (str): name of a project in the current folder
+
+        Returns:
+            int: last modified time as an epoch timestamp
+        """
+        return self._project_manager.GetProjectLastModifiedTime(project_name)
 
     # More function BELOW!
 
