@@ -15,8 +15,11 @@ if TYPE_CHECKING:
     from pybmd.settings import (
         ExportFrameOptions,
         ExportFrameResult,
+        ExportThumbnailsOptions,
+        ExportThumbnailsResult,
         MotionDeblurSettings,
         MarkerColor,
+        ThumbnailFrame,
         Transcription,
     )
     from pybmd.timeline import Timeline
@@ -828,6 +831,56 @@ class MediaPoolItem(WrapperBase):
         if not result:
             return {}
         return ExportFrameResult(**result)
+
+    @requires_resolve_version(added_in="21.2")
+    def export_thumbnails(
+        self,
+        frames: "List[int | ThumbnailFrame | dict]",
+        export_thumbnails_options: "ExportThumbnailsOptions | dict | None" = None,
+    ) -> "ExportThumbnailsResult | dict":
+        """Renders the given frames into a single composited grid image.
+
+        Each entry in ``frames`` is a 0-based offset from the start of the clip. Pass a
+        :class:`~pybmd.settings.ThumbnailFrame` instead of a bare ``int`` to set a
+        custom cell label.
+
+        Args:
+            frames (List[int | ThumbnailFrame | dict]): frames to include in the grid,
+                in display order
+            export_thumbnails_options (ExportThumbnailsOptions | dict, optional):
+                output options. Returns a base64-encoded JPEG sheet when omitted.
+                Defaults to None.
+
+        Returns:
+            ExportThumbnailsResult | dict: the composited sheet result, an empty dict
+                if nothing was returned. Use
+                ``ExportThumbnailsResult.decode_data()`` for the image bytes.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.2
+
+        Version:
+            Added in DaVinci Resolve 21.2
+        """
+        from pybmd.settings import ExportThumbnailsOptions as _Opts, ExportThumbnailsResult
+
+        resolved_frames = [
+            f if isinstance(f, (int, dict)) else f.model_dump(exclude_none=True)
+            for f in frames
+        ]
+        if export_thumbnails_options is None:
+            result = self._media_pool_item.ExportThumbnails(resolved_frames)
+        else:
+            if not isinstance(export_thumbnails_options, dict):
+                export_thumbnails_options = export_thumbnails_options.model_dump(
+                    exclude_none=True
+                )
+            result = self._media_pool_item.ExportThumbnails(
+                resolved_frames, export_thumbnails_options
+            )
+        if not result:
+            return {}
+        return ExportThumbnailsResult(**result)
 
     @requires_resolve_version(added_in="21.1.2")
     def set_transcription(self, transcription: "Transcription | dict") -> bool:

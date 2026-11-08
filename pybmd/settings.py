@@ -1504,6 +1504,145 @@ class ExportFrameResult(BaseModel):
 
 
 ###################################
+# Export Thumbnails (DR 21.2)
+
+
+class ThumbnailFrame(BaseModel):
+    """One frame entry for ``export_thumbnails``.
+
+    A plain ``int`` (bare frame offset) is also accepted wherever this type is used.
+    Use this class only when you want to set a custom cell label.
+    """
+
+    frameOffset: int = Field(description="0-based frame offset into the source")
+    label: str | None = Field(
+        default=None,
+        description="Label drawn over the cell (default: the frame offset as a string)",
+    )
+
+
+class ExportThumbnailsOptions(BaseModel):
+    """Settings (``export_thumbnails_options``) for ``Timeline`` / ``MediaPoolItem`` /
+    ``PhotoAlbum`` ``export_thumbnails``.
+
+    All fields are optional; only fields explicitly set are sent
+    (use ``model_dump(exclude_none=True)``).
+    """
+
+    outputType: Literal["file", "encodedString"] | None = Field(
+        default=None,
+        description='"file" writes filePath, "encodedString" returns base64 data '
+        '(default: "encodedString")',
+    )
+    encodedImageFormat: Literal["jpg", "png"] | None = Field(
+        default=None,
+        description='Image format when outputType is "encodedString" (default: "jpg")',
+    )
+    filePath: str | None = Field(
+        default=None,
+        description='Output file path, format inferred from the extension. Required when '
+        'outputType is "file"',
+    )
+    maxDimension: int | None = Field(
+        default=None,
+        ge=0,
+        description="Caps the longer edge of the composited sheet in pixels (default: 0, "
+        "no scaling). Budget is split across cells, so more frames means smaller cells",
+    )
+    quality: int | None = Field(
+        default=None,
+        ge=1,
+        le=100,
+        description="JPEG quality in percent, 1 to 100 (JPEG only, default: 100)",
+    )
+
+    @model_validator(mode="after")
+    def _file_output_needs_path(self) -> "ExportThumbnailsOptions":
+        if self.outputType == "file" and not self.filePath:
+            raise ValueError('filePath is required when outputType is "file"')
+        return self
+
+
+class ExportThumbnailsResult(BaseModel):
+    """Result returned by the ``export_thumbnails`` methods."""
+
+    success: bool | None = Field(
+        default=None, description="True if the thumbnails were composited successfully"
+    )
+    error: str | None = Field(default=None, description="Error message (set on failure)")
+    data: str | None = Field(
+        default=None,
+        description='Base64-encoded sheet bytes (set when outputType is "encodedString" '
+        "and success is True)",
+    )
+    width: int | None = Field(
+        default=None,
+        description="Width of the composited sheet in pixels (set when success is True)",
+    )
+    height: int | None = Field(
+        default=None,
+        description="Height of the composited sheet in pixels (set when success is True)",
+    )
+    columns: int | None = Field(
+        default=None,
+        description="Cells per row, chosen to keep the sheet near square (set when "
+        "success is True)",
+    )
+    rows: int | None = Field(
+        default=None,
+        description="Rows of the grid; cells fill left-to-right, top-to-bottom in the "
+        "order frames were given (set when success is True)",
+    )
+    cellWidth: int | None = Field(
+        default=None,
+        description="Width of one cell in pixels (set when success is True)",
+    )
+    cellHeight: int | None = Field(
+        default=None,
+        description="Height of one cell in pixels (set when success is True)",
+    )
+
+    def decode_data(self) -> bytes | None:
+        """Returns the composited sheet decoded from ``data``, or None when there is no data."""
+        if not self.data:
+            return None
+        return base64.b64decode(self.data)
+
+
+###################################
+# Extras Download Manager (DR 21.2)
+
+
+class ExtrasPackageInfo(BaseModel):
+    """An Extras Download Manager package returned by ``Resolve.get_extras_packages``.
+
+    Pass ``name`` to ``Resolve.install_extras_package`` or
+    ``Resolve.uninstall_extras_package`` to manage the package.
+    """
+
+    name: str | None = Field(
+        default=None,
+        description="Display name and install identifier, e.g. 'AI Slate ID'",
+    )
+    description: str | None = Field(
+        default=None, description="Localized description of the package"
+    )
+    status: (
+        Literal["installed", "downloading", "installing", "notInstalled"] | None
+    ) = Field(default=None, description="Current package state")
+    progress: float | None = Field(
+        default=None,
+        description="How far the current phase has got, 0.0 to 1.0",
+    )
+    downloadSize: int | None = Field(
+        default=None, description="Download size in bytes"
+    )
+    installedSize: int | None = Field(
+        default=None, description="Size on disk once installed, in bytes"
+    )
+
+
+###################################
 # Timeline Item editing (DR 21.1.2)
 
 

@@ -1,5 +1,34 @@
 # Change Log for PyBMD
 
+# 2026.5.0
+## API
+### Changes for DaVinci Resolve 21.2
+
+### Resolve
+- Add `get_extras_packages()` — Returns the Extras Download Manager packages available
+  for this system as `ExtrasPackageInfo` models (DR 21.2)
+- Add `install_extras_package(name)` — Queues installation of the named Extras Package;
+  poll `get_extras_packages()` for status and progress (DR 21.2)
+- Add `uninstall_extras_package(name)` — Queues removal of the named Extras Package;
+  cancels an in-progress download (DR 21.2)
+
+### Timeline
+- Add `export_thumbnails(frames, options)` — Renders a list of 0-based frame offsets
+  into a single composited grid image, returning `ExportThumbnailsResult` (DR 21.2)
+
+### MediaPoolItem
+- Add `export_thumbnails(frames, options)` — Same composited grid render from clip
+  frame offsets (DR 21.2)
+
+### PhotoAlbum
+- Add `export_thumbnails(photo_indices, options)` — Renders photos at the given
+  1-based album positions into a composited grid image (DR 21.2)
+
+### settings module
+- Add write models: `ThumbnailFrame`, `ExportThumbnailsOptions`
+- Add read model: `ExportThumbnailsResult` (with `decode_data()` returning the sheet bytes)
+- Add read model: `ExtrasPackageInfo`
+
 # 2026.4.0
 ## API
 ### Changes for DaVinci Resolve 21.1.1 / 21.1.2

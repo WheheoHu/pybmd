@@ -145,3 +145,45 @@ class PhotoAlbum(WrapperBase):
             Added in DaVinci Resolve 21.1.2
         """
         return [GalleryStill(still) for still in self._photo_album.GrabAllStills() or []]
+
+    @requires_resolve_version(added_in="21.2")
+    def export_thumbnails(
+        self,
+        photo_indices: List[int],
+        export_thumbnails_options: "ExportThumbnailsOptions | dict | None" = None,
+    ) -> "ExportThumbnailsResult | dict":
+        """Renders the photos at the given 1-based album positions into a grid image.
+
+        Args:
+            photo_indices (List[int]): 1-based positions within the album,
+                ``1 <= index <= len(get_photo_list())``
+            export_thumbnails_options (ExportThumbnailsOptions | dict, optional):
+                output options. Returns a base64-encoded JPEG sheet when omitted.
+                Defaults to None.
+
+        Returns:
+            ExportThumbnailsResult | dict: the composited sheet result, an empty dict
+                if nothing was returned. Use
+                ``ExportThumbnailsResult.decode_data()`` for the image bytes.
+
+        Raises:
+            APIVersionError: If Resolve version < 21.2
+
+        Version:
+            Added in DaVinci Resolve 21.2
+        """
+        from pybmd.settings import ExportThumbnailsResult
+
+        if export_thumbnails_options is None:
+            result = self._photo_album.ExportThumbnails(photo_indices)
+        else:
+            if not isinstance(export_thumbnails_options, dict):
+                export_thumbnails_options = export_thumbnails_options.model_dump(
+                    exclude_none=True
+                )
+            result = self._photo_album.ExportThumbnails(
+                photo_indices, export_thumbnails_options
+            )
+        if not result:
+            return {}
+        return ExportThumbnailsResult(**result)

@@ -16,7 +16,7 @@ from pybmd.version_registry import VersionRegistry
 from pybmd.decorators import minimum_resolve_version
 
 if TYPE_CHECKING:
-    from pybmd.settings import EffectInfo, EncryptDCTLOptions, KeyframeMode
+    from pybmd.settings import EffectInfo, EncryptDCTLOptions, ExtrasPackageInfo, KeyframeMode
 
 from . import _init_bmd
 
@@ -854,3 +854,68 @@ class Resolve:
             bool: Returns True if successful, False otherwise.
         """
         return self._resolve.SetHighPriority(high_priority)
+
+    ##############################################################################################################################
+    # DR 21.2
+
+    @minimum_resolve_version("21.2")
+    def get_extras_packages(self) -> "List[ExtrasPackageInfo]":
+        """Returns the Extras Download Manager packages available for this system.
+
+        These are optional packages (mostly AI models) required by Studio and AI
+        scripting functions. Poll this method for status and progress after calling
+        :meth:`install_extras_package`.
+
+        Returns:
+            List[ExtrasPackageInfo]: the available packages and their install state
+
+        Raises:
+            APIVersionError: If Resolve version < 21.2
+
+        Version:
+            Added in DaVinci Resolve 21.2
+        """
+        from pybmd.settings import ExtrasPackageInfo
+
+        return [ExtrasPackageInfo(**p) for p in self._resolve.GetExtrasPackages() or []]
+
+    @minimum_resolve_version("21.2")
+    def install_extras_package(self, name: str) -> bool:
+        """Queues installation of the named Extras Package.
+
+        The ``name`` must match the ``name`` field of an
+        :class:`~pybmd.settings.ExtrasPackageInfo` entry returned by
+        :meth:`get_extras_packages` (e.g. ``'AI Slate ID'``). Poll
+        :meth:`get_extras_packages` for status and progress.
+
+        Args:
+            name (str): display name / identifier of the package to install
+
+        Returns:
+            bool: True if the install was queued successfully
+
+        Raises:
+            APIVersionError: If Resolve version < 21.2
+
+        Version:
+            Added in DaVinci Resolve 21.2
+        """
+        return self._resolve.InstallExtrasPackage(name)
+
+    @minimum_resolve_version("21.2")
+    def uninstall_extras_package(self, name: str) -> bool:
+        """Queues removal of the named Extras Package. Cancels an in-progress download.
+
+        Args:
+            name (str): display name / identifier of the package to remove
+
+        Returns:
+            bool: True if the removal was queued successfully
+
+        Raises:
+            APIVersionError: If Resolve version < 21.2
+
+        Version:
+            Added in DaVinci Resolve 21.2
+        """
+        return self._resolve.UninstallExtrasPackage(name)
